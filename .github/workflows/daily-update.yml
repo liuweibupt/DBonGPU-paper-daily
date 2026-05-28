@@ -10,9 +10,9 @@ permissions:
   contents: write
 
 jobs:
-  fetch-and-publish:
+  fetch-daily:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,6 +39,40 @@ jobs:
         run: |
           python main.py --html --output docs/index.html
 
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 论文日报 $(date +%Y-%m-%d)"
+          git push
+
+  update-top100:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Fetch yearly Top 100 papers
         run: |
           python main.py --top100 --output docs/top100.html
@@ -48,5 +82,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/
-          git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 论文日报 $(date +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 年度 Top 100"
           git push
