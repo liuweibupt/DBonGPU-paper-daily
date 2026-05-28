@@ -5,6 +5,12 @@ on:
     # UTC 1:00 = 北京时间 9:00
     - cron: '0 1 * * *'
   workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'main.py'
+      - 'requirements.txt'
 
 permissions:
   contents: write
