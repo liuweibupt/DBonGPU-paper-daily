@@ -49,6 +49,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add docs/
           git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 论文日报 $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
 
   update-top100:
@@ -91,4 +92,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add docs/
           git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 年度 Top 100"
+          git pull --rebase origin main
           git push
