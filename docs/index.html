@@ -462,11 +462,11 @@
 
     <div class="stats-row">
         <div class="stat-card">
-            <div class="stat-value">0</div>
+            <div class="stat-value">8</div>
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">0</div>
+            <div class="stat-value">4</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -477,18 +477,176 @@
 
     <div class="paper-list">
         
-            <div class="empty-state">
-                <div class="empty-icon">📭</div>
-                <div class="empty-text">今日暂无符合条件的 GPU 数据库论文</div>
-                <div class="empty-hint">arXiv 可能在当天尚未发布新论文，请稍后再试</div>
-            </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2406.13831v1" target="_blank">A Comprehensive Overview of GPU Accelerated Databases</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.855</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Harshit Sharma, Anmol Sharma</div>
+        <div class="paper-abstract">Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs has proven advantageous, thanks to their superior bandwidth capabilities. The parallel processing prowess of GPUs stands out, providing exceptional efficiency for data-intensive workloads and outpacing traditional CPUs in terms of data processing speed. While GPU databases capitalize on these strengths, there remains a scarcity of comparative studies across different GPU systems. In light of this emerging interest in GPU databases for data analytics, this paper proposes a survey encompassing mult...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题高度相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2406.13831v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2406.13831v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">2</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16725v1" target="_blank">FliX: Flipped-Indexing for Scalable GPU Queries and Updates</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.765</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+        </div>
+        <div class="paper-authors">Rosina Kharal, Trevor Brown, Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract">GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.
+  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp....</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.16725v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.16725v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2302.00734v1" target="_blank">Revisiting Query Performance in GPU Database Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.755</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jiashen Cao, Rathijit Sen, Matteo Interlandi, Joy Arulraj 等 (5 位作者)</div>
+        <div class="paper-abstract">GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG).
+  In this paper we do a cross-stack performance and resource utilization analysis of five GPU database systems. We study both database-level and micro-architectural aspects, and offer recommendations to database developers. We also...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2302.00734v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2302.00734v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20121v2" target="_blank">A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.707</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Zhonggen Li, Haoran Yu, Zixuan Xu, Yifan Zhu 等 (5 位作者)</div>
+        <div class="paper-abstract">Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-ce...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.20121v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.20121v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2506.01576v3" target="_blank">Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.658</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract">Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with ...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2506.01576v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2506.01576v3" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2512.02862v3" target="_blank">PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.648</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Jigao Luo, Nils Boeschen, Muhammad El-Hindi, Carsten Binnig</div>
+        <div class="paper-abstract">The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered settings where the data fits in aggregated GPU memory. In this paper, we systematically study how TCRs can support scalable, distributed query processing for large-scale, storage-resident OLAP workloads. Although TCRs provide abstractions for network and storage I/O, naive use often underutilizes GPU ...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2512.02862v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2512.02862v3" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2602.23999v1" target="_blank">GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.560</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> <span class="tag">cs.IR</span> 
+        </div>
+        <div class="paper-authors">Jifan Shi, Jianyang Gao, James Xia, Tamás Béla Fehér 等 (5 位作者)</div>
+        <div class="paper-abstract">Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs. In contrast, cluster-based methods build and scale efficiently yet often need many probes for high recall, straining memory bandwidth and compute. Aiming to simultaneously achieve fast index build, high-throughput search, high recall, and low storage requirement for GPUs, we present IVF-RaBitQ (GPU), a GPU-native ANNS solution that integrates the cluster-based method IVF with RaBitQ quantization into an efficient GPU index build/search pipeline. Specifically, for index build, we develop a scalable GPU-native...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2602.23999v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.23999v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.10135v1" target="_blank">ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.541</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Lan Lu, Peiqi Yin, Isaac Yang, Tao Luo 等 (8 位作者)</div>
+        <div class="paper-abstract">Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and high-dimensional datasets. Some studies have explored GPU-based solutions. However, GPUs are costly and their limited memory makes handling large datasets challenging.
+  In this paper, we propose a novel end-to-end system ScaleGANN that enables users to efficiently construct graph indexes for large-scale, high-dimensional datasets by leveraging low-cost spot GPU resources in a distributed cloud system. ScaleGANN utilized the idea of divide-and-merge, with an optimized vector partitioning algorit...</div>
+        
+        
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.10135v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.10135v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-05-28 15:27:15</span>
+            <span>上次运行：2026-05-28 08:37:47</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>

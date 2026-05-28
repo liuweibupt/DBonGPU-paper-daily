@@ -1,1 +1,233 @@
-[]
+[
+  {
+    "id": "2406.13831v1",
+    "title": "A Comprehensive Overview of GPU Accelerated Databases",
+    "authors": [
+      "Harshit Sharma",
+      "Anmol Sharma"
+    ],
+    "abstract": "Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs has proven advantageous, thanks to their superior bandwidth capabilities. The parallel processing prowess of GPUs stands out, providing exceptional efficiency for data-intensive workloads and outpacing traditional CPUs in terms of data processing speed. While GPU databases capitalize on these strengths, there remains a scarcity of comparative studies across different GPU systems. In light of this emerging interest in GPU databases for data analytics, this paper proposes a survey encompassing multiple GPU database systems. The focus will be on elucidating the underlying mechanisms employed to deliver results and key performance metrics, utilizing benchmarks such as SSB and TPCH. This undertaking aims to shed light on new avenues for research within the realm of GPU databases.",
+    "published_date": "2024-06-19T20:50:30Z",
+    "updated_date": "2024-06-19T20:50:30Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2406.13831v1",
+    "arxiv_url": "https://arxiv.org/abs/2406.13831v1",
+    "source": "arxiv",
+    "score": 0.8547833561897278,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题高度相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2604.16725v1",
+    "title": "FliX: Flipped-Indexing for Scalable GPU Queries and Updates",
+    "authors": [
+      "Rosina Kharal",
+      "Trevor Brown",
+      "Justus Henneberg",
+      "Felix Schuhknecht"
+    ],
+    "abstract": "GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.\n  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp. FliX, however, assigns compute (e.g., a warp) to each bucket in the data layer, and each bucket then locates operations it is responsible for in the batch. FliX can replace many index layer traversals with a single binary search on the batch, reducing redundant work and warp divergence. Further, FliX simplifies updates as no index layer must be maintained.\n  In our experiments, FliX achieves 6.5x reduced query latency compared to a leading GPU B-tree and 1.5x compared to a leading GPU LSM-tree, while delivering 4x higher throughput per memory footprint than ordered competitors. Despite maintaining order, FliX also surpasses state-of-the-art unordered GPU hash tables in query and deletion performance, and is highly competitive in insertion performance. In update-heavy workloads, it outperforms the closest fully dynamic ordered baseline by over 8x in insertion throughput while supporting dynamic memory reclamation. These results suggest that eliminating the index layer and adopting a compute-to-bucket mapping can enable practical, fully dynamic GPU indexing without sacrificing query performance.",
+    "published_date": "2026-04-17T22:00:09Z",
+    "updated_date": "2026-04-17T22:00:09Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC",
+      "cs.DS",
+      "cs.ET"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2604.16725v1",
+    "arxiv_url": "https://arxiv.org/abs/2604.16725v1",
+    "source": "arxiv",
+    "score": 0.7647656512260437,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2302.00734v1",
+    "title": "Revisiting Query Performance in GPU Database Systems",
+    "authors": [
+      "Jiashen Cao",
+      "Rathijit Sen",
+      "Matteo Interlandi",
+      "Joy Arulraj",
+      "Hyesoon Kim"
+    ],
+    "abstract": "GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG).\n  In this paper we do a cross-stack performance and resource utilization analysis of five GPU database systems. We study both database-level and micro-architectural aspects, and offer recommendations to database developers. We also demonstrate how to use and extend the traditional roofline model to identify GPU resource bottlenecks. This enables users to conduct what-if analysis to forecast performance impact for different resource allocation or the degree of concurrency. Our methodology addresses a key user pain point in selecting optimal configurations by removing the need to do exhaustive testing for a multitude of resource configurations.",
+    "published_date": "2023-02-01T19:58:41Z",
+    "updated_date": "2023-02-01T19:58:41Z",
+    "categories": [
+      "cs.DB",
+      "cs.AR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2302.00734v1",
+    "arxiv_url": "https://arxiv.org/abs/2302.00734v1",
+    "source": "arxiv",
+    "score": 0.7548516988754272,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2604.20121v2",
+    "title": "A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search",
+    "authors": [
+      "Zhonggen Li",
+      "Haoran Yu",
+      "Zixuan Xu",
+      "Yifan Zhu",
+      "Yunjun Gao"
+    ],
+    "abstract": "Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-cell edges. For queries, Garfield utilizes a cluster-guided ordering strategy that reorders query-relevant cells, enabling a highly efficient cell-by-cell traversal on the GPU that aggressively reuses candidates as entry points across cells. To handle datasets exceeding GPU memory, Garfield features a cell-oriented out-of-core pipeline. It dynamically schedules cells to minimize the number of active queries per batch and overlaps GPU computation with CPU-to-GPU index streaming. Extensive evaluations demonstrate that Garfield reduces index size by 4.4x, while delivering 119.8x higher throughput than state-of-the-art RFANNS methods.",
+    "published_date": "2026-04-22T02:33:08Z",
+    "updated_date": "2026-04-25T06:31:04Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2604.20121v2",
+    "arxiv_url": "https://arxiv.org/abs/2604.20121v2",
+    "source": "arxiv",
+    "score": 0.7074530136585235,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2506.01576v3",
+    "title": "Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!",
+    "authors": [
+      "Justus Henneberg",
+      "Felix Schuhknecht"
+    ],
+    "abstract": "Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with a set of established low-level optimizations. These architecture-specific optimizations aim at getting the most out of binary search by (a) greatly reducing the overall amount of GPU memory accesses required during search, (b) exploiting the enormous benefits of memory access coalescing on a GPU, and (c) maximizing scalability by reordering the dataset into a more favorable layout. By comparing our optimized search strategies against nine state-of-the-art GPU index structures under several static indexing workloads, we demonstrate that they not only outperform all competitors (except for hashing-based approaches) by a factor of up to 3.8, but also maintain the smallest possible memory footprint.",
+    "published_date": "2025-06-02T12:03:17Z",
+    "updated_date": "2026-02-21T16:23:34Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2506.01576v3",
+    "arxiv_url": "https://arxiv.org/abs/2506.01576v3",
+    "source": "arxiv",
+    "score": 0.6584676361083984,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2512.02862v3",
+    "title": "PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage",
+    "authors": [
+      "Jigao Luo",
+      "Nils Boeschen",
+      "Muhammad El-Hindi",
+      "Carsten Binnig"
+    ],
+    "abstract": "The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered settings where the data fits in aggregated GPU memory. In this paper, we systematically study how TCRs can support scalable, distributed query processing for large-scale, storage-resident OLAP workloads. Although TCRs provide abstractions for network and storage I/O, naive use often underutilizes GPU and I/O bandwidth due to insufficient overlap between computation and data movement. As a core contribution, we present PystachIO, a prototype of a PyTorch-based distributed OLAP engine that combines fast network and storage I/O with key optimizations to maximize GPU, network, and storage utilization. Our evaluation shows up to 3x end-to-end speedups over existing distributed GPU-based query processing approaches.",
+    "published_date": "2025-12-02T15:22:06Z",
+    "updated_date": "2026-05-20T06:32:33Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2512.02862v3",
+    "arxiv_url": "https://arxiv.org/abs/2512.02862v3",
+    "source": "arxiv",
+    "score": 0.6482024335861206,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2602.23999v1",
+    "title": "GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search",
+    "authors": [
+      "Jifan Shi",
+      "Jianyang Gao",
+      "James Xia",
+      "Tamás Béla Fehér",
+      "Cheng Long"
+    ],
+    "abstract": "Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs. In contrast, cluster-based methods build and scale efficiently yet often need many probes for high recall, straining memory bandwidth and compute. Aiming to simultaneously achieve fast index build, high-throughput search, high recall, and low storage requirement for GPUs, we present IVF-RaBitQ (GPU), a GPU-native ANNS solution that integrates the cluster-based method IVF with RaBitQ quantization into an efficient GPU index build/search pipeline. Specifically, for index build, we develop a scalable GPU-native RaBitQ quantization method that enables fast and accurate low-bit encoding at scale. For search, we develop GPU-native distance computation schemes for RaBitQ codes and a fused search kernel to achieve high throughput with high recall. With IVF-RaBitQ implemented and integrated into the NVIDIA cuVS Library, experiments on cuVS Bench across multiple datasets show that IVF-RaBitQ offers a strong performance frontier in recall, throughput, index build time, and storage footprint. For Recall approximately equal to 0.95, IVF-RaBitQ achieves 2.2x higher QPS than the state-of-the-art graph-based method CAGRA, while also constructing indices 7.7x faster on average. Compared to the cluster-based method IVF-PQ, IVF-RaBitQ delivers on average over 2.7x higher throughput while avoiding accessing the raw vectors for reranking.",
+    "published_date": "2026-02-27T13:23:30Z",
+    "updated_date": "2026-02-27T13:23:30Z",
+    "categories": [
+      "cs.DB",
+      "cs.DS",
+      "cs.IR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2602.23999v1",
+    "arxiv_url": "https://arxiv.org/abs/2602.23999v1",
+    "source": "arxiv",
+    "score": 0.5595543837547302,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  },
+  {
+    "id": "2605.10135v1",
+    "title": "ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs",
+    "authors": [
+      "Lan Lu",
+      "Peiqi Yin",
+      "Isaac Yang",
+      "Tao Luo",
+      "Hua Fan",
+      "Wenchao Zhou",
+      "Feifei Li",
+      "Boon Thau Loo"
+    ],
+    "abstract": "Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and high-dimensional datasets. Some studies have explored GPU-based solutions. However, GPUs are costly and their limited memory makes handling large datasets challenging.\n  In this paper, we propose a novel end-to-end system ScaleGANN that enables users to efficiently construct graph indexes for large-scale, high-dimensional datasets by leveraging low-cost spot GPU resources in a distributed cloud system. ScaleGANN utilized the idea of divide-and-merge, with an optimized vector partitioning algorithm to further improve the indexing time and space efficiency while guaranteeing good index quality. Its novel resource allocation strategy realized multi-GPU indexing parallelism and overall cost-effectiveness for both build and query. Besides, we designed a task scheduler and cost model for better spot instance management and evaluation.\n  We tested our system on large real-world datasets. Experiment results show that our approach can significantly accelerate the index build time to up to 9x times at even 6x lower price compared with the state-of-the-art extendable ANNS benchmark DiskANN.",
+    "published_date": "2026-05-11T07:46:07Z",
+    "updated_date": "2026-05-11T07:46:07Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2605.10135v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.10135v1",
+    "source": "arxiv",
+    "score": 0.5406333518028259,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
+  }
+]
