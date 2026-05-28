@@ -53,6 +53,7 @@ class HTMLDisplay:
         <div class="nav-links">
             <a href="index.html" class="active">每日推荐</a>
             <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
             <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
         </div>
     </nav>
@@ -140,6 +141,7 @@ class HTMLDisplay:
         <div class="nav-links">
             <a href="index.html">每日推荐</a>
             <a href="top100.html" class="active">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
             <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
         </div>
     </nav>
@@ -183,6 +185,291 @@ class HTMLDisplay:
     </footer>
 </body>
 </html>"""
+
+    def generate_classics_html(self, papers: List[Dict]) -> str:
+        """Generate classic papers HTML page"""
+        generated_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        papers_html = ""
+        for i, paper in enumerate(papers, 1):
+            papers_html += self._render_classic_card(paper, i)
+
+        return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU 数据库经典论文</title>
+    {self._common_styles()}
+    <style>
+        .classics-hero {{
+            text-align: center;
+            padding: 40px 0 20px;
+        }}
+        .classics-hero h2 {{
+            font-size: 1.8em;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }}
+        .classics-hero p {{
+            color: var(--text-secondary);
+            font-size: 1em;
+        }}
+        .classic-card {{
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.25s ease;
+        }}
+        .classic-card:hover {{
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }}
+        .classic-header {{
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }}
+        .classic-num {{
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1em;
+            color: #fff;
+            background: var(--gradient-2);
+        }}
+        .classic-title {{
+            font-size: 1.15em;
+            font-weight: 600;
+            line-height: 1.5;
+        }}
+        .classic-title a {{
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }}
+        .classic-title a:hover {{
+            color: var(--accent-purple);
+        }}
+        .classic-meta {{
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }}
+        .tag-venue {{
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+            background: rgba(167,139,250,0.12);
+            color: var(--accent-purple);
+            border: 1px solid rgba(167,139,250,0.2);
+        }}
+        .tag-year {{
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+            background: rgba(96,165,250,0.08);
+            color: var(--accent);
+            border: 1px solid rgba(96,165,250,0.15);
+        }}
+        .classic-authors {{
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            margin-top: 8px;
+        }}
+        .classic-section {{
+            margin-top: 14px;
+        }}
+        .classic-section-title {{
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }}
+        .classic-abstract-cn {{
+            color: var(--text);
+            font-size: 0.93em;
+            line-height: 1.8;
+            background: rgba(96,165,250,0.04);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }}
+        .classic-takeaway {{
+            color: var(--accent-green);
+            font-size: 0.9em;
+            line-height: 1.7;
+            background: rgba(52,211,153,0.06);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            border-left: 3px solid var(--accent-green);
+        }}
+        .classic-innovation {{
+            color: var(--accent-orange);
+            font-size: 0.9em;
+            line-height: 1.7;
+            background: rgba(251,191,36,0.06);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            border-left: 3px solid var(--accent-orange);
+        }}
+        .classic-links {{
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }}
+        .classic-links a {{
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86em;
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }}
+        .classic-links a:hover {{
+            border-color: var(--accent);
+            background: rgba(96,165,250,0.1);
+        }}
+        @media (max-width: 640px) {{
+            .classic-card {{ padding: 18px; }}
+        }}
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand">⚡ GPU DB Daily</div>
+        <div class="nav-links">
+            <a href="index.html">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html" class="active">经典论文</a>
+            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <div class="classics-hero">
+        <h2>GPU 数据库经典论文</h2>
+        <p>精选 GPU 加速数据库领域最具影响力的研究论文，附完整中文翻译与 AI 总结</p>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value">{len(papers)}</div>
+            <div class="stat-label">经典论文</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{len(set(p.get('year','') for p in papers))}</div>
+            <div class="stat-label">跨越年份</div>
+        </div>
+    </div>
+
+    <div class="paper-list">
+        {papers_html}
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>由 Paper Daily 生成（GPU DB 聚焦版）</span>
+            <span class="footer-sep">·</span>
+            <span>上次更新：{generated_time}</span>
+        </div>
+    </footer>
+</body>
+</html>"""
+
+    def _render_classic_card(self, paper: Dict, rank: int) -> str:
+        """Render a classic paper as a detailed HTML card"""
+        title = paper.get('title', '无标题')
+        authors = paper.get('authors', [])
+        abstract_cn = paper.get('abstract_cn', '')
+        abstract_en = paper.get('abstract', '')
+        venue = paper.get('venue', '')
+        year = paper.get('year', '')
+        doi = paper.get('doi', '')
+        arxiv_url = paper.get('arxiv_url', '')
+        pdf_url = paper.get('pdf_url', '')
+        takeaway = paper.get('takeaway', '')
+        innovation = paper.get('innovation', '')
+
+        if authors:
+            author_str = ", ".join(authors[:5])
+            if len(authors) > 5:
+                author_str += f" 等 ({len(authors)} 位作者)"
+        else:
+            author_str = "未知作者"
+
+        links_html = ""
+        if arxiv_url:
+            links_html += f'<a href="{arxiv_url}" target="_blank">📄 arXiv</a> '
+        if pdf_url:
+            links_html += f'<a href="{pdf_url}" target="_blank">⬇ PDF</a> '
+        if doi:
+            links_html += f'<a href="https://doi.org/{doi}" target="_blank">🔗 DOI</a> '
+
+        abstract_en_section = ""
+        if abstract_en:
+            abstract_display = abstract_en[:600] + ("..." if len(abstract_en) > 600 else "")
+            abstract_en_section = f'<details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">{abstract_display}</div></details>'
+
+        return f"""
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">{rank}</span>
+            <span class="classic-title"><a href="{arxiv_url or f'https://doi.org/{doi}'}" target="_blank">{title}</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">{venue}</span>
+            <span class="tag-year">{year}</span>
+        </div>
+        <div class="classic-authors">{author_str}</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">{abstract_cn}</div>
+            {abstract_en_section}
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">{takeaway}</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">{innovation}</div>
+        </div>
+        <div class="classic-links">
+            {links_html}
+        </div>
+    </div>"""
+
+    def save_classics(self, papers: List[Dict], output_path: str) -> None:
+        """Generate and save classic papers HTML page"""
+        html = self.generate_classics_html(papers)
+
+        os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
+
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(html)
+
+        print(f"经典论文页面已保存到 {output_path}")
 
     def _common_styles(self) -> str:
         """Common CSS styles shared across pages"""
@@ -569,6 +856,7 @@ class HTMLDisplay:
         title = paper.get('title', '无标题')
         authors = paper.get('authors', [])
         abstract = paper.get('abstract', '无摘要')
+        abstract_cn = paper.get('abstract_cn', '')
         score = paper.get('score', 0.0)
         paper_id = paper.get('id', '')
         source = paper.get('source', 'arxiv').upper()
@@ -604,10 +892,17 @@ class HTMLDisplay:
         abstract_len = 300 if compact else 500
         abstract_display = abstract[:abstract_len] + ("..." if len(abstract) > abstract_len else "")
 
-        # If Chinese summary exists, show it instead of raw abstract
+        # Build abstract section with Chinese translation priority
         abstract_section = ""
         if summary:
+            # Short Chinese summary from keyword extraction
             abstract_section = f'<div class="paper-abstract"><strong>中文简述：</strong>{summary}</div>'
+            if not compact:
+                abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
+        elif abstract_cn:
+            # Full Chinese translation
+            cn_display = abstract_cn[:abstract_len] + ("..." if len(abstract_cn) > abstract_len else "")
+            abstract_section = f'<div class="paper-abstract"><strong>中文摘要：</strong>{cn_display}</div>'
             if not compact:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
         else:

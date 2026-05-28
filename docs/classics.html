@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU 数据库经典论文</title>
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --bg-secondary: #111827;
+            --card-bg: #151d2e;
+            --card-hover: #1a2540;
+            --border: #1e2d4a;
+            --border-hover: #2d4a7a;
+            --text: #e2e8f0;
+            --text-secondary: #8892a8;
+            --text-dim: #5a6480;
+            --accent: #60a5fa;
+            --accent-bright: #93c5fd;
+            --accent-green: #34d399;
+            --accent-orange: #fbbf24;
+            --accent-red: #f87171;
+            --accent-purple: #a78bfa;
+            --gradient-1: linear-gradient(135deg, #60a5fa, #34d399);
+            --gradient-2: linear-gradient(135deg, #60a5fa, #a78bfa);
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: rgba(10,14,23,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(96,165,250,0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(96,165,250,0.15);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.4em;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15em;
+            margin-bottom: 16px;
+        }
+        .hero-date {
+            display: inline-block;
+            background: rgba(96,165,250,0.12);
+            color: var(--accent-bright);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            border: 1px solid rgba(96,165,250,0.2);
+        }
+
+        /* Date Navigation */
+        .date-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 24px;
+            margin-bottom: 30px;
+        }
+        .date-nav a {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88em;
+            transition: all 0.2s;
+        }
+        .date-nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(96,165,250,0.08);
+        }
+        .date-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(96,165,250,0.15);
+            font-weight: 600;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 0 auto 36px;
+            padding: 0 24px;
+            flex-wrap: wrap;
+            max-width: 800px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 28px;
+            text-align: center;
+            min-width: 120px;
+            transition: border-color 0.2s;
+        }
+        .stat-card:hover {
+            border-color: var(--border-hover);
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 0.82em;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* Paper List */
+        .paper-list {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .paper-card:hover {
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .paper-card.compact {
+            padding: 18px 22px;
+        }
+
+        .paper-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .paper-rank {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9em;
+            color: #fff;
+            background: var(--gradient-1);
+        }
+        .compact .paper-rank {
+            width: 28px;
+            height: 28px;
+            font-size: 0.8em;
+            border-radius: 8px;
+        }
+        .paper-title {
+            font-size: 1.12em;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .compact .paper-title {
+            font-size: 1.0em;
+        }
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+
+        .paper-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+        }
+        .score-high { background: rgba(52,211,153,0.12); color: var(--accent-green); }
+        .score-mid { background: rgba(251,191,36,0.12); color: var(--accent-orange); }
+        .score-low { background: rgba(90,100,128,0.15); color: var(--text-dim); }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.78em;
+            background: rgba(96,165,250,0.08);
+            color: var(--accent);
+            border: 1px solid rgba(96,165,250,0.15);
+        }
+
+        .paper-authors {
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            margin-top: 8px;
+        }
+
+        .paper-abstract {
+            color: var(--text-secondary);
+            font-size: 0.92em;
+            margin-top: 12px;
+            line-height: 1.75;
+        }
+        .compact .paper-abstract {
+            font-size: 0.86em;
+            margin-top: 8px;
+        }
+
+        .paper-reasons {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(52,211,153,0.06);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            color: var(--accent-green);
+        }
+
+        .paper-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+        }
+        .paper-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86em;
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .paper-links a:hover {
+            border-color: var(--accent);
+            background: rgba(96,165,250,0.1);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+        .empty-text {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .empty-hint {
+            font-size: 0.9em;
+            color: var(--text-dim);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            color: var(--text-dim);
+            font-size: 0.82em;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+        }
+        .footer-sep {
+            color: var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* Details/Summary */
+        details {
+            margin-top: 6px;
+        }
+        details summary {
+            cursor: pointer;
+            color: var(--text-dim);
+            font-size: 0.85em;
+            user-select: none;
+        }
+        details summary:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 40px 16px 20px; }
+            .hero h1 { font-size: 1.7em; }
+            .paper-list { padding: 0 12px; }
+            .paper-card { padding: 16px; }
+            .paper-title { font-size: 1.02em; }
+            .top-nav { padding: 10px 12px; }
+            .nav-brand { font-size: 1em; }
+            .stats-row { gap: 10px; padding: 0 12px; }
+            .stat-card { padding: 12px 18px; min-width: 90px; }
+        }
+    </style>
+    <style>
+        .classics-hero {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        .classics-hero h2 {
+            font-size: 1.8em;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .classics-hero p {
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+        .classic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.25s ease;
+        }
+        .classic-card:hover {
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .classic-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .classic-num {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1em;
+            color: #fff;
+            background: var(--gradient-2);
+        }
+        .classic-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .classic-title a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .classic-title a:hover {
+            color: var(--accent-purple);
+        }
+        .classic-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .tag-venue {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+            background: rgba(167,139,250,0.12);
+            color: var(--accent-purple);
+            border: 1px solid rgba(167,139,250,0.2);
+        }
+        .tag-year {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+            background: rgba(96,165,250,0.08);
+            color: var(--accent);
+            border: 1px solid rgba(96,165,250,0.15);
+        }
+        .classic-authors {
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            margin-top: 8px;
+        }
+        .classic-section {
+            margin-top: 14px;
+        }
+        .classic-section-title {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .classic-abstract-cn {
+            color: var(--text);
+            font-size: 0.93em;
+            line-height: 1.8;
+            background: rgba(96,165,250,0.04);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .classic-takeaway {
+            color: var(--accent-green);
+            font-size: 0.9em;
+            line-height: 1.7;
+            background: rgba(52,211,153,0.06);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            border-left: 3px solid var(--accent-green);
+        }
+        .classic-innovation {
+            color: var(--accent-orange);
+            font-size: 0.9em;
+            line-height: 1.7;
+            background: rgba(251,191,36,0.06);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            border-left: 3px solid var(--accent-orange);
+        }
+        .classic-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .classic-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86em;
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .classic-links a:hover {
+            border-color: var(--accent);
+            background: rgba(96,165,250,0.1);
+        }
+        @media (max-width: 640px) {
+            .classic-card { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand">⚡ GPU DB Daily</div>
+        <div class="nav-links">
+            <a href="index.html">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html" class="active">经典论文</a>
+            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <div class="classics-hero">
+        <h2>GPU 数据库经典论文</h2>
+        <p>精选 GPU 加速数据库领域最具影响力的研究论文，附完整中文翻译与 AI 总结</p>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value">12</div>
+            <div class="stat-label">经典论文</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">5</div>
+            <div class="stat-label">跨越年份</div>
+        </div>
+    </div>
+
+    <div class="paper-list">
+        
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">1</span>
+            <span class="classic-title"><a href="https://arxiv.org/abs/2502.15181" target="_blank">Debunking the Myth of Join Ordering: Toward Robust SQL Analytics</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 3)</span>
+            <span class="tag-year">2025</span>
+        </div>
+        <div class="classic-authors">Junyi Zhao, Kai Su, Yifei Yang, Xiangyao Yu, Paraschos Koutris 等 (6 位作者)</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">连接顺序优化对于实现良好的查询性能至关重要。尽管经过了几十年的研究和实践，现代查询优化器仍然可能生成比最优计划慢几个数量级的次优连接计划。现有的鲁棒查询处理研究通常缺乏对连接顺序鲁棒性的理论保证，同时牺牲了查询性能。在本文中，我们从鲁棒性的角度重新审视了近期提出的谓词迁移（Predicate Transfer）技术。我们引入了两种新算法 LargestRoot 和 SafeSubjoin，并提出了鲁棒谓词迁移（RPT），该技术在理论上可以证明对无环查询的任意连接顺序具有鲁棒性。我们将 RPT 集成到 DuckDB 中，并在 TPC-H、JOB 和 TPC-DS 基准测试的全部查询上进行了评估。实验结果表明，RPT 将连接顺序鲁棒性提升了数个数量级。使用 RPT 后，对于单个无环查询，随机连接顺序中最大与最小执行时间之比仅为 1.6 倍（大多数评估查询的比值接近 1）。同时，应用 RPT 还将端到端查询性能提升了 1.5 倍（每查询几何均值）。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">Join order optimization is critical in achieving good query performance. Despite decades of research and practice, modern query optimizers could still generate inferior join plans that are orders of magnitude slower than optimal. Existing research on robust query processing often lacks theoretical guarantees on join-order robustness while sacrificing query performance. In this paper, we rediscover the recent Predicate Transfer technique from a robustness point of view. We introduce two new algorithms, LargestRoot and SafeSubjoin, and then propose Robust Predicate Transfer (RPT) that is provabl...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">传统连接顺序优化是一个神话——即使优化器选错连接顺序，通过谓词迁移预过滤也能将性能差异控制在极小范围内，使得连接顺序选择不再关键。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 从鲁棒性角度重新审视谓词迁移，提出理论上可证明的鲁棒性保证；2. 设计 LargestRoot 和 SafeSubjoin 两种新算法；3. 提出鲁棒谓词迁移（RPT），使任意连接顺序的性能差异从数个数量级缩小到 1.6 倍以内；4. 将 RPT 集成到 DuckDB 并在三个主流基准上验证。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://arxiv.org/abs/2502.15181" target="_blank">📄 arXiv</a> <a href="https://people.iiis.tsinghua.edu.cn/~huanchen/publications/rpt-sigmod25.pdf" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3725283" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">2</span>
+            <span class="classic-title"><a href="https://doi.org/10.1145/3769835" target="_blank">TQEx: Tensor-based Query Engine Enhanced by Bridging the Gap</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 6)</span>
+            <span class="tag-year">2025</span>
+        </div>
+        <div class="classic-authors">Haitao Zhang, Ran Pang, Yuanyuan Zhu, Hao Zhang, Congli Gao 等 (9 位作者)</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">继使用 PyTorch 等张量计算运行时（TCR）进行数据库查询处理的最新趋势之后，研究人员提出了多种基于张量的查询引擎。虽然这些系统展示了令人鼓舞的结果，但 SQL 语义和张量计算模型之间仍存在显著差距。本文首次分析了 SQL 与张量之间的底层差距，并提供了弥合这一差距的指导方针。遵循这些指导方针，我们构建了一个新的增强型张量查询引擎（TQEx），从多个方面弥合差距：开发了专为张量处理定制的高效存储和计算机制，优化了从 SQL 到张量操作的转换，并为难以表示为张量计算的复杂关系算子实现了新颖的算法。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">Following the recent trend of using tensor computation runtimes (TCRs) like PyTorch for database query processing, researchers have proposed several tensor-based query engines. While these systems demonstrate promising results, there remains a significant gap between SQL semantics and tensor computation models. In this paper, for the first time, we analyze the underlying gap between SQL and tensors, and provide guidelines to bridge it. Following these guidelines, we build a new Tensor-based Query Engine Enhanced (TQEx) by bridging the gap from multiple aspects: develop efficient storage and co...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">SQL 和张量计算之间存在根本性语义鸿沟，直接将 SQL 映射到张量操作会导致性能和功能缺失；系统性地弥合这一差距可以显著提升张量查询引擎的效率和完整性。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 首次系统性分析 SQL 与张量计算之间的语义鸿沟；2. 提出弥合差距的指导方针；3. 构建增强型张量查询引擎 TQEx，从存储、计算和翻译三个层面优化；4. 为复杂关系算子设计适合张量计算的新算法。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://dl.acm.org/doi/abs/10.1145/3769835" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3769835" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">3</span>
+            <span class="classic-title"><a href="https://doi.org/10.14778/3551793.3551809" target="_blank">Orchestrating Data Placement and Query Execution in Heterogeneous CPU-GPU DBMS</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">VLDB 2022 (Proc. VLDB Endow., Vol. 15, No. 11)</span>
+            <span class="tag-year">2022</span>
+        </div>
+        <div class="classic-authors">Bobbi W. Yogatama, Weiwei Gong, Xiangyao Yu</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">我们旨在通过优化数据放置和异构查询执行来改进最先进的 CPU-GPU 数据分析引擎。首先，我们引入了一种语义感知的细粒度缓存策略，该策略考虑了工作负载的多个方面，如查询语义、数据关联和查询频率，以做出智能的缓存决策。其次，我们引入了一种异构查询执行器，能够充分利用 CPU 和 GPU 上的数据，并在细粒度上协调查询执行。我们将两种解决方案集成到 Mordred 系统中。评估结果表明，Mordred 在 Star Schema Benchmark 上比最先进的 CPU-GPU DBMS 快多达 3.7 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">We aim to improve state-of-the-art CPU-GPU data analytics engine by optimizing data placement and heterogeneous query execution. First, we introduce a semantic-aware fine-grained caching policy which takes into account various aspects of the workload such as query semantics, data correlation, and query frequency to make intelligent caching decisions. Second, we introduce a heterogeneous query executor which can fully exploit data in both CPU and GPU and coordinate query execution at a fine granularity. We integrate both solutions in Mordred, our heterogeneous CPU-GPU DBMS. Our evaluation shows...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">简单的 LRU/LFU 缓存策略无法充分利用 GPU，需要语义感知的细粒度缓存；同时，查询执行应在 CPU 和 GPU 之间动态分配，而非简单的全 GPU 或全 CPU 执行。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 提出 SemanticAware 缓存策略，利用查询语义、数据关联和访问频率做出智能缓存决策；2. 设计细粒度异构查询执行器，在段级别协调 CPU 和 GPU 的混合执行；3. 构建 Mordred 系统，在三层内存层次间动态编排数据。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://par.nsf.gov/servlets/purl/10373971" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.14778/3551793.3551809" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">4</span>
+            <span class="classic-title"><a href="https://doi.org/10.14778/3704965.3704977" target="_blank">Scaling your Hybrid CPU-GPU DBMS to Multiple GPUs</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">VLDB 2024 (Proc. VLDB Endow., Vol. 17, No. 13)</span>
+            <span class="tag-year">2024</span>
+        </div>
+        <div class="classic-authors">Bobbi W. Yogatama, Weiwei Gong, Xiangyao Yu</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">我们旨在通过同时利用混合 CPU-GPU DBMS 和多 GPU DBMS 来进一步改进现有方案。具体而言，我们探索了设计空间，并优化了跨多个 GPU 的感知 GPU 显存的数据放置策略。为了改进查询执行，我们将现有的混合 CPU-GPU 查询执行策略与分布式查询处理技术相结合以支持多 GPU。我们构建了名为 Lancelot 的系统，结果表明 Lancelot 在多达 8 个 GPU 上实现了近线性扩展，在 4 个 GPU 上实现了 3.6 倍加速，比最先进的多 GPU DBMS 快多达 2.5 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">We aim to improve prior solutions further by leveraging both hybrid CPU-GPU DBMS and multi-GPU DBMS at the same time. In particular, we explore the design space and optimize the data placement strategy to be GPU-memory-aware across multiple GPUs. To improve query execution, we extend the existing hybrid CPU-GPU query execution strategy with distributed query processing techniques to support multiple GPUs. We build a system called Lancelot and show that Lancelot achieves near-linear scaling on up to 8 GPUs, up to 3.6x speedup on 4 GPUs, and outperforms state-of-the-art multi-GPU DBMS by up to 2...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">混合 CPU-GPU 执行与多 GPU 扩展可以同时实现：关键在于感知 GPU 显存的数据放置策略和将分布式查询技术融入混合执行框架。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 首次将混合 CPU-GPU 执行与多 GPU 扩展相结合；2. 提出感知 GPU 显存的跨 GPU 数据放置策略；3. 将分布式查询处理技术融入混合执行框架以支持多 GPU；4. 构建 Lancelot 系统，在 8 个 GPU 上实现近线性扩展。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://www.vldb.org/pvldb/vol17/p4709-yogatama.pdf" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.14778/3704965.3704977" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">5</span>
+            <span class="classic-title"><a href="https://arxiv.org/abs/2307.15255" target="_blank">Predicate Transfer: Efficient Pre-Filtering on Multi-Join Queries</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">CIDR 2024</span>
+            <span class="tag-year">2024</span>
+        </div>
+        <div class="classic-authors">Yifei Yang, Hangdong Zhao, Xiangyao Yu, Paraschos Koutris</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">本文提出了谓词迁移（Predicate Transfer），一种通过预过滤表来减少连接输入大小从而优化连接性能的新方法。谓词迁移将仅在单个连接操作中进行预过滤的 Bloom 连接推广到多表连接，使过滤收益可以显著增加。谓词迁移受到 Yannakakis 的开创性理论结果的启发，该结果使用半连接来预过滤无环查询。谓词迁移将理论结果推广到任意连接图，并使用布隆过滤器替代半连接，从而实现显著加速。评估表明，谓词迁移在 TPC-H 基准上平均比 Bloom 连接快 3.1 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">This paper presents predicate transfer, a novel method that optimizes join performance by pre-filtering tables to reduce the join input sizes. Predicate transfer generalizes Bloom join, which conducts pre-filtering within a single join operation, to multi-table joins such that the filtering benefits can be significantly increased. Predicate transfer is inspired by the seminal theoretical results by Yannakakis, which uses semi-joins to pre-filter acyclic queries. Predicate transfer generalizes the theoretical results to any join graphs and use Bloom filters to replace semi-joins leading to sign...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">将单表 Bloom 过滤预过滤推广到多表连接，利用布隆过滤器在表间传递谓词信息，可以大幅减少连接输入数据量，是连接优化的基础性技术突破。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 将 Bloom Join 从单连接推广到多表连接场景；2. 将 Yannakakis 半连接理论从无环查询推广到任意连接图；3. 使用布隆过滤器替代半连接实现高效预过滤；4. 在 TPC-H 上实现 3.1 倍平均加速。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://arxiv.org/abs/2307.15255" target="_blank">📄 arXiv</a> <a href="https://www.cidrdb.org/cidr2024/papers/p22-yang.pdf" target="_blank">⬇ PDF</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">6</span>
+            <span class="classic-title"><a href="https://doi.org/10.1145/3725259" target="_blank">Accelerate Distributed Joins with Predicate Transfer</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 3)</span>
+            <span class="tag-year">2025</span>
+        </div>
+        <div class="classic-authors">Yifei Yang, Xiangyao Yu</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">谓词迁移已被证明能有效加速单节点环境下的多连接查询。然而，在分布式环境中应用谓词迁移面临两个关键限制：跨节点传输布隆过滤器的开销，以及缺乏分布式谓词迁移步骤的最优调度。本文旨在解决这两个限制。首先，我们探索了分布式谓词迁移的设计空间，并提出了基于代价的自适应执行策略以最大化每个迁移步骤的性能。其次，我们提出了调度算法来确定谓词迁移步骤的最优顺序和程度。我们将分布式谓词迁移集成到一个分布式分析数据库中，结果表明在 TPC-H 和 TPC-DS 基准上实现了多达 6.3 倍的加速。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">Predicate transfer has been shown to effectively accelerate multi-join queries in a single-node setting. However, applying predicate transfer in a distributed setting faces two key limitations: the overhead of transferring Bloom filters across nodes and the lack of optimal scheduling for distributed predicate transfer steps. In this paper, we aim to address both limitations. First, we explore the design space of distributed predicate transfer and propose cost-based adaptive execution to maximize the performance for each individual transfer step. Second, we propose a scheduling algorithm to det...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">谓词迁移从单节点扩展到分布式环境的关键挑战是布隆过滤器传输开销和调度问题；基于代价的自适应执行和最优调度可以充分发挥分布式谓词迁移的潜力。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 探索分布式谓词迁移的设计空间；2. 提出基于代价的自适应执行策略；3. 设计谓词迁移步骤的最优调度算法；4. 在 TPC-H 和 TPC-DS 上实现 6.3 倍加速。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://dl.acm.org/doi/epdf/10.1145/3725259" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3725259" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">7</span>
+            <span class="classic-title"><a href="https://doi.org/10.14778/3551793.3551833" target="_blank">Query Processing on Tensor Computation Runtimes</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">VLDB 2022 (Proc. VLDB Endow., Vol. 15, No. 11)</span>
+            <span class="tag-year">2022</span>
+        </div>
+        <div class="classic-authors">Dong He, Supun Nakandala, Dalitso Banda, Rathijit Sen, Karla Saur 等 (8 位作者)</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">人工智能（AI）对计算的巨大需求正在推动对 AI 硬件和软件系统的空前投资。这导致专用硬件设备数量的爆发式增长，主要云厂商现在都提供这些设备。通过基于张量的接口隐藏底层复杂性，PyTorch 等张量计算运行时（TCR）使数据科学家能够高效利用新硬件提供的强大能力。在本文中，我们探索数据库管理系统如何乘上 AI 领域创新的浪潮。我们设计、构建并评估了张量查询处理器（TQP）：TQP 将 SQL 查询转换为张量程序并在 TCR 上执行。TQP 通过在张量例程上实现关系算子的新算法，能够运行完整的 TPC-H 基准测试。同时，TQP 可以支持各种硬件，而只需要通常开发工作的一小部分。实验表明，TQP 比专用 CPU 和 GPU 系统快多达 10 倍。最后，TQP 可以端到端加速混合 ML 预测和 SQL 的查询，实现比 CPU 基线多达 9 倍的加速。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">The huge demand for computation in artificial intelligence (AI) is driving unparalleled investments in hardware and software systems for AI. This leads to an explosion in the number of specialized hardware devices, which are now offered by major cloud vendors. By hiding the low-level complexity through a tensor-based interface, tensor computation runtimes (TCRs) such as PyTorch allow data scientists to efficiently exploit the exciting capabilities offered by the new hardware. In this paper, we explore how database management systems can ride the wave of innovation happening in the AI space. We...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">数据库系统可以借助 AI 领域的张量计算运行时（如 PyTorch）来搭便车——将 SQL 转换为张量程序，既能跨硬件运行，又能实现 ML 与 SQL 的无缝混合加速。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 首次提出将 SQL 查询转换为张量程序执行的系统 TQP；2. 在张量例程上实现了 TPC-H 全部关系算子的新算法；3. 以极小的开发成本支持多种硬件后端；4. 实现了 ML 预测与 SQL 的端到端混合加速，高达 9 倍提速。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://www.vldb.org/pvldb/vol15/p2811-he.pdf" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.14778/3551793.3551833" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">8</span>
+            <span class="classic-title"><a href="https://arxiv.org/abs/2302.00734" target="_blank">Revisiting Query Performance in GPU Database Systems</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">arXiv 2023 (Under Review)</span>
+            <span class="tag-year">2023</span>
+        </div>
+        <div class="classic-authors">Jiashen Cao, Rathijit Sen, Matteo Interlandi, Joy Arulraj, Hyesoon Kim</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">GPU 提供了大规模计算并行性和高带宽内存访问。GPU 数据库系统试图利用这些能力来加速数据分析。尽管现代 GPU 拥有比以往更多的资源（如更高的 DRAM 带宽），避免浪费资源分配的审慎查询处理选择仍然是有益的。数据库系统可以通过刚好足够的资源分配来节省 GPU 运行成本，或者通过利用新的 GPU 功能（如多实例 GPU/MIG）进行并发查询处理来提高查询吞吐量。本文对五种 GPU 数据库系统进行了跨栈性能和资源利用率分析。我们研究了数据库级和微体系结构两个方面，并为数据库开发者提供了建议。我们还演示了如何使用和扩展传统的 Roofline 模型来识别 GPU 资源瓶颈。这使得用户能够进行假设分析，预测不同资源分配或并发度对性能的影响。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG). In this paper we do a cross-sta...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">GPU 数据库系统普遍存在资源利用不足的问题；通过 MIG 等技术实现并发查询和精细资源分配，可以在不增加硬件的情况下显著提升吞吐量。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 对五种 GPU 数据库系统进行跨栈（数据库层+微架构层）性能分析；2. 扩展传统 Roofline 模型以识别 GPU 资源瓶颈；3. 提出基于假设分析的性能预测方法；4. 为 GPU 数据库开发者提供资源分配和并发查询的具体建议。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://arxiv.org/abs/2302.00734" target="_blank">📄 arXiv</a> <a href="https://arxiv.org/pdf/2302.00734" target="_blank">⬇ PDF</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">9</span>
+            <span class="classic-title"><a href="https://doi.org/10.1145/3592980.3595307" target="_blank">Accelerating User-Defined Aggregate Functions (UDAF) with Block-wide Execution and JIT Compilation on GPUs</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">DaMoN 2023</span>
+            <span class="tag-year">2023</span>
+        </div>
+        <div class="classic-authors">Bobbi Yogatama, Brandon Miller, Yunsong Wang, Graham R. Markall, Jacob Hemstad 等 (7 位作者)</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">用户自定义聚合函数（UDAF）对数据分析至关重要，因为它们允许用户表达自定义业务逻辑。然而，当前的 GPU 数据库系统缺乏对 UDAF 的高效支持，只能回退到 CPU 执行，从而失去了 GPU 加速的优势。本文旨在通过块级执行模型和即时编译（JIT）来优化 UDAF 执行以改进现有技术。我们开发了一个基于 Numba 的 JIT 编译器，将 Python UDAF 转换为高效的 GPU 内核。我们的方法比基于 CPU 的 UDAF 执行快多达 130 倍，比现有 GPU UDAF 实现快多达 7.8 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">User-defined aggregate functions (UDAFs) are essential for data analytics as they allow users to express custom business logic. However, current GPU database systems lack efficient support for UDAFs, falling back to CPU execution and thus losing GPU acceleration benefits. In this work, we aim to improve the state-of-the-art by optimizing UDAF execution via a block-wide execution model and just-in-time (JIT) compilation. We develop a Numba-based JIT compiler that translates Python UDAFs into efficient GPU kernels. Our approach achieves up to 130x speedup over CPU-based UDAF execution and up to ...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">GPU 数据库对用户自定义聚合函数（UDAF）的支持长期不足；通过块级执行模型和 JIT 编译，可以将 Python UDAF 高效地转换为 GPU 内核，实现数量级的加速。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 提出 GPU 上的块级 UDAF 执行模型；2. 开发基于 Numba 的 JIT 编译器，将 Python UDAF 直接编译为 GPU 内核；3. 比 CPU 执行快 130 倍，比现有 GPU 实现快 7.8 倍。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://dl.acm.org/doi/10.1145/3592980.3595307" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3592980.3595307" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">10</span>
+            <span class="classic-title"><a href="https://doi.org/10.1145/3514221.3526132" target="_blank">Tile-based Lightweight Integer Compression in GPU</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">SIGMOD 2022</span>
+            <span class="tag-year">2022</span>
+        </div>
+        <div class="classic-authors">Anil Shanbhag, Bobbi W. Yogatama, Xiangyao Yu, Samuel Madden</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">GPU 凭借其大规模并行加速能力，越来越多地用于高性能和交互式数据分析工作负载。当前基于 GPU 的数据分析的一个关键限制是 GPU 设备的有限内存容量。数据压缩是一种强大的技术，可以从两方面缓解容量限制：（1）将更多数据装入 GPU 内存；（2）加速 CPU 和 GPU 之间的数据传输。然而，当前 GPU 的压缩方案在压缩率和/或解压速度方面仍然有限。我们确定了现有方法的两个限制因素。首先，现有解压方案需要多次扫描全局内存来解码压缩方案的层级，产生大量内存流量并损害性能。我们提出了基于块的解压模型，在单次全局内存遍历中解压编码数据，并与查询执行内联。其次，我们开发了基于位打包的压缩方案及其在 GPU 环境下的优化技术的高效实现。评估表明，我们的方案可以达到与 GPU 上最先进的压缩方案（即 nvCOMP）相似的压缩率，同时解压速度和查询运行时间分别快 2.2 倍和 2.6 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">GPUs are increasingly used for high-performance and interactive data analytics workloads due to their capability to accelerate computation using massive parallelism. A key constraint of GPU-based data analytics today is the limited memory capacity in GPU devices. Data compression is a powerful technique that can mitigate the capacity limitation in two ways: (1) fitting more data into GPU memory and (2) speeding up data transfer between CPU and GPU. However, compression schemes for GPU today are still limited in compression ratio and/or decompression speed. We identify two limiting factors of e...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">GPU 数据压缩的瓶颈在于解压时的多次全局内存扫描；基于块的解压模型可以在单次内存遍历中完成解压并与查询执行内联，显著降低内存流量。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 识别 GPU 压缩方案的两个关键限制因素；2. 提出基于块的单次遍历解压模型，与查询执行内联；3. 开发高效的 GPU 位打包压缩方案及优化技术；4. 解压速度比 nvCOMP 快 2.2 倍，查询运行时间快 2.6 倍。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://dl.acm.org/doi/10.1145/3514221.3526132" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3514221.3526132" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">11</span>
+            <span class="classic-title"><a href="https://arxiv.org/abs/2003.01178" target="_blank">A Study of the Fundamental Performance Characteristics of GPUs and CPUs for Database Analytics</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">SIGMOD 2020</span>
+            <span class="tag-year">2020</span>
+        </div>
+        <div class="classic-authors">Anil Shanbhag, Samuel Madden, Xiangyao Yu</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">GPU 由于提供高带宽和大规模并行性，越来越多地被用于数据库分析。然而，对于 GPU 在何时以及为何优于 CPU 执行数据库工作负载，理解仍然有限。本文采用基于模型的方法来理解在 GPU 与 CPU 上运行查询的性能增益何时以及为何偏离带宽比（现代硬件上约为 16 倍）。我们研究了基本数据库算子（扫描、过滤、连接和聚合）在 CPU 和 GPU 上的性能。我们开发了一个简单但有效的性能模型，考虑了计算、内存和通信成本来解释观察到的性能差异。我们的模型表明，对于许多算子，加速比不是受限于计算而是受限于内存或通信瓶颈，并且加速比在不同算子和数据特征之间差异显著。我们还提供了 GPU 加速对数据库分析有益的指导准则。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">GPUs are increasingly being used for database analytics as they provide high bandwidth and massive parallelism. However, there is limited understanding of when and why GPUs outperform CPUs for database workloads. In this paper, we adopt a model-based approach to understand when and why the performance gains of running queries on GPUs vs on CPUs vary from the bandwidth ratio (which is roughly 16x on modern hardware). We study the performance of fundamental database operators (scan, filter, join, and aggregation) on both CPUs and GPUs. We develop a simple but effective performance model that acc...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">GPU 对数据库的加速远不是简单的带宽比——实际加速取决于算子类型和数据特征，许多场景下瓶颈在内存或通信而非计算；理解这一模型才能正确选择何时使用 GPU。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 首次系统性地建模 GPU vs CPU 数据库算子性能差异；2. 开发考虑计算、内存和通信成本的简单有效性能模型；3. 揭示加速比受限于内存/通信瓶颈而非计算的真相；4. 提供 GPU 加速数据库分析的实际指导准则。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://arxiv.org/abs/2003.01178" target="_blank">📄 arXiv</a> <a href="https://arxiv.org/pdf/2003.01178" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.1145/3318464.3380595" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    <div class="classic-card">
+        <div class="classic-header">
+            <span class="classic-num">12</span>
+            <span class="classic-title"><a href="https://arxiv.org/abs/2508.04701" target="_blank">Rethinking Analytical Processing in the GPU Era</a></span>
+        </div>
+        <div class="classic-meta">
+            <span class="tag-venue">CIDR 2026 / arXiv 2025</span>
+            <span class="tag-year">2025</span>
+        </div>
+        <div class="classic-authors">Bobbi Yogatama, Yifei Yang, Kevin Kristensen, Devesh Sarda, Abigale Kim 等 (12 位作者)</div>
+        <div class="classic-section">
+            <div class="classic-section-title">📝 中文摘要</div>
+            <div class="classic-abstract-cn">GPU 驱动的数据分析时代已经到来。在本文中，我们认为硬件（如更大的 GPU 内存、更快的互连和 IO，以及不断下降的成本）和软件（如可组合的数据系统和成熟的库）方面的最新进展，已经消除了限制 GPU 数据分析广泛采用的关键障碍。我们推出了 Sirius，一个开源的 GPU 原生 SQL 引擎原型，可为多种数据系统提供即插即用的加速。Sirius 将 GPU 视为主要引擎，利用 libcudf 等库实现高性能关系算子。它通过利用标准 Substrait 查询表示，在不改变用户界面的情况下替换 CPU 引擎，为现有数据库提供即插即用的加速。Sirius 在与单机 DuckDB 集成时，在 TPC-H 和 ClickBench 上分别实现了 8.3 倍和 7.4 倍更好的成本效率；与 Apache Doris 分布式引擎集成时，速度提升高达 12.5 倍。</div>
+            <details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">The era of GPU-powered data analytics has arrived. In this paper, we argue that recent advances in hardware (e.g., larger GPU memory, faster interconnect and IO, and declining cost) and software (e.g., composable data systems and mature libraries) have removed the key barriers that have limited the wider adoption of GPU data analytics. We present Sirius, a prototype open-source GPU-native SQL engine that offers drop-in acceleration for diverse data systems. Sirius treats GPU as the primary engine and leverages libraries like libcudf for high-performance relational operators. It provides drop-i...</div></details>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">💡 Takeaway</div>
+            <div class="classic-takeaway">GPU 数据分析的普及障碍已被消除——大显存、快互联和成熟库使得 GPU 原生 SQL 引擎可以即插即用地加速现有数据库系统，无需修改用户接口。</div>
+        </div>
+        <div class="classic-section">
+            <div class="classic-section-title">🚀 创新点</div>
+            <div class="classic-innovation">1. 论证 GPU 数据分析普及的硬件和软件障碍已被消除；2. 构建 GPU 原生 SQL 引擎 Sirius，利用 libcudf 实现高性能算子；3. 通过 Substrait 标准查询表示实现即插即用加速；4. 与 DuckDB 集成实现 8.3 倍成本效率提升，与 Apache Doris 集成实现 12.5 倍加速。</div>
+        </div>
+        <div class="classic-links">
+            <a href="https://arxiv.org/abs/2508.04701" target="_blank">📄 arXiv</a> <a href="https://arxiv.org/pdf/2508.04701" target="_blank">⬇ PDF</a> <a href="https://doi.org/10.48550/ARXIV.2508.04701" target="_blank">🔗 DOI</a> 
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>由 Paper Daily 生成（GPU DB 聚焦版）</span>
+            <span class="footer-sep">·</span>
+            <span>上次更新：2026-05-28 14:45:09</span>
+        </div>
+    </footer>
+</body>
+</html>

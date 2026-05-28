@@ -1,0 +1,248 @@
+[
+  {
+    "id": 1,
+    "title": "Debunking the Myth of Join Ordering: Toward Robust SQL Analytics",
+    "authors": [
+      "Junyi Zhao",
+      "Kai Su",
+      "Yifei Yang",
+      "Xiangyao Yu",
+      "Paraschos Koutris",
+      "Huanchen Zhang"
+    ],
+    "venue": "SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 3)",
+    "year": 2025,
+    "doi": "10.1145/3725283",
+    "arxiv_url": "https://arxiv.org/abs/2502.15181",
+    "pdf_url": "https://people.iiis.tsinghua.edu.cn/~huanchen/publications/rpt-sigmod25.pdf",
+    "abstract": "Join order optimization is critical in achieving good query performance. Despite decades of research and practice, modern query optimizers could still generate inferior join plans that are orders of magnitude slower than optimal. Existing research on robust query processing often lacks theoretical guarantees on join-order robustness while sacrificing query performance. In this paper, we rediscover the recent Predicate Transfer technique from a robustness point of view. We introduce two new algorithms, LargestRoot and SafeSubjoin, and then propose Robust Predicate Transfer (RPT) that is provably robust against arbitrary join orders of an acyclic query. We integrated Robust Predicate Transfer with DuckDB, a state-of-the-art analytical database, and evaluated against all the queries in TPC-H, JOB, and TPC-DS benchmarks. Our experimental results show that RPT improves join-order robustness by orders of magnitude compared to the baseline. With RPT, the largest ratio between the maximum and minimum execution time out of random join orders for a single acyclic query is only 1.6x (the ratio is close to 1 for most evaluated queries). Meanwhile, applying RPT also improves the end-to-end query performance by 1.5x (per-query geometric mean). We hope that this work sheds light on solving the practical join ordering problem.",
+    "abstract_cn": "连接顺序优化对于实现良好的查询性能至关重要。尽管经过了几十年的研究和实践，现代查询优化器仍然可能生成比最优计划慢几个数量级的次优连接计划。现有的鲁棒查询处理研究通常缺乏对连接顺序鲁棒性的理论保证，同时牺牲了查询性能。在本文中，我们从鲁棒性的角度重新审视了近期提出的谓词迁移（Predicate Transfer）技术。我们引入了两种新算法 LargestRoot 和 SafeSubjoin，并提出了鲁棒谓词迁移（RPT），该技术在理论上可以证明对无环查询的任意连接顺序具有鲁棒性。我们将 RPT 集成到 DuckDB 中，并在 TPC-H、JOB 和 TPC-DS 基准测试的全部查询上进行了评估。实验结果表明，RPT 将连接顺序鲁棒性提升了数个数量级。使用 RPT 后，对于单个无环查询，随机连接顺序中最大与最小执行时间之比仅为 1.6 倍（大多数评估查询的比值接近 1）。同时，应用 RPT 还将端到端查询性能提升了 1.5 倍（每查询几何均值）。",
+    "takeaway": "传统连接顺序优化是一个神话——即使优化器选错连接顺序，通过谓词迁移预过滤也能将性能差异控制在极小范围内，使得连接顺序选择不再关键。",
+    "innovation": "1. 从鲁棒性角度重新审视谓词迁移，提出理论上可证明的鲁棒性保证；2. 设计 LargestRoot 和 SafeSubjoin 两种新算法；3. 提出鲁棒谓词迁移（RPT），使任意连接顺序的性能差异从数个数量级缩小到 1.6 倍以内；4. 将 RPT 集成到 DuckDB 并在三个主流基准上验证。"
+  },
+  {
+    "id": 2,
+    "title": "TQEx: Tensor-based Query Engine Enhanced by Bridging the Gap",
+    "authors": [
+      "Haitao Zhang",
+      "Ran Pang",
+      "Yuanyuan Zhu",
+      "Hao Zhang",
+      "Congli Gao",
+      "Ming Zhong",
+      "Jiawei Jiang",
+      "Tieyun Qian",
+      "Jeffrey Xu Yu"
+    ],
+    "venue": "SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 6)",
+    "year": 2025,
+    "doi": "10.1145/3769835",
+    "arxiv_url": "",
+    "pdf_url": "https://dl.acm.org/doi/abs/10.1145/3769835",
+    "abstract": "Following the recent trend of using tensor computation runtimes (TCRs) like PyTorch for database query processing, researchers have proposed several tensor-based query engines. While these systems demonstrate promising results, there remains a significant gap between SQL semantics and tensor computation models. In this paper, for the first time, we analyze the underlying gap between SQL and tensors, and provide guidelines to bridge it. Following these guidelines, we build a new Tensor-based Query Engine Enhanced (TQEx) by bridging the gap from multiple aspects: develop efficient storage and computation mechanisms tailored for tensor-based processing, optimize the translation from SQL to tensor operations, and implement novel algorithms for complex relational operators that are challenging to express as tensor computations.",
+    "abstract_cn": "继使用 PyTorch 等张量计算运行时（TCR）进行数据库查询处理的最新趋势之后，研究人员提出了多种基于张量的查询引擎。虽然这些系统展示了令人鼓舞的结果，但 SQL 语义和张量计算模型之间仍存在显著差距。本文首次分析了 SQL 与张量之间的底层差距，并提供了弥合这一差距的指导方针。遵循这些指导方针，我们构建了一个新的增强型张量查询引擎（TQEx），从多个方面弥合差距：开发了专为张量处理定制的高效存储和计算机制，优化了从 SQL 到张量操作的转换，并为难以表示为张量计算的复杂关系算子实现了新颖的算法。",
+    "takeaway": "SQL 和张量计算之间存在根本性语义鸿沟，直接将 SQL 映射到张量操作会导致性能和功能缺失；系统性地弥合这一差距可以显著提升张量查询引擎的效率和完整性。",
+    "innovation": "1. 首次系统性分析 SQL 与张量计算之间的语义鸿沟；2. 提出弥合差距的指导方针；3. 构建增强型张量查询引擎 TQEx，从存储、计算和翻译三个层面优化；4. 为复杂关系算子设计适合张量计算的新算法。"
+  },
+  {
+    "id": 3,
+    "title": "Orchestrating Data Placement and Query Execution in Heterogeneous CPU-GPU DBMS",
+    "authors": [
+      "Bobbi W. Yogatama",
+      "Weiwei Gong",
+      "Xiangyao Yu"
+    ],
+    "venue": "VLDB 2022 (Proc. VLDB Endow., Vol. 15, No. 11)",
+    "year": 2022,
+    "doi": "10.14778/3551793.3551809",
+    "arxiv_url": "",
+    "pdf_url": "https://par.nsf.gov/servlets/purl/10373971",
+    "abstract": "We aim to improve state-of-the-art CPU-GPU data analytics engine by optimizing data placement and heterogeneous query execution. First, we introduce a semantic-aware fine-grained caching policy which takes into account various aspects of the workload such as query semantics, data correlation, and query frequency to make intelligent caching decisions. Second, we introduce a heterogeneous query executor which can fully exploit data in both CPU and GPU and coordinate query execution at a fine granularity. We integrate both solutions in Mordred, our heterogeneous CPU-GPU DBMS. Our evaluation shows that Mordred outperforms state-of-the-art CPU-GPU DBMS by up to 3.7x on the Star Schema Benchmark.",
+    "abstract_cn": "我们旨在通过优化数据放置和异构查询执行来改进最先进的 CPU-GPU 数据分析引擎。首先，我们引入了一种语义感知的细粒度缓存策略，该策略考虑了工作负载的多个方面，如查询语义、数据关联和查询频率，以做出智能的缓存决策。其次，我们引入了一种异构查询执行器，能够充分利用 CPU 和 GPU 上的数据，并在细粒度上协调查询执行。我们将两种解决方案集成到 Mordred 系统中。评估结果表明，Mordred 在 Star Schema Benchmark 上比最先进的 CPU-GPU DBMS 快多达 3.7 倍。",
+    "takeaway": "简单的 LRU/LFU 缓存策略无法充分利用 GPU，需要语义感知的细粒度缓存；同时，查询执行应在 CPU 和 GPU 之间动态分配，而非简单的全 GPU 或全 CPU 执行。",
+    "innovation": "1. 提出 SemanticAware 缓存策略，利用查询语义、数据关联和访问频率做出智能缓存决策；2. 设计细粒度异构查询执行器，在段级别协调 CPU 和 GPU 的混合执行；3. 构建 Mordred 系统，在三层内存层次间动态编排数据。"
+  },
+  {
+    "id": 4,
+    "title": "Scaling your Hybrid CPU-GPU DBMS to Multiple GPUs",
+    "authors": [
+      "Bobbi W. Yogatama",
+      "Weiwei Gong",
+      "Xiangyao Yu"
+    ],
+    "venue": "VLDB 2024 (Proc. VLDB Endow., Vol. 17, No. 13)",
+    "year": 2024,
+    "doi": "10.14778/3704965.3704977",
+    "arxiv_url": "",
+    "pdf_url": "https://www.vldb.org/pvldb/vol17/p4709-yogatama.pdf",
+    "abstract": "We aim to improve prior solutions further by leveraging both hybrid CPU-GPU DBMS and multi-GPU DBMS at the same time. In particular, we explore the design space and optimize the data placement strategy to be GPU-memory-aware across multiple GPUs. To improve query execution, we extend the existing hybrid CPU-GPU query execution strategy with distributed query processing techniques to support multiple GPUs. We build a system called Lancelot and show that Lancelot achieves near-linear scaling on up to 8 GPUs, up to 3.6x speedup on 4 GPUs, and outperforms state-of-the-art multi-GPU DBMS by up to 2.5x.",
+    "abstract_cn": "我们旨在通过同时利用混合 CPU-GPU DBMS 和多 GPU DBMS 来进一步改进现有方案。具体而言，我们探索了设计空间，并优化了跨多个 GPU 的感知 GPU 显存的数据放置策略。为了改进查询执行，我们将现有的混合 CPU-GPU 查询执行策略与分布式查询处理技术相结合以支持多 GPU。我们构建了名为 Lancelot 的系统，结果表明 Lancelot 在多达 8 个 GPU 上实现了近线性扩展，在 4 个 GPU 上实现了 3.6 倍加速，比最先进的多 GPU DBMS 快多达 2.5 倍。",
+    "takeaway": "混合 CPU-GPU 执行与多 GPU 扩展可以同时实现：关键在于感知 GPU 显存的数据放置策略和将分布式查询技术融入混合执行框架。",
+    "innovation": "1. 首次将混合 CPU-GPU 执行与多 GPU 扩展相结合；2. 提出感知 GPU 显存的跨 GPU 数据放置策略；3. 将分布式查询处理技术融入混合执行框架以支持多 GPU；4. 构建 Lancelot 系统，在 8 个 GPU 上实现近线性扩展。"
+  },
+  {
+    "id": 5,
+    "title": "Predicate Transfer: Efficient Pre-Filtering on Multi-Join Queries",
+    "authors": [
+      "Yifei Yang",
+      "Hangdong Zhao",
+      "Xiangyao Yu",
+      "Paraschos Koutris"
+    ],
+    "venue": "CIDR 2024",
+    "year": 2024,
+    "doi": "",
+    "arxiv_url": "https://arxiv.org/abs/2307.15255",
+    "pdf_url": "https://www.cidrdb.org/cidr2024/papers/p22-yang.pdf",
+    "abstract": "This paper presents predicate transfer, a novel method that optimizes join performance by pre-filtering tables to reduce the join input sizes. Predicate transfer generalizes Bloom join, which conducts pre-filtering within a single join operation, to multi-table joins such that the filtering benefits can be significantly increased. Predicate transfer is inspired by the seminal theoretical results by Yannakakis, which uses semi-joins to pre-filter acyclic queries. Predicate transfer generalizes the theoretical results to any join graphs and use Bloom filters to replace semi-joins leading to significant speedup. Evaluation shows predicate transfer can outperform Bloom join by 3.1x on average on TPC-H benchmark.",
+    "abstract_cn": "本文提出了谓词迁移（Predicate Transfer），一种通过预过滤表来减少连接输入大小从而优化连接性能的新方法。谓词迁移将仅在单个连接操作中进行预过滤的 Bloom 连接推广到多表连接，使过滤收益可以显著增加。谓词迁移受到 Yannakakis 的开创性理论结果的启发，该结果使用半连接来预过滤无环查询。谓词迁移将理论结果推广到任意连接图，并使用布隆过滤器替代半连接，从而实现显著加速。评估表明，谓词迁移在 TPC-H 基准上平均比 Bloom 连接快 3.1 倍。",
+    "takeaway": "将单表 Bloom 过滤预过滤推广到多表连接，利用布隆过滤器在表间传递谓词信息，可以大幅减少连接输入数据量，是连接优化的基础性技术突破。",
+    "innovation": "1. 将 Bloom Join 从单连接推广到多表连接场景；2. 将 Yannakakis 半连接理论从无环查询推广到任意连接图；3. 使用布隆过滤器替代半连接实现高效预过滤；4. 在 TPC-H 上实现 3.1 倍平均加速。"
+  },
+  {
+    "id": 6,
+    "title": "Accelerate Distributed Joins with Predicate Transfer",
+    "authors": [
+      "Yifei Yang",
+      "Xiangyao Yu"
+    ],
+    "venue": "SIGMOD 2025 (Proc. ACM Manag. Data, Vol. 3, No. 3)",
+    "year": 2025,
+    "doi": "10.1145/3725259",
+    "arxiv_url": "",
+    "pdf_url": "https://dl.acm.org/doi/epdf/10.1145/3725259",
+    "abstract": "Predicate transfer has been shown to effectively accelerate multi-join queries in a single-node setting. However, applying predicate transfer in a distributed setting faces two key limitations: the overhead of transferring Bloom filters across nodes and the lack of optimal scheduling for distributed predicate transfer steps. In this paper, we aim to address both limitations. First, we explore the design space of distributed predicate transfer and propose cost-based adaptive execution to maximize the performance for each individual transfer step. Second, we propose a scheduling algorithm to determine the optimal order and degree of predicate transfer steps. We integrate distributed predicate transfer into a distributed analytical database and show that it achieves up to 6.3x speedup over the baseline on TPC-H and TPC-DS benchmarks.",
+    "abstract_cn": "谓词迁移已被证明能有效加速单节点环境下的多连接查询。然而，在分布式环境中应用谓词迁移面临两个关键限制：跨节点传输布隆过滤器的开销，以及缺乏分布式谓词迁移步骤的最优调度。本文旨在解决这两个限制。首先，我们探索了分布式谓词迁移的设计空间，并提出了基于代价的自适应执行策略以最大化每个迁移步骤的性能。其次，我们提出了调度算法来确定谓词迁移步骤的最优顺序和程度。我们将分布式谓词迁移集成到一个分布式分析数据库中，结果表明在 TPC-H 和 TPC-DS 基准上实现了多达 6.3 倍的加速。",
+    "takeaway": "谓词迁移从单节点扩展到分布式环境的关键挑战是布隆过滤器传输开销和调度问题；基于代价的自适应执行和最优调度可以充分发挥分布式谓词迁移的潜力。",
+    "innovation": "1. 探索分布式谓词迁移的设计空间；2. 提出基于代价的自适应执行策略；3. 设计谓词迁移步骤的最优调度算法；4. 在 TPC-H 和 TPC-DS 上实现 6.3 倍加速。"
+  },
+  {
+    "id": 7,
+    "title": "Query Processing on Tensor Computation Runtimes",
+    "authors": [
+      "Dong He",
+      "Supun Nakandala",
+      "Dalitso Banda",
+      "Rathijit Sen",
+      "Karla Saur",
+      "Kwanghyun Park",
+      "Matteo Interlandi",
+      "Konstantinos Karanasos"
+    ],
+    "venue": "VLDB 2022 (Proc. VLDB Endow., Vol. 15, No. 11)",
+    "year": 2022,
+    "doi": "10.14778/3551793.3551833",
+    "arxiv_url": "",
+    "pdf_url": "https://www.vldb.org/pvldb/vol15/p2811-he.pdf",
+    "abstract": "The huge demand for computation in artificial intelligence (AI) is driving unparalleled investments in hardware and software systems for AI. This leads to an explosion in the number of specialized hardware devices, which are now offered by major cloud vendors. By hiding the low-level complexity through a tensor-based interface, tensor computation runtimes (TCRs) such as PyTorch allow data scientists to efficiently exploit the exciting capabilities offered by the new hardware. In this paper, we explore how database management systems can ride the wave of innovation happening in the AI space. We design, build, and evaluate Tensor Query Processor (TQP): TQP transforms SQL queries into tensor programs and executes them on TCRs. TQP is able to run the full TPC-H benchmark by implementing novel algorithms for relational operators on the tensor routines. At the same time, TQP can support various hardware while only requiring a fraction of the usual development effort. Experiments show that TQP can improve query execution time by up to 10X over specialized CPU- and GPU-only systems. Finally, TQP can accelerate queries mixing ML predictions and SQL end-to-end, and deliver up to 9X speedup over CPU baselines.",
+    "abstract_cn": "人工智能（AI）对计算的巨大需求正在推动对 AI 硬件和软件系统的空前投资。这导致专用硬件设备数量的爆发式增长，主要云厂商现在都提供这些设备。通过基于张量的接口隐藏底层复杂性，PyTorch 等张量计算运行时（TCR）使数据科学家能够高效利用新硬件提供的强大能力。在本文中，我们探索数据库管理系统如何乘上 AI 领域创新的浪潮。我们设计、构建并评估了张量查询处理器（TQP）：TQP 将 SQL 查询转换为张量程序并在 TCR 上执行。TQP 通过在张量例程上实现关系算子的新算法，能够运行完整的 TPC-H 基准测试。同时，TQP 可以支持各种硬件，而只需要通常开发工作的一小部分。实验表明，TQP 比专用 CPU 和 GPU 系统快多达 10 倍。最后，TQP 可以端到端加速混合 ML 预测和 SQL 的查询，实现比 CPU 基线多达 9 倍的加速。",
+    "takeaway": "数据库系统可以借助 AI 领域的张量计算运行时（如 PyTorch）来搭便车——将 SQL 转换为张量程序，既能跨硬件运行，又能实现 ML 与 SQL 的无缝混合加速。",
+    "innovation": "1. 首次提出将 SQL 查询转换为张量程序执行的系统 TQP；2. 在张量例程上实现了 TPC-H 全部关系算子的新算法；3. 以极小的开发成本支持多种硬件后端；4. 实现了 ML 预测与 SQL 的端到端混合加速，高达 9 倍提速。"
+  },
+  {
+    "id": 8,
+    "title": "Revisiting Query Performance in GPU Database Systems",
+    "authors": [
+      "Jiashen Cao",
+      "Rathijit Sen",
+      "Matteo Interlandi",
+      "Joy Arulraj",
+      "Hyesoon Kim"
+    ],
+    "venue": "arXiv 2023 (Under Review)",
+    "year": 2023,
+    "doi": "",
+    "arxiv_url": "https://arxiv.org/abs/2302.00734",
+    "pdf_url": "https://arxiv.org/pdf/2302.00734",
+    "abstract": "GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG). In this paper we do a cross-stack performance and resource utilization analysis of five GPU database systems. We study both database-level and micro-architectural aspects, and offer recommendations to database developers. We also demonstrate how to use and extend the traditional roofline model to identify GPU resource bottlenecks. This enables users to conduct what-if analysis to forecast performance impact for different resource allocation or the degree of concurrency.",
+    "abstract_cn": "GPU 提供了大规模计算并行性和高带宽内存访问。GPU 数据库系统试图利用这些能力来加速数据分析。尽管现代 GPU 拥有比以往更多的资源（如更高的 DRAM 带宽），避免浪费资源分配的审慎查询处理选择仍然是有益的。数据库系统可以通过刚好足够的资源分配来节省 GPU 运行成本，或者通过利用新的 GPU 功能（如多实例 GPU/MIG）进行并发查询处理来提高查询吞吐量。本文对五种 GPU 数据库系统进行了跨栈性能和资源利用率分析。我们研究了数据库级和微体系结构两个方面，并为数据库开发者提供了建议。我们还演示了如何使用和扩展传统的 Roofline 模型来识别 GPU 资源瓶颈。这使得用户能够进行假设分析，预测不同资源分配或并发度对性能的影响。",
+    "takeaway": "GPU 数据库系统普遍存在资源利用不足的问题；通过 MIG 等技术实现并发查询和精细资源分配，可以在不增加硬件的情况下显著提升吞吐量。",
+    "innovation": "1. 对五种 GPU 数据库系统进行跨栈（数据库层+微架构层）性能分析；2. 扩展传统 Roofline 模型以识别 GPU 资源瓶颈；3. 提出基于假设分析的性能预测方法；4. 为 GPU 数据库开发者提供资源分配和并发查询的具体建议。"
+  },
+  {
+    "id": 9,
+    "title": "Accelerating User-Defined Aggregate Functions (UDAF) with Block-wide Execution and JIT Compilation on GPUs",
+    "authors": [
+      "Bobbi Yogatama",
+      "Brandon Miller",
+      "Yunsong Wang",
+      "Graham R. Markall",
+      "Jacob Hemstad",
+      "Gregory Kimball",
+      "Xiangyao Yu"
+    ],
+    "venue": "DaMoN 2023",
+    "year": 2023,
+    "doi": "10.1145/3592980.3595307",
+    "arxiv_url": "",
+    "pdf_url": "https://dl.acm.org/doi/10.1145/3592980.3595307",
+    "abstract": "User-defined aggregate functions (UDAFs) are essential for data analytics as they allow users to express custom business logic. However, current GPU database systems lack efficient support for UDAFs, falling back to CPU execution and thus losing GPU acceleration benefits. In this work, we aim to improve the state-of-the-art by optimizing UDAF execution via a block-wide execution model and just-in-time (JIT) compilation. We develop a Numba-based JIT compiler that translates Python UDAFs into efficient GPU kernels. Our approach achieves up to 130x speedup over CPU-based UDAF execution and up to 7.8x speedup over existing GPU UDAF implementations.",
+    "abstract_cn": "用户自定义聚合函数（UDAF）对数据分析至关重要，因为它们允许用户表达自定义业务逻辑。然而，当前的 GPU 数据库系统缺乏对 UDAF 的高效支持，只能回退到 CPU 执行，从而失去了 GPU 加速的优势。本文旨在通过块级执行模型和即时编译（JIT）来优化 UDAF 执行以改进现有技术。我们开发了一个基于 Numba 的 JIT 编译器，将 Python UDAF 转换为高效的 GPU 内核。我们的方法比基于 CPU 的 UDAF 执行快多达 130 倍，比现有 GPU UDAF 实现快多达 7.8 倍。",
+    "takeaway": "GPU 数据库对用户自定义聚合函数（UDAF）的支持长期不足；通过块级执行模型和 JIT 编译，可以将 Python UDAF 高效地转换为 GPU 内核，实现数量级的加速。",
+    "innovation": "1. 提出 GPU 上的块级 UDAF 执行模型；2. 开发基于 Numba 的 JIT 编译器，将 Python UDAF 直接编译为 GPU 内核；3. 比 CPU 执行快 130 倍，比现有 GPU 实现快 7.8 倍。"
+  },
+  {
+    "id": 10,
+    "title": "Tile-based Lightweight Integer Compression in GPU",
+    "authors": [
+      "Anil Shanbhag",
+      "Bobbi W. Yogatama",
+      "Xiangyao Yu",
+      "Samuel Madden"
+    ],
+    "venue": "SIGMOD 2022",
+    "year": 2022,
+    "doi": "10.1145/3514221.3526132",
+    "arxiv_url": "",
+    "pdf_url": "https://dl.acm.org/doi/10.1145/3514221.3526132",
+    "abstract": "GPUs are increasingly used for high-performance and interactive data analytics workloads due to their capability to accelerate computation using massive parallelism. A key constraint of GPU-based data analytics today is the limited memory capacity in GPU devices. Data compression is a powerful technique that can mitigate the capacity limitation in two ways: (1) fitting more data into GPU memory and (2) speeding up data transfer between CPU and GPU. However, compression schemes for GPU today are still limited in compression ratio and/or decompression speed. We identify two limiting factors of existing approaches. First, existing decompression solutions require multiple passes of scanning the global memory to decode layers of compression schemes, incurring significant memory traffic and hurting performance. We present the tile-based decompression model to decompress encoded data in a single pass over global memory and inline with query execution. Second, we develop an efficient implementation of bit-packing-based compression schemes and their optimization techniques in the context of GPU. Our evaluation shows that our schemes can achieve similar compression rates to the best state-of-the-art compression schemes in GPU (i.e., nvCOMP) while being 2.2x and 2.6x faster in decompression speed and query running time.",
+    "abstract_cn": "GPU 凭借其大规模并行加速能力，越来越多地用于高性能和交互式数据分析工作负载。当前基于 GPU 的数据分析的一个关键限制是 GPU 设备的有限内存容量。数据压缩是一种强大的技术，可以从两方面缓解容量限制：（1）将更多数据装入 GPU 内存；（2）加速 CPU 和 GPU 之间的数据传输。然而，当前 GPU 的压缩方案在压缩率和/或解压速度方面仍然有限。我们确定了现有方法的两个限制因素。首先，现有解压方案需要多次扫描全局内存来解码压缩方案的层级，产生大量内存流量并损害性能。我们提出了基于块的解压模型，在单次全局内存遍历中解压编码数据，并与查询执行内联。其次，我们开发了基于位打包的压缩方案及其在 GPU 环境下的优化技术的高效实现。评估表明，我们的方案可以达到与 GPU 上最先进的压缩方案（即 nvCOMP）相似的压缩率，同时解压速度和查询运行时间分别快 2.2 倍和 2.6 倍。",
+    "takeaway": "GPU 数据压缩的瓶颈在于解压时的多次全局内存扫描；基于块的解压模型可以在单次内存遍历中完成解压并与查询执行内联，显著降低内存流量。",
+    "innovation": "1. 识别 GPU 压缩方案的两个关键限制因素；2. 提出基于块的单次遍历解压模型，与查询执行内联；3. 开发高效的 GPU 位打包压缩方案及优化技术；4. 解压速度比 nvCOMP 快 2.2 倍，查询运行时间快 2.6 倍。"
+  },
+  {
+    "id": 11,
+    "title": "A Study of the Fundamental Performance Characteristics of GPUs and CPUs for Database Analytics",
+    "authors": [
+      "Anil Shanbhag",
+      "Samuel Madden",
+      "Xiangyao Yu"
+    ],
+    "venue": "SIGMOD 2020",
+    "year": 2020,
+    "doi": "10.1145/3318464.3380595",
+    "arxiv_url": "https://arxiv.org/abs/2003.01178",
+    "pdf_url": "https://arxiv.org/pdf/2003.01178",
+    "abstract": "GPUs are increasingly being used for database analytics as they provide high bandwidth and massive parallelism. However, there is limited understanding of when and why GPUs outperform CPUs for database workloads. In this paper, we adopt a model-based approach to understand when and why the performance gains of running queries on GPUs vs on CPUs vary from the bandwidth ratio (which is roughly 16x on modern hardware). We study the performance of fundamental database operators (scan, filter, join, and aggregation) on both CPUs and GPUs. We develop a simple but effective performance model that accounts for compute, memory, and communication costs to explain the observed performance differences. Our model shows that for many operators, the speedup is limited not by compute but by memory or communication bottlenecks, and that the speedup varies significantly across operators and data characteristics. We also provide guidelines for when GPU acceleration is beneficial for database analytics.",
+    "abstract_cn": "GPU 由于提供高带宽和大规模并行性，越来越多地被用于数据库分析。然而，对于 GPU 在何时以及为何优于 CPU 执行数据库工作负载，理解仍然有限。本文采用基于模型的方法来理解在 GPU 与 CPU 上运行查询的性能增益何时以及为何偏离带宽比（现代硬件上约为 16 倍）。我们研究了基本数据库算子（扫描、过滤、连接和聚合）在 CPU 和 GPU 上的性能。我们开发了一个简单但有效的性能模型，考虑了计算、内存和通信成本来解释观察到的性能差异。我们的模型表明，对于许多算子，加速比不是受限于计算而是受限于内存或通信瓶颈，并且加速比在不同算子和数据特征之间差异显著。我们还提供了 GPU 加速对数据库分析有益的指导准则。",
+    "takeaway": "GPU 对数据库的加速远不是简单的带宽比——实际加速取决于算子类型和数据特征，许多场景下瓶颈在内存或通信而非计算；理解这一模型才能正确选择何时使用 GPU。",
+    "innovation": "1. 首次系统性地建模 GPU vs CPU 数据库算子性能差异；2. 开发考虑计算、内存和通信成本的简单有效性能模型；3. 揭示加速比受限于内存/通信瓶颈而非计算的真相；4. 提供 GPU 加速数据库分析的实际指导准则。"
+  },
+  {
+    "id": 12,
+    "title": "Rethinking Analytical Processing in the GPU Era",
+    "authors": [
+      "Bobbi Yogatama",
+      "Yifei Yang",
+      "Kevin Kristensen",
+      "Devesh Sarda",
+      "Abigale Kim",
+      "Adrian Cockcroft",
+      "Yu Teng",
+      "Joshua Patterson",
+      "Gregory Kimball",
+      "Wes McKinney",
+      "Weiwei Gong",
+      "Xiangyao Yu"
+    ],
+    "venue": "CIDR 2026 / arXiv 2025",
+    "year": 2025,
+    "doi": "10.48550/ARXIV.2508.04701",
+    "arxiv_url": "https://arxiv.org/abs/2508.04701",
+    "pdf_url": "https://arxiv.org/pdf/2508.04701",
+    "abstract": "The era of GPU-powered data analytics has arrived. In this paper, we argue that recent advances in hardware (e.g., larger GPU memory, faster interconnect and IO, and declining cost) and software (e.g., composable data systems and mature libraries) have removed the key barriers that have limited the wider adoption of GPU data analytics. We present Sirius, a prototype open-source GPU-native SQL engine that offers drop-in acceleration for diverse data systems. Sirius treats GPU as the primary engine and leverages libraries like libcudf for high-performance relational operators. It provides drop-in acceleration for existing databases by leveraging the standard Substrait query representation, replacing the CPU engine without changing the user-facing interface. Sirius achieves 8.3x and 7.4x better cost efficiency on TPC-H and ClickBench, respectively, when integrated with single-node DuckDB, and delivers up to 12.5x speedup when integrated with Apache Doris distributed engine.",
+    "abstract_cn": "GPU 驱动的数据分析时代已经到来。在本文中，我们认为硬件（如更大的 GPU 内存、更快的互连和 IO，以及不断下降的成本）和软件（如可组合的数据系统和成熟的库）方面的最新进展，已经消除了限制 GPU 数据分析广泛采用的关键障碍。我们推出了 Sirius，一个开源的 GPU 原生 SQL 引擎原型，可为多种数据系统提供即插即用的加速。Sirius 将 GPU 视为主要引擎，利用 libcudf 等库实现高性能关系算子。它通过利用标准 Substrait 查询表示，在不改变用户界面的情况下替换 CPU 引擎，为现有数据库提供即插即用的加速。Sirius 在与单机 DuckDB 集成时，在 TPC-H 和 ClickBench 上分别实现了 8.3 倍和 7.4 倍更好的成本效率；与 Apache Doris 分布式引擎集成时，速度提升高达 12.5 倍。",
+    "takeaway": "GPU 数据分析的普及障碍已被消除——大显存、快互联和成熟库使得 GPU 原生 SQL 引擎可以即插即用地加速现有数据库系统，无需修改用户接口。",
+    "innovation": "1. 论证 GPU 数据分析普及的硬件和软件障碍已被消除；2. 构建 GPU 原生 SQL 引擎 Sirius，利用 libcudf 实现高性能算子；3. 通过 Substrait 标准查询表示实现即插即用加速；4. 与 DuckDB 集成实现 8.3 倍成本效率提升，与 Apache Doris 集成实现 12.5 倍加速。"
+  }
+]
