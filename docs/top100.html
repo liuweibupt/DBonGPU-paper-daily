@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU 数据库年度热门论文 Top 100 - 2026</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-red: #f85149;
+            --score-high: #3fb950;
+            --score-mid: #d29922;
+            --score-low: #8b949e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 2em;
+            background: linear-gradient(135deg, var(--accent), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+        header .date {
+            color: var(--accent);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .page-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .page-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 18px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.95em;
+            transition: all 0.2s;
+        }
+        .page-nav a:hover, .page-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .page-nav a.active {
+            background: rgba(88,166,255,0.1);
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 24px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        .history-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0 30px;
+        }
+        .history-nav a {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .history-nav a:hover, .history-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .history-nav a.active {
+            background: rgba(88,166,255,0.1);
+        }
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        .paper-card.compact {
+            padding: 16px 20px;
+        }
+        .paper-rank {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-green));
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .compact .paper-rank {
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 0.8em;
+        }
+        .paper-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            display: inline;
+            vertical-align: middle;
+        }
+        .compact .paper-title {
+            font-size: 1.0em;
+        }
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        .paper-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .score-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .score-high { background: rgba(63,185,80,0.15); color: var(--score-high); }
+        .score-mid { background: rgba(210,153,34,0.15); color: var(--score-mid); }
+        .score-low { background: rgba(139,148,158,0.1); color: var(--score-low); }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            background: rgba(88,166,255,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(88,166,255,0.2);
+        }
+        .paper-authors {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        .paper-abstract {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-top: 12px;
+            line-height: 1.7;
+        }
+        .compact .paper-abstract {
+            font-size: 0.88em;
+            margin-top: 8px;
+        }
+        .paper-reasons {
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: rgba(63,185,80,0.05);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9em;
+            color: var(--accent-green);
+        }
+        .paper-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 12px;
+        }
+        .paper-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .paper-links a:hover {
+            border-color: var(--accent);
+            background: rgba(88,166,255,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            header h1 { font-size: 1.5em; }
+            .paper-card { padding: 16px; }
+            .paper-title { font-size: 1.05em; }
+        }
+    </style>
+    <style>
+        .yearly-hero {
+            text-align: center;
+            padding: 30px 0;
+        }
+        .yearly-hero h2 {
+            font-size: 1.6em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .yearly-hero p {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GPU 数据库论文日报</h1>
+        <div class="subtitle">自动追踪 GPU 加速数据库领域最新研究</div>
+        <nav class="page-nav">
+            <a href="index.html">每日推荐</a>
+            <a href="top100.html" class="active">年度 Top 100</a>
+        </nav>
+    </header>
+
+    <div class="yearly-hero">
+        <h2>2026 年度 GPU 数据库热门论文 Top 100</h2>
+        <p>基于 arXiv 过去一年 cs.AR / cs.DB / cs.DC 领域论文，按 GPU 数据库相关度排序</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value">100</div>
+            <div class="stat-label">入选论文</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-label">高相关度</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">4</div>
+            <div class="stat-label">中等相关度</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2026</div>
+            <div class="stat-label">统计年份</div>
+        </div>
+    </div>
+
+    
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04696v2" target="_blank">GPIR: Enabling Practical Private Information Retrieval with GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度: 0.639</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hyesung Ji, Hyunah Yu, Jongmin Kim, Wonseok Choi 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究GPU 加速相关技术。 核心内容：Private information retrieval (PIR) allows private database queries; however, it is hindered by intense server-side computation and memory traffic。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04696v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.04696v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">2</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05628v1" target="_blank">Towards Compute-Aware In-Switch Computing for LLMs Tensor-Parallelism on Multi-GPU Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度: 0.520</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Chen Zhang, Qijun Zhang, Zhuoshan Zhou, Yijia Diao 等 (13 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究线程块相关技术。 核心内容：Tensor parallelism (TP) in large-scale LLM inference and training introduces frequent collective operations that dominate inter-GPU communication。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05628v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05628v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.18120v1" target="_blank">Proxics: an efficient programming model for far memory accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度: 0.513</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.OS</span> <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Zikai Liu, Niels Pressel, Jasmin Schult, Roman Meier 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库、数据处理相关技术。 核心内容：The use of disaggregated or far memory systems such as CXL memory pools has renewed interest in Near-Data Processing (NDP): situating cores close to m...。</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.18120v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.18120v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.28793v1" target="_blank">Toward a Universal GPU Instruction Set Architecture: A Cross-Vendor Analysis of Hardware-Invariant Computational Primitives in Parallel Processors</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度: 0.513</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ojima Abraham, Onyinye Okoli</div>
+        <div class="paper-abstract">We present the first systematic cross-vendor analysis of GPU instruction set architectures spanning all four major GPU vendors: NVIDIA (PTX ISA v1.0 through v9.2, Fermi through Blackwell), AMD (RDNA 1 to 4 and CDNA 1 to 4), Intel (Gen11, Xe-LP, Xe-HPG, Xe-HPC), and Apple (G13, reverse-engineered). D...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.28793v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.28793v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04783v1" target="_blank">GPU Acceleration of TFHE-Based High-Precision Nonlinear Layers for Encrypted LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.497</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Guoci Chen, Xiurui Pan, Qiao Li, Bo Mao 等 (8 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究GPU 加速相关技术。 核心内容：Deploying large language models (LLMs) as cloud services raises privacy concerns as inference may leak sensitive data。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04783v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.04783v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.00555v2" target="_blank">Sim-FA: A GPGPU Simulator Framework for Fine-Grained FlashAttention Pipeline Analysis</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.497</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Zhongchun Zhou, Yuhang Gu, Chengtao Lai, Ya Wang 等 (5 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究warp 调度相关技术。 核心内容：To efficiently support Large Language Models (LLMs), modern GPGPU architectures have introduced new features and programming paradigms, such as warp s...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.00555v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.00555v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.23466v1" target="_blank">Evaluating CUDA Tile for AI Workloads on Hopper and Blackwell GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.496</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Divakar Kumar Yadav, Tian Zhao, Deepak Kumar</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA、GPU 核函数相关技术。 核心内容：NVIDIA's CUDA Tile (CuTile) introduces a Python-based, tile-centric abstraction for GPU kernel development that aims to simplify programming while ret...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.23466v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.23466v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02120v2" target="_blank">GEMM-GS: Accelerating 3D Gaussian Splatting on Tensor Cores with GEMM-Compatible Blending</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.491</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.GR</span> 
+        </div>
+        <div class="paper-authors">Haomin Li, Bowen Zhu, Fangxin Liu, Zongwu Wang 等 (7 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Neural Radiance Fields (NeRF) enables 3D scene reconstruction from several 2D images but incurs high rendering latency via its point-sampling design。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02120v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.02120v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.22430v2" target="_blank">A comprehensive evaluation of spatial co-execution on GPUs using MPS and MIG technologies</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.488</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jorge Villarrubia, Luis Costero, Francisco D. Igual, Katzalin Olcoz</div>
+        <div class="paper-abstract">To mitigate the increasingly common underutilization of computational resources in modern GPUs, spatial sharing methods enable multiple applications to use them simultaneously. This work presents a comprehensive evaluation of NVIDIA's primary technologies to achieve that goal: Multi-Process Service ...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.22430v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.22430v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.22774v2" target="_blank">Characterizing CPU-Induced Slowdowns in Multi-GPU LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.483</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Euijun Chung, Yuxiao Jia, Aaron Jezghani, Hyesoon Kim</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Large-scale machine learning workloads increasingly rely on multi-GPU systems, yet their performance is often limited by an overlooked component: the ...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.22774v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.22774v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">11</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.27486v1" target="_blank">CuLifter: Lifting GPU Binaries to Typed IR</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.472</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jisheng Zhao, Huanzhi Pu, Shinnung Jeong, Chihyo Ahn 等 (5 位作者)</div>
+        <div class="paper-abstract">GPU compilers merge all data types into a single unified register file, erasing the type information that binary-analysis tools rely on. We show that type recovery from this untyped register file is the central challenge of GPU binary lifting. We present CuLifter, a SASS-to-LLVM IR lifting framework...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.27486v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.27486v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">12</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15379v1" target="_blank">Fleet: Hierarchical Task-based Abstraction for Megakernels on Multi-Die GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.470</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Sangeeta Chowdhary, Ryan Swann, Sean Siddens, Muhammad Osama 等 (10 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Modern GPUs adopt chiplet-based designs with multiple private cache hierarchies, but current programming models (CUDA/HIP) expose a flat execution hie...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15379v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.15379v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">13</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05888v1" target="_blank">MoE-Hub: Taming Software Complexity for Seamless MoE Overlap with Hardware-Accelerated Communication on Multi-GPU Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.457</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zhuoshan Zhou, Chen Zhang, Shuyi Zhang, Qijun Zhang 等 (13 位作者)</div>
+        <div class="paper-abstract">The Mixture-of-Experts (MoE) architecture is crucial for scaling large language models, but its scalability is severely limited by inter-GPU communication bottlenecks in multi-GPU systems. Although overlapping communication with computation is a widely recognized optimization, its effective deployme...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05888v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05888v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">14</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.27808v1" target="_blank">AME-PIM: Can Memory be Your Next Tensor Accelerator?</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.450</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Emanuele Venieri, Simone Manoni, Alberto Florian, Jaehyun Park 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：High Bandwidth Memory with Processing-in-Memory (HBM-PIM) offers an opportunity to reduce data movement by executing computation directly inside memor...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.27808v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.27808v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">15</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10852v1" target="_blank">The xPU-athalon: Quantifying the Competition of AI Acceleration</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Alicia Golden, Carole-Jean Wu, Gu-Yeon Wei, David Brooks</div>
+        <div class="paper-abstract">The push for greater efficiency in AI computation has given rise to an array of accelerator architectures that increasingly challenge the GPU's long-standing dominance. In this work, we provide a quantitative view of this evolving landscape of AI accelerators, including the Cerebras CS-3, SambaNova ...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10852v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.10852v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">16</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05496v1" target="_blank">DICE: Enabling Efficient General-Purpose SIMT Execution with Statically Scheduled Coarse-Grained Reconfigurable Arrays</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jiayi Wang, Ang Da Lu, Zhichen Zeng, Ang Li</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究SIMD 并行、warp 调度相关技术。 核心内容：While GPUs dominate massively parallel computing through the single-instruction, multiple-thread (SIMT) programming model, their underlying single-ins...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05496v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05496v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">17</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04178v1" target="_blank">Microbenchmark-Driven Analytical Performance Modeling Across Modern GPU Architectures</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Aaron Jarmusch, Sunita Chandrasekaran</div>
+        <div class="paper-abstract">Rapidly evolving GPU architectures featuring complex memory hierarchies, matrix units, and varied precision formats continue to widen the gap between theoretical peaks and achievable performance. We design and develop analytical performance models for NVIDIA Blackwell (B200) and AMD CDNA3 (MI300A) g...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04178v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.04178v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">18</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.13398v1" target="_blank">FPGA-Accelerated Lock Management and Transaction Processing: Architecture, Optimization, and Design Space Exploration</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.448</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Shien Zhu, Gustavo Alonso</div>
+        <div class="paper-abstract">Online Transaction Processing (OLTP) is a classic application with a growing business. CPU-based OLTP has low lock serving efficiency. The main reason is that most locks are cold, and the lock agent must issue frequent memory accesses to retrieve the lock details to determine whether to grant it. Th...</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.13398v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.13398v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">19</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.20047v1" target="_blank">Taking Cryptography Out of the Data Path via Near-Memory Processing in DRAM</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.444</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Nicola Barcarolo, Brahmaiah Gandham, Mohammad Sadrosadati, Roberto Passerone 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Cryptographic algorithms such as AES-128 and SHA-256 are fundamental to ensuring data security and integrity。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.20047v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.20047v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">20</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.21847v1" target="_blank">CompPow: A Case for Component-level GPU Power Management</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.443</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Shaizeen Aga, Mohamed Assem Ibrahim</div>
+        <div class="paper-abstract">The ever increasing demand for ML-driven intelligence in a wide spectrum of domains has led to ubiquity of GPUs. At the same time, GPUs are notorious for their power consumption needs and often dominate power allocation in a typical ML datacenter. While datacenter-level power optimizations which foc...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.21847v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.21847v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">21</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.08182v1" target="_blank">Wattlytics: A Web Platform for Co-Optimizing Performance, Energy, and TCO in HPC Clusters</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.443</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Ayesha Afzal, Georg Hager, Gerhard Wellein</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究GPU 加速相关技术。 核心内容：The escalating computational demands and energy footprint of GPU-accelerated computing systems complicate informed design and operational decisions。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.08182v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.08182v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">22</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02556v1" target="_blank">Fast NF4 Dequantization Kernels for Large Language Model Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.437</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Xiangbo Qi, Chaoyi Jiang, Murali Annavaram</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究共享内存、线程块相关技术。 核心内容：Large language models (LLMs) have grown beyond the memory capacity of single GPU devices, necessitating quantization techniques for practical deployme...。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02556v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.02556v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">23</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.20421v2" target="_blank">Hawkeye: Reproducing GPU-Level Non-Determinism</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.434</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Erez Badash, Dan Boneh, Ilan Komargodski, Megha Srivastava</div>
+        <div class="paper-abstract">We present Hawkeye, a system for analyzing and reproducing GPU-level arithmetic operations. Using our framework, anyone can re-execute on a CPU the exact matrix multiplication operations underlying a machine learning model training or inference workflow that was executed on an NVIDIA GPU, without an...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.20421v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.20421v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">24</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.26435v1" target="_blank">Wattchmen: Watching the Wattchers -- High Fidelity, Flexible GPU Energy Modeling</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.434</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Brandon Tran, Matthias Maiterth, Woong Shin, Matthew D. Sinclair 等 (5 位作者)</div>
+        <div class="paper-abstract">Modern GPU-rich HPC systems are increasingly becoming energy-constrained. Thus, understanding an application's energy consumption becomes essential. Unfortunately, current GPU energy attribution techniques are either inaccurate, inflexible, or outdated. Therefore, we propose Wattchmen, a flexible me...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.26435v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.26435v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">25</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20105v1" target="_blank">EnergAIzer: Fast and Accurate GPU Power Estimation Framework for AI Workloads</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.430</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Kyungmi Lee, Zhiye Song, Eun Kyung Lee, Xin Zhang 等 (6 位作者)</div>
+        <div class="paper-abstract">As AI workloads drive increases in datacenter power consumption, accurate GPU power estimation is critical for proactive power management. However, existing power models face a scalability bottleneck not in the modeling techniques themselves, but in obtaining the hardware utilization inputs they req...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.20105v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.20105v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">26</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.19057v1" target="_blank">Mitigating the Bandwidth Wall via Data-Streaming System-Accelerator Co-Design</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.429</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Qunyou Liu, Marina Zapater, David Atienza</div>
+        <div class="paper-abstract">Transformers have revolutionized AI in natural language processing and computer vision, but their large computation and memory demands pose major challenges for hardware acceleration. In practice, end-to-end throughput is often limited by paged data movement and interconnect bandwidth rather than ra...</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.19057v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.19057v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">27</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25522v1" target="_blank">Co-Designing Graph-based Approximate Nearest Neighbor Search at Billion Scale for Processing-in-Memory</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.424</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Sitian Chen, Yusen Li, Yao Chen, Minwen Deng 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库、近邻搜索相关技术。 核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficie...。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.25522v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.25522v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">28</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.27323v1" target="_blank">Megakernel vs Wavefront GPU Path Tracing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.423</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.GR</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Rafael Padilla, Kyle Webster, Austin Kim</div>
+        <div class="paper-abstract">Over the last decade, advances in GPU hardware have been driven in large part by the demands of real-time graphics, culminating in dedicated hardware ray tracing cores (RT cores). These units accelerate ray scene intersection queries directly in hardware, making physically based ray tracing algorith...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.27323v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.27323v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">29</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.17158v2" target="_blank">A comprehensive study on ILP acceleration accounting for sparsity, area, energy, data movement using near-memory architecture</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.419</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Lizy K John, Jaydeep P. Kulkarni</div>
+        <div class="paper-abstract">Integer Linear Programming (ILP) is widely used for solving real-world optimization problems, including network routing, map routing, and traffic scheduling. However, ILP algorithms are sparse and branch-intensive, making them inefficient on conventional CPUs and GPUs. Prior work has shown that larg...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.17158v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.17158v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">30</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25367v1" target="_blank">Architectural Limits of Cloud TPUs in Finite-Field Cryptography</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hung Dang, Xuan Phu Dang, Tue Nguyen</div>
+        <div class="paper-abstract">We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\times, 6{,}908\times]$ deficit across v5p and v4 architectures under an FP32-mantissa staging discipline, an...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.25367v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.25367v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">31</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04213v1" target="_blank">The Anatomy of Silent Data Corruption: GPU Error Pattern Study and Modeling Guidance</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chung-Hsuan Tung, Yanxiang Huang, Nirmal Saxena, Philip Shirvani 等 (8 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA、warp 调度相关技术。 核心内容：Silent data corruption (SDC) threatens the reliability of large-scale GPU clusters used for training large language models, yet its rarity and lack of...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04213v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.04213v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">32</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.26968v1" target="_blank">Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Sanjeev Rao Ganjihal</div>
+        <div class="paper-abstract">Key-value (KV) cache memory management is the primary bottleneck limiting throughput and cost-efficiency in large-scale GPU inference serving. Current systems suffer from three compounding inefficiencies: (1) the absence of unified KV cache sizing across all attention architectures--particularly mul...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.26968v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.26968v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">33</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.26103v2" target="_blank">AMMA: A Multi-Chiplet Memory-Centric Architecture for Low-Latency 1M Context Attention Serving</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.411</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zhongkai Yu, Haotian Ye, Chenyang Zhou, Ohm Rishabh Venkatachalam 等 (12 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究GPU 计算相关技术。 核心内容：All current LLM serving systems place the GPU at the center, from production-level attention-FFN disaggregation to NVIDIA's Rubin GPU-LPU heterogeneou...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.26103v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.26103v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">34</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04084v1" target="_blank">FASQ: Flexible Accelerated Subspace Quantization for Calibration-Free LLM Compression</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.410</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ye Qiao, Yian Wang, Zhiheng Chen, Hyoukjun Kwon 等 (5 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Compressing large language models (LLMs) for deployment on commodity GPUs remains challenging: conventional scalar quantization is limited to fixed bi...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04084v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.04084v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">35</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.19405v2" target="_blank">A complete discussion on fully reconfigurable, digital, scalable, graph and sparsity-aware near-memory accelerator for graph neural networks</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.410</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Lizy John, Jaydeep P. Kulkarni</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Graph neural networks (GNNs) have gained significant interest for applications such as citation network analysis and drug discovery due to their abili...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.19405v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.19405v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">36</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.03713v2" target="_blank">SPEC CPU2026: Characterization, Representativeness, and Cross-Suite Comparison</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.407</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Ruihao Li, Andrew Jacob, Neeraja J. Yadwadkar, Lizy K. John</div>
+        <div class="paper-abstract">Specialized accelerators dominate AI workloads, but CPUs remain critical for orchestrating these accelerators and running datacenter services. As a result, CPU performance increasingly shapes end-to-end system efficiency, making it necessary for benchmarks to reflect modern workloads and bottlenecks...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.03713v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.03713v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">37</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.01187v1" target="_blank">Evolution of NVENC Efficiency: A Longitudinal Analysis of HQ and UHQ Tuning Efficiency, Latency and Energy Trade-offs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.406</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">eess.IV</span> <span class="tag">cs.AR</span> <span class="tag">cs.MM</span> 
+        </div>
+        <div class="paper-authors">Kasidis Arunruangsirilert, Jiro Katto</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：The rapid expansion of uplink-intensive applications necessitates video coding solutions that balance high Rate-Distortion (RD) efficiency with ultra-...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.01187v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.01187v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">38</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.10905v2" target="_blank">TLX: Hardware-Native, Evolvable MIMW GPU Compiler for Large-scale Production Environments</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.400</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yue Guan, Hongtao Yu, Peng Chen, Daohang Shi 等 (13 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究warp 调度相关技术。 核心内容：Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms, so performance depends on orchestrating data mov...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.10905v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.10905v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">39</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.11512v1" target="_blank">EdgeCIM: A Hardware-Software Co-Design for CIM-Based Acceleration of Small Language Models</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.399</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> 
+        </div>
+        <div class="paper-authors">Jinane Bazzi, Mariam Rakka, Fadi Kurdahi, Mohammed E. Fouda 等 (5 位作者)</div>
+        <div class="paper-abstract">The growing demand for deploying Small Language Models (SLMs) on edge devices, including laptops, smartphones, and embedded platforms, has exposed fundamental inefficiencies in existing accelerators. While GPUs handle prefill workloads efficiently, the autoregressive decoding phase is dominated by G...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.11512v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.11512v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">40</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.21566v1" target="_blank">Leveraging SIMD for Accelerating Large-number Arithmetic</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.397</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Subhrajit Das, Abhishek Bichhawat, Yuvraj Patel</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究SIMD 并行相关技术。 核心内容：Large-number arithmetic, widely used in scientific computing and cryptography, has seen limited adoption of single instruction, multiple data (SIMD) p...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.21566v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.21566v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">41</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.16253v1" target="_blank">TTP: A Hardware-Efficient Design for Precise Prefetching in Ray Tracing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.395</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yavuz Selim Tozlu, Anshul Naithani, Huiyang Zhou</div>
+        <div class="paper-abstract">Ray tracing (RT) is a 3D graphics technique that offers highly realistic visuals. It is becoming prominent and accessible as GPU vendors have integrated dedicated ray tracing acceleration hardware. However, tracing millions of rays through 3D scenes consisting of high numbers of triangles in real ti...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.16253v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.16253v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">42</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.25699v1" target="_blank">NVLLM: A 3D NAND-Centric Architecture Enabling Edge on-Device LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.394</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Mingbo Hao, Changwei Yan, Haoyu Cui, Zhihao Yan 等 (7 位作者)</div>
+        <div class="paper-abstract">The rapid growth of LLMs demands high-throughput, memory-capacity-intensive inference on resource-constrained edge devices, where single-batch decoding remains fundamentally memory-bound. Existing out-of-core GPU-based and SSD-like accelerators are limited by DRAM-bound weight movement and inefficie...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.25699v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.25699v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">43</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.21117v1" target="_blank">Efficient Batch Search Algorithm for B+ Tree Index Structures with Level-Wise Traversal on FPGAs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.390</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Max Tzschoppe, Martin Wilhelm, Sven Groppe, Thilo Pionteck</div>
+        <div class="paper-abstract">This paper introduces a search algorithm for index structures based on a B+ tree, specifically optimized for execution on a field-programmable gate array (FPGA). Our implementation efficiently traverses and reuses tree nodes by processing a batch of search keys level by level. This approach reduces ...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.21117v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.21117v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">44</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10187v1" target="_blank">WaveTune: Wave-aware Bilinear Modeling for Efficient GPU Kernel Auto-tuning</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.389</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Kaixuan Zhang, Chutong Ding, Shiyou Qian, Luping Wang 等 (9 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究GPU 核函数相关技术。 核心内容：The rapid adoption of Large Language Models (LLMs) has made GPU inference efficiency an increasingly critical system concern。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10187v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.10187v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">45</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.00519v2" target="_blank">Silicon Showdown: Performance, Efficiency, and Ecosystem Barriers in Consumer-Grade LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.389</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PF</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Abdurrahman Javat, Allan Kazakov</div>
+        <div class="paper-abstract">The operational landscape of local Large Language Model (LLM) inference has shifted from lightweight models to datacenter-class weights exceeding 70B parameters, creating profound systems challenges for consumer hardware. This paper presents a systematic empirical analysis of the Nvidia and Apple Si...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.00519v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.00519v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">46</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02473v1" target="_blank">Analyzing Reverse Address Translation Overheads in Multi-GPU Scale-Up Pods</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.388</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Amel Fatima, Tuan Ta, Bradford M. Beckmann</div>
+        <div class="paper-abstract">Distributed ML workloads rely heavily on collective communication across multi-GPU, multi-node systems. Emerging scale-up fabrics, such as NVLink and UALink, enable direct memory access across nodes but introduce a critical destination-side translation step: translating Network Physical Addresses (N...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02473v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.02473v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">47</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.17692v1" target="_blank">AccelCIM: Systematic Dataflow Exploration for SRAM Compute-in-Memory Accelerator</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chenhao Xue, Yukun Wang, An Guo, Yuhui Shi 等 (14 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：SRAM-based compute-in-memory (CIM) offers high computational density and energy efficiency for deep neural network (DNN) accelerators, but its limited...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.17692v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.17692v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">48</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.28239v3" target="_blank">A Switch-Centric In-Network Architecture for Accelerating LLM Inference in Shared-Memory Network</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Aojie Jiang, Kang Zhu, Zhiheng Zhang, Zhengxu Su 等 (7 位作者)</div>
+        <div class="paper-abstract">In-network computing techniques, exemplified by NVLink SHARP (NVLS), offer a promising approach to addressing the communication bottlenecks in LLM inference by offloading collective operations such as All-Reduce to switches. However, the accelerator-centric architecture of NVLS suffers from two fund...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.28239v3" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.28239v3" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">49</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.00028v1" target="_blank">Sequence-Aware Split Heuristic to Mitigate SM Underutilization in FlashAttention-3 Low-Head-Count Decoding</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Martí Llopart Font, Javier Hernando, Cristina España-Bonet</div>
+        <div class="paper-abstract">The standard FlashAttention-3 heuristic exhibits a GPU occupancy bottleneck in low-head-count decoding configurations because it disables sequence splitting based on sequence length alone, underutilizing the Streaming Multiprocessors of Hopper GPUs. Our proposed sequence-aware split policy mitigates...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.00028v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.00028v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">50</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05607v1" target="_blank">Accelerating MoE with Dynamic In-Switch Computing on Multi-GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.381</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Qijun Zhang, Chen Zhang, Zhuoshan Zhou, Haibo Wang 等 (13 位作者)</div>
+        <div class="paper-abstract">Mixture-of-Experts (MoE) has been adopted by many leading large models to reduce computational requirements. However, frequent inter-GPU communication in MoE expert parallelism (EP) becomes a performance challenge. We observe substantial redundant inter-GPU data transfers in MoE that can be potentia...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05607v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05607v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">51</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15361v1" target="_blank">GEN-Graph: Heterogeneous PIM Accelerator for General Computational Patterns in Graph-based Dynamic Programming</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.379</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.SI</span> 
+        </div>
+        <div class="paper-authors">Yanru Chen, Runyang Tian, Zheyu Li, Mahbod Afarin 等 (6 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：While graph-based dynamic programming (DP) is a cornerstone of genomics and network analytics, its efficiency is hampered by fundamentally conflicting...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15361v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.15361v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">52</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.12618v1" target="_blank">CODO: An Automated Compiler for Comprehensive Dataflow Optimization</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.376</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Weichuang Zhang, Yiquan Wang, Xinzhou Zhang, Chi Zhang 等 (9 位作者)</div>
+        <div class="paper-abstract">FPGAs are well-suited for dataflow architectures that process data in a streaming or pipelined manner, thus satisfying the high computational and communication demands of emerging applications. However, manually implementing an efficient dataflow architecture for large-scale applications is still ch...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.12618v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.12618v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">53</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.17435v1" target="_blank">ZipServ: Fast and Memory-Efficient LLM Inference with Hardware-Aware Lossless Compression</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.375</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Ruibo Fan, Xiangrui Yu, Xinglin Pan, Zeyu Li 等 (8 位作者)</div>
+        <div class="paper-abstract">Lossless model compression holds tremendous promise for alleviating the memory and bandwidth bottlenecks in bit-exact Large Language Model (LLM) serving. However, existing approaches often result in substantial inference slowdowns due to fundamental design mismatches with GPU architectures: at the k...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.17435v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.17435v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">54</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15128v1" target="_blank">SCENIC: Stream Computation-Enhanced SmartNIC</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.374</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.NI</span> 
+        </div>
+        <div class="paper-authors">Benjamin Ramhorst, Maximilian Jakob Heer, Luhao Liu, Heejae Kim 等 (7 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究数据处理相关技术。 核心内容：Although modern, AI-centric datacenters heavily rely on SmartNICs, existing devices impose a hard trade-off。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15128v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.15128v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">55</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.06668v1" target="_blank">SwarmIO: Towards 100 Million IOPS SSD Emulation for Next-generation GPU-centric Storage Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Hyeseong Kim, Gwangoo Yeo, Minsoo Rhu</div>
+        <div class="paper-abstract">GPU-initiated I/O has emerged as a key mechanism for achieving high-throughput storage access by leveraging massive GPU thread-level parallelism, while recent industry trends point toward SSDs optimized for ultra-high random-read IOPS. Together, these trends are enabling the emergence of IOPS-optimi...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.06668v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.06668v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">56</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.08908v2" target="_blank">HyDRA: Deadline and Reuse-Aware Cacheability for Hardware Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ayushi Agarwal, Anannya Mathur, Preeti Ranjan Panda</div>
+        <div class="paper-abstract">The system-level cache is a critical resource shared by processor cores and domain-specific accelerators in heterogeneous systems on chips (SoCs). The strict QoS requirements of accelerators, such as deadlines, can lead to severe performance degradation of processor cores. Thus, managing the shared ...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.08908v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.08908v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">57</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.17862v1" target="_blank">M100: An Orchestrated Dataflow Architecture Powering General AI Computing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yan Xie, Changkui Mao, Changsong Wu, Chao Lu 等 (37 位作者)</div>
+        <div class="paper-abstract">As deep learning-based AI technologies gain momentum, the demand for general-purpose AI computing architectures continues to grow. While GPGPU-based architectures offer versatility for diverse AI workloads, they often fall short in efficiency and cost-effectiveness. Various Domain-Specific Architect...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.17862v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.17862v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">58</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10113v1" target="_blank">FlexVector: A SpMM Vector Processor with Flexible VRF for GCNs on Varying-Sparsity Graphs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.372</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Bohan Li, Shengmin Li, Xinyu Shi, Enyi Yao 等 (6 位作者)</div>
+        <div class="paper-abstract">Graph Convolutional Networks (GCNs) are widely adopted for tasks involving relational or graph-structured data and can be formulated as two-stage sparse-dense matrix multiplication (SpMM) during inference. However, existing accelerators often struggle with the irregular workloads induced by power-la...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10113v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.10113v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">59</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02110v1" target="_blank">FlatAttention: Dataflow and Fabric Collectives Co-Optimization for Large Attention-Based Model Inference on Tile-Based Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.372</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chi Zhang, Luca Colagrande, Renzo Andri, Luca Benini</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Attention accounts for an increasingly dominant fraction of total computation during inference for mixture-of-experts (MoE) models, making efficient a...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02110v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.02110v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">60</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04773v2" target="_blank">A comparative study on power delivery aspects of compute-in/near-memory approaches using DRAM</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.371</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Siyuan Ma, Lizy Kurian John</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Compute-in-memory (PIM) mitigates the memory wall by performing computation within memory, reducing data movement and improving energy efficiency。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04773v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.04773v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">61</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05639v1" target="_blank">TokenStack: A Heterogeneous HBM-PIM Architecture and Runtime for Efficient LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.368</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Zhuoran Li, Zhuohang Bian, Zihao Huang, Guangyu Sun 等 (6 位作者)</div>
+        <div class="paper-abstract">Large language model (LLM) serving is now limited by the key-value (KV) cache. During decode, each new token rereads prior KV state, so attention becomes a bandwidth- and capacity-heavy memory task. HBM-PIM helps by moving attention closer to memory, but current stack organizations still waste resou...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05639v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05639v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">62</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.21167v1" target="_blank">PC2IM: An Efficient In-Memory Computing Accelerator for 3D Point Cloud</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.364</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Dengfeng Wang, Shunqin Cai, Yanan Sun</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：3D point cloud neural networks have significantly enhanced the perceptual capabilities of resource-limited mobile intelligent systems。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.21167v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.21167v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">63</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.22936v1" target="_blank">ACALSim: A Scalable Parallel Simulation Framework for High-Performance System Design Space Exploration</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.363</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Wei-Fen Lin, Jen-Chien Chang, Yen-Po Chen, Zi-Yi Tai 等 (8 位作者)</div>
+        <div class="paper-abstract">Architectural simulation has become the critical bottleneck limiting design space exploration for high-performance computing systems. Modern GPUs and AI accelerators -- with hundreds to thousands of tightly-coupled components -- demand simulation frameworks that deliver efficient parallelism and sca...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.22936v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.22936v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">64</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.07881v1" target="_blank">AccelSync: Verifying Synchronization Coverage in Accelerator Pipeline Programs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.363</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hangcheng An, Rui Wang, Depei Qian</div>
+        <div class="paper-abstract">AI accelerator operators are compiled into multi-stage pipeline programs where DMA, vector, matrix, and scalar units execute concurrently on shared on-chip buffers. A missing or misplaced synchronization primitive introduces hardware-visible data races that escape both simulation and golden testing,...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.07881v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.07881v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">65</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.14552v2" target="_blank">DEEP-GAP: Deep-learning Evaluation of Execution Parallelism in GPU Architectural Performance</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.363</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Kathiravan Palaniappan</div>
+        <div class="paper-abstract">Modern datacenters increasingly rely on low-power, single-slot inference accelerators to balance performance, energy efficiency, and rack density constraints. The NVIDIA T4 GPU has become widely deployed due to strong performance per watt and mature software support. Its successor, the NVIDIA L4 GPU...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.14552v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.14552v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">66</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.01514v1" target="_blank">MANOJAVAM: A Scalable, Unified FPGA Accelerator for Matrix Multiplication and Singular Value Decomposition in Principal Component Analysis</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.363</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Srivaths Ramasubramanian, Anjali Devarajan, Kousthub P Kaivar, Vibha Shrestta 等 (8 位作者)</div>
+        <div class="paper-abstract">Principal Component Analysis (PCA) is widely used for dimensionality reduction in hyperspectral imaging, genomics, and neurosciences. However, it suffers from computational bottlenecks in matrix multiplication and singular value decomposition (SVD). Prior PCA hardware accelerators either target only...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.01514v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.01514v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">67</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04236v1" target="_blank">NEURA: A Unified and Retargetable Compilation Framework for Coarse-Grained Reconfigurable Architectures</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.362</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PL</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Shangkun Li, Jinming Ge, Diyuan Tao, Zeyu Li 等 (9 位作者)</div>
+        <div class="paper-abstract">Coarse-Grained Reconfigurable Architectures (CGRAs) are a promising and versatile accelerator platform, offering a balance between the performance and efficiency of specialized accelerators and the software programmability. However, their full potential is severely hindered by control flow in accele...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04236v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.04236v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">68</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.17627v3" target="_blank">The Program Hypergraph: Multi-Way Relational Structure for Geometric Algebra, Spatial Compute, and Physics-Aware Compilation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.362</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PL</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Houston Haynes</div>
+        <div class="paper-abstract">The Program Semantic Graph (PSG) introduced in prior work on Dimensional Type Systems and Deterministic Memory Management encodes compilation-relevant properties as binary edge relations between computation nodes. This representation is adequate for scalar and tensor computations, but becomes struct...</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.17627v3" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.17627v3" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">69</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.16213v1" target="_blank">ADS-IMC: Accelerating Data Sorting with In-Memory Computation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.353</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Narendra Singh Dhakad, Santosh Kumar Vishvakarma</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Sorting is a fundamental operation across numerous computational domains。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.16213v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.16213v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">70</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.15098v1" target="_blank">Accelerating State-Vector Quantum Simulation on Integrated GPUs via Cache Locality Optimization: A Cross-Architecture Evaluation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.351</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">quant-ph</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Gabriel Fernandes Thomaz, Jerusa Marchi, Eduarda Rodrigues Monteiro, Fernando Augusto Caletti de Barros 等 (5 位作者)</div>
+        <div class="paper-abstract">The classical simulation of quantum algorithms is a crucial tool for circuit development, testing, and validation. Although acceleration using GPUs significantly reduces simulation time, most high-performance simulators rely on vendor-specific frameworks that target data-center hardware. To broaden ...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.15098v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.15098v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">71</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.11277v1" target="_blank">Sieve: Dynamic Expert-Aware PIM Acceleration for Evolving Mixture-of-Experts Models</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.349</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jungwoo Kim, Rubens Lacouture, Genghan Zhang, Gina Sohn 等 (8 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models (LLMs)。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.11277v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.11277v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">72</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.16812v1" target="_blank">ODIN-Based CPU-GPU Architecture with Replay-Driven Simulation and Emulation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.347</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Nij Dorairaj, Debabrata Chatterjee, Hong Wang, Hong Jiang 等 (11 位作者)</div>
+        <div class="paper-abstract">Integration of CPU and GPU technologies is a key enabler for modern AI and graphics workloads, combining control-oriented processing with massive parallel compute capability. As systems evolve toward chiplet-based architectures, pre-silicon validation of tightly coupled CPU-GPU subsystems becomes in...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.16812v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.16812v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">73</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.09490v1" target="_blank">Not All Thoughts Need HBM: Semantics-Aware Memory Hierarchy for LLM Reasoning</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.345</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CL</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Aojie Yuan, Tianqi Shen, Dajun Zhang</div>
+        <div class="paper-abstract">Reasoning LLMs produce thousands of chain-of-thought tokens whose KV cache must reside in scarce GPU HBM. The dominant response -- permanently evicting low-importance tokens -- is catastrophic for reasoning: accuracy collapses to 0-2.5% when half the cache is removed. We ask a different question: mu...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.09490v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.09490v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">74</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16007v1" target="_blank">MemExplorer: Navigating the Heterogeneous Memory Design Space for Agentic Inference NPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.343</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Haoran Wu, Zeyu Cao, Yao Lai, Binglei Lou 等 (18 位作者)</div>
+        <div class="paper-abstract">Emerging agentic LLM workloads are driving rapidly growing demand on both memory capacity and bandwidth, with different phases of inference (e.g., prefill and decode) imposing distinct requirements. Industry is responding by composing heterogeneous accelerators into single interconnected systems, as...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.16007v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.16007v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">75</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.00174v1" target="_blank">DPU or GPU for Accelerating Neural Networks Inference -- Why not both? Split CNN Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.343</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.CV</span> 
+        </div>
+        <div class="paper-authors">Ali Emre Oztas, Mahir Demir, James Garside, Mikel Luj'an</div>
+        <div class="paper-abstract">Video and image streaming on edge devices requires low latency. To address this, Neural Networks (NNs) are widely used, and prior work mainly focuses on accelerating them with single hardware units such as Graphics Processing Units (GPUs), Field Programmable Gate Arrays (FPGAs), and Deep Learning Pr...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.00174v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.00174v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">76</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.07287v1" target="_blank">Symbolic Polyhedral-Based Energy Analysis for Nested Loop Programs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.340</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Avinash Mahesh Nirmala, Dominik Walter, Frank Hannig, Jürgen Teich</div>
+        <div class="paper-abstract">This work presents a symbolic approach for estimating the energy consumption for nested loop programs when mapped and scheduled on parallel processor array accelerator architectures. Instead of simulation-based evaluation, we derive a methodology for symbolic energy analysis that captures the impact...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.07287v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.07287v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">77</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.19932v1" target="_blank">Efficient Page Migration in Hybrid Memory Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.340</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Upasna, Venkata Kalyan Tavva</div>
+        <div class="paper-abstract">Heterogeneous Memory Architecture (HMA) aims to optimize memory usage by leveraging a combination of memory types, such as high-bandwidth memory (HBM), commodity DRAM, and non-volatile memory (NVM), when utilized as main memory. To achieve maximum performance benefits, frequently accessed data pages...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.19932v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.19932v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">78</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.08445v1" target="_blank">PG-MDP: Profile-Guided Memory Dependence Prediction for Area-Constrained Cores</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.339</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PL</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Luke Panayi, Johan Jino, Sebastian S. Kim, Alberto Ros 等 (8 位作者)</div>
+        <div class="paper-abstract">Memory Dependence Prediction (MDP) is a speculative technique to determine which stores, if any, a given load will depend on. Area-constrained cores are increasingly relevant in various applications such as energy-efficient or edge systems, and often have limited space for MDP tables. This leads to ...</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.08445v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.08445v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">79</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.07722v1" target="_blank">Post-Moore Technologies for Plasma Simulation: A Community Roadmap</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.338</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.ET</span> <span class="tag">cs.AR</span> <span class="tag">cs.CE</span> 
+        </div>
+        <div class="paper-authors">Luca Pennati, Erik M. Åsgrim, Jeremy J. Williams, Stefan Costea 等 (24 位作者)</div>
+        <div class="paper-abstract">Plasma simulations are among the most computationally demanding scientific workloads, combining high-dimensional kinetic evolution, particle-mesh coupling, field solves, and data-intensive communication. As general-purpose processor scaling slows, post-Moore technologies are being explored to addres...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.07722v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.07722v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">80</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.13969v1" target="_blank">GEM3D CIM General Purpose Matrix Computation Using 3D Integrated SRAM eDRAM Hybrid Compute In Memory on Memory Architecture</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.338</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Subhradip Chakraborty, Ankur Singh, Akhilesh R. Jaiswal</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：With the rapid growth of deep neural networks (DNNs), compute-in-memory (CIM) has emerged as a promising energy-efficient paradigm for accelerating mu...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.13969v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.13969v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">81</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.03446v1" target="_blank">Fast Cross-Operator Optimization of Attention Dataflow</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.338</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Haodong Chang, Hailiang Hu, Zhenrui Wang, Yu Gong 等 (8 位作者)</div>
+        <div class="paper-abstract">Attention is a fundamental computational kernel that accounts for the majority of the workload in transformer and LLM computing. Optimizing dataflow is crucial for enhancing both performance and energy efficiency in attention computation. This optimization involves a range of decisions, such as tili...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.03446v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.03446v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">82</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.22535v1" target="_blank">SCALE-Sim TPU: Validating and Extending SCALE-Sim for TPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.338</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Jingtian Dang, Ritik Raj, Changhai Man, Jianming Tong 等 (5 位作者)</div>
+        <div class="paper-abstract">Cycle-accurate simulators are widely used to study systolic accelerators, yet their accuracy and usability are often limited by weak validation against real hardware and poor integration with modern ML compiler stacks. This paper presents SCALE-Sim TPU, a validated and extended version of SCALE-Sim ...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.22535v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.22535v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">83</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.21952v1" target="_blank">NasZip: Software and Hardware Co-Design to Accelerate Approximate Nearest Neighbor Search with DIMM-Based Near-Data Processing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.337</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Cheng Zou, Shuo Yang, Chen Nie, Yu Zou 等 (9 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究数据处理、近邻搜索相关技术。 核心内容：As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge a...。</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.21952v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.21952v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">84</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.13523v1" target="_blank">ATLAAS: Automatic Tensor-Level Abstraction of Accelerator Semantics</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.336</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ruijie Gao, Haoran Jin, Jirong Yang, Nathaniel Bleier</div>
+        <div class="paper-abstract">Numerous tensor accelerator designs have been proposed, yet most lack well-documented ISAs and compiler backends, limiting evaluation to a handful of operators. Recent work has shown that given a tensor-level ISA specification, complete software stacks including compiler backends can be automaticall...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.13523v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.13523v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">85</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.08913v2" target="_blank">Non-Monotonic Latency in Apple MPS Decoding: KV Cache Interactions and Execution Regimes</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.336</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AR</span> <span class="tag">cs.CL</span> 
+        </div>
+        <div class="paper-authors">Willy Fitra Hendria</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Autoregressive inference is typically assumed to scale predictably with decoding length, with latency increasing smoothly as generated sequence length...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.08913v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.08913v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">86</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.23549v1" target="_blank">DAE4HLS: Exposing Memory-Level Parallelism for High-Level Synthesis using Explicit Decoupling</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.336</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">David Metz, Magnus Själander</div>
+        <div class="paper-abstract">High-level synthesis (HLS) performs well for simple memory access patterns, such as for sequential accesses that can be turned into bursts, or for memory accesses into small datasets that can be stored in scratchpads. This limits HLS to accelerating only the low-hanging fruit, where memory-level par...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.23549v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.23549v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">87</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.15645v1" target="_blank">ICP: Exploiting Instruction Correlation for Prefetching Irregular Memory Accesses</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.334</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Mengming Li, Chenlu Miao, Buqing Xu, Qijun Zhang 等 (10 位作者)</div>
+        <div class="paper-abstract">Irregular memory accesses pose challenges for effective and efficient data prefetching. While temporal prefetchers have recently shown promise for irregular memory access patterns, their effectiveness fundamentally depends on temporal address recurrence and large metadata storage. When memory addres...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.15645v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.15645v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">88</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.24785v1" target="_blank">Cloud to Edge: Benchmarking LLM Inference On Hardware-Accelerated Single-Board Computers</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.334</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Harri Renney, Fouad Trad, Michael Mattarock, Zena Wood</div>
+        <div class="paper-abstract">Large language models (LLMs) are becoming increasingly capable at small parameter scales. At the same time, conventional cloud-centric deployment introduces challenges around data privacy, latency, and cost that are acute in operational technology and defence environments. Advances in model distilla...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.24785v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.24785v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">89</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.24022v1" target="_blank">Adaptive KV Cache Reuse for Fast Long-Context LLM Serving</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.333</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Fei li, Song Liu, Yan Liu, Jinhua Cui 等 (7 位作者)</div>
+        <div class="paper-abstract">In long-context Large Language Model (LLM) inference, the Time-To-First-Token (TTFT) latency incurred by the prefill stage has become the foremost bottleneck limiting interactive performance and deployment cost. KV Cache reuse offers a direct path to reduce redundant prefill, yet traditional prefix ...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.24022v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.24022v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">90</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.14785v1" target="_blank">SkipOPU: An FPGA-based Overlay Processor for Large Language Models with Dynamically Allocated Computation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.333</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Zicheng He, Anhao Zhao, Xiaoyu Shen, Chen Wu 等 (5 位作者)</div>
+        <div class="paper-abstract">Large language models (LLMs) have achieved remarkable performance across a wide range of tasks, but their inference efficiency remains a critical bottleneck due to rapidly growing parameters. Recent advances in dynamic computation allocation address this challenge by exploiting the highly uneven con...</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.14785v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.14785v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">91</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.12715v1" target="_blank">EPAC: The Last Dance</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.333</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Filippo Mantovani, Fabio Banchelli, Pablo Vizcaino, Roger Ferrer 等 (39 位作者)</div>
+        <div class="paper-abstract">This paper presents EPAC, a RISC-V-based accelerator chip developed within the European Processor Initiative (EPI) as part of a multi-year, multi-partner effort to build a European HPC processor ecosystem. EPAC is implemented in GlobalFoundries 22FDX (GF22FDX) technology, covers an area of 27 sq mm ...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.12715v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.12715v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">92</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.07935v1" target="_blank">The Hyperscale Lottery: How State-Space Models Have Sacrificed Edge Efficiency</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.332</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Robin Geens, Jonas De Schouwer, Marian Verhelst, Thierry Tambe</div>
+        <div class="paper-abstract">The Hardware Lottery posits that research directions are dictated by available silicon compute platforms. We identify a derivative phenomenon, the Hyperscale Lottery, where model architectures are optimized for cloud throughput at the expense of algorithmic efficiency. While State-Space Models (SSMs...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.07935v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.07935v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">93</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05920v1" target="_blank">LLM-Driven Design Space Exploration of FPGA-based Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.331</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Vinamra Sharma, Xingjian Fu, Jude Haris, José Cano</div>
+        <div class="paper-abstract">Designing field-programmable gate array (FPGA)-based accelerators for modern artificial intelligence workloads requires navigating a large and complex hardware design space encompassing architectural parameters, dataflow strategies, and memory hierarchies, making the process time-consuming and resou...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05920v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.05920v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">94</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.25692v1" target="_blank">A Unified Memory Perspective for Probabilistic Trustworthy AI</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.331</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Xueji Zhao, Likai Pei, Jianbo Liu, Kai Ni 等 (5 位作者)</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Trustworthy artificial intelligence increasingly relies on probabilistic computation to achieve robustness, interpretability, security and privacy。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.25692v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.25692v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">95</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04172v1" target="_blank">täkōFormal: Enabling Robust Software for Programmable Memory Hierarchies (Extended Version)</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.330</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.LO</span> 
+        </div>
+        <div class="paper-authors">Pranav Srinivasan, Manos Kapritsos, Yatin A. Manerkar</div>
+        <div class="paper-abstract">Accelerators provide large performance and energy-efficiency benefits, but can significantly change the hardware-software interface. The täkō programmable memory hierarchy accelerates data movement by enabling programmers to run user-defined callback functions triggered by cache misses, evictions, a...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04172v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.04172v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">96</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.21203v1" target="_blank">Supporting Dynamic Control-Flow Execution for Runtime Reconfigurable Processors</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.330</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hassan Nassar, Rafik Youssef, Lars Bauer, Jörg Henkel</div>
+        <div class="paper-abstract">As the need for more computing power grows, traditional methods are hitting limits. To boost performance, we're expanding Central Processing Unit (CPU) capabilities and using specialized hardware accelerators. For example, mobile devices usually have cameras, video encoding, and audio accelerators. ...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.21203v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2605.21203v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">97</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.28943v1" target="_blank">Differentiable Initialization-Accelerated CPU-GPU Hybrid Combinatorial Scheduling</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.329</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Mingju Liu, Jiaqi Yin, Alvaro Velasquez, Cunxi Yu</div>
+        <div class="paper-abstract">This paper presents a hybrid CPU-GPU framework for solving combinatorial scheduling problems formulated as Integer Linear Programming (ILP). While scheduling underpins many optimization tasks in computing systems, solving these problems optimally at scale remains a long-standing challenge due to the...</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.28943v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2603.28943v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">98</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.25377v1" target="_blank">TetrisG-SDK: Efficient Convolutional Layer Mapping with Adaptive Windows and Grouped Convolutions for Fast In-Memory Computing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.324</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Ke Dong, Kejie Huang, Tao Luo, Bo Wang</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究内存数据库相关技术。 核心内容：Shifted-and-Duplicated-Kernel (SDK) mapping has emerged as an effective strategy to accelerate convolutional layers on compute-in-memory (CIM) hardwar...。</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.25377v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.25377v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">99</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.23467v1" target="_blank">Hybrid JIT-CUDA Graph Optimization for Low-Latency Large Language Model Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.323</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Divakar Kumar Yadav, Tian Zhao</div>
+        <div class="paper-abstract"><strong>中文简述：</strong>本文研究CUDA相关技术。 核心内容：Large Language Models (LLMs) have achieved strong performance across natural language and multimodal tasks, yet their practical deployment remains con...。</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.23467v1" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.23467v1" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div>
+            <span class="paper-rank">100</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10716v2" target="_blank">L-PCN: A Point Cloud Accelerator Exploiting Spatial Locality through Octree-based Islandization</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度: 0.323</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yiming Gao, Jieming Yin, Yuxiang Wang, Xiangru Chen 等 (8 位作者)</div>
+        <div class="paper-abstract">Existing Point Cloud Networks (PCNs) have proven to achieve great success in many point cloud tasks such as object part segmentation, shape classification, and so on. The most popular point-based PCNs are usually composed of two sequential steps: Data Structuring (DS) and Feature Computation (FC). I...</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10716v2" target="_blank">arXiv 页面</a>
+            <a href="https://arxiv.org/pdf/2604.10716v2" target="_blank">PDF 下载</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>由 <a href="https://github.com/nysa-liu/paper-daily">Paper Daily</a> 自动生成（GPU DB 聚焦版）</p>
+        <p>上次运行：2026-05-28 10:50:25 &middot; 数据来源：arXiv cs.AR / cs.DB / cs.DC</p>
+    </footer>
+</body>
+</html>

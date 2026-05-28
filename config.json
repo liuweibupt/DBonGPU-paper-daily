@@ -1,11 +1,9 @@
 {
     "arxiv": {
         "categories": [
-            "cs.AI",
-            "cs.LG",
-            "cs.CL",
-            "cs.CV",
-            "stat.ML"
+            "cs.AR",
+            "cs.DB",
+            "cs.DC"
         ],
         "max_results": 100,
         "api_url": "http://export.arxiv.org/api/query"
@@ -39,6 +37,6 @@
     "web": {
         "host": "0.0.0.0",
         "port": 8501,
-        "title": "Paper Daily - AI Research Tracker"
+        "title": "Paper Daily - GPU Database Research Tracker"
     }
 }

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU 数据库论文日报 - 2026-05-26</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-red: #f85149;
+            --score-high: #3fb950;
+            --score-mid: #d29922;
+            --score-low: #8b949e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 2em;
+            background: linear-gradient(135deg, var(--accent), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+        header .date {
+            color: var(--accent);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .page-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .page-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 18px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.95em;
+            transition: all 0.2s;
+        }
+        .page-nav a:hover, .page-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .page-nav a.active {
+            background: rgba(88,166,255,0.1);
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 24px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        .history-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0 30px;
+        }
+        .history-nav a {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .history-nav a:hover, .history-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .history-nav a.active {
+            background: rgba(88,166,255,0.1);
+        }
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        .paper-card.compact {
+            padding: 16px 20px;
+        }
+        .paper-rank {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-green));
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .compact .paper-rank {
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 0.8em;
+        }
+        .paper-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            display: inline;
+            vertical-align: middle;
+        }
+        .compact .paper-title {
+            font-size: 1.0em;
+        }
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        .paper-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .score-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .score-high { background: rgba(63,185,80,0.15); color: var(--score-high); }
+        .score-mid { background: rgba(210,153,34,0.15); color: var(--score-mid); }
+        .score-low { background: rgba(139,148,158,0.1); color: var(--score-low); }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            background: rgba(88,166,255,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(88,166,255,0.2);
+        }
+        .paper-authors {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        .paper-abstract {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-top: 12px;
+            line-height: 1.7;
+        }
+        .compact .paper-abstract {
+            font-size: 0.88em;
+            margin-top: 8px;
+        }
+        .paper-reasons {
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: rgba(63,185,80,0.05);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9em;
+            color: var(--accent-green);
+        }
+        .paper-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 12px;
+        }
+        .paper-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .paper-links a:hover {
+            border-color: var(--accent);
+            background: rgba(88,166,255,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            header h1 { font-size: 1.5em; }
+            .paper-card { padding: 16px; }
+            .paper-title { font-size: 1.05em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GPU 数据库论文日报</h1>
+        <div class="subtitle">自动追踪 GPU 加速数据库领域最新研究</div>
+        <div class="date">2026-05-26</div>
+        <nav class="page-nav">
+            <a href="index.html" class="active">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+        </nav>
+    </header>
+
+    <nav class="history-nav"><a href="2026-05-26.html">2026-05-26</a> <a href="2026-05-27.html">2026-05-27</a> <a href="2026-05-28.html">2026-05-28</a> <a href="index.html" class="active">2026-05-26</a></nav>
+
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-label">推荐论文数</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-label">高相关度</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2026-05-26</div>
+            <div class="stat-label">更新日期</div>
+        </div>
+    </div>
+
+    
+
+    <footer>
+        <p>由 <a href="https://github.com/nysa-liu/paper-daily">Paper Daily</a> 自动生成（GPU DB 聚焦版）</p>
+        <p>上次运行：2026-05-28 10:41:14 &middot; 数据来源：arXiv cs.AR / cs.DB / cs.DC</p>
+    </footer>
+</body>
+</html>
