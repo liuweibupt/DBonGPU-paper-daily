@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPU 数据库论文日报 - 2026-05-26</title>
+    <title>GPU 数据库论文日报 - 2026-05-28</title>
     <style>
         :root {
             --bg: #0a0e17;
@@ -172,11 +172,14 @@
             margin-top: 4px;
         }
 
-        /* Paper List */
+        /* Paper List - Two Column Grid */
         .paper-list {
-            max-width: 860px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
         /* Paper Card */
@@ -185,9 +188,10 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 24px;
-            margin-bottom: 16px;
             transition: all 0.25s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .paper-card:hover {
             border-color: var(--border-hover);
@@ -286,6 +290,58 @@
             margin-top: 8px;
         }
 
+        .paper-abstract-cn {
+            color: var(--text);
+            font-size: 0.93em;
+            margin-top: 12px;
+            line-height: 1.8;
+            background: rgba(96,165,250,0.04);
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .compact .paper-abstract-cn {
+            font-size: 0.88em;
+            margin-top: 8px;
+            padding: 8px 12px;
+        }
+
+        .paper-takeaway {
+            margin-top: 10px;
+            padding: 8px 14px;
+            background: rgba(52,211,153,0.06);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-green);
+        }
+        .compact .paper-takeaway {
+            font-size: 0.84em;
+            margin-top: 8px;
+            padding: 6px 12px;
+        }
+
+        .paper-innovation {
+            margin-top: 8px;
+            padding: 8px 14px;
+            background: rgba(251,191,36,0.06);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-orange);
+        }
+        .compact .paper-innovation {
+            font-size: 0.84em;
+            padding: 6px 12px;
+        }
+
+        .section-label {
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
         .paper-reasons {
             margin-top: 12px;
             padding: 10px 14px;
@@ -372,13 +428,16 @@
         @media (max-width: 640px) {
             .hero { padding: 40px 16px 20px; }
             .hero h1 { font-size: 1.7em; }
-            .paper-list { padding: 0 12px; }
+            .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
             .paper-card { padding: 16px; }
             .paper-title { font-size: 1.02em; }
             .top-nav { padding: 10px 12px; }
             .nav-brand { font-size: 1em; }
             .stats-row { gap: 10px; padding: 0 12px; }
             .stat-card { padding: 12px 18px; min-width: 90px; }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+            .paper-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -396,14 +455,14 @@
     <section class="hero">
         <h1>GPU 数据库论文日报</h1>
         <p class="hero-desc">自动追踪 GPU 加速数据库领域最新研究进展</p>
-        <div class="hero-date">2026-05-26</div>
+        <div class="hero-date">2026-05-28</div>
     </section>
 
-    <nav class="date-nav"><a href="2026-05-28.html" class="">2026-05-28</a><a href="2026-05-27.html" class="">2026-05-27</a><a href="2026-05-26.html" class="active">2026-05-26</a></nav>
+    <nav class="date-nav"><a href="2026-05-28.html" class="active">2026-05-28</a><a href="2026-05-27.html" class="">2026-05-27</a><a href="2026-05-26.html" class="">2026-05-26</a></nav>
 
     <div class="stats-row">
         <div class="stat-card">
-            <div class="stat-value">1</div>
+            <div class="stat-value">0</div>
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
@@ -411,38 +470,25 @@
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">2026-05-26</div>
+            <div class="stat-value">2026-05-28</div>
             <div class="stat-label">更新日期</div>
         </div>
     </div>
 
     <div class="paper-list">
         
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2512.02862v3" target="_blank">PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.648</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Jigao Luo, Nils Boeschen, Muhammad El-Hindi, Carsten Binnig</div>
-        <div class="paper-abstract">The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered se...</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2512.02862v3" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2512.02862v3" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
+            <div class="empty-state">
+                <div class="empty-icon">📭</div>
+                <div class="empty-text">今日暂无符合条件的 GPU 数据库论文</div>
+                <div class="empty-hint">arXiv 可能在当天尚未发布新论文，请稍后再试</div>
+            </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-05-28 14:45:09</span>
+            <span>上次运行：2026-05-28 15:05:18</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>

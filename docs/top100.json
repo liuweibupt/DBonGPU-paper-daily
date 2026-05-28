@@ -26,7 +26,10 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：Private information retrieval (PIR) allows private database queries; however, it is hindered by intense server-side computation and memory traffic。"
+    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：Private information retrieval (PIR) allows private database queries; however, it is hindered by intense server-side computation and memory traffic。",
+    "abstract_cn": "本文研究GPU 加速、隐私信息检索、多 GPU相关技术。\n\n核心内容：Private information retrieval (PIR) allows private database queries; however, it is hindered by intense server-side computation and memory traffic. Numerous modern lattice-based PIR protocols consist of three phases: ExpandQuery (expanding a query into encrypted indices), RowSel (encrypted row selec...。",
+    "takeaway": "本文聚焦GPU 加速、隐私信息检索、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2605.05628v1",
@@ -61,7 +64,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究线程块相关技术。 核心内容：Tensor parallelism (TP) in large-scale LLM inference and training introduces frequent collective operations that dominate inter-GPU communication。"
+    "summary_cn": "本文研究线程块相关技术。 核心内容：Tensor parallelism (TP) in large-scale LLM inference and training introduces frequent collective operations that dominate inter-GPU communication。",
+    "abstract_cn": "本文研究张量并行、大模型推理、多 GPU相关技术。\n\n核心内容：Tensor parallelism (TP) in large-scale LLM inference and training introduces frequent collective operations that dominate inter-GPU communication. While in-switch computing, exemplified by NVLink SHARP (NVLS), accelerates collective operations by reducing redundant data transfer, its communication-c...。",
+    "takeaway": "本文聚焦张量并行、大模型推理、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.18120v1",
@@ -91,7 +97,10 @@
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
-    "summary_cn": "本文研究内存数据库、数据处理相关技术。 核心内容：The use of disaggregated or far memory systems such as CXL memory pools has renewed interest in Near-Data Processing (NDP): situating cores close to m...。"
+    "summary_cn": "本文研究内存数据库、数据处理相关技术。 核心内容：The use of disaggregated or far memory systems such as CXL memory pools has renewed interest in Near-Data Processing (NDP): situating cores close to m...。",
+    "abstract_cn": "本文研究内存数据库、数据处理相关技术。\n\n核心内容：The use of disaggregated or far memory systems such as CXL memory pools has renewed interest in Near-Data Processing (NDP): situating cores close to memory to reduce bandwidth requirements to and from the CPU. Hardware designs for such accelerators are appearing, but there lack clean, portable OS ab...。",
+    "takeaway": "本文聚焦内存数据库、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2603.28793v1",
@@ -115,7 +124,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present the first systematic cross-vendor analysis of GPU instruction set architectures spanning all four major GPU vendors: NVIDIA (PTX ISA v1.0 through v9.2, Fermi through Blackwell), AMD (RDNA 1 to 4 and CDNA 1 to 4), Intel (Gen11, Xe-LP, Xe-HPG, Xe-HPC), and Apple (G13, reverse-engineered). D...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.04783v1",
@@ -145,7 +157,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：Deploying large language models (LLMs) as cloud services raises privacy concerns as inference may leak sensitive data。"
+    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：Deploying large language models (LLMs) as cloud services raises privacy concerns as inference may leak sensitive data。",
+    "abstract_cn": "本文研究GPU 加速、大模型推理相关技术。\n\n核心内容：Deploying large language models (LLMs) as cloud services raises privacy concerns as inference may leak sensitive data. Fully Homomorphic Encryption (FHE) allows computation on encrypted data, but current FHE methods struggle with efficient and precise nonlinear function evaluation。",
+    "takeaway": "本文聚焦GPU 加速、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.00555v2",
@@ -171,7 +186,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究warp 调度相关技术。 核心内容：To efficiently support Large Language Models (LLMs), modern GPGPU architectures have introduced new features and programming paradigms, such as warp s...。"
+    "summary_cn": "本文研究warp 调度相关技术。 核心内容：To efficiently support Large Language Models (LLMs), modern GPGPU architectures have introduced new features and programming paradigms, such as warp s...。",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：To efficiently support Large Language Models (LLMs), modern GPGPU architectures have introduced new features and programming paradigms, such as warp specialization. These features enable temporal overlap between the producer and consumer, as well as between matrix multiplication and activation funct...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.23466v1",
@@ -197,7 +215,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA、GPU 核函数相关技术。 核心内容：NVIDIA's CUDA Tile (CuTile) introduces a Python-based, tile-centric abstraction for GPU kernel development that aims to simplify programming while ret...。"
+    "summary_cn": "本文研究CUDA、GPU 核函数相关技术。 核心内容：NVIDIA's CUDA Tile (CuTile) introduces a Python-based, tile-centric abstraction for GPU kernel development that aims to simplify programming while ret...。",
+    "abstract_cn": "本文研究GPU 核函数、CUDA、大模型推理相关技术。\n\n核心内容：NVIDIA's CUDA Tile (CuTile) introduces a Python-based, tile-centric abstraction for GPU kernel development that aims to simplify programming while retaining Tensor Core and Tensor Memory Accelerator (TMA) efficiency on modern GPUs. We present the first independent, cross-architecture evaluation of C...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.02120v2",
@@ -226,7 +247,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Neural Radiance Fields (NeRF) enables 3D scene reconstruction from several 2D images but incurs high rendering latency via its point-sampling design。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Neural Radiance Fields (NeRF) enables 3D scene reconstruction from several 2D images but incurs high rendering latency via its point-sampling design。",
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Neural Radiance Fields (NeRF) enables 3D scene reconstruction from several 2D images but incurs high rendering latency via its point-sampling design. 3D Gaussian Splatting (3DGS) improves on NeRF with explicit scene representation and an optimized pipeline yet still fails to meet practical real-time...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.22430v2",
@@ -252,7 +276,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：To mitigate the increasingly common underutilization of computational resources in modern GPUs, spatial sharing methods enable multiple applications to use them simultaneously. This work presents a comprehensive evaluation of NVIDIA's primary technologies to achieve that goal: Multi-Process Service ...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2603.22774v2",
@@ -278,7 +305,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Large-scale machine learning workloads increasingly rely on multi-GPU systems, yet their performance is often limited by an overlooked component: the ...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Large-scale machine learning workloads increasingly rely on multi-GPU systems, yet their performance is often limited by an overlooked component: the ...。",
+    "abstract_cn": "本文研究CUDA、大模型推理、多 GPU相关技术。\n\n核心内容：Large-scale machine learning workloads increasingly rely on multi-GPU systems, yet their performance is often limited by an overlooked component: the CPU. Through a detailed study of modern large language model (LLM) inference and serving workloads, we find that multi-GPU performance frequently degr...。",
+    "takeaway": "本文聚焦CUDA、大模型推理、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2604.27486v1",
@@ -304,7 +334,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：GPU compilers merge all data types into a single unified register file, erasing the type information that binary-analysis tools rely on. We show that type recovery from this untyped register file is the central challenge of GPU binary lifting。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.15379v1",
@@ -335,7 +368,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Modern GPUs adopt chiplet-based designs with multiple private cache hierarchies, but current programming models (CUDA/HIP) expose a flat execution hie...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Modern GPUs adopt chiplet-based designs with multiple private cache hierarchies, but current programming models (CUDA/HIP) expose a flat execution hie...。",
+    "abstract_cn": "本文研究CUDA、大模型推理相关技术。\n\n核心内容：Modern GPUs adopt chiplet-based designs with multiple private cache hierarchies, but current programming models (CUDA/HIP) expose a flat execution hierarchy that cannot express chiplet-level locality or synchronization. This mismatch leads to redundant memory traffic and poor cache utilization in me...。",
+    "takeaway": "本文聚焦CUDA、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.05888v1",
@@ -370,7 +406,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究多 GPU相关技术。\n\n核心内容：The Mixture-of-Experts (MoE) architecture is crucial for scaling large language models, but its scalability is severely limited by inter-GPU communication bottlenecks in multi-GPU systems. Although overlapping communication with computation is a widely recognized optimization, its effective deployme...。",
+    "takeaway": "本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2604.27808v1",
@@ -397,7 +436,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：High Bandwidth Memory with Processing-in-Memory (HBM-PIM) offers an opportunity to reduce data movement by executing computation directly inside memor...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：High Bandwidth Memory with Processing-in-Memory (HBM-PIM) offers an opportunity to reduce data movement by executing computation directly inside memor...。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：High Bandwidth Memory with Processing-in-Memory (HBM-PIM) offers an opportunity to reduce data movement by executing computation directly inside memory, but current commercial platforms expose limited instruction sets and require specialized software stacks. In this work, we investigate whether HBM-...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.10852v1",
@@ -422,7 +464,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理相关技术。\n\n核心内容：The push for greater efficiency in AI computation has given rise to an array of accelerator architectures that increasingly challenge the GPU's long-standing dominance. In this work, we provide a quantitative view of this evolving landscape of AI accelerators, including the Cerebras CS-3, SambaNova ...。",
+    "takeaway": "本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.05496v1",
@@ -447,7 +492,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究SIMD 并行、warp 调度相关技术。 核心内容：While GPUs dominate massively parallel computing through the single-instruction, multiple-thread (SIMT) programming model, their underlying single-ins...。"
+    "summary_cn": "本文研究SIMD 并行、warp 调度相关技术。 核心内容：While GPUs dominate massively parallel computing through the single-instruction, multiple-thread (SIMT) programming model, their underlying single-ins...。",
+    "abstract_cn": "本文研究SIMD 并行相关技术。\n\n核心内容：While GPUs dominate massively parallel computing through the single-instruction, multiple-thread (SIMT) programming model, their underlying single-instruction, multiple-data (SIMD) execution incurs substantial energy overhead from frequent register file (RF) accesses and complex control logic. We pr...。",
+    "takeaway": "本文聚焦SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2605.04178v1",
@@ -471,7 +519,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Rapidly evolving GPU architectures featuring complex memory hierarchies, matrix units, and varied precision formats continue to widen the gap between theoretical peaks and achievable performance. We design and develop analytical performance models for NVIDIA Blackwell (B200) and AMD CDNA3 (MI300A) g...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.13398v1",
@@ -496,7 +547,10 @@
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究OLTP、数据库系统相关技术。\n\n核心内容：Online Transaction Processing (OLTP) is a classic application with a growing business. CPU-based OLTP has low lock serving efficiency。",
+    "takeaway": "本文聚焦OLTP、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2605.20047v1",
@@ -525,7 +579,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Cryptographic algorithms such as AES-128 and SHA-256 are fundamental to ensuring data security and integrity。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Cryptographic algorithms such as AES-128 and SHA-256 are fundamental to ensuring data security and integrity。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Cryptographic algorithms such as AES-128 and SHA-256 are fundamental to ensuring data security and integrity. Although these algorithms are computationally efficient, their performance is often constrained by the processor-centric architectures (e.g., CPUs, GPUs), primarily due to the memory bottlen...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2605.21847v1",
@@ -549,7 +606,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The ever increasing demand for ML-driven intelligence in a wide spectrum of domains has led to ubiquity of GPUs. At the same time, GPUs are notorious for their power consumption needs and often dominate power allocation in a typical ML datacenter。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.08182v1",
@@ -576,7 +636,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：The escalating computational demands and energy footprint of GPU-accelerated computing systems complicate informed design and operational decisions。"
+    "summary_cn": "本文研究GPU 加速相关技术。 核心内容：The escalating computational demands and energy footprint of GPU-accelerated computing systems complicate informed design and operational decisions。",
+    "abstract_cn": "本文研究GPU 加速、异构计算相关技术。\n\n核心内容：The escalating computational demands and energy footprint of GPU-accelerated computing systems complicate informed design and operational decisions. We present the first release of Wattlytics (https://wattlytics.netlify.app), an interactive, browser-based decision-support system。",
+    "takeaway": "本文聚焦GPU 加速、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2604.02556v1",
@@ -602,7 +665,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": "本文研究共享内存、线程块相关技术。 核心内容：Large language models (LLMs) have grown beyond the memory capacity of single GPU devices, necessitating quantization techniques for practical deployme...。"
+    "summary_cn": "本文研究共享内存、线程块相关技术。 核心内容：Large language models (LLMs) have grown beyond the memory capacity of single GPU devices, necessitating quantization techniques for practical deployme...。",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Large language models (LLMs) have grown beyond the memory capacity of single GPU devices, necessitating quantization techniques for practical deployment. While NF4 (4-bit NormalFloat) quantization enables 4$\\times$ memory reduction, inference on current NVIDIA GPUs (e.g., Ampere A100) requires expen...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2603.20421v2",
@@ -630,7 +696,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present Hawkeye, a system for analyzing and reproducing GPU-level arithmetic operations. Using our framework, anyone can re-execute on a CPU the exact matrix multiplication operations underlying a machine learning model training or inference workflow that was executed on an NVIDIA GPU, without an...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2603.26435v1",
@@ -657,7 +726,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Modern GPU-rich HPC systems are increasingly becoming energy-constrained. Thus, understanding an application's energy consumption becomes essential。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.20105v1",
@@ -684,7 +756,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究隐私信息检索相关技术。\n\n核心内容：As AI workloads drive increases in datacenter power consumption, accurate GPU power estimation is critical for proactive power management. However, existing power models face a scalability bottleneck not in the modeling techniques themselves, but in obtaining the hardware utilization inputs they req...。",
+    "takeaway": "本文聚焦隐私信息检索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2603.19057v1",
@@ -708,7 +783,10 @@
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Transformers have revolutionized AI in natural language processing and computer vision, but their large computation and memory demands pose major challenges for hardware acceleration. In practice, end-to-end throughput is often limited by paged data movement and interconnect bandwidth rather than ra...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.25522v1",
@@ -735,7 +813,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": "本文研究内存数据库、近邻搜索相关技术。 核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficie...。"
+    "summary_cn": "本文研究内存数据库、近邻搜索相关技术。 核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficie...。",
+    "abstract_cn": "本文研究内存数据库、近邻搜索相关技术。\n\n核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficiency trade-off at scale. The workload is fundamentally memory-bound: graph traversal produces frequent, irregular memory accesses that cap CPU throughp...。",
+    "takeaway": "本文聚焦内存数据库、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2605.27323v1",
@@ -761,7 +842,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Over the last decade, advances in GPU hardware have been driven in large part by the demands of real-time graphics, culminating in dedicated hardware ray tracing cores (RT cores). These units accelerate ray scene intersection queries directly in hardware, making physically based ray tracing algorith...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.17158v2",
@@ -785,7 +869,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Integer Linear Programming (ILP) is widely used for solving real-world optimization problems, including network routing, map routing, and traffic scheduling. However, ILP algorithms are sparse and branch-intensive, making them inefficient on conventional CPUs and GPUs。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.25367v1",
@@ -809,7 +896,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究隐私信息检索、异构计算相关技术。\n\n核心内容：We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\\times, 6{,}908\\times]$ deficit across v5p and v4 architectures under an FP32-mantissa staging discipline, an...。",
+    "takeaway": "本文聚焦隐私信息检索、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2605.04213v1",
@@ -838,7 +928,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA、warp 调度相关技术。 核心内容：Silent data corruption (SDC) threatens the reliability of large-scale GPU clusters used for training large language models, yet its rarity and lack of...。"
+    "summary_cn": "本文研究CUDA、warp 调度相关技术。 核心内容：Silent data corruption (SDC) threatens the reliability of large-scale GPU clusters used for training large language models, yet its rarity and lack of...。",
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Silent data corruption (SDC) threatens the reliability of large-scale GPU clusters used for training large language models, yet its rarity and lack of explicit error signals make accurate high-level modeling challenging. To address this gap, we conducted a large-scale gate-level stuck-at fault injec...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.26968v1",
@@ -863,7 +956,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究RDMA 网络、NVMe 存储相关技术。\n\n核心内容：Key-value (KV) cache memory management is the primary bottleneck limiting throughput and cost-efficiency in large-scale GPU inference serving. Current systems suffer from three compounding inefficiencies: (1) the absence of unified KV cache sizing across all attention architectures--particularly mul...。",
+    "takeaway": "本文聚焦RDMA 网络、NVMe 存储，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.26103v2",
@@ -899,7 +995,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究GPU 计算相关技术。 核心内容：All current LLM serving systems place the GPU at the center, from production-level attention-FFN disaggregation to NVIDIA's Rubin GPU-LPU heterogeneou...。"
+    "summary_cn": "本文研究GPU 计算相关技术。 核心内容：All current LLM serving systems place the GPU at the center, from production-level attention-FFN disaggregation to NVIDIA's Rubin GPU-LPU heterogeneou...。",
+    "abstract_cn": "本文研究GPU 计算、异构计算、聚合相关技术。\n\n核心内容：All current LLM serving systems place the GPU at the center, from production-level attention-FFN disaggregation to NVIDIA's Rubin GPU-LPU heterogeneous platform. Even academic PIM/PNM proposals still treat the GPU as the central hub for cross-device communication。",
+    "takeaway": "本文聚焦GPU 计算、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2605.04084v1",
@@ -927,7 +1026,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Compressing large language models (LLMs) for deployment on commodity GPUs remains challenging: conventional scalar quantization is limited to fixed bi...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Compressing large language models (LLMs) for deployment on commodity GPUs remains challenging: conventional scalar quantization is limited to fixed bi...。",
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Compressing large language models (LLMs) for deployment on commodity GPUs remains challenging: conventional scalar quantization is limited to fixed bit-widths (e.g., 8/4/3-bit), offers only a few discrete compression points, and typically requires calibration data. We present FASQ (Flexible Accelera...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2605.19405v2",
@@ -951,7 +1053,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Graph neural networks (GNNs) have gained significant interest for applications such as citation network analysis and drug discovery due to their abili...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Graph neural networks (GNNs) have gained significant interest for applications such as citation network analysis and drug discovery due to their abili...。",
+    "abstract_cn": "本文研究内存数据库、异构计算、聚合相关技术。\n\n核心内容：Graph neural networks (GNNs) have gained significant interest for applications such as citation network analysis and drug discovery due to their ability to apply machine learning techniques on graph-structured data. GNNs typically employ a two-stage execution pipeline consisting of combination and a...。",
+    "takeaway": "本文聚焦内存数据库、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2605.03713v2",
@@ -977,7 +1082,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Specialized accelerators dominate AI workloads, but CPUs remain critical for orchestrating these accelerators and running datacenter services. As a result, CPU performance increasingly shapes end-to-end system efficiency, making it necessary for benchmarks to reflect modern workloads and bottlenecks。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.01187v1",
@@ -1002,7 +1110,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：The rapid expansion of uplink-intensive applications necessitates video coding solutions that balance high Rate-Distortion (RD) efficiency with ultra-...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：The rapid expansion of uplink-intensive applications necessitates video coding solutions that balance high Rate-Distortion (RD) efficiency with ultra-...。",
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：The rapid expansion of uplink-intensive applications necessitates video coding solutions that balance high Rate-Distortion (RD) efficiency with ultra-low latency. This paper presents a longitudinal performance analysis of NVIDIA hardware encoding (NVENC), spanning from Pascal to the emerging Blackwe...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.10905v2",
@@ -1036,7 +1147,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究warp 调度相关技术。 核心内容：Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms, so performance depends on orchestrating data mov...。"
+    "summary_cn": "本文研究warp 调度相关技术。 核心内容：Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms, so performance depends on orchestrating data mov...。",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms, so performance depends on orchestrating data movement, tensor-core computation, and synchronization rather than exposing more thread-level parallelism. This creates a programming-model tension: if t...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.11512v1",
@@ -1063,7 +1177,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The growing demand for deploying Small Language Models (SLMs) on edge devices, including laptops, smartphones, and embedded platforms, has exposed fundamental inefficiencies in existing accelerators. While GPUs handle prefill workloads efficiently, the autoregressive decoding phase is dominated by G...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2604.21566v1",
@@ -1088,7 +1205,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究SIMD 并行相关技术。 核心内容：Large-number arithmetic, widely used in scientific computing and cryptography, has seen limited adoption of single instruction, multiple data (SIMD) p...。"
+    "summary_cn": "本文研究SIMD 并行相关技术。 核心内容：Large-number arithmetic, widely used in scientific computing and cryptography, has seen limited adoption of single instruction, multiple data (SIMD) p...。",
+    "abstract_cn": "本文研究SIMD 并行相关技术。\n\n核心内容：Large-number arithmetic, widely used in scientific computing and cryptography, has seen limited adoption of single instruction, multiple data (SIMD) parallelism on modern CPUs due to the inherent dependencies in traditional algorithms. We present DigitsOnTurbo (DoT), which restructures the computati...。",
+    "takeaway": "本文聚焦SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2605.16253v1",
@@ -1112,7 +1232,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Ray tracing (RT) is a 3D graphics technique that offers highly realistic visuals. It is becoming prominent and accessible as GPU vendors have integrated dedicated ray tracing acceleration hardware。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2604.25699v1",
@@ -1140,7 +1263,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理相关技术。\n\n核心内容：The rapid growth of LLMs demands high-throughput, memory-capacity-intensive inference on resource-constrained edge devices, where single-batch decoding remains fundamentally memory-bound. Existing out-of-core GPU-based and SSD-like accelerators are limited by DRAM-bound weight movement and inefficie...。",
+    "takeaway": "本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.21117v1",
@@ -1167,7 +1293,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：This paper introduces a search algorithm for index structures based on a B+ tree, specifically optimized for execution on a field-programmable gate array (FPGA). Our implementation efficiently traverses and reuses tree nodes by processing a batch of search keys level by level。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.10187v1",
@@ -1198,7 +1327,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究GPU 核函数相关技术。 核心内容：The rapid adoption of Large Language Models (LLMs) has made GPU inference efficiency an increasingly critical system concern。"
+    "summary_cn": "本文研究GPU 核函数相关技术。 核心内容：The rapid adoption of Large Language Models (LLMs) has made GPU inference efficiency an increasingly critical system concern。",
+    "abstract_cn": "本文研究GPU 核函数、大模型推理相关技术。\n\n核心内容：The rapid adoption of Large Language Models (LLMs) has made GPU inference efficiency an increasingly critical system concern. The runtime of LLM workloads is largely dominated by tile-based kernels, particularly General Matrix Multiplications (GEMMs)。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.00519v2",
@@ -1223,7 +1355,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究隐私信息检索、大模型推理相关技术。\n\n核心内容：The operational landscape of local Large Language Model (LLM) inference has shifted from lightweight models to datacenter-class weights exceeding 70B parameters, creating profound systems challenges for consumer hardware. This paper presents a systematic empirical analysis of the Nvidia and Apple Si...。",
+    "takeaway": "本文聚焦隐私信息检索、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.02473v1",
@@ -1248,7 +1383,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究多 GPU相关技术。\n\n核心内容：Distributed ML workloads rely heavily on collective communication across multi-GPU, multi-node systems. Emerging scale-up fabrics, such as NVLink and UALink, enable direct memory access across nodes but introduce a critical destination-side translation step: translating Network Physical Addresses (N...。",
+    "takeaway": "本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.17692v1",
@@ -1283,7 +1421,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：SRAM-based compute-in-memory (CIM) offers high computational density and energy efficiency for deep neural network (DNN) accelerators, but its limited...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：SRAM-based compute-in-memory (CIM) offers high computational density and energy efficiency for deep neural network (DNN) accelerators, but its limited...。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：SRAM-based compute-in-memory (CIM) offers high computational density and energy efficiency for deep neural network (DNN) accelerators, but its limited capacity causes on/off-chip data movement overhead for large DNN models. Existing CIM accelerator studies typically assume that DNN models fit entire...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2603.28239v3",
@@ -1311,7 +1452,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理相关技术。\n\n核心内容：In-network computing techniques, exemplified by NVLink SHARP (NVLS), offer a promising approach to addressing the communication bottlenecks in LLM inference by offloading collective operations such as All-Reduce to switches. However, the accelerator-centric architecture of NVLS suffers from two fund...。",
+    "takeaway": "本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2604.00028v1",
@@ -1336,7 +1480,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The standard FlashAttention-3 heuristic exhibits a GPU occupancy bottleneck in low-head-count decoding configurations because it disables sequence splitting based on sequence length alone, underutilizing the Streaming Multiprocessors of Hopper GPUs. Our proposed sequence-aware split policy mitigates...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.05607v1",
@@ -1371,7 +1518,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究多 GPU相关技术。\n\n核心内容：Mixture-of-Experts (MoE) has been adopted by many leading large models to reduce computational requirements. However, frequent inter-GPU communication in MoE expert parallelism (EP) becomes a performance challenge。",
+    "takeaway": "本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2604.15361v1",
@@ -1399,7 +1549,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：While graph-based dynamic programming (DP) is a cornerstone of genomics and network analytics, its efficiency is hampered by fundamentally conflicting...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：While graph-based dynamic programming (DP) is a cornerstone of genomics and network analytics, its efficiency is hampered by fundamentally conflicting...。",
+    "abstract_cn": "本文研究内存数据库、异构计算相关技术。\n\n核心内容：While graph-based dynamic programming (DP) is a cornerstone of genomics and network analytics, its efficiency is hampered by fundamentally conflicting computational patterns. Matrix-centric DP drives regular, compute-bound network analytics, while topology-centric DP handles irregular, memory-bound ...。",
+    "takeaway": "本文聚焦内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2604.12618v1",
@@ -1429,7 +1582,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：FPGAs are well-suited for dataflow architectures that process data in a streaming or pipelined manner, thus satisfying the high computational and communication demands of emerging applications. However, manually implementing an efficient dataflow architecture for large-scale applications is still ch...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2603.17435v1",
@@ -1461,7 +1617,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理相关技术。\n\n核心内容：Lossless model compression holds tremendous promise for alleviating the memory and bandwidth bottlenecks in bit-exact Large Language Model (LLM) serving. However, existing approaches often result in substantial inference slowdowns due to fundamental design mismatches with GPU architectures: at the k...。",
+    "takeaway": "本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.15128v1",
@@ -1491,7 +1650,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": "本文研究数据处理相关技术。 核心内容：Although modern, AI-centric datacenters heavily rely on SmartNICs, existing devices impose a hard trade-off。"
+    "summary_cn": "本文研究数据处理相关技术。 核心内容：Although modern, AI-centric datacenters heavily rely on SmartNICs, existing devices impose a hard trade-off。",
+    "abstract_cn": "本文研究数据处理、RDMA 网络相关技术。\n\n核心内容：Although modern, AI-centric datacenters heavily rely on SmartNICs, existing devices impose a hard trade-off. Commercial SmartNICs provide high bandwidth and easy software integration, but offer limited support for customization and data processing offload。",
+    "takeaway": "本文聚焦数据处理、RDMA 网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.06668v1",
@@ -1516,7 +1678,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：GPU-initiated I/O has emerged as a key mechanism for achieving high-throughput storage access by leveraging massive GPU thread-level parallelism, while recent industry trends point toward SSDs optimized for ultra-high random-read IOPS. Together, these trends are enabling the emergence of IOPS-optimi...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.08908v2",
@@ -1540,7 +1705,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究异构计算相关技术。\n\n核心内容：The system-level cache is a critical resource shared by processor cores and domain-specific accelerators in heterogeneous systems on chips (SoCs). The strict QoS requirements of accelerators, such as deadlines, can lead to severe performance degradation of processor cores。",
+    "takeaway": "本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 异构 CPU-GPU 协同执行策略；2. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.17862v1",
@@ -1599,7 +1767,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究张量计算、缓存相关技术。\n\n核心内容：As deep learning-based AI technologies gain momentum, the demand for general-purpose AI computing architectures continues to grow. While GPGPU-based architectures offer versatility for diverse AI workloads, they often fall short in efficiency and cost-effectiveness。",
+    "takeaway": "本文聚焦张量计算、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.10113v1",
@@ -1627,7 +1798,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Graph Convolutional Networks (GCNs) are widely adopted for tasks involving relational or graph-structured data and can be formulated as two-stage sparse-dense matrix multiplication (SpMM) during inference. However, existing accelerators often struggle with the irregular workloads induced by power-la...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.02110v1",
@@ -1652,7 +1826,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Attention accounts for an increasingly dominant fraction of total computation during inference for mixture-of-experts (MoE) models, making efficient a...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Attention accounts for an increasingly dominant fraction of total computation during inference for mixture-of-experts (MoE) models, making efficient a...。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Attention accounts for an increasingly dominant fraction of total computation during inference for mixture-of-experts (MoE) models, making efficient acceleration critical. Emerging domain-specific accelerators for large model inference are shifting toward chip-scale and wafer-scale tile-based archit...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.04773v2",
@@ -1676,7 +1853,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Compute-in-memory (PIM) mitigates the memory wall by performing computation within memory, reducing data movement and improving energy efficiency。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Compute-in-memory (PIM) mitigates the memory wall by performing computation within memory, reducing data movement and improving energy efficiency。",
+    "abstract_cn": "本文研究内存数据库、数据放置相关技术。\n\n核心内容：Compute-in-memory (PIM) mitigates the memory wall by performing computation within memory, reducing data movement and improving energy efficiency. DRAM-based PIM is particularly attractive due to its high density, mature manufacturing ecosystem, and compatibility with existing systems。",
+    "takeaway": "本文聚焦内存数据库、数据放置，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2605.05639v1",
@@ -1703,7 +1883,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理、异构计算相关技术。\n\n核心内容：Large language model (LLM) serving is now limited by the key-value (KV) cache. During decode, each new token rereads prior KV state, so attention becomes a bandwidth- and capacity-heavy memory task。",
+    "takeaway": "本文聚焦大模型推理、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
   },
   {
     "id": "2603.21167v1",
@@ -1727,7 +1910,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：3D point cloud neural networks have significantly enhanced the perceptual capabilities of resource-limited mobile intelligent systems。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：3D point cloud neural networks have significantly enhanced the perceptual capabilities of resource-limited mobile intelligent systems。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：3D point cloud neural networks have significantly enhanced the perceptual capabilities of resource-limited mobile intelligent systems. However, despite the transformative impact, the point cloud algorithm suffers from substantial memory access during data preprocessing and imposes a burdensome workl...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2605.22936v1",
@@ -1757,7 +1943,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Architectural simulation has become the critical bottleneck limiting design space exploration for high-performance computing systems. Modern GPUs and AI accelerators -- with hundreds to thousands of tightly-coupled components -- demand simulation frameworks that deliver efficient parallelism and sca...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2605.07881v1",
@@ -1781,7 +1970,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：AI accelerator operators are compiled into multi-stage pipeline programs where DMA, vector, matrix, and scalar units execute concurrently on shared on-chip buffers. A missing or misplaced synchronization primitive introduces hardware-visible data races that escape both simulation and golden testing,...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2604.14552v2",
@@ -1805,7 +1997,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究隐私信息检索、PyTorch相关技术。\n\n核心内容：Modern datacenters increasingly rely on low-power, single-slot inference accelerators to balance performance, energy efficiency, and rack density constraints. The NVIDIA T4 GPU has become widely deployed due to strong performance per watt and mature software support。",
+    "takeaway": "本文聚焦隐私信息检索、PyTorch，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.01514v1",
@@ -1835,7 +2030,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Principal Component Analysis (PCA) is widely used for dimensionality reduction in hyperspectral imaging, genomics, and neurosciences. However, it suffers from computational bottlenecks in matrix multiplication and singular value decomposition (SVD)。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.04236v1",
@@ -1866,7 +2064,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Coarse-Grained Reconfigurable Architectures (CGRAs) are a promising and versatile accelerator platform, offering a balance between the performance and efficiency of specialized accelerators and the software programmability. However, their full potential is severely hindered by control flow in accele...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2603.17627v3",
@@ -1889,7 +2090,10 @@
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究张量计算、异构计算相关技术。\n\n核心内容：The Program Semantic Graph (PSG) introduced in prior work on Dimensional Type Systems and Deterministic Memory Management encodes compilation-relevant properties as binary edge relations between computation nodes. This representation is adequate for scalar and tensor computations, but becomes struct...。",
+    "takeaway": "本文聚焦张量计算、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2605.16213v1",
@@ -1912,7 +2116,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Sorting is a fundamental operation across numerous computational domains。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Sorting is a fundamental operation across numerous computational domains。",
+    "abstract_cn": "本文研究内存数据库、排序相关技术。\n\n核心内容：Sorting is a fundamental operation across numerous computational domains. Traditionally, this process involves transferring data from main memory to a processing unit for sorting, followed by writing the sorted data back to memory。",
+    "takeaway": "本文聚焦内存数据库、排序，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2605.15098v1",
@@ -1941,7 +2148,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The classical simulation of quantum algorithms is a crucial tool for circuit development, testing, and validation. Although acceleration using GPUs significantly reduces simulation time, most high-performance simulators rely on vendor-specific frameworks that target data-center hardware。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.11277v1",
@@ -1970,7 +2180,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models (LLMs)。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models (LLMs)。",
+    "abstract_cn": "本文研究内存数据库、多 GPU相关技术。\n\n核心内容：Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models (LLMs). However, the execution characteristics of MoE inference are changing rapidly and increasingly mismatch the assumptions underlying existing Processing-in-Memory (PIM) systems。",
+    "takeaway": "本文聚焦内存数据库、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
   },
   {
     "id": "2603.16812v1",
@@ -2004,7 +2217,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Integration of CPU and GPU technologies is a key enabler for modern AI and graphics workloads, combining control-oriented processing with massive parallel compute capability. As systems evolve toward chiplet-based architectures, pre-silicon validation of tightly coupled CPU-GPU subsystems becomes in...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.09490v1",
@@ -2030,7 +2246,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Reasoning LLMs produce thousands of chain-of-thought tokens whose KV cache must reside in scarce GPU HBM. The dominant response -- permanently evicting low-importance tokens -- is catastrophic for reasoning: accuracy collapses to 0-2.5% when half the cache is removed。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.16007v1",
@@ -2069,7 +2288,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究异构计算相关技术。\n\n核心内容：Emerging agentic LLM workloads are driving rapidly growing demand on both memory capacity and bandwidth, with different phases of inference (e.g., prefill and decode) imposing distinct requirements. Industry is responding by composing heterogeneous accelerators into single interconnected systems, as...。",
+    "takeaway": "本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2605.00174v1",
@@ -2095,7 +2317,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Video and image streaming on edge devices requires low latency. To address this, Neural Networks (NNs) are widely used, and prior work mainly focuses on accelerating them with single hardware units such as Graphics Processing Units (GPUs), Field Programmable Gate Arrays (FPGAs), and Deep Learning Pr...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.07287v1",
@@ -2120,7 +2345,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：This work presents a symbolic approach for estimating the energy consumption for nested loop programs when mapped and scheduled on parallel processor array accelerator architectures. Instead of simulation-based evaluation, we derive a methodology for symbolic energy analysis that captures the impact...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2604.19932v1",
@@ -2143,7 +2371,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究异构计算相关技术。\n\n核心内容：Heterogeneous Memory Architecture (HMA) aims to optimize memory usage by leveraging a combination of memory types, such as high-bandwidth memory (HBM), commodity DRAM, and non-volatile memory (NVM), when utilized as main memory. To achieve maximum performance benefits, frequently accessed data pages...。",
+    "takeaway": "本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.08445v1",
@@ -2173,7 +2404,10 @@
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Memory Dependence Prediction (MDP) is a speculative technique to determine which stores, if any, a given load will depend on. Area-constrained cores are increasingly relevant in various applications such as energy-efficient or edge systems, and often have limited space for MDP tables。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
   },
   {
     "id": "2605.07722v1",
@@ -2220,7 +2454,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Plasma simulations are among the most computationally demanding scientific workloads, combining high-dimensional kinetic evolution, particle-mesh coupling, field solves, and data-intensive communication. As general-purpose processor scaling slows, post-Moore technologies are being explored to addres...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.13969v1",
@@ -2244,7 +2481,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：With the rapid growth of deep neural networks (DNNs), compute-in-memory (CIM) has emerged as a promising energy-efficient paradigm for accelerating mu...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：With the rapid growth of deep neural networks (DNNs), compute-in-memory (CIM) has emerged as a promising energy-efficient paradigm for accelerating mu...。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：With the rapid growth of deep neural networks (DNNs), compute-in-memory (CIM) has emerged as a promising energy-efficient paradigm for accelerating multiply-and-accumulate (MAC) operations. Yet, current CIM architectures are largely limited to dot-product computations and struggle to efficiently sup...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.03446v1",
@@ -2273,7 +2513,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Attention is a fundamental computational kernel that accounts for the majority of the workload in transformer and LLM computing. Optimizing dataflow is crucial for enhancing both performance and energy efficiency in attention computation。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2603.22535v1",
@@ -2300,7 +2543,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究PyTorch相关技术。\n\n核心内容：Cycle-accurate simulators are widely used to study systolic accelerators, yet their accuracy and usability are often limited by weak validation against real hardware and poor integration with modern ML compiler stacks. This paper presents SCALE-Sim TPU, a validated and extended version of SCALE-Sim ...。",
+    "takeaway": "本文聚焦PyTorch，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2605.21952v1",
@@ -2332,7 +2578,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": "本文研究数据处理、近邻搜索相关技术。 核心内容：As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge a...。"
+    "summary_cn": "本文研究数据处理、近邻搜索相关技术。 核心内容：As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge a...。",
+    "abstract_cn": "本文研究数据处理、近邻搜索相关技术。\n\n核心内容：As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge and reducing hallucinations. Central to RAG is approximate nearest neighbor search (ANNS), which retrieves database vectors most similar to a given que...。",
+    "takeaway": "本文聚焦数据处理、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.13523v1",
@@ -2357,7 +2606,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Numerous tensor accelerator designs have been proposed, yet most lack well-documented ISAs and compiler backends, limiting evaluation to a handful of operators. Recent work has shown that given a tensor-level ISA specification, complete software stacks including compiler backends can be automaticall...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2605.08913v2",
@@ -2382,7 +2634,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Autoregressive inference is typically assumed to scale predictably with decoding length, with latency increasing smoothly as generated sequence length...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Autoregressive inference is typically assumed to scale predictably with decoding length, with latency increasing smoothly as generated sequence length...。",
+    "abstract_cn": "本文研究CUDA、缓存相关技术。\n\n核心内容：Autoregressive inference is typically assumed to scale predictably with decoding length, with latency increasing smoothly as generated sequence length grows. In this work, we identify unexpected non-monotonic latency behavior in the Apple MPS backend, where latency changes abruptly across nearby dec...。",
+    "takeaway": "本文聚焦CUDA、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.23549v1",
@@ -2405,7 +2660,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：High-level synthesis (HLS) performs well for simple memory access patterns, such as for sequential accesses that can be turned into bursts, or for memory accesses into small datasets that can be stored in scratchpads. This limits HLS to accelerating only the low-hanging fruit, where memory-level par...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2605.15645v1",
@@ -2436,7 +2694,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Irregular memory accesses pose challenges for effective and efficient data prefetching. While temporal prefetchers have recently shown promise for irregular memory access patterns, their effectiveness fundamentally depends on temporal address recurrence and large metadata storage。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.24785v1",
@@ -2464,7 +2725,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究大模型推理相关技术。\n\n核心内容：Large language models (LLMs) are becoming increasingly capable at small parameter scales. At the same time, conventional cloud-centric deployment introduces challenges around data privacy, latency, and cost that are acute in operational technology and defence environments。",
+    "takeaway": "本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.24022v1",
@@ -2493,7 +2757,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究异构计算、缓存相关技术。\n\n核心内容：In long-context Large Language Model (LLM) inference, the Time-To-First-Token (TTFT) latency incurred by the prefill stage has become the foremost bottleneck limiting interactive performance and deployment cost. KV Cache reuse offers a direct path to reduce redundant prefill, yet traditional prefix ...。",
+    "takeaway": "本文聚焦异构计算、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2603.14785v1",
@@ -2519,7 +2786,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Large language models (LLMs) have achieved remarkable performance across a wide range of tasks, but their inference efficiency remains a critical bottleneck due to rapidly growing parameters. Recent advances in dynamic computation allocation address this challenge by exploiting the highly uneven con...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.12715v1",
@@ -2580,7 +2850,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：This paper presents EPAC, a RISC-V-based accelerator chip developed within the European Processor Initiative (EPI) as part of a multi-year, multi-partner effort to build a European HPC processor ecosystem. EPAC is implemented in GlobalFoundries 22FDX (GF22FDX) technology, covers an area of 27 sq mm ...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 支持分布式/多 GPU 扩展；3. 智能缓存与数据放置优化"
   },
   {
     "id": "2604.07935v1",
@@ -2605,7 +2878,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The Hardware Lottery posits that research directions are dictated by available silicon compute platforms. We identify a derivative phenomenon, the Hyperscale Lottery, where model architectures are optimized for cloud throughput at the expense of algorithmic efficiency。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2605.05920v1",
@@ -2632,7 +2908,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Designing field-programmable gate array (FPGA)-based accelerators for modern artificial intelligence workloads requires navigating a large and complex hardware design space encompassing architectural parameters, dataflow strategies, and memory hierarchies, making the process time-consuming and resou...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2603.25692v1",
@@ -2661,7 +2940,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Trustworthy artificial intelligence increasingly relies on probabilistic computation to achieve robustness, interpretability, security and privacy。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Trustworthy artificial intelligence increasingly relies on probabilistic computation to achieve robustness, interpretability, security and privacy。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Trustworthy artificial intelligence increasingly relies on probabilistic computation to achieve robustness, interpretability, security and privacy. In practical systems, such workloads interleave deterministic data access with repeated stochastic sampling across models, data paths and system functio...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2605.04172v1",
@@ -2686,7 +2968,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Accelerators provide large performance and energy-efficiency benefits, but can significantly change the hardware-software interface. The täkō programmable memory hierarchy accelerates data movement by enabling programmers to run user-defined callback functions triggered by cache misses, evictions, a...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
   },
   {
     "id": "2605.21203v1",
@@ -2711,7 +2996,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：As the need for more computing power grows, traditional methods are hitting limits. To boost performance, we're expanding Central Processing Unit (CPU) capabilities and using specialized hardware accelerators。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
   },
   {
     "id": "2603.28943v1",
@@ -2738,7 +3026,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究隐私信息检索相关技术。\n\n核心内容：This paper presents a hybrid CPU-GPU framework for solving combinatorial scheduling problems formulated as Integer Linear Programming (ILP). While scheduling underpins many optimization tasks in computing systems, solving these problems optimally at scale remains a long-standing challenge due to the...。",
+    "takeaway": "本文聚焦隐私信息检索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
     "id": "2604.25377v1",
@@ -2764,7 +3055,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Shifted-and-Duplicated-Kernel (SDK) mapping has emerged as an effective strategy to accelerate convolutional layers on compute-in-memory (CIM) hardwar...。"
+    "summary_cn": "本文研究内存数据库相关技术。 核心内容：Shifted-and-Duplicated-Kernel (SDK) mapping has emerged as an effective strategy to accelerate convolutional layers on compute-in-memory (CIM) hardwar...。",
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Shifted-and-Duplicated-Kernel (SDK) mapping has emerged as an effective strategy to accelerate convolutional layers on compute-in-memory (CIM) hardware. However, existing SDK variants (e.g., VWC-SDK) merely optimize mapping for a single CIM macro, leaving inter-macro parallelism unexplored。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
   },
   {
     "id": "2604.23467v1",
@@ -2789,7 +3083,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "summary_cn": "本文研究CUDA相关技术。 核心内容：Large Language Models (LLMs) have achieved strong performance across natural language and multimodal tasks, yet their practical deployment remains con...。"
+    "summary_cn": "本文研究CUDA相关技术。 核心内容：Large Language Models (LLMs) have achieved strong performance across natural language and multimodal tasks, yet their practical deployment remains con...。",
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Large Language Models (LLMs) have achieved strong performance across natural language and multimodal tasks, yet their practical deployment remains constrained by inference latency and kernel launch overhead, particularly in interactive, short-sequence settings. This paper presents a hybrid runtime f...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
   },
   {
     "id": "2604.10716v2",
@@ -2818,6 +3115,9 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "summary_cn": ""
+    "summary_cn": "",
+    "abstract_cn": "本文研究缓存相关技术。\n\n核心内容：Existing Point Cloud Networks (PCNs) have proven to achieve great success in many point cloud tasks such as object part segmentation, shape classification, and so on. The most popular point-based PCNs are usually composed of two sequential steps: Data Structuring (DS) and Feature Computation (FC)。",
+    "takeaway": "本文聚焦缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 智能缓存与数据放置优化"
   }
 ]

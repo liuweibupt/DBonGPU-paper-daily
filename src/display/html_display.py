@@ -222,7 +222,7 @@ class HTMLDisplay:
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 28px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             transition: all 0.25s ease;
         }}
         .classic-card:hover {{
@@ -641,11 +641,14 @@ class HTMLDisplay:
             margin-top: 4px;
         }
 
-        /* Paper List */
+        /* Paper List - Two Column Grid */
         .paper-list {
-            max-width: 860px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
         /* Paper Card */
@@ -654,9 +657,10 @@ class HTMLDisplay:
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 24px;
-            margin-bottom: 16px;
             transition: all 0.25s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .paper-card:hover {
             border-color: var(--border-hover);
@@ -755,6 +759,58 @@ class HTMLDisplay:
             margin-top: 8px;
         }
 
+        .paper-abstract-cn {
+            color: var(--text);
+            font-size: 0.93em;
+            margin-top: 12px;
+            line-height: 1.8;
+            background: rgba(96,165,250,0.04);
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .compact .paper-abstract-cn {
+            font-size: 0.88em;
+            margin-top: 8px;
+            padding: 8px 12px;
+        }
+
+        .paper-takeaway {
+            margin-top: 10px;
+            padding: 8px 14px;
+            background: rgba(52,211,153,0.06);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-green);
+        }
+        .compact .paper-takeaway {
+            font-size: 0.84em;
+            margin-top: 8px;
+            padding: 6px 12px;
+        }
+
+        .paper-innovation {
+            margin-top: 8px;
+            padding: 8px 14px;
+            background: rgba(251,191,36,0.06);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-orange);
+        }
+        .compact .paper-innovation {
+            font-size: 0.84em;
+            padding: 6px 12px;
+        }
+
+        .section-label {
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
         .paper-reasons {
             margin-top: 12px;
             padding: 10px 14px;
@@ -841,13 +897,16 @@ class HTMLDisplay:
         @media (max-width: 640px) {
             .hero { padding: 40px 16px 20px; }
             .hero h1 { font-size: 1.7em; }
-            .paper-list { padding: 0 12px; }
+            .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
             .paper-card { padding: 16px; }
             .paper-title { font-size: 1.02em; }
             .top-nav { padding: 10px 12px; }
             .nav-brand { font-size: 1em; }
             .stats-row { gap: 10px; padding: 0 12px; }
             .stat-card { padding: 12px 18px; min-width: 90px; }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+            .paper-list { grid-template-columns: 1fr; }
         }
     </style>"""
 
@@ -865,6 +924,8 @@ class HTMLDisplay:
         reasons = paper.get('reasons', [])
         categories = paper.get('categories', [])
         summary = paper.get('summary_cn', '')
+        takeaway = paper.get('takeaway', '')
+        innovation = paper.get('innovation', '')
 
         if score >= 0.7:
             score_class = 'score-high'
@@ -894,19 +955,29 @@ class HTMLDisplay:
 
         # Build abstract section with Chinese translation priority
         abstract_section = ""
-        if summary:
-            # Short Chinese summary from keyword extraction
-            abstract_section = f'<div class="paper-abstract"><strong>中文简述：</strong>{summary}</div>'
+        if abstract_cn:
+            # Full Chinese translation available
+            cn_display = abstract_cn[:abstract_len] + ("..." if len(abstract_cn) > abstract_len else "")
+            abstract_section = f'<div class="paper-abstract-cn">{cn_display}</div>'
             if not compact:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
-        elif abstract_cn:
-            # Full Chinese translation
-            cn_display = abstract_cn[:abstract_len] + ("..." if len(abstract_cn) > abstract_len else "")
-            abstract_section = f'<div class="paper-abstract"><strong>中文摘要：</strong>{cn_display}</div>'
+        elif summary:
+            # Short Chinese summary from keyword extraction (fallback)
+            abstract_section = f'<div class="paper-abstract"><strong>中文简述：</strong>{summary}</div>'
             if not compact:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
         else:
             abstract_section = f'<div class="paper-abstract">{abstract_display}</div>'
+
+        # Build takeaway section
+        takeaway_html = ""
+        if takeaway:
+            takeaway_html = f'<div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>{takeaway}</div>'
+
+        # Build innovation section
+        innovation_html = ""
+        if innovation:
+            innovation_html = f'<div class="paper-innovation"><span class="section-label">🚀 创新点</span>{innovation}</div>'
 
         return f"""
     <div class="paper-card{compact_class}">
@@ -921,6 +992,8 @@ class HTMLDisplay:
         </div>
         <div class="paper-authors">{author_str}</div>
         {abstract_section}
+        {takeaway_html}
+        {innovation_html}
         {reasons_html}
         <div class="paper-links">
             <a href="{arxiv_url}" target="_blank">📄 arXiv</a>

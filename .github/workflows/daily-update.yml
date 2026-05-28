@@ -36,6 +36,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Fetch daily GPU DB papers
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: |
           python main.py --html --output docs/index.html
 
@@ -74,6 +78,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Fetch yearly Top 100 papers
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: |
           python main.py --top100 --output docs/top100.html
 

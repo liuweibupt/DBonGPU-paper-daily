@@ -23,6 +23,7 @@ from parsing.pdf_parser import PDFParser
 from parsing.text_cleaner import TextCleaner
 from embedding.embedder import Embedder
 from analysis.recommender import Recommender
+from analysis.translator import PaperTranslator
 from display.cli_display import CLIDisplay
 from display.web_display import WebDisplay
 from display.html_display import HTMLDisplay
@@ -92,6 +93,19 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
 
         recommender = Recommender()
         recommendations = recommender.recommend(papers, top_k=10)
+
+        # Translate abstracts and generate AI takeaway/innovation
+        translator = PaperTranslator()
+        if translator.enabled:
+            logger.log(f"Translating {len(recommendations)} daily papers...", "INFO")
+            translator.batch_translate(recommendations, delay=1.0)
+        else:
+            # Fallback: generate brief keyword-based summaries
+            for paper in recommendations:
+                paper['abstract_cn'] = ''
+                paper['takeaway'] = ''
+                paper['innovation'] = ''
+            logger.log("Translation skipped (no API key configured)", "WARN")
 
         if gen_html:
             html_display = HTMLDisplay()
@@ -182,9 +196,19 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
         # Score and rank all papers
         scored_papers = recommender.recommend(filtered_papers, top_k=100)
 
-        # Generate brief Chinese summaries for top papers
-        for paper in scored_papers:
-            paper['summary_cn'] = _generate_summary_cn(paper)
+        # Translate abstracts and generate AI takeaway/innovation
+        translator = PaperTranslator()
+        if translator.enabled:
+            logger.log(f"Translating {len(scored_papers)} top papers...", "INFO")
+            translator.batch_translate(scored_papers, delay=1.0)
+        else:
+            # Fallback: generate brief keyword-based summaries
+            for paper in scored_papers:
+                paper['abstract_cn'] = ''
+                paper['takeaway'] = ''
+                paper['innovation'] = ''
+                paper['summary_cn'] = _generate_summary_cn(paper)
+            logger.log("Translation skipped (no API key configured), using keyword summaries", "WARN")
 
         # Generate HTML
         html_display = HTMLDisplay()
