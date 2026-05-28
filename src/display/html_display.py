@@ -950,23 +950,24 @@ class HTMLDisplay:
             reasons_html = f'<div class="paper-reasons">{" &middot; ".join(reasons)}</div>'
 
         compact_class = " compact" if compact else ""
-        abstract_len = 300 if compact else 500
+        abstract_len = 300 if compact else 800
         abstract_display = abstract[:abstract_len] + ("..." if len(abstract) > abstract_len else "")
 
-        # Build abstract section with Chinese translation priority
+        # Build abstract section: Chinese translation as primary, English as collapsible
         abstract_section = ""
         if abstract_cn:
-            # Full Chinese translation available
+            # Chinese translation is the primary display
             cn_display = abstract_cn[:abstract_len] + ("..." if len(abstract_cn) > abstract_len else "")
             abstract_section = f'<div class="paper-abstract-cn">{cn_display}</div>'
-            if not compact:
+            if not compact and abstract:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
         elif summary:
             # Short Chinese summary from keyword extraction (fallback)
-            abstract_section = f'<div class="paper-abstract"><strong>中文简述：</strong>{summary}</div>'
-            if not compact:
+            abstract_section = f'<div class="paper-abstract-cn">{summary}</div>'
+            if not compact and abstract:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
         else:
+            # No Chinese translation at all, show English
             abstract_section = f'<div class="paper-abstract">{abstract_display}</div>'
 
         # Build takeaway section
