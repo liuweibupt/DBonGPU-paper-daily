@@ -21,9 +21,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题高度相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 数据库、内存数据库、数据处理、异构计算、数据库系统相关技术。\n\n核心内容：Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs h...。",
+    "takeaway": "本文聚焦GPU 数据库、内存数据库、数据处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
   },
   {
     "id": "2604.16725v1",
@@ -52,9 +52,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。\n\n核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。",
+    "takeaway": "本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
   },
   {
     "id": "2302.00734v1",
@@ -82,9 +82,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 数据库、查询处理、数据库系统、带宽优化、吞吐量相关技术。\n\n核心内容：GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics。",
+    "takeaway": "本文聚焦GPU 数据库、查询处理、数据库系统，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
   },
   {
     "id": "2604.20121v2",
@@ -111,9 +111,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。\n\n核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。",
+    "takeaway": "本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
   },
   {
     "id": "2506.01576v3",
@@ -137,9 +137,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 索引、GPU 内存管理、排序相关技术。\n\n核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。",
+    "takeaway": "本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2512.02862v3",
@@ -165,69 +165,117 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 查询处理、GPU 内存管理、查询处理、OLAP、RDMA 网络相关技术。\n\n核心内容：The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data。",
+    "takeaway": "本文聚焦GPU 查询处理、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
   },
   {
-    "id": "2602.23999v1",
-    "title": "GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search",
+    "id": "1611.01137v2",
+    "title": "A Memory Bandwidth-Efficient Hybrid Radix Sort on GPUs",
     "authors": [
-      "Jifan Shi",
-      "Jianyang Gao",
-      "James Xia",
-      "Tamás Béla Fehér",
-      "Cheng Long"
+      "Elias Stehle",
+      "Hans-Arno Jacobsen"
     ],
-    "abstract": "Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs. In contrast, cluster-based methods build and scale efficiently yet often need many probes for high recall, straining memory bandwidth and compute. Aiming to simultaneously achieve fast index build, high-throughput search, high recall, and low storage requirement for GPUs, we present IVF-RaBitQ (GPU), a GPU-native ANNS solution that integrates the cluster-based method IVF with RaBitQ quantization into an efficient GPU index build/search pipeline. Specifically, for index build, we develop a scalable GPU-native RaBitQ quantization method that enables fast and accurate low-bit encoding at scale. For search, we develop GPU-native distance computation schemes for RaBitQ codes and a fused search kernel to achieve high throughput with high recall. With IVF-RaBitQ implemented and integrated into the NVIDIA cuVS Library, experiments on cuVS Bench across multiple datasets show that IVF-RaBitQ offers a strong performance frontier in recall, throughput, index build time, and storage footprint. For Recall approximately equal to 0.95, IVF-RaBitQ achieves 2.2x higher QPS than the state-of-the-art graph-based method CAGRA, while also constructing indices 7.7x faster on average. Compared to the cluster-based method IVF-PQ, IVF-RaBitQ delivers on average over 2.7x higher throughput while avoiding accessing the raw vectors for reranking.",
-    "published_date": "2026-02-27T13:23:30Z",
-    "updated_date": "2026-02-27T13:23:30Z",
+    "abstract": "Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour. Over the past few years, several improvements have been proposed for sorting on GPUs, leading to the first radix sort implementations that achieve a sorting rate of over one billion 32-bit keys per second. Yet, state-of-the-art approaches are heavily memory bandwidth-bound, as they require substantially more memory transfers than their CPU-based counterparts.\n  Our work proposes a novel approach that almost halves the amount of memory transfers and, therefore, considerably lifts the memory bandwidth limitation. Being able to sort two gigabytes of eight-byte records in as little as 50 milliseconds, our approach achieves a 2.32-fold improvement over the state-of-the-art GPU-based radix sort for uniform distributions, sustaining a minimum speed-up of no less than a factor of 1.66 for skewed distributions.\n  To address inputs that either do not reside on the GPU or exceed the available device memory, we build on our efficient GPU sorting approach with a pipelined heterogeneous sorting algorithm that mitigates the overhead associated with PCIe data transfers. Comparing the end-to-end sorting performance to the state-of-the-art CPU-based radix sort running 16 threads, our heterogeneous approach achieves a 2.06-fold and a 1.53-fold improvement for sorting 64 GB key-value pairs with a skewed and a uniform distribution, respectively.",
+    "published_date": "2016-11-03T19:33:06Z",
+    "updated_date": "2017-05-19T12:22:16Z",
     "categories": [
       "cs.DB",
-      "cs.DS",
-      "cs.IR"
+      "cs.DC",
+      "cs.DS"
     ],
     "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2602.23999v1",
-    "arxiv_url": "https://arxiv.org/abs/2602.23999v1",
+    "pdf_url": "https://arxiv.org/pdf/1611.01137v2",
+    "arxiv_url": "https://arxiv.org/abs/1611.01137v2",
     "source": "arxiv",
-    "score": 0.5595543837547302,
+    "score": 0.6288178420066833,
     "reasons": [
-      "直接涉及 GPU 加速数据库操作"
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 排序、异构计算、排序、带宽优化相关技术。\n\n核心内容：Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour。",
+    "takeaway": "本文聚焦GPU 排序、异构计算、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
   },
   {
-    "id": "2605.10135v1",
-    "title": "ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs",
+    "id": "1701.01189v2",
+    "title": "GPU Multisplit: an extended study of a parallel algorithm",
     "authors": [
-      "Lan Lu",
-      "Peiqi Yin",
-      "Isaac Yang",
-      "Tao Luo",
-      "Hua Fan",
-      "Wenchao Zhou",
-      "Feifei Li",
-      "Boon Thau Loo"
+      "Saman Ashkiani",
+      "Andrew Davidson",
+      "Ulrich Meyer",
+      "John D. Owens"
     ],
-    "abstract": "Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and high-dimensional datasets. Some studies have explored GPU-based solutions. However, GPUs are costly and their limited memory makes handling large datasets challenging.\n  In this paper, we propose a novel end-to-end system ScaleGANN that enables users to efficiently construct graph indexes for large-scale, high-dimensional datasets by leveraging low-cost spot GPU resources in a distributed cloud system. ScaleGANN utilized the idea of divide-and-merge, with an optimized vector partitioning algorithm to further improve the indexing time and space efficiency while guaranteeing good index quality. Its novel resource allocation strategy realized multi-GPU indexing parallelism and overall cost-effectiveness for both build and query. Besides, we designed a task scheduler and cost model for better spot instance management and evaluation.\n  We tested our system on large real-world datasets. Experiment results show that our approach can significantly accelerate the index build time to up to 9x times at even 6x lower price compared with the state-of-the-art extendable ANNS benchmark DiskANN.",
-    "published_date": "2026-05-11T07:46:07Z",
-    "updated_date": "2026-05-11T07:46:07Z",
+    "abstract": "Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multisplit with a sort. One way is to first generate an auxiliary array of bucket IDs and then sort input data based on it. In case smaller indexed buckets possess smaller valued keys, another way for multisplit is to directly sort input data. Both methods are inefficient and require more work than necessary: the former requires more expensive data movements while the latter spends unnecessary effort in sorting elements within each bucket. In this work, we provide a parallel model and multiple implementations for the multisplit problem. Our principal focus is multisplit for a small (up to 256) number of buckets. We use warp-synchronous programming models and emphasize warp-wide communications to avoid branch divergence and reduce memory usage. We also hierarchically reorder input elements to achieve better coalescing of global memory accesses. On a GeForce GTX 1080 GPU, we can reach a peak throughput of 18.93 Gkeys/s (or 11.68 Gpairs/s) for a key-only (or key-value) multisplit. Finally, we demonstrate how multisplit can be used as a building block for radix sort. In our multisplit-based sort implementation, we achieve comparable performance to the fastest GPU sort routines, sorting 32-bit keys (and key-value pairs) with a throughput of 3.0 G keys/s (and 2.1 Gpair/s).",
+    "published_date": "2017-01-05T01:00:27Z",
+    "updated_date": "2017-05-19T00:44:08Z",
     "categories": [
-      "cs.DB"
+      "cs.DC"
     ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2605.10135v1",
-    "arxiv_url": "https://arxiv.org/abs/2605.10135v1",
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/1701.01189v2",
+    "arxiv_url": "https://arxiv.org/abs/1701.01189v2",
     "source": "arxiv",
-    "score": 0.5406333518028259,
+    "score": 0.6076371228694916,
     "reasons": [
-      "直接涉及 GPU 加速数据库操作"
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "",
-    "takeaway": "",
-    "innovation": ""
+    "abstract_cn": "本文研究GPU 排序、排序、通信优化、吞吐量相关技术。\n\n核心内容：Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multis...。",
+    "takeaway": "本文聚焦GPU 排序、排序、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "1306.5076v2",
+    "title": "Bank Conflict Free Comparison-based Sorting On GPUs",
+    "authors": [
+      "Nodari Sitchinava",
+      "Volker Weichert"
+    ],
+    "abstract": "In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts. It can be used as a subroutine for GPU sorting algorithms to replace current use of sorting networks in shared memory. Using our bank conflict free shared memory sorting subroutine as a black box, we design BCFMergesort, an algorithm for merging sorted streams of data that are larger than shared memory. Our algorithm performs all accesses to global memory in coalesced manner and incurs no bank conflicts during the merge.",
+    "published_date": "2013-06-21T08:57:39Z",
+    "updated_date": "2016-10-11T05:32:00Z",
+    "categories": [
+      "cs.DS",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DS",
+    "pdf_url": "https://arxiv.org/pdf/1306.5076v2",
+    "arxiv_url": "https://arxiv.org/abs/1306.5076v2",
+    "source": "arxiv",
+    "score": 0.605968177318573,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 排序、排序、网络相关技术。\n\n核心内容：In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts。",
+    "takeaway": "本文聚焦GPU 排序、排序、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2206.01784v1",
+    "title": "Onesweep: A Faster Least Significant Digit Radix Sort for GPUs",
+    "authors": [
+      "Andy Adinets",
+      "Duane Merrill"
+    ],
+    "abstract": "We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration. This exhibits a significant reduction in last-level memory traffic versus contemporary GPU radix sorting implementations, where each iteration of digit binning requires two passes through the dataset totaling ~3n global memory operations.\n  On the NVIDIA A100 GPU, our approach achieves 29.4 GKey/s when sorting 256M random 32-bit keys. Compared to CUB, the current state-of-the-art GPU LSD radix sort, our approach provides a speedup of ~1.5x. For 32-bit keys with varied distributions, our approach provides more consistent performance compared to HRS, the current state-of-the-art GPU MSD radix sort, and outperforms it in almost all cases.",
+    "published_date": "2022-06-03T19:08:55Z",
+    "updated_date": "2022-06-03T19:08:55Z",
+    "categories": [
+      "cs.DC",
+      "cs.DS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2206.01784v1",
+    "arxiv_url": "https://arxiv.org/abs/2206.01784v1",
+    "source": "arxiv",
+    "score": 0.5619045805931091,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 排序、排序相关技术。\n\n核心内容：We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration。",
+    "takeaway": "本文聚焦GPU 排序、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   }
 ]
