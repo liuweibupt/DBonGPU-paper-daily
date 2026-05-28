@@ -482,7 +482,7 @@
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">11</div>
+            <div class="stat-value">15</div>
             <div class="stat-label">中等相关度</div>
         </div>
         <div class="stat-card">
@@ -584,6 +584,28 @@
     <div class="paper-card compact">
         <div class="paper-header">
             <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04696v2" target="_blank">GPIR: Enabling Practical Private Information Retrieval with GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.639</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hyesung Ji, Hyunah Yu, Jongmin Kim, Wonseok Choi 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、隐私信息检索、多 GPU、通信优化、吞吐量相关技术。
+
+核心内容：Private information retrieval (PIR) allows private database queries; however, it is hindered by intense server-side computation and memory traffic. Numerous modern lattice-based PIR protocols consist of three phases: ExpandQuery (expanding a query into enc...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、隐私信息检索、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04696v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.04696v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.17168v1" target="_blank">HierarchicalKV: A GPU Hash Table with Cache Semantics for Continuous Online Embedding Storage</a></span>
         </div>
         <div class="paper-meta">
@@ -605,7 +627,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">6</span>
+            <span class="paper-rank">7</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.08036v2" target="_blank">Samyama: A Unified Graph-Vector Database with In-Database Optimization, Agentic Enrichment, and Hardware Acceleration</a></span>
         </div>
         <div class="paper-meta">
@@ -627,7 +649,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">7</span>
+            <span class="paper-rank">8</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.01811v1" target="_blank">GPU-RMQ: Accelerating Range Minimum Queries on Modern GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -649,7 +671,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">8</span>
+            <span class="paper-rank">9</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.20073v2" target="_blank">Scaling Worst-Case Optimal Datalog to GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -671,7 +693,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">9</span>
+            <span class="paper-rank">10</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.10135v1" target="_blank">ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -693,7 +715,73 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">10</span>
+            <span class="paper-rank">11</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05628v1" target="_blank">Towards Compute-Aware In-Switch Computing for LLMs Tensor-Parallelism on Multi-GPU Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.520</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Chen Zhang, Qijun Zhang, Zhuoshan Zhou, Yijia Diao 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究张量并行、大模型推理、多 GPU、NVLink 互连、SHARP 集合计算相关技术。
+
+核心内容：Tensor parallelism (TP) in large-scale LLM inference and training introduces frequent collective operations that dominate inter-GPU communication. While in-switch computing, exemplified by NVLink SHARP (NVLS), accelerates collective operations by ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量并行、大模型推理、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05628v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05628v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">12</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.18120v1" target="_blank">Proxics: an efficient programming model for far memory accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.513</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.OS</span> <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Zikai Liu, Niels Pressel, Jasmin Schult, Roman Meier 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、数据处理、通信优化、带宽优化、延迟优化相关技术。
+
+核心内容：The use of disaggregated or far memory systems such as CXL memory pools has renewed interest in Near-Data Processing (NDP): situating cores close to memory to reduce bandwidth requirements to and from the CPU. Hardware designs for such accelerators are appear...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、数据处理、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.18120v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.18120v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">13</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.28793v1" target="_blank">Toward a Universal GPU Instruction Set Architecture: A Cross-Vendor Analysis of Hardware-Invariant Computational Primitives in Parallel Processors</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.513</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ojima Abraham, Onyinye Okoli</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：We present the first systematic cross-vendor analysis of GPU instruction set architectures spanning all four major GPU vendors: NVIDIA (PTX ISA v1.0 through v9.2, Fermi through Blackwell), AMD (RDNA 1 to 4 and CDNA 1 to 4), Intel (Gen11, Xe-LP, Xe-HPG, Xe-HPC), and Apple (G1...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.28793v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.28793v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">14</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.14445v1" target="_blank">Parallel R-tree-based Spatial Query Processing on a Commercial Processing-in-Memory System</a></span>
         </div>
         <div class="paper-meta">
@@ -715,7 +803,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">11</span>
+            <span class="paper-rank">15</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.15486v1" target="_blank">Cuckoo-GPU: Accelerating Cuckoo Filters on Modern GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -737,7 +825,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">12</span>
+            <span class="paper-rank">16</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.27719v1" target="_blank">DaiSy: A Library for Scalable Data Series Similarity Search</a></span>
         </div>
         <div class="paper-meta">
@@ -759,7 +847,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">13</span>
+            <span class="paper-rank">17</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.19982v1" target="_blank">3DPipe: A Pipelined GPU Framework for Scalable Generalized Spatial Join over Polyhedral Objects</a></span>
         </div>
         <div class="paper-meta">
@@ -781,7 +869,51 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">14</span>
+            <span class="paper-rank">18</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04783v1" target="_blank">GPU Acceleration of TFHE-Based High-Precision Nonlinear Layers for Encrypted LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.497</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Guoci Chen, Xiurui Pan, Qiao Li, Bo Mao 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、大模型推理相关技术。
+
+核心内容：Deploying large language models (LLMs) as cloud services raises privacy concerns as inference may leak sensitive data. Fully Homomorphic Encryption (FHE) allows computation on encrypted data, but current FHE methods struggle with efficient and precise nonlinear function e...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04783v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.04783v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">19</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.00555v2" target="_blank">Sim-FA: A GPGPU Simulator Framework for Fine-Grained FlashAttention Pipeline Analysis</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.497</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Zhongchun Zhou, Yuhang Gu, Chengtao Lai, Ya Wang 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：To efficiently support Large Language Models (LLMs), modern GPGPU architectures have introduced new features and programming paradigms, such as warp specialization. These features enable temporal overlap between the producer and consumer, as well as between matrix multiplica...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.00555v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.00555v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">20</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.16402v1" target="_blank">GRAB-ANNS: High-Throughput Indexing and Hybrid Search via GPU-Native Bucketing</a></span>
         </div>
         <div class="paper-meta">
@@ -803,7 +935,139 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">15</span>
+            <span class="paper-rank">21</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.23466v1" target="_blank">Evaluating CUDA Tile for AI Workloads on Hopper and Blackwell GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.496</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Divakar Kumar Yadav, Tian Zhao, Deepak Kumar</div>
+        <div class="paper-abstract-cn">本文研究GPU 核函数、CUDA、大模型推理、吞吐量相关技术。
+
+核心内容：NVIDIA's CUDA Tile (CuTile) introduces a Python-based, tile-centric abstraction for GPU kernel development that aims to simplify programming while retaining Tensor Core and Tensor Memory Accelerator (TMA) efficiency on modern GPUs. We present the first independe...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数、CUDA、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.23466v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.23466v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">22</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02120v2" target="_blank">GEMM-GS: Accelerating 3D Gaussian Splatting on Tensor Cores with GEMM-Compatible Blending</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.491</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.GR</span> 
+        </div>
+        <div class="paper-authors">Haomin Li, Bowen Zhu, Fangxin Liu, Zongwu Wang 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、延迟优化相关技术。
+
+核心内容：Neural Radiance Fields (NeRF) enables 3D scene reconstruction from several 2D images but incurs high rendering latency via its point-sampling design. 3D Gaussian Splatting (3DGS) improves on NeRF with explicit scene representation and an optimized pipeline yet still fails to...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02120v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.02120v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">23</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.22430v2" target="_blank">A comprehensive evaluation of spatial co-execution on GPUs using MPS and MIG technologies</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.488</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jorge Villarrubia, Luis Costero, Francisco D. Igual, Katzalin Olcoz</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：To mitigate the increasingly common underutilization of computational resources in modern GPUs, spatial sharing methods enable multiple applications to use them simultaneously. This work presents a comprehensive evaluation of NVIDIA's primary technologies to achieve that goa...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.22430v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.22430v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">24</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.22774v2" target="_blank">Characterizing CPU-Induced Slowdowns in Multi-GPU LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.483</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Euijun Chung, Yuxiao Jia, Aaron Jezghani, Hyesoon Kim</div>
+        <div class="paper-abstract-cn">本文研究CUDA、大模型推理、多 GPU、通信优化、延迟优化相关技术。
+
+核心内容：Large-scale machine learning workloads increasingly rely on multi-GPU systems, yet their performance is often limited by an overlooked component: the CPU. Through a detailed study of modern large language model (LLM) inference and serving workloads, we find ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、大模型推理、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.22774v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.22774v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">25</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.27486v1" target="_blank">CuLifter: Lifting GPU Binaries to Typed IR</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.472</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jisheng Zhao, Huanzhi Pu, Shinnung Jeong, Chihyo Ahn 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：GPU compilers merge all data types into a single unified register file, erasing the type information that binary-analysis tools rely on. We show that type recovery from this untyped register file is the central challenge of GPU binary lifting。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.27486v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.27486v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">26</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15379v1" target="_blank">Fleet: Hierarchical Task-based Abstraction for Megakernels on Multi-Die GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.470</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Sangeeta Chowdhary, Ryan Swann, Sean Siddens, Muhammad Osama 等 (10 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、大模型推理、延迟优化相关技术。
+
+核心内容：Modern GPUs adopt chiplet-based designs with multiple private cache hierarchies, but current programming models (CUDA/HIP) expose a flat execution hierarchy that cannot express chiplet-level locality or synchronization. This mismatch leads to redundant memory traffic a...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15379v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.15379v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">27</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.01967v1" target="_blank">Optimizing Relational Queries over Array-Valued Data in Columnar Systems</a></span>
         </div>
         <div class="paper-meta">
@@ -825,7 +1089,29 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">16</span>
+            <span class="paper-rank">28</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05888v1" target="_blank">MoE-Hub: Taming Software Complexity for Seamless MoE Overlap with Hardware-Accelerated Communication on Multi-GPU Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.457</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zhuoshan Zhou, Chen Zhang, Shuyi Zhang, Qijun Zhang 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究多 GPU、GPU 间通信、通信优化相关技术。
+
+核心内容：The Mixture-of-Experts (MoE) architecture is crucial for scaling large language models, but its scalability is severely limited by inter-GPU communication bottlenecks in multi-GPU systems. Although overlapping communication with computation is a widely recognized op...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU、GPU 间通信、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05888v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05888v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">29</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.10601v1" target="_blank">gMatch: Fine-Grained and Hardware-Efficient Subgraph Matching on GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -847,7 +1133,95 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">17</span>
+            <span class="paper-rank">30</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.27808v1" target="_blank">AME-PIM: Can Memory be Your Next Tensor Accelerator?</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.450</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Emanuele Venieri, Simone Manoni, Alberto Florian, Jaehyun Park 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、带宽优化相关技术。
+
+核心内容：High Bandwidth Memory with Processing-in-Memory (HBM-PIM) offers an opportunity to reduce data movement by executing computation directly inside memory, but current commercial platforms expose limited instruction sets and require specialized software stacks. In this work, w...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.27808v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.27808v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">31</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10852v1" target="_blank">The xPU-athalon: Quantifying the Competition of AI Acceleration</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Alicia Golden, Carole-Jean Wu, Gu-Yeon Wei, David Brooks</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、通信优化、延迟优化、吞吐量相关技术。
+
+核心内容：The push for greater efficiency in AI computation has given rise to an array of accelerator architectures that increasingly challenge the GPU's long-standing dominance. In this work, we provide a quantitative view of this evolving landscape of AI accelerators, incl...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10852v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.10852v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">32</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05496v1" target="_blank">DICE: Enabling Efficient General-Purpose SIMT Execution with Statically Scheduled Coarse-Grained Reconfigurable Arrays</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Jiayi Wang, Ang Da Lu, Zhichen Zeng, Ang Li</div>
+        <div class="paper-abstract-cn">本文研究SIMD 并行、延迟优化相关技术。
+
+核心内容：While GPUs dominate massively parallel computing through the single-instruction, multiple-thread (SIMT) programming model, their underlying single-instruction, multiple-data (SIMD) execution incurs substantial energy overhead from frequent register file (RF) accesses and ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦SIMD 并行、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05496v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05496v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">33</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04178v1" target="_blank">Microbenchmark-Driven Analytical Performance Modeling Across Modern GPU Architectures</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.449</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Aaron Jarmusch, Sunita Chandrasekaran</div>
+        <div class="paper-abstract-cn">本文研究带宽优化相关技术。
+
+核心内容：Rapidly evolving GPU architectures featuring complex memory hierarchies, matrix units, and varied precision formats continue to widen the gap between theoretical peaks and achievable performance. We design and develop analytical performance models for NVIDIA Blackwell (B200) and ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04178v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.04178v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">34</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.13398v1" target="_blank">FPGA-Accelerated Lock Management and Transaction Processing: Architecture, Optimization, and Design Space Exploration</a></span>
         </div>
         <div class="paper-meta">
@@ -869,7 +1243,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">18</span>
+            <span class="paper-rank">35</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.25521v1" target="_blank">CS-PQ: Cache-Friendly SIMD Product Quantization for Large-Scale ANNS Index Construction</a></span>
         </div>
         <div class="paper-meta">
@@ -891,7 +1265,29 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">19</span>
+            <span class="paper-rank">36</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.20047v1" target="_blank">Taking Cryptography Out of the Data Path via Near-Memory Processing in DRAM</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.444</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Nicola Barcarolo, Brahmaiah Gandham, Mohammad Sadrosadati, Roberto Passerone 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、延迟优化相关技术。
+
+核心内容：Cryptographic algorithms such as AES-128 and SHA-256 are fundamental to ensuring data security and integrity. Although these algorithms are computationally efficient, their performance is often constrained by the processor-centric architectures (e.g., CPUs, GPUs), primarily...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.20047v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.20047v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">37</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.02801v1" target="_blank">Distance Comparison Operations Are Not Silver Bullets in Vector Similarity Search: A Benchmark Study on Their Merits and Limits</a></span>
         </div>
         <div class="paper-meta">
@@ -913,7 +1309,51 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">20</span>
+            <span class="paper-rank">38</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.21847v1" target="_blank">CompPow: A Case for Component-level GPU Power Management</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.443</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Shaizeen Aga, Mohamed Assem Ibrahim</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：The ever increasing demand for ML-driven intelligence in a wide spectrum of domains has led to ubiquity of GPUs. At the same time, GPUs are notorious for their power consumption needs and often dominate power allocation in a typical ML datacenter。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.21847v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.21847v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">39</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.08182v1" target="_blank">Wattlytics: A Web Platform for Co-Optimizing Performance, Energy, and TCO in HPC Clusters</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.443</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Ayesha Afzal, Georg Hager, Gerhard Wellein</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、异构计算相关技术。
+
+核心内容：The escalating computational demands and energy footprint of GPU-accelerated computing systems complicate informed design and operational decisions. We present the first release of Wattlytics (https://wattlytics.netlify.app), an interactive, browser-based decision-support ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.08182v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.08182v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">40</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.00423v1" target="_blank">Making Array-Based Translation Practical for Modern, High-Performance Buffer Management</a></span>
         </div>
         <div class="paper-meta">
@@ -935,7 +1375,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">21</span>
+            <span class="paper-rank">41</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.28079v1" target="_blank">Tailwind: A Practical Framework for Query Accelerators</a></span>
         </div>
         <div class="paper-meta">
@@ -957,7 +1397,29 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">22</span>
+            <span class="paper-rank">42</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02556v1" target="_blank">Fast NF4 Dequantization Kernels for Large Language Model Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.437</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Xiangbo Qi, Chaoyi Jiang, Murali Annavaram</div>
+        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
+
+核心内容：Large language models (LLMs) have grown beyond the memory capacity of single GPU devices, necessitating quantization techniques for practical deployment. While NF4 (4-bit NormalFloat) quantization enables 4$\times$ memory reduction, inference on current NVIDIA GPUs (e.g., Ampere ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02556v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.02556v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">43</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.21797v1" target="_blank">Polars inside Intel SGX2 Enclaves: An Empirical Study of Confidential Analytical Query Processing</a></span>
         </div>
         <div class="paper-meta">
@@ -979,7 +1441,183 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">23</span>
+            <span class="paper-rank">44</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.20421v2" target="_blank">Hawkeye: Reproducing GPU-Level Non-Determinism</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.434</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Erez Badash, Dan Boneh, Ilan Komargodski, Megha Srivastava</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：We present Hawkeye, a system for analyzing and reproducing GPU-level arithmetic operations. Using our framework, anyone can re-execute on a CPU the exact matrix multiplication operations underlying a machine learning model training or inference workflow that was executed on ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.20421v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.20421v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">45</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.26435v1" target="_blank">Wattchmen: Watching the Wattchers -- High Fidelity, Flexible GPU Energy Modeling</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.434</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Brandon Tran, Matthias Maiterth, Woong Shin, Matthew D. Sinclair 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：Modern GPU-rich HPC systems are increasingly becoming energy-constrained. Thus, understanding an application's energy consumption becomes essential。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.26435v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.26435v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">46</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20105v1" target="_blank">EnergAIzer: Fast and Accurate GPU Power Estimation Framework for AI Workloads</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.430</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Kyungmi Lee, Zhiye Song, Eun Kyung Lee, Xin Zhang 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索相关技术。
+
+核心内容：As AI workloads drive increases in datacenter power consumption, accurate GPU power estimation is critical for proactive power management. However, existing power models face a scalability bottleneck not in the modeling techniques themselves, but in obtaining the hardware utili...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.20105v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.20105v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">47</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.19057v1" target="_blank">Mitigating the Bandwidth Wall via Data-Streaming System-Accelerator Co-Design</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.429</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Qunyou Liu, Marina Zapater, David Atienza</div>
+        <div class="paper-abstract-cn">本文研究带宽优化、吞吐量相关技术。
+
+核心内容：Transformers have revolutionized AI in natural language processing and computer vision, but their large computation and memory demands pose major challenges for hardware acceleration. In practice, end-to-end throughput is often limited by paged data movement and interconnect ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.19057v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.19057v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">48</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25522v1" target="_blank">Co-Designing Graph-based Approximate Nearest Neighbor Search at Billion Scale for Processing-in-Memory</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.424</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Sitian Chen, Yusen Li, Yao Chen, Minwen Deng 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、近邻搜索、通信优化、带宽优化、吞吐量相关技术。
+
+核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficiency trade-off at scale. The workload is fundamentally memory-bound: graph traversal produces frequent, irregul...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、近邻搜索、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.25522v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.25522v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">49</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.27323v1" target="_blank">Megakernel vs Wavefront GPU Path Tracing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.423</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.GR</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Rafael Padilla, Kyle Webster, Austin Kim</div>
+        <div class="paper-abstract-cn">本文研究通信优化、延迟优化、吞吐量相关技术。
+
+核心内容：Over the last decade, advances in GPU hardware have been driven in large part by the demands of real-time graphics, culminating in dedicated hardware ray tracing cores (RT cores). These units accelerate ray scene intersection queries directly in hardware, making physical...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.27323v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.27323v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">50</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.17158v2" target="_blank">A comprehensive study on ILP acceleration accounting for sparsity, area, energy, data movement using near-memory architecture</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.419</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Lizy K John, Jaydeep P. Kulkarni</div>
+        <div class="paper-abstract-cn">本文研究网络、吞吐量相关技术。
+
+核心内容：Integer Linear Programming (ILP) is widely used for solving real-world optimization problems, including network routing, map routing, and traffic scheduling. However, ILP algorithms are sparse and branch-intensive, making them inefficient on conventional CPUs and GPUs。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.17158v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.17158v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">51</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25367v1" target="_blank">Architectural Limits of Cloud TPUs in Finite-Field Cryptography</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hung Dang, Xuan Phu Dang, Tue Nguyen</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索、异构计算、吞吐量相关技术。
+
+核心内容：We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\times, 6{,}908\times]$ deficit across v5p and v4 architectures under an FP32-...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.25367v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.25367v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">52</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.15023v3" target="_blank">SIMD-PAC-DB: Pretty Performant PAC Privacy</a></span>
         </div>
         <div class="paper-meta">
@@ -1001,7 +1639,117 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">24</span>
+            <span class="paper-rank">53</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04213v1" target="_blank">The Anatomy of Silent Data Corruption: GPU Error Pattern Study and Modeling Guidance</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chung-Hsuan Tung, Yanxiang Huang, Nirmal Saxena, Philip Shirvani 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA相关技术。
+
+核心内容：Silent data corruption (SDC) threatens the reliability of large-scale GPU clusters used for training large language models, yet its rarity and lack of explicit error signals make accurate high-level modeling challenging. To address this gap, we conducted a large-scale gate-level ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04213v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.04213v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">54</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.26968v1" target="_blank">Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.417</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Sanjeev Rao Ganjihal</div>
+        <div class="paper-abstract-cn">本文研究RDMA 网络、NVMe 存储、吞吐量相关技术。
+
+核心内容：Key-value (KV) cache memory management is the primary bottleneck limiting throughput and cost-efficiency in large-scale GPU inference serving. Current systems suffer from three compounding inefficiencies: (1) the absence of unified KV cache sizing across all attent...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦RDMA 网络、NVMe 存储、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.26968v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.26968v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">55</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.26103v2" target="_blank">AMMA: A Multi-Chiplet Memory-Centric Architecture for Low-Latency 1M Context Attention Serving</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.411</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zhongkai Yu, Haotian Ye, Chenyang Zhou, Ohm Rishabh Venkatachalam 等 (12 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 计算、异构计算、聚合、通信优化、带宽优化相关技术。
+
+核心内容：All current LLM serving systems place the GPU at the center, from production-level attention-FFN disaggregation to NVIDIA's Rubin GPU-LPU heterogeneous platform. Even academic PIM/PNM proposals still treat the GPU as the central hub for cross-device communicat...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 计算、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.26103v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.26103v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">56</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.04084v1" target="_blank">FASQ: Flexible Accelerated Subspace Quantization for Calibration-Free LLM Compression</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.410</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ye Qiao, Yian Wang, Zhiheng Chen, Hyoukjun Kwon 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、吞吐量相关技术。
+
+核心内容：Compressing large language models (LLMs) for deployment on commodity GPUs remains challenging: conventional scalar quantization is limited to fixed bit-widths (e.g., 8/4/3-bit), offers only a few discrete compression points, and typically requires calibration data. We present...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.04084v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.04084v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">57</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.19405v2" target="_blank">A complete discussion on fully reconfigurable, digital, scalable, graph and sparsity-aware near-memory accelerator for graph neural networks</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.410</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Lizy John, Jaydeep P. Kulkarni</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、异构计算、聚合、网络、吞吐量相关技术。
+
+核心内容：Graph neural networks (GNNs) have gained significant interest for applications such as citation network analysis and drug discovery due to their ability to apply machine learning techniques on graph-structured data. GNNs typically employ a two-stage execution pipe...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.19405v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.19405v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">58</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.18015v1" target="_blank">LogRouter: Adaptive Two-Level LLM Routing for Log Question Answering in Big Data Systems</a></span>
         </div>
         <div class="paper-meta">
@@ -1023,7 +1771,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">25</span>
+            <span class="paper-rank">59</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.07517v1" target="_blank">GP-Tree: An in-memory spatial index combining adaptive grid cells with a prefix tree for efficient spatial querying</a></span>
         </div>
         <div class="paper-meta">
@@ -1045,7 +1793,51 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">26</span>
+            <span class="paper-rank">60</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.03713v2" target="_blank">SPEC CPU2026: Characterization, Representativeness, and Cross-Suite Comparison</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.407</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Ruihao Li, Andrew Jacob, Neeraja J. Yadwadkar, Lizy K. John</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：Specialized accelerators dominate AI workloads, but CPUs remain critical for orchestrating these accelerators and running datacenter services. As a result, CPU performance increasingly shapes end-to-end system efficiency, making it necessary for benchmarks to reflect modern ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.03713v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.03713v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">61</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.01187v1" target="_blank">Evolution of NVENC Efficiency: A Longitudinal Analysis of HQ and UHQ Tuning Efficiency, Latency and Energy Trade-offs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.406</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">eess.IV</span> <span class="tag">cs.AR</span> <span class="tag">cs.MM</span> 
+        </div>
+        <div class="paper-authors">Kasidis Arunruangsirilert, Jiro Katto</div>
+        <div class="paper-abstract-cn">本文研究CUDA、通信优化、延迟优化相关技术。
+
+核心内容：The rapid expansion of uplink-intensive applications necessitates video coding solutions that balance high Rate-Distortion (RD) efficiency with ultra-low latency. This paper presents a longitudinal performance analysis of NVIDIA hardware encoding (NVENC), spanning from ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.01187v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.01187v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">62</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.10081v1" target="_blank">Categorical Calculus and Algebra for Multi-Model Data</a></span>
         </div>
         <div class="paper-meta">
@@ -1067,7 +1859,73 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">27</span>
+            <span class="paper-rank">63</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.10905v2" target="_blank">TLX: Hardware-Native, Evolvable MIMW GPU Compiler for Large-scale Production Environments</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.400</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yue Guan, Hongtao Yu, Peng Chen, Daohang Shi 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms, so performance depends on orchestrating data movement, tensor-core computation, and synchronization rather than exposing more thread-level parallelism. This creates a progra...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.10905v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.10905v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">64</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.11512v1" target="_blank">EdgeCIM: A Hardware-Software Co-Design for CIM-Based Acceleration of Small Language Models</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.399</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> 
+        </div>
+        <div class="paper-authors">Jinane Bazzi, Mariam Rakka, Fadi Kurdahi, Mohammed E. Fouda 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究带宽优化、延迟优化、吞吐量相关技术。
+
+核心内容：The growing demand for deploying Small Language Models (SLMs) on edge devices, including laptops, smartphones, and embedded platforms, has exposed fundamental inefficiencies in existing accelerators. While GPUs handle prefill workloads efficiently, the autoregressive dec...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦带宽优化、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.11512v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.11512v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">65</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.21566v1" target="_blank">Leveraging SIMD for Accelerating Large-number Arithmetic</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.397</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Subhrajit Das, Abhishek Bichhawat, Yuvraj Patel</div>
+        <div class="paper-abstract-cn">本文研究SIMD 并行、延迟优化、吞吐量相关技术。
+
+核心内容：Large-number arithmetic, widely used in scientific computing and cryptography, has seen limited adoption of single instruction, multiple data (SIMD) parallelism on modern CPUs due to the inherent dependencies in traditional algorithms. We present DigitsOnTurbo (DoT), ...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦SIMD 并行、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.21566v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.21566v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">66</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.25040v1" target="_blank">CAFS: A Cache-Aware Frequency Sort for Low-Cardinality Integer Data on x86-64</a></span>
         </div>
         <div class="paper-meta">
@@ -1089,7 +1947,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">28</span>
+            <span class="paper-rank">67</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.09398v2" target="_blank">GeoBenchr: An Application-Centric Benchmarking Suite for Spatiotemporal Database Platforms</a></span>
         </div>
         <div class="paper-meta">
@@ -1111,7 +1969,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">29</span>
+            <span class="paper-rank">68</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.03640v1" target="_blank">In-memory Multidimensional Indexing Using the skd-tree</a></span>
         </div>
         <div class="paper-meta">
@@ -1133,7 +1991,51 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">30</span>
+            <span class="paper-rank">69</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.16253v1" target="_blank">TTP: A Hardware-Efficient Design for Precise Prefetching in Ray Tracing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.395</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yavuz Selim Tozlu, Anshul Naithani, Huiyang Zhou</div>
+        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
+
+核心内容：Ray tracing (RT) is a 3D graphics technique that offers highly realistic visuals. It is becoming prominent and accessible as GPU vendors have integrated dedicated ray tracing acceleration hardware。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.16253v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.16253v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">70</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.25699v1" target="_blank">NVLLM: A 3D NAND-Centric Architecture Enabling Edge on-Device LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.394</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Mingbo Hao, Changwei Yan, Haoyu Cui, Zhihao Yan 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、网络、吞吐量相关技术。
+
+核心内容：The rapid growth of LLMs demands high-throughput, memory-capacity-intensive inference on resource-constrained edge devices, where single-batch decoding remains fundamentally memory-bound. Existing out-of-core GPU-based and SSD-like accelerators are limited by DRAM-bound w...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.25699v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.25699v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">71</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.21117v1" target="_blank">Efficient Batch Search Algorithm for B+ Tree Index Structures with Level-Wise Traversal on FPGAs</a></span>
         </div>
         <div class="paper-meta">
@@ -1155,7 +2057,73 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">31</span>
+            <span class="paper-rank">72</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10187v1" target="_blank">WaveTune: Wave-aware Bilinear Modeling for Efficient GPU Kernel Auto-tuning</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.389</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Kaixuan Zhang, Chutong Ding, Shiyou Qian, Luping Wang 等 (9 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 核函数、大模型推理、延迟优化相关技术。
+
+核心内容：The rapid adoption of Large Language Models (LLMs) has made GPU inference efficiency an increasingly critical system concern. The runtime of LLM workloads is largely dominated by tile-based kernels, particularly General Matrix Multiplications (GEMMs)。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10187v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.10187v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">73</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.00519v2" target="_blank">Silicon Showdown: Performance, Efficiency, and Ecosystem Barriers in Consumer-Grade LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.389</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PF</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Abdurrahman Javat, Allan Kazakov</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索、大模型推理、延迟优化、吞吐量相关技术。
+
+核心内容：The operational landscape of local Large Language Model (LLM) inference has shifted from lightweight models to datacenter-class weights exceeding 70B parameters, creating profound systems challenges for consumer hardware. This paper presents a systematic empirica...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.00519v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.00519v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">74</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02473v1" target="_blank">Analyzing Reverse Address Translation Overheads in Multi-GPU Scale-Up Pods</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.388</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Amel Fatima, Tuan Ta, Bradford M. Beckmann</div>
+        <div class="paper-abstract-cn">本文研究多 GPU、NVLink 互连、网络、通信优化、延迟优化相关技术。
+
+核心内容：Distributed ML workloads rely heavily on collective communication across multi-GPU, multi-node systems. Emerging scale-up fabrics, such as NVLink and UALink, enable direct memory access across nodes but introduce a critical destination-side translation ste...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU、NVLink 互连、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02473v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.02473v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">75</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.21449v1" target="_blank">Research on the efficiency of data loading and storage in Data Lakehouse architectures for the formation of analytical data systems</a></span>
         </div>
         <div class="paper-meta">
@@ -1177,7 +2145,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">32</span>
+            <span class="paper-rank">76</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.29052v1" target="_blank">SteelDB: Diagnosing Kernel-Space Bottlenecks in Cloud OLTP Databases</a></span>
         </div>
         <div class="paper-meta">
@@ -1199,7 +2167,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">33</span>
+            <span class="paper-rank">77</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.03772v1" target="_blank">Towards Effective Orchestration of AI x DB Workloads</a></span>
         </div>
         <div class="paper-meta">
@@ -1221,7 +2189,95 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">34</span>
+            <span class="paper-rank">78</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.17692v1" target="_blank">AccelCIM: Systematic Dataflow Exploration for SRAM Compute-in-Memory Accelerator</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chenhao Xue, Yukun Wang, An Guo, Yuhui Shi 等 (14 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、网络相关技术。
+
+核心内容：SRAM-based compute-in-memory (CIM) offers high computational density and energy efficiency for deep neural network (DNN) accelerators, but its limited capacity causes on/off-chip data movement overhead for large DNN models. Existing CIM accelerator studies typically assume th...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.17692v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.17692v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">79</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.28239v3" target="_blank">A Switch-Centric In-Network Architecture for Accelerating LLM Inference in Shared-Memory Network</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Aojie Jiang, Kang Zhu, Zhiheng Zhang, Zhengxu Su 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、NVLink 互连、SHARP 集合计算、集合通信、All-Reduce相关技术。
+
+核心内容：In-network computing techniques, exemplified by NVLink SHARP (NVLS), offer a promising approach to addressing the communication bottlenecks in LLM inference by offloading collective operations such as All-Reduce to switches. However, the acce...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、NVLink 互连、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.28239v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.28239v3" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">80</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.00028v1" target="_blank">Sequence-Aware Split Heuristic to Mitigate SM Underutilization in FlashAttention-3 Low-Head-Count Decoding</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.382</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Martí Llopart Font, Javier Hernando, Cristina España-Bonet</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：The standard FlashAttention-3 heuristic exhibits a GPU occupancy bottleneck in low-head-count decoding configurations because it disables sequence splitting based on sequence length alone, underutilizing the Streaming Multiprocessors of Hopper GPUs. Our proposed sequence-awa...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.00028v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.00028v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">81</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05607v1" target="_blank">Accelerating MoE with Dynamic In-Switch Computing on Multi-GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.381</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Qijun Zhang, Chen Zhang, Zhuoshan Zhou, Haibo Wang 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究多 GPU、NVLink 互连、SHARP 集合计算、GPU 间通信、交换机内计算相关技术。
+
+核心内容：Mixture-of-Experts (MoE) has been adopted by many leading large models to reduce computational requirements. However, frequent inter-GPU communication in MoE expert parallelism (EP) becomes a performance challenge。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU、NVLink 互连、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05607v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05607v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">82</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.19434v2" target="_blank">Computer-Orchestrated Design of Algorithms: From Join Specification to Implementation</a></span>
         </div>
         <div class="paper-meta">
@@ -1243,7 +2299,29 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">35</span>
+            <span class="paper-rank">83</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15361v1" target="_blank">GEN-Graph: Heterogeneous PIM Accelerator for General Computational Patterns in Graph-based Dynamic Programming</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.379</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.SI</span> 
+        </div>
+        <div class="paper-authors">Yanru Chen, Runyang Tian, Zheyu Li, Mahbod Afarin 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、异构计算、网络、吞吐量相关技术。
+
+核心内容：While graph-based dynamic programming (DP) is a cornerstone of genomics and network analytics, its efficiency is hampered by fundamentally conflicting computational patterns. Matrix-centric DP drives regular, compute-bound network analytics, while topology-centric DP...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、异构计算、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15361v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.15361v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">84</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.05162v1" target="_blank">RESYSTANCE: Unleashing Hidden Performance of Compaction in LSM-trees via eBPF</a></span>
         </div>
         <div class="paper-meta">
@@ -1265,7 +2343,51 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">36</span>
+            <span class="paper-rank">85</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.12618v1" target="_blank">CODO: An Automated Compiler for Comprehensive Dataflow Optimization</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.376</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Weichuang Zhang, Yiquan Wang, Xinzhou Zhang, Chi Zhang 等 (9 位作者)</div>
+        <div class="paper-abstract-cn">本文研究通信优化、延迟优化相关技术。
+
+核心内容：FPGAs are well-suited for dataflow architectures that process data in a streaming or pipelined manner, thus satisfying the high computational and communication demands of emerging applications. However, manually implementing an efficient dataflow architecture for large-scale...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.12618v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.12618v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">86</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2603.17435v1" target="_blank">ZipServ: Fast and Memory-Efficient LLM Inference with Hardware-Aware Lossless Compression</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.375</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Ruibo Fan, Xiangrui Yu, Xinglin Pan, Zeyu Li 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、带宽优化相关技术。
+
+核心内容：Lossless model compression holds tremendous promise for alleviating the memory and bandwidth bottlenecks in bit-exact Large Language Model (LLM) serving. However, existing approaches often result in substantial inference slowdowns due to fundamental design mismatches with G...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2603.17435v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2603.17435v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">87</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2604.17180v1" target="_blank">BranchBench: Aligning Database Branching with Agentic Demands</a></span>
         </div>
         <div class="paper-meta">
@@ -1287,7 +2409,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">37</span>
+            <span class="paper-rank">88</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.04937v1" target="_blank">FluxSieve: Unifying Streaming and Analytical Data Planes for Scalable Cloud Observability</a></span>
         </div>
         <div class="paper-meta">
@@ -1309,7 +2431,161 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">38</span>
+            <span class="paper-rank">89</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15128v1" target="_blank">SCENIC: Stream Computation-Enhanced SmartNIC</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.374</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.NI</span> 
+        </div>
+        <div class="paper-authors">Benjamin Ramhorst, Maximilian Jakob Heer, Luhao Liu, Heejae Kim 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究数据处理、RDMA 网络、网络、通信优化、带宽优化相关技术。
+
+核心内容：Although modern, AI-centric datacenters heavily rely on SmartNICs, existing devices impose a hard trade-off. Commercial SmartNICs provide high bandwidth and easy software integration, but offer limited support for customization and data processing offload。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据处理、RDMA 网络、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.15128v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.15128v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">90</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.06668v1" target="_blank">SwarmIO: Towards 100 Million IOPS SSD Emulation for Next-generation GPU-centric Storage Systems</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Hyeseong Kim, Gwangoo Yeo, Minsoo Rhu</div>
+        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
+
+核心内容：GPU-initiated I/O has emerged as a key mechanism for achieving high-throughput storage access by leveraging massive GPU thread-level parallelism, while recent industry trends point toward SSDs optimized for ultra-high random-read IOPS. Together, these trends are enabling the emerg...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.06668v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.06668v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">91</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.08908v2" target="_blank">HyDRA: Deadline and Reuse-Aware Cacheability for Hardware Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Ayushi Agarwal, Anannya Mathur, Preeti Ranjan Panda</div>
+        <div class="paper-abstract-cn">本文研究异构计算、吞吐量相关技术。
+
+核心内容：The system-level cache is a critical resource shared by processor cores and domain-specific accelerators in heterogeneous systems on chips (SoCs). The strict QoS requirements of accelerators, such as deadlines, can lead to severe performance degradation of processor cores。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 异构 CPU-GPU 协同执行策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.08908v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.08908v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">92</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.17862v1" target="_blank">M100: An Orchestrated Dataflow Architecture Powering General AI Computing</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yan Xie, Changkui Mao, Changsong Wu, Chao Lu 等 (37 位作者)</div>
+        <div class="paper-abstract-cn">本文研究张量计算、缓存相关技术。
+
+核心内容：As deep learning-based AI technologies gain momentum, the demand for general-purpose AI computing architectures continues to grow. While GPGPU-based architectures offer versatility for diverse AI workloads, they often fall short in efficiency and cost-effectiveness。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量计算、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.17862v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.17862v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">93</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.10113v1" target="_blank">FlexVector: A SpMM Vector Processor with Flexible VRF for GCNs on Varying-Sparsity Graphs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.372</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Bohan Li, Shengmin Li, Xinyu Shi, Enyi Yao 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究网络相关技术。
+
+核心内容：Graph Convolutional Networks (GCNs) are widely adopted for tasks involving relational or graph-structured data and can be formulated as two-stage sparse-dense matrix multiplication (SpMM) during inference. However, existing accelerators often struggle with the irregular workloads i...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10113v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.10113v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">94</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02110v1" target="_blank">FlatAttention: Dataflow and Fabric Collectives Co-Optimization for Large Attention-Based Model Inference on Tile-Based Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.372</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Chi Zhang, Luca Colagrande, Renzo Andri, Luca Benini</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、网络、带宽优化、延迟优化、吞吐量相关技术。
+
+核心内容：Attention accounts for an increasingly dominant fraction of total computation during inference for mixture-of-experts (MoE) models, making efficient acceleration critical. Emerging domain-specific accelerators for large model inference are shifting toward chip-s...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、网络、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.02110v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.02110v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">95</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04773v2" target="_blank">A comparative study on power delivery aspects of compute-in/near-memory approaches using DRAM</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.371</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Siddhartha Raman Sundara Raman, Siyuan Ma, Lizy Kurian John</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、数据放置、网络相关技术。
+
+核心内容：Compute-in-memory (PIM) mitigates the memory wall by performing computation within memory, reducing data movement and improving energy efficiency. DRAM-based PIM is particularly attractive due to its high density, mature manufacturing ecosystem, and compatibility with ex...</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、数据放置、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.04773v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.04773v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">96</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.23710v1" target="_blank">An In-Depth Study of Filter-Agnostic Vector Search on a PostgreSQL Database System: [Experiments and Analysis]</a></span>
         </div>
         <div class="paper-meta">
@@ -1331,7 +2607,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">39</span>
+            <span class="paper-rank">97</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.01342v2" target="_blank">Don't Be a Pot Stirrer! Authorized Vector Data Retrieval via Access-Aware Indexing</a></span>
         </div>
         <div class="paper-meta">
@@ -1353,7 +2629,29 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">40</span>
+            <span class="paper-rank">98</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05639v1" target="_blank">TokenStack: A Heterogeneous HBM-PIM Architecture and Runtime for Efficient LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.368</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Zhuoran Li, Zhuohang Bian, Zihao Huang, Guangyu Sun 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、异构计算、带宽优化、吞吐量相关技术。
+
+核心内容：Large language model (LLM) serving is now limited by the key-value (KV) cache. During decode, each new token rereads prior KV state, so attention becomes a bandwidth- and capacity-heavy memory task。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.05639v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05639v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card compact">
+        <div class="paper-header">
+            <span class="paper-rank">99</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.27775v2" target="_blank">Enzyme: Incremental View Maintenance for Data Engineering</a></span>
         </div>
         <div class="paper-meta">
@@ -1375,7 +2673,7 @@
     </div>
     <div class="paper-card compact">
         <div class="paper-header">
-            <span class="paper-rank">41</span>
+            <span class="paper-rank">100</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2603.08880v1" target="_blank">OptBench: An Interactive Workbench for AI/ML-SQL Co-Optimization[Extended Demonstration Proposal]</a></span>
         </div>
         <div class="paper-meta">
@@ -1395,1315 +2693,13 @@
             <a href="https://arxiv.org/pdf/2603.08880v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">42</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.22992v1" target="_blank">Finding Performance Issues in Database Systems by Exploiting Dormant Code Paths</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.363</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.SE</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Jinsheng Ba, Zhendong Su</div>
-        <div class="paper-abstract-cn">本文研究数据库系统相关技术。
-
-核心内容：Performance is a critical characteristic of fundamental systems, such as Database Management Systems (DBMSs). Both academia and industry have invested decades in exploring efficient optimization algorithms。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.22992v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.22992v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">43</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.13835v1" target="_blank">MICRO: A Lightweight Middleware for Optimizing Cross-store Cross-model Graph-Relation Joins [Technical Report]</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.362</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.LG</span> 
-        </div>
-        <div class="paper-authors">Xiuwen Zheng, Arun Kumar, Amarnath Gupta</div>
-        <div class="paper-abstract-cn">本文研究查询处理、异构计算相关技术。
-
-核心内容：Modern data applications increasingly involve heterogeneous data managed in different models and stored across disparate database engines, often deployed as separate installs. Limited research has addressed cross-model query processing in federated environments。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.13835v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.13835v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">44</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.13591v1" target="_blank">d-HNSW: A High-performance Vector Search Engine on Disaggregated Memory</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.360</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Fei Fang, Yi Liu, Chen Qian</div>
-        <div class="paper-abstract-cn">本文研究向量数据库、RDMA 网络、聚合、网络、延迟优化相关技术。
-
-核心内容：Efficient vector search is essential for powering large-scale AI applications, such as LLMs. Existing solutions are designed for monolithic architectures where compute and memory are tightly coupled。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦向量数据库、RDMA 网络、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.13591v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.13591v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">45</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.03705v1" target="_blank">GraphLake: A Purpose-Built Graph Compute Engine for Lakehouse</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.357</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Shige Liu, Songting Chen, Chengjie Qin, Mingxi Wu 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究缓存相关技术。
-
-核心内容：In this paper, we introduce GraphLake, a purpose-built graph compute engine for Lakehouse. GraphLake is built on top of the commercial graph database TigerGraph。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.03705v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.03705v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">46</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.19057v1" target="_blank">Heuristic Search Space Partitioning for Low-Latency Multi-Tenant Cloud Queries</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.355</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Prashant Kumar Pathak, Chandra Biksheswaran Mouleeswaran, Rama Teja Repaka</div>
-        <div class="paper-abstract-cn">本文研究延迟优化、吞吐量相关技术。
-
-核心内容：Large-scale cloud security platforms must continuously query millions of structured cloud resource records distributed across thousands of tenant accounts. Broad, account-spanning queries saturate database infrastructure, producing P95 latencies exceeding 60 seconds。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.19057v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.19057v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">47</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.20009v1" target="_blank">A Super Fast K-means for Indexing Vector Embeddings</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.348</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.LG</span> <span class="tag">cs.DB</span> <span class="tag">cs.IR</span> 
-        </div>
-        <div class="paper-authors">Leonardo Kuffo, Sven Hepkema, Peter Boncz</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：We present SuperKMeans: a k-means variant designed for clustering collections of high-dimensional vector embeddings. SuperKMeans' clustering is up to 7x faster than FAISS and Scikit-Learn on modern CPUs and up to 4x faster than cuVS on GPUs (Figure 1), while maintaining the ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.20009v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.20009v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">48</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.18654v1" target="_blank">QuaQue: Design and SQL Implementation of Condensed Algebra for Concurrent Versioning of Knowledge Graphs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.348</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Jey Puget Gil, Emmanuel Coquery, John Samuel, Gilles Gesquière</div>
-        <div class="paper-abstract-cn">本文研究数据库系统相关技术。
-
-核心内容：The management of versioned knowledge graphs presents significant challenges, particularly in querying data across multiple versions efficiently. This paper introduces QuaQue, a key component of the ConVer-G system, which addresses this challenge by translating SPARQL (SPARQL Pr...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.18654v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.18654v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">49</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.12211v1" target="_blank">Bounding the Fragmentation of B-Trees Subject to Batched Insertions</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.348</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DS</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Michael A. Bender, Aaron Bernstein, Nairen Cao, Alex Conway 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究B 树索引相关技术。
-
-核心内容：The issue of internal fragmentation in data structures is a fundamental challenge in database design. A seminal result of Yao in this field shows that evenly splitting the leaves of a B-tree against a workload of uniformly random insertions achieves space utilization of around 6...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦B 树索引，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.12211v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.12211v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">50</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16395v3" target="_blank">Stream2LLM: Overlap Context Streaming and Prefill for Reduced Time-to-First-Token (TTFT)</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.346</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> 
-        </div>
-        <div class="paper-authors">Rajveer Bachkaniwala, Chengqi Luo, Richard So, Divya Mahajan 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 计算、大模型推理、近邻搜索、延迟优化、吞吐量相关技术。
-
-核心内容：Context retrieval systems for LLM inference face a critical challenge: high retrieval latency creates a fundamental tension between waiting for complete context (poor time-to-first-token) and proceeding without it (reduced quality). Streaming context increme...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 计算、大模型推理、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.16395v3" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.16395v3" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">51</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.03271v1" target="_blank">Virtual-Memory Assisted Buffer Management In Tiered Memory</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.346</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.OS</span> 
-        </div>
-        <div class="paper-authors">Yeasir Rayhan, Walid G. Aref</div>
-        <div class="paper-abstract-cn">本文研究RDMA 网络、吞吐量相关技术。
-
-核心内容：Tiered memory architectures have gained significant traction in the database community in recent years. In these architectures, the on-chip DRAM of the host processor is typically referred to as local memory, and forms the primary tier。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦RDMA 网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.03271v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.03271v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">52</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.11402v1" target="_blank">Faster Relational Algorithms Using Geometric Data Structures</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.345</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Aryan Esmailpour, Stavros Sintos</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Optimization tasks over relational data, such as clustering, often suffer from the prohibitive cost of join operations, which are necessary to access the full dataset. While geometric data structures like BBD trees yield fast approximation algorithms in the standard computat...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.11402v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.11402v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">53</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.04893v1" target="_blank">Query Optimization and Evaluation via Information Theory: A Tutorial</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.342</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.IT</span> 
-        </div>
-        <div class="paper-authors">Mahmoud Abo Khamis, Hung Q. Ngo, Dan Suciu</div>
-        <div class="paper-abstract-cn">本文研究查询优化相关技术。
-
-核心内容：Database theory is exciting because it studies highly general and practically useful abstractions. Conjunctive query (CQ) evaluation is a prime example: it simultaneously generalizes graph pattern matching, constraint satisfaction, and statistical inference, among others。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.04893v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.04893v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">54</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.05044v1" target="_blank">Efficient Cost-Based Rewrite in a Bottom-Up Optimizer</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.338</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Qi Cheng, Yang Sun, Weidong Yu, Danny Chen 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究缓存相关技术。
-
-核心内容：The query optimizer in a Database Management Systems (DBMS), translates declarative queries into efficient execution plans. Conventional bottom-up optimization consists of two main stages: Query Rewrite (QRW) and Cost-Based Optimization (CBO)。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.05044v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.05044v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">55</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.01260v1" target="_blank">Write-Read Decoupling in Modern Large-Scale Search Engines: Architectures, Techniques, and Emerging Approaches</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.337</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Xin Liang, Qing Yang, Wenru Qiu, Wenjie Mao 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、带宽优化、延迟优化相关技术。
-
-核心内容：Large-scale search engines face a fundamental tension: the index must be updated frequently to maintain freshness, yet updates create resource contention that inflates query latency. In the dominant Lucene-based architecture, segment merges triggered by writes compete ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.01260v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.01260v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">56</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.21952v1" target="_blank">NasZip: Software and Hardware Co-Design to Accelerate Approximate Nearest Neighbor Search with DIMM-Based Near-Data Processing</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.337</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Cheng Zou, Shuo Yang, Chen Nie, Yu Zou 等 (9 位作者)</div>
-        <div class="paper-abstract-cn">本文研究数据处理、近邻搜索、通信优化、带宽优化、延迟优化相关技术。
-
-核心内容：As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge and reducing hallucinations. Central to RAG is approximate nearest neighbor search (ANNS), which retrieves data...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据处理、近邻搜索、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.21952v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.21952v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">57</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.10982v2" target="_blank">Poisson Sampling over Acyclic Joins</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.331</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Liese Bekkers, Frank Neven, Lorrens Pantelis, Stijn Vansummeren</div>
-        <div class="paper-abstract-cn">本文研究列式存储相关技术。
-
-核心内容：We introduce the problem of Poisson sampling over joins: compute a sample of the result of a join query by conceptually performing a Bernoulli trial for each join tuple, using a non-uniform and tuple-specific probability. We propose an algorithm for Poisson sampling over acyclic ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦列式存储，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.10982v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.10982v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">58</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.18836v2" target="_blank">Confidential Databases Without Cryptographic Mappings</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.329</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.CR</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Wenxuan Huang, Zhanbo Wang, Mingyu Li</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Confidential databases (CDBs) are essential for enabling secure queries over sensitive data in untrusted cloud environments using confidential computing hardware. While adoption is growing, widespread deployment is hindered by high performance overhead from frequent synchron...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.18836v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.18836v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">59</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.19890v1" target="_blank">Low-Latency Stateful Stream Processing through Timely and Accurate Prefetching</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.328</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Eleni Zapridou, Anastasia Ailamaki</div>
-        <div class="paper-abstract-cn">本文研究缓存、延迟优化、吞吐量相关技术。
-
-核心内容：Mission-critical applications often run "forever" and process large data volumes in real time while demanding low latency. To handle the large state of these applications, modern streaming engines rely on key-value stores and store state on local storage or remotely, but a...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦缓存、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.19890v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.19890v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">60</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.06273v2" target="_blank">CobbleDB: Modelling Levelled Storage by Composition</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.328</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.PL</span> <span class="tag">cs.SE</span> 
-        </div>
-        <div class="paper-authors">Emilie Ma, Ayush Pandey, Annette Bieniusa, Marc Shapiro</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：We present a composition-based approach to building correctby-construction database backing stores. In previous work, we specified the behaviour of several store variants and proved their correctness and equivalence。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.06273v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.06273v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">61</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.02377v1" target="_blank">Unfair by design: eBPF-based scheduling of mixed database workloads</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.328</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Carl-Elliott Bilodeau-Savaria, Jan Kristof Nidzwetzki, Stefanie Scherzinger, Bettina Kemme</div>
-        <div class="paper-abstract-cn">本文研究数据库系统、延迟优化、吞吐量相关技术。
-
-核心内容：Modern database systems increasingly co-schedule time-sensitive and background tasks. In such mixed workloads, background tasks should ideally utilize only spare CPU capacity without interfering with latency-critical requests。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据库系统、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.02377v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.02377v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">62</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.11596v1" target="_blank">LHGstore: An In-Memory Learned Graph Storage for Fast Updates and Analytics</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.328</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Pengpeng Qiao, Zhiwei Zhang, Xinzhou Wang, Zhetao Li 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、延迟优化、吞吐量相关技术。
-
-核心内容：Various real-world applications rely on in-memory dynamic graphs that must efficiently handle frequent updates while supporting low-latency analytics on evolving structures. Achieving both objectives remains challenging due to the trade-off between update efficiency and...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.11596v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.11596v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">63</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.08397v1" target="_blank">Maintaining Queries under Updates Using Heavy-Light Partitioning of the Input Relations</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.327</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Mahmoud Abo-Khamis, Eden Chmielewski, Andrei Draghici, Ahmet Kara 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：We study the classical incremental view maintenance problem: Given a query and a database, maintain the query output under single-tuple updates (inserts or deletes) to the database such that the tuples in the query output can be enumerated with constant delay after any updat...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.08397v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.08397v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">64</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.22587v1" target="_blank">flexvec: SQL Vector Retrieval with Programmatic Embedding Modulation</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.326</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.IR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Damian Delmas</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：As AI agents become the primary consumers of retrieval APIs, there is an opportunity to expose more of the retrieval pipeline to the caller. flexvec is a retrieval kernel that exposes the embedding matrix and score array as a programmable surface, allowing arithmetic operati...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.22587v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.22587v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">65</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.15861v1" target="_blank">Compliance in Databases: A Study of Structural Policies and Query Optimization</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.321</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Ahana Pradhan, Srinivas Karthik, Imtiyazuddin Shaik, Srinivas Vivek</div>
-        <div class="paper-abstract-cn">本文研究查询优化、数据库系统相关技术。
-
-核心内容：Growing privacy regulations and internal governance mandates are driving demand for fine-grained, context-sensitive access control in data management systems. Among competing approaches, content-based access control -- where access decisions depend on the data values refere...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询优化、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.15861v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.15861v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">66</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.26671v1" target="_blank">RT-RkNN: Reverse k Nearest Neighbor Queries as a Graphics Ray Casting Problem</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.321</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Zhengyang Bai, Peng Chen, Mohamed Wahib</div>
-        <div class="paper-abstract-cn">本文研究近邻搜索相关技术。
-
-核心内容：Reverse k nearest neighbor (RkNN) queries are fundamental in spatial databases, location-based analytics, and recommendation systems. Existing state-of-the-art techniques rely on spatial pruning supported by R-trees and their variants。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.26671v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.26671v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">67</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.23815v1" target="_blank">A Pragmatic Approach to Learned Indexing in RocksDB: Targeted Optimizations with Minimal System Modification</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.319</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Shubham Vashisth, Olivier Michaud, Bettina Kemme, Oana Balmau</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、吞吐量相关技术。
-
-核心内容：Learned indexes have emerged as a promising alternative to traditional index structures, offering higher throughput and lower memory usage by approximating the cumulative key distribution function with lightweight models. Despite these benefits, adoption in production system...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.23815v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.23815v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">68</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.25206v1" target="_blank">Enabling Homomorphic Analytical Operations on Compressed Scientific Data with Multi-stage Decompression</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.314</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Xuan Wu, Sheng Di, Tripti Agarwal, Kai Zhao 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究延迟优化、吞吐量相关技术。
-
-核心内容：Error-controlled lossy compressors have been widely used in scientific applications to reduce the unprecedented size of scientific data while keeping data distortion within a user-specified threshold. While they significantly mitigate the pressure for data storage and transmi...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.25206v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.25206v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">69</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.13048v1" target="_blank">From Natural Language to PromQL: A Catalog-Driven Framework with Dynamic Temporal Resolution for Cloud-Native Observability</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.314</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> <span class="tag">cs.SE</span> 
-        </div>
-        <div class="paper-authors">Twinkll Sisodia</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Modern cloud-native platforms expose thousands of time series metrics through systems like Prometheus, yet formulating correct queries in domain-specific languages such as PromQL remains a significant barrier for platform engineers and site reliability teams. We present a ca...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.13048v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.13048v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">70</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.11454v1" target="_blank">Foundations of the GraphAlg Language</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.314</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.PL</span> 
-        </div>
-        <div class="paper-authors">Daan de Graaf, Robert Brijder, Nikolay Yakovets</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：The GraphAlg domain-specific language for graph algorithms enables user-defined algorithms in graph databases. In this work we show how GraphAlg is built on top of the formal MATLANG language for matrix manipulation。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.11454v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.11454v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">71</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.09927v3" target="_blank">How to Write to SSDs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.313</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Bohyun Lee, Tobias Ziegler, Viktor Leis</div>
-        <div class="paper-abstract-cn">本文研究B 树索引、OLTP、数据库系统、吞吐量相关技术。
-
-核心内容：This paper demonstrates that adopting out-of-place writes is essential for database systems to fully leverage SSD performance and extend SSD lifespan. We propose a set of out-of-place optimizations that collectively reduce write amplification across both the DBMS ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦B 树索引、OLTP、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.09927v3" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.09927v3" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">72</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.17223v1" target="_blank">ListK: Semantic ORDER BY and LIMIT K with Listwise Prompting</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.312</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.IR</span> 
-        </div>
-        <div class="paper-authors">Jason Shin, Jiwon Chang, Fatemeh Nargesian</div>
-        <div class="paper-abstract-cn">本文研究隐私信息检索、排序、延迟优化相关技术。
-
-核心内容：Semantic operators abstract large language model (LLM) calls in SQL clauses. It is gaining traction as an easy method to analyze semi-structured, unstructured, and multimodal datasets。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、排序、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.17223v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.17223v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">73</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.07268v1" target="_blank">Sketch-Oriented Databases</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.312</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.LO</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Dominique Duval, Rachid Echahed</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：This paper introduces sketch-oriented databases, a categorical
-  framework that encodes database paradigms as finite-limit sketches
-  and individual databases and schemas as set-valued models. It
-  illustrates the formalism through graph-oriented paradigms such as
-  quivers,...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.07268v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.07268v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">74</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.26252v1" target="_blank">Is Agent Memory a Database? Rethinking Data Foundations for Long-Term AI Agent Memory</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.312</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AI</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Abdelghny Orogat, Essam Mansour</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Long-running AI agents need persistent memory. Memory supports learning across sessions, reduces repeated context injection, and enables auditing of past decisions。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.26252v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.26252v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">75</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.22220v1" target="_blank">Accelerating Fresh Data Exploration with Fluid ETL Pipelines</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.312</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Maxwell Norfolk, Dong Xie</div>
-        <div class="paper-abstract-cn">本文研究查询处理、延迟优化、吞吐量相关技术。
-
-核心内容：Recently, we have seen an increasing need for fresh data exploration, where data analysts seek to explore the main characteristics or detect anomalies of data being actively collected. In addition to the common challenges in classic data exploration, such as a lack of pr...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.22220v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.22220v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">76</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.17298v1" target="_blank">Efficient and Effective Table-Centric Table Union Search in Data Lakes</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.310</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Yongkang Sun, Zhihao Ding, Huiqiang Wang, Reynold Cheng 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究聚合相关技术。
-
-核心内容：In data lakes, information on the same subject is often fragmented across multiple tables. Table union search aims to find the top-k tables that can be unioned with a query table to extend it with more rows, without relying on metadata or ground-truth labels。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.17298v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.17298v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">77</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.05632v1" target="_blank">Space-efficient B-tree Implementation for Memory-Constrained Flash Embedded Devices</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.309</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Nadir Ould-Khessal, Scott Fazackerley, Ramon Lawrence</div>
-        <div class="paper-abstract-cn">本文研究B 树索引、数据处理、网络相关技术。
-
-核心内容：Small devices collecting data for agricultural, environmental, and industrial monitoring enable Internet of Things (IoT) applications. Given their critical role in data collection, there is a need for optimizations to improve on-device data processing。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦B 树索引、数据处理、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.05632v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.05632v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">78</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.03007v1" target="_blank">CIDER: Boosting Memory-Disaggregated Key-Value Stores with Pessimistic Synchronization</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.308</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Yuxuan Du, Xuchuan Luo, Xin Wang, Yangfan Zhou 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究网络、吞吐量相关技术。
-
-核心内容：Memory-disaggregated key-value (KV) stores suffer from a severe performance bottleneck due to their I/O redundancy issues. A huge amount of redundant I/Os are generated when synchronizing concurrent data accesses, making the limited network between the compute and memory pools ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.03007v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.03007v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">79</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.06231v1" target="_blank">Automating Database-Native Function Code Synthesis with LLMs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.308</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> <span class="tag">cs.CL</span> 
-        </div>
-        <div class="paper-authors">Wei Zhou, Xuanhe Zhou, Qikang He, Guoliang Li 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究数据库系统相关技术。
-
-核心内容：Database systems incorporate an ever-growing number of functions in their kernels (a.k.a., database native functions) for scenarios like new application support and business migration. This growth causes an urgent demand for automatic database native function synthesis。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.06231v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.06231v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">80</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.19922v1" target="_blank">OpenHealth Lake: Designing and testing a data lakehouse platform for health applications</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.308</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.SE</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Danilo Silva, Monika Moir, Cheryl Baxter, Tulio de Oliveira 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算相关技术。
-
-核心内容：Data management can be a complex challenge in fields such as bioinformatics and health sciences, which continuously generate extensive heterogeneous datasets. In the context of collaborative global health initiatives, secure storage and sharing of data are crucial to support impa...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.19922v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.19922v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">81</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.02941v2" target="_blank">Timehash: Hierarchical Time Indexing for Efficient Business Hours Search</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.306</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.IR</span> 
-        </div>
-        <div class="paper-authors">Jinoh Kim, Jaewon Son</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
-
-核心内容：Temporal range filtering is critical in large-scale search systems, particularly location-based services filtering businesses by operating hours. Traditional approaches suffer from poor query performance (scope filtering), index size explosion (minute-level indexing), or reduced ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.02941v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.02941v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">82</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.25568v1" target="_blank">Are LLMs Overkill for Databases?: A Study on the Finiteness of SQL</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.306</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> 
-        </div>
-        <div class="paper-authors">Yue Li, David Mimno, Unso Eun Seo Jo</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Translating natural language to SQL for data retrieval has become more accessible thanks to code generation LLMs. But how hard is it to generate SQL code。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.25568v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.25568v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">83</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.14719v1" target="_blank">A Toolbox to Understand the Physics of Quantum Data Management</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.306</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">quant-ph</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Wolfgang Mauerer, Manuel Schönberger</div>
-        <div class="paper-abstract-cn">本文研究隐私信息检索、数据库系统相关技术。
-
-核心内容：The application of quantum computing to data management has attracted growing interest, yet remains constrained by a limited understanding of how the physical behaviour of quantum devices relates to the structure and difficulty of database problems. In particular, evaluat...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.14719v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.14719v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">84</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.23105v4" target="_blank">Spatial Analysis on Value-Based Quadtrees of Rasterized Vector Data</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.306</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Diana Baumann, Nils Japke, Tim C. Rese, David Bermbach</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
-
-核心内容：Mobility data science offers insights into the complex interconnections of spatial data of moving objects and their surroundings, often based on a combination of vector and raster data. For example, mobility traces are usually in vector format, weather data are often in raster fo...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.23105v4" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.23105v4" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">85</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.10177v1" target="_blank">K-Join: Combining Vertex Covers for Parallel Joins</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.305</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Simon Frisk, Austen Fan, Paraschos Koutris</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Significant research effort has been devoted to improving the performance of join processing in the massively parallel computation model, where the goal is to evaluate a query with the minimum possible data transfer between machines. However, it is still an open question to ...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.10177v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.10177v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">86</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.02553v1" target="_blank">Efficient Path Query Processing in Relational Database Systems</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.305</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Diego Rivera Correa, Mirek Riedewald</div>
-        <div class="paper-abstract-cn">本文研究查询处理、数据库系统相关技术。
-
-核心内容：Path queries are crucial for property graphs, and there is growing interest in queries that combine regular expressions over labels with constraints on property values of vertices and edges. Efficient evaluation of such general path queries requires that intermediate result...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.02553v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.02553v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">87</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20145v1" target="_blank">Pre-Execution Query Slot-Time Prediction in Cloud Data Warehouses: A Feature-Scoped Machine Learning Approach</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.304</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.LG</span> 
-        </div>
-        <div class="paper-authors">Prashant Kumar Pathak</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Cloud data warehouses bill compute based on slot-time consumed. In shared multi-tenant environments, query cost is highly variable and hard to estimate before execution, causing budget overruns and degraded scheduling。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.20145v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.20145v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">88</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.08021v1" target="_blank">SynQL: A Controllable and Scalable Rule-Based Framework for SQL Workload Synthesis for Performance Benchmarking</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.303</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Kahan Mehta, Amit Mankodi</div>
-        <div class="paper-abstract-cn">本文研究聚合、延迟优化相关技术。
-
-核心内容：Database research and the development of learned query optimisers rely heavily on realistic SQL workloads. Acquiring real-world queries is increasingly difficult, however, due to strict privacy regulations, and publicly released anonymised traces typically strip out executable...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦聚合、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.08021v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.08021v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">89</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.08601v2" target="_blank">Elastic Scheduling of Intermittent Query Processing in a Cluster Environment</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.303</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Saranya Chandrasekaran, S. Sudarshan</div>
-        <div class="paper-abstract-cn">本文研究查询处理相关技术。
-
-核心内容：Many applications process a stream of tuples over a window duration, and require the results within a specified deadline after the end of the window. For such scenarios, processing tuples intermittently (in batches) instead of eagerly processing tuples as they arrive significantl...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.08601v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.08601v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">90</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.09122v1" target="_blank">Nezha: A Key-Value Separated Distributed Store with Optimized Raft Integration</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.302</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Yangyang Wang, Yucong Dong, Ziqian Cheng, Zichen Xu</div>
-        <div class="paper-abstract-cn">本文研究扫描、存储引擎、吞吐量相关技术。
-
-核心内容：Distributed key-value stores are widely adopted to support elastic big data applications, leveraging purpose-built consensus algorithms like Raft to ensure data consistency. However, through systematic analysis, we reveal a critical performance issue in such consistent sto...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦扫描、存储引擎、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.09122v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.09122v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">91</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.11622v1" target="_blank">Sema: A High-performance System for LLM-based Semantic Query Processing</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.301</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Kangkang Qi, Dongyang Xie, Wenbo Li, Hao Zhang 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究查询处理、延迟优化相关技术。
-
-核心内容：The integration of Large Language Models (LLMs) into data analytics has unlocked powerful capabilities for reasoning over bulk structured and unstructured data. However, existing systems typically rely on either DataFrame primitives, which lack the efficient execution infras...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.11622v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.11622v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">92</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.13897v1" target="_blank">Concurrency Control as a Service</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.300</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Weixing Zhou, Yanfeng Zhang, Xinji Zhou, Zhiyou Wang 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究存储引擎、网络、通信优化、延迟优化、吞吐量相关技术。
-
-核心内容：Existing disaggregated databases separate execution and storage layers, enabling independent and elastic scaling of resources. In most cases, this design makes transaction concurrency control (CC) a critical bottleneck, which demands significant computing resourc...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦存储引擎、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.13897v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.13897v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">93</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.25283v1" target="_blank">VisualNeo: Bridging the Gap between Visual Query Interfaces and Graph Query Engines</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.299</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.SE</span> 
-        </div>
-        <div class="paper-authors">Kai Huang, Houdong Liang, Chongchong Yao, Xi Zhao 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究查询处理相关技术。
-
-核心内容：Visual Graph Query Interfaces (VQIs) empower non-programmers to query graph data by constructing visual queries intuitively. Devising efficient technologies in Graph Query Engines (GQEs) for interactive search and exploration has also been studied for years。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.25283v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.25283v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">94</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.23477v2" target="_blank">SEMA-SQL: Beyond Traditional Relational Querying with Large Language Models</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.297</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Yin Lin, Tianjing Zeng, Zhongjun Ding, Rong Zhu 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究查询优化、聚合相关技术。
-
-核心内容：Relational databases excel at structured data analysis, but real-world queries increasingly require capabilities beyond standard SQL, such as semantically matching entities across inconsistent names, extracting information not explicitly stored in schemas, and analyzing unstru...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询优化、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.23477v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.23477v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">95</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.13034v1" target="_blank">DySkew: Dynamic Data Redistribution for Skew-Resilient Snowpark UDF Execution</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.293</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Chenwei Xie, Urjeet Shrestha, Corbin McElhanney, Lukas Lorimer 等 (11 位作者)</div>
-        <div class="paper-abstract-cn">本文研究延迟优化、吞吐量相关技术。
-
-核心内容：Snowflake revolutionized data warehousing with an elastic architecture that decouples compute and storage, enabling scalable solutions for diverse data analytics needs. Building on this foundation, Snowflake has advanced its AI Data Cloud vision by introducing Snowpark, a man...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.13034v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.13034v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">96</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.09944v2" target="_blank">PLOP: Cost-Based Placement of Semantic Operators in Hybrid Query Plans</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.292</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Qiuyang Mang, Yufan Xiang, Hangrui Zhou, Runyuan He 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究缓存、数据库系统相关技术。
-
-核心内容：Recent database systems have introduced semantic operators that leverage large language models (LLMs) to filter, join, and project over structured data using natural language predicates. In practice, these operators are combined with traditional relational operators, e.g., eq...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦缓存、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.09944v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.09944v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">97</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.00660v1" target="_blank">Streaming Model Cascades for Semantic SQL</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.292</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> 
-        </div>
-        <div class="paper-authors">Paweł Liskowski, Kyle Schmaus</div>
-        <div class="paper-abstract-cn">本文研究通信优化相关技术。
-
-核心内容：Modern data warehouses extend SQL with semantic operators that invoke large language models on each qualifying row, but the per-row inference cost is prohibitive at scale. Model cascades reduce this cost by routing most rows through a fast proxy model and delegating uncertain cas...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.00660v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.00660v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">98</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.06804v1" target="_blank">LASER: A Data-Centric Method for Low-Cost and Efficient SQL Rewriting based on SQL-GRPO</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.292</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Jiahui Li, Tongwang Wu, Yuren Mao, Rong Kang 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
-
-核心内容：Query rewriting, the process of transforming queries into semantically equivalent yet more efficient variants, is crucial for database optimization. Existing solutions predominantly rely on either rule-based heuristics or Large Language Models (LLMs)。</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.06804v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.06804v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">99</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.07041v1" target="_blank">AV-SQL: Decomposing Complex Text-to-SQL Queries with Agentic Views</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.292</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> <span class="tag">cs.ET</span> 
-        </div>
-        <div class="paper-authors">Minh Tam Pham, Trinh Pham, Tong Chen, Hongzhi Yin 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Text-to-SQL is the task of translating natural language queries into executable SQL for a given database, enabling non-expert users to access structured data without writing SQL manually. Despite rapid advances driven by large language models (LLMs), existing approaches stil...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.07041v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.07041v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card compact">
-        <div class="paper-header">
-            <span class="paper-rank">100</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2603.04184v2" target="_blank">Publication and Maintenance of Relational Data in Enterprise Knowledge Graphs (Revised Version)</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.288</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Vânia Maria Ponte Vidal, Valéria Magalhães Pequeno, Marco Antonio Casanova, Narciso Arruda 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算相关技术。
-
-核心内容：Enterprise knowledge graphs (EKGa) are a novel paradigm for consolidating and semantically integrating large numbers of heterogeneous data sources into a comprehensive dataspace. The main goal of an EKG is to provide a data layer that is semantically connected to enterprise data,...</div>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2603.04184v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2603.04184v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-05-28 09:03:07</span>
+            <span>上次运行：2026-05-28 09:21:07</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
