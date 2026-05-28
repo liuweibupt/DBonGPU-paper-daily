@@ -99,13 +99,21 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
         if translator.enabled:
             logger.log(f"Translating {len(recommendations)} daily papers...", "INFO")
             translator.batch_translate(recommendations, delay=1.0)
+            # Fill in fallback for any papers where translation failed
+            from analysis.keyword_fallback import generate_fallback_cn
+            fallback_count = 0
+            for paper in recommendations:
+                if not paper.get('abstract_cn'):
+                    generate_fallback_cn(paper)
+                    fallback_count += 1
+            if fallback_count:
+                logger.log(f"Translation failed for {fallback_count} papers, used keyword fallback", "WARN")
         else:
             # Fallback: generate brief keyword-based summaries
+            from analysis.keyword_fallback import generate_fallback_cn
             for paper in recommendations:
-                paper['abstract_cn'] = ''
-                paper['takeaway'] = ''
-                paper['innovation'] = ''
-            logger.log("Translation skipped (no API key configured)", "WARN")
+                generate_fallback_cn(paper)
+            logger.log("Translation skipped (no API key configured), using keyword fallback", "WARN")
 
         if gen_html:
             html_display = HTMLDisplay()
@@ -201,12 +209,20 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
         if translator.enabled:
             logger.log(f"Translating {len(scored_papers)} top papers...", "INFO")
             translator.batch_translate(scored_papers, delay=1.0)
+            # Fill in fallback for any papers where translation failed
+            from analysis.keyword_fallback import generate_fallback_cn
+            fallback_count = 0
+            for paper in scored_papers:
+                if not paper.get('abstract_cn'):
+                    generate_fallback_cn(paper)
+                    fallback_count += 1
+            if fallback_count:
+                logger.log(f"Translation failed for {fallback_count} papers, used keyword fallback", "WARN")
         else:
             # Fallback: generate brief keyword-based summaries
+            from analysis.keyword_fallback import generate_fallback_cn
             for paper in scored_papers:
-                paper['abstract_cn'] = ''
-                paper['takeaway'] = ''
-                paper['innovation'] = ''
+                generate_fallback_cn(paper)
                 paper['summary_cn'] = _generate_summary_cn(paper)
             logger.log("Translation skipped (no API key configured), using keyword summaries", "WARN")
 

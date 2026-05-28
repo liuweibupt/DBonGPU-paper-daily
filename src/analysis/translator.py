@@ -110,6 +110,9 @@ class PaperTranslator:
             return data['choices'][0]['message']['content']
         except requests.exceptions.RequestException as e:
             print(f"API call failed: {e}")
+            if hasattr(e, 'response') and e.response is not None:
+                print(f"  Response status: {e.response.status_code}")
+                print(f"  Response body: {e.response.text[:500]}")
             return None
 
     def _parse_response(self, response: str) -> Dict:
