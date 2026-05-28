@@ -16,14 +16,14 @@
     "pdf_url": "https://arxiv.org/pdf/2406.13831v1",
     "arxiv_url": "https://arxiv.org/abs/2406.13831v1",
     "source": "arxiv",
-    "score": 0.8547833561897278,
+    "score": 0.854783296585083,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题高度相关"
     ],
-    "abstract_cn": "本文研究GPU 数据库、内存数据库、数据处理、异构计算、数据库系统相关技术。\n\n核心内容：Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs h...。",
-    "takeaway": "本文聚焦GPU 数据库、内存数据库、数据处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+    "abstract_cn": "过去十年，数据分析领域出现了向异构架构的显著转变，特别是集成 GPU 以提升整体性能。在内存分析领域，常常面临内存带宽限制，GPU 的采用因其卓越的带宽能力而被证明是有利的。GPU 的并行处理能力尤为突出，为数据密集型工作负载提供了卓越的效率，在数据处理速度上超越了传统 CPU。然而，不同 GPU 系统之间仍缺乏比较研究。鉴于对 GPU 数据库用于数据分析的日益关注，本文提出了一项涵盖多种 GPU 数据库系统的综述，重点阐明各系统用于交付结果的底层机制和关键性能指标，并利用 SSB 和 TPC-H 等基准测试进行评估，旨在为 GPU 数据库领域的研究指明新方向。",
+    "takeaway": "本文是 GPU 数据库领域的综合性综述，系统比较了多种 GPU 数据库系统的底层机制和性能表现，为研究者和开发者提供了全貌参考。",
+    "innovation": "1. 首次对多种 GPU 数据库系统进行系统性比较研究；2. 利用 SSB 和 TPC-H 基准量化各系统性能指标；3. 指出 GPU 数据库领域的新研究方向"
   },
   {
     "id": "2604.16725v1",
@@ -47,14 +47,14 @@
     "pdf_url": "https://arxiv.org/pdf/2604.16725v1",
     "arxiv_url": "https://arxiv.org/abs/2604.16725v1",
     "source": "arxiv",
-    "score": 0.7647656512260437,
+    "score": 0.7647654724121093,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。\n\n核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。",
-    "takeaway": "本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+    "abstract_cn": "基于 GPU 的并发数据结构（CDS）在只读查询上实现了高吞吐量，但对完全驻留 GPU 的数据进行动态更新的高效支持仍然具有挑战性。有序 CDS（如 B 树和 LSM 树）维护一个索引层将操作引导到数据层，而哈希表避免了维护顺序的开销但不支持范围查询或后继查询。在 GPU 上，频繁更新下维护和遍历索引层会引入竞争和 warp 分化。本文提出了 FliX，一种翻转索引策略：将计算（如 warp）分配给数据层中的每个桶，每个桶再在批次中找到其负责的操作，用对批次的单次二分搜索替代多次索引层遍历，减少冗余工作和 warp 分化，同时简化了更新操作。实验表明，FliX 相比领先的 GPU B 树查询延迟降低 6.5 倍，相比 GPU LSM 树降低 1.5 倍，每内存占用吞吐量比有序竞争者高 4 倍，甚至在查询和删除性能上超越了最先进的无序 GPU 哈希表。",
+    "takeaway": "FliX 颠覆了传统 GPU 索引范式，通过将计算分配给数据桶而非将操作分配给线程，实现了无需索引层的全动态 GPU 索引，在查询和更新性能上均取得突破。",
+    "innovation": "1. 提出翻转索引范式——将计算分配到数据桶而非操作分配到线程；2. 用单次二分搜索替代索引层遍历，减少 warp 分化；3. 消除索引层维护开销，支持高效动态更新"
   },
   {
     "id": "2302.00734v1",
@@ -82,9 +82,9 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "本文研究GPU 数据库、查询处理、数据库系统、带宽优化、吞吐量相关技术。\n\n核心内容：GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics。",
-    "takeaway": "本文聚焦GPU 数据库、查询处理、数据库系统，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+    "abstract_cn": "GPU 提供大规模计算并行性和高带宽内存访问。GPU 数据库系统试图利用这些能力来加速数据分析。尽管现代 GPU 拥有比以往更多的资源，避免浪费资源分配的审慎查询处理选择仍然是有益的。数据库系统可以通过刚好足够的资源分配来节省 GPU 运行成本，或利用新的 GPU 功能（如多实例 GPU/MIG）进行并发查询处理来提高查询吞吐量。本文对五种 GPU 数据库系统进行了跨栈性能和资源利用率分析，研究了数据库级和微体系结构方面，并为数据库开发者提供了建议。同时演示了如何使用和扩展传统的 Roofline 模型来识别 GPU 资源瓶颈，使用户能够进行假设分析来预测不同资源分配或并发度对性能的影响，从而无需对大量资源配置进行穷举测试。",
+    "takeaway": "本文从跨栈视角深入分析五种 GPU 数据库系统的性能和资源利用，扩展 Roofline 模型识别 GPU 瓶颈，帮助用户快速选择最优配置而无需穷举测试。",
+    "innovation": "1. 对五种 GPU 数据库系统进行跨栈性能分析；2. 扩展 Roofline 模型用于 GPU 资源瓶颈识别；3. 提供假设分析框架预测资源配置对性能的影响"
   },
   {
     "id": "2604.20121v2",
@@ -106,14 +106,162 @@
     "pdf_url": "https://arxiv.org/pdf/2604.20121v2",
     "arxiv_url": "https://arxiv.org/abs/2604.20121v2",
     "source": "arxiv",
-    "score": 0.7074530136585235,
+    "score": 0.7074529242515564,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。\n\n核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。",
-    "takeaway": "本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+    "abstract_cn": "范围过滤近似最近邻搜索（RFANNS）对现代向量数据库日益重要。然而现有方案存在严重的索引膨胀和构建开销，且完全依赖 CPU 进行繁重的索引和查询处理，受限于有限的内存带宽和并行性。本文提出了 Garfield，一种 GPU 加速的多属性范围过滤 ANNS 框架，通过设计轻量级索引结构（GMG 索引）和硬件感知执行流水线来克服瓶颈。GMG 索引将数据分区为单元并构建局部图索引，通过添加常数数量的跨单元边保证线性存储和索引开销。查询时采用聚类引导的排序策略实现高效的逐单元 GPU 遍历。对于超出 GPU 内存的数据集，提供了面向单元的外核流水线，动态调度单元并将 GPU 计算与 CPU-GPU 索引流式传输重叠。评估表明 Garfield 将索引大小减少 4.4 倍，吞吐量比最先进 RFANNS 方法高 119.8 倍。",
+    "takeaway": "Garfield 通过轻量级 GMG 索引和硬件感知流水线，在 GPU 上实现了 RFANNS 的数量级加速，同时大幅降低了索引构建开销和存储需求。",
+    "innovation": "1. 设计 GMG 索引，以常数跨单元边保证线性存储开销；2. 聚类引导排序策略实现高效 GPU 逐单元遍历；3. 面向单元的外核流水线处理超 GPU 内存数据集"
+  },
+  {
+    "id": "2510.15095v1",
+    "title": "Hive Hash Table: A Warp-Cooperative, Dynamically Resizable Hash Table for GPUs",
+    "authors": [
+      "Md Sabbir Hossain Polak",
+      "David Troendle",
+      "Byunghyun Jang"
+    ],
+    "abstract": "Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU hash table that adapts to varying workloads without global rehashing.\n  Hive hash table makes three key contributions. First, a cache-aligned packed bucket layout stores key-value pairs as 64-bit words, enabling coalesced memory access and atomic updates via single-CAS operations. Second, warp-synchronous concurrency protocols - Warp-Aggregated-Bitmask-Claim (WABC) and Warp-Cooperative Match-and-Elect (WCME) - reduce contention to one atomic operation per warp while ensuring lock-free progress. Third, a load-factor-aware dynamic resizing strategy expands or contracts capacity in warp-parallel K-bucket batches using linear hashing, maintaining balanced occupancy. To handle insertions under heavy contention, Hive hash table employs a four-step strategy: replace, claim-and-commit, bounded cuckoo eviction, and overflow-stash fallback. This design provides lock-free fast paths and bounded recovery cost under contention determined by a fixed eviction depth, while eliminating ABA hazards during concurrent updates.\n  Experimental evaluation on an NVIDIA RTX 4090 shows Hive hash table sustains load factors up to 95% while delivering 1.5-2x higher throughput than state-of-the-art GPU hash tables (Slab-Hash, DyCuckoo, WarpCore) under mixed insert-delete-lookup workloads. On balanced workload, Hive hash table reaches 3.5 billion updates/s and nearly 4 billion lookups/s, demonstrating scalability and efficiency for GPU-accelerated data processing.",
+    "published_date": "2025-10-16T19:28:30Z",
+    "updated_date": "2025-10-16T19:28:30Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2510.15095v1",
+    "arxiv_url": "https://arxiv.org/abs/2510.15095v1",
+    "source": "arxiv",
+    "score": 0.6926098322868348,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "哈希表是数据密集型应用的基本构建块，但现有 GPU 实现在并发更新、高负载因子和不规则内存访问模式方面常常面临困难。本文提出了 Hive 哈希表，一种高性能、warp 协作且可动态调整大小的 GPU 哈希表，无需全局重哈希即可适应不同工作负载。三大贡献：首先，缓存对齐的压缩桶布局将键值对存储为 64 位字，实现合并内存访问和单 CAS 原子更新。其次，warp 同步并发协议（WABC 和 WCME）将竞争减少到每个 warp 仅一次原子操作，同时确保无锁进展。第三，负载因子感知的动态调整策略使用线性哈希以 warp 并行 K 桶批次扩展或收缩容量，保持平衡占用率。在 NVIDIA RTX 4090 上的评估显示，Hive 哈希表在混合工作负载下负载因子可达 95%，吞吐量比最先进的 GPU 哈希表高 1.5-2 倍，在平衡工作负载下达到 35 亿次更新/秒和近 40 亿次查找/秒。",
+    "takeaway": "Hive 哈希表通过 warp 协作并发协议和动态调整策略，在 GPU 上实现了高负载因子下的高吞吐量并发操作，是 GPU 数据处理的高效基础组件。",
+    "innovation": "1. 缓存对齐压缩桶布局实现合并访存和单 CAS 原子更新；2. WABC/WCME 并发协议将竞争降至每 warp 一次原子操作；3. 负载因子感知的线性哈希动态调整策略"
+  },
+  {
+    "id": "2502.09541v1",
+    "title": "Vortex: Overcoming Memory Capacity Limitations in GPU-Accelerated Large-Scale Data Analytics",
+    "authors": [
+      "Yichao Yuan",
+      "Advait Iyer",
+      "Lin Ma",
+      "Nishil Talati"
+    ],
+    "abstract": "Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data analytics workloads that exceed GPU memory capacity. A key aspect of our framework is an optimized IO primitive that leverages all available PCIe links in multi-GPU systems for the IO demand of a single target GPU. It routes data through other GPUs to such target GPU that handles IO-intensive analytics tasks. This approach is advantageous when other GPUs are occupied with compute-bound workloads, such as popular AI applications that typically underutilize IO resources. We also introduce a novel programming model that separates GPU kernel development from IO scheduling, reducing programmer burden and enabling GPU code reuse. Additionally, we present the design of certain important query operators and discuss a late materialization technique based on GPU's zero-copy memory access. Without caching any data in GPU memory, Vortex improves the performance of the state-of-the-art GPU baseline, Proteus, by 5.7$\\times$ on average and enhances price performance by 2.5$\\times$ compared to a CPU-based DuckDB baseline.",
+    "published_date": "2025-02-13T17:57:05Z",
+    "updated_date": "2025-02-13T17:57:05Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2502.09541v1",
+    "arxiv_url": "https://arxiv.org/abs/2502.09541v1",
+    "source": "arxiv",
+    "score": 0.6880685091018677,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "尽管 GPU 具有高计算吞吐量，但有限的内存容量和带宽受限的 CPU-GPU PCIe 通信仍是加速大规模数据分析工作负载的重要瓶颈。本文介绍了 Vortex，一种为超出 GPU 内存容量的数据分析工作负载设计的 GPU 加速框架。核心是优化的 IO 原语，利用多 GPU 系统中所有可用 PCIe 链路为单个目标 GPU 的 IO 需求服务，将数据通过其他 GPU 路由到处理 IO 密集分析任务的目标 GPU。当其他 GPU 被计算密集型工作负载占用时，这种方法具有优势。还引入了将 GPU 核函数开发与 IO 调度分离的新编程模型，减轻程序员负担并实现 GPU 代码复用。此外，提出了基于 GPU 零拷贝内存访问的延迟物化技术。Vortex 在不缓存任何数据到 GPU 内存的情况下，比最先进的 GPU 基线 Proteus 平均提升 5.7 倍，比 CPU 基线 DuckDB 价格性能提升 2.5 倍。",
+    "takeaway": "Vortex 通过利用多 GPU 系统中空闲 PCIe 链路聚合 IO 带宽，在零 GPU 内存缓存下实现了大规模数据分析的 5.7 倍加速。",
+    "innovation": "1. 多 GPU PCIe 链路聚合 IO 原语为单目标 GPU 服务；2. 核函数开发与 IO 调度分离的编程模型；3. 基于 GPU 零拷贝内存的延迟物化技术"
+  },
+  {
+    "id": "2406.10158v2",
+    "title": "GPU-Accelerated OLTP: An In-Depth Analysis of Concurrency Control Schemes",
+    "authors": [
+      "Zihan Sun",
+      "Yuyu Luo",
+      "Yong Zhang",
+      "Chao Li",
+      "Chunxiao Xing"
+    ],
+    "abstract": "Over the past decade, GPUs have demonstrated significant potential in accelerating Online Analytical Processing (OLAP) operations. However, there remains a substantial gap in their application to Online Transaction Processing (OLTP), as GPUs were traditionally considered unsuitable for such workloads. Despite this perception, the massive parallelism and high memory bandwidth of GPUs offer a unique opportunity to process thousands of transactions concurrently, making them promising candidates for OLTP acceleration. Concurrency control schemes, which play a critical role in determining the performance of OLTP systems, may behave differently on GPUs due to their architectural differences from CPUs. This raises a key question: How well do concurrency control schemes designed for CPUs adapt to GPU environments?\n  To answer this, we present gCCTB, the first testbed designed to evaluate concurrency control schemes on GPUs. We implement and benchmark eight CC schemes, including six classic CPU-oriented schemes and two designed specifically for GPUs, on both the YCSB and TPC-C benchmarks under varied contention levels and GPU configurations. Our findings reveal that GPU-optimized schemes do not consistently outperform CPU-oriented schemes, particularly under specific workloads and contention levels. Moreover, GPU-specific parameters, such as the number of threads per warp and warps per block, significantly impact performance and require careful tuning. Finally, we find that conflict resolution overhead is a crucial factor influencing the performance of CPU-oriented schemes on GPUs, with optimistic concurrency control consistently minimizing this overhead and outperforming other CPU-oriented schemes across all workloads.",
+    "published_date": "2024-06-14T16:17:13Z",
+    "updated_date": "2026-05-25T15:21:04Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2406.10158v2",
+    "arxiv_url": "https://arxiv.org/abs/2406.10158v2",
+    "source": "arxiv",
+    "score": 0.6872491979598999,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "过去十年，GPU 在加速 OLAP 操作方面展现了巨大潜力，但在 OLTP 领域仍存在显著空白。尽管 GPU 的大规模并行性和高内存带宽为并发处理数千个事务提供了独特机会，但并发控制方案在 GPU 上可能因架构差异而表现不同。本文提出了 gCCTB，首个用于评估 GPU 上并发控制方案的测试平台，在 YCSB 和 TPC-C 基准上实现了八种 CC 方案的评测。研究发现：GPU 优化方案并非始终优于 CPU 方案；GPU 特定参数（如每个 warp 的线程数）显著影响性能需仔细调优；冲突解决开销是 CPU 方案在 GPU 上性能的关键因素，乐观并发控制在所有工作负载中始终最小化此开销并优于其他 CPU 方案。",
+    "takeaway": "本文首次系统评估了 GPU 上八种并发控制方案的表现，揭示乐观并发控制最适合 GPU OLTP 场景，GPU 优化方案并非在所有情况下都优于 CPU 方案。",
+    "innovation": "1. 首个 GPU 并发控制方案测试平台 gCCTB；2. 系统评估八种 CC 方案在 GPU 上的表现；3. 揭示乐观并发控制在 GPU OLTP 中的优势"
+  },
+  {
+    "id": "2602.17335v3",
+    "title": "Do GPUs Really Need New Tabular File Formats?",
+    "authors": [
+      "Jigao Luo",
+      "Qi Chen",
+      "Carsten Binnig"
+    ],
+    "abstract": "Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely underutilize GPU parallelism, turning GPU scans into a performance bottleneck. In this work, we systematically study how Parquet configurations affect GPU scan performance. We show that Parquet's poor GPU performance is not inherent to the format itself but rather a consequence of suboptimal configuration choices. By applying GPU-aware configurations, we increase effective read bandwidth up to 125 GB/s without modifying the Parquet specification.",
+    "published_date": "2026-02-19T13:07:38Z",
+    "updated_date": "2026-05-26T06:48:08Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2602.17335v3",
+    "arxiv_url": "https://arxiv.org/abs/2602.17335v3",
+    "source": "arxiv",
+    "score": 0.6731523275375366,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "Parquet 是现代分析系统事实上的列式文件格式，但其配置指南主要由 CPU 中心执行模型塑造。随着 GPU 加速数据处理日益普及，以 CPU 默认配置生成的 Parquet 文件可能严重低效利用 GPU 并行性，使 GPU 扫描成为性能瓶颈。本文系统研究了 Parquet 配置如何影响 GPU 扫描性能，证明 Parquet 的 GPU 性能差并非格式本身固有问题，而是次优配置选择的结果。通过应用 GPU 感知配置，在不修改 Parquet 规范的情况下将有效读取带宽提高到 125 GB/s。",
+    "takeaway": "GPU 不需要新的表格文件格式——只需对 Parquet 采用 GPU 感知配置，即可在不修改规范的情况下将有效读取带宽提升至 125 GB/s。",
+    "innovation": "1. 系统研究 Parquet 配置对 GPU 扫描性能的影响；2. 证明 GPU 性能差是配置问题而非格式固有缺陷；3. GPU 感知配置实现 125 GB/s 有效读取带宽"
+  },
+  {
+    "id": "2602.08190v1",
+    "title": "ZipFlow: a Compiler-based Framework to Unleash Compressed Data Movement for Modern GPUs",
+    "authors": [
+      "Gwangoo Yeo",
+      "Zhiyang Shen",
+      "Wei Cui",
+      "Matteo Interlandi",
+      "Rathijit Sen",
+      "Bailu Ding",
+      "Qi Chen",
+      "Minsoo Rhu"
+    ],
+    "abstract": "In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of the powerful GPU computation for decompression. To optimize the end-to-end query performance, however, the workflow of data compression, transfer, and decompression must be holistically designed based on the compression strategies and hardware characteristics to balance the I/O latency and computational overhead. In this work, we present ZipFlow, a compiler-based framework for optimizing compressed data transfer in GPU-accelerated data analytics. ZipFlow classifies compression algorithms into three distinct patterns based on their inherent parallelism. For each pattern, ZipFlow employs generalized scheduling strategies to effectively exploit the computational power of GPUs across diverse architectures. Building on these patterns, ZipFlow delivers flexible, high-performance, and holistic optimization, which substantially advances end-to-end data transfer capabilities. We evaluate the effectiveness of ZipFlow on industry-standard benchmark, TPC-H. Overall, ZipFlow achieves an average improvement of 2.08 times over the state-of-the-art GPU compression library (nvCOMP) and 3.14 times speedup against CPU-based query processing engines (e.g., DuckDB).",
+    "published_date": "2026-02-09T01:17:40Z",
+    "updated_date": "2026-02-09T01:17:40Z",
+    "categories": [
+      "cs.DB",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2602.08190v1",
+    "arxiv_url": "https://arxiv.org/abs/2602.08190v1",
+    "source": "arxiv",
+    "score": 0.6659601926803589,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "在 GPU 加速数据分析中，当数据规模超出 GPU 内存容量时，CPU 到 GPU 的数据传输开销因 PCIe 带宽有限而成为性能瓶颈。数据压缩可减少传输量并利用 GPU 强大的计算能力进行解压。然而为优化端到端查询性能，压缩、传输和解压的工作流必须基于压缩策略和硬件特征进行整体设计以平衡 IO 延迟和计算开销。本文提出 ZipFlow，一种基于编译器的优化 GPU 数据分析中压缩数据传输的框架。ZipFlow 将压缩算法按固有并行性分为三种模式，为每种模式采用通用调度策略有效利用不同架构 GPU 的计算能力，实现灵活、高性能的整体优化。在 TPC-H 基准上，ZipFlow 比最先进的 GPU 压缩库 nvCOMP 平均提升 2.08 倍，比 CPU 查询引擎 DuckDB 加速 3.14 倍。",
+    "takeaway": "ZipFlow 通过编译器驱动的整体优化，将压缩、传输和解压协同调度，在 TPC-H 上比 nvCOMP 提升 2.08 倍，比 DuckDB 加速 3.14 倍。",
+    "innovation": "1. 将压缩算法按并行性分为三种模式并设计通用调度策略；2. 基于编译器的整体优化框架协同压缩、传输和解压；3. 适配不同 GPU 架构实现灵活高性能数据传输"
   },
   {
     "id": "2506.01576v3",
@@ -132,150 +280,13 @@
     "pdf_url": "https://arxiv.org/pdf/2506.01576v3",
     "arxiv_url": "https://arxiv.org/abs/2506.01576v3",
     "source": "arxiv",
-    "score": 0.6584676361083984,
+    "score": 0.6584675765037536,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "本文研究GPU 索引、GPU 内存管理、排序相关技术。\n\n核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。",
-    "takeaway": "本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2512.02862v3",
-    "title": "PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage",
-    "authors": [
-      "Jigao Luo",
-      "Nils Boeschen",
-      "Muhammad El-Hindi",
-      "Carsten Binnig"
-    ],
-    "abstract": "The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered settings where the data fits in aggregated GPU memory. In this paper, we systematically study how TCRs can support scalable, distributed query processing for large-scale, storage-resident OLAP workloads. Although TCRs provide abstractions for network and storage I/O, naive use often underutilizes GPU and I/O bandwidth due to insufficient overlap between computation and data movement. As a core contribution, we present PystachIO, a prototype of a PyTorch-based distributed OLAP engine that combines fast network and storage I/O with key optimizations to maximize GPU, network, and storage utilization. Our evaluation shows up to 3x end-to-end speedups over existing distributed GPU-based query processing approaches.",
-    "published_date": "2025-12-02T15:22:06Z",
-    "updated_date": "2026-05-20T06:32:33Z",
-    "categories": [
-      "cs.DB"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2512.02862v3",
-    "arxiv_url": "https://arxiv.org/abs/2512.02862v3",
-    "source": "arxiv",
-    "score": 0.6482024335861206,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作",
-      "与 GPU 数据库主题中等相关"
-    ],
-    "abstract_cn": "本文研究GPU 查询处理、GPU 内存管理、查询处理、OLAP、RDMA 网络相关技术。\n\n核心内容：The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data。",
-    "takeaway": "本文聚焦GPU 查询处理、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
-  },
-  {
-    "id": "1611.01137v2",
-    "title": "A Memory Bandwidth-Efficient Hybrid Radix Sort on GPUs",
-    "authors": [
-      "Elias Stehle",
-      "Hans-Arno Jacobsen"
-    ],
-    "abstract": "Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour. Over the past few years, several improvements have been proposed for sorting on GPUs, leading to the first radix sort implementations that achieve a sorting rate of over one billion 32-bit keys per second. Yet, state-of-the-art approaches are heavily memory bandwidth-bound, as they require substantially more memory transfers than their CPU-based counterparts.\n  Our work proposes a novel approach that almost halves the amount of memory transfers and, therefore, considerably lifts the memory bandwidth limitation. Being able to sort two gigabytes of eight-byte records in as little as 50 milliseconds, our approach achieves a 2.32-fold improvement over the state-of-the-art GPU-based radix sort for uniform distributions, sustaining a minimum speed-up of no less than a factor of 1.66 for skewed distributions.\n  To address inputs that either do not reside on the GPU or exceed the available device memory, we build on our efficient GPU sorting approach with a pipelined heterogeneous sorting algorithm that mitigates the overhead associated with PCIe data transfers. Comparing the end-to-end sorting performance to the state-of-the-art CPU-based radix sort running 16 threads, our heterogeneous approach achieves a 2.06-fold and a 1.53-fold improvement for sorting 64 GB key-value pairs with a skewed and a uniform distribution, respectively.",
-    "published_date": "2016-11-03T19:33:06Z",
-    "updated_date": "2017-05-19T12:22:16Z",
-    "categories": [
-      "cs.DB",
-      "cs.DC",
-      "cs.DS"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/1611.01137v2",
-    "arxiv_url": "https://arxiv.org/abs/1611.01137v2",
-    "source": "arxiv",
-    "score": 0.6288178420066833,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作",
-      "与 GPU 数据库主题中等相关"
-    ],
-    "abstract_cn": "本文研究GPU 排序、异构计算、排序、带宽优化相关技术。\n\n核心内容：Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour。",
-    "takeaway": "本文聚焦GPU 排序、异构计算、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
-  },
-  {
-    "id": "1701.01189v2",
-    "title": "GPU Multisplit: an extended study of a parallel algorithm",
-    "authors": [
-      "Saman Ashkiani",
-      "Andrew Davidson",
-      "Ulrich Meyer",
-      "John D. Owens"
-    ],
-    "abstract": "Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multisplit with a sort. One way is to first generate an auxiliary array of bucket IDs and then sort input data based on it. In case smaller indexed buckets possess smaller valued keys, another way for multisplit is to directly sort input data. Both methods are inefficient and require more work than necessary: the former requires more expensive data movements while the latter spends unnecessary effort in sorting elements within each bucket. In this work, we provide a parallel model and multiple implementations for the multisplit problem. Our principal focus is multisplit for a small (up to 256) number of buckets. We use warp-synchronous programming models and emphasize warp-wide communications to avoid branch divergence and reduce memory usage. We also hierarchically reorder input elements to achieve better coalescing of global memory accesses. On a GeForce GTX 1080 GPU, we can reach a peak throughput of 18.93 Gkeys/s (or 11.68 Gpairs/s) for a key-only (or key-value) multisplit. Finally, we demonstrate how multisplit can be used as a building block for radix sort. In our multisplit-based sort implementation, we achieve comparable performance to the fastest GPU sort routines, sorting 32-bit keys (and key-value pairs) with a throughput of 3.0 G keys/s (and 2.1 Gpair/s).",
-    "published_date": "2017-01-05T01:00:27Z",
-    "updated_date": "2017-05-19T00:44:08Z",
-    "categories": [
-      "cs.DC"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/1701.01189v2",
-    "arxiv_url": "https://arxiv.org/abs/1701.01189v2",
-    "source": "arxiv",
-    "score": 0.6076371228694916,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作",
-      "与 GPU 数据库主题中等相关"
-    ],
-    "abstract_cn": "本文研究GPU 排序、排序、通信优化、吞吐量相关技术。\n\n核心内容：Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multis...。",
-    "takeaway": "本文聚焦GPU 排序、排序、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "1306.5076v2",
-    "title": "Bank Conflict Free Comparison-based Sorting On GPUs",
-    "authors": [
-      "Nodari Sitchinava",
-      "Volker Weichert"
-    ],
-    "abstract": "In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts. It can be used as a subroutine for GPU sorting algorithms to replace current use of sorting networks in shared memory. Using our bank conflict free shared memory sorting subroutine as a black box, we design BCFMergesort, an algorithm for merging sorted streams of data that are larger than shared memory. Our algorithm performs all accesses to global memory in coalesced manner and incurs no bank conflicts during the merge.",
-    "published_date": "2013-06-21T08:57:39Z",
-    "updated_date": "2016-10-11T05:32:00Z",
-    "categories": [
-      "cs.DS",
-      "cs.DC"
-    ],
-    "primary_category": "cs.DS",
-    "pdf_url": "https://arxiv.org/pdf/1306.5076v2",
-    "arxiv_url": "https://arxiv.org/abs/1306.5076v2",
-    "source": "arxiv",
-    "score": 0.605968177318573,
-    "reasons": [
-      "涉及 GPU 计算技术",
-      "与 GPU 数据库主题中等相关"
-    ],
-    "abstract_cn": "本文研究GPU 排序、排序、网络相关技术。\n\n核心内容：In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts。",
-    "takeaway": "本文聚焦GPU 排序、排序、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2206.01784v1",
-    "title": "Onesweep: A Faster Least Significant Digit Radix Sort for GPUs",
-    "authors": [
-      "Andy Adinets",
-      "Duane Merrill"
-    ],
-    "abstract": "We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration. This exhibits a significant reduction in last-level memory traffic versus contemporary GPU radix sorting implementations, where each iteration of digit binning requires two passes through the dataset totaling ~3n global memory operations.\n  On the NVIDIA A100 GPU, our approach achieves 29.4 GKey/s when sorting 256M random 32-bit keys. Compared to CUB, the current state-of-the-art GPU LSD radix sort, our approach provides a speedup of ~1.5x. For 32-bit keys with varied distributions, our approach provides more consistent performance compared to HRS, the current state-of-the-art GPU MSD radix sort, and outperforms it in almost all cases.",
-    "published_date": "2022-06-03T19:08:55Z",
-    "updated_date": "2022-06-03T19:08:55Z",
-    "categories": [
-      "cs.DC",
-      "cs.DS"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2206.01784v1",
-    "arxiv_url": "https://arxiv.org/abs/2206.01784v1",
-    "source": "arxiv",
-    "score": 0.5619045805931091,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究GPU 排序、排序相关技术。\n\n核心内容：We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration。",
-    "takeaway": "本文聚焦GPU 排序、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+    "abstract_cn": "对密集数组排序和二分搜索可以被认为是最简单且最节省空间的索引形式，在 GPU 上尤为突出，因为 GPU 展现出卓越的排序性能。然而普遍观点认为这种原始方法在查找性能上无法与大型复杂 GPU 索引结构竞争。本文研究了二分搜索是否可以成为重量级索引结构的快速且空间最小的替代方案。我们引入了二分搜索的高级变体并配备底层优化：(a) 大幅减少搜索所需的 GPU 内存访问总量；(b) 利用 GPU 内存访问合并的巨大优势；(c) 通过将数据集重排为更有利的布局来最大化可扩展性。与九种最先进的 GPU 索引结构在多个静态索引工作负载下比较，我们的优化搜索策略比所有竞争者（除基于哈希的方法外）快最多 3.8 倍，且保持了最小的内存占用。",
+    "takeaway": "本文证明优化后的二分搜索在 GPU 上可以超越大型复杂索引结构，是最快且空间最小的静态 GPU 索引方案，颠覆了简单方法不够快的传统认知。",
+    "innovation": "1. 提出面向 GPU 架构的高级二分搜索变体；2. 通过减少内存访问、合并访存、数据重排三大优化最大化性能；3. 以最小内存占用实现最高查找吞吐"
   }
 ]
