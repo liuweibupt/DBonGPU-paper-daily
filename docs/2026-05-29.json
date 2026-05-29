@@ -1,0 +1,254 @@
+[
+  {
+    "id": "2605.30294",
+    "title": "RAFI -- A Ray/Work Forwarding Infrastructure for Data Parallel Multi-Node/Multi-GPU Computing",
+    "authors": [
+      "Ingo Wald",
+      ",",
+      "Serkan Demirci",
+      ",",
+      "Alper Sahistan",
+      ",",
+      "Stefan Zellmann",
+      ",",
+      "Andrea Paris",
+      ",",
+      "Patrick Moran",
+      ",",
+      "Milan Jaros",
+      ",",
+      "Tatiana von Landesberger",
+      ",",
+      "Ugur Gudukbay",
+      ",",
+      "Valerio Pascucci"
+    ],
+    "abstract": "We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while under the hood managing all the CUDA and MPI related work required to make this happen. We describe RaFI&#39;s motivation and implementation, and show its potential in several example applications.",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2605.30294",
+    "arxiv_url": "https://arxiv.org/abs/2605.30294",
+    "source": "arxiv",
+    "score": 0.5830617380142212,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文提出 RaFI，一个基于 CUDA 和 MPI 的软件框架，简化了构建 GPU 数据并行软件的任务，其中光线或类似的工作项需要在不同 GPU 之间迁移。RaFI 为 CUDA 核函数提供了简单的接口来转发工作项到其他 GPU，同时在底层管理所有 CUDA 和 MPI 相关的工作。我们描述了 RaFI 的动机和实现，并通过多个示例应用展示了其潜力。",
+    "takeaway": "RaFI 框架通过简化 GPU 间工作项转发，降低了多节点/多 GPU 数据并行软件的开发难度。",
+    "innovation": "提供简洁的 CUDA 核函数接口实现 GPU 间工作迁移，自动管理底层 CUDA 和 MPI 通信细节。"
+  },
+  {
+    "id": "2605.29604",
+    "title": "TC-MIS: Maximal Independent Set on Tensor-cores",
+    "authors": [
+      "Prajjwal Nijhara",
+      ",",
+      "Dip Sankar Banerjee"
+    ],
+    "abstract": "Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU algorithms have achieved good performance, processing million-vertex graphs in milliseconds. Modern GPUs are equipped with Tensor Cores (TCs), specialized units for matrix operations with 8-16x higher throughput than CUDA Cores (CCs), which are extensively used for ML, DL, and inference tasks but remain largely unexplored for graph algorithms. In this paper, we present TC-MIS, a TC-accelerated algorithm that reformulates key phases of MIS computation as sparse matrix-vector multiplication (SpMV). TC-MIS tiles the graph adjacency matrix and employs Warp Matrix Multiply-Accumulate (WMMA) operations to transform irregular graph traversal into regular, massively parallel computation. Our evaluation across TC-enabled microarchitectures (Ampere, Ada Lovelace, Hopper, Blackwell) demonstrates that TC-MIS achieves an average speedup of 2.84x on RTX A5000, 4.84x on L40S, 18.80x on H200 GPUs, and 5.20x on RTX 5080 with a maximum speedup of 44.38x on H200 GPU over state-of-the-art methods, while maintaining solution quality comparable to that obtained by established heuristics that produce near-maximum independent sets.",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29604",
+    "arxiv_url": "https://arxiv.org/abs/2605.29604",
+    "source": "arxiv",
+    "score": 0.47812482476234436,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "图中的最大独立集（MIS）是一个基础问题，广泛应用于资源分配、调度和网络优化。尽管图本质上是非结构化的，由于不规则内存访问和工作负载不均衡对 GPU 并行性构成挑战，专用 GPU 算法仍取得了良好性能，可在毫秒级处理百万顶点图。现代 GPU 配备了张量核心（TC），是专门用于矩阵运算的单元，吞吐量比 CUDA 核心高 8-16 倍，广泛用于 ML/DL/推理任务，但在图算法中基本未被探索。本文提出 TC-MIS，一种 TC 加速算法，将 MIS 计算的关键阶段重构为稀疏矩阵-向量乘法（SpMV）。TC-MIS 对图邻接矩阵进行分块，采用 WMMA 操作将不规则图遍历转化为规则的、大规模并行计算。在支持 TC 的微架构上的评估表明，TC-MIS 在 H200 GPU 上最高加速 44.38 倍，同时保持与已建立启发式方法相当的解质量。",
+    "takeaway": "利用 GPU 张量核心加速图算法，TC-MIS 在 MIS 问题上实现了最高 44 倍的加速比。",
+    "innovation": "首次将张量核心用于图算法，通过 SpMV 重构和 WMMA 操作将不规则图遍历转化为规则并行计算。"
+  },
+  {
+    "id": "2605.29135",
+    "title": "Rotary GPU: Exploring Local Execution Paths for Large Mixture-of-Experts Models Under Limited GPU Memory",
+    "authors": [
+      "Myeong Jun Jo"
+    ],
+    "abstract": "Large language models have achieved remarkable capabilities through scaling, and this paper does not challenge that. It instead investigates a different question: once large models already exist, can they become more accessible to environments with substantially smaller hardware resources? The motivation came from deployment concerns rather than architecture research. Many organizations operate under hardware, budget, security, or closed-network constraints that limit access to large accelerator clusters, and as models continue to improve, deployment accessibility may matter as much as capability itself. This paper presents Rotary GPU, an exploratory execution approach derived from a previously disclosed rotary-based accelerator residency concept. A public validation was conducted using a Qwen3.6-35B-A3B-class Mixture-of-Experts model executed locally on a consumer laptop with an RTX 4060 Laptop GPU containing 8 GB of VRAM. Under the primary configuration, the system generated 2048 output tokens while maintaining approximately 6.3 GB of VRAM usage and an observed decode throughput of 21.06 tokens per second. The goal is not to replace data-center infrastructure but to explore whether some capabilities of large models can be brought closer to environments where such infrastructure is unavailable. The results should be read as exploratory rather than definitive, but they suggest deployment accessibility deserves continued investigation as these models evolve.",
+    "primary_category": "Performance (cs.PF)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29135",
+    "arxiv_url": "https://arxiv.org/abs/2605.29135",
+    "source": "arxiv",
+    "score": 0.45385688424110415,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "大语言模型通过规模化取得了卓越能力，本文不质疑这一点，而是研究：一旦大模型已经存在，能否让它们在硬件资源大幅受限的环境中更容易使用？动机来自部署而非架构研究。许多组织受硬件、预算、安全或封闭网络约束，无法访问大型加速器集群，随着模型持续改进，部署可及性可能与能力本身同样重要。本文提出 Rotary GPU，一种基于旋转式加速器驻留概念的探索性执行方法。使用 Qwen3.6-35B-A3B 级别的混合专家模型在配备 8GB 显存的 RTX 4060 笔记本 GPU 上进行公开验证。在主要配置下，系统生成 2048 个输出 token，同时维持约 6.3GB 的显存使用，解码吞吐量为 21.06 tokens/s。",
+    "takeaway": "Rotary GPU 展示了在消费级 GPU 上运行大型 MoE 模型的可能性，8GB 显存即可实现 21 tokens/s 的解码速度。",
+    "innovation": "基于旋转式加速器驻留概念，在有限 GPU 内存下探索大型 MoE 模型的本地执行路径。"
+  },
+  {
+    "id": "2605.29728",
+    "title": "PRISM: Processing-In-Memory Sparse MTTKRP for Tensor Decomposition Acceleration",
+    "authors": [
+      "Daniel Pacheco",
+      ",",
+      "Leonel Sousa",
+      ",",
+      "Aleksandar Ilic"
+    ],
+    "abstract": "Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning. One of the most used tensor decomposition algorithms is the Alternating Least Squares Canonical Polyadic Decomposition (CP-ALS), where the most time-consuming operation is the Sparse Matricized Tensor Times Khatri-Rao Product (spMTTKRP). This operation is strongly memory-bound, making it hard to implement efficiently on general-purpose processors. This work proposes PRISM, the first approach to tackle this operation using Processing-In-Memory (PIM) technology. We extensively characterize different partitioning strategies, number formats, and kernel optimizations that efficiently adapt this operation to UPMEM PIM, which is further boosted by heterogeneous collaboration with the CPU. The experimental results show that the proposed PIM-based and heterogeneous approaches achieve up to 2.37x and 2.64x speedup compared to state-of-the-art CPU implementations, respectively. However, the UPMEM distributed memory system can significantly hinder performance on certain workloads. Nonetheless, the efficiency of resource consumption for this approach, measured by peak performance fraction usage, is significantly higher than for both CPU and GPU.",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29728",
+    "arxiv_url": "https://arxiv.org/abs/2605.29728",
+    "source": "arxiv",
+    "score": 0.414781688451767,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "稀疏张量是稀疏多维数据最常用的表示方式。分解稀疏张量以选取最重要特征同时降低维度的操作已成为机器学习中的常见流程。最常用的张量分解算法之一是交替最小二乘规范多分解（CP-ALS），其中最耗时的操作是稀疏矩阵化张量乘 Khatri-Rao 积（spMTTKRP）。该操作具有强内存受限特性，难以在通用处理器上高效实现。本文提出 PRISM，首个使用内存处理（PIM）技术解决此操作的方法。我们全面研究了不同的分区策略、数据格式和核函数优化，将其高效适配到 UPMEM PIM，并通过与 CPU 的异构协作进一步提升性能。实验结果表明，所提出的 PIM 方案和异构方案分别比最先进的 CPU 实现最高加速 2.37 倍和 2.64 倍。",
+    "takeaway": "PRISM 首次利用 PIM 技术加速稀疏张量分解中最耗时的 spMTTKRP 操作，异构方案可达 2.64 倍加速。",
+    "innovation": "首个将 Processing-In-Memory 技术应用于 spMTTKRP 的工作，结合 CPU 异构协作优化。"
+  },
+  {
+    "id": "2605.29740",
+    "title": "CARM Tool: Cache-Aware Roofline Model Automatic Benchmarking and Application Analysis",
+    "authors": [
+      "José Morgado",
+      ",",
+      "Leonel Sousa",
+      ",",
+      "Aleksandar Ilic"
+    ],
+    "abstract": "In recent years, HPC systems and CPU architectures as their central components, have become increasingly complex, making application development and optimization quite challenging. In this respect, intuitive performance models like the Cache-aware Roofline Model (CARM) offer effective guidance by providing insights into bottlenecks that limit the application&#39;s ability to reach the system&#39;s maximum performance. To fully exploit the benefits of CARM optimization guidance for application development, automatic tools for cross-architecture model construction and in-depth application characterization are absolutely essential. Given a plethora of existing CPU architectures, the current landscape of CARM-enabled tools covers either vendor-specific (Intel Advisor), not sufficiently developed (ARM) or simply non-existing (AMD, RISC-V) tools. This is a particular gap that this work intends to close by bringing automatic CARM support to all major CPU architectures and ISAs, i.e., x86 (Intel, AMD), ARM, and RISC-V, by developing assembly microbenchmarks specifically tailored to cover a full performance spectrum of modern CPUs (from scalar to all supported vector ISA extensions) for both computational units and all memory hierarchy levels. Additionally, this work integrates application analysis within the CARM framework using performance counters and dynamic binary instrumentation. Experimental results show that the CARM roofs constructed with the proposed automated framework provide less than a 1% deviation across various tested architectural maximums.",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29740",
+    "arxiv_url": "https://arxiv.org/abs/2605.29740",
+    "source": "arxiv",
+    "score": 0.37475287914276123,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "近年来，HPC 系统及其核心组件 CPU 架构日益复杂，使应用开发和优化极具挑战。缓存感知屋顶线模型（CARM）等直观性能模型通过提供瓶颈洞察来提供有效指导。为充分发挥 CARM 优化指导在应用开发中的优势，跨架构模型自动构建和深入应用特征化的自动工具至关重要。本文旨在弥补这一空白，通过开发专门定制的汇编微基准测试，覆盖现代 CPU 从标量到所有支持的向量 ISA 扩展的完整性能谱，将自动 CARM 支持引入所有主要 CPU 架构和 ISA（x86/Intel/AMD、ARM、RISC-V）。此外，本文还使用性能计数器和动态二进制插桩将应用分析集成到 CARM 框架中。实验结果表明，所提自动框架构建的 CARM 屋顶线与各种测试架构最大值偏差不到 1%。",
+    "takeaway": "CARM Tool 实现了跨 x86/ARM/RISC-V 架构的自动缓存感知屋顶线模型构建，偏差不到 1%。",
+    "innovation": "首次为 Intel、AMD、ARM、RISC-V 所有主要架构提供统一的自动 CARM 支持和深度应用分析。"
+  },
+  {
+    "id": "2605.29346",
+    "title": "Understanding and Reducing Metadata-Driven Host Overheads in Sampling-Based GNN Training",
+    "authors": [
+      "Yidong Gong",
+      ",",
+      "Saima Afrin",
+      ",",
+      "Yuchen Ma",
+      ",",
+      "Guannan Wang",
+      ",",
+      "Bin Ren",
+      ",",
+      "Pradeep Kumar"
+    ],
+    "abstract": "Modern deep learning workloads increasingly exhibit dynamic, metadata-driven execution, where runtime-generated information determines memory provisioning and kernel launch decisions. In sampling-based graph neural network (GNN) training, this behavior places the CPU on the critical path, introducing persistent host-device orchestration overhead and frequent GPU-CPU synchronization, which dominate end-to-end runtime when GPU computation is small. Existing approaches, including CUDA Graphs and GPU dynamic parallelism, fail to address this problem because the metadata-driven control loop remains host-mediated, and execution structure varies across iterations. We present ZEROGNN, a system that removes the host from the metadata-driven control loop and enables fully GPU-resident execution under dynamic behavior. ZEROGNN keeps runtime metadata on-device, mediates dynamic execution within a fixed launch structure, and provisions a conservative yet tight execution envelope to restore CUDA Graph replayability. Experiments on sampling-based GNN workloads show that ZEROGNN achieves up to 5.28 x end-to-end speedup, near 100% GPU execution fraction, and memory efficiency comparable to ideal metadata-informed allocation, while enabling strong multi-GPU scaling by eliminating host-side bottlenecks.",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29346",
+    "arxiv_url": "https://arxiv.org/abs/2605.29346",
+    "source": "arxiv",
+    "score": 0.3721585404872894,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "现代深度学习工作负载越来越多地表现出动态的、元数据驱动的执行模式，其中运行时生成的信息决定内存分配和核函数启动决策。在基于采样的图神经网络（GNN）训练中，这种行为将 CPU 置于关键路径上，引入持续的主机-设备协调开销和频繁的 GPU-CPU 同步，在 GPU 计算量较小时主导端到端运行时间。现有方法包括 CUDA Graphs 和 GPU 动态并行，都未能解决此问题，因为元数据驱动的控制循环仍然是主机中介的，执行结构在迭代间变化。我们提出 ZEROGNN，一个将主机从元数据驱动控制循环中移除、在动态行为下实现完全 GPU 驻留执行的系统。ZEROGNN 将运行时元数据保留在设备上，在固定启动结构中调解动态执行，并配置保守但紧凑的执行封套以恢复 CUDA Graph 可重放性。在基于采样的 GNN 工作负载上的实验表明，ZEROGNN 实现了最高 5.28 倍的端到端加速，接近 100% 的 GPU 执行占比，以及与理想元数据感知分配相当的内存效率，同时通过消除主机侧瓶颈实现强多 GPU 扩展。",
+    "takeaway": "ZEROGNN 通过将元数据驱动控制循环完全移至 GPU，在采样 GNN 训练中实现最高 5.28 倍加速。",
+    "innovation": "提出 GPU 驻留的元数据管理方案，用固定启动结构恢复 CUDA Graph 可重放性，消除主机侧瓶颈。"
+  },
+  {
+    "id": "2605.29006",
+    "title": "IORM: Hierarchical I/O Governance for Thousands of Consolidated Databases on Oracle Exadata",
+    "authors": [
+      "Rajarshi Chowdhury",
+      ",",
+      "Akshay Shah",
+      ",",
+      "Zakaria Alrmaih",
+      ",",
+      "Chenhao Guo",
+      ",",
+      "Anubhav Singh",
+      ",",
+      "Sue Lee"
+    ],
+    "abstract": "Oracle Exadata consolidates thousands of tenant databases onto shared storage infrastructure deployed at hundreds of customer sites worldwide. Oracle Multitenant architecture enables this extreme density, with thousands of tenant databases sharing a single Exadata storage system -- but this creates a multi-level resource hierarchy (container databases, tenant databases, and workloads within tenants) that commodity block-layer schedulers cannot govern, as they lack visibility into database semantics and tenant boundaries. This paper presents the I/O Resource Manager (IORM), a storage-side scheduler built on three mechanisms: I/O Tagging, which propagates semantic context from the database kernel to the storage scheduler; Hierarchical Resource Profiles, which express compositional allocation policies across consolidation tiers using shares and limits; and Unified Storage Governance, which applies these policies consistently across all tiers of the storage hierarchy -- persistent memory, flash, and hard disk -- including cache placement decisions. IORM enables successful cloud deployments where thousands of tenants coexist on shared storage: production OLTP workloads run alongside concurrent analytical workloads from the same or different databases without noisy-neighbor interference. Evaluation on production Exadata systems demonstrates that IORM dramatically improves latency consistency, virtually eliminating tail latency outliers and delivering several-fold improvements in average read latency under mixed workloads. Hierarchical limits compose correctly across all three levels, and proportional share allocation tracks configured ratios closely even under highly skewed demand.",
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29006",
+    "arxiv_url": "https://arxiv.org/abs/2605.29006",
+    "source": "arxiv",
+    "score": 0.36876569509506224,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "Oracle Exadata 将数千个租户数据库整合到部署在全球数百个客户站点的共享存储基础设施上。Oracle 多租户架构实现了这种极高密度，但这创建了一个多层资源层次结构（容器数据库、租户数据库和租户内工作负载），商品块层调度器无法治理，因为它们缺乏对数据库语义和租户边界的可见性。本文提出 I/O 资源管理器（IORM），一个基于三种机制构建的存储侧调度器：I/O 标记，将语义上下文从数据库内核传播到存储调度器；层次化资源配置，使用份额和限制跨整合层级表达组合分配策略；统一存储治理，在存储层次的所有层一致地应用这些策略。IORM 支持数千租户在共享存储上共存的云部署：生产 OLTP 工作负载与并发分析工作负载并行运行，无嘈杂邻居干扰。生产 Exadata 系统上的评估表明，IORM 显著改善延迟一致性，几乎消除尾延迟异常值，在混合工作负载下平均读延迟提升数倍。",
+    "takeaway": "IORM 实现了数千租户数据库共享存储的层次化 I/O 治理，几乎消除尾延迟异常值。",
+    "innovation": "通过 I/O 标记传播数据库语义、层次化资源配置和统一存储治理三种机制，解决多租户存储 I/O 调度问题。"
+  },
+  {
+    "id": "2605.29099",
+    "title": "One Ring to Shuffle Them All: Scalable Intra-Process Data Redistribution with Ring-Buffer Shuffle in Redpanda Oxla",
+    "authors": [
+      "Adam Szymański",
+      ",",
+      "Tyler Akidau"
+    ],
+    "abstract": "As server CPUs scale to dozens and now hundreds of cores per socket, parallel query engines must rethink how they redistribute data between threads. Partitioned operators such as hash joins and aggregations require frequent data redistribution across threads, yet existing intra-process shuffle designs fundamentally fail to scale with core count: batch partitioning avoids cross-thread synchronization in the hot path but materializes all intermediate data, introduces a global producer/consumer barrier, and requires a consumption approach with low cache locality, while channel-based streaming avoids materialization but incurs per-channel synchronization that scales poorly with core count. As core counts rise, these architectural tradeoffs increasingly prevent engines from fully utilizing modern hardware. We present a ring-buffer streaming shuffle design that addresses these shortcomings through lock-free atomic slot acquisition into fixed-size batch groups, achieving amortized O(1) synchronization cost per batch and O(M) memory independent of input size. Ring-buffer shuffle has been implemented in Redpanda&#39;s Oxla query engine for two years, where it currently powers production queries for Redpanda SQL users. We evaluate all three approaches on a 72-core NVIDIA GraceHopper, a 192-core dual-socket AWS Graviton4, and a 96-core (192-thread) AMD EPYC. On a 72-core single-socket system the ring buffer outperforms channel streaming by up to 44% and batch partitioning by up to 79%; at 192 cores the advantage over channel grows to over 100% and over 300% versus batch partitioning. Even so, on chiplet architectures with many partitioned L3 caches, the shared atomic counter becomes a cross-die bottleneck and channel-based streaming remains competitive. End-to-end Graviton4 evaluation on TPC-H (21 queries) and ClickBench (43 queries) shows the advantage is workload-shape-dependent.",
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29099",
+    "arxiv_url": "https://arxiv.org/abs/2605.29099",
+    "source": "arxiv",
+    "score": 0.3374379873275757,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "随着服务器 CPU 扩展到数十甚至数百核心，并行查询引擎必须重新思考线程间数据重分配方式。分区算子（如哈希连接和聚合）需要频繁的跨线程数据重分配，但现有进程内 shuffle 设计在核心数上根本无法扩展：批量分区避免了热路径中的跨线程同步，但物化所有中间数据、引入全局生产者/消费者屏障；而基于通道的流式处理避免了物化但产生了随核心数扩展性差的每通道同步开销。我们提出环形缓冲区流式 shuffle 设计，通过无锁原子槽获取固定大小批次组，实现每批次摊销 O(1) 同步代价和与输入大小无关的 O(M) 内存。在 72 核单路系统上，环形缓冲区比通道流式最高快 44%，比批量分区最高快 79%；在 192 核上，对通道的优势超过 100%，对批量分区超过 300%。不过，在具有多个分区 L3 缓存的芯片架构上，共享原子计数器成为跨芯片瓶颈。",
+    "takeaway": "环形缓冲区 shuffle 在高核心数系统上显著优于传统批量分区和通道流式方案，192 核上比批量分区快 3 倍以上。",
+    "innovation": "提出无锁原子槽获取的环形缓冲区流式 shuffle，实现摊销 O(1) 同步代价和 O(M) 内存。"
+  },
+  {
+    "id": "2605.29093",
+    "title": "ScanTwin: Simulating Performance Regressions Without Access to Tenant Data",
+    "authors": [
+      "Donghyun Sohn",
+      ",",
+      "Jennie Rogers"
+    ],
+    "abstract": "In cloud data platforms, developers often encounter performance regressions that occur in specific tenant datasets. However, due to confidentiality constraints, they cannot access the original data, which makes it difficult to reproduce these regressions locally. Current methods for synthetic data usually focus on statistical properties, such as matching data distributions or improving query accuracy. However, they overlook the physical properties that control how the engine behaves during scans, including row-group pruning. We propose ScanTwin, a lightweight framework that extracts a per-row-group sketch from the Parquet footer, including boundary values and compressed sizes, and releases them under $\\varepsilon$-differential privacy using a boundary parameterization. On TPC-H and SSB (6M rows), ScanTwin achieves 0% pruning error and less than 1% byte error at $\\varepsilon{=}\\infty$. Under $\\varepsilon{=}5$, high-selectivity queries ($&gt;$30%) incur below 8.5% pruning error on both datasets, and per-query scan timing on DuckDB closely tracks the original.",
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2605.29093",
+    "arxiv_url": "https://arxiv.org/abs/2605.29093",
+    "source": "arxiv",
+    "score": 0.3227672576904297,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "在云数据平台中，开发者经常遇到在特定租户数据集上发生的性能回归。然而，由于机密性约束，他们无法访问原始数据，难以在本地复现这些回归。当前的合成数据方法通常关注统计属性，如匹配数据分布或提高查询精度，但忽略了控制引擎扫描行为的物理属性，包括行组裁剪。我们提出 ScanTwin，一个轻量级框架，从 Parquet 文件尾部提取每行组摘要，包括边界值和压缩大小，并使用边界参数化在差分隐私下发布。在 TPC-H 和 SSB 上，ScanTwin 在无隐私约束时实现 0% 的裁剪误差和不到 1% 的字节误差。在差分隐私下，高选择性查询的裁剪误差低于 8.5%，DuckDB 上的逐查询扫描时间与原始数据高度一致。",
+    "takeaway": "ScanTwin 在差分隐私保护下生成合成 Parquet 数据，精确模拟原始数据的扫描性能行为。",
+    "innovation": "从 Parquet 文件尾部提取行组级物理摘要并在差分隐私下发布，首次关注扫描行为的物理属性而非统计属性。"
+  },
+  {
+    "id": "2605.30308",
+    "title": "Zero-Scan Data Quality: Leveraging Table Format Metadata for Continuous Observability at Scale",
+    "authors": [
+      "Mohit Verma",
+      ",",
+      "Shantanu Rawat",
+      ",",
+      "Christian Bush",
+      ",",
+      "Sumedh Sakdeo",
+      ",",
+      "Lokesh Amarnath Ravindranathan",
+      ",",
+      "Dwarak Bakshi"
+    ],
+    "abstract": "Modern table formats such as Apache Iceberg compute and store metadata-commit timestamps, record counts, and column-level statistics such as null counts and value bounds at write time as part of file writing. These statistics serve query planning, yet they overlap substantially with data quality (DQ) monitoring needs. We describe a metadata-first approach that repurposes write-time statistics for continuous DQ observability: anomaly detection, drift monitoring, null-rate tracking; without scanning any data. Deployed at LinkedIn across 200,000+ Iceberg tables (800+ PB), this approach satisfies approximately 60% of user-defined DQ rules at zero marginal compute cost and reduces profiling resource consumption by around 50%. Extending manifest statistics with lightweight counters (sum, zero-value counts, boolean counts) and incrementally mergeable sketches; Theta sketches for distinct counts, KLL sketches for quantiles; can further raise metadata-satisfiable coverage to close to 90% of production DQ rules. We validate sketch accuracy, mergeability, and storage overhead on production data and propose that table formats should store per-file sketches in Puffin sidecar files, following the same store-then-aggregate pattern used for existing manifest statistics.",
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2605.30308",
+    "arxiv_url": "https://arxiv.org/abs/2605.30308",
+    "source": "arxiv",
+    "score": 0.30087757110595703,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "现代表格式（如 Apache Iceberg）在写入时计算并存储元数据提交时间戳、记录计数和列级统计信息作为文件写入的一部分。这些统计信息用于查询规划，但与数据质量（DQ）监控需求存在大量重叠。我们描述了一种元数据优先的方法，将写入时统计信息重新用于持续 DQ 可观测性：异常检测、漂移监控、空值率跟踪，无需扫描任何数据。该方法在 LinkedIn 的 20 万+ Iceberg 表（800+ PB）上部署，以零边际计算成本满足约 60% 的用户定义 DQ 规则，并将分析资源消耗降低约 50%。通过扩展清单统计加入轻量计数器和增量可合并摘要（Theta 摘要用于去重计数，KLL 摘要用于分位数），可将元数据可满足覆盖率提升至接近 90% 的生产 DQ 规则。",
+    "takeaway": "LinkedIn 利用 Iceberg 写入时元数据实现零扫描数据质量监控，满足 60% DQ 规则，扩展后可达 90%。",
+    "innovation": "元数据优先的 DQ 可观测性方案，复用写入时统计信息避免数据扫描，并结合轻量摘要进一步扩展覆盖范围。"
+  }
+]
