@@ -3,10 +3,12 @@ ArXiv Fetcher for Paper Daily
 
 Fetches papers from arXiv using its API.
 Uses category-based fetching with local keyword filtering for robustness.
+Falls back to web scraping when the API is rate-limited (429).
 """
 
 import requests
 import feedparser
+import re
 import time
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
@@ -245,3 +247,118 @@ class ArxivFetcher:
         except Exception as e:
             print(f"Error searching arXiv papers: {e}")
             return []
+
+    # ------------------------------------------------------------------
+    # Web-scraping fallback (used when API returns 429 rate-limit)
+    # ------------------------------------------------------------------
+
+    def fetch_papers_via_web(self, date: str = None) -> List[Dict]:
+        """
+        Fallback: scrape arXiv listing pages for each category when the
+        API is rate-limited.  Returns paper dicts with the same schema
+        as the API-based methods.
+        """
+        if date is None:
+            date = datetime.now().strftime('%Y-%m-%d')
+
+        all_ids = set()
+        for cat in self.categories:
+            try:
+                url = f'https://arxiv.org/list/{cat}/new'
+                resp = requests.get(url, timeout=30,
+                                    headers={'User-Agent': 'Mozilla/5.0 (paper-daily)'})
+                if resp.status_code != 200:
+                    print(f"Web scrape for {cat}: HTTP {resp.status_code}")
+                    continue
+                ids = re.findall(r'/abs/(\d+\.\d+)', resp.text)
+                print(f"Web scrape {cat}: found {len(ids)} paper IDs")
+                all_ids.update(ids)
+                time.sleep(1)
+            except Exception as e:
+                print(f"Web scrape for {cat}: {e}")
+
+        # Filter IDs that match the target date prefix
+        # arXiv IDs use YYMM.NNNNN format; e.g. 2605.29xxx = May 2026
+        year = date[2:4]   # e.g. '26'
+        month = date[5:7]  # e.g. '05'
+        prefix = f'{year}{month}'
+        recent_ids = sorted(pid for pid in all_ids if pid.startswith(prefix))
+
+        if not recent_ids:
+            # If no exact-prefix match, take all IDs from the listing
+            recent_ids = sorted(all_ids)
+
+        print(f"Scraping details for {len(recent_ids)} papers …")
+        papers = []
+        for pid in recent_ids:
+            try:
+                paper = self._scrape_paper_page(pid)
+                if paper:
+                    papers.append(paper)
+                time.sleep(1.5)
+            except Exception as e:
+                print(f"  {pid}: scrape error – {e}")
+                time.sleep(2)
+
+        return self._remove_duplicates(papers)
+
+    def _scrape_paper_page(self, arxiv_id: str) -> Optional[Dict]:
+        """Scrape a single paper's abs page for metadata."""
+        url = f'https://arxiv.org/abs/{arxiv_id}'
+        resp = requests.get(url, timeout=30,
+                            headers={'User-Agent': 'Mozilla/5.0 (paper-daily)'})
+        if resp.status_code != 200:
+            return None
+
+        text = resp.text
+
+        # Title
+        title_match = re.search(
+            r'<h1\s+class="title\s+mathjax">(.*?)</h1>', text, re.DOTALL)
+        title = title_match.group(1).strip() if title_match else ''
+        title = re.sub(r'<.*?>', '', title).strip()
+        title = re.sub(r'^Title:\s*', '', title).strip()
+
+        # Abstract
+        abs_match = re.search(
+            r'<blockquote\s+class="abstract\s+mathjax">(.*?)</blockquote>',
+            text, re.DOTALL)
+        abstract = abs_match.group(1).strip() if abs_match else ''
+        abstract = re.sub(r'<.*?>', '', abstract).strip()
+        abstract = re.sub(r'^Abstract:\s*', '', abstract).strip()
+        abstract = re.sub(r'&#39;', "'", abstract)
+        abstract = re.sub(r'&amp;', '&', abstract)
+        abstract = re.sub(r'&lt;', '<', abstract)
+        abstract = re.sub(r'&gt;', '>', abstract)
+        abstract = re.sub(r'\s+', ' ', abstract).strip()
+
+        # Authors
+        authors_match = re.search(
+            r'<div\s+class="authors">(.*?)</div>', text, re.DOTALL)
+        authors = []
+        if authors_match:
+            authors = re.findall(r'>([^<]+)<', authors_match.group(1))
+            authors = [a.strip() for a in authors
+                       if a.strip() and a.strip() != 'Authors:']
+
+        # Primary category
+        cat_match = re.search(
+            r'<span\s+class="primary-subject">(.*?)</span>', text)
+        primary_cat = cat_match.group(1).strip() if cat_match else ''
+
+        if not title or not abstract:
+            return None
+
+        return {
+            'id': arxiv_id,
+            'title': title,
+            'authors': authors,
+            'abstract': abstract,
+            'published_date': '',
+            'updated_date': '',
+            'categories': [primary_cat] if primary_cat else [],
+            'primary_category': primary_cat,
+            'pdf_url': f'https://arxiv.org/pdf/{arxiv_id}',
+            'arxiv_url': f'https://arxiv.org/abs/{arxiv_id}',
+            'source': 'arxiv'
+        }

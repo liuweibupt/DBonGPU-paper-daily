@@ -91,6 +91,12 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
         )
         logger.log(f"Fetched {len(papers)} papers from arXiv", "INFO")
 
+        # Fallback to web scraping when API is rate-limited
+        if len(papers) == 0:
+            logger.log("API returned 0 papers (likely rate-limited), falling back to web scraping", "WARN")
+            papers = arxiv_fetcher.fetch_papers_via_web(date=date)
+            logger.log(f"Web scraping returned {len(papers)} papers", "INFO")
+
         recommender = Recommender()
         recommendations = recommender.recommend(papers, top_k=10)
 
@@ -143,6 +149,12 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
         logger.log("Fetching recent papers from arXiv categories...", "INFO")
         all_papers = arxiv_fetcher.fetch_recent_papers(days=365, max_results_per_category=500)
         logger.log(f"Fetched {len(all_papers)} total papers from categories", "INFO")
+
+        # Fallback to web scraping when API is rate-limited
+        if len(all_papers) == 0:
+            logger.log("API returned 0 papers (likely rate-limited), falling back to web scraping", "WARN")
+            all_papers = arxiv_fetcher.fetch_papers_via_web()
+            logger.log(f"Web scraping returned {len(all_papers)} papers", "INFO")
 
         # Local keyword filter: only keep papers with GPU+DB relevance
         gpu_db_filter_keywords = [
