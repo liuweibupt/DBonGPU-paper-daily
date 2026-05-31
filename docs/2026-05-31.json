@@ -1,0 +1,292 @@
+[
+  {
+    "id": "2406.13831v1",
+    "title": "A Comprehensive Overview of GPU Accelerated Databases",
+    "authors": [
+      "Harshit Sharma",
+      "Anmol Sharma"
+    ],
+    "abstract": "Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs has proven advantageous, thanks to their superior bandwidth capabilities. The parallel processing prowess of GPUs stands out, providing exceptional efficiency for data-intensive workloads and outpacing traditional CPUs in terms of data processing speed. While GPU databases capitalize on these strengths, there remains a scarcity of comparative studies across different GPU systems. In light of this emerging interest in GPU databases for data analytics, this paper proposes a survey encompassing multiple GPU database systems. The focus will be on elucidating the underlying mechanisms employed to deliver results and key performance metrics, utilizing benchmarks such as SSB and TPCH. This undertaking aims to shed light on new avenues for research within the realm of GPU databases.",
+    "published_date": "2024-06-19T20:50:30Z",
+    "updated_date": "2024-06-19T20:50:30Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2406.13831v1",
+    "arxiv_url": "https://arxiv.org/abs/2406.13831v1",
+    "source": "arxiv",
+    "score": 0.8547833561897278,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题高度相关"
+    ],
+    "abstract_cn": "本文研究GPU 数据库、内存数据库、数据处理、异构计算、数据库系统相关技术。\n\n核心内容：Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs h...。",
+    "takeaway": "本文聚焦GPU 数据库、内存数据库、数据处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2604.16725v1",
+    "title": "FliX: Flipped-Indexing for Scalable GPU Queries and Updates",
+    "authors": [
+      "Rosina Kharal",
+      "Trevor Brown",
+      "Justus Henneberg",
+      "Felix Schuhknecht"
+    ],
+    "abstract": "GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.\n  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp. FliX, however, assigns compute (e.g., a warp) to each bucket in the data layer, and each bucket then locates operations it is responsible for in the batch. FliX can replace many index layer traversals with a single binary search on the batch, reducing redundant work and warp divergence. Further, FliX simplifies updates as no index layer must be maintained.\n  In our experiments, FliX achieves 6.5x reduced query latency compared to a leading GPU B-tree and 1.5x compared to a leading GPU LSM-tree, while delivering 4x higher throughput per memory footprint than ordered competitors. Despite maintaining order, FliX also surpasses state-of-the-art unordered GPU hash tables in query and deletion performance, and is highly competitive in insertion performance. In update-heavy workloads, it outperforms the closest fully dynamic ordered baseline by over 8x in insertion throughput while supporting dynamic memory reclamation. These results suggest that eliminating the index layer and adopting a compute-to-bucket mapping can enable practical, fully dynamic GPU indexing without sacrificing query performance.",
+    "published_date": "2026-04-17T22:00:09Z",
+    "updated_date": "2026-04-17T22:00:09Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC",
+      "cs.DS",
+      "cs.ET"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2604.16725v1",
+    "arxiv_url": "https://arxiv.org/abs/2604.16725v1",
+    "source": "arxiv",
+    "score": 0.7647656512260437,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。\n\n核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。",
+    "takeaway": "本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2302.00734v1",
+    "title": "Revisiting Query Performance in GPU Database Systems",
+    "authors": [
+      "Jiashen Cao",
+      "Rathijit Sen",
+      "Matteo Interlandi",
+      "Joy Arulraj",
+      "Hyesoon Kim"
+    ],
+    "abstract": "GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG).\n  In this paper we do a cross-stack performance and resource utilization analysis of five GPU database systems. We study both database-level and micro-architectural aspects, and offer recommendations to database developers. We also demonstrate how to use and extend the traditional roofline model to identify GPU resource bottlenecks. This enables users to conduct what-if analysis to forecast performance impact for different resource allocation or the degree of concurrency. Our methodology addresses a key user pain point in selecting optimal configurations by removing the need to do exhaustive testing for a multitude of resource configurations.",
+    "published_date": "2023-02-01T19:58:41Z",
+    "updated_date": "2023-02-01T19:58:41Z",
+    "categories": [
+      "cs.DB",
+      "cs.AR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2302.00734v1",
+    "arxiv_url": "https://arxiv.org/abs/2302.00734v1",
+    "source": "arxiv",
+    "score": 0.7548516988754272,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 数据库、查询处理、数据库系统、带宽优化、吞吐量相关技术。\n\n核心内容：GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics。",
+    "takeaway": "本文聚焦GPU 数据库、查询处理、数据库系统，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2604.20121v2",
+    "title": "A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search",
+    "authors": [
+      "Zhonggen Li",
+      "Haoran Yu",
+      "Zixuan Xu",
+      "Yifan Zhu",
+      "Yunjun Gao"
+    ],
+    "abstract": "Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-cell edges. For queries, Garfield utilizes a cluster-guided ordering strategy that reorders query-relevant cells, enabling a highly efficient cell-by-cell traversal on the GPU that aggressively reuses candidates as entry points across cells. To handle datasets exceeding GPU memory, Garfield features a cell-oriented out-of-core pipeline. It dynamically schedules cells to minimize the number of active queries per batch and overlaps GPU computation with CPU-to-GPU index streaming. Extensive evaluations demonstrate that Garfield reduces index size by 4.4x, while delivering 119.8x higher throughput than state-of-the-art RFANNS methods.",
+    "published_date": "2026-04-22T02:33:08Z",
+    "updated_date": "2026-04-25T06:31:04Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2604.20121v2",
+    "arxiv_url": "https://arxiv.org/abs/2604.20121v2",
+    "source": "arxiv",
+    "score": 0.7074530136585235,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。\n\n核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。",
+    "takeaway": "本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2510.15095v1",
+    "title": "Hive Hash Table: A Warp-Cooperative, Dynamically Resizable Hash Table for GPUs",
+    "authors": [
+      "Md Sabbir Hossain Polak",
+      "David Troendle",
+      "Byunghyun Jang"
+    ],
+    "abstract": "Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU hash table that adapts to varying workloads without global rehashing.\n  Hive hash table makes three key contributions. First, a cache-aligned packed bucket layout stores key-value pairs as 64-bit words, enabling coalesced memory access and atomic updates via single-CAS operations. Second, warp-synchronous concurrency protocols - Warp-Aggregated-Bitmask-Claim (WABC) and Warp-Cooperative Match-and-Elect (WCME) - reduce contention to one atomic operation per warp while ensuring lock-free progress. Third, a load-factor-aware dynamic resizing strategy expands or contracts capacity in warp-parallel K-bucket batches using linear hashing, maintaining balanced occupancy. To handle insertions under heavy contention, Hive hash table employs a four-step strategy: replace, claim-and-commit, bounded cuckoo eviction, and overflow-stash fallback. This design provides lock-free fast paths and bounded recovery cost under contention determined by a fixed eviction depth, while eliminating ABA hazards during concurrent updates.\n  Experimental evaluation on an NVIDIA RTX 4090 shows Hive hash table sustains load factors up to 95% while delivering 1.5-2x higher throughput than state-of-the-art GPU hash tables (Slab-Hash, DyCuckoo, WarpCore) under mixed insert-delete-lookup workloads. On balanced workload, Hive hash table reaches 3.5 billion updates/s and nearly 4 billion lookups/s, demonstrating scalability and efficiency for GPU-accelerated data processing.",
+    "published_date": "2025-10-16T19:28:30Z",
+    "updated_date": "2025-10-16T19:28:30Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2510.15095v1",
+    "arxiv_url": "https://arxiv.org/abs/2510.15095v1",
+    "source": "arxiv",
+    "score": 0.692609921693802,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、哈希表、数据处理、吞吐量相关技术。\n\n核心内容：Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU h...。",
+    "takeaway": "本文聚焦GPU 加速、哈希表、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2502.09541v1",
+    "title": "Vortex: Overcoming Memory Capacity Limitations in GPU-Accelerated Large-Scale Data Analytics",
+    "authors": [
+      "Yichao Yuan",
+      "Advait Iyer",
+      "Lin Ma",
+      "Nishil Talati"
+    ],
+    "abstract": "Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data analytics workloads that exceed GPU memory capacity. A key aspect of our framework is an optimized IO primitive that leverages all available PCIe links in multi-GPU systems for the IO demand of a single target GPU. It routes data through other GPUs to such target GPU that handles IO-intensive analytics tasks. This approach is advantageous when other GPUs are occupied with compute-bound workloads, such as popular AI applications that typically underutilize IO resources. We also introduce a novel programming model that separates GPU kernel development from IO scheduling, reducing programmer burden and enabling GPU code reuse. Additionally, we present the design of certain important query operators and discuss a late materialization technique based on GPU's zero-copy memory access. Without caching any data in GPU memory, Vortex improves the performance of the state-of-the-art GPU baseline, Proteus, by 5.7$\\times$ on average and enhances price performance by 2.5$\\times$ compared to a CPU-based DuckDB baseline.",
+    "published_date": "2025-02-13T17:57:05Z",
+    "updated_date": "2025-02-13T17:57:05Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2502.09541v1",
+    "arxiv_url": "https://arxiv.org/abs/2502.09541v1",
+    "source": "arxiv",
+    "score": 0.6880685091018677,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、GPU 核函数、多 GPU、缓存相关技术。\n\n核心内容：Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data anal...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2406.10158v2",
+    "title": "GPU-Accelerated OLTP: An In-Depth Analysis of Concurrency Control Schemes",
+    "authors": [
+      "Zihan Sun",
+      "Yuyu Luo",
+      "Yong Zhang",
+      "Chao Li",
+      "Chunxiao Xing"
+    ],
+    "abstract": "Over the past decade, GPUs have demonstrated significant potential in accelerating Online Analytical Processing (OLAP) operations. However, there remains a substantial gap in their application to Online Transaction Processing (OLTP), as GPUs were traditionally considered unsuitable for such workloads. Despite this perception, the massive parallelism and high memory bandwidth of GPUs offer a unique opportunity to process thousands of transactions concurrently, making them promising candidates for OLTP acceleration. Concurrency control schemes, which play a critical role in determining the performance of OLTP systems, may behave differently on GPUs due to their architectural differences from CPUs. This raises a key question: How well do concurrency control schemes designed for CPUs adapt to GPU environments?\n  To answer this, we present gCCTB, the first testbed designed to evaluate concurrency control schemes on GPUs. We implement and benchmark eight CC schemes, including six classic CPU-oriented schemes and two designed specifically for GPUs, on both the YCSB and TPC-C benchmarks under varied contention levels and GPU configurations. Our findings reveal that GPU-optimized schemes do not consistently outperform CPU-oriented schemes, particularly under specific workloads and contention levels. Moreover, GPU-specific parameters, such as the number of threads per warp and warps per block, significantly impact performance and require careful tuning. Finally, we find that conflict resolution overhead is a crucial factor influencing the performance of CPU-oriented schemes on GPUs, with optimistic concurrency control consistently minimizing this overhead and outperforming other CPU-oriented schemes across all workloads.",
+    "published_date": "2024-06-14T16:17:13Z",
+    "updated_date": "2026-05-25T15:21:04Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2406.10158v2",
+    "arxiv_url": "https://arxiv.org/abs/2406.10158v2",
+    "source": "arxiv",
+    "score": 0.6872492575645447,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、OLAP、OLTP、带宽优化相关技术。\n\n核心内容：Over the past decade, GPUs have demonstrated significant potential in accelerating Online Analytical Processing (OLAP) operations. However, there remains a substantial gap in their application to Online Transaction Processing (OLTP), as GPUs were traditionally considered unsuitable for such workload...。",
+    "takeaway": "本文聚焦GPU 加速、OLAP、OLTP，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2602.17335v3",
+    "title": "Do GPUs Really Need New Tabular File Formats?",
+    "authors": [
+      "Jigao Luo",
+      "Qi Chen",
+      "Carsten Binnig"
+    ],
+    "abstract": "Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely underutilize GPU parallelism, turning GPU scans into a performance bottleneck. In this work, we systematically study how Parquet configurations affect GPU scan performance. We show that Parquet's poor GPU performance is not inherent to the format itself but rather a consequence of suboptimal configuration choices. By applying GPU-aware configurations, we increase effective read bandwidth up to 125 GB/s without modifying the Parquet specification.",
+    "published_date": "2026-02-19T13:07:38Z",
+    "updated_date": "2026-05-26T06:48:08Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2602.17335v3",
+    "arxiv_url": "https://arxiv.org/abs/2602.17335v3",
+    "source": "arxiv",
+    "score": 0.6731524467468262,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、数据处理、扫描、带宽优化相关技术。\n\n核心内容：Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely und...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2602.08190v1",
+    "title": "ZipFlow: a Compiler-based Framework to Unleash Compressed Data Movement for Modern GPUs",
+    "authors": [
+      "Gwangoo Yeo",
+      "Zhiyang Shen",
+      "Wei Cui",
+      "Matteo Interlandi",
+      "Rathijit Sen",
+      "Bailu Ding",
+      "Qi Chen",
+      "Minsoo Rhu"
+    ],
+    "abstract": "In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of the powerful GPU computation for decompression. To optimize the end-to-end query performance, however, the workflow of data compression, transfer, and decompression must be holistically designed based on the compression strategies and hardware characteristics to balance the I/O latency and computational overhead. In this work, we present ZipFlow, a compiler-based framework for optimizing compressed data transfer in GPU-accelerated data analytics. ZipFlow classifies compression algorithms into three distinct patterns based on their inherent parallelism. For each pattern, ZipFlow employs generalized scheduling strategies to effectively exploit the computational power of GPUs across diverse architectures. Building on these patterns, ZipFlow delivers flexible, high-performance, and holistic optimization, which substantially advances end-to-end data transfer capabilities. We evaluate the effectiveness of ZipFlow on industry-standard benchmark, TPC-H. Overall, ZipFlow achieves an average improvement of 2.08 times over the state-of-the-art GPU compression library (nvCOMP) and 3.14 times speedup against CPU-based query processing engines (e.g., DuckDB).",
+    "published_date": "2026-02-09T01:17:40Z",
+    "updated_date": "2026-02-09T01:17:40Z",
+    "categories": [
+      "cs.DB",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2602.08190v1",
+    "arxiv_url": "https://arxiv.org/abs/2602.08190v1",
+    "source": "arxiv",
+    "score": 0.6659602522850037,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、查询处理、数据压缩、带宽优化相关技术。\n\n核心内容：In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of ...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2506.01576v3",
+    "title": "Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!",
+    "authors": [
+      "Justus Henneberg",
+      "Felix Schuhknecht"
+    ],
+    "abstract": "Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with a set of established low-level optimizations. These architecture-specific optimizations aim at getting the most out of binary search by (a) greatly reducing the overall amount of GPU memory accesses required during search, (b) exploiting the enormous benefits of memory access coalescing on a GPU, and (c) maximizing scalability by reordering the dataset into a more favorable layout. By comparing our optimized search strategies against nine state-of-the-art GPU index structures under several static indexing workloads, we demonstrate that they not only outperform all competitors (except for hashing-based approaches) by a factor of up to 3.8, but also maintain the smallest possible memory footprint.",
+    "published_date": "2025-06-02T12:03:17Z",
+    "updated_date": "2026-02-21T16:23:34Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2506.01576v3",
+    "arxiv_url": "https://arxiv.org/abs/2506.01576v3",
+    "source": "arxiv",
+    "score": 0.6584676361083984,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 索引、GPU 内存管理、排序相关技术。\n\n核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。",
+    "takeaway": "本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
