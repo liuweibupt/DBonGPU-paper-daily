@@ -466,7 +466,7 @@
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">4</div>
+            <div class="stat-value">0</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,224 +480,223 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2406.13831v1" target="_blank">A Comprehensive Overview of GPU Accelerated Databases</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30294v1" target="_blank">RAFI -- A Ray/Work Forwarding Infrastructure for Data Parallel Multi-Node/Multi-GPU Computing</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-high">相关度 0.855</span>
+            <span class="score-badge score-mid">相关度 0.583</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
         </div>
-        <div class="paper-authors">Harshit Sharma, Anmol Sharma</div>
-        <div class="paper-abstract-cn">本文研究GPU 数据库、内存数据库、数据处理、异构计算、数据库系统相关技术。
+        <div class="paper-authors">Ingo Wald, Serkan Demirci, Alper Sahistan, Stefan Zellmann 等 (10 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、多 GPU相关技术。
 
-核心内容：Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs h...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Over the past decade, the landscape of data analytics has seen a notable shift towards heterogeneous architectures, particularly the integration of GPUs to enhance overall performance. In the realm of in-memory analytics, which often grapples with memory bandwidth constraints, the adoption of GPUs has proven advantageous, thanks to their superior bandwidth capabilities. The parallel processing prowess of GPUs stands out, providing exceptional efficiency for data-intensive workloads and outpacing traditional CPUs in terms of data processing speed. While GPU databases capitalize on these strengths, there remains a scarcity of comparative studies across different GPU systems. In light of this emerging interest in GPU databases for data analytics, this paper proposes a survey encompassing mult...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 数据库、内存数据库、数据处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题高度相关</div>
+核心内容：We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while under the hood managing all the CUDA and MPI related work required to make this happen. We describe RaFI's motivation and implementation, and show its potential in several example applications.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2406.13831v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2406.13831v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.30294v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.30294v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16725v1" target="_blank">FliX: Flipped-Indexing for Scalable GPU Queries and Updates</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.27691v1" target="_blank">SOLANET: Distributed Neighbor Graph Construction on GPU-Accelerated Systems</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-high">相关度 0.765</span>
+            <span class="score-badge score-low">相关度 0.486</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Rosina Kharal, Trevor Brown, Justus Henneberg, Felix Schuhknecht</div>
-        <div class="paper-abstract-cn">本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。
+        <div class="paper-authors">Keita Iwabuchi, Trevor Steil, Benjamin W. Priest, Grace J. Li 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、近邻搜索相关技术。
 
-核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.
-  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp....</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Neighbor graphs capture relationships among data points and are widely used in data analytics and AI workloads. Many studies have explored approximate construction methods for single-node systems, including GPUs。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Neighbor graphs capture relationships among data points and are widely used in data analytics and AI workloads. Many studies have explored approximate construction methods for single-node systems, including GPUs. However, extending this to distributed systems for larger data and further acceleration remains challenging due to irregular computation patterns.
+  We present SOLANET, a GPU-accelerated distributed neighbor graph construction toolkit. SOLANET first constructs local graphs on each GPU after data partitioning and then refines them via approximate nearest neighbor (ANN) searches over remote graphs pulled from other GPUs using MPI one-sided operations. SOLANET also provides a lock-free single-GPU neighbor graph construction algorithm for AMD GPUs.
+  Our single-GPU implementation outp...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.16725v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.16725v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.27691v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.27691v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2302.00734v1" target="_blank">Revisiting Query Performance in GPU Database Systems</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29604v1" target="_blank">TC-MIS: Maximal Independent Set on Tensor-cores</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-high">相关度 0.755</span>
+            <span class="score-badge score-low">相关度 0.478</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> <span class="tag">cs.PF</span> 
         </div>
-        <div class="paper-authors">Jiashen Cao, Rathijit Sen, Matteo Interlandi, Joy Arulraj 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 数据库、查询处理、数据库系统、带宽优化、吞吐量相关技术。
+        <div class="paper-authors">Prajjwal Nijhara, Dip Sankar Banerjee</div>
+        <div class="paper-abstract-cn">本文研究GPU 并行计算、CUDA、网络、吞吐量相关技术。
 
-核心内容：GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs offer massive compute parallelism and high-bandwidth memory accesses. GPU database systems seek to exploit those capabilities to accelerate data analytics. Although modern GPUs have more resources (e.g., higher DRAM bandwidth) than ever before, judicious choices for query processing that avoid wasteful resource allocations are still advantageous. Database systems can save GPU runtime costs through just-enough resource allocation or improve query throughput with concurrent query processing by leveraging new GPU capabilities, such as Multi-Instance GPU (MIG).
-  In this paper we do a cross-stack performance and resource utilization analysis of five GPU database systems. We study both database-level and micro-architectural aspects, and offer recommendations to database developers. We also...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 数据库、查询处理、数据库系统，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU al...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU algorithms have achieved good performance, processing million-vertex graphs in milliseconds. Modern GPUs are equipped with Tensor Cores (TCs), specialized units for matrix operations with 8-16x higher throughput than CUDA Cores (CCs), which are extensively used for ML, DL, and inference tasks but remain largely unexplored for graph algorithms. In this paper, we present TC-MIS, a TC-accelerated algorithm that reformulates key phases of MIS computation as sparse matrix-vector multiplication (SpMV). ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 并行计算、CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2302.00734v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2302.00734v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.29604v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.29604v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20121v2" target="_blank">A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29135v1" target="_blank">Rotary GPU: Exploring Local Execution Paths for Large Mixture-of-Experts Models Under Limited GPU Memory</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-high">相关度 0.707</span>
+            <span class="score-badge score-low">相关度 0.454</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
+            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Zhonggen Li, Haoran Yu, Zixuan Xu, Yifan Zhu 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。
+        <div class="paper-authors">Myeong Jun Jo</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、网络、吞吐量相关技术。
 
-核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-ce...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Large language models have achieved remarkable capabilities through scaling, and this paper does not challenge that. It instead investigates a different question: once large models already exist, can they become more accessible to environments with substantially smaller hardware resources。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large language models have achieved remarkable capabilities through scaling, and this paper does not challenge that. It instead investigates a different question: once large models already exist, can they become more accessible to environments with substantially smaller hardware resources? The motivation came from deployment concerns rather than architecture research. Many organizations operate under hardware, budget, security, or closed-network constraints that limit access to large accelerator clusters, and as models continue to improve, deployment accessibility may matter as much as capability itself. This paper presents Rotary GPU, an exploratory execution approach derived from a previously disclosed rotary-based accelerator residency concept. A public validation was conducted using a ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2604.20121v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2604.20121v2" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.29135v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.29135v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2510.15095v1" target="_blank">Hive Hash Table: A Warp-Cooperative, Dynamically Resizable Hash Table for GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25521v1" target="_blank">CS-PQ: Cache-Friendly SIMD Product Quantization for Large-Scale ANNS Index Construction</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.693</span>
+            <span class="score-badge score-low">相关度 0.448</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Md Sabbir Hossain Polak, David Troendle, Byunghyun Jang</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、哈希表、数据处理、吞吐量相关技术。
+        <div class="paper-authors">Y. T. Ma, K. C. Huang, X. K. Jiang, M. L. Wang 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究SIMD 并行、近邻搜索相关技术。
 
-核心内容：Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU h...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU hash table that adapts to varying workloads without global rehashing.
-  Hive hash table makes three key contributions. First, a cache-aligned packed bucket layout stores key-value pairs as 64-bit words, enabling coalesced memory access and atomic updates via single-CAS operations. Second, warp-synchronous concurrency protocols - Warp-Aggregated-Bitmask-Claim (WABC) and Warp-Cooperative Match-and-Elect (WCME) - reduce contention to one atomic operation per warp while ensuring lock-free progress. T...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、哈希表、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Product Quantization (PQ) construction is deeply integrated into vector index construction for Approximate Nearest Neighbor Search (ANNS). The rapid growth in vector dimensionality and volume has significantly increased the computational cost of PQ。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Product Quantization (PQ) construction is deeply integrated into vector index construction for Approximate Nearest Neighbor Search (ANNS). The rapid growth in vector dimensionality and volume has significantly increased the computational cost of PQ. Existing GPU-based PQ accelerations are ill-suited for PQ construction due to its "one-to-one" execution pattern (one compute, one data load, i.e., data transfer overhead dominates). Although CPU-based solutions are prevalent, they are essentially general-purpose designs that fail to capture the intrinsic characteristics of PQ construction.In this paper, we propose CS-PQ, a Cache-friendly, SIMD-optimized PQ framework based on modern CPUs. CS-PQ introduces a vector-oriented SIMD paradigm that decouples quantization granularity from SIMD width by...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦SIMD 并行、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2510.15095v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2510.15095v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.25521v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.25521v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2502.09541v1" target="_blank">Vortex: Overcoming Memory Capacity Limitations in GPU-Accelerated Large-Scale Data Analytics</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.26461v1" target="_blank">Characterization-Guided GPU Fault Resilience in NVIDIA MPS</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.688</span>
+            <span class="score-badge score-low">相关度 0.440</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Yichao Yuan, Advait Iyer, Lin Ma, Nishil Talati</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 内存管理、GPU 核函数、多 GPU、缓存相关技术。
+        <div class="paper-authors">Rixin Liu, Xingqi Cui, Kaijian Wang, Xinheng Ding 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
 
-核心内容：Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data anal...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data analytics workloads that exceed GPU memory capacity. A key aspect of our framework is an optimized IO primitive that leverages all available PCIe links in multi-GPU systems for the IO demand of a single target GPU. It routes data through other GPUs to such target GPU that handles IO-intensive analytics tasks. This approach is advantageous when other GPUs are occupied with compute-bound workloads, such as popular AI applications that typically underutilize IO resources. We also introduce a novel prog...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 内存管理、GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：NVIDIA Multi-Process Service (MPS) enables fine-grained GPU sharing by allowing multiple processes to execute concurrently on the same GPU, making it an important mechanism for improving GPU utilization. However, MPS has weak fault resilience: a fault in one process can terminate all co-running proc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">NVIDIA Multi-Process Service (MPS) enables fine-grained GPU sharing by allowing multiple processes to execute concurrently on the same GPU, making it an important mechanism for improving GPU utilization. However, MPS has weak fault resilience: a fault in one process can terminate all co-running processes, limiting its adoption in resilience-critical settings such as multi-tenant GPU clusters. In this work, we design fault-resilient MPS to solve this problem. Our design is guided by insights from a systematic characterization of GPU faults and a deep analysis of their end-to-end processing pipeline. Based on these insights, we design two complementary mechanisms. A fault isolation mechanism for the dominant memory-related faults that can be fully isolated by software intervention in the ope...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2502.09541v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2502.09541v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.26461v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.26461v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2406.10158v2" target="_blank">GPU-Accelerated OLTP: An In-Depth Analysis of Concurrency Control Schemes</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25522v1" target="_blank">Co-Designing Graph-based Approximate Nearest Neighbor Search at Billion Scale for Processing-in-Memory</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.687</span>
+            <span class="score-badge score-low">相关度 0.424</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Zihan Sun, Yuyu Luo, Yong Zhang, Chao Li 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、OLAP、OLTP、带宽优化相关技术。
+        <div class="paper-authors">Sitian Chen, Yusen Li, Yao Chen, Minwen Deng 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、近邻搜索、通信优化、带宽优化、吞吐量相关技术。
 
-核心内容：Over the past decade, GPUs have demonstrated significant potential in accelerating Online Analytical Processing (OLAP) operations. However, there remains a substantial gap in their application to Online Transaction Processing (OLTP), as GPUs were traditionally considered unsuitable for such workload...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Over the past decade, GPUs have demonstrated significant potential in accelerating Online Analytical Processing (OLAP) operations. However, there remains a substantial gap in their application to Online Transaction Processing (OLTP), as GPUs were traditionally considered unsuitable for such workloads. Despite this perception, the massive parallelism and high memory bandwidth of GPUs offer a unique opportunity to process thousands of transactions concurrently, making them promising candidates for OLTP acceleration. Concurrency control schemes, which play a critical role in determining the performance of OLTP systems, may behave differently on GPUs due to their architectural differences from CPUs. This raises a key question: How well do concurrency control schemes designed for CPUs adapt to ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、OLAP、OLTP，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+核心内容：Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficiency trade-off at scale. The workload is fundamentally memory-bound: graph traversal produces frequent, irregular memory accesses that cap CPU throughp...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Approximate Nearest Neighbor Search (ANNS) is a core primitive in modern AI systems, and graph-based methods currently offer the best accuracy-efficiency trade-off at scale. The workload is fundamentally memory-bound: graph traversal produces frequent, irregular memory accesses that cap CPU throughput at main-memory bandwidth, while GPUs lack the high-bandwidth memory capacity to host billion-scale indexes. Processing-in-Memory (PIM) is a natural candidate, as placing computation next to data unlocks the abundant internal bandwidth that such bandwidth-starved workloads demand. Porting graph-based ANNS to PIM, however, exposes several architectural mismatches: each processing unit has only a small local memory, inter-unit communication is costly, host coordination adds overhead, and in-memo...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、近邻搜索、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2406.10158v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2406.10158v2" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.25522v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.25522v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2602.17335v3" target="_blank">Do GPUs Really Need New Tabular File Formats?</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.27323v1" target="_blank">Megakernel vs Wavefront GPU Path Tracing</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.673</span>
+            <span class="score-badge score-low">相关度 0.423</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.GR</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
         </div>
-        <div class="paper-authors">Jigao Luo, Qi Chen, Carsten Binnig</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 并行计算、数据处理、扫描、带宽优化相关技术。
+        <div class="paper-authors">Rafael Padilla, Kyle Webster, Austin Kim</div>
+        <div class="paper-abstract-cn">本文研究通信优化、延迟优化、吞吐量相关技术。
 
-核心内容：Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely und...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely underutilize GPU parallelism, turning GPU scans into a performance bottleneck. In this work, we systematically study how Parquet configurations affect GPU scan performance. We show that Parquet's poor GPU performance is not inherent to the format itself but rather a consequence of suboptimal configuration choices. By applying GPU-aware configurations, we increase effective read bandwidth up to 125 GB/s without modifying the Parquet specification.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 并行计算、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Over the last decade, advances in GPU hardware have been driven in large part by the demands of real-time graphics, culminating in dedicated hardware ray tracing cores (RT cores). These units accelerate ray scene intersection queries directly in hardware, making physically based ray tracing algorith...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Over the last decade, advances in GPU hardware have been driven in large part by the demands of real-time graphics, culminating in dedicated hardware ray tracing cores (RT cores). These units accelerate ray scene intersection queries directly in hardware, making physically based ray tracing algorithms increasingly practical for interactive applications. This paper compares and analyzes the performance of two ray-based rendering algorithms: forward path tracing (PT) and wavefront path tracing (WPT). GPU-based PT computes the color of each pixel by having each thread trace a single path to completion, naturally leading to a megakernel approach - while WPT maintains state buffers between specialized kernel invocations to trace path stages simultaneously. We find that WPT affords a ~16% speedu...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2602.17335v3" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2602.17335v3" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.27323v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.27323v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2602.08190v1" target="_blank">ZipFlow: a Compiler-based Framework to Unleash Compressed Data Movement for Modern GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.25367v1" target="_blank">Architectural Limits of Cloud TPUs in Finite-Field Cryptography</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.666</span>
+            <span class="score-badge score-low">相关度 0.417</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Gwangoo Yeo, Zhiyang Shen, Wei Cui, Matteo Interlandi 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 内存管理、查询处理、数据压缩、带宽优化相关技术。
+        <div class="paper-authors">Hung Dang, Xuan Phu Dang, Tue Nguyen</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索、异构计算、吞吐量相关技术。
 
-核心内容：In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of the powerful GPU computation for decompression. To optimize the end-to-end query performance, however, the workflow of data compression, transfer, and decompression must be holistically designed based on the compression strategies and hardware characteristics to balance the I/O latency and computational overhead. In this work, we present ZipFlow, a compiler-based framework for optimizing compressed data transfer in GPU-accelerated data analytics. ZipFlow classifies compression algorithms into th...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\times, 6{,}908\times]$ deficit across v5p and v4 architectures under an FP32-mantissa staging discipline, an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\times, 6{,}908\times]$ deficit across v5p and v4 architectures under an FP32-mantissa staging discipline, and a $\sim$$4{,}693\times$ deficit using v5p's native \texttt{int32} accumulator. We analytically project this deficit into a fundamental arithmetic penalty (lacking wide-integer ALUs) and a spatial penalty. We demonstrate that evaluating concurrent multi-tenant deployments, where strict separation forces eager Montgomery reduction, yields a projected $5.19\times$ spatial collapse; relaxing this constraint theoretically recovers these spatial cycles, yet the underlying arithmetic penalty remains....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2602.08190v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2602.08190v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.25367v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.25367v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2506.01576v3" target="_blank">Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29728v1" target="_blank">PRISM: Processing-In-Memory Sparse MTTKRP for Tensor Decomposition Acceleration</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.658</span>
+            <span class="score-badge score-low">相关度 0.415</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Justus Henneberg, Felix Schuhknecht</div>
-        <div class="paper-abstract-cn">本文研究GPU 索引、GPU 内存管理、排序相关技术。
+        <div class="paper-authors">Daniel Pacheco, Leonel Sousa, Aleksandar Ilic</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、异构计算相关技术。
 
-核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning. One of the most used tensor decomposition algorithms is the Alternating Least Squares Canonical Polyadic Decomposition (CP-ALS), where the most time-consuming operation is the Sparse Matricized Tensor Times Khatri-Rao Product (spMTTKRP). This operation is strongly memory-bound, making it hard to implement efficiently on general-purpose processors. This work proposes PRISM, the first approach to tackle this operation using Processing-In-Memory (PIM) technology. We extensively characterize different partitioning strategies, number formats, and kernel optimi...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2506.01576v3" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2506.01576v3" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.29728v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.29728v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -706,7 +705,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-06-01 05:54:45</span>
+            <span>上次运行：2026-06-01 14:17:54</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>

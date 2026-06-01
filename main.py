@@ -84,21 +84,57 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
     try:
         arxiv_fetcher = ArxivFetcher(GPU_DB_CATEGORIES)
 
-        papers = arxiv_fetcher.search_papers_by_keywords(
-            keywords=GPU_DB_KEYWORDS,
-            categories=GPU_DB_CATEGORIES,
-            max_results=200
-        )
-        logger.log(f"Fetched {len(papers)} papers from arXiv", "INFO")
+        # Strategy: fetch recent papers by category first (broader coverage),
+        # then keyword-filter for GPU+DB relevance.
+        # This avoids the problem where exact keyword search only returns
+        # the same old high-score papers every day.
+        recent_days = 7
+        logger.log(f"Fetching recent papers (last {recent_days} days) from arXiv categories...", "INFO")
+        all_papers = arxiv_fetcher.fetch_recent_papers(days=recent_days, max_results_per_category=500)
+        logger.log(f"Fetched {len(all_papers)} recent papers from categories", "INFO")
 
-        # Fallback to web scraping when API is rate-limited
-        if len(papers) == 0:
+        # Fallback to keyword search if category fetch returns nothing
+        if len(all_papers) == 0:
+            logger.log("Category fetch returned 0 papers, trying keyword search...", "WARN")
+            all_papers = arxiv_fetcher.search_papers_by_keywords(
+                keywords=GPU_DB_KEYWORDS,
+                categories=GPU_DB_CATEGORIES,
+                max_results=200
+            )
+            logger.log(f"Keyword search returned {len(all_papers)} papers", "INFO")
+
+        # Fallback to web scraping when both API methods fail
+        if len(all_papers) == 0:
             logger.log("API returned 0 papers (likely rate-limited), falling back to web scraping", "WARN")
-            papers = arxiv_fetcher.fetch_papers_via_web(date=date)
-            logger.log(f"Web scraping returned {len(papers)} papers", "INFO")
+            all_papers = arxiv_fetcher.fetch_papers_via_web(date=date)
+            logger.log(f"Web scraping returned {len(all_papers)} papers", "INFO")
+
+        # Local keyword filter: keep papers with GPU+DB relevance
+        gpu_keywords = ['gpu', 'cuda', 'opencl', 'graphic', 'accelerat']
+        db_keywords = [
+            'database', 'query', 'join', 'sql', 'olap', 'oltp',
+            'hash table', 'b-tree', 'index', 'column', 'in-memory',
+            'data process', 'analyt', 'simd', 'vectoriz',
+            'sort', 'scan', 'aggregat', 'storage', 'kv', 'nosql',
+        ]
+
+        filtered_papers = []
+        for paper in all_papers:
+            text = (paper.get('title', '') + ' ' + paper.get('abstract', '')).lower()
+            has_gpu = any(kw in text for kw in gpu_keywords)
+            has_db = any(kw in text for kw in db_keywords)
+            if has_gpu or has_db:
+                filtered_papers.append(paper)
+
+        logger.log(f"After GPU+DB keyword filter: {len(filtered_papers)} papers out of {len(all_papers)}", "INFO")
+
+        # Use filtered papers for recommendation; if too few, use all recent papers
+        candidate_papers = filtered_papers if len(filtered_papers) >= 5 else all_papers
+        if len(filtered_papers) < 5:
+            logger.log(f"Only {len(filtered_papers)} GPU+DB papers, using all {len(all_papers)} recent papers for recommendation", "WARN")
 
         recommender = Recommender()
-        recommendations = recommender.recommend(papers, top_k=10)
+        recommendations = recommender.recommend(candidate_papers, top_k=10)
 
         # Translate abstracts and generate AI takeaway/innovation
         translator = PaperTranslator()
