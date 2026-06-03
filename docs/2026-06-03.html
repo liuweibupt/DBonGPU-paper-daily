@@ -462,7 +462,7 @@
 
     <div class="stats-row">
         <div class="stat-card">
-            <div class="stat-value">10</div>
+            <div class="stat-value">6</div>
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
@@ -480,225 +480,135 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30294v1" target="_blank">RAFI -- A Ray/Work Forwarding Infrastructure for Data Parallel Multi-Node/Multi-GPU Computing</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2512.02862v3" target="_blank">PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.583</span>
+            <span class="score-badge score-mid">相关度 0.648</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Ingo Wald, Serkan Demirci, Alper Sahistan, Stefan Zellmann 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究CUDA、多 GPU相关技术。
+        <div class="paper-authors">Jigao Luo, Nils Boeschen, Muhammad El-Hindi, Carsten Binnig</div>
+        <div class="paper-abstract-cn">本文研究GPU 查询处理、GPU 内存管理、查询处理、OLAP、RDMA 网络相关技术。
 
-核心内容：We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while under the hood managing all the CUDA and MPI related work required to make this happen. We describe RaFI's motivation and implementation, and show its potential in several example applications.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered settings where the data fits in aggregated GPU memory. In this paper, we systematically study how TCRs can support scalable, distributed query processing for large-scale, storage-resident OLAP workloads. Although TCRs provide abstractions for network and storage I/O, naive use often underutilizes GPU ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 查询处理、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.30294v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.30294v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2512.02862v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2512.02862v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01693v1" target="_blank">Scalable Concurrent Queues for GPU</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1611.01137v2" target="_blank">A Memory Bandwidth-Efficient Hybrid Radix Sort on GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.484</span>
+            <span class="score-badge score-mid">相关度 0.629</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Pratheek Prakash Shetty, Thomas R. W. Scogland, Wu-chun Feng</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
+        <div class="paper-authors">Elias Stehle, Hans-Arno Jacobsen</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、异构计算、排序、带宽优化相关技术。
 
-核心内容：Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without excessive locking is essential for efficient queues, preventing idle cores, maximizing utilization, and achieving high parallel speedup. While concurrent queues are well studied on CPUs, they remain largely unexplored on modern GPUs, where SIMT execution, massive parallelism, and atomic contention reshape the design space. We present three linearizable GPU concurrent queues spanning from lock-free to wait-free guarantees: (1) G-WFQ-YMC, an adaptation of Yang and Mellor-Crummey's wait-free queue ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour. Over the past few years, several improvements have been proposed for sorting on GPUs, leading to the first radix sort implementations that achieve a sorting rate of over one billion 32-bit keys per second. Yet, state-of-the-art approaches are heavily memory bandwidth-bound, as they require substantially more memory transfers than their CPU-based counterparts.
+  Our work proposes a novel approach that almost halves the amount of memory transfers and, therefore, considerably lifts the memory bandwidth limitation. Being able to sort two gigabyte...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、异构计算、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.01693v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.01693v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1611.01137v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1611.01137v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29604v1" target="_blank">TC-MIS: Maximal Independent Set on Tensor-cores</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1701.01189v2" target="_blank">GPU Multisplit: an extended study of a parallel algorithm</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.478</span>
+            <span class="score-badge score-mid">相关度 0.608</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> <span class="tag">cs.PF</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Prajjwal Nijhara, Dip Sankar Banerjee</div>
-        <div class="paper-abstract-cn">本文研究GPU 并行计算、CUDA、网络、吞吐量相关技术。
+        <div class="paper-authors">Saman Ashkiani, Andrew Davidson, Ulrich Meyer, John D. Owens</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序、通信优化、吞吐量相关技术。
 
-核心内容：Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU al...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU algorithms have achieved good performance, processing million-vertex graphs in milliseconds. Modern GPUs are equipped with Tensor Cores (TCs), specialized units for matrix operations with 8-16x higher throughput than CUDA Cores (CCs), which are extensively used for ML, DL, and inference tasks but remain largely unexplored for graph algorithms. In this paper, we present TC-MIS, a TC-accelerated algorithm that reformulates key phases of MIS computation as sparse matrix-vector multiplication (SpMV). ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 并行计算、CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multis...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multisplit with a sort. One way is to first generate an auxiliary array of bucket IDs and then sort input data based on it. In case smaller indexed buckets possess smaller valued keys, another way for multisplit is to directly sort input data. Both methods are inefficient and require more work than necessary: the former requires more expensive data movements while the latter spends unnecessary effort in sorting elements within each bucket. In this work, we provide a parallel model and multiple impleme...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29604v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29604v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1701.01189v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1701.01189v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.02627v1" target="_blank">Streami: An MPI Data-Parallel Library to Compute Field Lines on GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1306.5076v2" target="_blank">Bank Conflict Free Comparison-based Sorting On GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.474</span>
+            <span class="score-badge score-mid">相关度 0.606</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.CE</span> <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
+            <span class="tag">cs.DS</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Stefan Zellmann, Milan Jaros, Andrea Paris, Ingo Wald 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速相关技术。
+        <div class="paper-authors">Nodari Sitchinava, Volker Weichert</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序、网络相关技术。
 
-核心内容：We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications. We discuss Streami's application programming interface, key design decisions that led to Streami's high performance and extensibility, as well as extensions to support different fluid flow field representations. We also present a sample application for rapid prototyping and interactive seed point placement. Streami is released under a permissive open-source software license.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts. It can be used as a subroutine for GPU sorting algorithms to replace current use of sorting networks in shared memory. Using our bank conflict free shared memory sorting subroutine as a black box, we design BCFMergesort, an algorithm for merging sorted streams of data that are larger than shared memory. Our algorithm performs all accesses to global memory in coalesced manner and incurs no bank conflicts during the merge.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.02627v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.02627v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1306.5076v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1306.5076v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29135v1" target="_blank">Rotary GPU: Exploring Local Execution Paths for Large Mixture-of-Experts Models Under Limited GPU Memory</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2206.01784v1" target="_blank">Onesweep: A Faster Least Significant Digit Radix Sort for GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.454</span>
+            <span class="score-badge score-mid">相关度 0.562</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Myeong Jun Jo</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、网络、吞吐量相关技术。
+        <div class="paper-authors">Andy Adinets, Duane Merrill</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序相关技术。
 
-核心内容：Large language models have achieved remarkable capabilities through scaling, and this paper does not challenge that. It instead investigates a different question: once large models already exist, can they become more accessible to environments with substantially smaller hardware resources。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large language models have achieved remarkable capabilities through scaling, and this paper does not challenge that. It instead investigates a different question: once large models already exist, can they become more accessible to environments with substantially smaller hardware resources? The motivation came from deployment concerns rather than architecture research. Many organizations operate under hardware, budget, security, or closed-network constraints that limit access to large accelerator clusters, and as models continue to improve, deployment accessibility may matter as much as capability itself. This paper presents Rotary GPU, an exploratory execution approach derived from a previously disclosed rotary-based accelerator residency concept. A public validation was conducted using a ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+核心内容：We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration. This exhibits a significant reduction in last-level memory traffic versus contemporary GPU radix sorting implementations, where each iteration of digit binning requires two passes through the dataset totaling ~3n global memory operations.
+  On the NVIDIA A100 GPU, our approach achieves 29.4 GKey/s when sorting 256M random 32-bit keys. Compared to CUB, the current state-of-the-art GPU LSD radix sort, our approach provides a speedup of ~1.5x. For 32-bit keys with varied distributions, our approach provides mor...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29135v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29135v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2206.01784v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2206.01784v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.00601v1" target="_blank">ScanWeaver: Compiler-Driven Parallelization of Affine Recurrences via Associative Scan Lowering</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2510.19689v2" target="_blank">Serverless GPU Architecture for Enterprise HR Analytics: A Production-Scale BDaaS Implementation</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.449</span>
+            <span class="score-badge score-mid">相关度 0.542</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PL</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.LG</span> 
         </div>
-        <div class="paper-authors">Qiying Wu, Pavel Zolnikov</div>
-        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、扫描相关技术。
+        <div class="paper-authors">Guilin Zhang, Wulan Guo, Ziqi Tan, Srinivas Vippagunta 等 (11 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 分析处理、GPU 加速、延迟优化、吞吐量相关技术。
 
-核心内容：Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structu...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structured SSMs, limiting parallel execution on modern accelerators.
-  We present \textbf{ScanWeaver}, a compiler framework that transforms recurrence-based computations into associative scan representations and lowers them end-to-end to executable GPU programs. We use Mamba-style selective scan as a motivating example of a broader class of affine recurrences that arise in modern ML workloads. Rather than targeting a single model family, ScanWeaver elevates this recurrence structure to a first-class co...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+核心内容：Industrial and government organizations increasingly depend on data-driven analytics for workforce, finance, and regulated decision processes, where timeliness, cost efficiency, and compliance are critical. Distributed frameworks such as Spark and Flink remain effective for massive-scale batch or st...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Industrial and government organizations increasingly depend on data-driven analytics for workforce, finance, and regulated decision processes, where timeliness, cost efficiency, and compliance are critical. Distributed frameworks such as Spark and Flink remain effective for massive-scale batch or streaming analytics but introduce coordination complexity and auditing overheads that misalign with moderate-scale, latency-sensitive inference. Meanwhile, cloud providers now offer serverless GPUs, and models such as TabNet enable interpretable tabular ML, motivating new deployment blueprints for regulated environments. In this paper, we present a production-oriented Big Data as a Service (BDaaS) blueprint that integrates a single-node serverless GPU runtime with TabNet. The design leverages GPU ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 分析处理、GPU 加速、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.00601v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.00601v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.02964v1" target="_blank">Multi-Segment Attention: Enabling Efficient KV-Cache Management for Faster Large Language Model Serving</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.417</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.CL</span> <span class="tag">cs.LG</span> 
-        </div>
-        <div class="paper-authors">Chunan Shi, Yilei Chen, Yilin Chen, Xupeng Miao 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、大模型推理、延迟优化相关技术。
-
-核心内容：Large Language Model (LLM) inference relies on key-value (KV) caches to avoid redundant attention computation. While approximate KV cache retention techniques reduce memory usage by sacrificing model accuracy, lossless approaches instead evict KV cache blocks from GPU memory and reconstruct them on ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large Language Model (LLM) inference relies on key-value (KV) caches to avoid redundant attention computation. While approximate KV cache retention techniques reduce memory usage by sacrificing model accuracy, lossless approaches instead evict KV cache blocks from GPU memory and reconstruct them on demand to preserve exact outputs. Existing lossless KV cache management systems primarily base eviction decisions on access frequency or positional heuristics, without considering how different KV cache blocks affect the execution efficiency of GPU attention kernels.
-  In this paper, we propose AsymCache, a computation-latency-aware KV cache management system for LLM inference that explicitly aligns cache residency decisions with GPU attention kernel performance, including three key components: ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.02964v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.02964v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29728v1" target="_blank">PRISM: Processing-In-Memory Sparse MTTKRP for Tensor Decomposition Acceleration</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.415</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Daniel Pacheco, Leonel Sousa, Aleksandar Ilic</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、异构计算相关技术。
-
-核心内容：Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning. One of the most used tensor decomposition algorithms is the Alternating Least Squares Canonical Polyadic Decomposition (CP-ALS), where the most time-consuming operation is the Sparse Matricized Tensor Times Khatri-Rao Product (spMTTKRP). This operation is strongly memory-bound, making it hard to implement efficiently on general-purpose processors. This work proposes PRISM, the first approach to tackle this operation using Processing-In-Memory (PIM) technology. We extensively characterize different partitioning strategies, number formats, and kernel optimi...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29728v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29728v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30728v1" target="_blank">Reducing the GPU Memory Bottleneck with Lossless Compression for ML -- Extended</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.412</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.LG</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Aditya K Kamath, Arvind Krishnamurthy, Marco Canini, Simon Peter</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、大模型推理、吞吐量相关技术。
-
-核心内容：Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent acc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent accuracy loss, making it complex or even prohibitive to use in existing ML deployments. We explore lossless compression as an alternative that avoids this deployment complexity. We identify where lossless compression can be integrated into ML pipelines while minimizing interference with GPU execution. Based on our findings, we introduce Invariant Bit Packing (IBP), a novel lossless compression algorithm designed to minimize data transfer time for ML. IBP identifies and eliminates invariant bits acr...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、大模型推理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.30728v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.30728v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29752v1" target="_blank">From Roofline to Ruggedness: Decomposing and Smoothing the GEMM Performance Landscape</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.407</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Aditya Chatterjee</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：Adjacent GEMM problems that differ by a single 128-element step in N can show 30% different throughput on the same GPU. This pervasive performance ruggedness - invisible to roofline analysis and peak-FLOPs intuition, yet dominant for every non-peak workload - is the subject of this paper.
-  We propo...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Adjacent GEMM problems that differ by a single 128-element step in N can show 30% different throughput on the same GPU. This pervasive performance ruggedness - invisible to roofline analysis and peak-FLOPs intuition, yet dominant for every non-peak workload - is the subject of this paper.
-  We propose performance ruggedness analysis as an analytical framework complementary to roofline: rather than summarizing GPU performance with a scalar bound, treat the full multidimensional performance surface as the object of study, decompose its texture into mechanism-attributable components and separate software-removable contributions from hardware-bound ones. The framing is directly analogous to deep-learning loss landscapes - a continuous quantity (the idealized time 2MNK / compute_throughput_peak...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29752v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29752v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2510.19689v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2510.19689v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -707,7 +617,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-06-03 05:55:25</span>
+            <span>上次运行：2026-06-03 06:40:57</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
