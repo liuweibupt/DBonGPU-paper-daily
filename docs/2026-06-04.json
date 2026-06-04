@@ -1,176 +1,5 @@
 [
   {
-    "id": "2605.30294v1",
-    "title": "RAFI -- A Ray/Work Forwarding Infrastructure for Data Parallel Multi-Node/Multi-GPU Computing",
-    "authors": [
-      "Ingo Wald",
-      "Serkan Demirci",
-      "Alper Sahistan",
-      "Stefan Zellmann",
-      "Andrea Paris",
-      "Patrick Moran",
-      "Milan Jaros",
-      "Tatiana von Landesberger",
-      "Ugur Gudukbay",
-      "Valerio Pascucci"
-    ],
-    "abstract": "We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while under the hood managing all the CUDA and MPI related work required to make this happen. We describe RaFI's motivation and implementation, and show its potential in several example applications.",
-    "published_date": "2026-05-28T17:42:03Z",
-    "updated_date": "2026-05-28T17:42:03Z",
-    "categories": [
-      "cs.DC",
-      "cs.GR"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2605.30294v1",
-    "arxiv_url": "https://arxiv.org/abs/2605.30294v1",
-    "source": "arxiv",
-    "score": 0.5834917855262757,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究CUDA、多 GPU相关技术。\n\n核心内容：We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while ...。",
-    "takeaway": "本文聚焦CUDA、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
-  },
-  {
-    "id": "2606.05081v1",
-    "title": "Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs",
-    "authors": [
-      "Deniz Elbek",
-      "Kamer Kaya"
-    ],
-    "abstract": "Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the number of required MMA calls by 8$\\times$ compared with prior layouts. To mitigate atomic and cache bottlenecks, BLEST incorporates a lazy vertex-update scheme. We revisit the switching terminology for BFS and propose a mechanism that dynamically transitions from TCs to CUDA cores when it becomes more efficient. We also extend BLEST to multi-source BFS and closeness centrality workloads. Finally, we introduce a scalable graph reordering method that improves compression for scale-free-like graphs, while using RCM to improve locality for others. Across a broad set of real-world graphs, BLEST achieves average speedups of 22.0$\\times$, 7.7$\\times$, 8.1$\\times$, and 5.9$\\times$ over GAP, Gunrock, GSWITCH, and BerryBees, respectively, establishing a new BFS baseline on GPUs. Thanks to its high performance, BLEST can compute the exact closeness centralities of 65.6M vertices in a social network with 3.6B edges in an hour using 100 H100 GPUs.",
-    "published_date": "2026-06-03T16:37:08Z",
-    "updated_date": "2026-06-03T16:37:08Z",
-    "categories": [
-      "cs.DC",
-      "cs.DS"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2606.05081v1",
-    "arxiv_url": "https://arxiv.org/abs/2606.05081v1",
-    "source": "arxiv",
-    "score": 0.4861770403385162,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究CUDA、网络、吞吐量相关技术。\n\n核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。",
-    "takeaway": "本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
-  },
-  {
-    "id": "2606.01693v1",
-    "title": "Scalable Concurrent Queues for GPU",
-    "authors": [
-      "Pratheek Prakash Shetty",
-      "Thomas R. W. Scogland",
-      "Wu-chun Feng"
-    ],
-    "abstract": "Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without excessive locking is essential for efficient queues, preventing idle cores, maximizing utilization, and achieving high parallel speedup. While concurrent queues are well studied on CPUs, they remain largely unexplored on modern GPUs, where SIMT execution, massive parallelism, and atomic contention reshape the design space. We present three linearizable GPU concurrent queues spanning from lock-free to wait-free guarantees: (1) G-WFQ-YMC, an adaptation of Yang and Mellor-Crummey's wait-free queue using preallocated segments; (2) G-LFQ, a bounded lock-free queue that uses wave-batched fast paths to maximize throughput; and (3) G-WFQ, a bounded wait-free queue that packs shared state into 64-bit compare-and-swap operations while preserving linearizability and bounded memory.",
-    "published_date": "2026-06-01T04:57:32Z",
-    "updated_date": "2026-06-01T04:57:32Z",
-    "categories": [
-      "cs.DC",
-      "cs.DS"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2606.01693v1",
-    "arxiv_url": "https://arxiv.org/abs/2606.01693v1",
-    "source": "arxiv",
-    "score": 0.4840113067626953,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without ...。",
-    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2605.29604v1",
-    "title": "TC-MIS: Maximal Independent Set on Tensor-cores",
-    "authors": [
-      "Prajjwal Nijhara",
-      "Dip Sankar Banerjee"
-    ],
-    "abstract": "Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU algorithms have achieved good performance, processing million-vertex graphs in milliseconds. Modern GPUs are equipped with Tensor Cores (TCs), specialized units for matrix operations with 8-16x higher throughput than CUDA Cores (CCs), which are extensively used for ML, DL, and inference tasks but remain largely unexplored for graph algorithms. In this paper, we present TC-MIS, a TC-accelerated algorithm that reformulates key phases of MIS computation as sparse matrix-vector multiplication (SpMV). TC-MIS tiles the graph adjacency matrix and employs Warp Matrix Multiply-Accumulate (WMMA) operations to transform irregular graph traversal into regular, massively parallel computation. Our evaluation across TC-enabled microarchitectures (Ampere, Ada Lovelace, Hopper, Blackwell) demonstrates that TC-MIS achieves an average speedup of 2.84x on RTX A5000, 4.84x on L40S, 18.80x on H200 GPUs, and 5.20x on RTX 5080 with a maximum speedup of 44.38x on H200 GPU over state-of-the-art methods, while maintaining solution quality comparable to that obtained by established heuristics that produce near-maximum independent sets.",
-    "published_date": "2026-05-28T08:40:56Z",
-    "updated_date": "2026-05-28T08:40:56Z",
-    "categories": [
-      "cs.DC",
-      "cs.DS",
-      "cs.PF"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2605.29604v1",
-    "arxiv_url": "https://arxiv.org/abs/2605.29604v1",
-    "source": "arxiv",
-    "score": 0.4781249737739563,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究GPU 并行计算、CUDA、网络、吞吐量相关技术。\n\n核心内容：Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU al...。",
-    "takeaway": "本文聚焦GPU 并行计算、CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
-  },
-  {
-    "id": "2606.02627v1",
-    "title": "Streami: An MPI Data-Parallel Library to Compute Field Lines on GPUs",
-    "authors": [
-      "Stefan Zellmann",
-      "Milan Jaros",
-      "Andrea Paris",
-      "Ingo Wald",
-      "Tatiana von Landesberger"
-    ],
-    "abstract": "We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications. We discuss Streami's application programming interface, key design decisions that led to Streami's high performance and extensibility, as well as extensions to support different fluid flow field representations. We also present a sample application for rapid prototyping and interactive seed point placement. Streami is released under a permissive open-source software license.",
-    "published_date": "2026-05-29T20:55:35Z",
-    "updated_date": "2026-05-29T20:55:35Z",
-    "categories": [
-      "cs.CE",
-      "cs.DC",
-      "cs.GR",
-      "physics.flu-dyn"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2606.02627v1",
-    "arxiv_url": "https://arxiv.org/abs/2606.02627v1",
-    "source": "arxiv",
-    "score": 0.4736092102527618,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications。",
-    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
-  },
-  {
-    "id": "2606.00601v1",
-    "title": "ScanWeaver: Compiler-Driven Parallelization of Affine Recurrences via Associative Scan Lowering",
-    "authors": [
-      "Qiying Wu",
-      "Pavel Zolnikov"
-    ],
-    "abstract": "Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structured SSMs, limiting parallel execution on modern accelerators.\n  We present \\textbf{ScanWeaver}, a compiler framework that transforms recurrence-based computations into associative scan representations and lowers them end-to-end to executable GPU programs. We use Mamba-style selective scan as a motivating example of a broader class of affine recurrences that arise in modern ML workloads. Rather than targeting a single model family, ScanWeaver elevates this recurrence structure to a first-class compiler abstraction, enabling systematic MLIR-based lowering to compiler-generated Blelloch scan execution on GPUs.\n  Across forward selective-scan workloads with matched local recurrence semantics, we validate affine recurrence decomposition, Blelloch lowering, MLIR GPU lowering, executable artifact generation, and actual GPU execution from generated MLIR. We benchmark the resulting ScanWeaver GPU execution against PyTorch and CUDA sequential baselines, and include the Mamba kernel as a fused production baseline for systems context.",
-    "published_date": "2026-05-30T07:58:02Z",
-    "updated_date": "2026-05-30T07:58:02Z",
-    "categories": [
-      "cs.PL",
-      "cs.DC"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2606.00601v1",
-    "arxiv_url": "https://arxiv.org/abs/2606.00601v1",
-    "source": "arxiv",
-    "score": 0.4488003385066986,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究CUDA、PyTorch、扫描相关技术。\n\n核心内容：Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structu...。",
-    "takeaway": "本文聚焦CUDA、PyTorch、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
-  },
-  {
     "id": "2606.02964v1",
     "title": "Multi-Segment Attention: Enabling Efficient KV-Cache Management for Faster Large Language Model Serving",
     "authors": [
@@ -201,60 +30,6 @@
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   },
   {
-    "id": "2605.29728v1",
-    "title": "PRISM: Processing-In-Memory Sparse MTTKRP for Tensor Decomposition Acceleration",
-    "authors": [
-      "Daniel Pacheco",
-      "Leonel Sousa",
-      "Aleksandar Ilic"
-    ],
-    "abstract": "Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning. One of the most used tensor decomposition algorithms is the Alternating Least Squares Canonical Polyadic Decomposition (CP-ALS), where the most time-consuming operation is the Sparse Matricized Tensor Times Khatri-Rao Product (spMTTKRP). This operation is strongly memory-bound, making it hard to implement efficiently on general-purpose processors. This work proposes PRISM, the first approach to tackle this operation using Processing-In-Memory (PIM) technology. We extensively characterize different partitioning strategies, number formats, and kernel optimizations that efficiently adapt this operation to UPMEM PIM, which is further boosted by heterogeneous collaboration with the CPU. The experimental results show that the proposed PIM-based and heterogeneous approaches achieve up to 2.37x and 2.64x speedup compared to state-of-the-art CPU implementations, respectively. However, the UPMEM distributed memory system can significantly hinder performance on certain workloads. Nonetheless, the efficiency of resource consumption for this approach, measured by peak performance fraction usage, is significantly higher than for both CPU and GPU.",
-    "published_date": "2026-05-28T10:21:45Z",
-    "updated_date": "2026-05-28T10:21:45Z",
-    "categories": [
-      "cs.DC"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2605.29728v1",
-    "arxiv_url": "https://arxiv.org/abs/2605.29728v1",
-    "source": "arxiv",
-    "score": 0.41478174805641177,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究内存数据库、异构计算相关技术。\n\n核心内容：Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning。",
-    "takeaway": "本文聚焦内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
-  },
-  {
-    "id": "2605.30728v1",
-    "title": "Reducing the GPU Memory Bottleneck with Lossless Compression for ML -- Extended",
-    "authors": [
-      "Aditya K Kamath",
-      "Arvind Krishnamurthy",
-      "Marco Canini",
-      "Simon Peter"
-    ],
-    "abstract": "Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent accuracy loss, making it complex or even prohibitive to use in existing ML deployments. We explore lossless compression as an alternative that avoids this deployment complexity. We identify where lossless compression can be integrated into ML pipelines while minimizing interference with GPU execution. Based on our findings, we introduce Invariant Bit Packing (IBP), a novel lossless compression algorithm designed to minimize data transfer time for ML. IBP identifies and eliminates invariant bits across groups of tensors, improving throughput through GPU-optimized decompression that leverages warp parallelism, low-overhead bit operations, and asynchronous PCIe transfers. We provide easy-to-use APIs, showcasing them by adding IBP support to GNN training, as well as DLRM and LLM inference frameworks. IBP achieves, on average, 74% faster GNN training, 180% faster DLRM embedding lookup, and 24% faster LLM inference.",
-    "published_date": "2026-05-29T01:45:28Z",
-    "updated_date": "2026-05-29T01:45:28Z",
-    "categories": [
-      "cs.LG",
-      "cs.DC"
-    ],
-    "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2605.30728v1",
-    "arxiv_url": "https://arxiv.org/abs/2605.30728v1",
-    "source": "arxiv",
-    "score": 0.4119517636299133,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究GPU 内存管理、大模型推理、吞吐量相关技术。\n\n核心内容：Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent acc...。",
-    "takeaway": "本文聚焦GPU 内存管理、大模型推理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
-  },
-  {
     "id": "2605.29752v1",
     "title": "From Roofline to Ruggedness: Decomposing and Smoothing the GEMM Performance Landscape",
     "authors": [
@@ -279,5 +54,227 @@
     "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Adjacent GEMM problems that differ by a single 128-element step in N can show 30% different throughput on the same GPU. This pervasive performance ruggedness - invisible to roofline analysis and peak-FLOPs intuition, yet dominant for every non-peak workload - is the subject of this paper.\n  We propo...。",
     "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.03151v1",
+    "title": "ACRONYM: Accelerated Approximate Nearest Neighbor Search in Memory for Dynamic Vector Databases",
+    "authors": [
+      "Md Mizanur Rahaman Nayan",
+      "Tianqi Zhang",
+      "Flavio Ponzina",
+      "Tajana Rosing",
+      "Azad J Naeemi"
+    ],
+    "abstract": "Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer from frequent index rebuilding due to data distribution-dependent indexing that impacts continuous deployment and causes long rebuilding latency. This paper proposes an algorithm-hardware co-designed platform, ACRONYM, that addresses key problems with state of the art database search. Algorithmically, it leverages efficient encoding independent of data distribution and Hamming-distance based search for efficient hardware acceleration. Architecturally, we propose CAM-based in-memory parallel distance computation followed by time multiplexed approximated top-k selection to enable the exhaustive search. We propose two-stage search that includes coarse search followed by binary refinement to achieve high recall in CAM based search which is heavily limited to small vector dimension due to capacity and wordline parasitic. ACRONYM supports continuous update without stalling and integrates novel XOR-and-Accumulate (XAC) based systolic-array encoder for efficient on chip encoding during search. Across million-scale datasets, while serving dynamic database ACRONYM achieves >90% recall at a throughput of 8e6 queries per second, with a memory footprint of only 32MB and an average energy consumption of 2.56uJ per query, speedup over HNSW (CPU) of about 400x and FAISS-IVF (GPU) of about 80x.",
+    "published_date": "2026-06-02T04:50:26Z",
+    "updated_date": "2026-06-02T04:50:26Z",
+    "categories": [
+      "cs.AR",
+      "cs.DB",
+      "cs.ET"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.03151v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.03151v1",
+    "source": "arxiv",
+    "score": 0.3933425831794739,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究内存数据库、近邻搜索、向量数据库、延迟优化、吞吐量相关技术。\n\n核心内容：Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer fr...。",
+    "takeaway": "本文聚焦内存数据库、近邻搜索、向量数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2605.31004v1",
+    "title": "HE^2: A Communication-Light Heterogeneous Architecture for Efficient Fully Homomorphic Encryption",
+    "authors": [
+      "Shangyi Shi",
+      "Husheng Han",
+      "Zhaoxuan Kan",
+      "Yinghao Yang",
+      "Jianan Mu",
+      "Tenghui Hua",
+      "Ge Yu",
+      "Xinyao Zheng",
+      "Ling Liang",
+      "Zidong Du",
+      "Xing Hu"
+    ],
+    "abstract": "CKKS, an emerging fully homomorphic encryption (FHE) scheme, has been promising in privacy-preserving applications by enabling SIMD fixed-point computations on ciphertexts. Despite its strong security guarantees, CKKS involves both compute-intensive operators (ComOps) with high computational cost and memory-intensive operators (MemOps) with large memory footprints, making existing ASIC-based or NMP-based acceleration approaches suffer from high hardware overhead and limited efficiency. This observation motivates the integration of the architectural advantages of both paradigms into a heterogeneous xPU (ASIC)-xMU (NMP) architecture. However, in such a design, frequent and long-latency heterogeneous communication caused by the dominant keyswitch operator remains a key performance bottleneck.\n  In this paper, we propose $HE^2$, a communication-light xPU-xMU heterogeneous FHE accelerator with dataflow graph (DFG) optimization and architecture co-design. First, we observe that the majority of communication arises at the interface between ModUp/ModDown and neighboring MemOps. To address this, we propose a DFG-level optimization framework to fully exploit the ModUp/ModDown reduction potential of the hoisting algorithm by identifying parallel keyswitch blocks and fusing them for reduced communication frequency. Second, we design an efficient heterogeneous architecture that adopts a group-level pipelined execution to effectively hide communication latency by leveraging the inherent parallelism across decomposed groups. End-to-end evaluation results show that $HE^2$ achieves 1.66$\\times$ speedup and 9.23$\\times$ lower EDAP (Energy-Delay-Area Product) compared to the state-of-the-art accelerator, with communication stalls accounting for only 6.67% of the total latency.",
+    "published_date": "2026-05-29T08:38:53Z",
+    "updated_date": "2026-05-29T08:38:53Z",
+    "categories": [
+      "cs.AR",
+      "cs.CR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2605.31004v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.31004v1",
+    "source": "arxiv",
+    "score": 0.3704832637310028,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究SIMD 并行、异构计算、通信优化、延迟优化相关技术。\n\n核心内容：CKKS, an emerging fully homomorphic encryption (FHE) scheme, has been promising in privacy-preserving applications by enabling SIMD fixed-point computations on ciphertexts. Despite its strong security guarantees, CKKS involves both compute-intensive operators (ComOps) with high computational cost an...。",
+    "takeaway": "本文聚焦SIMD 并行、异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2605.31406v1",
+    "title": "AIM: A practical approach to automated index management for SQL databases",
+    "authors": [
+      "Ritwik Yadav",
+      "Satyanarayana R. Valluri",
+      "Mohamed Zaït"
+    ],
+    "abstract": "This paper describes AIM (Automatic Index Manager), a configurable index management system, which identifies impactful secondary indexes for SQL databases to efficiently use available resources such as CPU, I/O and storage. It has been validated on thousands of databases which support production systems. With AIM, the physical design of the database adapts itself to the changes in the workload.We lay out the end to end design of AIM while calling out the guarantees and tradeoffs associated with our design choices. Some of the salient features of AIM include fast convergence even while recommending wide composite indexes, reduced reliance on the query optimizer and a \"no regression\" guarantee for production workloads. Each index recommendation from AIM is accompanied with a metrics driven explanation, making it easier to verify machine driven changes.AIM is one of the few industrial strength index recommendation engines that is deployed on production databases at a large scale. The experimental results show that AIM is quick in identifying the most effective indexes and the resulting physical design is close to optimal.",
+    "published_date": "2026-05-29T15:10:52Z",
+    "updated_date": "2026-05-29T15:10:52Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2605.31406v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.31406v1",
+    "source": "arxiv",
+    "score": 0.36315531969070436,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：This paper describes AIM (Automatic Index Manager), a configurable index management system, which identifies impactful secondary indexes for SQL databases to efficiently use available resources such as CPU, I/O and storage. It has been validated on thousands of databases which support production sys...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2606.04303v1",
+    "title": "GraftDB: Dynamic Folding of Concurrent Analytical Queries",
+    "authors": [
+      "Genki Kimura",
+      "Kazuo Goda"
+    ],
+    "abstract": "Analytical database systems serve as foundational infrastructure for knowledge discovery across many domains. Day after day, researchers, practitioners, and increasingly AI-driven agents issue analytical queries, inspect their results, and refine their inquiries. An analytical database system thus receives and processes diverse analytical queries that arrive over time and execute concurrently. Such workloads can create redundant execution work across independently issued queries. Exploiting this overlap to optimize query processing as a whole is a critical technical challenge. This paper presents GraftDB, a multi-query execution engine that dynamically folds a later-arriving query into a running execution, reusing previously performed work and sharing subsequently performed work. GraftDB achieves dynamic folding with state-centric execution, which treats operator state accumulated during execution not as owned by a single query, but as shared state that any compatible query can observe or contribute to. Each query observes shared state through a per-query state lens, which lets the query observe that state only after the relevant input has been incorporated and receive only rows or state fragments valid under the query's semantics. For an arriving query, query grafting identifies operator state that already satisfies part of the query's requirements and work that can still be shared to satisfy the rest. Together, these mechanisms let GraftDB share work across overlapping analytical queries and reduce redundant execution work. Experiments using TPC-H-derived instances of dynamic concurrent workloads show that GraftDB achieves up to 2.17 times higher throughput than a same-engine isolated-execution baseline. Under overloaded open-loop arrivals, GraftDB reduces P95 response time to as low as 0.17 times the same baseline's P95 response time.",
+    "published_date": "2026-06-03T00:12:58Z",
+    "updated_date": "2026-06-03T00:12:58Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.04303v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.04303v1",
+    "source": "arxiv",
+    "score": 0.35469996809959414,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究查询处理、数据库系统、吞吐量相关技术。\n\n核心内容：Analytical database systems serve as foundational infrastructure for knowledge discovery across many domains. Day after day, researchers, practitioners, and increasingly AI-driven agents issue analytical queries, inspect their results, and refine their inquiries。",
+    "takeaway": "本文聚焦查询处理、数据库系统、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2606.01183v1",
+    "title": "The World's Fastest Matching Engine Algorithm",
+    "authors": [
+      "Jake Yoon"
+    ],
+    "abstract": "Every electronic exchange relies on an order book whose storage layer determines matching latency. The dominant implementation -- linked lists chained through a balanced tree -- imposes two costs on every operation: pointer-chased traversal to reach the insertion point, and root-to-leaf search to locate the target price level. Under micro-burst conditions these costs produce tail-latency spikes that degrade market quality when liquidity is most needed. We present two data-structure contributions that eliminate these costs. The first is the Priority-Indicated Node (PIN), a priority queue in which entries occupy fixed-capacity, contiguously addressable slots, each carrying a per-slot indicator encoding the entry's global priority. Unlike heaps, which require O(log n) comparisons per operation, the PIN resolves insertion position directly from the indicators without comparing entries; indicator updates are O(1), independent of queue size. The second addresses a broader inefficiency: balanced search trees search root-to-leaf on every insertion and deletion, even when the caller already knows the key's in-order neighbors -- as in ordered event streams, incremental index already knows the key's in-order neighbors -- as in ordered event streams, incremental index maintenance, and electronic trading. Neighbor-aware insertion and deletion exploit known neighbor references to attach or remove a node with O(1) reference writes, followed by single-path rebalancing, uniformly across red-black, AVL, and B/B+-tree variants. A single CPU core sustains 32 million order messages per second with sub-microsecond tail latency under multi-million message-per-second micro-bursts, and is 5-11x faster than the best available open-source matching engines on the same hardware. Scaled to a single 96-core instance, the engine sustains 640 million messages per second across 10,000 symbols.",
+    "published_date": "2026-05-31T11:51:22Z",
+    "updated_date": "2026-05-31T11:51:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB",
+      "cs.DS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.01183v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.01183v1",
+    "source": "arxiv",
+    "score": 0.34922271966934204,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Every electronic exchange relies on an order book whose storage layer determines matching latency. The dominant implementation -- linked lists chained through a balanced tree -- imposes two costs on every operation: pointer-chased traversal to reach the insertion point, and root-to-leaf search to lo...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2606.04196v1",
+    "title": "Puffin-Backed Vector Indexes: Attaching Approximate Nearest Neighbor Indexes to Apache Iceberg Snapshots for Compute-Disaggregated Query Engines",
+    "authors": [
+      "Artur Borycki"
+    ],
+    "abstract": "We describe a design pattern and concrete implementation for embedding distributed approximate nearest neighbor indexes inside the Apache Iceberg table format, using the Puffin sidecar file as the storage container and the snapshot summary as the binding mechanism. Modern analytical query engines increasingly adopt a compute disaggregated architecture: executors are stateless, scale elastically, and read all data from object storage. Adding vector similarity search to such an engine traditionally requires a dedicated index storage layer with its own lifecycle, consistency model, and operational surface breaking the disaggregation in variant. We show that the Puffin format, originally introduced portable level statistics and deletion vectors, is sufficient to carry full Vamana graphs at billion vector scale, and that linking these blobs through the existing statistics file snapshot summary property reduces ANN index management to standard Iceberg snapshot operations. We present a binary layout for sharded graph indexes inside Puffin, a coordinator executor protocol for distributed index build, probe, and incremental refresh, the integration into the existing optimistic-concurrency commit path of an Iceberg REST catalog, and a tiered probe strategy that places small centroid indexes on the coordinator and large DiskANN graphs on executor SSDs. The pattern inherits atomicity, time travel, multi engine read ability, and orphan file garbage collection from the table format at zero implementation cost. We discuss the recall/latency trade-offs introduced by the independent-shard design and quantify projected query and build performance for tables up to 109 vectors. Our implementation extends FlockDB, a distributed MPP engine built on DuckDB.",
+    "published_date": "2026-06-02T20:27:42Z",
+    "updated_date": "2026-06-02T20:27:42Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.04196v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.04196v1",
+    "source": "arxiv",
+    "score": 0.34169320702552797,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究近邻搜索、分析查询、聚合、延迟优化相关技术。\n\n核心内容：We describe a design pattern and concrete implementation for embedding distributed approximate nearest neighbor indexes inside the Apache Iceberg table format, using the Puffin sidecar file as the storage container and the snapshot summary as the binding mechanism. Modern analytical query engines in...。",
+    "takeaway": "本文聚焦近邻搜索、分析查询、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.04676v1",
+    "title": "Indexicon: A Spatial Indexing Library",
+    "authors": [
+      "Panagiotis Simatis",
+      "Panagiotis Bouros",
+      "Nikos Mamoulis"
+    ],
+    "abstract": "Spatial indexing is foundational to Geographic Information Systems (GIS) and multi-dimensional data management, yet the current open-source landscape poses a significant barrier to research that employs or benchmarks spatial access methods. We observe that most of the existing open-source libraries include a single index. Some are hindered by complex dependencies, missing critical functionalities, inconsistent APIs, and rigid constraints regarding the support of spatial data types. To address this issue, we introduce Indexicon: a unified, highly portable, extendable, open-source spatial indexing library, designed specifically for rapid integration and ease of modification of main-memory spatial access methods. Indexicon provides a comprehensive suite of popular tree-based spatial access methods, including the R-tree, Quad-tree variants, and the KD-tree. Each structure is meticulously implemented as a self-contained, single-file, header-only C++ template with zero external dependencies beyond the standard library. Crucially, every index features a uniform interface, natively supporting bulk-loading, dynamic insertions/deletions, range queries, $k$-nearest neighbor ($k$NN) search, and structural statistics tracking. We also present an extensive performance evaluation of Indexicon against well-established and widely used implementations of these structures (including Boost Geometry, PCL, and Nanoflann) across six real-world geographic datasets. Our results demonstrate that Indexicon's lightweight design matches or outperforms existing state-of-the-art implementations while offering unmatched architectural flexibility. To foster reproducible spatial research, we open-source the complete library alongside our datasets and query workloads.",
+    "published_date": "2026-06-03T10:00:41Z",
+    "updated_date": "2026-06-03T10:00:41Z",
+    "categories": [
+      "cs.DB",
+      "cs.CG"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.04676v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.04676v1",
+    "source": "arxiv",
+    "score": 0.3409324288368225,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究内存数据库、近邻搜索相关技术。\n\n核心内容：Spatial indexing is foundational to Geographic Information Systems (GIS) and multi-dimensional data management, yet the current open-source landscape poses a significant barrier to research that employs or benchmarks spatial access methods. We observe that most of the existing open-source libraries ...。",
+    "takeaway": "本文聚焦内存数据库、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2605.30571v1",
+    "title": "Memory-Bound but Not Bandwidth-Limited: The Physical AI Inference Gap in Batch-1 LLM Decode",
+    "authors": [
+      "Josef Chen"
+    ],
+    "abstract": "Physical AI systems, including robots, autonomous vehicles, embodied agents and edge copilots, often run a different inference workload from cloud LLM serving: single-stream, batch-1 autoregressive decode, where one robot, camera feed or user session waits on the next token. This workload is usually described as memory-bandwidth-bound. Each decode step streams model weights and the active KV cache, so latency should scale with peak HBM bandwidth. We show that this account is true but incomplete. We measure batch-1 decode for three 7 to 8B-class GQA transformers across four NVIDIA GPUs: H100 SXM5, A100-80GB SXM4, L40S and L4. We evaluate context lengths from 2048 to 16384, producing 44 valid cells under a controlled bf16 SDPA setup. The achieved fraction of peak HBM bandwidth falls as peak bandwidth rises. On the headline Qwen-2.5-7B ctx=2048 cell, an L4 reaches roughly 81 percent of its analytic memory floor, while an H100 reaches only 27 percent. Physical-AI decode is memory-dominated, but faster memory does not translate into proportional latency gains. We test the missing term with a CUDA Graphs A/B experiment. On H100 at ctx=2048, CUDA Graphs improves decode latency by 1.259x across N=10 fresh sessions, with a 95 percent bootstrap confidence interval of 1.253 to 1.267. On L4, the same intervention gives only 1.028x. This isolates a launch-side overhead that becomes visible on fast GPUs but remains mostly hidden on slower, bandwidth-bound GPUs. The deployment implication is that memory savings matter only when the runtime realises them. On L4, bf16 decode sits close to the memory floor, but common quantised paths do not recover the expected 4x weight-traffic reduction: bnb-nf4 reaches 59.36 ms/step and AutoAWQ+Marlin reaches 45.24 ms/step from a 62.32 ms bf16 baseline. GPTQ+ExLlamaV2, with Ada-tuned int4 kernels, reaches 17.36 ms/step.",
+    "published_date": "2026-05-28T21:03:14Z",
+    "updated_date": "2026-05-28T21:03:14Z",
+    "categories": [
+      "cs.AR",
+      "cs.AI",
+      "cs.DC",
+      "cs.PF",
+      "cs.RO"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2605.30571v1",
+    "arxiv_url": "https://arxiv.org/abs/2605.30571v1",
+    "source": "arxiv",
+    "score": 0.33089528799057005,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、延迟优化相关技术。\n\n核心内容：Physical AI systems, including robots, autonomous vehicles, embodied agents and edge copilots, often run a different inference workload from cloud LLM serving: single-stream, batch-1 autoregressive decode, where one robot, camera feed or user session waits on the next token. This workload is usually...。",
+    "takeaway": "本文聚焦CUDA、带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
   }
 ]

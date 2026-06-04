@@ -480,139 +480,6 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30294v1" target="_blank">RAFI -- A Ray/Work Forwarding Infrastructure for Data Parallel Multi-Node/Multi-GPU Computing</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.583</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
-        </div>
-        <div class="paper-authors">Ingo Wald, Serkan Demirci, Alper Sahistan, Stefan Zellmann 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究CUDA、多 GPU相关技术。
-
-核心内容：We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present RaFI, a CUDA and MPI based software framework that simplifies the task of building GPU-enabled data-parallel software where rays or similar work items need to migrate between different GPUs. RaFI provides a simple interface for CUDA kernels to forward such work items to other GPUs, while under the hood managing all the CUDA and MPI related work required to make this happen. We describe RaFI's motivation and implementation, and show its potential in several example applications.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.30294v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.30294v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.05081v1" target="_blank">Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.486</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Deniz Elbek, Kamer Kaya</div>
-        <div class="paper-abstract-cn">本文研究CUDA、网络、吞吐量相关技术。
-
-核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the numb...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.05081v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.05081v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01693v1" target="_blank">Scalable Concurrent Queues for GPU</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.484</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Pratheek Prakash Shetty, Thomas R. W. Scogland, Wu-chun Feng</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without excessive locking is essential for efficient queues, preventing idle cores, maximizing utilization, and achieving high parallel speedup. While concurrent queues are well studied on CPUs, they remain largely unexplored on modern GPUs, where SIMT execution, massive parallelism, and atomic contention reshape the design space. We present three linearizable GPU concurrent queues spanning from lock-free to wait-free guarantees: (1) G-WFQ-YMC, an adaptation of Yang and Mellor-Crummey's wait-free queue ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.01693v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.01693v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29604v1" target="_blank">TC-MIS: Maximal Independent Set on Tensor-cores</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.478</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> <span class="tag">cs.PF</span> 
-        </div>
-        <div class="paper-authors">Prajjwal Nijhara, Dip Sankar Banerjee</div>
-        <div class="paper-abstract-cn">本文研究GPU 并行计算、CUDA、网络、吞吐量相关技术。
-
-核心内容：Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU al...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Maximal Independent Set (MIS) in a graph is a fundamental problem with applications in resource allocation, scheduling, and network optimization. Although graphs are inherently un-structured and challenging for GPU parallelism due to irregular memory access and workload imbalance, specialized GPU algorithms have achieved good performance, processing million-vertex graphs in milliseconds. Modern GPUs are equipped with Tensor Cores (TCs), specialized units for matrix operations with 8-16x higher throughput than CUDA Cores (CCs), which are extensively used for ML, DL, and inference tasks but remain largely unexplored for graph algorithms. In this paper, we present TC-MIS, a TC-accelerated algorithm that reformulates key phases of MIS computation as sparse matrix-vector multiplication (SpMV). ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 并行计算、CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29604v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29604v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.02627v1" target="_blank">Streami: An MPI Data-Parallel Library to Compute Field Lines on GPUs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.474</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.CE</span> <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
-        </div>
-        <div class="paper-authors">Stefan Zellmann, Milan Jaros, Andrea Paris, Ingo Wald 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速相关技术。
-
-核心内容：We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present Streami, an extensible GPU-accelerated library for the computation of field lines in fluid flows on high-performance computers. Streami acts as a thin layer used for both post-hoc or in-situ analysis and can interface with existing MPI applications. We discuss Streami's application programming interface, key design decisions that led to Streami's high performance and extensibility, as well as extensions to support different fluid flow field representations. We also present a sample application for rapid prototyping and interactive seed point placement. Streami is released under a permissive open-source software license.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.02627v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.02627v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.00601v1" target="_blank">ScanWeaver: Compiler-Driven Parallelization of Affine Recurrences via Associative Scan Lowering</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.449</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.PL</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Qiying Wu, Pavel Zolnikov</div>
-        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、扫描相关技术。
-
-核心内容：Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structu...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structured SSMs, limiting parallel execution on modern accelerators.
-  We present \textbf{ScanWeaver}, a compiler framework that transforms recurrence-based computations into associative scan representations and lowers them end-to-end to executable GPU programs. We use Mamba-style selective scan as a motivating example of a broader class of affine recurrences that arise in modern ML workloads. Rather than targeting a single model family, ScanWeaver elevates this recurrence structure to a first-class co...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.00601v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.00601v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.02964v1" target="_blank">Multi-Segment Attention: Enabling Efficient KV-Cache Management for Faster Large Language Model Serving</a></span>
         </div>
         <div class="paper-meta">
@@ -635,51 +502,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.29728v1" target="_blank">PRISM: Processing-In-Memory Sparse MTTKRP for Tensor Decomposition Acceleration</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.415</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Daniel Pacheco, Leonel Sousa, Aleksandar Ilic</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、异构计算相关技术。
-
-核心内容：Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sparse tensors are the most used representation of sparse multidimensional data. Operations that decompose them, selecting their most important features while reducing their dimension, have become prevalent procedures in machine learning. One of the most used tensor decomposition algorithms is the Alternating Least Squares Canonical Polyadic Decomposition (CP-ALS), where the most time-consuming operation is the Sparse Matricized Tensor Times Khatri-Rao Product (spMTTKRP). This operation is strongly memory-bound, making it hard to implement efficiently on general-purpose processors. This work proposes PRISM, the first approach to tackle this operation using Processing-In-Memory (PIM) technology. We extensively characterize different partitioning strategies, number formats, and kernel optimi...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.29728v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.29728v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30728v1" target="_blank">Reducing the GPU Memory Bottleneck with Lossless Compression for ML -- Extended</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.412</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.LG</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Aditya K Kamath, Arvind Krishnamurthy, Marco Canini, Simon Peter</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、大模型推理、吞吐量相关技术。
-
-核心内容：Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent acc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Machine learning (ML) training and inference often process data sets far exceeding GPU memory capacity, forcing them to rely on PCIe for on-demand tensor transfers, causing critical transfer bottlenecks. Lossy compression has been proposed to relieve bottlenecks but introduces workload-dependent accuracy loss, making it complex or even prohibitive to use in existing ML deployments. We explore lossless compression as an alternative that avoids this deployment complexity. We identify where lossless compression can be integrated into ML pipelines while minimizing interference with GPU execution. Based on our findings, we introduce Invariant Bit Packing (IBP), a novel lossless compression algorithm designed to minimize data transfer time for ML. IBP identifies and eliminates invariant bits acr...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、大模型推理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2605.30728v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2605.30728v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
+            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2605.29752v1" target="_blank">From Roofline to Ruggedness: Decomposing and Smoothing the GEMM Performance Landscape</a></span>
         </div>
         <div class="paper-meta">
@@ -701,13 +524,189 @@
             <a href="https://arxiv.org/pdf/2605.29752v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.03151v1" target="_blank">ACRONYM: Accelerated Approximate Nearest Neighbor Search in Memory for Dynamic Vector Databases</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.393</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Md Mizanur Rahaman Nayan, Tianqi Zhang, Flavio Ponzina, Tajana Rosing 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、近邻搜索、向量数据库、延迟优化、吞吐量相关技术。
+
+核心内容：Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer fr...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer from frequent index rebuilding due to data distribution-dependent indexing that impacts continuous deployment and causes long rebuilding latency. This paper proposes an algorithm-hardware co-designed platform, ACRONYM, that addresses key problems with state of the art database search. Algorithmically, it leverages efficient encoding independent of data distribution and Hamming-distance based search for efficient hardware acceleration. Architecturally, we propose CAM-based in-memory parallel distan...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、近邻搜索、向量数据库，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.03151v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.03151v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.31004v1" target="_blank">HE^2: A Communication-Light Heterogeneous Architecture for Efficient Fully Homomorphic Encryption</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.370</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.CR</span> 
+        </div>
+        <div class="paper-authors">Shangyi Shi, Husheng Han, Zhaoxuan Kan, Yinghao Yang 等 (11 位作者)</div>
+        <div class="paper-abstract-cn">本文研究SIMD 并行、异构计算、通信优化、延迟优化相关技术。
+
+核心内容：CKKS, an emerging fully homomorphic encryption (FHE) scheme, has been promising in privacy-preserving applications by enabling SIMD fixed-point computations on ciphertexts. Despite its strong security guarantees, CKKS involves both compute-intensive operators (ComOps) with high computational cost an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">CKKS, an emerging fully homomorphic encryption (FHE) scheme, has been promising in privacy-preserving applications by enabling SIMD fixed-point computations on ciphertexts. Despite its strong security guarantees, CKKS involves both compute-intensive operators (ComOps) with high computational cost and memory-intensive operators (MemOps) with large memory footprints, making existing ASIC-based or NMP-based acceleration approaches suffer from high hardware overhead and limited efficiency. This observation motivates the integration of the architectural advantages of both paradigms into a heterogeneous xPU (ASIC)-xMU (NMP) architecture. However, in such a design, frequent and long-latency heterogeneous communication caused by the dominant keyswitch operator remains a key performance bottleneck....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦SIMD 并行、异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.31004v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.31004v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.31406v1" target="_blank">AIM: A practical approach to automated index management for SQL databases</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.363</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Ritwik Yadav, Satyanarayana R. Valluri, Mohamed Zaït</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：This paper describes AIM (Automatic Index Manager), a configurable index management system, which identifies impactful secondary indexes for SQL databases to efficiently use available resources such as CPU, I/O and storage. It has been validated on thousands of databases which support production sys...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">This paper describes AIM (Automatic Index Manager), a configurable index management system, which identifies impactful secondary indexes for SQL databases to efficiently use available resources such as CPU, I/O and storage. It has been validated on thousands of databases which support production systems. With AIM, the physical design of the database adapts itself to the changes in the workload.We lay out the end to end design of AIM while calling out the guarantees and tradeoffs associated with our design choices. Some of the salient features of AIM include fast convergence even while recommending wide composite indexes, reduced reliance on the query optimizer and a "no regression" guarantee for production workloads. Each index recommendation from AIM is accompanied with a metrics driven e...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.31406v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.31406v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.04303v1" target="_blank">GraftDB: Dynamic Folding of Concurrent Analytical Queries</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.355</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Genki Kimura, Kazuo Goda</div>
+        <div class="paper-abstract-cn">本文研究查询处理、数据库系统、吞吐量相关技术。
+
+核心内容：Analytical database systems serve as foundational infrastructure for knowledge discovery across many domains. Day after day, researchers, practitioners, and increasingly AI-driven agents issue analytical queries, inspect their results, and refine their inquiries。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Analytical database systems serve as foundational infrastructure for knowledge discovery across many domains. Day after day, researchers, practitioners, and increasingly AI-driven agents issue analytical queries, inspect their results, and refine their inquiries. An analytical database system thus receives and processes diverse analytical queries that arrive over time and execute concurrently. Such workloads can create redundant execution work across independently issued queries. Exploiting this overlap to optimize query processing as a whole is a critical technical challenge. This paper presents GraftDB, a multi-query execution engine that dynamically folds a later-arriving query into a running execution, reusing previously performed work and sharing subsequently performed work. GraftDB a...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、数据库系统、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.04303v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.04303v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01183v1" target="_blank">The World's Fastest Matching Engine Algorithm</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.349</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> 
+        </div>
+        <div class="paper-authors">Jake Yoon</div>
+        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
+
+核心内容：Every electronic exchange relies on an order book whose storage layer determines matching latency. The dominant implementation -- linked lists chained through a balanced tree -- imposes two costs on every operation: pointer-chased traversal to reach the insertion point, and root-to-leaf search to lo...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Every electronic exchange relies on an order book whose storage layer determines matching latency. The dominant implementation -- linked lists chained through a balanced tree -- imposes two costs on every operation: pointer-chased traversal to reach the insertion point, and root-to-leaf search to locate the target price level. Under micro-burst conditions these costs produce tail-latency spikes that degrade market quality when liquidity is most needed. We present two data-structure contributions that eliminate these costs. The first is the Priority-Indicated Node (PIN), a priority queue in which entries occupy fixed-capacity, contiguously addressable slots, each carrying a per-slot indicator encoding the entry's global priority. Unlike heaps, which require O(log n) comparisons per operatio...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.01183v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.01183v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.04196v1" target="_blank">Puffin-Backed Vector Indexes: Attaching Approximate Nearest Neighbor Indexes to Apache Iceberg Snapshots for Compute-Disaggregated Query Engines</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.342</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Artur Borycki</div>
+        <div class="paper-abstract-cn">本文研究近邻搜索、分析查询、聚合、延迟优化相关技术。
+
+核心内容：We describe a design pattern and concrete implementation for embedding distributed approximate nearest neighbor indexes inside the Apache Iceberg table format, using the Puffin sidecar file as the storage container and the snapshot summary as the binding mechanism. Modern analytical query engines in...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We describe a design pattern and concrete implementation for embedding distributed approximate nearest neighbor indexes inside the Apache Iceberg table format, using the Puffin sidecar file as the storage container and the snapshot summary as the binding mechanism. Modern analytical query engines increasingly adopt a compute disaggregated architecture: executors are stateless, scale elastically, and read all data from object storage. Adding vector similarity search to such an engine traditionally requires a dedicated index storage layer with its own lifecycle, consistency model, and operational surface breaking the disaggregation in variant. We show that the Puffin format, originally introduced portable level statistics and deletion vectors, is sufficient to carry full Vamana graphs at bil...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦近邻搜索、分析查询、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.04196v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.04196v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.04676v1" target="_blank">Indexicon: A Spatial Indexing Library</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.341</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.CG</span> 
+        </div>
+        <div class="paper-authors">Panagiotis Simatis, Panagiotis Bouros, Nikos Mamoulis</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、近邻搜索相关技术。
+
+核心内容：Spatial indexing is foundational to Geographic Information Systems (GIS) and multi-dimensional data management, yet the current open-source landscape poses a significant barrier to research that employs or benchmarks spatial access methods. We observe that most of the existing open-source libraries ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Spatial indexing is foundational to Geographic Information Systems (GIS) and multi-dimensional data management, yet the current open-source landscape poses a significant barrier to research that employs or benchmarks spatial access methods. We observe that most of the existing open-source libraries include a single index. Some are hindered by complex dependencies, missing critical functionalities, inconsistent APIs, and rigid constraints regarding the support of spatial data types. To address this issue, we introduce Indexicon: a unified, highly portable, extendable, open-source spatial indexing library, designed specifically for rapid integration and ease of modification of main-memory spatial access methods. Indexicon provides a comprehensive suite of popular tree-based spatial access me...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、近邻搜索，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.04676v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.04676v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.30571v1" target="_blank">Memory-Bound but Not Bandwidth-Limited: The Physical AI Inference Gap in Batch-1 LLM Decode</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.331</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Josef Chen</div>
+        <div class="paper-abstract-cn">本文研究CUDA、带宽优化、延迟优化相关技术。
+
+核心内容：Physical AI systems, including robots, autonomous vehicles, embodied agents and edge copilots, often run a different inference workload from cloud LLM serving: single-stream, batch-1 autoregressive decode, where one robot, camera feed or user session waits on the next token. This workload is usually...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Physical AI systems, including robots, autonomous vehicles, embodied agents and edge copilots, often run a different inference workload from cloud LLM serving: single-stream, batch-1 autoregressive decode, where one robot, camera feed or user session waits on the next token. This workload is usually described as memory-bandwidth-bound. Each decode step streams model weights and the active KV cache, so latency should scale with peak HBM bandwidth. We show that this account is true but incomplete. We measure batch-1 decode for three 7 to 8B-class GQA transformers across four NVIDIA GPUs: H100 SXM5, A100-80GB SXM4, L40S and L4. We evaluate context lengths from 2048 to 16384, producing 44 valid cells under a controlled bf16 SDPA setup. The achieved fraction of peak HBM bandwidth falls as peak ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.30571v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.30571v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-06-04 05:32:09</span>
+            <span>上次运行：2026-06-04 06:24:45</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
