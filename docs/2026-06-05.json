@@ -1,0 +1,319 @@
+[
+  {
+    "id": "2606.06255",
+    "title": "RadiusFPS: Efficient Farthest Point Sampling on CPUs and GPUs via Spherical Voxel Pruning",
+    "authors": [
+      "Ziyang Yu",
+      ",",
+      "Xiang Li",
+      ",",
+      "Qiong Chang",
+      ",",
+      "Jun Miyazaki"
+    ],
+    "abstract": "Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform coverage preserves the geometric structure on which downstream perception relies. However, the large time complexity of classical FPS scales poorly with the million-point-per-second rates of modern 3D sensors, making it a dominant latency bottleneck that conflicts with the real-time and limited onboard compute budgets of robotic systems. Therefore, we propose RadiusFPS, an FPS acceleration framework based on spherical voxel pruning that preserves the standard FPS update rule under the same initialization and tie-breaking policy. By indexing the point cloud with spherical voxels, RadiusFPS derives a conservative geometric bound that prunes redundant distance computations in each iteration, complemented by a coordinate-wise point-skip test that removes residual updates. We further introduce RadiusFPS-G, a warp-level GPU implementation that fuses voxel selection, pruning, and distance update into memory-coalesced kernels, eliminating costly global-memory round-trips. On indoor (S3DIS, ScanNet) and outdoor LiDAR (SemanticKITTI) benchmarks, RadiusFPS-G attains up to 2.5x speedup over GPU-based FPS and matches or exceeds QuickFPS among the evaluated methods while using roughly half its GPU memory, with comparable segmentation accuracy. When coupled with the learning-based FastPoint sampler, the resulting pipeline achieves the fastest End-to-End inference among all evaluated configurations. These properties make high-quality FPS-style sampling practical for latency- and memory-constrained robotic vision.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Robotics (cs.RO)"
+    ],
+    "primary_category": "Robotics (cs.RO)",
+    "pdf_url": "https://arxiv.org/pdf/2606.06255",
+    "arxiv_url": "https://arxiv.org/abs/2606.06255",
+    "source": "arxiv",
+    "score": 0.7499999999999999,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、扫描、延迟优化相关技术。\n\n核心内容：Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform cove...。",
+    "takeaway": "本文聚焦GPU 内存管理、扫描、延迟优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05495",
+    "title": "SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines",
+    "authors": [
+      "Zhengxiong Li",
+      ",",
+      "Tsung-Wei Huang",
+      ",",
+      "Umit Ogras"
+    ],
+    "abstract": "Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware resources such as compute cores and copy engines due to scheduling overheads. To address these problems, we propose a CUDA runtime framework for task-parallel pipelines to minimize the synchronization overheads and the gap between kernel executions. The proposed solution combines two innovations: (1) a multi-stream task-parallel pipeline programming model that leverages event-chaining and work-stealing mechanisms to fully utilize available hardware resources; (2) a graph-based execution flow with per-stream buffers to ensure memory safety for multiple in-flight jobs running concurrently. Extensive evaluations on representative real-world workloads show 1.15--1.44X speedup and reduce scheduling overheads by 18--54% compared to state-of-the-art CUDA graph baselines.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05495",
+    "arxiv_url": "https://arxiv.org/abs/2606.05495",
+    "source": "arxiv",
+    "score": 0.44999999999999996,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware r...。",
+    "takeaway": "本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.06063",
+    "title": "LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization",
+    "authors": [
+      "Daichi Mukunoki",
+      ",",
+      "Ryo Mikasa",
+      ",",
+      "Shunichiro Hayashi",
+      ",",
+      "Tetsuya Hoshino",
+      ",",
+      "Takahiro Katagiri"
+    ],
+    "abstract": "When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally beneficial. An exploratory Direct-3 control that equalizes the LLM-call count left Deopt-Reopt ahead in only four of nineteen testable cases, with Direct-3 ahead in four others. In Iterative, repeated generation and repair narrow the mode gap - markedly so for O120 - while Q235 retains large Deopt-Reopt advantages on conv2d, ddgemm, and bgemm. Deopt-Reopt's effect on feasibility is also mixed - sharply higher for some kernels Direct rarely compiles, lower for others. Because performance is conditioned on successful trials, the benefit is conditional rather than a guaranteed end-to-end gain. Overall, Deopt-Reopt is an effective but non-universal technique for LLM-based GPU porting, with gains that depend on the kernel, the model, the search budget, and the success rate.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2606.06063",
+    "arxiv_url": "https://arxiv.org/abs/2606.06063",
+    "source": "arxiv",
+    "score": 0.44999999999999996,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、SHARP 集合计算相关技术。\n\n核心内容：When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direc...。",
+    "takeaway": "本文聚焦CUDA、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.06386",
+    "title": "On GPU Implementation for Multi-Precision Integer Division",
+    "authors": [
+      "Martin B. Marchioro",
+      ",",
+      "Aske N. Raahauge",
+      ",",
+      "Marc I. Løvenskjold",
+      ",",
+      "Cosmin E. Oancea",
+      ",",
+      "Stephen M. Watt"
+    ],
+    "abstract": "This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators. The principal contribution is an efficient GPU/CUDA implementation for integer precisions from $2^{15}$ to $2^{18}$ -- sizes not supported by \\cgbn{} division. We propose algorithmic refinements, define a cost model in terms of multiplications, build on prefix sums and previous work on multi-precision multiplication, and present an evaluation showing near-optimal performance relative to the model for the target precision.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2606.06386",
+    "arxiv_url": "https://arxiv.org/abs/2606.06386",
+    "source": "arxiv",
+    "score": 0.3,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.05271",
+    "title": "BIDENT: Heterogeneous Operator-level Mapping for Efficient Edge Inference",
+    "authors": [
+      "Hoseok Kim",
+      ",",
+      "Arghadip Das",
+      ",",
+      "Soumendu Ghosh",
+      ",",
+      "Arnab Raha",
+      ",",
+      "Vijay Raghunathan"
+    ],
+    "abstract": "Modern edge System-on-Chips (SoCs) integrate heterogeneous processing units (PUs) such as CPUs, GPUs, and NPUs, yet current inference stacks map entire models to a single PU, leaving significant performance and energy efficiency on the table. This is exacerbated by emerging architectures such as state-space models (SSMs), Kolmogorov-Arnold networks (KANs), and multi-stage vision-language-action (VLA) pipelines, whose diverse operator characteristics are not uniformly suited to any single PU. We present BIDENT, a unified operator-level orchestration framework for heterogeneous edge inference that maps individual operators to the most suitable PU based on profiled execution characteristics. BIDENT formulates operator-to-PU assignment as a shortest-path problem over a weighted execution graph, enabling efficient and optimal scheduling under the cost model for both latency- and energy-minimization objectives. Unlike prior work relying on model-specific heuristics or coarse-grained partitioning, BIDENT is model-agnostic and jointly supports sequential execution, intra-model parallelism across independent operators, and multi-model concurrent scheduling in a single formulation. We implement BIDENT on an Intel Core Ultra SoC and evaluate it across 10 model families spanning CNNs, Transformers, SSMs, KANs, spiking networks, and multi-stage pipelines. BIDENT achieves up to 1.60x speedup via intra-model parallelism and a 3.42x geometric mean speedup across 190 multi-model combinations by utilizing otherwise idle compute. Sequential heterogeneous mapping yields more modest gains (up to 1.58x, 1.09x geometric mean), while energy-aware scheduling reduces energy consumption by 48.2% on average in concurrent settings. These results show that operator-level orchestration, not model-level mapping, is the key abstraction for fully exploiting heterogeneity in next-generation edge AI.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Hardware Architecture (cs.AR)"
+    ],
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05271",
+    "arxiv_url": "https://arxiv.org/abs/2606.05271",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、网络、延迟优化相关技术。\n\n核心内容：Modern edge System-on-Chips (SoCs) integrate heterogeneous processing units (PUs) such as CPUs, GPUs, and NPUs, yet current inference stacks map entire models to a single PU, leaving significant performance and energy efficiency on the table. This is exacerbated by emerging architectures such as sta...。",
+    "takeaway": "本文聚焦异构计算、网络、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.05489",
+    "title": "LLM-Guided ANN Index Optimization for Human-Object Interaction Retrieval",
+    "authors": [
+      "Shahrzad Esmat",
+      ",",
+      "Chaunte W. Lacewell",
+      ",",
+      "Sameh Gobriel",
+      ",",
+      "Nilesh Jain",
+      ",",
+      "Ali Jannesari"
+    ],
+    "abstract": "Retrieval systems underpin modern AI applications -- spanning visual search, recommendation engines, and multi-modal question answering. Modern multi-stage retrieval systems require the joint optimization of highly coupled parameters, yet traditional hyperparameter optimization (HPO) methods -- including Tree-structured Parzen Estimators (TPE) and Gaussian Process Bayesian Optimization -- rely on an independence assumption that fundamentally prevents them from navigating these coupled configuration spaces. We address this limitation with a phase-aware large language model (LLM) agent that conditions each proposal on its full optimization history, navigating the coupled parameter space across phase-partitioned exploration, exploitation, and fine-tuning stages. Evaluated on the HICO-DET human-object interaction retrieval benchmark using Intel VDMS (Visual Data Management System), our agent outperforms Optuna TPE by +33.3% and VDTuner by +34.2% under SIEVE (Safeguarded Index Evaluation of Vector-search Efficiency, a quality-constrained throughput metric), delivering a 15.3x throughput gain over UniIR. Validation across three benchmarks confirms that the agent's advantage grows with the degree of parameter coupling: +33.3% on HICO-DET (high coupling), methods converge within 1% on GLDv2 (moderate coupling) and within 3.6% on SIFT1M (near-independent control). Cross-system validation on Milvus confirms the optimizer ranks first on all three datasets without modification, demonstrating transferability across vector database management system (VDBMS) platforms.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Computer Vision and Pattern Recognition (cs.CV)"
+    ],
+    "primary_category": "Computer Vision and Pattern Recognition (cs.CV)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05489",
+    "arxiv_url": "https://arxiv.org/abs/2606.05489",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究向量数据库、吞吐量相关技术。\n\n核心内容：Retrieval systems underpin modern AI applications -- spanning visual search, recommendation engines, and multi-modal question answering. Modern multi-stage retrieval systems require the joint optimization of highly coupled parameters, yet traditional hyperparameter optimization (HPO) methods -- incl...。",
+    "takeaway": "本文聚焦向量数据库、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2606.05662",
+    "title": "QDAG: Declarative Composition of Reusable Analytics Methodologies at LinkedIn",
+    "authors": [
+      "Peter Ho",
+      ",",
+      "Praveen Chaganlal",
+      ",",
+      "Tianle Zhang",
+      ",",
+      "Endong Zhu"
+    ],
+    "abstract": "Production analytics products often depend on reusable methodologies: multi-step definitions such as headcount growth, top-skill growth, or differentially-private impression distributions. Although these methodologies define business-critical numbers, they are commonly implemented as imperative glue around OLAP queries, service calls, joins, transformations, and conditional logic. As a result, teams duplicate orchestration code, definitions drift across products, and methodologies are difficult to test or analyze. We present QDAG, a production system at LinkedIn that represents an analytics methodology as a declarative directed acyclic graph of typed steps. Nodes may execute Apache Pinot queries, downstream service calls, in-memory SQLite joins, jq transformations, conditionals, differentially-private aggregations, or calls to other QDAGs. The engine evaluates graphs demand-driven, memoized, pruned, and parallelized in the per-request analytics mid-tier. QDAG is deployed across more than 500 hosts and over 100 production use cases, adding roughly 10 ms median orchestration overhead and under 50 ms at the 99th percentile. Our experience shows that making methodologies declarative improves reuse, testability, and cross-product consistency while preserving interactive latency.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05662",
+    "arxiv_url": "https://arxiv.org/abs/2606.05662",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究内存数据库、OLAP、聚合、延迟优化相关技术。\n\n核心内容：Production analytics products often depend on reusable methodologies: multi-step definitions such as headcount growth, top-skill growth, or differentially-private impression distributions. Although these methodologies define business-critical numbers, they are commonly implemented as imperative glue...。",
+    "takeaway": "本文聚焦内存数据库、OLAP、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05741",
+    "title": "Space-CIM: Enabling Compute-In-Memory Accelerators for Thermally-Constrained Space Platforms",
+    "authors": [
+      "Sohan Salahuddin Mugdho",
+      ",",
+      "Md. Shahedul Hasan",
+      ",",
+      "Cheng Wang"
+    ],
+    "abstract": "The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data centers are emerging as a potential pathway for the future scaling of AI compute infrastructure. While the cold background in vacuum seems appealing for cooling, computing systems operating in space without convection ultimately rely on radiative cooling, requiring large-area radiators. Such limitations in thermal management pose a significant challenge for deploying the standard liquid/air-cooled computers in space. In this work, we investigate the impact of the thermal constraints in space on both graphics processing units (GPUs) with high-bandwidth memory (HBM) and the emerging compute-in-memory (CIM) accelerators. We develop a radiator-in-the-loop co-design methodology that directly links the permitted system TOPS (terra-operations per second) with the practical radiator cooling capacity in space. Our thermal simulations reveal that the separately located GPU die and HBMs create severe thermal hotspots under limited radiator capacity, necessitating GPU thermal throttling. In contrast, CIM accelerators exhibit a much more uniform heat distribution and consistently outperform GPUs in TOPS/W across a wide range of radiator budgets. We systematically evaluated the performance of CIM and GPU across various AI workloads and demonstrated that CIM has a magnified advantage for deployment in space under realistic thermal constraints.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Hardware Architecture (cs.AR)"
+    ],
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05741",
+    "arxiv_url": "https://arxiv.org/abs/2606.05741",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究内存数据库、SHARP 集合计算、带宽优化相关技术。\n\n核心内容：The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data cen...。",
+    "takeaway": "本文聚焦内存数据库、SHARP 集合计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05951",
+    "title": "Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication",
+    "authors": [
+      "Yijun Ma",
+      ",",
+      "Siyuan Shen",
+      ",",
+      "Tiancheng Chen",
+      ",",
+      "Akhil Langer",
+      ",",
+      "Jiri Kraus",
+      ",",
+      "Benjamin Glick",
+      ",",
+      "Craig Belusar",
+      ",",
+      "Jeff Hammond",
+      ",",
+      "Torsten Hoefler"
+    ],
+    "abstract": "NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and application experience. This paper presents a concise study of NVSHMEM's programming model, implementation, and performance characteristics, focusing on symmetric memory, one-sided operations, and device-side collectives. We also examine DeepEP as a case study of NVSHMEM in performance-critical sparse deep learning workloads. Our analysis shows that NVSHMEM pioneered a device-side symmetric-memory programming model that enables fine-grained GPU-driven communication and is important for approaching the hardware performance limit. Overall, this work defines NVSHMEM's role as a systems building block, highlights its design tradeoffs, and identifies opportunities for improving GPU communication runtimes.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2606.05951",
+    "arxiv_url": "https://arxiv.org/abs/2606.05951",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and ap...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.06127",
+    "title": "Validation of graph databases against PG-Schema",
+    "authors": [
+      "Jacek Ciszewski",
+      ",",
+      "Jakub Kłos",
+      ",",
+      "Maxime Jakubowski",
+      ",",
+      "Dominik Tomaszuk",
+      ",",
+      "Filip Murlak"
+    ],
+    "abstract": "The problem of validating a given graph database instance against a given PG-Schema graph type without integrity constraints is NP- complete in terms of combined complexity and in PTIME in terms of data complexity. The combined complexity drops to PTIME when the alternation between type combinations and unions is suitably restricted",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2606.06127",
+    "arxiv_url": "https://arxiv.org/abs/2606.06127",
+    "source": "arxiv",
+    "score": 0.15,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The problem of validating a given graph database instance against a given PG-Schema graph type without integrity constraints is NP- complete in terms of combined complexity and in PTIME in terms of data complexity. The combined complexity drops to PTIME when the alternation between type combinations...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  }
+]
