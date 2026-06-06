@@ -466,7 +466,7 @@
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">0</div>
+            <div class="stat-value">1</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,10 +480,32 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.06255v1" target="_blank">RadiusFPS: Efficient Farthest Point Sampling on CPUs and GPUs via Spherical Voxel Pruning</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.750</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.RO</span> <span class="tag">cs.CV</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Ziyang Yu, Xiang Li, Qiong Chang, Jun Miyazaki</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、扫描、延迟优化相关技术。
+
+核心内容：Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform cove...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform coverage preserves the geometric structure on which downstream perception relies. However, the large time complexity of classical FPS scales poorly with the million-point-per-second rates of modern 3D sensors, making it a dominant latency bottleneck that conflicts with the real-time and limited onboard compute budgets of robotic systems. Therefore, we propose RadiusFPS, an FPS acceleration framework based on spherical voxel pruning that preserves the standard FPS update rule under the same initializ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、扫描、延迟优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.06255v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.06255v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.05495v1" target="_blank">SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.507</span>
+            <span class="score-badge score-low">相关度 0.450</span>
             <span class="tag">ARXIV</span>
             <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
         </div>
@@ -491,7 +513,7 @@
         <div class="paper-abstract-cn">本文研究CUDA、吞吐量相关技术。
 
 核心内容：Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware r...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware resources such as compute cores and copy engines due to scheduling overheads. To address these problems, we propose a CUDA runtime framework for task-parallel pipelines to minimize the synchronization overheads and the gap between kernel executions. The proposed solution combines two innovations: (1) a multi-stream task-parallel pipeline programming model that leverages event-chaining and work-stealing mechanisms to fully utilize available hardware resources; (2) a graph-based execution flow with...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
@@ -501,166 +523,11 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.05081v1" target="_blank">Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.486</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Deniz Elbek, Kamer Kaya</div>
-        <div class="paper-abstract-cn">本文研究CUDA、网络、吞吐量相关技术。
-
-核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the numb...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.05081v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.05081v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01693v1" target="_blank">Scalable Concurrent Queues for GPU</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.484</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
-        </div>
-        <div class="paper-authors">Pratheek Prakash Shetty, Thomas R. W. Scogland, Wu-chun Feng</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without excessive locking is essential for efficient queues, preventing idle cores, maximizing utilization, and achieving high parallel speedup. While concurrent queues are well studied on CPUs, they remain largely unexplored on modern GPUs, where SIMT execution, massive parallelism, and atomic contention reshape the design space. We present three linearizable GPU concurrent queues spanning from lock-free to wait-free guarantees: (1) G-WFQ-YMC, an adaptation of Yang and Mellor-Crummey's wait-free queue ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.01693v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.01693v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.06386v1" target="_blank">On GPU Implementation for Multi-Precision Integer Division</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.481</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.MS</span> <span class="tag">cs.SC</span> 
-        </div>
-        <div class="paper-authors">Martin B. Marchioro, Aske N. Raahauge, Marc I. Løvenskjold, Cosmin E. Oancea 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究CUDA相关技术。
-
-核心内容：This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators. The principal contribution is an efficient GPU/CUDA implementation for integer precisions from $2^{15}$ to $2^{18}$ -- sizes not supported by \cgbn{} division. We propose algorithmic refinements, define a cost model in terms of multiplications, build on prefix sums and previous work on multi-precision multiplication, and present an evaluation showing near-optimal performance relative to the model for the target precision.</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.06386v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.06386v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.00601v1" target="_blank">ScanWeaver: Compiler-Driven Parallelization of Affine Recurrences via Associative Scan Lowering</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.449</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.PL</span> <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Qiying Wu, Pavel Zolnikov</div>
-        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、扫描相关技术。
-
-核心内容：Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structu...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structured SSMs, limiting parallel execution on modern accelerators.
-  We present \textbf{ScanWeaver}, a compiler framework that transforms recurrence-based computations into associative scan representations and lowers them end-to-end to executable GPU programs. We use Mamba-style selective scan as a motivating example of a broader class of affine recurrences that arise in modern ML workloads. Rather than targeting a single model family, ScanWeaver elevates this recurrence structure to a first-class co...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.00601v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.00601v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.06063v1" target="_blank">LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.446</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Daichi Mukunoki, Ryo Mikasa, Shunichiro Hayashi, Tetsuya Hoshino 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究CUDA、SHARP 集合计算相关技术。
-
-核心内容：When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally benefic...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.06063v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.06063v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.05951v1" target="_blank">Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.439</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Yijun Ma, Siyuan Shen, Tiancheng Chen, Akhil Langer 等 (9 位作者)</div>
-        <div class="paper-abstract-cn">本文研究通信优化相关技术。
-
-核心内容：NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and ap...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and application experience. This paper presents a concise study of NVSHMEM's programming model, implementation, and performance characteristics, focusing on symmetric memory, one-sided operations, and device-side collectives. We also examine DeepEP as a case study of NVSHMEM in performance-critical sparse deep learning workloads. Our analysis shows that NVSHMEM pioneered a device-side symmetric-memory programming model that enables fine-grained GPU-driven communication and is important for approaching...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.05951v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.05951v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.05741v1" target="_blank">Space-CIM: Enabling Compute-In-Memory Accelerators for Thermally-Constrained Space Platforms</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.417</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
-        </div>
-        <div class="paper-authors">Sohan Salahuddin Mugdho, Md. Shahedul Hasan, Cheng Wang</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、SHARP 集合计算、带宽优化相关技术。
-
-核心内容：The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data cen...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data centers are emerging as a potential pathway for the future scaling of AI compute infrastructure. While the cold background in vacuum seems appealing for cooling, computing systems operating in space without convection ultimately rely on radiative cooling, requiring large-area radiators. Such limitations in thermal management pose a significant challenge for deploying the standard liquid/air-cooled computers in space. In this work, we investigate the impact of the thermal constraints in space on bot...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、SHARP 集合计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.05741v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.05741v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.02964v1" target="_blank">Multi-Segment Attention: Enabling Efficient KV-Cache Management for Faster Large Language Model Serving</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.417</span>
+            <span class="score-badge score-low">相关度 0.450</span>
             <span class="tag">ARXIV</span>
             <span class="tag">cs.AR</span> <span class="tag">cs.CL</span> <span class="tag">cs.LG</span> 
         </div>
@@ -679,24 +546,158 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01211v1" target="_blank">GPU Acceleration of Learning With Errors KEMs Using OpenACC for Post-Quantum Cryptography</a></span>
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.06063v1" target="_blank">LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.402</span>
+            <span class="score-badge score-low">相关度 0.450</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.CR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Tiziana Liberati, Nitin Shukla, Matteo Barbieri, Gabriella Bettonte 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速相关技术。
+        <div class="paper-authors">Daichi Mukunoki, Ryo Mikasa, Shunichiro Hayashi, Tetsuya Hoshino 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、SHARP 集合计算相关技术。
 
-核心内容：Shor's algorithm proved that asymmetric cryptographic protocols based on the integer factorization and discrete logarithm problems are no longer safe in a world with large-scale quantum computers. As a result, Post-Quantum Cryptography (PQC) has been developed over the last few years, seeking crypto...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Shor's algorithm proved that asymmetric cryptographic protocols based on the integer factorization and discrete logarithm problems are no longer safe in a world with large-scale quantum computers. As a result, Post-Quantum Cryptography (PQC) has been developed over the last few years, seeking cryptographic primitives resistant to quantum attacks. One of the main hard problems underlying PQC schemes is the Learning with Errors (LWE) problem, which is significantly more computationally intensive than its classical predecessors. In this work, we present a Key Encapsulation Mechanism (KEM) based on plain LWE and develop a GPU-oriented implementation using OpenACC. We evaluate the performance of our accelerated application in terms of both time-to-solution and energy-to-solution, considering ba...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+核心内容：When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally benefic...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.01211v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.01211v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2606.06063v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.06063v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.05081v1" target="_blank">Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.450</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+        </div>
+        <div class="paper-authors">Deniz Elbek, Kamer Kaya</div>
+        <div class="paper-abstract-cn">本文研究CUDA、网络、吞吐量相关技术。
+
+核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the numb...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.05081v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.05081v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01114v1" target="_blank">Magnum.np.distributed: Accelerating Finite Difference Micromagnetic Simulations with Multiple GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.450</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cond-mat.mes-hall</span> 
+        </div>
+        <div class="paper-authors">Tsz Chung Cheng, Yuichiro Kurokawa, Hiromi Yuasa</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、PyTorch、多 GPU、NVLink 互连、通信优化相关技术。
+
+核心内容：Micromagnetic simulations are essential tools in nanomagnetism and spintronics research. Although widely adopted solvers like Mumax3 and the Python-native magnum.np use GPU acceleration to improve performance, these tools are limited to single-device computation。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Micromagnetic simulations are essential tools in nanomagnetism and spintronics research. Although widely adopted solvers like Mumax3 and the Python-native magnum.np use GPU acceleration to improve performance, these tools are limited to single-device computation. In this work, we present the first Python-native multi-GPU micromagnetic framework by extending magnum.np with PyTorch Distributed. This leverages high-speed communication and computation across multiple GPUs while retaining the benefits of ease of installation, platform-agnostic design, and compatibility with Python. For computationally intensive demagnetisation effective-field calculations, we achieve a 7.0x speedup across 8 GPUs connected via NVLink, whereas Halo exchange required for Heisenberg exchange shows limited scaling d...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.01114v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.01114v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.00601v1" target="_blank">ScanWeaver: Compiler-Driven Parallelization of Affine Recurrences via Associative Scan Lowering</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.450</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.PL</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Qiying Wu, Pavel Zolnikov</div>
+        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、扫描相关技术。
+
+核心内容：Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structu...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Selective state-space models such as Mamba highlight the practical importance of input-dependent scan recurrences, which preserve linear-time sequence modeling while improving language modeling capabilities. However, these recurrences introduce stricter sequential dependencies than classical structured SSMs, limiting parallel execution on modern accelerators.
+  We present \textbf{ScanWeaver}, a compiler framework that transforms recurrence-based computations into associative scan representations and lowers them end-to-end to executable GPU programs. We use Mamba-style selective scan as a motivating example of a broader class of affine recurrences that arise in modern ML workloads. Rather than targeting a single model family, ScanWeaver elevates this recurrence structure to a first-class co...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.00601v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.00601v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.03151v1" target="_blank">ACRONYM: Accelerated Approximate Nearest Neighbor Search in Memory for Dynamic Vector Databases</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.300</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.DB</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Md Mizanur Rahaman Nayan, Tianqi Zhang, Flavio Ponzina, Tajana Rosing 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、近邻搜索、向量数据库、延迟优化、吞吐量相关技术。
+
+核心内容：Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer fr...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Vector database search with frequent updates is increasingly critical in applications such as retrieval augmented generation, recommendation systems, and large-scale embedding retrieval. Existing solutions, such as graph-based and partition-based approximate nearest neighbor search (ANNS), suffer from frequent index rebuilding due to data distribution-dependent indexing that impacts continuous deployment and causes long rebuilding latency. This paper proposes an algorithm-hardware co-designed platform, ACRONYM, that addresses key problems with state of the art database search. Algorithmically, it leverages efficient encoding independent of data distribution and Hamming-distance based search for efficient hardware acceleration. Architecturally, we propose CAM-based in-memory parallel distan...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、近邻搜索、向量数据库，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.03151v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.03151v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.02836v1" target="_blank">Fast Transformer Inference on ARM-Based HMPSoCs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.300</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Hang Xu, Yixian Shen, Thanassis Giannetsos, Anuj Pathania</div>
+        <div class="paper-abstract-cn">本文研究异构计算、延迟优化相关技术。
+
+核心内容：Transformer models have set new performance standards for machine learning (ML) tasks. However, their resource-intensive deployment on resource-constrained edge devices for cloud-free, on-chip transformer inference remains challenging。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Transformer models have set new performance standards for machine learning (ML) tasks. However, their resource-intensive deployment on resource-constrained edge devices for cloud-free, on-chip transformer inference remains challenging. The ARM Compute Library (ARM-CL) framework provides low-latency CNN inference on ARM-based edge devices but lacks support for transformer inference. In this work, we implement several new transformer kernels in ARM-CL to support native transformer execution. Our extended ARM-CL achieves up to three times faster transformer inference compared to state-of-the-art CPU/GPU implementations on an ARM-based embedded board.
+  Furthermore, heterogeneous multi-processor system-on-chips (HMPSoCs) powering edge devices provide both embedded CPUs and GPUs. We introduce c...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.02836v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.02836v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.01968v1" target="_blank">Implementation and Optimization of HQC Decoding on NPU-Integrated Devices</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.300</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Vu Minh Chau, Nguyen Ngoc Kiet, Pham Quang Minh, Mai Xuan Ngoc 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究向量化执行、延迟优化相关技术。
+
+核心内容：Hamming Quasi-Cyclic (HQC) has been selected by NIST for standardization as an additional code-based key-encapsulation mechanism, providing algorithmic diversity alongside lattice-based post-quantum cryptography. Efficient deployment of HQC on mobile and embedded platforms, however, requires careful...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Hamming Quasi-Cyclic (HQC) has been selected by NIST for standardization as an additional code-based key-encapsulation mechanism, providing algorithmic diversity alongside lattice-based post-quantum cryptography. Efficient deployment of HQC on mobile and embedded platforms, however, requires careful optimization of its decoding procedure, whose Reed-Muller and Reed-Solomon components dominate the computational cost. This paper studies HQC decoding on Qualcomm Hexagon processors in NPU-integrated devices, focusing on the Hexagon Vector eXtensions (HVX) backend rather than a tensor-inference engine. We observe that HQC decoding naturally exposes vector-structured computation, including Reed-Muller reliability vectors, Hadamard-transform coefficients, Reed-Solomon syndrome vectors, finite-fie...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦向量化执行、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.01968v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.01968v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -705,7 +706,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-06-06 04:46:07</span>
+            <span>上次运行：2026-06-06 05:34:27</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
