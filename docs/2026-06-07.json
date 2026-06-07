@@ -1,0 +1,289 @@
+[
+  {
+    "id": "2606.05495v1",
+    "title": "SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines",
+    "authors": [
+      "Zhengxiong Li",
+      "Tsung-Wei Huang",
+      "Umit Ogras"
+    ],
+    "abstract": "Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware resources such as compute cores and copy engines due to scheduling overheads. To address these problems, we propose a CUDA runtime framework for task-parallel pipelines to minimize the synchronization overheads and the gap between kernel executions. The proposed solution combines two innovations: (1) a multi-stream task-parallel pipeline programming model that leverages event-chaining and work-stealing mechanisms to fully utilize available hardware resources; (2) a graph-based execution flow with per-stream buffers to ensure memory safety for multiple in-flight jobs running concurrently. Extensive evaluations on representative real-world workloads show 1.15--1.44X speedup and reduce scheduling overheads by 18--54% compared to state-of-the-art CUDA graph baselines.",
+    "published_date": "2026-06-03T22:38:01Z",
+    "updated_date": "2026-06-03T22:38:01Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.05495v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05495v1",
+    "source": "arxiv",
+    "score": 0.5073178839683533,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware r...。",
+    "takeaway": "本文聚焦CUDA、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05081v1",
+    "title": "Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs",
+    "authors": [
+      "Deniz Elbek",
+      "Kamer Kaya"
+    ],
+    "abstract": "Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the number of required MMA calls by 8$\\times$ compared with prior layouts. To mitigate atomic and cache bottlenecks, BLEST incorporates a lazy vertex-update scheme. We revisit the switching terminology for BFS and propose a mechanism that dynamically transitions from TCs to CUDA cores when it becomes more efficient. We also extend BLEST to multi-source BFS and closeness centrality workloads. Finally, we introduce a scalable graph reordering method that improves compression for scale-free-like graphs, while using RCM to improve locality for others. Across a broad set of real-world graphs, BLEST achieves average speedups of 22.0$\\times$, 7.7$\\times$, 8.1$\\times$, and 5.9$\\times$ over GAP, Gunrock, GSWITCH, and BerryBees, respectively, establishing a new BFS baseline on GPUs. Thanks to its high performance, BLEST can compute the exact closeness centralities of 65.6M vertices in a social network with 3.6B edges in an hour using 100 H100 GPUs.",
+    "published_date": "2026-06-03T16:37:08Z",
+    "updated_date": "2026-06-03T16:37:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.DS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.05081v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05081v1",
+    "source": "arxiv",
+    "score": 0.4861770403385162,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、网络、吞吐量相关技术。\n\n核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。",
+    "takeaway": "本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.01693v1",
+    "title": "Scalable Concurrent Queues for GPU",
+    "authors": [
+      "Pratheek Prakash Shetty",
+      "Thomas R. W. Scogland",
+      "Wu-chun Feng"
+    ],
+    "abstract": "Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without excessive locking is essential for efficient queues, preventing idle cores, maximizing utilization, and achieving high parallel speedup. While concurrent queues are well studied on CPUs, they remain largely unexplored on modern GPUs, where SIMT execution, massive parallelism, and atomic contention reshape the design space. We present three linearizable GPU concurrent queues spanning from lock-free to wait-free guarantees: (1) G-WFQ-YMC, an adaptation of Yang and Mellor-Crummey's wait-free queue using preallocated segments; (2) G-LFQ, a bounded lock-free queue that uses wave-batched fast paths to maximize throughput; and (3) G-WFQ, a bounded wait-free queue that packs shared state into 64-bit compare-and-swap operations while preserving linearizability and bounded memory.",
+    "published_date": "2026-06-01T04:57:32Z",
+    "updated_date": "2026-06-01T04:57:32Z",
+    "categories": [
+      "cs.DC",
+      "cs.DS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.01693v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.01693v1",
+    "source": "arxiv",
+    "score": 0.4840113067626953,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Concurrent queues can significantly impact supercomputing performance by being critical bottlenecks for task distribution, load balancing, and resource utilization. As HPC systems move beyond 10-million processor cores, the ability to rapidly move items between producer and consumer threads without ...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.06386v1",
+    "title": "On GPU Implementation for Multi-Precision Integer Division",
+    "authors": [
+      "Martin B. Marchioro",
+      "Aske N. Raahauge",
+      "Marc I. Løvenskjold",
+      "Cosmin E. Oancea",
+      "Stephen M. Watt"
+    ],
+    "abstract": "This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators. The principal contribution is an efficient GPU/CUDA implementation for integer precisions from $2^{15}$ to $2^{18}$ -- sizes not supported by \\cgbn{} division. We propose algorithmic refinements, define a cost model in terms of multiplications, build on prefix sums and previous work on multi-precision multiplication, and present an evaluation showing near-optimal performance relative to the model for the target precision.",
+    "published_date": "2026-06-04T16:51:22Z",
+    "updated_date": "2026-06-04T16:51:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.MS",
+      "cs.SC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.06386v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.06386v1",
+    "source": "arxiv",
+    "score": 0.4805969285964966,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.06063v1",
+    "title": "LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization",
+    "authors": [
+      "Daichi Mukunoki",
+      "Ryo Mikasa",
+      "Shunichiro Hayashi",
+      "Tetsuya Hoshino",
+      "Takahiro Katagiri"
+    ],
+    "abstract": "When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally beneficial. An exploratory Direct-3 control that equalizes the LLM-call count left Deopt-Reopt ahead in only four of nineteen testable cases, with Direct-3 ahead in four others. In Iterative, repeated generation and repair narrow the mode gap - markedly so for O120 - while Q235 retains large Deopt-Reopt advantages on conv2d, ddgemm, and bgemm. Deopt-Reopt's effect on feasibility is also mixed - sharply higher for some kernels Direct rarely compiles, lower for others. Because performance is conditioned on successful trials, the benefit is conditional rather than a guaranteed end-to-end gain. Overall, Deopt-Reopt is an effective but non-universal technique for LLM-based GPU porting, with gains that depend on the kernel, the model, the search budget, and the success rate.",
+    "published_date": "2026-06-04T12:04:13Z",
+    "updated_date": "2026-06-04T12:04:13Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.06063v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.06063v1",
+    "source": "arxiv",
+    "score": 0.4464719724655151,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、SHARP 集合计算相关技术。\n\n核心内容：When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direc...。",
+    "takeaway": "本文聚焦CUDA、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.05951v1",
+    "title": "Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication",
+    "authors": [
+      "Yijun Ma",
+      "Siyuan Shen",
+      "Tiancheng Chen",
+      "Akhil Langer",
+      "Jiri Kraus",
+      "Benjamin Glick",
+      "Craig Belusar",
+      "Jeff Hammond",
+      "Torsten Hoefler"
+    ],
+    "abstract": "NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and application experience. This paper presents a concise study of NVSHMEM's programming model, implementation, and performance characteristics, focusing on symmetric memory, one-sided operations, and device-side collectives. We also examine DeepEP as a case study of NVSHMEM in performance-critical sparse deep learning workloads. Our analysis shows that NVSHMEM pioneered a device-side symmetric-memory programming model that enables fine-grained GPU-driven communication and is important for approaching the hardware performance limit. Overall, this work defines NVSHMEM's role as a systems building block, highlights its design tradeoffs, and identifies opportunities for improving GPU communication runtimes.",
+    "published_date": "2026-06-04T09:50:16Z",
+    "updated_date": "2026-06-04T09:50:16Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.05951v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05951v1",
+    "source": "arxiv",
+    "score": 0.4388821268081665,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and ap...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05741v1",
+    "title": "Space-CIM: Enabling Compute-In-Memory Accelerators for Thermally-Constrained Space Platforms",
+    "authors": [
+      "Sohan Salahuddin Mugdho",
+      "Md. Shahedul Hasan",
+      "Cheng Wang"
+    ],
+    "abstract": "The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data centers are emerging as a potential pathway for the future scaling of AI compute infrastructure. While the cold background in vacuum seems appealing for cooling, computing systems operating in space without convection ultimately rely on radiative cooling, requiring large-area radiators. Such limitations in thermal management pose a significant challenge for deploying the standard liquid/air-cooled computers in space. In this work, we investigate the impact of the thermal constraints in space on both graphics processing units (GPUs) with high-bandwidth memory (HBM) and the emerging compute-in-memory (CIM) accelerators. We develop a radiator-in-the-loop co-design methodology that directly links the permitted system TOPS (terra-operations per second) with the practical radiator cooling capacity in space. Our thermal simulations reveal that the separately located GPU die and HBMs create severe thermal hotspots under limited radiator capacity, necessitating GPU thermal throttling. In contrast, CIM accelerators exhibit a much more uniform heat distribution and consistently outperform GPUs in TOPS/W across a wide range of radiator budgets. We systematically evaluated the performance of CIM and GPU across various AI workloads and demonstrated that CIM has a magnified advantage for deployment in space under realistic thermal constraints.",
+    "published_date": "2026-06-04T06:08:03Z",
+    "updated_date": "2026-06-04T06:08:03Z",
+    "categories": [
+      "cs.AR",
+      "cs.ET"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.05741v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05741v1",
+    "source": "arxiv",
+    "score": 0.4173154079914093,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究内存数据库、SHARP 集合计算、带宽优化相关技术。\n\n核心内容：The rapid growth in compute demand from artificial intelligence (AI) has driven a massive surge in data center construction, precipitating an energy and sustainability crisis. Motivated by the abundant solar energy in outer space and the recent sharp reduction in space launch costs, orbital data cen...。",
+    "takeaway": "本文聚焦内存数据库、SHARP 集合计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.02964v1",
+    "title": "Multi-Segment Attention: Enabling Efficient KV-Cache Management for Faster Large Language Model Serving",
+    "authors": [
+      "Chunan Shi",
+      "Yilei Chen",
+      "Yilin Chen",
+      "Xupeng Miao",
+      "Bin Cui"
+    ],
+    "abstract": "Large Language Model (LLM) inference relies on key-value (KV) caches to avoid redundant attention computation. While approximate KV cache retention techniques reduce memory usage by sacrificing model accuracy, lossless approaches instead evict KV cache blocks from GPU memory and reconstruct them on demand to preserve exact outputs. Existing lossless KV cache management systems primarily base eviction decisions on access frequency or positional heuristics, without considering how different KV cache blocks affect the execution efficiency of GPU attention kernels.\n  In this paper, we propose AsymCache, a computation-latency-aware KV cache management system for LLM inference that explicitly aligns cache residency decisions with GPU attention kernel performance, including three key components: Multi-Segment Attention (MSA) for efficient non-contiguous KV context processing, a cache eviction policy that jointly optimizes hit rate and position-aware recomputation cost, and an adaptive chunking scheduler for high hardware utilization. Experiments show that AsymCache reduces TTFT by up to 1.90-2.03x and time-per-output-token (TPOT) by 1.62-1.71x over latest baselines, confirming the effectiveness of the method in common workloads and validating its design goal of balancing computational efficiency with cache hit rate. Moreover, the low-level design of AsymCache allows seamless integration into agent serving systems such as Continuum, where it further reduces average job latency by up to 18.1%.",
+    "published_date": "2026-06-01T23:51:37Z",
+    "updated_date": "2026-06-01T23:51:37Z",
+    "categories": [
+      "cs.AR",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.02964v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.02964v1",
+    "source": "arxiv",
+    "score": 0.41690347909927367,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、大模型推理、延迟优化相关技术。\n\n核心内容：Large Language Model (LLM) inference relies on key-value (KV) caches to avoid redundant attention computation. While approximate KV cache retention techniques reduce memory usage by sacrificing model accuracy, lossless approaches instead evict KV cache blocks from GPU memory and reconstruct them on ...。",
+    "takeaway": "本文聚焦GPU 内存管理、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.01211v1",
+    "title": "GPU Acceleration of Learning With Errors KEMs Using OpenACC for Post-Quantum Cryptography",
+    "authors": [
+      "Tiziana Liberati",
+      "Nitin Shukla",
+      "Matteo Barbieri",
+      "Gabriella Bettonte",
+      "Elisabetta Boella",
+      "Simone Rizzo",
+      "Daniele Gregori",
+      "Marco Pedicini"
+    ],
+    "abstract": "Shor's algorithm proved that asymmetric cryptographic protocols based on the integer factorization and discrete logarithm problems are no longer safe in a world with large-scale quantum computers. As a result, Post-Quantum Cryptography (PQC) has been developed over the last few years, seeking cryptographic primitives resistant to quantum attacks. One of the main hard problems underlying PQC schemes is the Learning with Errors (LWE) problem, which is significantly more computationally intensive than its classical predecessors. In this work, we present a Key Encapsulation Mechanism (KEM) based on plain LWE and develop a GPU-oriented implementation using OpenACC. We evaluate the performance of our accelerated application in terms of both time-to-solution and energy-to-solution, considering bare-metal and containerized executions across multiple NVIDIA GPU models and generations. Our implementation achieves significant acceleration across all tested GPU platforms. In particular, on the NVIDIA Grace Hopper Superchip, it attains up to a $208\\times$ speedup over a multithreaded CPU baseline and enables the execution of problem sizes that are impractical on CPU architectures due to memory and synchronization constraints. Energy consumption analysis also shows $\\approx 2\\times$ better efficiency when using the Superchip compared to systems equipped with x86-based CPUs and NVIDIA H100 GPUs. These results highlight the effectiveness of GPU acceleration for computationally demanding LWE-based cryptographic workloads.",
+    "published_date": "2026-05-31T13:01:18Z",
+    "updated_date": "2026-05-31T13:01:18Z",
+    "categories": [
+      "cs.CR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.01211v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.01211v1",
+    "source": "arxiv",
+    "score": 0.4016291189193726,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Shor's algorithm proved that asymmetric cryptographic protocols based on the integer factorization and discrete logarithm problems are no longer safe in a world with large-scale quantum computers. As a result, Post-Quantum Cryptography (PQC) has been developed over the last few years, seeking crypto...。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.01852v1",
+    "title": "Parallelizing Large-Scale Tensor Network Contraction on Multiple GPUs",
+    "authors": [
+      "Feng Pan",
+      "Hanfeng Gu",
+      "Paul Springer",
+      "Xipeng Li"
+    ],
+    "abstract": "Exact tensor network contraction underpins quantum circuit simulation, quantum error correction, combinatorial optimization, and many-body dynamics. The dominant parallelization strategy, slicing, scales exponentially and incurs redundant computation. We present a multi-GPU framework that instead distributes intermediate tensors across devices with explicit communication, converting a fixed contraction path into a communication-efficient schedule via GEMM-oriented mode reordering and communication-aware mode distribution planning. Within a single DGX H100 node (8 GPUs, NVLink), distribution delivers $7$--$173\\times$ extra speedup beyond embarrassingly parallel slicing, capturing nearly all of the available compute reduction (87--101%) because NVLink's high bandwidth keeps communication small relative to compute. Scaling the same four workloads to 1024 H100 GPUs over InfiniBand, the extra speedup beyond slicing ranges from $42\\times$ to $67{,}869\\times$, demonstrating that communication-aware distributed contraction far surpasses slicing-based scaling limits for frontier tensor networks.",
+    "published_date": "2026-06-01T08:02:29Z",
+    "updated_date": "2026-06-01T08:02:29Z",
+    "categories": [
+      "cs.DC",
+      "quant-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.01852v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.01852v1",
+    "source": "arxiv",
+    "score": 0.39758039951324464,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、NVLink 互连、网络、通信优化、带宽优化相关技术。\n\n核心内容：Exact tensor network contraction underpins quantum circuit simulation, quantum error correction, combinatorial optimization, and many-body dynamics. The dominant parallelization strategy, slicing, scales exponentially and incurs redundant computation。",
+    "takeaway": "本文聚焦多 GPU、NVLink 互连、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
+  }
+]
