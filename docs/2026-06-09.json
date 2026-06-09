@@ -1,0 +1,286 @@
+[
+  {
+    "id": "2606.06910v1",
+    "title": "Communication Strategy Selection for Multi-GPU 3D FDTD with Convolutional Perfectly Matched Boundary Layers",
+    "authors": [
+      "Victory C. Obieke"
+    ],
+    "abstract": "In this paper we describe a communication-strategy study for multi-GPU three-dimensional finite-difference time-domain computation with convolutional perfectly matched layer boundary conditions using CUDA. The metrics used to determine the most effective implementation include runtime, throughput in millions of output points per second, strong-scaling efficiency, CPML overhead, host-staged versus direct GPU-to-GPU exchange speedup, and enlarged-ghost speedup. On a single NVIDIA Quadro RTX 6000 GPU, the CPML implementation sustains 2,889--3,290 million output points per second with less than 1\\% boundary-layer overhead, providing the single-GPU baseline for the multi-GPU study. The results show that direct GPU-to-GPU peer exchange is the dominant optimization with a 2.46--2.76$\\times$ speedup over host-staged exchange, while enlarged ghost regions give only modest benefits because the reduced communication frequency is partly offset by redundant computation and additional memory traffic. On NVIDIA Quadro RTX 8000 GPUs, the implementation gives up to a 1.51$\\times$ speedup on two GPUs for the tested strong-scaling cases, while four GPUs enable larger grids that approach or exceed single-GPU memory capacity.",
+    "published_date": "2026-06-05T05:08:58Z",
+    "updated_date": "2026-06-05T05:08:58Z",
+    "categories": [
+      "cs.DC",
+      "math-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.06910v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.06910v1",
+    "source": "arxiv",
+    "score": 0.521817935705185,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、多 GPU、通信优化、吞吐量相关技术。\n\n核心内容：In this paper we describe a communication-strategy study for multi-GPU three-dimensional finite-difference time-domain computation with convolutional perfectly matched layer boundary conditions using CUDA. The metrics used to determine the most effective implementation include runtime, throughput in...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.05495v1",
+    "title": "SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines",
+    "authors": [
+      "Zhengxiong Li",
+      "Tsung-Wei Huang",
+      "Umit Ogras"
+    ],
+    "abstract": "Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware resources such as compute cores and copy engines due to scheduling overheads. To address these problems, we propose a CUDA runtime framework for task-parallel pipelines to minimize the synchronization overheads and the gap between kernel executions. The proposed solution combines two innovations: (1) a multi-stream task-parallel pipeline programming model that leverages event-chaining and work-stealing mechanisms to fully utilize available hardware resources; (2) a graph-based execution flow with per-stream buffers to ensure memory safety for multiple in-flight jobs running concurrently. Extensive evaluations on representative real-world workloads show 1.15--1.44X speedup and reduce scheduling overheads by 18--54% compared to state-of-the-art CUDA graph baselines.",
+    "published_date": "2026-06-03T22:38:01Z",
+    "updated_date": "2026-06-03T22:38:01Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.05495v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05495v1",
+    "source": "arxiv",
+    "score": 0.5073178839683533,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware r...。",
+    "takeaway": "本文聚焦CUDA、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.05081v1",
+    "title": "Graph Traversal on Tensor Cores: A BFS Framework for Modern GPUs",
+    "authors": [
+      "Deniz Elbek",
+      "Kamer Kaya"
+    ],
+    "abstract": "Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Search (BFS) as a bit-level sparse matrix-vector computation while addressing the load imbalance, memory inefficiency, and synchronization overheads that limit prior approaches. BLEST introduces Binarized Virtual Slice Sets (BVSS), a graph representation that partitions work into balanced warp-level units and schedules only frontier-relevant regions of the graph. It further employs an optimized TC layout that maps neighbour checks onto binary MMA instructions without wasted outputs, reducing the number of required MMA calls by 8$\\times$ compared with prior layouts. To mitigate atomic and cache bottlenecks, BLEST incorporates a lazy vertex-update scheme. We revisit the switching terminology for BFS and propose a mechanism that dynamically transitions from TCs to CUDA cores when it becomes more efficient. We also extend BLEST to multi-source BFS and closeness centrality workloads. Finally, we introduce a scalable graph reordering method that improves compression for scale-free-like graphs, while using RCM to improve locality for others. Across a broad set of real-world graphs, BLEST achieves average speedups of 22.0$\\times$, 7.7$\\times$, 8.1$\\times$, and 5.9$\\times$ over GAP, Gunrock, GSWITCH, and BerryBees, respectively, establishing a new BFS baseline on GPUs. Thanks to its high performance, BLEST can compute the exact closeness centralities of 65.6M vertices in a social network with 3.6B edges in an hour using 100 H100 GPUs.",
+    "published_date": "2026-06-03T16:37:08Z",
+    "updated_date": "2026-06-03T16:37:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.DS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.05081v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05081v1",
+    "source": "arxiv",
+    "score": 0.4861770403385162,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、网络、吞吐量相关技术。\n\n核心内容：Modern GPUs have Tensor Cores (TCs) capable of extremely high-throughput matrix operations, yet graph algorithms remain difficult to accelerate because of their irregular and data-dependent execution patterns. This work presents BLEST, a TC-accelerated framework that reformulates Breadth-First Searc...。",
+    "takeaway": "本文聚焦CUDA、网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.06386v1",
+    "title": "On GPU Implementation for Multi-Precision Integer Division",
+    "authors": [
+      "Martin B. Marchioro",
+      "Aske N. Raahauge",
+      "Marc I. Løvenskjold",
+      "Cosmin E. Oancea",
+      "Stephen M. Watt"
+    ],
+    "abstract": "This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators. The principal contribution is an efficient GPU/CUDA implementation for integer precisions from $2^{15}$ to $2^{18}$ -- sizes not supported by \\cgbn{} division. We propose algorithmic refinements, define a cost model in terms of multiplications, build on prefix sums and previous work on multi-precision multiplication, and present an evaluation showing near-optimal performance relative to the model for the target precision.",
+    "published_date": "2026-06-04T16:51:22Z",
+    "updated_date": "2026-06-04T16:51:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.MS",
+      "cs.SC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.06386v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.06386v1",
+    "source": "arxiv",
+    "score": 0.4805969285964966,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.07777v1",
+    "title": "Large-Scale Regularized Matching on GPU Clusters",
+    "authors": [
+      "Aida Rahmattalabi",
+      "Gregory Dexter",
+      "Sanjana Garg",
+      "Qinquan Song",
+      "Shenyinying Tu",
+      "Yuan Gao",
+      "Zhipeng Wang",
+      "Rahul Mazumder"
+    ],
+    "abstract": "Production decision systems such as ad allocation or content matching involve millions of users and thousands of items, reducing to large-scale linear programs with sparse block-diagonal structure across users. These LPs are solved repeatedly on recurring cadences over slowly evolving inputs. Three system gaps stand out. Scale: production instances routinely exceed the memory capacity of GPU solvers such as cuPDLP and D-PDLP under fixed hardware budgets. Temporal instability: solution variability across runs induces downstream churn and complicates SLAs, yet existing solvers provide no explicit control. Extensibility: CPU-based solvers such as DuaLip-Scala converge slowly and couple problem formulation to fixed schemas, making new constraint families difficult to express. We present a distributed multi-GPU LP solver built natively in PyTorch with systems-algorithm co-design for this structure. It adopts column-sharded parallelism with fused Triton kernels and batched operations to reduce per-iteration overhead. As users grow, only local computation increases, while communication is limited to a reduction of item-level dual variables, yielding near-linear scaling with GPU count at fixed item size. We also adopt ridge-regularized LPs to improve stability, a control absent from existing GPU solvers. A continuation schedule over the regularization parameter balances convergence speed and solution fidelity. Finally, we introduce an operator-centric programming model that replaces DuaLip-Scala's schema-bound interface with composable primitives, enabling new formulations without modifying the solve loop or distributed infrastructure. On synthetic workloads, our system achieves order-of-magnitude wall-clock speedup over DuaLip-Scala, near-linear multi-GPU scaling (3.86x on 4 GPUs), and scales beyond the reach of existing GPU solvers.",
+    "published_date": "2026-06-05T18:41:38Z",
+    "updated_date": "2026-06-05T18:41:38Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.07777v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.07777v1",
+    "source": "arxiv",
+    "score": 0.45860355973243716,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、多 GPU、通信优化相关技术。\n\n核心内容：Production decision systems such as ad allocation or content matching involve millions of users and thousands of items, reducing to large-scale linear programs with sparse block-diagonal structure across users. These LPs are solved repeatedly on recurring cadences over slowly evolving inputs。",
+    "takeaway": "本文聚焦PyTorch、多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2606.09200v1",
+    "title": "Resource-aware Computation-Communication Overlap for multi-GPU ML Workloads",
+    "authors": [
+      "Minyu Cui",
+      "Miquel Pericas"
+    ],
+    "abstract": "The rapid growth of large-scale machine learning (ML) has made distributed training across multiple GPUs a fundamental component of modern ML systems. As model sizes and computational throughput continue to increase, communication overhead has become a dominant bottleneck in multi-GPU training, particularly when computation and communication are executed sequentially. This work explores concurrent execution of computation and collective communication using two portable runtime controls: shared-memory-driven occupancy shaping for computation kernels and elevated scheduling priority for communication kernels. Our approach regulates computation-kernel residency through per-block shared-memory allocation, leaving sufficient on-chip resources for communication kernels to make progress. In addition, assigning higher priority to communication streams ensures steady communication progress once resources become available. Experiments on NVIDIA A40, A100, H100, and AMD MI250X GPUs demonstrate that the proposed method enables effective computation-communication overlap and reduces total execution time by up to 25.5 percent, without modifying vendor libraries or kernel implementations.",
+    "published_date": "2026-06-08T08:33:03Z",
+    "updated_date": "2026-06-08T08:33:03Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.09200v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.09200v1",
+    "source": "arxiv",
+    "score": 0.4505851256847382,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、通信优化、吞吐量相关技术。\n\n核心内容：The rapid growth of large-scale machine learning (ML) has made distributed training across multiple GPUs a fundamental component of modern ML systems. As model sizes and computational throughput continue to increase, communication overhead has become a dominant bottleneck in multi-GPU training, part...。",
+    "takeaway": "本文聚焦多 GPU、通信优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.07148v1",
+    "title": "Efficient $(α,β)$-core Computation and On-the-fly Query at Billion Scale with GPUs",
+    "authors": [
+      "Qingshuai Feng",
+      "Shunyang Li",
+      "Kai Wang",
+      "Xuemin Lin",
+      "Kongzhang Hao",
+      "Long Yuan"
+    ],
+    "abstract": "In bipartite graphs, $(α,β)$-core is a widely used model for cohesive subgraph mining. Specifically, an $(α,β)$-core is a maximal subgraph in which each vertex in the upper layer has degree at least $α$, and each vertex in the lower layer has degree at least $β$. The state-of-the-art CPU-based solutions incur extensive costs to construct an index structure for all $α$ and $β$ combinations, leading to scalability challenges on large bipartite graphs. Moreover, on-the-fly queries, which aim to determine whether an edge update belongs to a target $(α,β)$-core, are essential for real-time applications such as fraud monitoring and recommendation systems. However, existing index-based methods struggle to support such queries at scale due to their high maintenance overhead. In this paper, we investigate how to leverage GPU architectures to enable efficient $(α,β)$-core computation and support on-the-fly queries. While GPUs are widely used to accelerate graph processing, their limited memory capacity makes it impractical to store large index structures. To address this issue, we propose GCC, an index-free GPU-based peeling algorithm that accelerates $(α,β)$-core computation via warp-centric processing. To further improve efficiency, we develop GCC+, which leverages the nested property of $(α,β)$-core with a core-based early pruning strategy. For handling on-the-fly queries, we propose GFQ, a connectivity-aware algorithm that significantly narrows the computation scope by leveraging connected component information, thereby avoiding full-graph peeling. Extensive experiments on 11 datasets demonstrate that our proposed techniques outperform existing CPU-based solutions in terms of both space and time efficiency.",
+    "published_date": "2026-06-05T11:04:27Z",
+    "updated_date": "2026-06-05T11:04:27Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.07148v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.07148v1",
+    "source": "arxiv",
+    "score": 0.44920542716979983,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：In bipartite graphs, $(α,β)$-core is a widely used model for cohesive subgraph mining. Specifically, an $(α,β)$-core is a maximal subgraph in which each vertex in the upper layer has degree at least $α$, and each vertex in the lower layer has degree at least $β$。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2606.06063v1",
+    "title": "LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization",
+    "authors": [
+      "Daichi Mukunoki",
+      "Ryo Mikasa",
+      "Shunichiro Hayashi",
+      "Tetsuya Hoshino",
+      "Takahiro Katagiri"
+    ],
+    "abstract": "When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally beneficial. An exploratory Direct-3 control that equalizes the LLM-call count left Deopt-Reopt ahead in only four of nineteen testable cases, with Direct-3 ahead in four others. In Iterative, repeated generation and repair narrow the mode gap - markedly so for O120 - while Q235 retains large Deopt-Reopt advantages on conv2d, ddgemm, and bgemm. Deopt-Reopt's effect on feasibility is also mixed - sharply higher for some kernels Direct rarely compiles, lower for others. Because performance is conditioned on successful trials, the benefit is conditional rather than a guaranteed end-to-end gain. Overall, Deopt-Reopt is an effective but non-universal technique for LLM-based GPU porting, with gains that depend on the kernel, the model, the search budget, and the success rate.",
+    "published_date": "2026-06-04T12:04:13Z",
+    "updated_date": "2026-06-04T12:04:13Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.06063v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.06063v1",
+    "source": "arxiv",
+    "score": 0.4464719724655151,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、SHARP 集合计算相关技术。\n\n核心内容：When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direc...。",
+    "takeaway": "本文聚焦CUDA、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.05951v1",
+    "title": "Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication",
+    "authors": [
+      "Yijun Ma",
+      "Siyuan Shen",
+      "Tiancheng Chen",
+      "Akhil Langer",
+      "Jiri Kraus",
+      "Benjamin Glick",
+      "Craig Belusar",
+      "Jeff Hammond",
+      "Torsten Hoefler"
+    ],
+    "abstract": "NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and application experience. This paper presents a concise study of NVSHMEM's programming model, implementation, and performance characteristics, focusing on symmetric memory, one-sided operations, and device-side collectives. We also examine DeepEP as a case study of NVSHMEM in performance-critical sparse deep learning workloads. Our analysis shows that NVSHMEM pioneered a device-side symmetric-memory programming model that enables fine-grained GPU-driven communication and is important for approaching the hardware performance limit. Overall, this work defines NVSHMEM's role as a systems building block, highlights its design tradeoffs, and identifies opportunities for improving GPU communication runtimes.",
+    "published_date": "2026-06-04T09:50:16Z",
+    "updated_date": "2026-06-04T09:50:16Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.05951v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.05951v1",
+    "source": "arxiv",
+    "score": 0.4388821268081665,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and ap...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.08761v1",
+    "title": "APEX4: Efficient Pure W4A4 LLM Inference via Intra-SM Compute Rebalancing",
+    "authors": [
+      "Hong Guo",
+      "Nianhui Guo",
+      "Weixing Wang",
+      "Jona Otholt",
+      "Christoph Meinel",
+      "Haojin Yang"
+    ],
+    "abstract": "W4A4 quantization promises full utilization of INT4 Tensor Cores, yet group dequantization overhead on CUDA Cores has driven existing systems to mixed-precision fallbacks. We present the first systematic study of how intra-SM compute balance governs this bottleneck. Through controlled benchmarks across four GPUs from Ampere and Ada architectures, we identify the Tensor Cores to CUDA Cores throughput ratio ($ρ$) as the primary hardware indicator: the W4A4-g128 kernel yields $2.0$--$2.5\\times$ speedup on RTX~3090 ($ρ=16$) yet degrades to $0.43$--$0.47\\times$ on A100 ($ρ=64$) in compute-bond scenarios, establishing W4A4 viability as platform-dependent rather than universally infeasible. Guided by this finding, we build \\textbf{APEX4}, which co-designs pure INT4 GEMM kernels with $ρ$-aware granularity adaptation to mitigate the CUDA Cores dequantization bottleneck. APEX4 achieves perplexity within 0.63 of FP16 on LLaMA-2-70B and outperforms W4Ax Atom-g128 by 4.0\\%--4.4\\% in zero-shot accuracy. Deployed as a drop-in replacement in unmodified vLLM, it delivers up to $1.66\\times$ end-to-end speedup on L40S ($ρ=8$), and $1.78\\times$ on RTX~3090 ($ρ=16$), $2.09\\times$ on A40 ($ρ=16$), while recovering A100 ($ρ=64$) to $1.20$--$1.40\\times$ via the mixed-granularity mode.",
+    "published_date": "2026-06-07T18:01:55Z",
+    "updated_date": "2026-06-07T18:01:55Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.08761v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.08761v1",
+    "source": "arxiv",
+    "score": 0.43664742827415465,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、大模型推理、吞吐量相关技术。\n\n核心内容：W4A4 quantization promises full utilization of INT4 Tensor Cores, yet group dequantization overhead on CUDA Cores has driven existing systems to mixed-precision fallbacks. We present the first systematic study of how intra-SM compute balance governs this bottleneck。",
+    "takeaway": "本文聚焦CUDA、大模型推理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  }
+]
