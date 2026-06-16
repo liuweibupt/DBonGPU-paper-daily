@@ -570,50 +570,6 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.11718v2" target="_blank">Making Locality-aware GEMM Compatible with Page-Granularity Placement on Chiplet GPUs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.441</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Euijun Chung, Jae Hyung Ju, Hyesoon Kim</div>
-        <div class="paper-abstract-cn">本文研究大模型推理、数据放置、带宽优化、吞吐量相关技术。
-
-核心内容：Multi-chiplet GPUs scale compute throughput and high-bandwidth memory (HBM) capacity, but their non-uniform memory system makes locality between chiplets and their data critical to the GPU's performance and energy efficiency. Locality-aware scheduling and data placement identify which data should re...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multi-chiplet GPUs scale compute throughput and high-bandwidth memory (HBM) capacity, but their non-uniform memory system makes locality between chiplets and their data critical to the GPU's performance and energy efficiency. Locality-aware scheduling and data placement identify which data should reside near each chiplet. However, in general matrix multiplication (GEMM), locality-aware data placement often becomes incompatible with a fixed page-granularity data interleaving, since the optimal granularity for mapping data across chiplets varies widely across workloads. We propose Chiplet-Contiguous Layout, a global memory layout that stores chiplet-local data contiguously. Chiplet-Contiguous Layout enables locality-aware placement compatible with page-granularity placement across diverse la...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.11718v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.11718v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.11716v2" target="_blank">A Fast Locality Simulator for GEMM Design-Space Exploration on Multi-Chiplet GPUs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.435</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Euijun Chung, Hyesoon Kim</div>
-        <div class="paper-abstract-cn">本文研究数据放置相关技术。
-
-核心内容：Multi-chiplet GPUs split memory into local and remote HBM regions across a silicon interposer, and reducing the remote HBM traffic is crucial for the performance and energy efficiency of multi-chiplet GPUs. For general matrix multiplication (GEMM), the dominant operator in large language models (LLM...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multi-chiplet GPUs split memory into local and remote HBM regions across a silicon interposer, and reducing the remote HBM traffic is crucial for the performance and energy efficiency of multi-chiplet GPUs. For general matrix multiplication (GEMM), the dominant operator in large language models (LLMs), the resulting inter-chiplet traffic depends strongly on kernel choices such as operand layout, CTA traversal order, and data placement, and the optimal strategy to minimize remote accesses is nontrivial. We present a fast, functional, tile-level locality simulator that models CTA scheduling, per-chiplet L2 caches, and local/remote HBM accesses to evaluate a full-size LLM GEMM configuration. Across representative LLM GEMMs, the simulator shows that remote traffic varies by up to 58x across th...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据放置，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.11716v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.11716v2" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.10493v1" target="_blank">Achieving Cloud-Grade SLOs for Local Mixture-of-Experts Inference through CPU-GPU Hybrid Design</a></span>
         </div>
         <div class="paper-meta">
@@ -635,7 +591,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">8</span>
+            <span class="paper-rank">6</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.15490v1" target="_blank">Is RISC-V Ready for Massively Parallel Astrophysical Codes?</a></span>
         </div>
         <div class="paper-meta">
@@ -657,7 +613,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">9</span>
+            <span class="paper-rank">7</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.12765v1" target="_blank">Rigel: Reverse-Engineering the Metal 4.1 Tensor Compute Path on the Apple M4 Max GPU</a></span>
         </div>
         <div class="paper-meta">
@@ -679,7 +635,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">10</span>
+            <span class="paper-rank">8</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2606.12638v1" target="_blank">Eidola: Modeling Multi-GPU Network Communication Traffic in Distributed AI Workloads</a></span>
         </div>
         <div class="paper-meta">
@@ -700,13 +656,58 @@
             <a href="https://arxiv.org/pdf/2606.12638v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.11390v1" target="_blank">A Scalable PyTorch Abstraction for Multi-GPU Gaussian Splatting</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.407</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.CV</span> <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
+        </div>
+        <div class="paper-authors">Matthew Cong, Francis Williams, Jonathan Swartz, Mark Harris 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、多 GPU、NVLink 互连、通信优化相关技术。
+
+核心内容：Gaussian splatting methods have become increasingly popular for neural reconstruction of the real world. However, they are often limited in scale and resolution due to compute and memory constraints。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Gaussian splatting methods have become increasingly popular for neural reconstruction of the real world. However, they are often limited in scale and resolution due to compute and memory constraints. We present a multi-GPU Gaussian splatting approach that scales reconstruction to higher resolutions and larger scenes while abstracting away the code complexity typically associated with distributing a model. To accomplish this, we propose a PyTorch backend that distributes the Gaussian parameters and splatting operators across GPUs via CUDA unified memory and NVLink. Because distribution occurs at the operator level, the model code requires no explicit cross-device communication. More broadly, the backend exposes multiple GPUs as an aggregate PyTorch device and supports other PyTorch operator...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.11390v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.11390v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2606.16959v1" target="_blank">Diagonal-Budgeted Trotterization for Efficient Quantum Hamiltonian Simulation</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.398</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">quant-ph</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Srikar Chundury, Blake Burgstahler, Jiajia Li, In-Saeng Suh 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、CUDA、SIMD 并行、异构计算相关技术。
+
+核心内容：Efficient classical simulation of quantum Hamiltonian dynamics is often bottlenecked by exponential state growth and the overhead of generic sparse linear algebra. We introduce diagonal-budgeted Trotterization, a structure-aware strategy that decomposes Hamiltonians into factors preserving diagonal ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Efficient classical simulation of quantum Hamiltonian dynamics is often bottlenecked by exponential state growth and the overhead of generic sparse linear algebra. We introduce diagonal-budgeted Trotterization, a structure-aware strategy that decomposes Hamiltonians into factors preserving diagonal sparsity while tightly controlling fidelity loss.
+  Our implementation, HamSim, utilizes a compact diagonal-sparse data layout and specialized C++/CUDA kernels to bypass the overheads of generic formats like CSR. By leveraging SIMD vectorization, multithreading, and GPU acceleration, HamSim achieves high performance across heterogeneous architectures. Benchmarks on the HamLib suite show that HamSim significantly outperforms Qiskit-Aer. On CPUs, HamSim attains speedups of $182$--$1,269\times$ on ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、CUDA、SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2606.16959v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2606.16959v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-06-16 06:22:05</span>
+            <span>上次运行：2026-06-16 07:07:43</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
