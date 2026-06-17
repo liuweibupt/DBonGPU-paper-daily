@@ -1,0 +1,281 @@
+[
+  {
+    "id": "2606.14007v1",
+    "title": "VaultxGPU: GPU-Accelerated Blockchain Consensus",
+    "authors": [
+      "Samuel Taiwo Fatunmbi",
+      "Om Amit Gandhi",
+      "Luke Logan"
+    ],
+    "abstract": "Blockchain consensus mechanisms based on Proof-of-Work consume significant energy, with Bitcoin alone estimated at approximately 150 TWh per year. Proof-of-Space reduces this cost by replacing repeated computation with storage, but plot generation remains bottlenecked by CPU hashing throughput. Prior work on VaultX demonstrated a high-performance CPU-based Proof-of-Space plotter using multi-threaded Blake3 hashing, achieving plotting speeds 4 to 50x faster than Chia depending on hardware configuration. In this paper, we present VaultxGPU, a GPU-accelerated extension of the VaultX plotter that offloads the Blake3 hashing pipeline to the GPU using custom kernels. We implement the plotter in both CUDA for NVIDIA hardware and SYCL for AMD and Intel GPUs, keeping Table 1 entirely in GPU VRAM and fusing the sort and match stages into a single kernel to minimize data movement. We evaluate VaultxGPU across K-values 27 through 31 against CPU baselines. Our SYCL GPU implementation achieves a 59.2x speedup over a single-threaded CPU baseline, completing a K=31 plot in 45.4 seconds compared to 2688 seconds, and outperforms even the best 384-thread CPU configuration. These results confirm that GPU acceleration is the correct direction for scaling Proof-of-Space plotting beyond what CPU parallelism can achieve.",
+    "published_date": "2026-06-12T00:58:15Z",
+    "updated_date": "2026-06-12T00:58:15Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.14007v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.14007v1",
+    "source": "arxiv",
+    "score": 0.6274065220355988,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA、吞吐量相关技术。\n\n核心内容：Blockchain consensus mechanisms based on Proof-of-Work consume significant energy, with Bitcoin alone estimated at approximately 150 TWh per year. Proof-of-Space reduces this cost by replacing repeated computation with storage, but plot generation remains bottlenecked by CPU hashing throughput。",
+    "takeaway": "本文聚焦GPU 加速、CUDA、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.12753v1",
+    "title": "On the Limits of Performance Portability in Directive-Based GPU Programming",
+    "authors": [
+      "Alessandro Romeo",
+      "Nitin Shukla",
+      "Stefano Truzzi",
+      "Alessio Suriano",
+      "Andrea Mignone"
+    ],
+    "abstract": "The transition of scientific applications to GPU-accelerated exascale systems is constrained by trade-offs between performance, portability, and productivity. This work evaluates the performance portability of directive-based GPU programming by porting gPLUTO, a production-grade magnetohydrodynamics code for astrophysical simulations, from OpenACC to OpenMP, and analyzing its performance on NVIDIA A100 (Leonardo Booster) and AMD MI250X (LUMI-G) devices. On NVIDIA platforms, OpenACC and OpenMP achieve comparable performance due to a shared compiler backend, providing a consistent baseline for assessing algorithmic efficiency. In contrast, the same OpenMP implementation is approximately three times slower at the application level on AMD MI250X with respect to the NVIDIA A100 OpenACC baseline, with kernel-level slowdowns reaching up to an order of magnitude, driven by sensitivity to strided memory-access patterns and compiler limitations. Kernel-level profiling shows that the dominant contributors to run-time are memory-latency-bound rather than limited by peak band-width. In low-parallelism kernels, C++ abstraction layers increase register pressure and spilling, leading to extreme slowdowns of up to 47x in specific cases. These results indicate that portable performance across GPU architectures requires not only application-level changes but also continued advances in compiler backends and architecture-aware optimization strategies",
+    "published_date": "2026-06-10T23:40:19Z",
+    "updated_date": "2026-06-10T23:40:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.12753v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.12753v1",
+    "source": "arxiv",
+    "score": 0.5308914339542389,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、延迟优化相关技术。\n\n核心内容：The transition of scientific applications to GPU-accelerated exascale systems is constrained by trade-offs between performance, portability, and productivity. This work evaluates the performance portability of directive-based GPU programming by porting gPLUTO, a production-grade magnetohydrodynamics...。",
+    "takeaway": "本文聚焦GPU 加速、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.16907v1",
+    "title": "Tangram: Hiding GPU Heterogeneity for Efficient LLM Parallelization",
+    "authors": [
+      "Yanda Tao",
+      "Pedro F. Silvestre",
+      "Marcel Wagenländer",
+      "Peter Pietzuch"
+    ],
+    "abstract": "The scale of LLM training jobs requires parallelization planning over large GPU clusters. Due to different GPU types and interconnects added over time, these GPU clusters are increasingly heterogeneous. Automatic LLM parallelizers can search for parallelization plans but face an exploding search space with heterogeneous GPUs. To make search tractable in heterogeneous GPU clusters, parallelizers often omit types of parallelism (e.g., expert parallelism) or memory-saving techniques (e.g., ZeRO), which results in worse plans.\n  We describe Tangram, a system that enables the use of existing heterogeneity-unaware LLM parallelizers in heterogeneous GPU clusters by decoupling parallelization planning from GPU heterogeneity. For this, Tangram exploits two insights: (1) since bulk purchases result in sets of GPUs with similar compute, memory, and connectivity, Tangram can expose such homogeneous GPU islands to existing parallelizers; and (2) parallelizers commonly first partition models and then parallelize partitions. Tangram can compose such model slices, assigned to GPU islands, into work-balanced pipelines for high throughput. Tangram integrates with existing parallelizers through a narrow API, which relies on the enumeration of model-slice/island pairs. Tangram achieves up to 2.3x higher training throughput than current heterogeneous parallelizers (Metis and Sailor) and scales to large GPU clusters by pruning enumerated plans.",
+    "published_date": "2026-06-15T16:15:22Z",
+    "updated_date": "2026-06-15T16:15:22Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.16907v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.16907v1",
+    "source": "arxiv",
+    "score": 0.486411406993866,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型训练、异构计算、吞吐量相关技术。\n\n核心内容：The scale of LLM training jobs requires parallelization planning over large GPU clusters. Due to different GPU types and interconnects added over time, these GPU clusters are increasingly heterogeneous。",
+    "takeaway": "本文聚焦大模型训练、异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.17850v1",
+    "title": "CUTh-Solver: GPU-Accelerated Sparse Matrix Solver for High-Resolution Thermal Simulation of 3D ICs",
+    "authors": [
+      "Chenghan Wang",
+      "Zhen Zhuang",
+      "Shui Jiang",
+      "Siyuan Liang",
+      "Xiaoman Yang",
+      "Kai Zhu",
+      "Darong Huang",
+      "Luis Costero",
+      "Rongmei Chen",
+      "Tsung-Wei Huang",
+      "David Atienza",
+      "Tsung-Yi Ho"
+    ],
+    "abstract": "Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload. Fortunately, the coefficient matrices are often sparse with regular sparsity patterns, offering optimization opportunities. However, existing general-purpose matrix solvers on GPUs rarely exploit these domain-specific properties, thereby encountering bottlenecks in data storage, memory access, parallelism, computational efficiency, and hardware utilization. Therefore, we propose CUTh-Solver, a co-designed GPU-accelerated Preconditioned Conjugate Gradient (PCG)-based sparse solver framework for Symmetric Positive Definite (SPD) systems arising from high-resolution steady-state and transient 3D IC thermal simulation. For data storage, CUTh-Solver condenses the Diagonal (DIA) storage format to remove redundancy. To optimize the memory access, CUTh-Solver employs diagonal-wise SpMV to achieve coalesced memory access. We further observe a critical conflict between parallelism and preconditioning quality and thus adopt a high-parallelism preconditioning strategy. To improve computational efficiency and hardware utilization, we employ an adaptive fine-grained mixed-precision strategy that leverages diverse floating-point units to avoid resource contention, enhancing throughput without compromising numerical stability. Experimental results show that CUTh-Solver achieves up to 25.8x speedup over GPU-accelerated COMSOL Multiphysics 6.4 and over 3x speedup over NVIDIA's native general-purpose libraries (AmgX, cuSPARSE, cuDSS). Ablation studies validate the individual contribution of each optimization. The code is available at: https://github.com/Chenghan-Wang/CUTh-Solver",
+    "published_date": "2026-06-16T12:20:37Z",
+    "updated_date": "2026-06-16T12:20:37Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.17850v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.17850v1",
+    "source": "arxiv",
+    "score": 0.4718853688240051,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、吞吐量相关技术。\n\n核心内容：Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload。",
+    "takeaway": "本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.16819v1",
+    "title": "From the NYU Ultracomputer to Modern Exascale: A Historical and Architectural Survey of In-Network Computing and Scalable Synchronization",
+    "authors": [
+      "Lars Warren Ericson"
+    ],
+    "abstract": "This paper presents a historical and technical survey of the hardware architectures, interconnection networks, and synchronization primitives that have shaped massively parallel systems over the past four decades. We examine the design of the NYU Ultracomputer and the IBM Research Parallel Processor Prototype (RP3), focusing on the hardware implementation of the Fetch-and-Add primitive in multistage interconnection networks. We contrast these early attempts at fine-grained, shared-memory hardware combining with the distributed-memory architectures of the IBM SP series and the modern in-network computation models found in NVIDIA SHARP and HPE Slingshot.\n  We provide a technical analysis of message-passing synchronization, presenting a complete profiling of MPI operation frequencies and detailing the low-level hardware mapping of one-sided RMA atomics to PCIe Atomics and GPU caches. We investigate the software-hardware boundary in modern deep learning, detailing how HIP translation, Triton compilation, and 4-bit quantization (W4A16) execute on modern heterogeneous silicon.\n  To evaluate alternative network node designs, we present a historical hardware case study analyzing the feasibility of implementing active combining switches using message-passing Inmos Transputers programmed in Occam. Finally, we contextualize the evolution of concurrent software synchronization by examining Isaac Dimitrovsky's parallel \"group lock\" primitive, tracing its downstream echoes in group mutual exclusion (GME) and room synchronization, and reflect on the historical, philosophical divide between American systems engineering and European formal methods.",
+    "published_date": "2026-06-15T15:03:10Z",
+    "updated_date": "2026-06-15T15:03:10Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.GL"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.16819v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.16819v1",
+    "source": "arxiv",
+    "score": 0.4596915090084076,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 缓存、异构计算、SHARP 集合计算、网络相关技术。\n\n核心内容：This paper presents a historical and technical survey of the hardware architectures, interconnection networks, and synchronization primitives that have shaped massively parallel systems over the past four decades. We examine the design of the NYU Ultracomputer and the IBM Research Parallel Processor...。",
+    "takeaway": "本文聚焦GPU 缓存、异构计算、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.11718v2",
+    "title": "Making Locality-aware GEMM Compatible with Page-Granularity Placement on Chiplet GPUs",
+    "authors": [
+      "Euijun Chung",
+      "Jae Hyung Ju",
+      "Hyesoon Kim"
+    ],
+    "abstract": "Multi-chiplet GPUs scale compute throughput and high-bandwidth memory (HBM) capacity, but their non-uniform memory system makes locality between chiplets and their data critical to the GPU's performance and energy efficiency. Locality-aware scheduling and data placement identify which data should reside near each chiplet. However, in general matrix multiplication (GEMM), locality-aware data placement often becomes incompatible with a fixed page-granularity data interleaving, since the optimal granularity for mapping data across chiplets varies widely across workloads. We propose Chiplet-Contiguous Layout, a global memory layout that stores chiplet-local data contiguously. Chiplet-Contiguous Layout enables locality-aware placement compatible with page-granularity placement across diverse large language model (LLM) GEMM shapes, without changes to the operating system or hardware. On representative LLM inference and training GEMMs from Qwen 3 30B and Llama 3.1 70B, Chiplet-Contiguous Layout on average reduces remote HBM traffic by 13.0x on Qwen and 20.7x on Llama over 4\\,KB interleaving, and by 3.3x and 3.7x over coarse locality-aware placement.",
+    "published_date": "2026-06-10T06:47:27Z",
+    "updated_date": "2026-06-12T05:13:28Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.11718v2",
+    "arxiv_url": "https://arxiv.org/abs/2606.11718v2",
+    "source": "arxiv",
+    "score": 0.4411760115623474,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型推理、数据放置、带宽优化、吞吐量相关技术。\n\n核心内容：Multi-chiplet GPUs scale compute throughput and high-bandwidth memory (HBM) capacity, but their non-uniform memory system makes locality between chiplets and their data critical to the GPU's performance and energy efficiency. Locality-aware scheduling and data placement identify which data should re...。",
+    "takeaway": "本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.11716v2",
+    "title": "A Fast Locality Simulator for GEMM Design-Space Exploration on Multi-Chiplet GPUs",
+    "authors": [
+      "Euijun Chung",
+      "Hyesoon Kim"
+    ],
+    "abstract": "Multi-chiplet GPUs split memory into local and remote HBM regions across a silicon interposer, and reducing the remote HBM traffic is crucial for the performance and energy efficiency of multi-chiplet GPUs. For general matrix multiplication (GEMM), the dominant operator in large language models (LLMs), the resulting inter-chiplet traffic depends strongly on kernel choices such as operand layout, CTA traversal order, and data placement, and the optimal strategy to minimize remote accesses is nontrivial. We present a fast, functional, tile-level locality simulator that models CTA scheduling, per-chiplet L2 caches, and local/remote HBM accesses to evaluate a full-size LLM GEMM configuration. Across representative LLM GEMMs, the simulator shows that remote traffic varies by up to 58x across the design space for the same GEMM dimensions. Moreover, using the simulator as feedback, an agentic AI discovers that a 2D block-swizzle CTA traversal reduces remote traffic over the best 1D traversal by up to 5.1x under round-robin placement, identifying CTA traversal order as a first-order, GEMM-dependent design knob for inter-chiplet traffic.",
+    "published_date": "2026-06-10T06:43:39Z",
+    "updated_date": "2026-06-12T05:15:35Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.11716v2",
+    "arxiv_url": "https://arxiv.org/abs/2606.11716v2",
+    "source": "arxiv",
+    "score": 0.435320018529892,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究数据放置相关技术。\n\n核心内容：Multi-chiplet GPUs split memory into local and remote HBM regions across a silicon interposer, and reducing the remote HBM traffic is crucial for the performance and energy efficiency of multi-chiplet GPUs. For general matrix multiplication (GEMM), the dominant operator in large language models (LLM...。",
+    "takeaway": "本文聚焦数据放置，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.15490v2",
+    "title": "Is RISC-V Ready for Massively Parallel Astrophysical Codes?",
+    "authors": [
+      "Jenny Lynn Almerol",
+      "Nitin Shukla",
+      "Federico Ficarelli",
+      "Geray S. Karademir",
+      "Andrea Bartolini",
+      "Emanuele Venieri",
+      "Giacomo Madella",
+      "Elisabetta Boella"
+    ],
+    "abstract": "We present a performance and portability evaluation of three well-established astrophysical production codes, namely iPIC3D, PLUTO, and OpenGadget3, on a Sophgo SG2044 RISC-V processor (part of the Monte Cimone cluster), with comparisons to AMD EPYC 9554 (x86) and NVIDIA GH200 Grace (ARM) systems. These applications represent memory-bound, compute-bound, and hybrid workloads, respectively. Numerical correctness is verified across all platforms, confirming portability. RISC-V shows consistently lower performance, with slowdowns of about $3-6\\times$ relative to x86 and $5-9\\times$ relative to ARM. The gap is mainly due to limited memory bandwidth, shared cache constraints, narrower 128-bit vector units, and lower clock frequency, but also less-mature auto-vectorization capability of the GNU compiler suite. Memory-bound kernels are the most affected, where early bandwidth saturation and L2 cache contention reduce scalability at higher thread counts. Hybrid MPI+OpenMP configurations reveal a trade-off between memory contention and communication overhead, with intermediate configurations achieving the best performance. These results suggest that RISC-V is capable of supporting scientific workloads; however, additional improvements in both hardware and compiler technology, particularly in auto-vectorization, are required to achieve competitive performance.",
+    "published_date": "2026-06-13T21:59:51Z",
+    "updated_date": "2026-06-16T08:59:05Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.15490v2",
+    "arxiv_url": "https://arxiv.org/abs/2606.15490v2",
+    "source": "arxiv",
+    "score": 0.4311977767944336,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究通信优化、带宽优化相关技术。\n\n核心内容：We present a performance and portability evaluation of three well-established astrophysical production codes, namely iPIC3D, PLUTO, and OpenGadget3, on a Sophgo SG2044 RISC-V processor (part of the Monte Cimone cluster), with comparisons to AMD EPYC 9554 (x86) and NVIDIA GH200 Grace (ARM) systems. T...。",
+    "takeaway": "本文聚焦通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.12765v1",
+    "title": "Rigel: Reverse-Engineering the Metal 4.1 Tensor Compute Path on the Apple M4 Max GPU",
+    "authors": [
+      "Ramchand Kumaresan"
+    ],
+    "abstract": "Apple's Metal 4.1 exposes a tensor compute path: the Metal Performance Primitives (MPP) matmul2d operation over cooperative_tensor fragments, whose interface is documented but whose hardware behavior is deliberately hidden. The specification states which data-type rows are supported, never whether they are hardware-accelerated, where the operation physically executes, what its accumulator width is, or how it partitions matrix fragments across threads. We present Rigel, an empirical characterization of this path on a single Apple M4 Max (a pre-neural-accelerator generation). Using a checksum-gated, provenance-tracked microbenchmark harness, Rigel recovers eleven facts the v4.1 specification hides or contradicts. The headline finding: the Metal 4.1 fp8 (E4M3) matmul2d is emulated, not accelerated: it sustains 0.94x the throughput of fp16 despite reading half the operand bytes, so on M4 it is a memory-footprint feature, not a performance feature. We further show, via a three-signal triangulation (throughput ceiling, comparison against simdgroup_matrix, and per-rail power attribution), that matmul2d executes entirely on the GPU shader cores with no dedicated matrix datapath and no evidence of Apple Neural Engine routing; that it accumulates in >=fp32; and we reconstruct the opaque 8x8 cooperative_tensor fragment layout Apple documents nowhere. Acting on the characterization, a hand-fused GEMM + bias + GELU kernel beats the decomposed path by +6.5-12.9% in the cache-resident regime. All findings are reproducible from committed MIT-licensed code and per-cell CSVs.",
+    "published_date": "2026-06-11T00:10:23Z",
+    "updated_date": "2026-06-11T00:10:23Z",
+    "categories": [
+      "cs.CL",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.12765v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.12765v1",
+    "source": "arxiv",
+    "score": 0.41492228031158446,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、SIMD 并行、吞吐量相关技术。\n\n核心内容：Apple's Metal 4.1 exposes a tensor compute path: the Metal Performance Primitives (MPP) matmul2d operation over cooperative_tensor fragments, whose interface is documented but whose hardware behavior is deliberately hidden. The specification states which data-type rows are supported, never whether t...。",
+    "takeaway": "本文聚焦隐私信息检索、SIMD 并行、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.12638v1",
+    "title": "Eidola: Modeling Multi-GPU Network Communication Traffic in Distributed AI Workloads",
+    "authors": [
+      "Ranganath R. Selagamsetty",
+      "Matthew Poremba",
+      "Bradford M. Beckmann",
+      "Joshua San Miguel",
+      "Mikko H. Lipasti"
+    ],
+    "abstract": "As distributed AI workloads grow in scale, multi-GPU systems have become essential for training large models. Although techniques like kernel fusion and overlapping communication with computation help reduce delays, they also introduce irregular and transient traffic patterns that are difficult to model using existing tools. These techniques rely heavily on fine-grained synchronization and peer-to-peer communication, which place significant pressure on interconnect bandwidth and latency.\n  In this work, we introduce Eidola, a scalable extension to the gem5 simulation framework that enables detailed modeling of inter-GPU communication traffic. The extension is scalable as our GPU model serves as a succinct eidolon, emulating the minimal characteristics needed for traffic modeling. Eidola uses annotated timing profiles from real applications to emulate peer-to-peer GPU writes with cycle-level precision. This allows researchers to simulate and analyze synchronization behavior across large multi-GPU configurations. The simulator supports configurable per-GPU traffic patterns and enables isolated performance analysis under different communication scenarios.\n  We demonstrate Eidola's effectiveness by reproducing variability in fused kernel execution and by implementing a SyncMon-inspired synchronization mechanism, confirming reductions in polling-related memory traffic. Our results show that Eidola provides a flexible and scalable platform for studying inter-GPU communication and supports architectural exploration in modern distributed GPU systems.",
+    "published_date": "2026-06-10T20:02:24Z",
+    "updated_date": "2026-06-10T20:02:24Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.12638v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.12638v1",
+    "source": "arxiv",
+    "score": 0.4135255801677704,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、多 GPU、GPU 间通信、网络、通信优化相关技术。\n\n核心内容：As distributed AI workloads grow in scale, multi-GPU systems have become essential for training large models. Although techniques like kernel fusion and overlapping communication with computation help reduce delays, they also introduce irregular and transient traffic patterns that are difficult to m...。",
+    "takeaway": "本文聚焦隐私信息检索、多 GPU、GPU 间通信，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  }
+]
