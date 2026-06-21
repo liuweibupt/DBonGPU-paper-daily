@@ -1,0 +1,286 @@
+[
+  {
+    "id": "2606.16907v1",
+    "title": "Tangram: Hiding GPU Heterogeneity for Efficient LLM Parallelization",
+    "authors": [
+      "Yanda Tao",
+      "Pedro F. Silvestre",
+      "Marcel Wagenländer",
+      "Peter Pietzuch"
+    ],
+    "abstract": "The scale of LLM training jobs requires parallelization planning over large GPU clusters. Due to different GPU types and interconnects added over time, these GPU clusters are increasingly heterogeneous. Automatic LLM parallelizers can search for parallelization plans but face an exploding search space with heterogeneous GPUs. To make search tractable in heterogeneous GPU clusters, parallelizers often omit types of parallelism (e.g., expert parallelism) or memory-saving techniques (e.g., ZeRO), which results in worse plans.\n  We describe Tangram, a system that enables the use of existing heterogeneity-unaware LLM parallelizers in heterogeneous GPU clusters by decoupling parallelization planning from GPU heterogeneity. For this, Tangram exploits two insights: (1) since bulk purchases result in sets of GPUs with similar compute, memory, and connectivity, Tangram can expose such homogeneous GPU islands to existing parallelizers; and (2) parallelizers commonly first partition models and then parallelize partitions. Tangram can compose such model slices, assigned to GPU islands, into work-balanced pipelines for high throughput. Tangram integrates with existing parallelizers through a narrow API, which relies on the enumeration of model-slice/island pairs. Tangram achieves up to 2.3x higher training throughput than current heterogeneous parallelizers (Metis and Sailor) and scales to large GPU clusters by pruning enumerated plans.",
+    "published_date": "2026-06-15T16:15:22Z",
+    "updated_date": "2026-06-15T16:15:22Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.16907v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.16907v1",
+    "source": "arxiv",
+    "score": 0.48641128778457643,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型训练、异构计算、吞吐量相关技术。\n\n核心内容：The scale of LLM training jobs requires parallelization planning over large GPU clusters. Due to different GPU types and interconnects added over time, these GPU clusters are increasingly heterogeneous。",
+    "takeaway": "本文聚焦大模型训练、异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.17850v1",
+    "title": "CUTh-Solver: GPU-Accelerated Sparse Matrix Solver for High-Resolution Thermal Simulation of 3D ICs",
+    "authors": [
+      "Chenghan Wang",
+      "Zhen Zhuang",
+      "Shui Jiang",
+      "Siyuan Liang",
+      "Xiaoman Yang",
+      "Kai Zhu",
+      "Darong Huang",
+      "Luis Costero",
+      "Rongmei Chen",
+      "Tsung-Wei Huang",
+      "David Atienza",
+      "Tsung-Yi Ho"
+    ],
+    "abstract": "Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload. Fortunately, the coefficient matrices are often sparse with regular sparsity patterns, offering optimization opportunities. However, existing general-purpose matrix solvers on GPUs rarely exploit these domain-specific properties, thereby encountering bottlenecks in data storage, memory access, parallelism, computational efficiency, and hardware utilization. Therefore, we propose CUTh-Solver, a co-designed GPU-accelerated Preconditioned Conjugate Gradient (PCG)-based sparse solver framework for Symmetric Positive Definite (SPD) systems arising from high-resolution steady-state and transient 3D IC thermal simulation. For data storage, CUTh-Solver condenses the Diagonal (DIA) storage format to remove redundancy. To optimize the memory access, CUTh-Solver employs diagonal-wise SpMV to achieve coalesced memory access. We further observe a critical conflict between parallelism and preconditioning quality and thus adopt a high-parallelism preconditioning strategy. To improve computational efficiency and hardware utilization, we employ an adaptive fine-grained mixed-precision strategy that leverages diverse floating-point units to avoid resource contention, enhancing throughput without compromising numerical stability. Experimental results show that CUTh-Solver achieves up to 25.8x speedup over GPU-accelerated COMSOL Multiphysics 6.4 and over 3x speedup over NVIDIA's native general-purpose libraries (AmgX, cuSPARSE, cuDSS). Ablation studies validate the individual contribution of each optimization. The code is available at: https://github.com/Chenghan-Wang/CUTh-Solver",
+    "published_date": "2026-06-16T12:20:37Z",
+    "updated_date": "2026-06-16T12:20:37Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.17850v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.17850v1",
+    "source": "arxiv",
+    "score": 0.47188527941703795,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、吞吐量相关技术。\n\n核心内容：Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload。",
+    "takeaway": "本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.16819v1",
+    "title": "From the NYU Ultracomputer to Modern Exascale: A Historical and Architectural Survey of In-Network Computing and Scalable Synchronization",
+    "authors": [
+      "Lars Warren Ericson"
+    ],
+    "abstract": "This paper presents a historical and technical survey of the hardware architectures, interconnection networks, and synchronization primitives that have shaped massively parallel systems over the past four decades. We examine the design of the NYU Ultracomputer and the IBM Research Parallel Processor Prototype (RP3), focusing on the hardware implementation of the Fetch-and-Add primitive in multistage interconnection networks. We contrast these early attempts at fine-grained, shared-memory hardware combining with the distributed-memory architectures of the IBM SP series and the modern in-network computation models found in NVIDIA SHARP and HPE Slingshot.\n  We provide a technical analysis of message-passing synchronization, presenting a complete profiling of MPI operation frequencies and detailing the low-level hardware mapping of one-sided RMA atomics to PCIe Atomics and GPU caches. We investigate the software-hardware boundary in modern deep learning, detailing how HIP translation, Triton compilation, and 4-bit quantization (W4A16) execute on modern heterogeneous silicon.\n  To evaluate alternative network node designs, we present a historical hardware case study analyzing the feasibility of implementing active combining switches using message-passing Inmos Transputers programmed in Occam. Finally, we contextualize the evolution of concurrent software synchronization by examining Isaac Dimitrovsky's parallel \"group lock\" primitive, tracing its downstream echoes in group mutual exclusion (GME) and room synchronization, and reflect on the historical, philosophical divide between American systems engineering and European formal methods.",
+    "published_date": "2026-06-15T15:03:10Z",
+    "updated_date": "2026-06-15T15:03:10Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.GL"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.16819v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.16819v1",
+    "source": "arxiv",
+    "score": 0.45969144940376283,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 缓存、异构计算、SHARP 集合计算、网络相关技术。\n\n核心内容：This paper presents a historical and technical survey of the hardware architectures, interconnection networks, and synchronization primitives that have shaped massively parallel systems over the past four decades. We examine the design of the NYU Ultracomputer and the IBM Research Parallel Processor...。",
+    "takeaway": "本文聚焦GPU 缓存、异构计算、SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.20128v1",
+    "title": "The Correctness Illusion in LLM-Generated GPU Kernels",
+    "authors": [
+      "Dipankar Sarkar"
+    ],
+    "abstract": "Benchmarks for LLM-generated GPU kernels (KernelBench, TritonBench, GEAK) score correctness through fixed-shape, small-sample allclose-style checks. The number of inputs varies between benchmarks. The shape, dtype, and tolerance are fixed for each kernel. We test that oracle empirically. We construct a controlled corpus of 24 Triton and CPU stand-in kernels (15 correct controls and 9 LLM-style buggy variants seeded with documented transcription errors) and re-evaluate it under op-schema-aware seeded fuzzing with a high-precision (fp64) CPU reference and per-(op, dtype) absolute tolerances. The seeded oracle flags 9 of 9 buggy kernels and passes 15 of 15 correct controls, at zero precision cost on controls. We extend the corpus to 26 ops (adding a flash-attention pair) and re-run the same protocol on five GPU classes (RTX 3060, A10, L40S, A100 SXM4, H100 NVL). The verdicts are identical across all five GPUs: 10 of 10 illusions caught and 16 of 16 controls clean. The corpus result is about LLM-style transcription bugs that the allclose-on-one-shape oracle certifies as correct, not about the bug rate of any specific deployed LLM. Every flagged failure replays byte-for-byte from a stored seed.",
+    "published_date": "2026-06-18T11:52:46Z",
+    "updated_date": "2026-06-18T11:52:46Z",
+    "categories": [
+      "cs.SE",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.20128v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.20128v1",
+    "source": "arxiv",
+    "score": 0.4210057544708252,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、隐私信息检索相关技术。\n\n核心内容：Benchmarks for LLM-generated GPU kernels (KernelBench, TritonBench, GEAK) score correctness through fixed-shape, small-sample allclose-style checks. The number of inputs varies between benchmarks。",
+    "takeaway": "本文聚焦GPU 核函数、隐私信息检索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.18463v1",
+    "title": "Mixed-Precision Communication-Avoiding SGD for Generalized Linear Models on GPUs",
+    "authors": [
+      "Aditya Devarakonda",
+      "Irene Simó Muñoz",
+      "Giulia Guidi"
+    ],
+    "abstract": "Distributed stochastic gradient descent (SGD) is limited by communication rather than computation, since each iteration requires an AllReduce across processes. Communication-avoiding SGD (CA-SGD) amortizes communication over $s$ iterations by replacing $s$ consecutive AllReduces with a single AllReduce of an $sb\\times sb$ Gram matrix, trading more computation and bandwidth for fewer synchronization points. Modern GPUs with matrix hardware and reduced-precision formats offset this by accelerating the Gram GEMM and shrinking BF16 traffic. We study mixed-precision CA-SGD for generalized linear models on NVIDIA GPUs. Our finite-precision analysis decomposes the local rounding error of one CA-SGD outer iteration into nine independent precision choices, depending on the hardware only through its low-precision unit roundoffs, so the resulting recipes transfer in principle across GPU generations. The recipe stores the input matrix and margin vector in low precision, computes the Gram matrix from low-precision inputs with high-precision accumulation, communicates it in high precision, and performs the inner recurrence and weight updates in high precision. On NERSC Perlmutter A100 GPUs, mixed-precision CA-SGD matches FP32 SGD loss within $0.5\\%$ on logistic, linear, and Poisson problems and reaches $5.1$--$6.8\\times$ speedup over FP32 SGD on epsilon, SUSY, HIGGS, synth, and Poisson-synth. Our software is available at https://doi.org/10.5281/zenodo.20448273",
+    "published_date": "2026-06-16T20:14:34Z",
+    "updated_date": "2026-06-16T20:14:34Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "math.NA",
+      "stat.ML"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.18463v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.18463v1",
+    "source": "arxiv",
+    "score": 0.417022123336792,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化、带宽优化相关技术。\n\n核心内容：Distributed stochastic gradient descent (SGD) is limited by communication rather than computation, since each iteration requires an AllReduce across processes. Communication-avoiding SGD (CA-SGD) amortizes communication over $s$ iterations by replacing $s$ consecutive AllReduces with a single AllRed...。",
+    "takeaway": "本文聚焦通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.19059v1",
+    "title": "A performance portable fast Ewald summation for Stokes flow",
+    "authors": [
+      "Gabriel Kosmacher",
+      "Ziyu Du",
+      "Joar Bagge",
+      "George Biros"
+    ],
+    "abstract": "We present GPU algorithms for Ewald summation methods for accelerating N-body Stokes flow problems in periodic domains. Like most N-body codes, Ewald sums use a near-field/far-field decomposition. The near field involves particle-to-particle (P2P) interactions. The far field primarily involves particle-to-grid (P2G) and grid-to-particle (G2P) interactions, as well as Fast Fourier Transforms. For each interaction, we investigate several algorithmic variants. Our implementation uses PyKokkos, a Python interface for the Kokkos C++ parallel programming framework, which supports portability to AMD/NVIDIA GPU and ARM/x86 CPU architectures. Double and single-precision numerical results, alongside analytical performance models, confirm the efficiency of our algorithms on AMD and NVIDIA GPU and on ARM and AMD CPU architectures. The P2P interaction achieves around 73% compute efficiency on NVIDIA H200, 84% on NVIDIA A100, 60% on AMD MI300, 52% on Grace CPU, and 68% on AMD Epyc CPU. A straightforward implementation of the P2G kernel can become a computational bottleneck. We introduce a novel P2G algorithm that achieves up to 16$\\times$ speedup compared to a baseline GPU implementation. The overall Ewald sum code processes approximately 8 million particles per second on a H200 GPU, and about a half-million particles per second on a Grace CPU, for nine digits of accuracy. We also perform a multi-GPU weak scaling test on up to 256 million particles (64 GPUs) that shows bounded communication cost for all stages except the all-to-all particle sorting, which can be reduced to neighbor communication in the relevant time-stepping regime.",
+    "published_date": "2026-06-17T13:28:38Z",
+    "updated_date": "2026-06-17T13:28:38Z",
+    "categories": [
+      "math.NA",
+      "cs.DC",
+      "physics.comp-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.19059v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.19059v1",
+    "source": "arxiv",
+    "score": 0.40809070944786074,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、排序、通信优化相关技术。\n\n核心内容：We present GPU algorithms for Ewald summation methods for accelerating N-body Stokes flow problems in periodic domains. Like most N-body codes, Ewald sums use a near-field/far-field decomposition。",
+    "takeaway": "本文聚焦多 GPU、排序、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.16959v1",
+    "title": "Diagonal-Budgeted Trotterization for Efficient Quantum Hamiltonian Simulation",
+    "authors": [
+      "Srikar Chundury",
+      "Blake Burgstahler",
+      "Jiajia Li",
+      "In-Saeng Suh",
+      "Frank Mueller"
+    ],
+    "abstract": "Efficient classical simulation of quantum Hamiltonian dynamics is often bottlenecked by exponential state growth and the overhead of generic sparse linear algebra. We introduce diagonal-budgeted Trotterization, a structure-aware strategy that decomposes Hamiltonians into factors preserving diagonal sparsity while tightly controlling fidelity loss.\n  Our implementation, HamSim, utilizes a compact diagonal-sparse data layout and specialized C++/CUDA kernels to bypass the overheads of generic formats like CSR. By leveraging SIMD vectorization, multithreading, and GPU acceleration, HamSim achieves high performance across heterogeneous architectures. Benchmarks on the HamLib suite show that HamSim significantly outperforms Qiskit-Aer. On CPUs, HamSim attains speedups of $182$--$1,269\\times$ on optimization instances (TSP, MaxCut) and $4.8$--$841\\times$ on physical models (TFIM, Heisenberg). On GPUs, it achieves up to $178\\times$ speedup for $12$--$16$ qubit problems.\n  Unlike traditional Trotterization, HamSim maintains near-perfect fidelity without requiring exponential steps. This demonstrates that diagonal-aware numerical kernels provide a scalable foundation for high-fidelity classical Hamiltonian simulation.",
+    "published_date": "2026-06-15T17:00:06Z",
+    "updated_date": "2026-06-15T17:00:06Z",
+    "categories": [
+      "quant-ph",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.16959v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.16959v1",
+    "source": "arxiv",
+    "score": 0.39760021567344667,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA、SIMD 并行、异构计算相关技术。\n\n核心内容：Efficient classical simulation of quantum Hamiltonian dynamics is often bottlenecked by exponential state growth and the overhead of generic sparse linear algebra. We introduce diagonal-budgeted Trotterization, a structure-aware strategy that decomposes Hamiltonians into factors preserving diagonal ...。",
+    "takeaway": "本文聚焦GPU 加速、CUDA、SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.20374v1",
+    "title": "ARGUS: Production-Scale Tracing and Performance Diagnosis for over 10,000-GPU Clusters",
+    "authors": [
+      "Jiasheng Zhou",
+      "Longbin Zeng",
+      "Clavis Chen",
+      "Ruiming Lu",
+      "Qinwei Yang",
+      "Leyi Ye",
+      "Ray Ying",
+      "Key Zhang"
+    ],
+    "abstract": "Large-scale LLM training requires always-on, fine-grained observability for effective performance diagnosis at scale. Coarse resource monitors alone cannot localize root causes, and fine-grained profilers incur prohibitive (5%-30%) overheads and massive trace volumes, making always-on deployment impractical in large production clusters.\n  We propose ARGUS, a low-overhead, fine-grained, always-on tracing and real-time analysis system for training workloads in 10,000+ GPU-scale production clusters. ARGUS decomposes observation along the training call hierarchy into CPU call stacks, framework semantics, and GPU kernel execution, with always-on collection under a combined overhead of less than 2%. It builds a unified data pipeline and compresses raw kernel events by approximately 3,700x from 10 MB to 2.7 KB per rank per step. Its progressive diagnosis framework automatically isolates anomalous windows, straggler ranks, and degraded kernels through iteration-time, phase-level, and kernel-level analysis. Deployed for over six months on a 10,000+ GPU production cluster, ARGUS has supported continuous fail-slow detection and performance optimization. Our case studies further demonstrate its effectiveness across representative anomalies, including compute stragglers, link degradation, pipeline-bubble amplification, FlashAttention JIT stalls, and compute stragglers masked by communication symptoms.",
+    "published_date": "2026-06-18T15:35:45Z",
+    "updated_date": "2026-06-18T15:35:45Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.20374v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.20374v1",
+    "source": "arxiv",
+    "score": 0.39410608887672427,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型训练、通信优化相关技术。\n\n核心内容：Large-scale LLM training requires always-on, fine-grained observability for effective performance diagnosis at scale. Coarse resource monitors alone cannot localize root causes, and fine-grained profilers incur prohibitive (5%-30%) overheads and massive trace volumes, making always-on deployment imp...。",
+    "takeaway": "本文聚焦GPU 核函数、大模型训练、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.20537v1",
+    "title": "Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving",
+    "authors": [
+      "Liang Su"
+    ],
+    "abstract": "Mainstream LLM serving systems reuse prefix work mainly through paged or radix key-value (KV) caches. This is highly effective for high-throughput, high-concurrency serving, but it manages only one positional fragment of execution state: the KV cache. We study the opposite regime: low-latency, small-batch, on-device physical-AI serving, where interactive LLM agents, speech systems, and robot policies repeatedly branch, reset, interrupt, and re-enter under tight responsiveness budgets. We introduce execution-state capsules, a graph-bound checkpoint and restore mechanism for the complete restorable state at a committed boundary. FlashRT is a white-box, backend-facing kernel runtime whose evaluated NVIDIA CUDA backend runs captured graph plans over contiguous static buffers with no block-table indirection. Because the live state is a closed set of named buffers, a capsule can snapshot, restore, fork, or roll back the whole execution boundary, including KV, recurrent state, convolution state, MTP state, and metadata. This moves reuse from token-addressed KV fragments to graph-bound execution-state boundaries. On an RTX 5090, capsule restore is byte-exact at the stored-state level and token-identical under greedy decode. A KV-only ablation diverges, showing that recurrent state is load-bearing. GPU-resident snapshot and restore are sub-millisecond, and TTFT speedup over cold prefill grows from 3.9x at 2k tokens to 27x at 16k tokens. On Jetson AGX Thor and DGX Spark, the same correctness and structural properties hold. Capsules are not a replacement for high-throughput KV-cache serving; they define a complementary latency-first serving point for explicit execution-state reuse.",
+    "published_date": "2026-06-18T17:49:36Z",
+    "updated_date": "2026-06-18T17:49:36Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.20537v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.20537v1",
+    "source": "arxiv",
+    "score": 0.39228014469146727,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、延迟优化、吞吐量相关技术。\n\n核心内容：Mainstream LLM serving systems reuse prefix work mainly through paged or radix key-value (KV) caches. This is highly effective for high-throughput, high-concurrency serving, but it manages only one positional fragment of execution state: the KV cache。",
+    "takeaway": "本文聚焦CUDA、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.18600v1",
+    "title": "ShuntServe: Cost-Efficient LLM Serving on Heterogeneous Spot GPU Clusters",
+    "authors": [
+      "Seungwoo Jeong",
+      "Moohyun Song",
+      "Juhyun Park",
+      "Kyungyong Lee"
+    ],
+    "abstract": "As large language model (LLM) services become widely adopted, the cost of GPU resources for serving these models in cloud environments has emerged as a critical concern. Spot instances offer up to 90% cost savings over on-demand instances, but their frequent interruptions and limited availability pose significant challenges for continuous LLM serving. GPU spot instances, in particular, exhibit lower and more volatile availability than CPU-based instances, making homogeneous clusters that depend on a single GPU type vulnerable to correlated failures. Heterogeneous clusters spanning multiple GPU types can address this by leveraging complementary availability patterns across diverse spot pools, yet existing LLM serving systems are designed for homogeneous environments and suffer from load imbalance when deployed on heterogeneous GPUs. This paper presents ShuntServe, a cost-efficient LLM serving system for heterogeneous spot GPU clusters. ShuntServe employs a roofline model-based analytical serving performance estimator and a dynamic programming-based model placement optimizer that jointly determines node configuration, parallelization strategy, and layer assignment to maximize throughput across heterogeneous GPUs. To enhance fault tolerance when using spot instances, ShuntServe combines output-preserving request migration with concurrent initialization via a shared tensor store, minimizing migration downtime by overlapping replacement node preparation with ongoing serving. Evaluation on Llama-3.1-70B and Qwen3-32B with a heterogeneous AWS cluster of L4, A10G, and L40S GPUs shows that ShuntServe achieves 1.42x and 1.35x higher throughput than state-of-the-art baselines and attains 31.9% and 31.2% cost efficiency improvements over on-demand instances for offline and online serving, respectively.",
+    "published_date": "2026-06-17T02:01:40Z",
+    "updated_date": "2026-06-17T02:01:40Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.18600v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.18600v1",
+    "source": "arxiv",
+    "score": 0.38763408303260805,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、吞吐量相关技术。\n\n核心内容：As large language model (LLM) services become widely adopted, the cost of GPU resources for serving these models in cloud environments has emerged as a critical concern. Spot instances offer up to 90% cost savings over on-demand instances, but their frequent interruptions and limited availability po...。",
+    "takeaway": "本文聚焦异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  }
+]
