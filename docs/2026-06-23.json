@@ -1,0 +1,293 @@
+[
+  {
+    "id": "2606.22482v1",
+    "title": "NeutronSparse: Coordinating Heterogeneous Engines for Sparse Matrix Multiplication on NPUs",
+    "authors": [
+      "Xin Ai",
+      "Zeyu Ling",
+      "Hao Yuan",
+      "Qiange Wang",
+      "Yanfeng Zhang",
+      "Yutao Peng",
+      "Ge Yu"
+    ],
+    "abstract": "Sparse matrix-matrix multiplication (SpMM) is a fundamental data operation for large-scale sparse data processing. With NPUs increasingly deployed in data centers for their performance and energy efficiency, accelerating SpMM on these platforms is a natural choice. However, high-performance SpMM on NPUs poses a data management challenge, as irregular sparsity demands efficient data organization and scheduling. On Ascend 910B, the official MindSpore implementation achieves only 36.3% of the performance of GPU-based sparse libraries such as cuSPARSE on NVIDIA A100. To this end, we conduct an in-depth architectural analysis of SpMM execution on NPUs versus GPU and identify that the key performance bottleneck for SpMM on NPUs lies in the lack of efficient coordination across heterogeneous compute units under tile-based execution model. Therefore, we propose NeutronSparse, a coordination-first SpMM framework for NPUs. NeutronSparse integrates two key techniques: (i) Sparsity-aware coordination of heterogeneous engines, which adaptively partitions and balances workloads between heterogeneous compute units to keep them busy, and (ii) Locality-aware tile orchestrating, which reorganizes and reuses data tiles to reduce redundant computation and memory movement overhead. Evaluations on Ascend 910B show that NeutronSparse achieves 1.26x-7.78x speedup over NPU baselines and 1.03x-3.07x speedup over leading GPU libraries on NVIDIA A100, revealing untapped potential of NPUs for sparse computation.",
+    "published_date": "2026-06-21T12:52:18Z",
+    "updated_date": "2026-06-21T12:52:18Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.22482v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.22482v1",
+    "source": "arxiv",
+    "score": 0.5021042215824127,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究数据处理、异构计算相关技术。\n\n核心内容：Sparse matrix-matrix multiplication (SpMM) is a fundamental data operation for large-scale sparse data processing. With NPUs increasingly deployed in data centers for their performance and energy efficiency, accelerating SpMM on these platforms is a natural choice。",
+    "takeaway": "本文聚焦数据处理、异构计算，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.21695v1",
+    "title": "Efficient Domain Decomposition for the Helmholtz Equation on GPUs",
+    "authors": [
+      "Amit Rotem"
+    ],
+    "abstract": "The Helmholtz equation governs wave propagation in acoustics, electromagnetics, and seismology, but its indefinite nature makes it difficult to solve with iterative methods. Domain decomposition methods are a natural fit for massively parallel architectures, yet mapping efficient Helmholtz solvers onto modern GPUs remains a challenge. We address both with two key contributions: (1) a block-level domain decomposition scheme, in which each subdomain is assigned to a single thread block and all solves run concurrently in a single kernel launch, and (2) WaveHoltz as the subdomain solver. WaveHoltz is a fixed-point iteration that is uniquely well-suited to the GPU execution model due to its minimal memory footprint and no reduction operations. Together, these eliminate device-level synchronizations and replace global memory traffic with shared memory and register-level operations, keeping subdomain data largely resident in L1 and L2 cache. We explore two threading strategies: one degree of freedom per thread for small subdomains, and multiple degrees of freedom per thread for larger ones. Benchmarks of our CUDA based implementation on a NVIDIA A100 show that WaveHoltz achieves 2x-25x speedup over MINRES, with the advantage growing with subdomain size. Crucially, evaluating the subdomain solver in single rather than double precision yields an additional 2x-10x speedup--a benefit largely unattainable by MINRES due to loss of Krylov vector orthogonality under reduced precision.",
+    "published_date": "2026-06-19T19:05:49Z",
+    "updated_date": "2026-06-19T19:05:49Z",
+    "categories": [
+      "cs.DC",
+      "math.NA"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.21695v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.21695v1",
+    "source": "arxiv",
+    "score": 0.47300631999969484,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：The Helmholtz equation governs wave propagation in acoustics, electromagnetics, and seismology, but its indefinite nature makes it difficult to solve with iterative methods. Domain decomposition methods are a natural fit for massively parallel architectures, yet mapping efficient Helmholtz solvers o...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.21784v1",
+    "title": "KineticSim: A Lightweight, High-Performance Execution Engine for Real-Time Market Simulators",
+    "authors": [
+      "Shakya Jayakody",
+      "Prarthinie Jayakody"
+    ],
+    "abstract": "Simulating financial markets at scale with multi-agent (Agent-Based) models is critical for market design, regulatory stress-testing, and reinforcement learning, but traditional CPU simulators are bottlenecked by sequential processing while vectorized GPU frameworks suffer from kernel-launch overhead and redundant global-memory round-trips. We formalize, analyze, and evaluate a reusable parallel design pattern: persistent, state-carrying clearing for iterative multi-agent reductions. By caching mutable simulation state in thread-block shared memory across step boundaries, aggregating agent actions via shared-memory atomics, and resolving the clearing function cooperatively, the pattern reduces the per-step critical-path depth from Theta(L+A) for sequential clearing (L price-grid ticks, A agents) to Theta(log L + ceil(A/L)) and makes global-memory traffic independent of the step count. We implement this in KineticSim, a lightweight GPU execution engine that simulates massive ensembles of limit-order books in parallel, reaching a peak throughput of over 54.7 billion agent-events per second. On a fixed workload it delivers speedups of 3406x over CPU (NumPy), 27.8x over PyTorch GPU, 42.8x over JAX GPU, and 8.4x over a naive custom CUDA baseline, while using roughly an order of magnitude less GPU memory than PyTorch. Across 53 configurations the two custom CUDA engines produce bitwise-identical order books, and aggregate statistics match the CPU reference to within 0.1%. The pattern generalizes to other iterative multi-agent workloads requiring state-persistent, block-localized reductions.",
+    "published_date": "2026-06-19T22:12:32Z",
+    "updated_date": "2026-06-19T22:12:32Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF",
+      "q-fin.TR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.21784v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.21784v1",
+    "source": "arxiv",
+    "score": 0.472840096950531,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、向量化执行、PyTorch、缓存相关技术。\n\n核心内容：Simulating financial markets at scale with multi-agent (Agent-Based) models is critical for market design, regulatory stress-testing, and reinforcement learning, but traditional CPU simulators are bottlenecked by sequential processing while vectorized GPU frameworks suffer from kernel-launch overhea...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、向量化执行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.17850v1",
+    "title": "CUTh-Solver: GPU-Accelerated Sparse Matrix Solver for High-Resolution Thermal Simulation of 3D ICs",
+    "authors": [
+      "Chenghan Wang",
+      "Zhen Zhuang",
+      "Shui Jiang",
+      "Siyuan Liang",
+      "Xiaoman Yang",
+      "Kai Zhu",
+      "Darong Huang",
+      "Luis Costero",
+      "Rongmei Chen",
+      "Tsung-Wei Huang",
+      "David Atienza",
+      "Tsung-Yi Ho"
+    ],
+    "abstract": "Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload. Fortunately, the coefficient matrices are often sparse with regular sparsity patterns, offering optimization opportunities. However, existing general-purpose matrix solvers on GPUs rarely exploit these domain-specific properties, thereby encountering bottlenecks in data storage, memory access, parallelism, computational efficiency, and hardware utilization. Therefore, we propose CUTh-Solver, a co-designed GPU-accelerated Preconditioned Conjugate Gradient (PCG)-based sparse solver framework for Symmetric Positive Definite (SPD) systems arising from high-resolution steady-state and transient 3D IC thermal simulation. For data storage, CUTh-Solver condenses the Diagonal (DIA) storage format to remove redundancy. To optimize the memory access, CUTh-Solver employs diagonal-wise SpMV to achieve coalesced memory access. We further observe a critical conflict between parallelism and preconditioning quality and thus adopt a high-parallelism preconditioning strategy. To improve computational efficiency and hardware utilization, we employ an adaptive fine-grained mixed-precision strategy that leverages diverse floating-point units to avoid resource contention, enhancing throughput without compromising numerical stability. Experimental results show that CUTh-Solver achieves up to 25.8x speedup over GPU-accelerated COMSOL Multiphysics 6.4 and over 3x speedup over NVIDIA's native general-purpose libraries (AmgX, cuSPARSE, cuDSS). Ablation studies validate the individual contribution of each optimization. The code is available at: https://github.com/Chenghan-Wang/CUTh-Solver",
+    "published_date": "2026-06-16T12:20:37Z",
+    "updated_date": "2026-06-16T12:20:37Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.17850v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.17850v1",
+    "source": "arxiv",
+    "score": 0.4718853688240051,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、吞吐量相关技术。\n\n核心内容：Coarse-grained thermal simulation tends to underestimate localized thermal issues, potentially missing critical hotspots. Accurate analysis, therefore, demands fine-grained information, which dramatically increases grid resolution and thus computational workload。",
+    "takeaway": "本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.23265v1",
+    "title": "Node-Level Performance and Energy Characterization of Flagship Science Applications on SuperMUC-NG Phase 2",
+    "authors": [
+      "Salvatore Cielo",
+      "Elmira Birang",
+      "Alexander Pöppl",
+      "Sajad Azizi",
+      "Plamen Dobrev",
+      "Margarita Egelhofer",
+      "Ivan Pribec",
+      "Gerald Mathias"
+    ],
+    "abstract": "We present a systematic performance and energy-efficiency characterization of five flagship scientific workloads on SuperMUC-NG phase 2, the 28 PetaFLOPs system at the Leibniz Supercomputing Center (LRZ) equipped with Intel Xeon Platinum 8480+ and Intel Data Center GPU Max 1550 (Ponte Vecchio, PVC) accelerators. The selected codes span molecular dynamics (gromacs, lammps), astrophysics and cosmology (OpenGadget3, AthenaK), and finite-element PDE solvers from the dealii-X Center of Excellence. For each code we measure throughput and energy efficiency expressed as compute-elements per wall-clock second (or per Joule of consumed energy) on a single compute node, comparing CPU-only (SPR) against combined CPU+GPU (SPR+PVC) configurations where available. Energy measurements rely on lightweight code instrumentation with p3em, or the Energy Aware Runtime (EAR) present on the system. Our results show that GPU offload yields $4-12\\times$ higher throughput and up to $15\\times$ better energy efficiency compared to CPU-only execution, with lammps and AthenaK benefiting most. However, both throughput and energy gains are sensitive to problem granularity: insufficient work per GPU tile erodes the accelerator advantage, as clearly observed in AthenaK at small mesh-block sizes. The power-budget utilization is systematically lower for CPUs than it is for GPUs, indicating that even at peak useful-work rate, most applications running on CPUs leave a significant fraction of the node's thermal envelope unused.",
+    "published_date": "2026-06-22T12:47:43Z",
+    "updated_date": "2026-06-22T12:47:43Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.23265v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.23265v1",
+    "source": "arxiv",
+    "score": 0.4272651815414429,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：We present a systematic performance and energy-efficiency characterization of five flagship scientific workloads on SuperMUC-NG phase 2, the 28 PetaFLOPs system at the Leibniz Supercomputing Center (LRZ) equipped with Intel Xeon Platinum 8480+ and Intel Data Center GPU Max 1550 (Ponte Vecchio, PVC) ...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.20128v1",
+    "title": "The Correctness Illusion in LLM-Generated GPU Kernels",
+    "authors": [
+      "Dipankar Sarkar"
+    ],
+    "abstract": "Benchmarks for LLM-generated GPU kernels (KernelBench, TritonBench, GEAK) score correctness through fixed-shape, small-sample allclose-style checks. The number of inputs varies between benchmarks. The shape, dtype, and tolerance are fixed for each kernel. We test that oracle empirically. We construct a controlled corpus of 24 Triton and CPU stand-in kernels (15 correct controls and 9 LLM-style buggy variants seeded with documented transcription errors) and re-evaluate it under op-schema-aware seeded fuzzing with a high-precision (fp64) CPU reference and per-(op, dtype) absolute tolerances. The seeded oracle flags 9 of 9 buggy kernels and passes 15 of 15 correct controls, at zero precision cost on controls. We extend the corpus to 26 ops (adding a flash-attention pair) and re-run the same protocol on five GPU classes (RTX 3060, A10, L40S, A100 SXM4, H100 NVL). The verdicts are identical across all five GPUs: 10 of 10 illusions caught and 16 of 16 controls clean. The corpus result is about LLM-style transcription bugs that the allclose-on-one-shape oracle certifies as correct, not about the bug rate of any specific deployed LLM. Every flagged failure replays byte-for-byte from a stored seed.",
+    "published_date": "2026-06-18T11:52:46Z",
+    "updated_date": "2026-06-18T11:52:46Z",
+    "categories": [
+      "cs.SE",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.20128v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.20128v1",
+    "source": "arxiv",
+    "score": 0.4210057842731476,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、隐私信息检索相关技术。\n\n核心内容：Benchmarks for LLM-generated GPU kernels (KernelBench, TritonBench, GEAK) score correctness through fixed-shape, small-sample allclose-style checks. The number of inputs varies between benchmarks。",
+    "takeaway": "本文聚焦GPU 核函数、隐私信息检索，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.21101v1",
+    "title": "DPIFrame: A Dual-Level Parallelism Acceleration Framework for CTR Model Inference",
+    "authors": [
+      "Dezhi Yi",
+      "Huifeng Guo",
+      "Kunpeng Xie",
+      "Zhaolong Jian",
+      "Haochi Yu",
+      "Wenxuan He",
+      "Zhenhua Dong",
+      "Ruiming Tang",
+      "Ye Lu"
+    ],
+    "abstract": "Deep learning technology has enhanced the ability of Click-through rate (CTR) prediction models to learn features and improve prediction accuracy. However, it is challenging to deploy CTR models on GPU smoothly and perform inference efficiently, because there is a huge mismatch between the serial computational pattern and the parallel model structure. In this paper, we propose DPIFrame, the first dual parallelizable framework to accelerate CTR model inference. In DPIFrame, a) a dual parallelizable architecture is proposed to perform parallel CTR model inference in both intra-module and inter-module; b) an efficient multi-table lookup algorithm is presented for embedding operations through anticipating the whole workload in advance; c) a breadth-first stream scheduling strategy is designed for fine-grained management of parallel computation on GPU to further supporting the dual parallel execution. Extensive experiments are conducted on two real-world datasets, and the results highlight that DPIFrame can reduce the embedding latency efficiently by \\textbf{23.0$\\times$} compared to PyTorch. Compared with PyTorch, TorchRec, HugeCTR, and OneFlow, DPIFrame can achieve state-of-the-art inference performance on GPU with speedups of \\textbf{5.83$\\times$}, \\textbf{4.29$\\times$}, \\textbf{2.15$\\times$}, and \\textbf{2.0$\\times$}, respectively.",
+    "published_date": "2026-06-19T05:05:40Z",
+    "updated_date": "2026-06-19T05:05:40Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.21101v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.21101v1",
+    "source": "arxiv",
+    "score": 0.4185398066043854,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、延迟优化相关技术。\n\n核心内容：Deep learning technology has enhanced the ability of Click-through rate (CTR) prediction models to learn features and improve prediction accuracy. However, it is challenging to deploy CTR models on GPU smoothly and perform inference efficiently, because there is a huge mismatch between the serial co...。",
+    "takeaway": "本文聚焦PyTorch、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2606.18463v1",
+    "title": "Mixed-Precision Communication-Avoiding SGD for Generalized Linear Models on GPUs",
+    "authors": [
+      "Aditya Devarakonda",
+      "Irene Simó Muñoz",
+      "Giulia Guidi"
+    ],
+    "abstract": "Distributed stochastic gradient descent (SGD) is limited by communication rather than computation, since each iteration requires an AllReduce across processes. Communication-avoiding SGD (CA-SGD) amortizes communication over $s$ iterations by replacing $s$ consecutive AllReduces with a single AllReduce of an $sb\\times sb$ Gram matrix, trading more computation and bandwidth for fewer synchronization points. Modern GPUs with matrix hardware and reduced-precision formats offset this by accelerating the Gram GEMM and shrinking BF16 traffic. We study mixed-precision CA-SGD for generalized linear models on NVIDIA GPUs. Our finite-precision analysis decomposes the local rounding error of one CA-SGD outer iteration into nine independent precision choices, depending on the hardware only through its low-precision unit roundoffs, so the resulting recipes transfer in principle across GPU generations. The recipe stores the input matrix and margin vector in low precision, computes the Gram matrix from low-precision inputs with high-precision accumulation, communicates it in high precision, and performs the inner recurrence and weight updates in high precision. On NERSC Perlmutter A100 GPUs, mixed-precision CA-SGD matches FP32 SGD loss within $0.5\\%$ on logistic, linear, and Poisson problems and reaches $5.1$--$6.8\\times$ speedup over FP32 SGD on epsilon, SUSY, HIGGS, synth, and Poisson-synth. Our software is available at https://doi.org/10.5281/zenodo.20448273",
+    "published_date": "2026-06-16T20:14:34Z",
+    "updated_date": "2026-06-16T20:14:34Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "math.NA",
+      "stat.ML"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.18463v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.18463v1",
+    "source": "arxiv",
+    "score": 0.41702227234840394,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化、带宽优化相关技术。\n\n核心内容：Distributed stochastic gradient descent (SGD) is limited by communication rather than computation, since each iteration requires an AllReduce across processes. Communication-avoiding SGD (CA-SGD) amortizes communication over $s$ iterations by replacing $s$ consecutive AllReduces with a single AllRed...。",
+    "takeaway": "本文聚焦通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.20863v1",
+    "title": "Multiword Arithmetic and Parallel Computing",
+    "authors": [
+      "Jan Verschelde"
+    ],
+    "abstract": "In many applications, the precision by the available hardware arithmetic is insufficient to guarantee accurate results. Multiword arithmetic is a special type of multiprecision arithmetic where a multiple double is an unevaluated sum of 64-bit doubles, or where a multiple integer is an unevaluated sum of 64-bit integers. Parallel computing is applied to compensate for the cost overhead of multiword arithmetic. This type of arithmetic exploits naturally the optimized hardware, allows for efficient type conversions, memory layouts, all favorable for parallel computing. For example, storing a multiword in registers rather than arrays is beneficial to parallel computing by tasking and acceleration by graphics processing units. Code for multiword arithmetic is available in the software PHCpack, written mainly in Ada, publicly available at github, and as an Alire crate, released under the GNU GPL v3.0 license.",
+    "published_date": "2026-06-18T18:51:13Z",
+    "updated_date": "2026-06-18T18:51:13Z",
+    "categories": [
+      "cs.MS",
+      "cs.DC",
+      "math.NA"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.20863v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.20863v1",
+    "source": "arxiv",
+    "score": 0.4120368957519531,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：In many applications, the precision by the available hardware arithmetic is insufficient to guarantee accurate results. Multiword arithmetic is a special type of multiprecision arithmetic where a multiple double is an unevaluated sum of 64-bit doubles, or where a multiple integer is an unevaluated s...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2606.19059v1",
+    "title": "A performance portable fast Ewald summation for Stokes flow",
+    "authors": [
+      "Gabriel Kosmacher",
+      "Ziyu Du",
+      "Joar Bagge",
+      "George Biros"
+    ],
+    "abstract": "We present GPU algorithms for Ewald summation methods for accelerating N-body Stokes flow problems in periodic domains. Like most N-body codes, Ewald sums use a near-field/far-field decomposition. The near field involves particle-to-particle (P2P) interactions. The far field primarily involves particle-to-grid (P2G) and grid-to-particle (G2P) interactions, as well as Fast Fourier Transforms. For each interaction, we investigate several algorithmic variants. Our implementation uses PyKokkos, a Python interface for the Kokkos C++ parallel programming framework, which supports portability to AMD/NVIDIA GPU and ARM/x86 CPU architectures. Double and single-precision numerical results, alongside analytical performance models, confirm the efficiency of our algorithms on AMD and NVIDIA GPU and on ARM and AMD CPU architectures. The P2P interaction achieves around 73% compute efficiency on NVIDIA H200, 84% on NVIDIA A100, 60% on AMD MI300, 52% on Grace CPU, and 68% on AMD Epyc CPU. A straightforward implementation of the P2G kernel can become a computational bottleneck. We introduce a novel P2G algorithm that achieves up to 16$\\times$ speedup compared to a baseline GPU implementation. The overall Ewald sum code processes approximately 8 million particles per second on a H200 GPU, and about a half-million particles per second on a Grace CPU, for nine digits of accuracy. We also perform a multi-GPU weak scaling test on up to 256 million particles (64 GPUs) that shows bounded communication cost for all stages except the all-to-all particle sorting, which can be reduced to neighbor communication in the relevant time-stepping regime.",
+    "published_date": "2026-06-17T13:28:38Z",
+    "updated_date": "2026-06-17T13:28:38Z",
+    "categories": [
+      "math.NA",
+      "cs.DC",
+      "physics.comp-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.19059v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.19059v1",
+    "source": "arxiv",
+    "score": 0.40809067964553836,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、排序、通信优化相关技术。\n\n核心内容：We present GPU algorithms for Ewald summation methods for accelerating N-body Stokes flow problems in periodic domains. Like most N-body codes, Ewald sums use a near-field/far-field decomposition。",
+    "takeaway": "本文聚焦多 GPU、排序、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
