@@ -21,7 +21,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.22482v1",
     "arxiv_url": "https://arxiv.org/abs/2606.22482v1",
     "source": "arxiv",
-    "score": 0.5021042215824127,
+    "score": 0.5021041321754456,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -46,7 +46,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.21695v1",
     "arxiv_url": "https://arxiv.org/abs/2606.21695v1",
     "source": "arxiv",
-    "score": 0.47300631999969484,
+    "score": 0.47300626039505006,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -73,7 +73,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.21784v1",
     "arxiv_url": "https://arxiv.org/abs/2606.21784v1",
     "source": "arxiv",
-    "score": 0.472840096950531,
+    "score": 0.4728399777412414,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -108,7 +108,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.17850v1",
     "arxiv_url": "https://arxiv.org/abs/2606.17850v1",
     "source": "arxiv",
-    "score": 0.4718853688240051,
+    "score": 0.47188527941703795,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -166,7 +166,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.20128v1",
     "arxiv_url": "https://arxiv.org/abs/2606.20128v1",
     "source": "arxiv",
-    "score": 0.4210057842731476,
+    "score": 0.4210057544708252,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -198,7 +198,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.21101v1",
     "arxiv_url": "https://arxiv.org/abs/2606.21101v1",
     "source": "arxiv",
-    "score": 0.4185398066043854,
+    "score": 0.4185397469997406,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -227,7 +227,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.18463v1",
     "arxiv_url": "https://arxiv.org/abs/2606.18463v1",
     "source": "arxiv",
-    "score": 0.41702227234840394,
+    "score": 0.417022123336792,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -253,7 +253,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.20863v1",
     "arxiv_url": "https://arxiv.org/abs/2606.20863v1",
     "source": "arxiv",
-    "score": 0.4120368957519531,
+    "score": 0.41203683614730835,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
@@ -282,7 +282,7 @@
     "pdf_url": "https://arxiv.org/pdf/2606.19059v1",
     "arxiv_url": "https://arxiv.org/abs/2606.19059v1",
     "source": "arxiv",
-    "score": 0.40809067964553836,
+    "score": 0.40809070944786074,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
