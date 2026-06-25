@@ -1,0 +1,288 @@
+[
+  {
+    "id": "2606.24647v1",
+    "title": "Accelerating Presto with GPUs",
+    "authors": [
+      "Daniel Bauer",
+      "Luis Garces-Erice",
+      "Deepak Majeti",
+      "Zoltan Arnold Nagy",
+      "Sean Rooney",
+      "Greg Kimball",
+      "Devavret Makkar",
+      "Todd Mostak",
+      "Karthikeyan Natarajan"
+    ],
+    "abstract": "We describe how we extended Presto to be GPU-aware. We focus on two critical challenges: efficiently moving data from storage to GPU operators, and enabling data exchange between operators without leaving GPU memory even when a query is distributed. To guide our design, we conducted a series of initial experiments in which we executed queries derived from the TPC-H benchmark on a multi-GPU cluster using NVIDIA's C++ cuDF data-frame library, and measured how different architectures and configurations influenced performance. We show how these insights inform our extensions to Presto, detailing the architectural changes required to integrate GPU execution into the existing Presto framework. Our initial evaluation demonstrates substantial cost/performance (up to 6x) improvements over CPU Presto on standard analytical benchmarks. Our code is available as part of open-source Presto/Velox, and we have started to use it to run customer production workloads.",
+    "published_date": "2026-06-23T14:42:14Z",
+    "updated_date": "2026-06-23T14:42:14Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.24647v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.24647v1",
+    "source": "arxiv",
+    "score": 0.5797287511825562,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、多 GPU相关技术。\n\n核心内容：We describe how we extended Presto to be GPU-aware. We focus on two critical challenges: efficiently moving data from storage to GPU operators, and enabling data exchange between operators without leaving GPU memory even when a query is distributed。",
+    "takeaway": "本文聚焦GPU 内存管理、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2606.24417v1",
+    "title": "cuSBF: A Minimizer-Aware Bloom Filter for Genomic Sequence Data on Modern GPUs",
+    "authors": [
+      "Tim Dortmann",
+      "Markus Vieth",
+      "Bertil Schmidt"
+    ],
+    "abstract": "Efficient genomic k-mer indexing depends on approximate membership query (AMQ) structures that must deliver high throughput, low false-positive rates (FPR), and modest memory footprints. The Super Bloom filter (SBF) is attractive for this scenario because minimizer-guided sharding and the Findere scheme exploit the redundancy of overlapping k-mers. However, those same features cause high per-k-mer compute cost, severe register pressure, and irregular memory accesses, which hinder an effective GPU implementation. We present cuSBF, an open-source, header-only CUDA library that implements SBF for sequence-native workloads. cuSBF's design merges sectorized shards, cooperative shared-memory tiling, warp-level shard sharing, and segmented warp reductions, turning super-k-mer locality into scalable GPU parallelism. Across real genomic workloads on RTX PRO 6000 Blackwell and GH200 systems, cuSBF achieves the highest throughput among all evaluated sequence-capable baselines. On the RTX PRO 6000, it surpasses the cuCollections blocked Bloom filter baseline by up to 9.1x for insertion and 7.7x for query, while reaching up to 92x and 234x speedups over the multi-threaded CPU Super Bloom reference implementation. It also outperforms GPU-based dynamic AMQs (Cuckoo, Two-Choice, Quotient filters) by 1.5-3400x depending on workload characteristics. A parameter sweep identifies (s = 28, m = 16, H = 4) as Pareto-optimal for k = 31, yielding significantly lower FPR than cuCollections at matched memory budgets. Crucially, cuSBF's architecture-aware design sustains 85% streaming multiprocessor utilization even for out-of-cache filters - proving that sequence locality, not raw bandwidth, is the key to GPU-accelerated genomic indexing.",
+    "published_date": "2026-06-23T10:53:34Z",
+    "updated_date": "2026-06-23T10:53:34Z",
+    "categories": [
+      "cs.DC",
+      "cs.DS",
+      "q-bio.GN"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.24417v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.24417v1",
+    "source": "arxiv",
+    "score": 0.5588651740550995,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：Efficient genomic k-mer indexing depends on approximate membership query (AMQ) structures that must deliver high throughput, low false-positive rates (FPR), and modest memory footprints. The Super Bloom filter (SBF) is attractive for this scenario because minimizer-guided sharding and the Findere sc...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.23891v1",
+    "title": "Memory Layouts for GPU-Data Transfer Buffering in SPH",
+    "authors": [
+      "Mladen Ivkovic",
+      "Abouzied M. A. Nasar",
+      "Tobias Weinzierl",
+      "Matthieu Schaller",
+      "Benedict D. Rogers",
+      "Georgios Fourtakas",
+      "Scott T. Kay"
+    ],
+    "abstract": "The rise in GPU compute speed has outpaced improvements in host-to-device memory transfer speeds, despite the advent of shared-memory superchips. Consequently, memory transfer times now constitute an increasingly large fraction of total time-to-solution, compelling developers to compress GPU kernel input and output data into compact, minimal formats prior to GPU-offloading. This complements existing work on GPU- and compute-friendly data arrangements. We study a Smoothed Particle Hydrodynamics solver and propose memory layout strategies for host-side particle data that are particularly well-suited to GPU-offloading. Specifically, we advocate splitting classic array-of-struct data structures into a split array-of-struct arrangement, in which each logical struct decomposes into substructs determined by kernel read/write access patterns and attribute types. Splitting a monolithic particle struct into several bespoke, finer-grained structs can reduce the time required to pack data to and from buffers by ~20% - 40%, lowering total time spent on GPU-offloading by ~12% - 25%.",
+    "published_date": "2026-06-22T19:41:25Z",
+    "updated_date": "2026-06-22T19:41:25Z",
+    "categories": [
+      "cs.DC",
+      "cs.MS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.23891v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.23891v1",
+    "source": "arxiv",
+    "score": 0.5073326361179352,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、GPU 核函数相关技术。\n\n核心内容：The rise in GPU compute speed has outpaced improvements in host-to-device memory transfer speeds, despite the advent of shared-memory superchips. Consequently, memory transfer times now constitute an increasingly large fraction of total time-to-solution, compelling developers to compress GPU kernel ...。",
+    "takeaway": "本文聚焦GPU 计算、GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2606.22482v1",
+    "title": "NeutronSparse: Coordinating Heterogeneous Engines for Sparse Matrix Multiplication on NPUs",
+    "authors": [
+      "Xin Ai",
+      "Zeyu Ling",
+      "Hao Yuan",
+      "Qiange Wang",
+      "Yanfeng Zhang",
+      "Yutao Peng",
+      "Ge Yu"
+    ],
+    "abstract": "Sparse matrix-matrix multiplication (SpMM) is a fundamental data operation for large-scale sparse data processing. With NPUs increasingly deployed in data centers for their performance and energy efficiency, accelerating SpMM on these platforms is a natural choice. However, high-performance SpMM on NPUs poses a data management challenge, as irregular sparsity demands efficient data organization and scheduling. On Ascend 910B, the official MindSpore implementation achieves only 36.3% of the performance of GPU-based sparse libraries such as cuSPARSE on NVIDIA A100. To this end, we conduct an in-depth architectural analysis of SpMM execution on NPUs versus GPU and identify that the key performance bottleneck for SpMM on NPUs lies in the lack of efficient coordination across heterogeneous compute units under tile-based execution model. Therefore, we propose NeutronSparse, a coordination-first SpMM framework for NPUs. NeutronSparse integrates two key techniques: (i) Sparsity-aware coordination of heterogeneous engines, which adaptively partitions and balances workloads between heterogeneous compute units to keep them busy, and (ii) Locality-aware tile orchestrating, which reorganizes and reuses data tiles to reduce redundant computation and memory movement overhead. Evaluations on Ascend 910B show that NeutronSparse achieves 1.26x-7.78x speedup over NPU baselines and 1.03x-3.07x speedup over leading GPU libraries on NVIDIA A100, revealing untapped potential of NPUs for sparse computation.",
+    "published_date": "2026-06-21T12:52:18Z",
+    "updated_date": "2026-06-21T12:52:18Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.22482v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.22482v1",
+    "source": "arxiv",
+    "score": 0.5021042215824127,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究数据处理、异构计算相关技术。\n\n核心内容：Sparse matrix-matrix multiplication (SpMM) is a fundamental data operation for large-scale sparse data processing. With NPUs increasingly deployed in data centers for their performance and energy efficiency, accelerating SpMM on these platforms is a natural choice。",
+    "takeaway": "本文聚焦数据处理、异构计算，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.23969v1",
+    "title": "The Serialized Bridge: Understanding and Recovering LLM Serving Performance under Blackwell GPU Confidential Computing",
+    "authors": [
+      "Hang Yin",
+      "Kevin Wang"
+    ],
+    "abstract": "GPU Confidential Computing (GPU-CC) now preserves GPU-local performance: on NVIDIA B300, BF16 matmul runs at 0.998x of non-confidential performance. Yet LLM serving under Intel TDX plus GPU-CC still loses 13-27% of throughput, and KV-cache restore latency can more than double. This paper studies that gap on two Blackwell platforms, RTX Pro 6000 and B300 HGX, and identifies its dominant cause: the confidential VM-GPU bridge, not GPU compute.\n  We find that GPU-CC turns host/device movement into a serialized, high-setup-cost channel. Secure copies do not gain CUDA-stream concurrency within a context, asynchronous transfers block at the runtime boundary, and small crossings pay a fixed toll. This violates the assumptions of modern inference runtimes, where DMA is expected to be cheap, concurrent, and asynchronous. In vLLM dense decode, the gap closes around 44x-slower small alloc-and-copy operations; targeted patches reject alternative explanations. A scheduling flag recovers 57% of the gap, while a worker-thread drain recovers up to 92% in qualified high-concurrency runs. The same bridge model explains a +131% KV-restore penalty and a 34x model-load slowdown.\n  Blackwell also changes the confidential tenancy unit. We qualify confidential multi-GPU NVSwitch tenants on B300, including 510 GB/s NVLink P2P inside a CVM and concurrent isolated tenants, and identify the remaining fabric-attestation gap for production confidential AI platforms.",
+    "published_date": "2026-06-22T21:48:53Z",
+    "updated_date": "2026-06-22T21:48:53Z",
+    "categories": [
+      "cs.DC",
+      "cs.CR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.23969v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.23969v1",
+    "source": "arxiv",
+    "score": 0.4797024857997894,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、CUDA、多 GPU、NVLink 互连、延迟优化相关技术。\n\n核心内容：GPU Confidential Computing (GPU-CC) now preserves GPU-local performance: on NVIDIA B300, BF16 matmul runs at 0.998x of non-confidential performance. Yet LLM serving under Intel TDX plus GPU-CC still loses 13-27% of throughput, and KV-cache restore latency can more than double。",
+    "takeaway": "本文聚焦GPU 计算、CUDA、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.21695v1",
+    "title": "Efficient Domain Decomposition for the Helmholtz Equation on GPUs",
+    "authors": [
+      "Amit Rotem"
+    ],
+    "abstract": "The Helmholtz equation governs wave propagation in acoustics, electromagnetics, and seismology, but its indefinite nature makes it difficult to solve with iterative methods. Domain decomposition methods are a natural fit for massively parallel architectures, yet mapping efficient Helmholtz solvers onto modern GPUs remains a challenge. We address both with two key contributions: (1) a block-level domain decomposition scheme, in which each subdomain is assigned to a single thread block and all solves run concurrently in a single kernel launch, and (2) WaveHoltz as the subdomain solver. WaveHoltz is a fixed-point iteration that is uniquely well-suited to the GPU execution model due to its minimal memory footprint and no reduction operations. Together, these eliminate device-level synchronizations and replace global memory traffic with shared memory and register-level operations, keeping subdomain data largely resident in L1 and L2 cache. We explore two threading strategies: one degree of freedom per thread for small subdomains, and multiple degrees of freedom per thread for larger ones. Benchmarks of our CUDA based implementation on a NVIDIA A100 show that WaveHoltz achieves 2x-25x speedup over MINRES, with the advantage growing with subdomain size. Crucially, evaluating the subdomain solver in single rather than double precision yields an additional 2x-10x speedup--a benefit largely unattainable by MINRES due to loss of Krylov vector orthogonality under reduced precision.",
+    "published_date": "2026-06-19T19:05:49Z",
+    "updated_date": "2026-06-19T19:05:49Z",
+    "categories": [
+      "cs.DC",
+      "math.NA"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.21695v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.21695v1",
+    "source": "arxiv",
+    "score": 0.47300631999969484,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：The Helmholtz equation governs wave propagation in acoustics, electromagnetics, and seismology, but its indefinite nature makes it difficult to solve with iterative methods. Domain decomposition methods are a natural fit for massively parallel architectures, yet mapping efficient Helmholtz solvers o...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.21784v1",
+    "title": "KineticSim: A Lightweight, High-Performance Execution Engine for Real-Time Market Simulators",
+    "authors": [
+      "Shakya Jayakody",
+      "Prarthinie Jayakody"
+    ],
+    "abstract": "Simulating financial markets at scale with multi-agent (Agent-Based) models is critical for market design, regulatory stress-testing, and reinforcement learning, but traditional CPU simulators are bottlenecked by sequential processing while vectorized GPU frameworks suffer from kernel-launch overhead and redundant global-memory round-trips. We formalize, analyze, and evaluate a reusable parallel design pattern: persistent, state-carrying clearing for iterative multi-agent reductions. By caching mutable simulation state in thread-block shared memory across step boundaries, aggregating agent actions via shared-memory atomics, and resolving the clearing function cooperatively, the pattern reduces the per-step critical-path depth from Theta(L+A) for sequential clearing (L price-grid ticks, A agents) to Theta(log L + ceil(A/L)) and makes global-memory traffic independent of the step count. We implement this in KineticSim, a lightweight GPU execution engine that simulates massive ensembles of limit-order books in parallel, reaching a peak throughput of over 54.7 billion agent-events per second. On a fixed workload it delivers speedups of 3406x over CPU (NumPy), 27.8x over PyTorch GPU, 42.8x over JAX GPU, and 8.4x over a naive custom CUDA baseline, while using roughly an order of magnitude less GPU memory than PyTorch. Across 53 configurations the two custom CUDA engines produce bitwise-identical order books, and aggregate statistics match the CPU reference to within 0.1%. The pattern generalizes to other iterative multi-agent workloads requiring state-persistent, block-localized reductions.",
+    "published_date": "2026-06-19T22:12:32Z",
+    "updated_date": "2026-06-19T22:12:32Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF",
+      "q-fin.TR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.21784v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.21784v1",
+    "source": "arxiv",
+    "score": 0.472840096950531,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、向量化执行、PyTorch、缓存相关技术。\n\n核心内容：Simulating financial markets at scale with multi-agent (Agent-Based) models is critical for market design, regulatory stress-testing, and reinforcement learning, but traditional CPU simulators are bottlenecked by sequential processing while vectorized GPU frameworks suffer from kernel-launch overhea...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、向量化执行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.24934v1",
+    "title": "Unprivileged Topology Certificates for Cloud GPU Attestation",
+    "authors": [
+      "Faruk Alpay",
+      "Taylan Alpay"
+    ],
+    "abstract": "Cloud GPU tenants receive a model name and a region, but cannot directly inspect the physical accelerator that runs their job. We present a software-only attestation primitive for this setting. A CUDA probe measures an SM-by-memory-region latency matrix using physical SM labels and dependent global loads. A streaming reducer commits sufficient statistics, configuration, code hashes, network evidence, and a compressed raw data archive into a certificate that a verifier can check without a GPU. The certificate supports three claims. First, the per-SM latency map is a stable physical fingerprint. Over a six-hour full-load RTX 5090 run, its median temporal jitter is 0.09 cycles, while shape-only leave-one-out classification separates distinct Blackwell dies with 100.0% accuracy. Second, cache-bypassing HBM sweeps recover hardware-class topology across generations, including a unified Volta V100 memory domain, a two-way Hopper H200 L2 split, and a Blackwell B200 two-die NV-HBI package whose 74/74 SM partition carries a 30-cycle, 15.5 ns cross-die penalty. Third, public network landmarks bind the same certificate to a coarse location. In the B200 run, 169 RIPE Atlas probes place the server within 44 km of its claimed datacentre and reject all 11 decoy sites. Together, these measurements check cloud-GPU identity, class, and coarse location without privileged access or a vendor key.",
+    "published_date": "2026-06-22T11:33:12Z",
+    "updated_date": "2026-06-22T11:33:12Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.24934v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.24934v1",
+    "source": "arxiv",
+    "score": 0.46113431334495547,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、网络、延迟优化相关技术。\n\n核心内容：Cloud GPU tenants receive a model name and a region, but cannot directly inspect the physical accelerator that runs their job. We present a software-only attestation primitive for this setting。",
+    "takeaway": "本文聚焦CUDA、网络、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.25453v1",
+    "title": "EmuGEMM: Fused Tensor Core Kernels for Precision Emulation in Matrix Multiplication",
+    "authors": [
+      "Denghui Lu",
+      "Alexander Maeder",
+      "Mathieu Luisier",
+      "Alexandros Nikolaos Ziogas"
+    ],
+    "abstract": "Modern GPUs devote an increasing silicon budget to low-precision matrix-multiplication units, widening the precision-throughput gap for scientific computing workloads. Ozaki Schemes I and II offer an alternative by reconstructing high-precision general matrix multiplication (GEMM) from low-precision operations, yet existing implementations leave substantial performance untapped. In particular, intermediate results are repeatedly materialized in global memory, making data movement the dominant bottleneck. We present EmuGEMM, fused integer Tensor Core kernels for NVIDIA Hopper and Blackwell GPUs that eliminate redundant memory round-trips in both Ozaki schemes. Using Scheme I, EmuGEMM sustains up to 1,639 Top/s on Hopper (83% of INT8 peak) and 3,654 Top/s on Blackwell (81%). For large matrices, EmuGEMM surpasses cuBLAS TF32 throughput by up to 1.4x on Hopper and 1.7x on Blackwell, at comparable accuracy. Using Scheme II, EmuGEMM extends to complex arithmetic and outperforms cuBLAS ZGEMM by up to 2.3x on Hopper and 5.5x on Blackwell.",
+    "published_date": "2026-06-24T06:27:44Z",
+    "updated_date": "2026-06-24T06:27:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.MS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.25453v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.25453v1",
+    "source": "arxiv",
+    "score": 0.4601693141460419,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Modern GPUs devote an increasing silicon budget to low-precision matrix-multiplication units, widening the precision-throughput gap for scientific computing workloads. Ozaki Schemes I and II offer an alternative by reconstructing high-precision general matrix multiplication (GEMM) from low-precision...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2606.24327v1",
+    "title": "OpenMP GPU Acceleration and Portability of TRIMEG-C1 for Electromagnetic Gyrokinetic Simulations in Tokamak Plasmas",
+    "authors": [
+      "Giorgio Daneri",
+      "Zhixin Lu",
+      "Matthias Hoelzl",
+      "Luca Venerando Greco",
+      "Edoardo Carrà"
+    ],
+    "abstract": "The Triangular mesh-based gyrokinetic code TRIMEG-C1 solves the gyrokinetic equations using the particle-in-cell scheme to simulate electromagnetic instabilities in tokamak plasmas. TRIMEG-C1 utilizes a high-order C1 finite element method, which captures the accurate physics with lower grid resolution than the C0 method. In this work, we focus on achieving a portable implementation on multiple graphics processing unit (GPU) architectures to accelerate the TRIMEG-C1 code for future physics studies. The OpenMP framework is chosen as the acceleration framework for GPU offloading on different hardware platforms, specifically, NVIDIA and AMD GPUs. The particle pushing procedure, as well as particle-to-grid operations have been adapted for GPU execution. A speedup of $\\approx9$ for the particle pusher kernel is achieved on 2 AMD MI300A APUs (Accelerated Processing Unit) compared with 2 AMD 9754 CPUs. In addition, the efficiency of hybrid MPI-OpenMP offloading parallelization was assessed by oversubscribing GPU resources. The Ion Temperature Gradient (ITG) mode was simulated using the GPU implementation, and its correctness was verified by comparing the physics results in terms of the energy growth rate and the two-dimensional mode structures.",
+    "published_date": "2026-06-23T09:03:00Z",
+    "updated_date": "2026-06-23T09:03:00Z",
+    "categories": [
+      "physics.plasm-ph",
+      "cs.DC",
+      "physics.comp-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.24327v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.24327v1",
+    "source": "arxiv",
+    "score": 0.44940276265144347,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：The Triangular mesh-based gyrokinetic code TRIMEG-C1 solves the gyrokinetic equations using the particle-in-cell scheme to simulate electromagnetic instabilities in tokamak plasmas. TRIMEG-C1 utilizes a high-order C1 finite element method, which captures the accurate physics with lower grid resoluti...。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
