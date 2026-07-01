@@ -466,7 +466,7 @@
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">0</div>
+            <div class="stat-value">2</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,223 +480,225 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.30497v1" target="_blank">GPU Parallelization Strategies for Forward and Backward Propagation in Shallow Neural Networks: A CUDA-Based Comparative Study</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16725v1" target="_blank">FliX: Flipped-Indexing for Scalable GPU Queries and Updates</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.609</span>
+            <span class="score-badge score-high">相关度 0.765</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Rania Zitouni, Nadine Bousdjira, Sarah Hasnaoui, Amel Sadoun 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 并行计算、CUDA、网络相关技术。
+        <div class="paper-authors">Rosina Kharal, Trevor Brown, Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。
 
-核心内容：We present a comparative study of CUDA optimization strategies applied to forward and backward propagation in a shallow neural network. Three stacked optimizations are evaluated: (1) tiled shared memory with bank-conflict elimination via +1-column padding, (2) pre-transposed weight matrices for coal...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present a comparative study of CUDA optimization strategies applied to forward and backward propagation in a shallow neural network. Three stacked optimizations are evaluated: (1) tiled shared memory with bank-conflict elimination via +1-column padding, (2) pre-transposed weight matrices for coalesced global memory access, and (3) a fused MatMul+ReLU kernel that eliminates intermediate global-memory round-trips. Experiments on an NVIDIA Tesla T4 (CUDA 13.0) across three dataset sizes show that the fully optimized implementation achieves a 1.41x speedup over the baseline CUDA version on the large dataset (25,600 samples), reducing execution time from 21.0s to 14.8s. Results are compared against a sequential CPU baseline and an OpenMP parallel implementation, demonstrating the effectivene...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 并行计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术 &middot; 与 GPU 数据库主题中等相关</div>
+核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.
+  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.30497v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.30497v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2604.16725v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.16725v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.26441v1" target="_blank">GPUSparse: GPU-Accelerated Learned Sparse Retrieval with Parallel Inverted Indices</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20121v2" target="_blank">A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.569</span>
+            <span class="score-badge score-high">相关度 0.707</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.IR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Ashutosh Sharma</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、带宽优化、吞吐量相关技术。
+        <div class="paper-authors">Zhonggen Li, Haoran Yu, Zixuan Xu, Yifan Zhu 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。
 
-核心内容：Learned sparse retrieval models such as SPLADE achieve retrieval quality competitive with dense models while preserving the interpretability and exact-match advantages of sparse representations. However, inference-time scoring still relies on CPU-bound inverted index traversal algorithms (WAND, Bloc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Learned sparse retrieval models such as SPLADE achieve retrieval quality competitive with dense models while preserving the interpretability and exact-match advantages of sparse representations. However, inference-time scoring still relies on CPU-bound inverted index traversal algorithms (WAND, Block-Max WAND), creating a fundamental bottleneck for real-time serving at scale. We present GPUSparse, a system for GPU-accelerated exact learned sparse retrieval that introduces: (1) a GPU-parallel inverted index with block-aligned, warp-coalesced posting lists; (2) a batched scatter-add scoring algorithm that processes hundreds of queries simultaneously; and (3) fused Triton kernels with an analysis of the tradeoff between work-efficiency and hardware utilization. On MS MARCO passage ranking (8....</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、带宽优化、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-ce...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.26441v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.26441v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2604.20121v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.20121v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.26439v1" target="_blank">TileMaxSim: IO-Aware GPU MaxSim Scoring with Dimension Tiling and Fused Product Quantization</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2506.01576v3" target="_blank">Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.481</span>
+            <span class="score-badge score-mid">相关度 0.658</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.IR</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Ashutosh Sharma</div>
-        <div class="paper-abstract-cn">本文研究PyTorch、多 GPU、带宽优化、延迟优化、吞吐量相关技术。
+        <div class="paper-authors">Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、GPU 内存管理、排序相关技术。
 
-核心内容：Multi-vector retrieval models such as ColBERT achieve state-of-the-art accuracy through fine-grained token-level MaxSim scoring, yet existing GPU implementations leave most hardware performance unused. We give a roofline analysis of MaxSim on modern GPUs and identify a severe bandwidth gap: naive im...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multi-vector retrieval models such as ColBERT achieve state-of-the-art accuracy through fine-grained token-level MaxSim scoring, yet existing GPU implementations leave most hardware performance unused. We give a roofline analysis of MaxSim on modern GPUs and identify a severe bandwidth gap: naive implementations reach only 5-18% of peak HBM bandwidth because they materialize the Nq x Nd similarity matrix, wasting memory traffic on data that is consumed once and discarded. We present TileMaxSim, a family of IO-aware Triton kernels that close this gap via (1) multi-query SRAM tiling that streams document embeddings through shared memory while accumulating per-query-token maxima in registers, reading each embedding from HBM exactly once; (2) dimension tiling that partitions the embedding dime...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦PyTorch、多 GPU、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.26439v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.26439v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2506.01576v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2506.01576v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.25453v1" target="_blank">EmuGEMM: Fused Tensor Core Kernels for Precision Emulation in Matrix Multiplication</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1611.01137v2" target="_blank">A Memory Bandwidth-Efficient Hybrid Radix Sort on GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.460</span>
+            <span class="score-badge score-mid">相关度 0.629</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.MS</span> <span class="tag">cs.PF</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Denghui Lu, Alexander Maeder, Mathieu Luisier, Alexandros Nikolaos Ziogas</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
+        <div class="paper-authors">Elias Stehle, Hans-Arno Jacobsen</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、异构计算、排序、带宽优化相关技术。
 
-核心内容：Modern GPUs devote an increasing silicon budget to low-precision matrix-multiplication units, widening the precision-throughput gap for scientific computing workloads. Ozaki Schemes I and II offer an alternative by reconstructing high-precision general matrix multiplication (GEMM) from low-precision...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern GPUs devote an increasing silicon budget to low-precision matrix-multiplication units, widening the precision-throughput gap for scientific computing workloads. Ozaki Schemes I and II offer an alternative by reconstructing high-precision general matrix multiplication (GEMM) from low-precision operations, yet existing implementations leave substantial performance untapped. In particular, intermediate results are repeatedly materialized in global memory, making data movement the dominant bottleneck. We present EmuGEMM, fused integer Tensor Core kernels for NVIDIA Hopper and Blackwell GPUs that eliminate redundant memory round-trips in both Ozaki schemes. Using Scheme I, EmuGEMM sustains up to 1,639 Top/s on Hopper (83% of INT8 peak) and 3,654 Top/s on Blackwell (81%). For large matric...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting is at the core of many database operations, such as index creation, sort-merge joins, and user-requested output sorting. As GPUs are emerging as a promising platform to accelerate various operations, sorting on GPUs becomes a viable endeavour. Over the past few years, several improvements have been proposed for sorting on GPUs, leading to the first radix sort implementations that achieve a sorting rate of over one billion 32-bit keys per second. Yet, state-of-the-art approaches are heavily memory bandwidth-bound, as they require substantially more memory transfers than their CPU-based counterparts.
+  Our work proposes a novel approach that almost halves the amount of memory transfers and, therefore, considerably lifts the memory bandwidth limitation. Being able to sort two gigabyte...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、异构计算、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.25453v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.25453v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1611.01137v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1611.01137v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.26701v1" target="_blank">SegFold: Accelerating Sparse GEMM with a Fine-Grained Dynamic Dataflow</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1701.01189v2" target="_blank">GPU Multisplit: an extended study of a parallel algorithm</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.440</span>
+            <span class="score-badge score-mid">相关度 0.608</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Xinrui Wu, Hanyu Wang, Jason Cong, Tony Nowatzki</div>
-        <div class="paper-abstract-cn">本文研究网络相关技术。
+        <div class="paper-authors">Saman Ashkiani, Andrew Davidson, Ulrich Meyer, John D. Owens</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序、通信优化、吞吐量相关技术。
 
-核心内容：Generalized sparse matrix-matrix multiplication (SpGEMM) is critical in many domains. Existing CPUs and GPUs, as well as specialized accelerators, rely on static dataflows (e.g., inner product, outer product, Gustavson, etc.)。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Generalized sparse matrix-matrix multiplication (SpGEMM) is critical in many domains. Existing CPUs and GPUs, as well as specialized accelerators, rely on static dataflows (e.g., inner product, outer product, Gustavson, etc.). Each static dataflow sacrifices some data reuse opportunities and imposes constraints on load balance.
-  To address this inefficiency, we extend the typical SpGEMM dataflows by considering dynamism. Specifically, we add fine-grained dynamic scheduling to optimize reuse and reduce resource contention. We also develop dynamic remapping of partially completed work to improve load balance and parallelism. These ideas are formalized into a specific dataflow called Segment. To demonstrate Segment, we codesign a SpGEMM accelerator called SegFold. SegFold includes a memory c...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+核心内容：Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multis...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multisplit is a broadly useful parallel primitive that permutes its input data into contiguous buckets or bins, where the function that categorizes an element into a bucket is provided by the programmer. Due to the lack of an efficient multisplit on GPUs, programmers often choose to implement multisplit with a sort. One way is to first generate an auxiliary array of bucket IDs and then sort input data based on it. In case smaller indexed buckets possess smaller valued keys, another way for multisplit is to directly sort input data. Both methods are inefficient and require more work than necessary: the former requires more expensive data movements while the latter spends unnecessary effort in sorting elements within each bucket. In this work, we provide a parallel model and multiple impleme...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.26701v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.26701v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1701.01189v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1701.01189v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.31554v1" target="_blank">In-situ Indexing via Memristive Content-Addressable Memory</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/1306.5076v2" target="_blank">Bank Conflict Free Comparison-based Sorting On GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.425</span>
+            <span class="score-badge score-mid">相关度 0.606</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+            <span class="tag">cs.DS</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Bing Wu, Xueliang Wei, Shiyi Song, Yibo Liu 等 (9 位作者)</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、延迟优化、吞吐量相关技术。
+        <div class="paper-authors">Nodari Sitchinava, Volker Weichert</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序、网络相关技术。
 
-核心内容：Processing-in-Memory (PIM) is a proven paradigm for overcoming the ``memory wall". However, while data indexing is severely bottlenecked by this same wall, it remains unclear how indexing can effectively benefit from PIM's unique capabilities。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Processing-in-Memory (PIM) is a proven paradigm for overcoming the ``memory wall". However, while data indexing is severely bottlenecked by this same wall, it remains unclear how indexing can effectively benefit from PIM's unique capabilities. We present PATH, an in-situ indexing architecture that bridges this gap by leveraging the massive parallelism and inherent data-movement of PIMs. Specifically, we first reformulate the fundamental indexing operations, namely Insert, Search, Update, and Delete, into highly parallel in-situ content-addressable memory operations executed directly within memory arrays. Taking hash indexes as a typical case, we elaborate how PATH breaks the inherent trade-off among memory accesses, load factor, and process latency in conventional hashing schemes. By adopt...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In this paper we present a framework for designing algorithms in shared memory of GPUs without incurring memory bank conflicts. Using our framework we develop the first comparison-based shared memory sorting algorithm that incurs no bank conflicts. It can be used as a subroutine for GPU sorting algorithms to replace current use of sorting networks in shared memory. Using our bank conflict free shared memory sorting subroutine as a black box, we design BCFMergesort, an algorithm for merging sorted streams of data that are larger than shared memory. Our algorithm performs all accesses to global memory in coalesced manner and incurs no bank conflicts during the merge.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.31554v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.31554v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/1306.5076v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/1306.5076v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.27098v1" target="_blank">Residual GPU Cache State on Apple M4 Pro</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2206.01784v1" target="_blank">Onesweep: A Faster Least Significant Digit Radix Sort for GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.408</span>
+            <span class="score-badge score-mid">相关度 0.562</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Faruk Alpay, Baris Basaran</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、GPU 核函数、GPU 缓存相关技术。
+        <div class="paper-authors">Andy Adinets, Duane Merrill</div>
+        <div class="paper-abstract-cn">本文研究GPU 排序、排序相关技术。
 
-核心内容：Apple silicon exposes unified CPU-GPU memory, but the cache state left after a completed GPU command is not documented. This paper characterizes that phase boundary on a 14-core Apple M4 Pro。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Apple silicon exposes unified CPU-GPU memory, but the cache state left after a completed GPU command is not documented. This paper characterizes that phase boundary on a 14-core Apple M4 Pro. We validate the measurement pipeline against unmodified STREAM 5.10 and BabelStream 5.0, then adapt an 8192-byte system-level-cache occupancy pattern to a synchronized Metal experiment. A GPU kernel touches 0 to 512 MiB and finishes before a 16 MiB CPU probe begins. The first CPU traversal is slower after large GPU footprints, while a second traversal removes most of the cost, showing residual shared-cache displacement rather than simultaneous DRAM contention. A separate matched-block experiment measures GPU slowdown under high-priority CPU traffic and finds background QoS close to baseline. Root PMU ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、GPU 核函数、GPU 缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+核心内容：We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present Onesweep, a least-significant digit (LSD) radix sorting algorithm for large GPU sorting problems residing in global memory. Our parallel algorithm employs a method of single-pass prefix sum that only requires ~2n global read/write operations for each digit-binning iteration. This exhibits a significant reduction in last-level memory traffic versus contemporary GPU radix sorting implementations, where each iteration of digit binning requires two passes through the dataset totaling ~3n global memory operations.
+  On the NVIDIA A100 GPU, our approach achieves 29.4 GKey/s when sorting 256M random 32-bit keys. Compared to CUB, the current state-of-the-art GPU LSD radix sort, our approach provides a speedup of ~1.5x. For 32-bit keys with varied distributions, our approach provides mor...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 排序、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.27098v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.27098v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2206.01784v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2206.01784v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.29986v1" target="_blank">HBM Is Not All You Need: Efficient Disaggregated LLM Serving across Memory-heterogeneous Accelerators</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2602.23999v1" target="_blank">GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.408</span>
+            <span class="score-badge score-mid">相关度 0.560</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> <span class="tag">cs.IR</span> 
         </div>
-        <div class="paper-authors">Zhixiang Wei, Yun Wang, James Yen, Mingyuan Xia 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究大模型推理、异构计算、聚合、网络、带宽优化相关技术。
+        <div class="paper-authors">Jifan Shi, Jianyang Gao, James Xia, Tamás Béla Fehér 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、近邻搜索、带宽优化、吞吐量相关技术。
 
-核心内容：LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill. LLM serving across memory-heterogeneous accelerators (MemHA) pairs GDDR-based accelerators for prefill with HBM-based GPUs for decode, promising lower cost without sacrificing performance. Pushed to its most economical form, MemHA serving is inherently cross-vendor, since the best-suited chip for each phase may come from a different vendor. This breaks two assumptions that single-vendor disaggregation takes for granted -- a KV format both ends consume natively, and a shared software stack. We present \textbf{HMA-Serve}, a MemHA-centric disag...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs. In contrast, cluster-based methods build and scale efficiently yet often need many probes for high recall, straining memory bandwidth and compute. Aiming to simultaneously achieve fast index build, high-throughput search, high recall, and low storage requirement for GPUs, we present IVF-RaBitQ (GPU), a GPU-native ANNS solution that integrates the cluster-based method IVF with RaBitQ quantization into an efficient GPU index build/search pipeline. Specifically, for index build, we develop a scalable GPU-native...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、近邻搜索、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.29986v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.29986v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2602.23999v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.23999v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.28565v1" target="_blank">KernelSight-LM: A Kernel-Level LLM Inference Simulator</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2510.19689v2" target="_blank">Serverless GPU Architecture for Enterprise HR Analytics: A Production-Scale BDaaS Implementation</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.397</span>
+            <span class="score-badge score-mid">相关度 0.542</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.LG</span> 
         </div>
-        <div class="paper-authors">Xiteng Yao, Taeho Kim, Hengzhi Pei, Xinle Liu 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 核函数、大模型推理、缓存、SHARP 集合计算、通信优化相关技术。
+        <div class="paper-authors">Guilin Zhang, Wulan Guo, Ziqi Tan, Srinivas Vippagunta 等 (11 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 分析处理、GPU 加速、延迟优化、吞吐量相关技术。
 
-核心内容：As large language models (LLMs) move into production serving, practitioners must rapidly evaluate inference performance across diverse hardware, models, and serving parameters to meet cost and latency targets. However, the end-to-end behavior of LLMs couples serving-layer policies with low-level GPU...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">As large language models (LLMs) move into production serving, practitioners must rapidly evaluate inference performance across diverse hardware, models, and serving parameters to meet cost and latency targets. However, the end-to-end behavior of LLMs couples serving-layer policies with low-level GPU kernel execution and rapidly evolving architectures, forcing slow, deployment-specific benchmarking that is hard to generalize.
-  We present KernelSight-LM, a fine-grained inference simulator that models token-level execution and produces kernel-level latency breakdowns. It decomposes each serving step into a roofline kernel model with a learned efficiency term, a communication model, and a host-overhead model, composed through a discrete-event scheduler that also captures mechanisms like prefi...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数、大模型推理、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化</div>
+核心内容：Industrial and government organizations increasingly depend on data-driven analytics for workforce, finance, and regulated decision processes, where timeliness, cost efficiency, and compliance are critical. Distributed frameworks such as Spark and Flink remain effective for massive-scale batch or st...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Industrial and government organizations increasingly depend on data-driven analytics for workforce, finance, and regulated decision processes, where timeliness, cost efficiency, and compliance are critical. Distributed frameworks such as Spark and Flink remain effective for massive-scale batch or streaming analytics but introduce coordination complexity and auditing overheads that misalign with moderate-scale, latency-sensitive inference. Meanwhile, cloud providers now offer serverless GPUs, and models such as TabNet enable interpretable tabular ML, motivating new deployment blueprints for regulated environments. In this paper, we present a production-oriented Big Data as a Service (BDaaS) blueprint that integrates a single-node serverless GPU runtime with TabNet. The design leverages GPU ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 分析处理、GPU 加速、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.28565v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.28565v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2510.19689v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2510.19689v2" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2606.29179v1" target="_blank">Performance Analysis of Hardware-Accelerated 10-Bit 4:2:2 Encoding with Split-Frame Encoding for High-Fidelity V-PCC Streaming</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.10135v1" target="_blank">ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.390</span>
+            <span class="score-badge score-mid">相关度 0.541</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">eess.IV</span> <span class="tag">cs.AR</span> <span class="tag">cs.MM</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Kasidis Arunruangsirilert, Jiro Katto</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
+        <div class="paper-authors">Lan Lu, Peiqi Yin, Isaac Yang, Tao Luo 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、多 GPU相关技术。
 
-核心内容：Video-based Point Cloud Compression (V-PCC) encodes volumetric data by projecting 3D geometry and texture onto 2D video frames. To prevent spatial distortion and color bleeding during 3D reconstruction, this process requires 10-bit color depth and 4:2:2 chroma subsampling, rather than the standard 8...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Video-based Point Cloud Compression (V-PCC) encodes volumetric data by projecting 3D geometry and texture onto 2D video frames. To prevent spatial distortion and color bleeding during 3D reconstruction, this process requires 10-bit color depth and 4:2:2 chroma subsampling, rather than the standard 8-bit 4:2:0 format. Additionally, capturing high-density dynamic point clouds requires demanding encoding parameters, such as 8K resolution at framerates up to 120 fps. Historically, the lack of 4:2:2 chroma support in older GPU hardware encoders restricted real-time V-PCC to custom Application-Specific Integrated Circuits (ASICs). However, the recent introduction of NVIDIA's Blackwell GPU architecture, featuring on-chip hardware encoders with 10-bit 4:2:2 support, presents an opportunity to shif...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and high-dimensional datasets. Some studies have explored GPU-based solutions. However, GPUs are costly and their limited memory makes handling large datasets challenging.
+  In this paper, we propose a novel end-to-end system ScaleGANN that enables users to efficiently construct graph indexes for large-scale, high-dimensional datasets by leveraging low-cost spot GPU resources in a distributed cloud system. ScaleGANN utilized the idea of divide-and-merge, with an optimized vector partitioning algorit...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2606.29179v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2606.29179v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2605.10135v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.10135v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -705,7 +707,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-07-01 05:15:36</span>
+            <span>上次运行：2026-07-01 06:29:13</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
