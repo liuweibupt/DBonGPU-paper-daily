@@ -1,0 +1,306 @@
+[
+  {
+    "id": "2606.30497v1",
+    "title": "GPU Parallelization Strategies for Forward and Backward Propagation in Shallow Neural Networks: A CUDA-Based Comparative Study",
+    "authors": [
+      "Rania Zitouni",
+      "Nadine Bousdjira",
+      "Sarah Hasnaoui",
+      "Amel Sadoun",
+      "Fatma Salhi"
+    ],
+    "abstract": "We present a comparative study of CUDA optimization strategies applied to forward and backward propagation in a shallow neural network. Three stacked optimizations are evaluated: (1) tiled shared memory with bank-conflict elimination via +1-column padding, (2) pre-transposed weight matrices for coalesced global memory access, and (3) a fused MatMul+ReLU kernel that eliminates intermediate global-memory round-trips. Experiments on an NVIDIA Tesla T4 (CUDA 13.0) across three dataset sizes show that the fully optimized implementation achieves a 1.41x speedup over the baseline CUDA version on the large dataset (25,600 samples), reducing execution time from 21.0s to 14.8s. Results are compared against a sequential CPU baseline and an OpenMP parallel implementation, demonstrating the effectiveness of memory-access optimization in GPU-accelerated deep learning primitives.",
+    "published_date": "2026-06-29T16:02:10Z",
+    "updated_date": "2026-06-29T16:02:10Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2606.30497v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.30497v1",
+    "source": "arxiv",
+    "score": 0.6090180110931397,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、CUDA、网络相关技术。\n\n核心内容：We present a comparative study of CUDA optimization strategies applied to forward and backward propagation in a shallow neural network. Three stacked optimizations are evaluated: (1) tiled shared memory with bank-conflict elimination via +1-column padding, (2) pre-transposed weight matrices for coal...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.01817v1",
+    "title": "HCMS: Head-Chunked Multi-Stream Pipeline for Communication-Computation Overlap in Long-Sequence Parallel Attention",
+    "authors": [
+      "Chao Yuan",
+      "Pan Li",
+      "Yingnan Sun",
+      "Jing Liu"
+    ],
+    "abstract": "All-to-all based sequence parallelism methods execute communication and computation strictly in serial when processing medium-long sequences, resulting in hardware resource underutilization. This paper proposes Head-Chunked Multi-Stream Pipeline (HCMS), which exploits the computational independence of multi-head attention by partitioning attention heads into multiple chunks and achieving fine-grained communication-computation overlap through dual CUDA streams. HCMS is orthogonally compatible with existing optimizations such as FlashAttention and SDPA, requires no modification to underlying kernels, supports uneven partitioning while maintaining numerical equivalence. Experiments validate the effectiveness across four GPU platforms at 2-8 GPU scales: for typical video generation sequence lengths of 31K-56K tokens, HCMS achieves 10\\%-17.5\\% speedup over the Ulysses baseline and 5\\%-14.5\\% speedup over Ring Attention; end-to-end acceleration of 6.8\\% is achieved on the Wan2.2 model. Theoretical analysis shows that HCMS benefits are positively correlated with communication ratio $ρ$, and its use is recommended when $ρ>20\\%$.",
+    "published_date": "2026-07-02T07:30:53Z",
+    "updated_date": "2026-07-02T07:30:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.01817v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.01817v1",
+    "source": "arxiv",
+    "score": 0.48558674573898314,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、通信优化相关技术。\n\n核心内容：All-to-all based sequence parallelism methods execute communication and computation strictly in serial when processing medium-long sequences, resulting in hardware resource underutilization. This paper proposes Head-Chunked Multi-Stream Pipeline (HCMS), which exploits the computational independence ...。",
+    "takeaway": "本文聚焦CUDA、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.02043v1",
+    "title": "Towards Load-Aware Prefill Deflection for Disaggregated LLM Serving",
+    "authors": [
+      "Shrikara Arun",
+      "Anjaly Parayil",
+      "Srikant Bharadwaj",
+      "Renee St. Amant",
+      "Victor Rühle"
+    ],
+    "abstract": "Disaggregated LLM serving runs prefill and decode on separate GPU pools to keep the two phases from interfering. In practice, this creates a new asymmetry: under bursty, heavy-tailed workloads prefill nodes saturate while decode nodes have compute underutilized, and on a production-style A100 cluster with 2 prefill and 2 decode nodes (2P2D), we find that prefill execution accounts for only 2-23% of P95 Time-to-First-Token (TTFT). Queuing and inter-node GPU-GPU KV-cache transfer account for the rest. We present a proactive prefill-deflecting scheduler that lets decode nodes serve prefill phase of requests as chunked-prefill steps interleaved with their in-flight decode batches. For each queued request, we estimate the TTFT it would see on the prefill node, and on every decode node, search for the largest chunk schedule that keeps in-flight decodes within their Time-Between-Tokens (TBT) SLO and deflect when the decode path helps tail latency. Because the prefill phase of deflected requests runs in place on the decode node, the inter-node KV transfer is eliminated. Implemented on vLLM and evaluated on production-style traces with DeepSeek-V2-Lite, our approach reduces P95 TTFT by upto 81% and raises SLO attainment by upto 79% over state-of-the-art disaggregated schedulers, at sub-millisecond per-request routing cost.",
+    "published_date": "2026-07-02T11:10:05Z",
+    "updated_date": "2026-07-02T11:10:05Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.02043v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.02043v1",
+    "source": "arxiv",
+    "score": 0.45031985759735105,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Disaggregated LLM serving runs prefill and decode on separate GPU pools to keep the two phases from interfering. In practice, this creates a new asymmetry: under bursty, heavy-tailed workloads prefill nodes saturate while decode nodes have compute underutilized, and on a production-style A100 cluste...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2606.31554v1",
+    "title": "In-situ Indexing via Memristive Content-Addressable Memory",
+    "authors": [
+      "Bing Wu",
+      "Xueliang Wei",
+      "Shiyi Song",
+      "Yibo Liu",
+      "Jinpeng Liu",
+      "Wei Tong",
+      "Hao Tong",
+      "Yuchong Hu",
+      "Dan Feng"
+    ],
+    "abstract": "Processing-in-Memory (PIM) is a proven paradigm for overcoming the ``memory wall\". However, while data indexing is severely bottlenecked by this same wall, it remains unclear how indexing can effectively benefit from PIM's unique capabilities. We present PATH, an in-situ indexing architecture that bridges this gap by leveraging the massive parallelism and inherent data-movement of PIMs. Specifically, we first reformulate the fundamental indexing operations, namely Insert, Search, Update, and Delete, into highly parallel in-situ content-addressable memory operations executed directly within memory arrays. Taking hash indexes as a typical case, we elaborate how PATH breaks the inherent trade-off among memory accesses, load factor, and process latency in conventional hashing schemes. By adopting ultra-large logical buckets and in-memory moving, PATH virtually eliminates the cost of hash collision resolution and significantly reduces resizing overhead. Compared with state-of-the-art schemes, PATH achieves $4.7-7.8\\times$ higher throughput, $>14.5\\times$ lower tail latency, and $>61.4\\%$ fewer memory accesses under insertions, laying a scalable foundation for next-generation data-centric computing.",
+    "published_date": "2026-06-30T12:11:26Z",
+    "updated_date": "2026-06-30T12:11:26Z",
+    "categories": [
+      "cs.AR",
+      "cs.ET"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.31554v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.31554v1",
+    "source": "arxiv",
+    "score": 0.42547091841697693,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究内存数据库、延迟优化、吞吐量相关技术。\n\n核心内容：Processing-in-Memory (PIM) is a proven paradigm for overcoming the ``memory wall\". However, while data indexing is severely bottlenecked by this same wall, it remains unclear how indexing can effectively benefit from PIM's unique capabilities。",
+    "takeaway": "本文聚焦内存数据库、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.00819v1",
+    "title": "Modeling and Chasing the Energy-Efficiency Sweet Spots in Modern GPUs",
+    "authors": [
+      "Ayesha Afzal",
+      "Markus Manfred Li",
+      "Michael Panzlaff"
+    ],
+    "abstract": "Energy consumption is a key limitation in high-performance computing on heterogeneous CPU-GPU systems. This work studies how hardware configuration affects energy-to-solution under realistic workloads. We study energy efficiency regimes using molecular dynamics benchmarks (GROMACS and AMBER) and a stress-test benchmark (FIRESTARTER) on systems with A40, A100, H100, and H200 GPUs and Intel Ice Lake CPU, varying frequency scaling and power cap. We show that energy-to-solution exhibits workload- and architecture-dependent transitions between efficient and inefficient regimes, driven by nonlinear GPU power-frequency scaling. We introduce an interpretable analytical model that decomposes GPU power into linear and nonlinear components, identifying a workload- and architecture-dependent transition frequency beyond which efficiency degrades. The model fits empirical data with low error and highlights the role of baseline power, nonlinear power behavior, and transition frequency as the dominant parameters governing energy efficiency. Power capping is generally less effective for efficiency tuning than frequency reduction, especially for workloads that operate far from thermal design power. Overall, energy-efficient HPC execution is a configuration-dependent problem with identifiable regime shifts, and we provide model-driven guidance for selecting operating points.",
+    "published_date": "2026-07-01T11:42:08Z",
+    "updated_date": "2026-07-01T11:42:08Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.00819v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.00819v1",
+    "source": "arxiv",
+    "score": 0.41149838209152223,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、异构计算相关技术。\n\n核心内容：Energy consumption is a key limitation in high-performance computing on heterogeneous CPU-GPU systems. This work studies how hardware configuration affects energy-to-solution under realistic workloads。",
+    "takeaway": "本文聚焦隐私信息检索、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2606.29986v1",
+    "title": "HBM Is Not All You Need: Efficient Disaggregated LLM Serving across Memory-heterogeneous Accelerators",
+    "authors": [
+      "Zhixiang Wei",
+      "Yun Wang",
+      "James Yen",
+      "Mingyuan Xia",
+      "Zhengwei Qi"
+    ],
+    "abstract": "LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill. LLM serving across memory-heterogeneous accelerators (MemHA) pairs GDDR-based accelerators for prefill with HBM-based GPUs for decode, promising lower cost without sacrificing performance. Pushed to its most economical form, MemHA serving is inherently cross-vendor, since the best-suited chip for each phase may come from a different vendor. This breaks two assumptions that single-vendor disaggregation takes for granted -- a KV format both ends consume natively, and a shared software stack. We present \\textbf{HMA-Serve}, a MemHA-centric disaggregated serving system pairing GDDR-based accelerators for prefill with HBM-based GPUs for decode efficiently. HMA-Serve achieves this through (1) phase-wise quantization, applying vendor-native low precision for high-throughput prefill while keeping decode in high-precision BF16, (2) a compute-transfer pipeline that overlaps each layer's KV cache transfer with later-layer prefill to reduce time-to-first-token (TTFT), and (3) deferred dequantization, shipping raw quantized bytes and reconstructing them lazily on the decode GPU to reduce network bandwidth and HBM usage. Across four Qwen3 models (4B--32B) and three production traces, HMA-Serve delivers up to $3.2\\times$ higher goodput than state-of-the-art memory-homogeneous methods and $4.8\\times$ higher goodput-per-dollar, with no measurable loss on generation-quality benchmarks.",
+    "published_date": "2026-06-29T09:00:38Z",
+    "updated_date": "2026-06-29T09:00:38Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.29986v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.29986v1",
+    "source": "arxiv",
+    "score": 0.4075139605998993,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型推理、异构计算、聚合、网络、带宽优化相关技术。\n\n核心内容：LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill。",
+    "takeaway": "本文聚焦大模型推理、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.02391v1",
+    "title": "WattGPU: Predicting Inference Power and Latency on Unseen GPUs and LLMs",
+    "authors": [
+      "Mauricio Fadel Argerich",
+      "Jonathan Fürst",
+      "Marta Patiño-Martínez"
+    ],
+    "abstract": "Large Language Model (LLM) inference workloads are a rapidly growing contributor to data center energy consumption. Optimizing these deployments requires matching specific LLMs to the most efficient GPUs, but operators currently lack the tools to do so without exhaustively profiling each combination. While some predictive models exist, they still require profiling data and struggle to generalize to hardware unseen during training. To address this, we introduce \\textit{WattGPU}, featuring two predictive models for mean GPU power draw and Inter-Token Latency (ITL). Our approach leverages only publicly available LLM metadata and GPU specifications, eliminating the need for hardware access or profiling while enabling generalization to unseen NVIDIA server-grade GPUs and LLMs. We evaluate our models using rigorous leave-one-GPU-out and leave-one-LLM-out cross-validation on a dataset of 42 open-source LLMs (0.1B--27B parameters) and 8 GPUs under both offline and server scenarios. The mean power draw model achieves a median absolute percentage error of $\\leq3.4\\%$ for offline and $\\leq13.5\\%$ for server scenarios on unseen GPUs, while the latency model achieves $\\leq8.5\\%$ in server mode, both maintaining strong GPU ranking correlations for server scenarios (Kendall $τ\\geq0.76$). Compared to standard physically grounded baselines -- Load-Scaled Thermal Design Power (TDP) for power draw and roofline for latency -- our models reduce median absolute percentage error by approximately 4$\\times$ on unseen LLM-GPU combinations for server scenarios or approximately 2$\\times$ for completely unseen GPUs. WattGPU's data and code are publicly available at https://github.com/maufadel/wattgpu.",
+    "published_date": "2026-07-02T16:25:34Z",
+    "updated_date": "2026-07-02T16:25:34Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.02391v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.02391v1",
+    "source": "arxiv",
+    "score": 0.402127161026001,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Large Language Model (LLM) inference workloads are a rapidly growing contributor to data center energy consumption. Optimizing these deployments requires matching specific LLMs to the most efficient GPUs, but operators currently lack the tools to do so without exhaustively profiling each combination。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.29179v1",
+    "title": "Performance Analysis of Hardware-Accelerated 10-Bit 4:2:2 Encoding with Split-Frame Encoding for High-Fidelity V-PCC Streaming",
+    "authors": [
+      "Kasidis Arunruangsirilert",
+      "Jiro Katto"
+    ],
+    "abstract": "Video-based Point Cloud Compression (V-PCC) encodes volumetric data by projecting 3D geometry and texture onto 2D video frames. To prevent spatial distortion and color bleeding during 3D reconstruction, this process requires 10-bit color depth and 4:2:2 chroma subsampling, rather than the standard 8-bit 4:2:0 format. Additionally, capturing high-density dynamic point clouds requires demanding encoding parameters, such as 8K resolution at framerates up to 120 fps. Historically, the lack of 4:2:2 chroma support in older GPU hardware encoders restricted real-time V-PCC to custom Application-Specific Integrated Circuits (ASICs). However, the recent introduction of NVIDIA's Blackwell GPU architecture, featuring on-chip hardware encoders with 10-bit 4:2:2 support, presents an opportunity to shift this workload to general-purpose hardware. This paper investigates the feasibility of such an approach. Using a commercially available Blackwell GPU equipped with four parallel on-die hardware encoders as a testbed, we evaluate the throughput, rate-distortion (RD) performance, and power consumption of 8K 10-bit 4:2:2 HEVC across various Split-Frame Encoding (SFE) configurations. Our results demonstrate that 4-way SFE achieves an encoding throughput of 122 fps, successfully meeting the strict real-time constraints of high-density V-PCC. Although the inability to exploit spatial redundancies across slice boundaries results in a BD-Rate penalty of up to 5%, the measured throughput and power efficiency establish standard, commercial off-the-shelf GPUs as a highly viable baseline for real-time volumetric video streaming.",
+    "published_date": "2026-06-28T03:54:36Z",
+    "updated_date": "2026-06-28T03:54:36Z",
+    "categories": [
+      "eess.IV",
+      "cs.AR",
+      "cs.MM"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2606.29179v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.29179v1",
+    "source": "arxiv",
+    "score": 0.3902556145191193,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Video-based Point Cloud Compression (V-PCC) encodes volumetric data by projecting 3D geometry and texture onto 2D video frames. To prevent spatial distortion and color bleeding during 3D reconstruction, this process requires 10-bit color depth and 4:2:2 chroma subsampling, rather than the standard 8...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2606.29823v1",
+    "title": "Experience Graphs: The Data Foundation for Self-Improving Agents",
+    "authors": [
+      "Gang Liao",
+      "Yujia He",
+      "Abdullah Ozturk",
+      "Zhouyang Li",
+      "Ying Wang",
+      "Zhitong Guo",
+      "Hongsen Qin",
+      "Yaobin Qin",
+      "Tao Yang",
+      "Zewei Jiang",
+      "Dianshi Li",
+      "Jort Gemmeke",
+      "Jiangyuan Li",
+      "Liyuan Li",
+      "Nathan Yan",
+      "Masha Basmanova",
+      "Uladzimir Pashkevich",
+      "Matt Steiner",
+      "Pedro Pedreira",
+      "Rob Fergus",
+      "Anirudh Goyal",
+      "Carole-Jean Wu",
+      "Gaoxiang Liu",
+      "Andrew Witten",
+      "Daniel J. Abadi"
+    ],
+    "abstract": "The database community has repeatedly advanced the state of the art by recognizing that new workloads demand new system architectures. We argue that long-horizon agentic tasks -- code generation, scientific discovery, hardware design -- are such a workload. These agents explore: they generate artifacts, execute tools, observe failures, branch, and repair over hundreds of steps. This search produces a structured object we call an experience graph: executable artifacts, tool outputs, rewards, sibling comparisons, and causal lineage. Yet existing agent frameworks treat this experience as disposable state -- JSON checkpoints and session logs that cannot be recovered after a crash, queried across users, or materialized into training data. We propose Trellis: a data foundation that treats the experience graph as first-class, governed, queryable database state. The core insight is that search over experience graphs is a database access pattern. Frontier selection is a query, cross-session reuse is vector-seeded graph retrieval, training-data extraction is a materialized view, and reconstructing what an agent knew at any past step is a time-travel query. When the database owns the experience graph, agents become stateless compute, and crash recovery, horizontal scaling, and a closed-loop training flywheel emerge as architectural byproducts. We ground the design in KernelEvolve, a production accelerator-kernel optimizer at Meta, where cross-session reuse reaches a target speedup roughly 10x faster at 52% lower token cost. More broadly, Trellis turns inference-time search from disposable computation into a durable institutional asset: logs made databases reliable; experience graphs may make agents cumulative.",
+    "published_date": "2026-06-29T06:02:20Z",
+    "updated_date": "2026-06-29T06:02:20Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI",
+      "cs.MA"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2606.29823v1",
+    "arxiv_url": "https://arxiv.org/abs/2606.29823v1",
+    "source": "arxiv",
+    "score": 0.3901252138614655,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The database community has repeatedly advanced the state of the art by recognizing that new workloads demand new system architectures. We argue that long-horizon agentic tasks -- code generation, scientific discovery, hardware design -- are such a workload。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2607.00055v1",
+    "title": "HySpecPro: Scalable Hypergraph Partitioning via Spectral Projection Optimization",
+    "authors": [
+      "Rongjian Liang",
+      "Zhuo Feng",
+      "Haoxing Ren"
+    ],
+    "abstract": "Modern VLSI designs comprise tens of billions of components, making scalable hypergraph partitioning critical for parallel and hierarchical optimization. Although multilevel partitioning remains the dominant paradigm, its coarsening stage can distort structural information, especially in hypergraphs with many high-degree hyperedges, leading to increased refinement overhead and limited scalability. Recent approaches incorporate spectral information to guide coarsening, but only in a heuristic manner, without directly optimizing the partitioning objectives. We introduce HySpecPro, a single-level hypergraph partitioner that performs end-to-end optimization in a spectral embedding space. HySpecPro constructs embeddings from a bipartite Laplacian and performs efficient projection-based search, supported by a fully GPU-accelerated implementation. Experiments show that HySpecPro delivers cut quality comparable to state-of-the-art multilevel methods while scaling linearly with the total hyperedge degree.",
+    "published_date": "2026-06-30T02:20:15Z",
+    "updated_date": "2026-06-30T02:20:15Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.00055v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.00055v1",
+    "source": "arxiv",
+    "score": 0.37923056006431577,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Modern VLSI designs comprise tens of billions of components, making scalable hypergraph partitioning critical for parallel and hierarchical optimization. Although multilevel partitioning remains the dominant paradigm, its coarsening stage can distort structural information, especially in hypergraphs...。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
