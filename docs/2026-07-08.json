@@ -1,0 +1,286 @@
+[
+  {
+    "id": "2607.04489v1",
+    "title": "Eiger: An Efficient Library for GPU-based Data Analytics",
+    "authors": [
+      "Bowen Wu",
+      "Marko Kabić",
+      "Sven Hepkema",
+      "Vasilis Mageirakos",
+      "Christos Kozyrakis",
+      "Gustavo Alonso"
+    ],
+    "abstract": "GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the dominant bottleneck. This highlights the need for more efficient relational operators on GPUs than the widely used library, cuDF. While offering rich functionality, cuDF commits to a single, statically chosen implementation for most operators and barely uses runtime information about the data, limiting performance across diverse workloads and GPUs. We present Eiger, a high-performance library for GPU-based data analytics that improves single-GPU query processing through runtime workload adaptivity. Adaptivity in Eiger rests on two principles. First, Eiger provides multiple implementation variants and tunable knobs for most operators, covering not only joins and group-bys but also expensive yet often overlooked operations, such as expression evaluation, string processing, and multi-key sorting, for which it contributes new optimization techniques. Second, Eiger profiles intermediate data during query execution using lightweight statistics, such as value ranges and HyperLogLog++ sketches, and uses them to select implementations, tune knobs, and compress data on the fly, overcoming the limitations of traditional static query optimization. The breadth of operators and variants also enables a more comprehensive performance analysis, covering more operations and workloads than previous work. We evaluate Eiger with operator microbenchmarks on two GPU architectures and the complete TPC-H benchmark (up to scale factor 100). Across the 22 queries, Eiger reduces total runtime by up to 1.8x compared to the state-of-the-art cuDF library; for individual queries, Eiger achieves up to 6.1x better performance.",
+    "published_date": "2026-07-05T20:25:54Z",
+    "updated_date": "2026-07-05T20:25:54Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.04489v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04489v1",
+    "source": "arxiv",
+    "score": 0.7081956124305725,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 查询处理、查询处理、查询优化、排序、网络相关技术。\n\n核心内容：GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the ...。",
+    "takeaway": "本文聚焦GPU 查询处理、查询处理、查询优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2607.04857v1",
+    "title": "Terastate-per-second QUBO Brute-Force on a Single GPU: A Matrix Prefix-Suffix Decomposition",
+    "authors": [
+      "Aleksandr Maltsev",
+      "Mikhail Remnev",
+      "Alexey Kapranov",
+      "Ekaterina Krivtsova"
+    ],
+    "abstract": "This paper presents a parallel QUBO exhaustive search algorithm for dense matrices, based on a prefix-suffix decomposition and Gray code ordering. The algorithm achieves O(1) per-state complexity: for the QUBO objective function computation only one arithmetic operation per state is performed. An adjustable energy components cache size enables placement in the fastest available memory tier. This reduces memory bandwidth requirements to a negligible level and transforms the problem from memory-bound to compute-bound. Our CUDA-based implementation achieves a state-of-the-art evaluation rate of $7.5\\times10^{12}$ states per second on a single GPU, setting a new performance benchmark for the full-space-search subclass of exact solvers.",
+    "published_date": "2026-07-06T09:32:35Z",
+    "updated_date": "2026-07-06T09:32:35Z",
+    "categories": [
+      "cs.DS",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.04857v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04857v1",
+    "source": "arxiv",
+    "score": 0.5011398482322693,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化相关技术。\n\n核心内容：This paper presents a parallel QUBO exhaustive search algorithm for dense matrices, based on a prefix-suffix decomposition and Gray code ordering. The algorithm achieves O(1) per-state complexity: for the QUBO objective function computation only one arithmetic operation per state is performed。",
+    "takeaway": "本文聚焦CUDA、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.04415v2",
+    "title": "GORIO: GPU-Centered Remote I/O for Graph ANNS over NVMe-oF",
+    "authors": [
+      "Gen Zhang",
+      "Wenhao Gu",
+      "Shan Huang",
+      "Xinhai Chen"
+    ],
+    "abstract": "Graph-based approximate nearest neighbor search (ANNS) is increasingly used in vector databases and retrieval-augmented generation services, but large vector indexes often exceed the memory capacity of a single GPU server. NVMe over Fabrics (NVMe-oF) provides an attractive storage-disaggregation substrate, yet existing remote storage paths are still largely CPU-centered: the CPU forms I/O requests, drives transport progress, and determines when GPU computation can resume. This organization is poorly matched to graph ANNS, where the next data access is discovered inside GPU graph traversal.\n  This paper presents GORIO, a system study that extends GPU-centered local I/O to remote storage and specializes the resulting substrate for graph ANNS over NVMe-oF. GORIO keeps query evolution, page-miss generation, pending-query state, and resume decisions on the GPU, while the CPU acts only as an NVMe-oF transport and completion proxy. The design has two layers: a GPU-direct remote I/O path that turns local page-cache misses into split-phase remote operations, and ANNS-specific scheduling mechanisms that overlap graph traversal with remote page service. On a SIFT1M DiskANN-style graph workload over an RDMA NVMe-oF path, GORIO is 1.31X faster than the state-of-the-art remote-I/O reference path and 4.89X faster than the direct remote page-cache path. These results demonstrate a concrete GPU-centered remote I/O substrate for graph ANNS.",
+    "published_date": "2026-07-05T17:09:06Z",
+    "updated_date": "2026-07-07T08:36:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.04415v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.04415v2",
+    "source": "arxiv",
+    "score": 0.4980076539516449,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究近邻搜索、向量数据库、RDMA 网络、NVMe 存储、聚合相关技术。\n\n核心内容：Graph-based approximate nearest neighbor search (ANNS) is increasingly used in vector databases and retrieval-augmented generation services, but large vector indexes often exceed the memory capacity of a single GPU server. NVMe over Fabrics (NVMe-oF) provides an attractive storage-disaggregation sub...。",
+    "takeaway": "本文聚焦近邻搜索、向量数据库、RDMA 网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.01817v1",
+    "title": "HCMS: Head-Chunked Multi-Stream Pipeline for Communication-Computation Overlap in Long-Sequence Parallel Attention",
+    "authors": [
+      "Chao Yuan",
+      "Pan Li",
+      "Yingnan Sun",
+      "Jing Liu"
+    ],
+    "abstract": "All-to-all based sequence parallelism methods execute communication and computation strictly in serial when processing medium-long sequences, resulting in hardware resource underutilization. This paper proposes Head-Chunked Multi-Stream Pipeline (HCMS), which exploits the computational independence of multi-head attention by partitioning attention heads into multiple chunks and achieving fine-grained communication-computation overlap through dual CUDA streams. HCMS is orthogonally compatible with existing optimizations such as FlashAttention and SDPA, requires no modification to underlying kernels, supports uneven partitioning while maintaining numerical equivalence. Experiments validate the effectiveness across four GPU platforms at 2-8 GPU scales: for typical video generation sequence lengths of 31K-56K tokens, HCMS achieves 10\\%-17.5\\% speedup over the Ulysses baseline and 5\\%-14.5\\% speedup over Ring Attention; end-to-end acceleration of 6.8\\% is achieved on the Wan2.2 model. Theoretical analysis shows that HCMS benefits are positively correlated with communication ratio $ρ$, and its use is recommended when $ρ>20\\%$.",
+    "published_date": "2026-07-02T07:30:53Z",
+    "updated_date": "2026-07-02T07:30:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.01817v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.01817v1",
+    "source": "arxiv",
+    "score": 0.485586656332016,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、通信优化相关技术。\n\n核心内容：All-to-all based sequence parallelism methods execute communication and computation strictly in serial when processing medium-long sequences, resulting in hardware resource underutilization. This paper proposes Head-Chunked Multi-Stream Pipeline (HCMS), which exploits the computational independence ...。",
+    "takeaway": "本文聚焦CUDA、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.02043v1",
+    "title": "Towards Load-Aware Prefill Deflection for Disaggregated LLM Serving",
+    "authors": [
+      "Shrikara Arun",
+      "Anjaly Parayil",
+      "Srikant Bharadwaj",
+      "Renee St. Amant",
+      "Victor Rühle"
+    ],
+    "abstract": "Disaggregated LLM serving runs prefill and decode on separate GPU pools to keep the two phases from interfering. In practice, this creates a new asymmetry: under bursty, heavy-tailed workloads prefill nodes saturate while decode nodes have compute underutilized, and on a production-style A100 cluster with 2 prefill and 2 decode nodes (2P2D), we find that prefill execution accounts for only 2-23% of P95 Time-to-First-Token (TTFT). Queuing and inter-node GPU-GPU KV-cache transfer account for the rest. We present a proactive prefill-deflecting scheduler that lets decode nodes serve prefill phase of requests as chunked-prefill steps interleaved with their in-flight decode batches. For each queued request, we estimate the TTFT it would see on the prefill node, and on every decode node, search for the largest chunk schedule that keeps in-flight decodes within their Time-Between-Tokens (TBT) SLO and deflect when the decode path helps tail latency. Because the prefill phase of deflected requests runs in place on the decode node, the inter-node KV transfer is eliminated. Implemented on vLLM and evaluated on production-style traces with DeepSeek-V2-Lite, our approach reduces P95 TTFT by upto 81% and raises SLO attainment by upto 79% over state-of-the-art disaggregated schedulers, at sub-millisecond per-request routing cost.",
+    "published_date": "2026-07-02T11:10:05Z",
+    "updated_date": "2026-07-02T11:10:05Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.02043v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.02043v1",
+    "source": "arxiv",
+    "score": 0.45031982779502866,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Disaggregated LLM serving runs prefill and decode on separate GPU pools to keep the two phases from interfering. In practice, this creates a new asymmetry: under bursty, heavy-tailed workloads prefill nodes saturate while decode nodes have compute underutilized, and on a production-style A100 cluste...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.00819v1",
+    "title": "Modeling and Chasing the Energy-Efficiency Sweet Spots in Modern GPUs",
+    "authors": [
+      "Ayesha Afzal",
+      "Markus Manfred Li",
+      "Michael Panzlaff"
+    ],
+    "abstract": "Energy consumption is a key limitation in high-performance computing on heterogeneous CPU-GPU systems. This work studies how hardware configuration affects energy-to-solution under realistic workloads. We study energy efficiency regimes using molecular dynamics benchmarks (GROMACS and AMBER) and a stress-test benchmark (FIRESTARTER) on systems with A40, A100, H100, and H200 GPUs and Intel Ice Lake CPU, varying frequency scaling and power cap. We show that energy-to-solution exhibits workload- and architecture-dependent transitions between efficient and inefficient regimes, driven by nonlinear GPU power-frequency scaling. We introduce an interpretable analytical model that decomposes GPU power into linear and nonlinear components, identifying a workload- and architecture-dependent transition frequency beyond which efficiency degrades. The model fits empirical data with low error and highlights the role of baseline power, nonlinear power behavior, and transition frequency as the dominant parameters governing energy efficiency. Power capping is generally less effective for efficiency tuning than frequency reduction, especially for workloads that operate far from thermal design power. Overall, energy-efficient HPC execution is a configuration-dependent problem with identifiable regime shifts, and we provide model-driven guidance for selecting operating points.",
+    "published_date": "2026-07-01T11:42:08Z",
+    "updated_date": "2026-07-01T11:42:08Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.00819v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.00819v1",
+    "source": "arxiv",
+    "score": 0.41149832248687745,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、异构计算相关技术。\n\n核心内容：Energy consumption is a key limitation in high-performance computing on heterogeneous CPU-GPU systems. This work studies how hardware configuration affects energy-to-solution under realistic workloads。",
+    "takeaway": "本文聚焦隐私信息检索、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.02391v1",
+    "title": "WattGPU: Predicting Inference Power and Latency on Unseen GPUs and LLMs",
+    "authors": [
+      "Mauricio Fadel Argerich",
+      "Jonathan Fürst",
+      "Marta Patiño-Martínez"
+    ],
+    "abstract": "Large Language Model (LLM) inference workloads are a rapidly growing contributor to data center energy consumption. Optimizing these deployments requires matching specific LLMs to the most efficient GPUs, but operators currently lack the tools to do so without exhaustively profiling each combination. While some predictive models exist, they still require profiling data and struggle to generalize to hardware unseen during training. To address this, we introduce \\textit{WattGPU}, featuring two predictive models for mean GPU power draw and Inter-Token Latency (ITL). Our approach leverages only publicly available LLM metadata and GPU specifications, eliminating the need for hardware access or profiling while enabling generalization to unseen NVIDIA server-grade GPUs and LLMs. We evaluate our models using rigorous leave-one-GPU-out and leave-one-LLM-out cross-validation on a dataset of 42 open-source LLMs (0.1B--27B parameters) and 8 GPUs under both offline and server scenarios. The mean power draw model achieves a median absolute percentage error of $\\leq3.4\\%$ for offline and $\\leq13.5\\%$ for server scenarios on unseen GPUs, while the latency model achieves $\\leq8.5\\%$ in server mode, both maintaining strong GPU ranking correlations for server scenarios (Kendall $τ\\geq0.76$). Compared to standard physically grounded baselines -- Load-Scaled Thermal Design Power (TDP) for power draw and roofline for latency -- our models reduce median absolute percentage error by approximately 4$\\times$ on unseen LLM-GPU combinations for server scenarios or approximately 2$\\times$ for completely unseen GPUs. WattGPU's data and code are publicly available at https://github.com/maufadel/wattgpu.",
+    "published_date": "2026-07-02T16:25:34Z",
+    "updated_date": "2026-07-02T16:25:34Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.02391v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.02391v1",
+    "source": "arxiv",
+    "score": 0.40212725043296815,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Large Language Model (LLM) inference workloads are a rapidly growing contributor to data center energy consumption. Optimizing these deployments requires matching specific LLMs to the most efficient GPUs, but operators currently lack the tools to do so without exhaustively profiling each combination。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.04031v1",
+    "title": "TileLens: Efficiently Using Large-Granularity Memory Systems with Transparent Two-Dimensional Memory Layout",
+    "authors": [
+      "Jae Hyung Ju",
+      "Euijun Chung",
+      "Hritvik Taneja",
+      "Anish Saxena",
+      "Shinnung Jeong",
+      "Hyesoon Kim",
+      "Moinuddin K. Qureshi"
+    ],
+    "abstract": "Large Language Model (LLM) inference is bottlenecked by the capacity and bandwidth of GPU High-Bandwidth Memory (HBM). Recent proposals, such as High-Bandwidth Flash (HBF) and RoMe, offer higher capacity or bandwidth than HBM, but require a minimum access granularity of kilobytes. We show that these Large-Granularity Memory Systems (LGMS) can degrade the performance of tiled matrix-multiplication, which is the dominant operation in LLM inference, by up to an order of magnitude. The root cause of the slowdown is read amplification, where memory requests fetch far more data than the tile actually needs. This waste stems from a fundamental mismatch between the two-dimensional nature of compute tiles and the one-dimensional memory layout, leading to each request spilling well beyond the tile boundaries.\n  To mitigate read amplification, we propose to use tile-major layout for LGMS. Rather than storing data as a one-dimensional strip, tile-major layout reshapes each contiguous memory block into a two-dimensional rectangle, aligning memory granularity with tile boundaries. To ease the adoption of tile-major layout on GPUs, we propose TileLens, lightweight software and hardware extensions that collectively cover major classes of GPU kernels. TileLens-SW extends GPU DSLs so that DSL-based kernels can adopt tile-major in global memory by changing only the layout descriptor. TileLens-HW extends the Tensor Memory Accelerator (TMA) for transparent tile-major support in TMA-based kernels without code changes. We evaluate TileLens on a cycle-level simulator using matrix-multiplication kernels from Qwen-3 30B and Llama-3.1 70B. Combining a tile-major layout with an adaptive hardware prefetcher, TileLens achieves near-HBM performance on HBF-augmented GPUs with a 5us HBF NAND read latency, reducing the geomean slowdown from 1.61-6.49x with conventional layouts to within 1% of an HBM-only baseline.",
+    "published_date": "2026-07-04T21:19:49Z",
+    "updated_date": "2026-07-04T21:19:49Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.04031v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04031v1",
+    "source": "arxiv",
+    "score": 0.3872087585926056,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理、带宽优化、延迟优化相关技术。\n\n核心内容：Large Language Model (LLM) inference is bottlenecked by the capacity and bandwidth of GPU High-Bandwidth Memory (HBM). Recent proposals, such as High-Bandwidth Flash (HBF) and RoMe, offer higher capacity or bandwidth than HBM, but require a minimum access granularity of kilobytes。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.05240v1",
+    "title": "Optimizing ML Workload Partitioning between CPUs and CIM Accelerators for Heterogeneous Computing",
+    "authors": [
+      "Joel Klein",
+      "Rebecca Pelke",
+      "Roberto Laudani",
+      "Jan Moritz Joseph",
+      "Rainer Leupers"
+    ],
+    "abstract": "Computing-in-Memory (CIM) accelerators execute Matrix-Vector Multiplications (MVMs) in memory, making them a compelling solution for Machine Learning (ML) workloads. However, existing ML workload partitioning approaches for CIM accelerators do not fully account for Resistive Random Access Memory (RRAM) constraints such as limited memory, high write latency, and limited endurance. They also neglect parallelism, low-level architectural effects, or the Central Processing Unit (CPU) as a complementary compute resource. To address these limitations, we propose an Integer Linear Programming (ILP)-based workload partitioning framework for heterogeneous CPU-CIM systems. It minimizes end-to-end inference latency under RRAM constraints, captures parallelism, and combines empirical profiling with analytical models. Using our framework, heterogeneous CPU-CIM execution achieves speedups of up to 30.9x over CPU-only execution on an edge CPU and 7.3x over a high-performance CPU. A Design Space Exploration (DSE) yields further design insights for future CIM accelerators.",
+    "published_date": "2026-07-06T15:50:44Z",
+    "updated_date": "2026-07-06T15:50:44Z",
+    "categories": [
+      "cs.ET",
+      "cs.AI",
+      "cs.AR",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.05240v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.05240v1",
+    "source": "arxiv",
+    "score": 0.37925541400909424,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、内存数据库、异构计算、延迟优化相关技术。\n\n核心内容：Computing-in-Memory (CIM) accelerators execute Matrix-Vector Multiplications (MVMs) in memory, making them a compelling solution for Machine Learning (ML) workloads. However, existing ML workload partitioning approaches for CIM accelerators do not fully account for Resistive Random Access Memory (RR...。",
+    "takeaway": "本文聚焦隐私信息检索、内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.02603v1",
+    "title": "Scaling Weisfeiler-Leman Expressiveness Analysis to Massive Graphs with GPUs",
+    "authors": [
+      "Filippo Biondi",
+      "Mirco Tribastone",
+      "Max Tschaikowski"
+    ],
+    "abstract": "The stable coloring of the Weisfeiler-Leman (1-WL) test is a cornerstone of Graph Neural Networks because it provides an upper bound to the expressive power of message-passing architectures. Unfortunately, computing it presents two fundamental bottlenecks. First, classic algorithms are inherently sequential and cannot exploit modern massively parallel hardware. Second, these are \\emph{global} algorithms, i.e., they require availability in memory of the full graph, severely limiting applicability to real-world instances. We leverage a linear-algebraic interpretation of 1-WL stable coloring and introduce two key contributions: (i)~a randomized refinement algorithm with tight probabilistic guarantees and (ii)~a correctness-preserving batching scheme that decomposes the graph into independently processable subgraphs while provably returning a stable coloring of the original graph. This approach maps directly to GPU-efficient primitives. In numerical experiments, our CUDA implementation delivers speedups up to two orders of magnitude over classical CPU-based partition refinement and, for the first time, successfully computes stable colorings on web-scale graphs with over 30 billion edges, where CPU baselines time out or fail.",
+    "published_date": "2026-07-01T13:11:31Z",
+    "updated_date": "2026-07-01T13:11:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.02603v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.02603v1",
+    "source": "arxiv",
+    "score": 0.37838449954986575,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、网络相关技术。\n\n核心内容：The stable coloring of the Weisfeiler-Leman (1-WL) test is a cornerstone of Graph Neural Networks because it provides an upper bound to the expressive power of message-passing architectures. Unfortunately, computing it presents two fundamental bottlenecks。",
+    "takeaway": "本文聚焦CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
