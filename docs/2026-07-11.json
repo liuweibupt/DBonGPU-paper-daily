@@ -1,0 +1,301 @@
+[
+  {
+    "id": "2607.07632v1",
+    "title": "From Custom-Fit to Portable: Bridging the Gap Between Synthesized and Engineered GPU Query Execution",
+    "authors": [
+      "Ivan Donchev Kabadzhov",
+      "Eugenio Marinelli",
+      "Raja Appuswamy"
+    ],
+    "abstract": "GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engineered. In this scenario, instead of tuning a general-purpose engine to fit a workload, a large language model (LLM) generates code specialized to one query, one dataset, and one machine, thereby achieving an order-of-magnitude improvement in performance. This thesis, however, has so far been tested only on CPUs. In this work, we revisit the synthesize-versus-engineer debate for GPU analytics by answering three questions: (i) how good is synthesized GPU code?, (ii) why is it faster than engineered engines?, and (iii) how much of its advantage can be transferred back into a single, performance-portable engine?\n  To answer the first question, we present SHADB, an LLM-based synthesis framework that generates optimized CUDA or HIP kernels using an automated, profile-guided optimization loop. Using SHADB, we show that the synthesized code approaches the memory-bandwidth ceiling and outperforms a state-of-the-art JIT-compiled GPU database engine (HeavyDB) by 7.4$\\times$ on SSB SF100. To answer the second question, we decompose this performance gap and systematically classify optimizations as generalizable or workload-specific. Finally, to answer the third question, we integrate these generalizable optimizations into SYCLDB, a performance-portable engine written entirely in the open SYCL programming model. Using optimized SYCLDB, we show that it is possible to substantially bridge the gap to synthesized code (within 1.27$\\times$ total execution time) while retaining workload-level generality and hardware-level performance portability.",
+    "published_date": "2026-07-08T16:47:31Z",
+    "updated_date": "2026-07-08T16:47:31Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.07632v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.07632v1",
+    "source": "arxiv",
+    "score": 0.9316175746917725,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题高度相关"
+    ],
+    "abstract_cn": "本文研究GPU 数据库、GPU 查询处理、GPU 分析处理、CUDA、查询处理相关技术。\n\n核心内容：GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engin...。",
+    "takeaway": "本文聚焦GPU 数据库、GPU 查询处理、GPU 分析处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2607.04489v1",
+    "title": "Eiger: An Efficient Library for GPU-based Data Analytics",
+    "authors": [
+      "Bowen Wu",
+      "Marko Kabić",
+      "Sven Hepkema",
+      "Vasilis Mageirakos",
+      "Christos Kozyrakis",
+      "Gustavo Alonso"
+    ],
+    "abstract": "GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the dominant bottleneck. This highlights the need for more efficient relational operators on GPUs than the widely used library, cuDF. While offering rich functionality, cuDF commits to a single, statically chosen implementation for most operators and barely uses runtime information about the data, limiting performance across diverse workloads and GPUs. We present Eiger, a high-performance library for GPU-based data analytics that improves single-GPU query processing through runtime workload adaptivity. Adaptivity in Eiger rests on two principles. First, Eiger provides multiple implementation variants and tunable knobs for most operators, covering not only joins and group-bys but also expensive yet often overlooked operations, such as expression evaluation, string processing, and multi-key sorting, for which it contributes new optimization techniques. Second, Eiger profiles intermediate data during query execution using lightweight statistics, such as value ranges and HyperLogLog++ sketches, and uses them to select implementations, tune knobs, and compress data on the fly, overcoming the limitations of traditional static query optimization. The breadth of operators and variants also enables a more comprehensive performance analysis, covering more operations and workloads than previous work. We evaluate Eiger with operator microbenchmarks on two GPU architectures and the complete TPC-H benchmark (up to scale factor 100). Across the 22 queries, Eiger reduces total runtime by up to 1.8x compared to the state-of-the-art cuDF library; for individual queries, Eiger achieves up to 6.1x better performance.",
+    "published_date": "2026-07-05T20:25:54Z",
+    "updated_date": "2026-07-05T20:25:54Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.04489v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04489v1",
+    "source": "arxiv",
+    "score": 0.7081956124305725,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 查询处理、查询处理、查询优化、排序、网络相关技术。\n\n核心内容：GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the ...。",
+    "takeaway": "本文聚焦GPU 查询处理、查询处理、查询优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2607.07862v1",
+    "title": "CTA-Pipelining: A Latency-Oriented Spatial Scaling Method for Multi-GPU Systems",
+    "authors": [
+      "Tingkai Liu",
+      "Muralidhar Andoorveedu",
+      "Sanjoy Das",
+      "Sanjay Patel",
+      "Volodymyr Kindratenko"
+    ],
+    "abstract": "The evolution of compute infrastructure has transformed multi-GPU systems into tightly integrated shared-memory structures. However, current software still mostly treats these coherent interconnects simply as high-speed networks. Simultaneously, the demand for serving Large Language Models under latency constraints has shifted GPU workload optimization from being throughput-driven to latency-bound, necessitating latency-oriented scaling methods beyond Tensor Parallelism (TP).\n  Thus, we introduce CTA-pipelining, an execution paradigm designed to exploit shared-memory multi-GPU systems. As a latency-oriented spatial scaling technique, CTA-pipelining leverages dependencies at the Cooperative Thread Array level, enabling concurrent execution of dependent kernels across GPUs. We demonstrate its capability using CUTLASS, cuBLAS, and NCCL libraries on 8-GPU H200 and B200 systems. Results show on 2-layer GEMM, representing the MLP operation, CTA-pipelining reduces latency by up to 31.8% compared to micro-batching, and 29.6% compared to TP. It can also be combined with TP as an orthogonal scaling dimension to further push the latency boundary.",
+    "published_date": "2026-07-08T18:54:08Z",
+    "updated_date": "2026-07-08T18:54:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.07862v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.07862v1",
+    "source": "arxiv",
+    "score": 0.5268817532062531,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量并行、多 GPU、网络、延迟优化、吞吐量相关技术。\n\n核心内容：The evolution of compute infrastructure has transformed multi-GPU systems into tightly integrated shared-memory structures. However, current software still mostly treats these coherent interconnects simply as high-speed networks。",
+    "takeaway": "本文聚焦张量并行、多 GPU、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.07696v1",
+    "title": "Breaking Database Lock-in: Agentic Regeneration of High Performance Storage Readers for Database Bypass",
+    "authors": [
+      "Victor Giannakouris",
+      "Immanuel Trummer"
+    ],
+    "abstract": "Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We present Jailbreak, an approach that bypasses the database engine entirely by reading storage files directly and materializing data as in-memory columnar buffers. Jailbreak's key insight is that database file formats, while complex, are fully specified by their source code and documentation, artifacts that Large Language Models (LLMs) can ingest to regenerate operator-specific table reading components without human-engineered parsing logic. Jailbreak leverages LLM-assisted code synthesis for database storage decoding, turning a traditionally opaque format into a directly queryable artifact. We evaluate Jailbreak on PostgreSQL and MySQL storage files, targeting analytical snapshot scenarios common in read replicas and offline processing pipelines. The generated reader produces Apache Arrow buffers consumable directly by most of the widely known query engines, including DuckDB, Apache Spark, and GPU-accelerated frameworks such as cuDF and Spark RAPIDS. We validate correctness against JDBC/ODBC-based baselines using the TPC-H benchmark across all query results, and demonstrate significant performance improvements in end-to-end analytical throughput, achieving up to 27x speedups. Our results showcase that LLM-assisted storage reader synthesis is a viable and generalizable methodology for breaking data lock-in across database systems, with applications beyond PostgreSQL and MySQL for any system whose file format is available to the LLM from documentation or source code.",
+    "published_date": "2026-07-08T17:55:00Z",
+    "updated_date": "2026-07-08T17:55:00Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.07696v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.07696v1",
+    "source": "arxiv",
+    "score": 0.5153880870342255,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、内存数据库、数据库系统、吞吐量相关技术。\n\n核心内容：Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We...。",
+    "takeaway": "本文聚焦GPU 加速、内存数据库、数据库系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2607.04857v1",
+    "title": "Terastate-per-second QUBO Brute-Force on a Single GPU: A Matrix Prefix-Suffix Decomposition",
+    "authors": [
+      "Aleksandr Maltsev",
+      "Mikhail Remnev",
+      "Alexey Kapranov",
+      "Ekaterina Krivtsova"
+    ],
+    "abstract": "This paper presents a parallel QUBO exhaustive search algorithm for dense matrices, based on a prefix-suffix decomposition and Gray code ordering. The algorithm achieves O(1) per-state complexity: for the QUBO objective function computation only one arithmetic operation per state is performed. An adjustable energy components cache size enables placement in the fastest available memory tier. This reduces memory bandwidth requirements to a negligible level and transforms the problem from memory-bound to compute-bound. Our CUDA-based implementation achieves a state-of-the-art evaluation rate of $7.5\\times10^{12}$ states per second on a single GPU, setting a new performance benchmark for the full-space-search subclass of exact solvers.",
+    "published_date": "2026-07-06T09:32:35Z",
+    "updated_date": "2026-07-06T09:32:35Z",
+    "categories": [
+      "cs.DS",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.04857v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04857v1",
+    "source": "arxiv",
+    "score": 0.5011398482322693,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化相关技术。\n\n核心内容：This paper presents a parallel QUBO exhaustive search algorithm for dense matrices, based on a prefix-suffix decomposition and Gray code ordering. The algorithm achieves O(1) per-state complexity: for the QUBO objective function computation only one arithmetic operation per state is performed。",
+    "takeaway": "本文聚焦CUDA、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.04415v2",
+    "title": "GORIO: GPU-Centered Remote I/O for Graph ANNS over NVMe-oF",
+    "authors": [
+      "Gen Zhang",
+      "Wenhao Gu",
+      "Shan Huang",
+      "Xinhai Chen"
+    ],
+    "abstract": "Graph-based approximate nearest neighbor search (ANNS) is increasingly used in vector databases and retrieval-augmented generation services, but large vector indexes often exceed the memory capacity of a single GPU server. NVMe over Fabrics (NVMe-oF) provides an attractive storage-disaggregation substrate, yet existing remote storage paths are still largely CPU-centered: the CPU forms I/O requests, drives transport progress, and determines when GPU computation can resume. This organization is poorly matched to graph ANNS, where the next data access is discovered inside GPU graph traversal.\n  This paper presents GORIO, a system study that extends GPU-centered local I/O to remote storage and specializes the resulting substrate for graph ANNS over NVMe-oF. GORIO keeps query evolution, page-miss generation, pending-query state, and resume decisions on the GPU, while the CPU acts only as an NVMe-oF transport and completion proxy. The design has two layers: a GPU-direct remote I/O path that turns local page-cache misses into split-phase remote operations, and ANNS-specific scheduling mechanisms that overlap graph traversal with remote page service. On a SIFT1M DiskANN-style graph workload over an RDMA NVMe-oF path, GORIO is 1.31X faster than the state-of-the-art remote-I/O reference path and 4.89X faster than the direct remote page-cache path. These results demonstrate a concrete GPU-centered remote I/O substrate for graph ANNS.",
+    "published_date": "2026-07-05T17:09:06Z",
+    "updated_date": "2026-07-07T08:36:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.04415v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.04415v2",
+    "source": "arxiv",
+    "score": 0.4980076539516449,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究近邻搜索、向量数据库、RDMA 网络、NVMe 存储、聚合相关技术。\n\n核心内容：Graph-based approximate nearest neighbor search (ANNS) is increasingly used in vector databases and retrieval-augmented generation services, but large vector indexes often exceed the memory capacity of a single GPU server. NVMe over Fabrics (NVMe-oF) provides an attractive storage-disaggregation sub...。",
+    "takeaway": "本文聚焦近邻搜索、向量数据库、RDMA 网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.08006v1",
+    "title": "Toward a Unified GPU-Aware OpenSHMEM Specification",
+    "authors": [
+      "Naveen Ravi",
+      "Nathan Wichmann",
+      "Md. Wasi-ur- Rahman",
+      "Aurelien Bouteiller",
+      "Yıltan Hassan Temuçin",
+      "Avinash Kethineedi",
+      "Johnathan Alsop",
+      "Brandon Potter",
+      "Shubhendra Pal Singhal",
+      "Jun Shirako",
+      "Akihiro Hayashi",
+      "Vivek Sarkar",
+      "Lawrence C. Stewart",
+      "Michael Beebe",
+      "Benjamin Michalowicz",
+      "Jeongnim Kim",
+      "Thiago Teixeria",
+      "Mark F. Brown",
+      "Aaron Welch",
+      "Oscar Hernandez",
+      "Wendy Poole",
+      "Steve Poole"
+    ],
+    "abstract": "Leadership-class HPC systems are now accelerator-centric, with GPUs providing most floating-point throughput and memory bandwidth. As next-generation systems increasingly integrate accelerators through high-speed memory fabrics and system interconnects, exposing larger tightly coupled device domains, \\ac{PGAS} models such as OpenSHMEM provide a natural abstraction for expressing fine-grained remote memory operations across these devices. While OpenSHMEM 1.x offers a lean PGAS model for irregular communication, atomics, fine-grained synchronization, and collectives, its memory model lacks portable semantics for accelerator architectures. As a result, existing GPU-enabled OpenSHMEM implementations differ in memory management, capability discovery, and operation semantics, limiting portability and ecosystem cohesion. This risks fracturing the community that OpenSHMEM was originally created to unify.\n  This paper proposes an OpenSHMEM Auxiliary Specification for GPU-Aware Communication, designed as a lightweight, backward-compatible extension to OpenSHMEM 1.x. The auxiliary specification introduces a minimal memory model extension via a GPU-scoped memory space abstraction, along with capability queries and well-defined semantics for using \\acs{GPU}-attached buffers in RMA, atomic, synchronization, and collective operations. This is initially conceived through the lens of a host-initiated interface, although it provides a general set of semantics that also allow for optional device-initiated support. A central goal of this effort is to demonstrate that GPU-aware OpenSHMEM semantics can be specified and implemented across GPUs from multiple vendors, providing a practical and rapidly implementable step toward unification under a vendor-neutral specification while informing the design of future OpenSHMEM specifications.",
+    "published_date": "2026-07-09T00:20:16Z",
+    "updated_date": "2026-07-09T00:20:16Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.08006v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.08006v1",
+    "source": "arxiv",
+    "score": 0.49585695505142213,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究集合通信、通信优化、带宽优化、吞吐量相关技术。\n\n核心内容：Leadership-class HPC systems are now accelerator-centric, with GPUs providing most floating-point throughput and memory bandwidth. As next-generation systems increasingly integrate accelerators through high-speed memory fabrics and system interconnects, exposing larger tightly coupled device domains...。",
+    "takeaway": "本文聚焦集合通信、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.08307v1",
+    "title": "Empirical Analysis of GPU Frequency Behavior Under ML Workloads",
+    "authors": [
+      "Truong-Thanh Le",
+      "Hoang-Loc La",
+      "Amir Taherkordi",
+      "Frank Eliassen",
+      "Phuong Hoai Ha",
+      "Peiyuan Guan"
+    ],
+    "abstract": "This work presents ongoing research on the frequency scaling behavior of NVIDIA GPUs when executing ML/AI workloads. Our preliminary findings show that, on lower-performance GPUs, the operating frequency is strongly affected by the recent workload history, typically within an 80ms window. This behavior challenges a common assumption underlying several state-of-the-art ML latency-prediction techniques, which treat individual GPU kernel latencies as independent and therefore estimate total execution time by summing isolated per-kernel measurements. Our results indicate that such an assumption does not always hold, as the GPU's dynamic frequency scaling introduces inter-kernel dependencies. We also outline several promising directions for leveraging this observation in future work, including improved latency-prediction models, GPU kernel-reordering strategies, and NAS-driven guidelines for frequency/latency/energy-aware model design.",
+    "published_date": "2026-07-09T09:48:37Z",
+    "updated_date": "2026-07-09T09:48:37Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.08307v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.08307v1",
+    "source": "arxiv",
+    "score": 0.42371204376220706,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、隐私信息检索、延迟优化相关技术。\n\n核心内容：This work presents ongoing research on the frequency scaling behavior of NVIDIA GPUs when executing ML/AI workloads. Our preliminary findings show that, on lower-performance GPUs, the operating frequency is strongly affected by the recent workload history, typically within an 80ms window。",
+    "takeaway": "本文聚焦GPU 核函数、隐私信息检索、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.06881v1",
+    "title": "Multiple Double Arithmetic on NVIDIA Tensor Cores",
+    "authors": [
+      "Howard Chen",
+      "Jan Verschelde"
+    ],
+    "abstract": "A multiple double is an unevaluated sum of doubles. An NVIDIA tensor core is a specialized high performance compute core for matrix multiplication. The Ampere A100, released in 2020, introduced tensor cores capable of 64-bit floating-point arithmetic. Every multiple double arithmetical operation requires renormalization, which involves branching, for which tensor cores are unsuited.\n  To solve this problem caused by renormalization, we apply a solution similar to the Ozaki scheme [Ozaki et al, Numerical Algorithms, 2012]. Our software is available under the GPU GPL license on github.",
+    "published_date": "2026-07-08T00:44:25Z",
+    "updated_date": "2026-07-08T00:44:25Z",
+    "categories": [
+      "cs.MS",
+      "cs.DC",
+      "math.NA"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.06881v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.06881v1",
+    "source": "arxiv",
+    "score": 0.406620010137558,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：A multiple double is an unevaluated sum of doubles. An NVIDIA tensor core is a specialized high performance compute core for matrix multiplication。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.04031v1",
+    "title": "TileLens: Efficiently Using Large-Granularity Memory Systems with Transparent Two-Dimensional Memory Layout",
+    "authors": [
+      "Jae Hyung Ju",
+      "Euijun Chung",
+      "Hritvik Taneja",
+      "Anish Saxena",
+      "Shinnung Jeong",
+      "Hyesoon Kim",
+      "Moinuddin K. Qureshi"
+    ],
+    "abstract": "Large Language Model (LLM) inference is bottlenecked by the capacity and bandwidth of GPU High-Bandwidth Memory (HBM). Recent proposals, such as High-Bandwidth Flash (HBF) and RoMe, offer higher capacity or bandwidth than HBM, but require a minimum access granularity of kilobytes. We show that these Large-Granularity Memory Systems (LGMS) can degrade the performance of tiled matrix-multiplication, which is the dominant operation in LLM inference, by up to an order of magnitude. The root cause of the slowdown is read amplification, where memory requests fetch far more data than the tile actually needs. This waste stems from a fundamental mismatch between the two-dimensional nature of compute tiles and the one-dimensional memory layout, leading to each request spilling well beyond the tile boundaries.\n  To mitigate read amplification, we propose to use tile-major layout for LGMS. Rather than storing data as a one-dimensional strip, tile-major layout reshapes each contiguous memory block into a two-dimensional rectangle, aligning memory granularity with tile boundaries. To ease the adoption of tile-major layout on GPUs, we propose TileLens, lightweight software and hardware extensions that collectively cover major classes of GPU kernels. TileLens-SW extends GPU DSLs so that DSL-based kernels can adopt tile-major in global memory by changing only the layout descriptor. TileLens-HW extends the Tensor Memory Accelerator (TMA) for transparent tile-major support in TMA-based kernels without code changes. We evaluate TileLens on a cycle-level simulator using matrix-multiplication kernels from Qwen-3 30B and Llama-3.1 70B. Combining a tile-major layout with an adaptive hardware prefetcher, TileLens achieves near-HBM performance on HBF-augmented GPUs with a 5us HBF NAND read latency, reducing the geomean slowdown from 1.61-6.49x with conventional layouts to within 1% of an HBM-only baseline.",
+    "published_date": "2026-07-04T21:19:49Z",
+    "updated_date": "2026-07-04T21:19:49Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.04031v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04031v1",
+    "source": "arxiv",
+    "score": 0.3872087585926056,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理、带宽优化、延迟优化相关技术。\n\n核心内容：Large Language Model (LLM) inference is bottlenecked by the capacity and bandwidth of GPU High-Bandwidth Memory (HBM). Recent proposals, such as High-Bandwidth Flash (HBF) and RoMe, offer higher capacity or bandwidth than HBM, but require a minimum access granularity of kilobytes。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  }
+]
