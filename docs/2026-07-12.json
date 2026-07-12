@@ -17,7 +17,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.07632v1",
     "arxiv_url": "https://arxiv.org/abs/2607.07632v1",
     "source": "arxiv",
-    "score": 0.9316176939010621,
+    "score": 0.9316175746917725,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题高度相关"
@@ -47,7 +47,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.04489v1",
     "arxiv_url": "https://arxiv.org/abs/2607.04489v1",
     "source": "arxiv",
-    "score": 0.708195493221283,
+    "score": 0.7081956124305725,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
@@ -77,7 +77,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.07862v1",
     "arxiv_url": "https://arxiv.org/abs/2607.07862v1",
     "source": "arxiv",
-    "score": 0.5268816041946411,
+    "score": 0.5268817532062531,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -103,7 +103,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.07696v1",
     "arxiv_url": "https://arxiv.org/abs/2607.07696v1",
     "source": "arxiv",
-    "score": 0.5153880572319031,
+    "score": 0.5153880870342255,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -131,7 +131,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.04857v1",
     "arxiv_url": "https://arxiv.org/abs/2607.04857v1",
     "source": "arxiv",
-    "score": 0.5011397886276245,
+    "score": 0.5011398482322693,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -204,7 +204,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.08006v1",
     "arxiv_url": "https://arxiv.org/abs/2607.08006v1",
     "source": "arxiv",
-    "score": 0.49585689544677736,
+    "score": 0.49585695505142213,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -260,7 +260,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.06881v1",
     "arxiv_url": "https://arxiv.org/abs/2607.06881v1",
     "source": "arxiv",
-    "score": 0.40662009954452516,
+    "score": 0.406620010137558,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -292,7 +292,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.05240v1",
     "arxiv_url": "https://arxiv.org/abs/2607.05240v1",
     "source": "arxiv",
-    "score": 0.3792552649974823,
+    "score": 0.37925541400909424,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
