@@ -1,32 +1,5 @@
 [
   {
-    "id": "2607.07632v1",
-    "title": "From Custom-Fit to Portable: Bridging the Gap Between Synthesized and Engineered GPU Query Execution",
-    "authors": [
-      "Ivan Donchev Kabadzhov",
-      "Eugenio Marinelli",
-      "Raja Appuswamy"
-    ],
-    "abstract": "GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engineered. In this scenario, instead of tuning a general-purpose engine to fit a workload, a large language model (LLM) generates code specialized to one query, one dataset, and one machine, thereby achieving an order-of-magnitude improvement in performance. This thesis, however, has so far been tested only on CPUs. In this work, we revisit the synthesize-versus-engineer debate for GPU analytics by answering three questions: (i) how good is synthesized GPU code?, (ii) why is it faster than engineered engines?, and (iii) how much of its advantage can be transferred back into a single, performance-portable engine?\n  To answer the first question, we present SHADB, an LLM-based synthesis framework that generates optimized CUDA or HIP kernels using an automated, profile-guided optimization loop. Using SHADB, we show that the synthesized code approaches the memory-bandwidth ceiling and outperforms a state-of-the-art JIT-compiled GPU database engine (HeavyDB) by 7.4$\\times$ on SSB SF100. To answer the second question, we decompose this performance gap and systematically classify optimizations as generalizable or workload-specific. Finally, to answer the third question, we integrate these generalizable optimizations into SYCLDB, a performance-portable engine written entirely in the open SYCL programming model. Using optimized SYCLDB, we show that it is possible to substantially bridge the gap to synthesized code (within 1.27$\\times$ total execution time) while retaining workload-level generality and hardware-level performance portability.",
-    "published_date": "2026-07-08T16:47:31Z",
-    "updated_date": "2026-07-08T16:47:31Z",
-    "categories": [
-      "cs.DB"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2607.07632v1",
-    "arxiv_url": "https://arxiv.org/abs/2607.07632v1",
-    "source": "arxiv",
-    "score": 0.9316175746917725,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作",
-      "与 GPU 数据库主题高度相关"
-    ],
-    "abstract_cn": "本文研究GPU 数据库、GPU 查询处理、GPU 分析处理、CUDA、查询处理相关技术。\n\n核心内容：GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engin...。",
-    "takeaway": "本文聚焦GPU 数据库、GPU 查询处理、GPU 分析处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
-  },
-  {
     "id": "2607.07862v1",
     "title": "CTA-Pipelining: A Latency-Oriented Spatial Scaling Method for Multi-GPU Systems",
     "authors": [
@@ -47,39 +20,13 @@
     "pdf_url": "https://arxiv.org/pdf/2607.07862v1",
     "arxiv_url": "https://arxiv.org/abs/2607.07862v1",
     "source": "arxiv",
-    "score": 0.5268817532062531,
+    "score": 0.5268816041946411,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
     "abstract_cn": "本文研究张量并行、多 GPU、网络、延迟优化、吞吐量相关技术。\n\n核心内容：The evolution of compute infrastructure has transformed multi-GPU systems into tightly integrated shared-memory structures. However, current software still mostly treats these coherent interconnects simply as high-speed networks。",
     "takeaway": "本文聚焦张量并行、多 GPU、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
-  },
-  {
-    "id": "2607.07696v1",
-    "title": "Breaking Database Lock-in: Agentic Regeneration of High Performance Storage Readers for Database Bypass",
-    "authors": [
-      "Victor Giannakouris",
-      "Immanuel Trummer"
-    ],
-    "abstract": "Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We present Jailbreak, an approach that bypasses the database engine entirely by reading storage files directly and materializing data as in-memory columnar buffers. Jailbreak's key insight is that database file formats, while complex, are fully specified by their source code and documentation, artifacts that Large Language Models (LLMs) can ingest to regenerate operator-specific table reading components without human-engineered parsing logic. Jailbreak leverages LLM-assisted code synthesis for database storage decoding, turning a traditionally opaque format into a directly queryable artifact. We evaluate Jailbreak on PostgreSQL and MySQL storage files, targeting analytical snapshot scenarios common in read replicas and offline processing pipelines. The generated reader produces Apache Arrow buffers consumable directly by most of the widely known query engines, including DuckDB, Apache Spark, and GPU-accelerated frameworks such as cuDF and Spark RAPIDS. We validate correctness against JDBC/ODBC-based baselines using the TPC-H benchmark across all query results, and demonstrate significant performance improvements in end-to-end analytical throughput, achieving up to 27x speedups. Our results showcase that LLM-assisted storage reader synthesis is a viable and generalizable methodology for breaking data lock-in across database systems, with applications beyond PostgreSQL and MySQL for any system whose file format is available to the LLM from documentation or source code.",
-    "published_date": "2026-07-08T17:55:00Z",
-    "updated_date": "2026-07-08T17:55:00Z",
-    "categories": [
-      "cs.DB",
-      "cs.AI"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2607.07696v1",
-    "arxiv_url": "https://arxiv.org/abs/2607.07696v1",
-    "source": "arxiv",
-    "score": 0.5153880870342255,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作"
-    ],
-    "abstract_cn": "本文研究GPU 加速、内存数据库、数据库系统、吞吐量相关技术。\n\n核心内容：Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We...。",
-    "takeaway": "本文聚焦GPU 加速、内存数据库、数据库系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
   },
   {
     "id": "2607.04857v1",
@@ -101,7 +48,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.04857v1",
     "arxiv_url": "https://arxiv.org/abs/2607.04857v1",
     "source": "arxiv",
-    "score": 0.5011398482322693,
+    "score": 0.5011397886276245,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -146,7 +93,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.08006v1",
     "arxiv_url": "https://arxiv.org/abs/2607.08006v1",
     "source": "arxiv",
-    "score": 0.49585695505142213,
+    "score": 0.49585689544677736,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -184,30 +131,6 @@
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
-    "id": "2607.08956v1",
-    "title": "Accelerating Point-in-Polygon Predicates via Algebraic Hash-Joins and Discrete Global Grids at Scale",
-    "authors": [
-      "Levente Juhasz"
-    ],
-    "abstract": "Traditional vector-based point-in-polygon queries rely on computationally expensive geometric predicates that scale poorly for massive datasets, even when accelerated by spatial indices. Discrete Global Grid Systems (DGGS) offer a scalable alternative by discretizing geometries into hierarchical cells, transforming complex spatial relations into constant-time relational hash-joins. However, adopting a DGGS introduces an overhead to encode data, and current grid implementations exhibit a significant performance ``tooling gap.'' In this demonstration, we present an interactive dashboard that empirically evaluates these computational tradeoffs across four DGGS implementations (H3, S2, A5, and ISEA4H) using DuckDB. Through progressive scenarios, the platform visualizes the overhead of on-the-fly encoding and demonstrates how pre-indexing spatial datasets eliminates this overhead. Ultimately, the demo proves that when data is pre-indexed, all DGGS regardless of their mathematical complexity or tooling converge to sub-second join latencies, unlocking the throughput of modern vectorized execution engines.",
-    "published_date": "2026-07-09T21:29:08Z",
-    "updated_date": "2026-07-09T21:29:08Z",
-    "categories": [
-      "cs.DB"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2607.08956v1",
-    "arxiv_url": "https://arxiv.org/abs/2607.08956v1",
-    "source": "arxiv",
-    "score": 0.41982309460639955,
-    "reasons": [
-      "与数据库系统和查询处理相关"
-    ],
-    "abstract_cn": "本文研究隐私信息检索、向量化执行、吞吐量相关技术。\n\n核心内容：Traditional vector-based point-in-polygon queries rely on computationally expensive geometric predicates that scale poorly for massive datasets, even when accelerated by spatial indices. Discrete Global Grid Systems (DGGS) offer a scalable alternative by discretizing geometries into hierarchical cel...。",
-    "takeaway": "本文聚焦隐私信息检索、向量化执行、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 针对特定场景提出优化方案"
-  },
-  {
     "id": "2607.06881v1",
     "title": "Multiple Double Arithmetic on NVIDIA Tensor Cores",
     "authors": [
@@ -226,46 +149,13 @@
     "pdf_url": "https://arxiv.org/pdf/2607.06881v1",
     "arxiv_url": "https://arxiv.org/abs/2607.06881v1",
     "source": "arxiv",
-    "score": 0.406620010137558,
+    "score": 0.40662009954452516,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
     "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：A multiple double is an unevaluated sum of doubles. An NVIDIA tensor core is a specialized high performance compute core for matrix multiplication。",
     "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
-  },
-  {
-    "id": "2607.08993v1",
-    "title": "StreamDQ: Near-Memory Weight DeQuantization in Custom HBM for Scalable AI Inference Acceleration",
-    "authors": [
-      "Minki Jeong",
-      "Daegun Yoon",
-      "Soohong Ahn",
-      "Seungyong Lee",
-      "Nameun Kang",
-      "Hyeonseok Ju",
-      "Ieryung Park",
-      "Joonseop Sim",
-      "Youngpyo Joo",
-      "Hoshik Kim"
-    ],
-    "abstract": "As large language models (LLMs) scale, their memory and computation demands have grown substantially, making weight-only quantization a widely adopted technique for reducing model size with minimal accuracy loss. However, on current GPUs, CUDA-core-based dequantization introduces substantial instruction overhead, on-chip traffic, and pipeline stalls, making it a major bottleneck for high-throughput, cloud-scale LLM serving. To address these limitations, we propose StreamDQ, a lightweight architectural enhancement that enables on-the-fly dequantization in the memory subsystem for high-throughput, large-batch LLM inference. StreamDQ integrates compact DeQuantization Blocks (DQBs) into the base die of high-bandwidth memory (HBM) and performs inline dequantization on standard memory loads. A lightweight sideband tag on each memory read request selects the dequantization mode while preserving conventional load semantics. By relocating dequantization to the memory side, StreamDQ eliminates GPU-side CUDA-core-based dequantization, thereby reducing on-chip traffic on the GPU and avoiding extra HBM write-back and reload of dequantized weights at large batch sizes. Our evaluation shows that StreamDQ achieves up to 7.08$\\times$ speedup and 90.23\\% lower energy for mixed-precision GEMM, with only 0.127\\,mm$^2$ area and 0.355\\,W power overhead per DQB in a 12\\,nm CMOS process. For end-to-end LLM inference, StreamDQ reduces latency by up to 54.68\\% and improves decode throughput by up to 2.20$\\times$.",
-    "published_date": "2026-07-09T23:52:57Z",
-    "updated_date": "2026-07-09T23:52:57Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2607.08993v1",
-    "arxiv_url": "https://arxiv.org/abs/2607.08993v1",
-    "source": "arxiv",
-    "score": 0.4025661039352417,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究CUDA、大模型推理、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：As large language models (LLMs) scale, their memory and computation demands have grown substantially, making weight-only quantization a widely adopted technique for reducing model size with minimal accuracy loss. However, on current GPUs, CUDA-core-based dequantization introduces substantial instruc...。",
-    "takeaway": "本文聚焦CUDA、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
   },
   {
     "id": "2607.05240v1",
@@ -287,16 +177,122 @@
       "cs.DC",
       "cs.LG"
     ],
-    "primary_category": "cs.AR",
+    "primary_category": "cs.DC",
     "pdf_url": "https://arxiv.org/pdf/2607.05240v1",
     "arxiv_url": "https://arxiv.org/abs/2607.05240v1",
     "source": "arxiv",
-    "score": 0.37925541400909424,
+    "score": 0.3792552649974823,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
     "abstract_cn": "本文研究隐私信息检索、内存数据库、异构计算、延迟优化相关技术。\n\n核心内容：Computing-in-Memory (CIM) accelerators execute Matrix-Vector Multiplications (MVMs) in memory, making them a compelling solution for Machine Learning (ML) workloads. However, existing ML workload partitioning approaches for CIM accelerators do not fully account for Resistive Random Access Memory (RR...。",
     "takeaway": "本文聚焦隐私信息检索、内存数据库、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
     "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.08215v1",
+    "title": "On the Limitations of Non-GPU AI Accelerators for Large-Model Inference: A Field Study of MoE and Multimodal Serving on Huawei Ascend",
+    "authors": [
+      "Zheng Yu"
+    ],
+    "abstract": "Non-GPU AI accelerators are increasingly adopted as alternatives to general-purpose GPUs for large-model inference, but the real engineering cost of migrating demanding workloads beyond CUDA remains poorly documented. We present a field study of deploying two large inference workloads on a 16-device Huawei Ascend 910 system using CANN and vLLM-Ascend: an LLM-as-a-judge safety and alignment evaluation pipeline based on a W8A8 MoE judge model, DeepSeek-V4-Flash, and a multimodal medical vision--language benchmark based on DeepSeek-V4-Flash-Vision for MMMU and MMMU-Pro. Making these workloads reliable required twelve source-level patches to the vendor inference plugin, disabling several high-throughput features to preserve numerical correctness, and adding operational safeguards for recurring device-level failures. We summarize the main platform limitations in eight categories: incomplete operator and feature support, fragile parallelism, numerical faults in low-level kernels, immature graph compilation, unstable advanced features, limited scalability, weak observability, and ecosystem fragmentation. For each category, we report the symptoms, evidence, and likely causes. We also quantify the integration effort, concurrency behavior, and benchmark quality to show that both workloads were served correctly. Our study provides a reproducible reference for teams evaluating or operating non-GPU accelerators for large-model inference.",
+    "published_date": "2026-07-09T08:12:15Z",
+    "updated_date": "2026-07-09T08:12:15Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.08215v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.08215v1",
+    "source": "arxiv",
+    "score": 0.37311829447746275,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Non-GPU AI accelerators are increasingly adopted as alternatives to general-purpose GPUs for large-model inference, but the real engineering cost of migrating demanding workloads beyond CUDA remains poorly documented. We present a field study of deploying two large inference workloads on a 16-device...。",
+    "takeaway": "本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.05622v1",
+    "title": "EOM-CC Excited-State Gradients and Nonadiabatic Couplings on a Consumer GPU from a Contraction-DAG with Laplace-Transform J/K Kernels",
+    "authors": [
+      "Rubén Darío Guerrero"
+    ],
+    "abstract": "We present a unified, memory-bounded GPU realization of equation-of-motion coupled-cluster (EOM-CC) excited-state gradients and interstate nonadiabatic couplings (NACMEs) on a single 8\\,GB consumer GPU. Both are built from one contraction directed acyclic graph: the EOM-CC relaxation is the reverse-mode transpose of the forward density build rather than a per-state re-derivation, and an atomic-orbital-direct Laplace-transform $J/K$ kernel, made non-symmetric ($J^x(A,B)\\neq J^x(B,A)$) by the transition densities, resolves every energy denominator with no four-index molecular-orbital tensor; a two-sided Davidson returns both eigenvectors from one device-resident, spin-pure solve. The pipeline is \\emph{validated end to end at small scale}: gradients and NACMEs match finite differences across four spin multiplicities and full configuration interaction to $<\\!10^{-12}$ for two electrons, and the excited-state gradient matches the independent \\textsc{Psi4} code to $\\le\\!4.6\\times10^{-7}~E_h/a_0$ from \\ce{H2O} to aromatic benzene. The kernels and the ground-state solve reach chromophores ($\\le\\!730$ AO) in 8\\,GB, and a frozen-natural-virtual compression lets the eigensolver \\emph{execute} a complete excited-state gradient and $Q$--$B$ NACME of the chlorophyll-core chromophore \\ce{Mg}-porphine (def2-SVP, $439$ AO) on the card. We present that run as a \\emph{capability demonstration} -- executed and translationally invariant to machine zero, but anchored only piece-wise and bounded by a direct convergence study at ${\\sim}10^{-2}~E_h/a_0$ -- not a converged spectroscopic result. The validated small-scale capability and the memory-bounded implementation are the contribution.",
+    "published_date": "2026-07-06T20:31:33Z",
+    "updated_date": "2026-07-06T20:31:33Z",
+    "categories": [
+      "physics.chem-ph",
+      "cs.DC",
+      "physics.comp-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.05622v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.05622v1",
+    "source": "arxiv",
+    "score": 0.3722920107841492,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present a unified, memory-bounded GPU realization of equation-of-motion coupled-cluster (EOM-CC) excited-state gradients and interstate nonadiabatic couplings (NACMEs) on a single 8\\,GB consumer GPU. Both are built from one contraction directed acyclic graph: the EOM-CC relaxation is the reverse-...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.05272v1",
+    "title": "Adaptive Inference Batching using Policy Gradients",
+    "authors": [
+      "Ruslan Sharifullin"
+    ],
+    "abstract": "Inference serving systems must balance throughput and latency under bursty, heterogeneous workloads, yet the industry standard remains static batching policies that require manual tuning and cannot adapt to shifting traffic. We investigate whether reinforcement learning (RL) can learn adaptive batching and routing policies that outperform these heuristics, training REINFORCE and PPO agents on a discrete-event simulator validated against queuing theory and production traces (Azure Functions, BurstGPT). We formulate the problem as an MDP over queue state, request type and GPU availability, evaluating across standard Poisson traffic, extreme bursts, real-world traces and heterogeneous multi-GPU routing.\n  Our central finding is a clear boundary condition for RL's value in systems problems. In single-GPU settings, a well-tuned static batching policy is already near-optimal under Poisson-like arrivals and RL offers only marginal gains (+0.1% to +1.0%). In multi-GPU heterogeneous routing, however, where fast and slow requests compete for shared resources, the agent discovers a workload-segregation policy that eliminates Head-of-Line blocking, yielding a 3.5x (348%) improvement over Round-Robin and a 48% improvement over the strongest heuristic baseline (Shortest-Queue), with 60% higher throughput and 25% lower latency while respecting SLA constraints. The policy generalizes to unseen bursty and real-world traffic despite training only on synthetic Poisson arrivals and an attention-augmented policy network converges roughly 20% faster than an MLP baseline.\n  These results suggest RL's advantage over engineered heuristics concentrates in combinatorial, multi-resource decisions rather than single-resource temporal scheduling, a practical distinction for deciding where learned policies justify their engineering cost in production inference infrastructure.",
+    "published_date": "2026-07-06T16:20:19Z",
+    "updated_date": "2026-07-06T16:20:19Z",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.05272v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.05272v1",
+    "source": "arxiv",
+    "score": 0.33308635592460634,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、多 GPU、网络、延迟优化、吞吐量相关技术。\n\n核心内容：Inference serving systems must balance throughput and latency under bursty, heterogeneous workloads, yet the industry standard remains static batching policies that require manual tuning and cannot adapt to shifting traffic. We investigate whether reinforcement learning (RL) can learn adaptive batch...。",
+    "takeaway": "本文聚焦异构计算、多 GPU、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.08973v1",
+    "title": "SiFAR: Synchronization-Free All-Reduce for Low-Latency LLM Inference",
+    "authors": [
+      "Hritvik Taneja",
+      "Anish Saxena",
+      "Abhishek Revinipati",
+      "Jae Hyung Ju",
+      "Neal C. Crago",
+      "Moinuddin Qureshi"
+    ],
+    "abstract": "The rise of reasoning models and agentic systems has made LLM token-generation latency a key bottleneck. Unlike chatbots, whose latency gains saturate at human reading speed, these systems generate intermediate reasoning tokens not consumed by humans. Thus, per-token latency directly determines end-to-end response time. Low-latency inference uses minimal batching, making token generation bandwidth-bound. Tensor Parallelism addresses this by sharding model weights across GPUs and loading them in parallel. However, scaling to more GPUs introduces All-Reduce overheads that grow with GPU count. Removing All-Reduce improves token throughput by 43% for Llama-3.1-8B on 8 H200 GPUs.\n  We propose Synchronization-Free All-Reduce (SiFAR), which reduces synchronization overhead during low-latency inference. Existing oneshot and twoshot algorithms incur overheads from barriers before and after communication. First, we find that the bottom barrier in oneshot enforces a WAW dependency and eliminate it by co-designing communication and model execution to enable dual buffering. However, oneshot scales poorly with GPU count. Twoshot performs better at higher TP degrees but incurs an unavoidable bottom barrier. To overcome this, we leverage in-switch reduction in modern switches. We propose redundant pull, where each GPU reduces the full All-Reduce payload at the switch. This improves oneshot scalability while retaining its no-bottom-barrier advantage. Finally, to reduce top-barrier overhead, we observe that each decode step issues multiple All-Reduce operations, keeping GPUs tightly synchronized after the first. We therefore propose speculative reduction, which initiates data transfer before the top barrier and ensures correctness via lightweight validation. SiFAR reduces All-Reduce latency by up to 52% and improves end-to-end throughput by 18.6% for Llama-3.1-8B and 13.1% for Qwen3.5-397B-17B at TP=8.",
+    "published_date": "2026-07-09T22:34:00Z",
+    "updated_date": "2026-07-09T22:34:00Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.08973v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.08973v1",
+    "source": "arxiv",
+    "score": 0.3179519617557526,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量并行、大模型推理、All-Reduce、交换机内计算、通信优化相关技术。\n\n核心内容：The rise of reasoning models and agentic systems has made LLM token-generation latency a key bottleneck. Unlike chatbots, whose latency gains saturate at human reading speed, these systems generate intermediate reasoning tokens not consumed by humans。",
+    "takeaway": "本文聚焦张量并行、大模型推理、All-Reduce，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
   }
 ]

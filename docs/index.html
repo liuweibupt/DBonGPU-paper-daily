@@ -466,7 +466,7 @@
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">1</div>
+            <div class="stat-value">0</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,28 +480,6 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.07632v1" target="_blank">From Custom-Fit to Portable: Bridging the Gap Between Synthesized and Engineered GPU Query Execution</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-high">相关度 0.932</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Ivan Donchev Kabadzhov, Eugenio Marinelli, Raja Appuswamy</div>
-        <div class="paper-abstract-cn">本文研究GPU 数据库、GPU 查询处理、GPU 分析处理、CUDA、查询处理相关技术。
-
-核心内容：GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engin...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engineered. In this scenario, instead of tuning a general-purpose engine to fit a workload, a large language model (LLM) generates code specialized to one query, one dataset, and one machine, thereby achieving an order-of-magnitude improvement in performance. This thesis, however, has so far been tested only on CPUs. In this work, we revisit the synthesize-versus-engineer debate for GPU analytics by answering three questions: (i) how good is synthesized GPU code?, (ii) why is it faster than engineere...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 数据库、GPU 查询处理、GPU 分析处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题高度相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.07632v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.07632v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.07862v1" target="_blank">CTA-Pipelining: A Latency-Oriented Spatial Scaling Method for Multi-GPU Systems</a></span>
         </div>
         <div class="paper-meta">
@@ -524,29 +502,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.07696v1" target="_blank">Breaking Database Lock-in: Agentic Regeneration of High Performance Storage Readers for Database Bypass</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.515</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> 
-        </div>
-        <div class="paper-authors">Victor Giannakouris, Immanuel Trummer</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、内存数据库、数据库系统、吞吐量相关技术。
-
-核心内容：Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Analytical workloads operating on data stored in external database systems face a fundamental bottleneck: data access is guarded entirely by the database driver, like JDBC or ODBC, forcing all reads through query execution and other driver layers that are not designed for bulk columnar analytics. We present Jailbreak, an approach that bypasses the database engine entirely by reading storage files directly and materializing data as in-memory columnar buffers. Jailbreak's key insight is that database file formats, while complex, are fully specified by their source code and documentation, artifacts that Large Language Models (LLMs) can ingest to regenerate operator-specific table reading components without human-engineered parsing logic. Jailbreak leverages LLM-assisted code synthesis for dat...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、内存数据库、数据库系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.07696v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.07696v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">4</span>
+            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.04857v1" target="_blank">Terastate-per-second QUBO Brute-Force on a Single GPU: A Matrix Prefix-Suffix Decomposition</a></span>
         </div>
         <div class="paper-meta">
@@ -568,7 +524,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">5</span>
+            <span class="paper-rank">3</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.08006v1" target="_blank">Toward a Unified GPU-Aware OpenSHMEM Specification</a></span>
         </div>
         <div class="paper-meta">
@@ -590,7 +546,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">6</span>
+            <span class="paper-rank">4</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.08307v1" target="_blank">Empirical Analysis of GPU Frequency Behavior Under ML Workloads</a></span>
         </div>
         <div class="paper-meta">
@@ -612,29 +568,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.08956v1" target="_blank">Accelerating Point-in-Polygon Predicates via Algebraic Hash-Joins and Discrete Global Grids at Scale</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.420</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Levente Juhasz</div>
-        <div class="paper-abstract-cn">本文研究隐私信息检索、向量化执行、吞吐量相关技术。
-
-核心内容：Traditional vector-based point-in-polygon queries rely on computationally expensive geometric predicates that scale poorly for massive datasets, even when accelerated by spatial indices. Discrete Global Grid Systems (DGGS) offer a scalable alternative by discretizing geometries into hierarchical cel...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Traditional vector-based point-in-polygon queries rely on computationally expensive geometric predicates that scale poorly for massive datasets, even when accelerated by spatial indices. Discrete Global Grid Systems (DGGS) offer a scalable alternative by discretizing geometries into hierarchical cells, transforming complex spatial relations into constant-time relational hash-joins. However, adopting a DGGS introduces an overhead to encode data, and current grid implementations exhibit a significant performance ``tooling gap.'' In this demonstration, we present an interactive dashboard that empirically evaluates these computational tradeoffs across four DGGS implementations (H3, S2, A5, and ISEA4H) using DuckDB. Through progressive scenarios, the platform visualizes the overhead of on-the-f...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、向量化执行、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.08956v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.08956v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
+            <span class="paper-rank">5</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.06881v1" target="_blank">Multiple Double Arithmetic on NVIDIA Tensor Cores</a></span>
         </div>
         <div class="paper-meta">
@@ -657,29 +591,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.08993v1" target="_blank">StreamDQ: Near-Memory Weight DeQuantization in Custom HBM for Scalable AI Inference Acceleration</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.403</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Minki Jeong, Daegun Yoon, Soohong Ahn, Seungyong Lee 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究CUDA、大模型推理、带宽优化、延迟优化、吞吐量相关技术。
-
-核心内容：As large language models (LLMs) scale, their memory and computation demands have grown substantially, making weight-only quantization a widely adopted technique for reducing model size with minimal accuracy loss. However, on current GPUs, CUDA-core-based dequantization introduces substantial instruc...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">As large language models (LLMs) scale, their memory and computation demands have grown substantially, making weight-only quantization a widely adopted technique for reducing model size with minimal accuracy loss. However, on current GPUs, CUDA-core-based dequantization introduces substantial instruction overhead, on-chip traffic, and pipeline stalls, making it a major bottleneck for high-throughput, cloud-scale LLM serving. To address these limitations, we propose StreamDQ, a lightweight architectural enhancement that enables on-the-fly dequantization in the memory subsystem for high-throughput, large-batch LLM inference. StreamDQ integrates compact DeQuantization Blocks (DQBs) into the base die of high-bandwidth memory (HBM) and performs inline dequantization on standard memory loads. A l...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.08993v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.08993v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
+            <span class="paper-rank">6</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.05240v1" target="_blank">Optimizing ML Workload Partitioning between CPUs and CIM Accelerators for Heterogeneous Computing</a></span>
         </div>
         <div class="paper-meta">
@@ -699,13 +611,103 @@
             <a href="https://arxiv.org/pdf/2607.05240v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.08215v1" target="_blank">On the Limitations of Non-GPU AI Accelerators for Large-Model Inference: A Field Study of MoE and Multimodal Serving on Huawei Ascend</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.373</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zheng Yu</div>
+        <div class="paper-abstract-cn">本文研究CUDA、吞吐量相关技术。
+
+核心内容：Non-GPU AI accelerators are increasingly adopted as alternatives to general-purpose GPUs for large-model inference, but the real engineering cost of migrating demanding workloads beyond CUDA remains poorly documented. We present a field study of deploying two large inference workloads on a 16-device...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Non-GPU AI accelerators are increasingly adopted as alternatives to general-purpose GPUs for large-model inference, but the real engineering cost of migrating demanding workloads beyond CUDA remains poorly documented. We present a field study of deploying two large inference workloads on a 16-device Huawei Ascend 910 system using CANN and vLLM-Ascend: an LLM-as-a-judge safety and alignment evaluation pipeline based on a W8A8 MoE judge model, DeepSeek-V4-Flash, and a multimodal medical vision--language benchmark based on DeepSeek-V4-Flash-Vision for MMMU and MMMU-Pro. Making these workloads reliable required twelve source-level patches to the vendor inference plugin, disabling several high-throughput features to preserve numerical correctness, and adding operational safeguards for recurring...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2607.08215v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.08215v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.05622v1" target="_blank">EOM-CC Excited-State Gradients and Nonadiabatic Couplings on a Consumer GPU from a Contraction-DAG with Laplace-Transform J/K Kernels</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.372</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">physics.chem-ph</span> <span class="tag">cs.DC</span> <span class="tag">physics.comp-ph</span> 
+        </div>
+        <div class="paper-authors">Rubén Darío Guerrero</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：We present a unified, memory-bounded GPU realization of equation-of-motion coupled-cluster (EOM-CC) excited-state gradients and interstate nonadiabatic couplings (NACMEs) on a single 8\,GB consumer GPU. Both are built from one contraction directed acyclic graph: the EOM-CC relaxation is the reverse-...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present a unified, memory-bounded GPU realization of equation-of-motion coupled-cluster (EOM-CC) excited-state gradients and interstate nonadiabatic couplings (NACMEs) on a single 8\,GB consumer GPU. Both are built from one contraction directed acyclic graph: the EOM-CC relaxation is the reverse-mode transpose of the forward density build rather than a per-state re-derivation, and an atomic-orbital-direct Laplace-transform $J/K$ kernel, made non-symmetric ($J^x(A,B)\neq J^x(B,A)$) by the transition densities, resolves every energy denominator with no four-index molecular-orbital tensor; a two-sided Davidson returns both eigenvectors from one device-resident, spin-pure solve. The pipeline is \emph{validated end to end at small scale}: gradients and NACMEs match finite differences across ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2607.05622v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.05622v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.05272v1" target="_blank">Adaptive Inference Batching using Policy Gradients</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.333</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Ruslan Sharifullin</div>
+        <div class="paper-abstract-cn">本文研究异构计算、多 GPU、网络、延迟优化、吞吐量相关技术。
+
+核心内容：Inference serving systems must balance throughput and latency under bursty, heterogeneous workloads, yet the industry standard remains static batching policies that require manual tuning and cannot adapt to shifting traffic. We investigate whether reinforcement learning (RL) can learn adaptive batch...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Inference serving systems must balance throughput and latency under bursty, heterogeneous workloads, yet the industry standard remains static batching policies that require manual tuning and cannot adapt to shifting traffic. We investigate whether reinforcement learning (RL) can learn adaptive batching and routing policies that outperform these heuristics, training REINFORCE and PPO agents on a discrete-event simulator validated against queuing theory and production traces (Azure Functions, BurstGPT). We formulate the problem as an MDP over queue state, request type and GPU availability, evaluating across standard Poisson traffic, extreme bursts, real-world traces and heterogeneous multi-GPU routing.
+  Our central finding is a clear boundary condition for RL's value in systems problems. In...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、多 GPU、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2607.05272v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.05272v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.08973v1" target="_blank">SiFAR: Synchronization-Free All-Reduce for Low-Latency LLM Inference</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.318</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Hritvik Taneja, Anish Saxena, Abhishek Revinipati, Jae Hyung Ju 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究张量并行、大模型推理、All-Reduce、交换机内计算、通信优化相关技术。
+
+核心内容：The rise of reasoning models and agentic systems has made LLM token-generation latency a key bottleneck. Unlike chatbots, whose latency gains saturate at human reading speed, these systems generate intermediate reasoning tokens not consumed by humans。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The rise of reasoning models and agentic systems has made LLM token-generation latency a key bottleneck. Unlike chatbots, whose latency gains saturate at human reading speed, these systems generate intermediate reasoning tokens not consumed by humans. Thus, per-token latency directly determines end-to-end response time. Low-latency inference uses minimal batching, making token generation bandwidth-bound. Tensor Parallelism addresses this by sharding model weights across GPUs and loading them in parallel. However, scaling to more GPUs introduces All-Reduce overheads that grow with GPU count. Removing All-Reduce improves token throughput by 43% for Llama-3.1-8B on 8 H200 GPUs.
+  We propose Synchronization-Free All-Reduce (SiFAR), which reduces synchronization overhead during low-latency infe...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量并行、大模型推理、All-Reduce，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2607.08973v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.08973v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-07-13 04:24:58</span>
+            <span>上次运行：2026-07-13 05:07:24</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
