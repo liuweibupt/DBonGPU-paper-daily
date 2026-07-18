@@ -1,0 +1,290 @@
+[
+  {
+    "id": "2607.11262v1",
+    "title": "GPU-Tile-Sim: A Tile-Centric GPU Simulation Framework for LLM Hardware-Software Co-Design",
+    "authors": [
+      "Yitong Ding",
+      "Jiawei Huang",
+      "Renyang Guan",
+      "Yangjie Zhou",
+      "Zihan Liu",
+      "Yu Feng",
+      "Shixuan Sun",
+      "Mingyi Guo",
+      "Jingwen Leng",
+      "Jian Weng"
+    ],
+    "abstract": "Modern LLM (large language model) workloads increasingly rely on optimized GPU kernels through hardware-software co-design. These kernels achieve high-performance through fine-grained dependency scheduling and computation-memory overlap. As such, they incur new challenges on existing GPU performance models. Instruction-driven simulators are costly to adapt to evolving architectures, while analytical models are too coarse to capture kernels' characteristics. We propose GPU-Tile-Sim, a tile-centric GPU simulation framework for LLM hardware-software co-design. The key insight is that modern LLM kernel performance is governed less by individual instruction latency than by the dependency structure that controls execution order and overlap. Accordingly, GTSim represents kernel execution as a warp-level tile graph whose nodes capture tile-level operations and whose edges encode data and ordering constraints. Using this representation, we design an automatic tile-graph frontend and a graph-driven simulation backend. We evaluate GTSim on representative GEMM, attention, and end-to-end LLM inference workloads. On A100 and H100 across both conventional and highly optimized kernels, GTSim achieves high performance-modeling accuracy (MAPE, Mean Absolute Percentage Error, 1.22%--8.71%). We further extend GTSim to Blackwell with preliminary validation, and demonstrate its effectiveness in analyzing software and architectural design choices.",
+    "published_date": "2026-07-13T08:45:24Z",
+    "updated_date": "2026-07-13T08:45:24Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.11262v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.11262v1",
+    "source": "arxiv",
+    "score": 0.47158811807632445,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理、延迟优化相关技术。\n\n核心内容：Modern LLM (large language model) workloads increasingly rely on optimized GPU kernels through hardware-software co-design. These kernels achieve high-performance through fine-grained dependency scheduling and computation-memory overlap。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.12074v1",
+    "title": "HARP-ME: Closure-Driven Exact Induced Motif Enumeration on GPUs",
+    "authors": [
+      "Ashwina Kumar",
+      "Rupesh Nasre"
+    ],
+    "abstract": "Exact induced motif enumeration is a fundamental operation in graph mining, but it remains challenging on GPUs because candidate expansion is irregular, repeated set intersections dominate execution, and induced counting must consider both the presence and absence of edges. We present HARP-ME, which stands for Hierarchical Anchor-Reuse Partitioned Motif Enumeration. It is a GPU framework for the exact enumeration of connected induced four-node motifs. HARP-ME introduces closure-aware compilation, which selects a set of anchors for explicit enumeration by considering traversal cost, algebraic derivation benefits, expected state reuse, and the additional halo overhead caused by graph partitioning. HARP-ME also introduces induced-signature reuse. This technique identifies reusable completion states using candidate-frontier information together with compact constraints representing both adjacency and non-adjacency relationships. For graphs that exceed GPU memory, a canonical anchor-owner rule ensures exact counting across partitions with overlapping halo regions. We do not claim that the individual graphlet closure identities are new. Instead, our contribution is their integration into a GPU execution framework that reduces both explicit candidate expansion and repeated induced-edge checks. Across six social, web, biological, and synthetic graphs, HARP-ME is the fastest among the evaluated methods. It achieves up to 2.11 times speedup over Pangolin, up to 1.83 times speedup over partitioned PBE, and up to 10.73 times speedup over the evaluated CPU baseline. Detailed measurements show cache-hit rates between 64% and 76%, along with substantially lower host-to-device data transfer overhead than PBE-style partitioning. These results demonstrate that optimizing anchor selection for algebraic derivation benefits can complement traversal-based and reuse-based GPU motif enumeration techniques.",
+    "published_date": "2026-07-13T18:49:18Z",
+    "updated_date": "2026-07-13T18:49:18Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.12074v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.12074v1",
+    "source": "arxiv",
+    "score": 0.41840252161026004,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理相关技术。\n\n核心内容：Exact induced motif enumeration is a fundamental operation in graph mining, but it remains challenging on GPUs because candidate expansion is irregular, repeated set intersections dominate execution, and induced counting must consider both the presence and absence of edges. We present HARP-ME, which...。",
+    "takeaway": "本文聚焦GPU 内存管理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.11368v1",
+    "title": "Decomposing Runtime, Kernel, and Quantization Speedups via a Matched FP16 Intermediate: A Hardware-Conditioned Case Study on Four NVIDIA RTX A5000 GPUs",
+    "authors": [
+      "Weijia Han",
+      "Lisha Qu"
+    ],
+    "abstract": "Reported serving speedups from quantized kernels typically bundle the weight format, the kernel, and the inference runtime into one number. We present an attribution study on four NVIDIA RTX A5000 GPUs, 24 GiB each, on a single host with NVLink-bridged pairs. A matched intermediate stack that keeps the faster runtime without the quantized kernel splits the full speedup into a runtime part and a kernel and quantization part. Under matched greedy decoding the full stack reaches $2.58\\times$ end to end, with the runtime change accounting for about two thirds of that gain on a logarithmic scale; across three similar model families the kernel and quantization part moves by at most 1.5%. Sharding one instance across all four cards falls well below doubling: a profiler trace attributes about 80% of the per token shortfall to coordination, and an NVLink versus PCIe control on the same hardware shows similar realized bandwidth on both links, pointing away from link bandwidth as the cause. Whether to run one sharded instance or several independent ones depends on the workload and the model, with the ranking reversing on the larger model: the smaller model splits between sharding and multiple instances by workload, while the larger model favors two paired instances on every workload. Quantization extends sustainable concurrent users roughly four times past a reproducible half precision memory cliff. Differences in sampling mode and prompt pool between the two stacks are documented as threats to validity.",
+    "published_date": "2026-07-13T10:31:54Z",
+    "updated_date": "2026-07-13T10:31:54Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.11368v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.11368v1",
+    "source": "arxiv",
+    "score": 0.41303190469741824,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究NVLink 互连、带宽优化相关技术。\n\n核心内容：Reported serving speedups from quantized kernels typically bundle the weight format, the kernel, and the inference runtime into one number. We present an attribution study on four NVIDIA RTX A5000 GPUs, 24 GiB each, on a single host with NVLink-bridged pairs。",
+    "takeaway": "本文聚焦NVLink 互连、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.10183v2",
+    "title": "Automated Tensor Scheduling for Hybrid CPU-GPU LLM Inference on Consumer Devices",
+    "authors": [
+      "Yangyijian Liu",
+      "Hongyi Ye",
+      "Mingyang Li",
+      "Wu-jun Li"
+    ],
+    "abstract": "Running large language models on consumer devices such as laptops and desktops is challenging because model weights often exceed GPU memory capacity, making offloading inference necessary to extend effective model capacity with CPU memory. Existing offloading systems, however, typically rely on coarse layer-level or expert-level scheduling, which overlooks substantial heterogeneity among tensors within the same layer and adapts poorly to changing hardware load conditions on such devices. This paper presents ATSInfer, a hybrid CPU-GPU inference system for consumer devices that performs offloading at tensor granularity. ATSInfer combines static tensor placement with load-aware dynamic transfer, and introduces asynchronous CPU-GPU coordination to efficiently schedule hardware storage, data movement, and computation across heterogeneous backends. We implement ATSInfer and evaluate it on representative consumer platforms using both dense and MoE models. Compared with existing systems, ATSInfer improves prefill throughput by up to 1.94$\\times$ and decode throughput by up to 3.29$\\times$, while also increasing GPU utilization and making more effective use of PCIe bandwidth. These results show that ATSInfer can substantially improve the user experience of local LLM deployment on personal consumer devices.",
+    "published_date": "2026-07-11T08:00:05Z",
+    "updated_date": "2026-07-14T15:02:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.10183v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.10183v2",
+    "source": "arxiv",
+    "score": 0.40765279412269595,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、大模型推理、异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：Running large language models on consumer devices such as laptops and desktops is challenging because model weights often exceed GPU memory capacity, making offloading inference necessary to extend effective model capacity with CPU memory. Existing offloading systems, however, typically rely on coar...。",
+    "takeaway": "本文聚焦GPU 内存管理、大模型推理、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.11136v1",
+    "title": "Xema: Efficient Diffusion Serving through Fine-Grained Memory Management and Auto-Configuration",
+    "authors": [
+      "Xueze Kang",
+      "Guangyu Xiang",
+      "Suyi Li",
+      "Yuxin Wang",
+      "Shaohuai Shi",
+      "Lin Zhang",
+      "Xiaowen Chu"
+    ],
+    "abstract": "Diffusion models are increasingly deployed as production visual-generation services, where serving high-resolution image and long video generation is often limited by GPU memory. Popular memory-saving techniques such as weight offloading, sharding, and VAE slicing are often not practical because they tend to introduce significant performance overhead. In this paper, we present Xema, a memory-efficient diffusion serving system that exploits predictable tensor lifetimes for trace-guided memory optimization. For each request template, Xema derives an offline memory trace to identify short memory-pressure intervals and applies memory mitigation only within these intervals and only by the amount needed to fit the target GPU budget. Xema further constructs a static memory layout for tensors with predictable lifetimes, reducing fragmentation-induced reserved memory and making offline memory reasoning reliable at runtime. Built on this memory optimization layer, Xema introduces an offline planner that jointly selects parallelism, concurrency, and memory control under GPU memory and SLO constraints. The selected plan is stored in a plan table and directly used by the online serving runtime. We implement Xema on production diffusion pipelines and evaluate it with Flux.2, CogVideoX-5B, and LTX-2. Compared with existing serving configurations, Xema improves SLO attainment by up to 3.7x and reduces planning cost from 6.3 hours to 197 seconds compared with grid search.",
+    "published_date": "2026-07-13T06:12:41Z",
+    "updated_date": "2026-07-13T06:12:41Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.11136v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.11136v1",
+    "source": "arxiv",
+    "score": 0.4011366951465607,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理相关技术。\n\n核心内容：Diffusion models are increasingly deployed as production visual-generation services, where serving high-resolution image and long video generation is often limited by GPU memory. Popular memory-saving techniques such as weight offloading, sharding, and VAE slicing are often not practical because the...。",
+    "takeaway": "本文聚焦GPU 内存管理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.12359v1",
+    "title": "ArchSim: Computer Architecture Simulation as a Service",
+    "authors": [
+      "Sabila Al Jannat",
+      "Wenhan Lyu",
+      "Le Khanh Trinh Mai",
+      "Huizhi Zhao",
+      "Zhuoyan Zheng",
+      "Katherine E. Isaacs",
+      "Yifan Sun"
+    ],
+    "abstract": "Conducting a complete computer architecture simulation study is challenging because configuration, execution, and analysis are often encoded implicitly in scripts or directory conventions rather than represented explicitly. As a result, studies are difficult to scale, hard to reproduce, and dependent on custom tooling at every stage. We present ArchSim, which makes the structure of a simulation study explicit. In ArchSim, hardware topologies are described as declarative graphs that automatically generate executable simulation code, eliminating hand-written simulator programs. Stateless runners autonomously claim and execute jobs from a shared experiment store, enabling configuration-benchmark matrices to scale without manual orchestration. Simulation outputs are stored as structured artifacts tied to configurations, benchmarks, and hardware components, enabling systematic result exploration without custom parsers. We evaluate ArchSim on a 12 x 8 = 96-configuration simulation matrix spanning memory-bound, compute-bound, and mixed-intensity GPU workloads. Declarative simulation specifications drive full simulations with a median kernel time error of 0.18% relative to hand-written MGPUSim configurations across 95.8% of configurations. The platform introduces only 1.6 seconds of overhead per simulation, negligible relative to realistic simulation workloads.",
+    "published_date": "2026-07-14T05:21:30Z",
+    "updated_date": "2026-07-14T05:21:30Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.12359v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.12359v1",
+    "source": "arxiv",
+    "score": 0.3945972311496735,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Conducting a complete computer architecture simulation study is challenging because configuration, execution, and analysis are often encoded implicitly in scripts or directory conventions rather than represented explicitly. As a result, studies are difficult to scale, hard to reproduce, and dependen...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.14622v1",
+    "title": "ExaGEMM: Exploration Framework for CPU-Driven ML Inference via Associative In-Register Computing for Low-Bit GEMM",
+    "authors": [
+      "Hyunwoo Oh",
+      "Suyeon Jang",
+      "Hanning Chen",
+      "Sanggeon Yun",
+      "Ryozo Masukawa",
+      "Mohsen Imani"
+    ],
+    "abstract": "Low-bit GEMM is increasingly central to efficient ML inference, yet very-low-bit execution remains a poor fit for conventional CPUs. Practical deployment spans fragmented regimes-from 1/2/4-bit weights to varying activation precision-whose feasibility, reuse opportunity, and support cost differ under fixed SIMD and register-file budgets, making lightweight CPU support selection a first-class design problem. We present ExaGEMM, a workload-aware codesign and exploration framework for CPU-native low-bit GEMM via register-resident LUT execution. The key insight is that existing SIMD datapaths already cover table generation and accumulation; the only new hardware is an in-register select/feed mechanism with explicitly modeled cost. ExaGEMM co-explores parameterized kernels and lightweight SIMD ISA support using analytical models of register feasibility, compute cost, memory traffic, and hardware overhead, pruning the candidate space by 99.2% before simulation. It then identifies non-dominated support points and generates ISA specs, gem5 patches, and GEMM kernels for validation. Across representative ML models and CPU targets, ExaGEMM improves latency by 13.29x over software-only baselines, while showing that workload-aware frontier selection is especially important for mixed-precision LLM workloads.",
+    "published_date": "2026-07-16T06:38:49Z",
+    "updated_date": "2026-07-16T06:38:49Z",
+    "categories": [
+      "cs.AR",
+      "cs.LG",
+      "cs.OS"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.14622v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.14622v1",
+    "source": "arxiv",
+    "score": 0.39234769225120547,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究SIMD 并行、延迟优化相关技术。\n\n核心内容：Low-bit GEMM is increasingly central to efficient ML inference, yet very-low-bit execution remains a poor fit for conventional CPUs. Practical deployment spans fragmented regimes-from 1/2/4-bit weights to varying activation precision-whose feasibility, reuse opportunity, and support cost differ unde...。",
+    "takeaway": "本文聚焦SIMD 并行、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.10186v1",
+    "title": "FlashAccel: Leveraging High-Bandwidth Flash for High-Throughput LLM Inference",
+    "authors": [
+      "Xinyu Wang",
+      "Yalong Xue",
+      "Xiaotian Sun",
+      "Xiaoyu Zhang",
+      "Chunmeng Dou",
+      "Xueqi Li",
+      "Xiaoming Chen"
+    ],
+    "abstract": "Large language model (LLM) inference is increasingly limited by the capacity of High-Bandwidth Memory (HBM) in GPUs, as model weights and KV cache grow rapidly. High-Bandwidth Flash (HBF) provides higher capacity than HBM while retaining comparable bandwidth, making it a promising substrate for capacity-constrained LLM inference. However, its inherently high access latency, low bandwidth utilization, and lack of support for heterogeneous resource management make it difficult to integrate HBF into GPUs for LLM inference. We present FlashAccel, a co-designed system that enables efficient LLM inference using HBF. FlashAccel integrates HBF into HBM-based GPUs, providing architectural support to mitigate access latency. It improves bandwidth utilization through specialized data layouts for both model weights and KV cache, and introduces an HBF-aware storage management layer together with a programming model to organize persistent data in HBF and coordinate heterogeneous memory resources at the system level. Experimental results demonstrate that integrating six HBF stacks into the GPU enables FlashAccel to deliver an average improvement of 2.54$\\times$ and 1.93$\\times$ in throughput per GPU and energy efficiency over the HBM-only GPU under 100ms latency constraint, respectively.",
+    "published_date": "2026-07-11T08:03:13Z",
+    "updated_date": "2026-07-11T08:03:13Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.10186v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.10186v1",
+    "source": "arxiv",
+    "score": 0.3718115532398224,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究大模型推理、异构计算、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) inference is increasingly limited by the capacity of High-Bandwidth Memory (HBM) in GPUs, as model weights and KV cache grow rapidly. High-Bandwidth Flash (HBF) provides higher capacity than HBM while retaining comparable bandwidth, making it a promising substrate for capa...。",
+    "takeaway": "本文聚焦大模型推理、异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.13649v1",
+    "title": "CIMERA: Compute-in-Interconnect and Memory with Reconfigurable Precision for LLM Inference",
+    "authors": [
+      "Yue Jiet Chong",
+      "Yimin Wang",
+      "Wei Zhang",
+      "Xuanyao Fong"
+    ],
+    "abstract": "LLM impose significant computational and memory demands, creating challenges for energy-efficient inference across platforms ranging from data centers to power-constrained edge devices. Weight precision plays a critical role in balancing inference accuracy, throughput, and energy consumption, while modern LLM workloads exhibit pronounced heterogeneity and tolerance that favors adaptive precision execution. This paper presents CIMERA, a reconfigurable-precision LLM inference accelerator that integrates compute-in-interconnect and memory to mitigate the memory wall and enable precision-aware execution. Compared to Nvidia H100, CIMERA delivers up to $25\\times$ and $10\\times$ higher energy efficiency for 1B and 13B models, respectively.",
+    "published_date": "2026-07-15T09:49:48Z",
+    "updated_date": "2026-07-15T09:49:48Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.13649v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.13649v1",
+    "source": "arxiv",
+    "score": 0.37164369225502014,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究大模型推理、吞吐量相关技术。\n\n核心内容：LLM impose significant computational and memory demands, creating challenges for energy-efficient inference across platforms ranging from data centers to power-constrained edge devices. Weight precision plays a critical role in balancing inference accuracy, throughput, and energy consumption, while ...。",
+    "takeaway": "本文聚焦大模型推理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.15068v1",
+    "title": "Pattern-Guided Design Space Exploration for FPGA Accelerator Design",
+    "authors": [
+      "Jialiang Zhang",
+      "Weiman Yan",
+      "Yuelin Zou"
+    ],
+    "abstract": "High-level synthesis (HLS) raises the abstraction level of FPGA accelerator design from hardware description languages to C/C++, but high-quality results still depend on schedule decisions such as pipelining, unrolling, tiling, reordering, and buffering. These decisions create a combinatorial design space, while many numerical kernels exhibit recurring computation patterns that suggest different optimization strategies. This paper presents PATTERNDSE, a lightweight pattern-guided design space exploration (DSE) framework for FPGA kernels written in Allo, a scheduling-oriented HLS programming system. PATTERNDSE maps recurring computation patterns, including elementwise maps, reductions, matrix-vector operations, matrix-matrix operations, and stencil-like updates, to compact schedule spaces. It then applies candidate schedules, validates functional correctness through LLVM execution, checks HLS C code generation, and uses a simple pattern-aware estimator to rank candidates before Vitis HLS synthesis. We evaluate PATTERNDSE on six representative kernels: vecadd, axpy, dot, matvec, gemm, and jacobi2d. Compared with an exhaustive-lite baseline, pattern-guided DSE reduces the number of HLS-evaluated candidates from 140 to 29, achieving a 4.83x overall search reduction and up to 12.0x reduction for individual kernels. Across all evaluated kernels, PATTERNDSE recovers the same best valid Vitis HLS latency as the exhaustive-lite baseline, demonstrating that computation-pattern information can prune unproductive schedule combinations while preserving high-quality HLS outcomes.",
+    "published_date": "2026-07-16T14:41:17Z",
+    "updated_date": "2026-07-16T14:41:17Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.15068v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.15068v1",
+    "source": "arxiv",
+    "score": 0.3547360444068909,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：High-level synthesis (HLS) raises the abstraction level of FPGA accelerator design from hardware description languages to C/C++, but high-quality results still depend on schedule decisions such as pipelining, unrolling, tiling, reordering, and buffering. These decisions create a combinatorial design...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  }
+]
