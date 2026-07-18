@@ -24,7 +24,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.11262v1",
     "arxiv_url": "https://arxiv.org/abs/2607.11262v1",
     "source": "arxiv",
-    "score": 0.47158811807632445,
+    "score": 0.47158805847167967,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -49,7 +49,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.12074v1",
     "arxiv_url": "https://arxiv.org/abs/2607.12074v1",
     "source": "arxiv",
-    "score": 0.41840252161026004,
+    "score": 0.4184023427963257,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -76,7 +76,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.11368v1",
     "arxiv_url": "https://arxiv.org/abs/2607.11368v1",
     "source": "arxiv",
-    "score": 0.41303190469741824,
+    "score": 0.4130318152904511,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -135,7 +135,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.11136v1",
     "arxiv_url": "https://arxiv.org/abs/2607.11136v1",
     "source": "arxiv",
-    "score": 0.4011366951465607,
+    "score": 0.4011366653442383,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -165,7 +165,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.12359v1",
     "arxiv_url": "https://arxiv.org/abs/2607.12359v1",
     "source": "arxiv",
-    "score": 0.3945972311496735,
+    "score": 0.3945971417427063,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -196,7 +196,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.14622v1",
     "arxiv_url": "https://arxiv.org/abs/2607.14622v1",
     "source": "arxiv",
-    "score": 0.39234769225120547,
+    "score": 0.3923476028442383,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
@@ -226,7 +226,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.10186v1",
     "arxiv_url": "https://arxiv.org/abs/2607.10186v1",
     "source": "arxiv",
-    "score": 0.3718115532398224,
+    "score": 0.3718115234375,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -279,7 +279,7 @@
     "pdf_url": "https://arxiv.org/pdf/2607.15068v1",
     "arxiv_url": "https://arxiv.org/abs/2607.15068v1",
     "source": "arxiv",
-    "score": 0.3547360444068909,
+    "score": 0.35473589539527894,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
