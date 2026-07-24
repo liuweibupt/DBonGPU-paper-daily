@@ -1,0 +1,312 @@
+[
+  {
+    "id": "2607.21195",
+    "title": "Chess\\_db: A framework for working with large chess game datasets",
+    "authors": [
+      "Nicos Angelopoulos",
+      "(University College &amp; Imperial College, London UK),",
+      "Jan Wielemaker"
+    ],
+    "abstract": "Chess is a two player strategic game that is embedded in classical AI culture as it was once the frontier for intelligent behaviour. There was the silent assumption that the advent of computer engines that play better than the best humans will extinguish interest in the game. However, the opposite has come to pass, with a growing following for the game. A lot of the computational resources are now centered around training of players, where the engine output is just one aspect. Access to past games is also an essential part, both in knowing what games a specific player has played previously, and also which continuations at a certain position have led to victory more often for each of the two colour players. We present Chess_db a suite of logic programming tools that can effectively manipulate games both in memory and via creating back end databases. In particular, we provide versatile code that creates databases from PGN (portable game notation) game files and explore the suitability of open source key-value databases for storing position tables that provide near-instant access to information pertaining to substantially large number of games.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Logic in Computer Science (cs.LO)"
+    ],
+    "primary_category": "Logic in Computer Science (cs.LO)",
+    "pdf_url": "https://arxiv.org/pdf/2607.21195",
+    "arxiv_url": "https://arxiv.org/abs/2607.21195",
+    "source": "arxiv",
+    "score": 0.40687151193618776,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Chess is a two player strategic game that is embedded in classical AI culture as it was once the frontier for intelligent behaviour. There was the silent assumption that the advent of computer engines that play better than the best humans will extinguish interest in the game。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20650",
+    "title": "PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs",
+    "authors": [
+      "Alexander Strack",
+      ",",
+      "Marcel Graf",
+      ",",
+      "Alexander Van Craen",
+      ",",
+      "Dirk Pflüger"
+    ],
+    "abstract": "The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms. We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, examining the impact of three data layouts (stream, bundle, and collision) and four algorithmic variants on simulation throughput. Our results show that no single configuration achieves optimal performance across all GPU vendors, confirming the need for system-specific tuning. The stream layout maximizes bandwidth and performs best on the contemporary NVIDIA and Intel GPUs, while the bundle layout improves cache efficiency and excels on the AMD GPU. Two-lattice schemes achieve higher throughput while one-lattice schemes are preferable under memory constraints. Our work underscores the necessity for adaptable, portable LBM software in increasingly heterogeneous computing environments.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20650",
+    "arxiv_url": "https://arxiv.org/abs/2607.20650",
+    "source": "arxiv",
+    "score": 0.40066824793815614,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。",
+    "takeaway": "本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.20630",
+    "title": "Demonstrating GenDB: Instance-Optimized and Customized Query Processing Code Generation via LLM Agents",
+    "authors": [
+      "Jiale Lao",
+      ",",
+      "Immanuel Trummer"
+    ],
+    "abstract": "Traditional query processing engines require continuous development and extensions to support new techniques and user requirements, and in some cases, entirely new systems must be built from scratch. However, these engines are difficult to extend due to their internal complexity, and building new systems demands significant engineering effort and cost. To address this, we demonstrate GenDB, a generative query engine that shifts query processing from manually engineered systems to query processing code generation driven by Large Language Models (LLMs). An early prototype of GenDB uses LLM agents to generate instance-optimized query execution code tailored to specific data, workloads, and hardware resources. This prototype suits offline code generation for repetitive, templated queries, since the upfront generation cost amortizes over many executions and correctness can be ensured through extensive fuzz testing and manual inspection. For ad-hoc queries, GenDB can work with a traditional DBMS in a hybrid architecture: the DBMS handles one-off queries, while GenDB speeds up frequent SQL templates. Our demonstration allows users to (1) visually and interactively explore how GenDB analyzes workloads, profiles hardware resources and underlying data, produces query plans, generates code based on them, and finally uses an optimizer to iteratively achieve a correct and efficient implementation; (2) use visual inspection and analysis to gain qualitative insights into why GenDB produces code that achieves significantly better performance than state-of-the-art query engines on two benchmarks: TPC-H and a newly constructed benchmark designed to reduce potential data leakage from LLM training data; and (3) upload their own data and queries to explore GenDB with different LLMs and query patterns.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20630",
+    "arxiv_url": "https://arxiv.org/abs/2607.20630",
+    "source": "arxiv",
+    "score": 0.3334136748313904,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究大模型训练、查询处理相关技术。\n\n核心内容：Traditional query processing engines require continuous development and extensions to support new techniques and user requirements, and in some cases, entirely new systems must be built from scratch. However, these engines are difficult to extend due to their internal complexity, and building new sy...。",
+    "takeaway": "本文聚焦大模型训练、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2607.20881",
+    "title": "DMG: A Scalable and Efficient Memory-Disaggregated Graph Processing System",
+    "authors": [
+      "Yizou Chen",
+      ",",
+      "Tsun-Yu Yang",
+      ",",
+      "Zhisheng Hu",
+      ",",
+      "Baotong Lu",
+      ",",
+      "Ming-Chang Yang"
+    ],
+    "abstract": "Traditional graph processing systems are built on monolithic servers, which couple a fixed ratio of compute and memory resources but often result in resource under-utilization in data centers. Although the disaggregated memory (DM) architecture has emerged to address this inefficiency, we identify that existing graph processing systems on DM remain highly impractical. They rely on unscalable architectures that fail to scale beyond a single memory node and a single compute node, and they require compute-side caches that are orders of magnitude larger than conventional practice in DM. To this end, this paper presents DMG, the first practical graph processing system on DM, which demonstrates superior system scalability and cache efficiency while delivering high performance. To improve efficiency of graph retrieval on DM, DMG proposes a DM-friendly graph store with retrieval optimizations. To mitigate costly update propagation, DMG presents an adaptive update coordinator that coordinates compute and memory nodes to perform update propagation with low overhead. To enable fast and effective load balancing, DMG employs a two-stage workload manager that includes a coarse-grained initial partitioning and a fine-grained runtime re-scheduling. Experimental results substantiate that compared with the state-of-the-art DM-based graph processing system, DMG can elastically scale up both compute and memory resources, delivering up to 4.9X better performance and accommodating graphs with ever-increasing sizes; meanwhile, it effectively tames the compute-side cache demands by up to 18.9X, positioning itself as a DM-ready solution in practice.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20881",
+    "arxiv_url": "https://arxiv.org/abs/2607.20881",
+    "source": "arxiv",
+    "score": 0.27853822708129883,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Traditional graph processing systems are built on monolithic servers, which couple a fixed ratio of compute and memory resources but often result in resource under-utilization in data centers. Although the disaggregated memory (DM) architecture has emerged to address this inefficiency, we identify t...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.21377",
+    "title": "A Logic-based Temporal Cohort Discovery Engine: Algorithms, Indices, and Experimental Results on the National Sleep Research Resource",
+    "authors": [
+      "Yan Huang",
+      ",",
+      "Xiaojin Li",
+      ",",
+      "Licong Cui",
+      ",",
+      "Guo-Qiang Zhang"
+    ],
+    "abstract": "Large sleep-study repositories contain rich time-stamped physiological annotations, but cohort discovery is still commonly implemented as ad hoc scripts or scalar-index filters. We present a logic-based temporal cohort discovery engine that brings formal semantics, model checking, specialized indexing, and empirical evaluation into a unified biomedical informatics framework. We adopt Rational Ensemble Logic (QEL) as a dense-time formal foundation for sleep-data querying and represent each annotated polysomnogram as a Biomedical Event Structure Temporal Model (BEST), a finite mapping from event labels to non-overlapping rational interval ensembles. Cohort discovery is formulated as model checking of QEL formulas over BEST databases. We organize common sleep-research requirements into three reusable temporal query patterns: single-event retrieval, dual-event temporal pattern matching, and event data extraction. The prototype cohort discovery engine was implemented in Python with in-memory and MongoDB-backed execution modes and evaluated on synthetic interval datasets containing up to 90 million intervals and on real-world National Sleep Research Resource annotations from the Cleveland Children's Sleep and Health Study (CCSHS) containing 515 subjects, 202,587 intervals, 23 event labels. 2DFC constructs indexes in linear space and linear build time, reducing build time at 90 million intervals from 11,549 s with RTFC and 23,902 seconds with 2DRT to 3,655 seconds. On CCSHS, cohort-selection queries executed at sub-second latency at native scale and under 45 seconds at 1,000 times scale. This work is a part of the Symbolic Biomedicine program championed by the corresponding author.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2607.21377",
+    "arxiv_url": "https://arxiv.org/abs/2607.21377",
+    "source": "arxiv",
+    "score": 0.22024507761001588,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、内存数据库、延迟优化相关技术。\n\n核心内容：Large sleep-study repositories contain rich time-stamped physiological annotations, but cohort discovery is still commonly implemented as ad hoc scripts or scalar-index filters. We present a logic-based temporal cohort discovery engine that brings formal semantics, model checking, specialized indexi...。",
+    "takeaway": "本文聚焦隐私信息检索、内存数据库、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20489",
+    "title": "EvoSQL: Memory-Augmented Critic-Generator Co-Evolution for Text-to-SQL",
+    "authors": [
+      "Jiawei Zhou",
+      ",",
+      "Jianwei Wang",
+      ",",
+      "Chenyu Zhou",
+      ",",
+      "Chaojian Shi",
+      ",",
+      "Ming Dong",
+      ",",
+      "Kai Wang"
+    ],
+    "abstract": "Text-to-SQL has advanced rapidly with large language models, but complex database queries still require reasoning beyond one-shot generation, including multi-step decomposition, execution-based diagnosis, and targeted correction. We present EvoSQL, a co-evolution framework that formulates SQL synthesis as an iterative interaction between a generator and a critic. EvoSQL maintains a contextualized candidate memory, verifies SQL candidates with both execution signals and LLM-based critique, and updates its memory through utility-guided aggregation. To strengthen the underlying generator-critic pair, we further introduce a Self-Distillation Policy Optimization (SDPO) fine-tuning stage that injects execution-aware supervision into modern coding LLM backbones. Experiments on Spider and BIRD show that EvoSQL consistently improves open-source models over Maj@16 baselines, with particularly large gains on BIRD-Dev, ranging from +1.37% for Qwen3-4B to +9.19% for Qwen2.5-Coder-3B. SDPO initialization further improves selected backbones on Spider-Test and BIRD-Dev. These results suggest that memory-grounded co-evolution is an effective path toward more reliable and generalizable Text-to-SQL systems. Code is available at this https URL.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Artificial Intelligence (cs.AI)"
+    ],
+    "primary_category": "Artificial Intelligence (cs.AI)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20489",
+    "arxiv_url": "https://arxiv.org/abs/2607.20489",
+    "source": "arxiv",
+    "score": 0.20925599277019502,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究聚合相关技术。\n\n核心内容：Text-to-SQL has advanced rapidly with large language models, but complex database queries still require reasoning beyond one-shot generation, including multi-step decomposition, execution-based diagnosis, and targeted correction. We present EvoSQL, a co-evolution framework that formulates SQL synthe...。",
+    "takeaway": "本文聚焦聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20490",
+    "title": "CRAWO: Custom Resources for Adaptive Workload Orchestration",
+    "authors": [
+      "Eugênio Santos",
+      ",",
+      "Daniel Maia",
+      ",",
+      "Stefano Loss",
+      ",",
+      "José Manoel Silva",
+      ",",
+      "Aluizio Rocha Neto",
+      ",",
+      "Thais Batista",
+      ",",
+      "Everton Cavalcante",
+      ",",
+      "Nélio Cacho",
+      ",",
+      "Eduardo Nogueira",
+      ",",
+      "Daniel Araújo",
+      ",",
+      "Frederico Lopes"
+    ],
+    "abstract": "Edge Intelligence has emerged as a key paradigm for enabling real-time applications in smart cities by shifting computation from centralized cloud data centers to the network edge, thereby reducing latency and bandwidth consumption. However, deploying Artificial Intelligence (AI) pipelines across heterogeneous edge infrastructures remains challenging due to the wide range of device capabilities, from low-power microcontrollers to accelerator-equipped systems. Existing edge orchestration platforms primarily focus on deployment automation and infrastructure management, but these approaches are often inefficient and limit the ability to adaptively allocate resources under dynamic conditions. To tackle these issues, this paper introduces CRAWO (Custom Resources for Adaptive Workload Orchestration), an architectural framework for coordinating AI pipelines across distributed edge environments. CRAWO follows a control-loop-based model that separates allocation intelligence from execution by managing placement decisions, state management, and inter-stage data flows while instantiating services on edge nodes. The framework incorporates a hardware-aware allocator with a pluggable multi-criteria decision layer that leverages real-time infrastructure metrics to enable adaptive workload placement. The reference implementation adopts a microservices architecture deployed on a lightweight Kubernetes distribution (K3s), using Custom Resource Definitions (CRDs) for domain modeling and a dedicated operator for state reconciliation. Evaluation in a vehicle surveillance scenario using license plate recognition demonstrates improved workload distribution and reduced reliance on centralized cloud processing in latency-sensitive environments.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Artificial Intelligence (cs.AI)"
+    ],
+    "primary_category": "Artificial Intelligence (cs.AI)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20490",
+    "arxiv_url": "https://arxiv.org/abs/2607.20490",
+    "source": "arxiv",
+    "score": 0.17819300293922424,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、网络、带宽优化、延迟优化相关技术。\n\n核心内容：Edge Intelligence has emerged as a key paradigm for enabling real-time applications in smart cities by shifting computation from centralized cloud data centers to the network edge, thereby reducing latency and bandwidth consumption. However, deploying Artificial Intelligence (AI) pipelines across he...。",
+    "takeaway": "本文聚焦异构计算、网络、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 支持分布式/多 GPU 扩展；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.20929",
+    "title": "The Consensus Number of Untraceable Cryptocurrencies",
+    "authors": [
+      "Christian Cachin",
+      ",",
+      "David Lehnherr",
+      ",",
+      "Juan Villacis",
+      ",",
+      "François-Xavier Wicht"
+    ],
+    "abstract": "Sender untraceability hides the account spent by a cryptocurrency transfer among a set of candidates, its masking set. What a transfer does to that set separates two designs: classical schemes retain the whole set and append a nullifier marking the spent account, so the ledger grows with every transfer; constant-state schemes instead consume and replace the entire set. We ask how this choice affects synchronization. We formalize the two designs as the linear and constant untraceable asset transfer objects (LUAT and CUAT) and locate them in the consensus hierarchy. In LUAT, transfers from distinct accounts commute. Its consensus number is 2, compared with 1 for standard asset transfer, independently of the masking-set size and of the untraceability notion, and LUAT is starvation-free. Partitioning the accounts into fixed masking sets lets exhausted sets be garbage-collected without increasing that number. In CUAT, a transfer consumes and replaces every account of its masking set, so two transfers whose sets intersect cannot both take effect. We formalize this with the conflict graph on masking sets, whose edges join sets sharing an account. Under weak untraceability, which protects a transaction in isolation, the consensus number is unbounded already for one-round protocols. Under strong untraceability, which protects against an observer of the complete history, untraceability holds on a history exactly when any two accounts sharing a masking set occur in the same number of the masking sets in it. This uniform incidence bounds the conflict graph, and matching constructions attain it, so the consensus number is determined exactly and grows quadratically in the masking-set size. Finally, CUAT is not starvation-free. The two objects therefore pay for the same privacy differently: LUAT in storage, CUAT in synchronization and fairness.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20929",
+    "arxiv_url": "https://arxiv.org/abs/2607.20929",
+    "source": "arxiv",
+    "score": 0.15041328966617584,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sender untraceability hides the account spent by a cryptocurrency transfer among a set of candidates, its masking set. What a transfer does to that set separates two designs: classical schemes retain the whole set and append a nullifier marking the spent account, so the ledger grows with every trans...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2607.21224",
+    "title": "Controlled Periodic Synchronization for Efficient Data-Parallel Training",
+    "authors": [
+      "Imane Ettifouri",
+      ",",
+      "Mostapha Zbakh",
+      ",",
+      "Claude Tadonki"
+    ],
+    "abstract": "Data-parallel training relies on frequent gradient synchronization across workers. Standard DDP synchronizes gradients at every iteration, which is effective on fast local-area networks but increasingly sensitive to communication latency and network variability in geographically distributed environments. Periodic methods such as LocalSGD reduce synchronization frequency but rely mainly on parameter averaging, which may be insufficient when worker trajectories diverge. This paper studies synchronization frequency as a systems parameter for communication-constrained distributed training. We evaluate Controlled Periodic Data Parallelism (CPDP), a PyTorch-DDP-compatible strategy that alternates local updates with a reconciliation step combining gradient AllReduce and SlowMo parameter averaging. Experiments are conducted on Grid'5000 across intra-site clusters and a cross-site WAN deployment spanning Nancy and Sophia with 16.6 ms RTT. In the main fixed learning-rate setting of 0.1 on ResNet-50/CIFAR-100, CPDP achieves the highest peak test accuracy among the evaluated configurations. At K=2, CPDP improves over DDP by 2.28 percentage points but incurs additional wall-clock time. At K=4, CPDP improves over DDP by 2.44 percentage points while reducing average wall-clock time by 13.8%. Direct profiling shows that exposed synchronization time at K=4 is roughly half that of DDP, explaining the improved WAN accuracy-time trade-off. Additional experiments on ViT-S/CIFAR-100 and ResNet-50/TinyImageNet show that CPDP remains competitive with DDP and generally improves over LocalSGD. Overall, the results show that synchronization frequency is a practical control parameter for distributed training under communication constraints.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2607.21224",
+    "arxiv_url": "https://arxiv.org/abs/2607.21224",
+    "source": "arxiv",
+    "score": 0.12820881605148315,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究PyTorch、网络、通信优化、延迟优化相关技术。\n\n核心内容：Data-parallel training relies on frequent gradient synchronization across workers. Standard DDP synchronizes gradients at every iteration, which is effective on fast local-area networks but increasingly sensitive to communication latency and network variability in geographically distributed environm...。",
+    "takeaway": "本文聚焦PyTorch、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 支持分布式/多 GPU 扩展；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.20700",
+    "title": "A Framework for Reputation Aware Uninorm-driven Consensus Algorithms for Blockchain Networks",
+    "authors": [
+      "Bruno Ramos-Cruz",
+      ",",
+      "Javier Andreu-Perez",
+      ",",
+      "David Richerby",
+      ",",
+      "Luis Martínez"
+    ],
+    "abstract": "The operation of blockchain is governed by consensus algorithms (CA). Several consensus mechanisms require significant computational power, while others necessitate high amounts of stakes to select the participant to validate and verify the transactions in the block, leading to centralisation of power and participant exclusion. This paper proposes a novel methodology to address these issues in reputation-based consensus algorithms by studying the reputation behaviour of the validator using intuitionistic fuzzy sets (IFSs) and uninorm aggregation operations (UAOs). Our approach uses IFSs to express the &#34;reputation&#34; because the reputation values in a consensus algorithm eventually imply uncertainty, and IFSs facilitate the representation of a lack of precise knowledge about reputation. Moreover, this methodology utilises uninorm aggregation operations to monitor reputation over time and reinforces the importance of negative and positive reputation. Consequently, this solution allows validators to rectify past failures in subsequent verification processes and foster an equitable consensus algorithm design. The proposed framework maintains linear computational complexity and does not introduce additional communication overhead beyond the underlying consensus protocol. Supported by experimental results, our methodology demonstrates improved performance and evaluation, promising advancements in blockchain network fairness and inclusivity.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2607.20700",
+    "arxiv_url": "https://arxiv.org/abs/2607.20700",
+    "source": "arxiv",
+    "score": 0.07572617381811142,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究聚合、网络、通信优化相关技术。\n\n核心内容：The operation of blockchain is governed by consensus algorithms (CA). Several consensus mechanisms require significant computational power, while others necessitate high amounts of stakes to select the participant to validate and verify the transactions in the block, leading to centralisation of pow...。",
+    "takeaway": "本文聚焦聚合、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  }
+]
