@@ -480,221 +480,223 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.21195" target="_blank">Chess\_db: A framework for working with large chess game datasets</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.17571v1" target="_blank">Terascale Query Processing in the Browser: Rethinking GPU Acceleration</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.407</span>
+            <span class="score-badge score-mid">相关度 0.655</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Logic in Computer Science (cs.LO)</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Nicos Angelopoulos, (University College &amp; Imperial College, London UK),, Jan Wielemaker</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Jiaxin Lu, Landon Dyken, Yihao Sun, Kristopher Micinski 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 计算、GPU 加速、查询处理、哈希表相关技术。
 
-核心内容：Chess is a two player strategic game that is embedded in classical AI culture as it was once the frontier for intelligent behaviour. There was the silent assumption that the advent of computer engines that play better than the best humans will extinguish interest in the game。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Chess is a two player strategic game that is embedded in classical AI culture as it was once the frontier for intelligent behaviour. There was the silent assumption that the advent of computer engines that play better than the best humans will extinguish interest in the game. However, the opposite has come to pass, with a growing following for the game. A lot of the computational resources are now centered around training of players, where the engine output is just one aspect. Access to past games is also an essential part, both in knowing what games a specific player has played previously, and also which continuations at a certain position have led to victory more often for each of the two colour players. We present Chess_db a suite of logic programming tools that can effectively manipula...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+核心内容：Recursive query computation, central to graph algorithms and relational databases, demands GPU acceleration due to its inherent computational intensity. While substantial prior work addresses GPU implementations of recursive queries that require fixed-point evaluation, existing systems are restricte...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Recursive query computation, central to graph algorithms and relational databases, demands GPU acceleration due to its inherent computational intensity. While substantial prior work addresses GPU implementations of recursive queries that require fixed-point evaluation, existing systems are restricted to native execution environments. We introduce WGLog, the first web-browser-native GPU engine for compute-bound recursive database queries. WGLog is built entirely on WebGPU compute shaders, a cross-platform API that enables GPU acceleration in web browsers. WGLog leverages two key technical innovations. First, we replace hash-table-based joins with atomic-free sorted-array joins, eliminating the serialization bottleneck that hash tables suffer on skewed graphs. Second, we develop an asynchron...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 计算、GPU 加速、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.21195" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.21195" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.17571v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.17571v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20650" target="_blank">PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.19922v1" target="_blank">DGNA: Dissecting GPU NUMA Architecture through Microbenchmarking and Data Analysis</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.401</span>
+            <span class="score-badge score-mid">相关度 0.516</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Alexander Strack, ,, Marcel Graf, , 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算、带宽优化、吞吐量相关技术。
+        <div class="paper-authors">Changxi Liu, Yun Chen, Trevor E. Carlson</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、延迟优化相关技术。
 
-核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms. We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, exami...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化</div>
+核心内容：Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit wo...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit workload efficiency. To bridge this gap, a deep understanding of GPU memory architectures, particularly Non-Uniform Memory Access (NUMA) mechanisms within L2 and DRAM, is essential for optimizing applications, designing new architectures, and building accurate simulators. However, the latest GPU hardware from vendors like NVIDIA and AMD is still a black-box, making it challenging for researchers to understand the details of their design.
+  In this paper, we introduce DGNA, a methodology designed t...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20650" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20650" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.19922v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.19922v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20630" target="_blank">Demonstrating GenDB: Instance-Optimized and Customized Query Processing Code Generation via LLM Agents</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.17569v1" target="_blank">Cross-Domain Acceleration of Open Modification Search: From Commodity Platforms to Emerging Memory and Storage Devices</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.333</span>
+            <span class="score-badge score-low">相关度 0.437</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Databases (cs.DB)</span> 
+            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> <span class="tag">cs.PF</span> 
         </div>
-        <div class="paper-authors">Jiale Lao, ,, Immanuel Trummer</div>
-        <div class="paper-abstract-cn">本文研究大模型训练、查询处理相关技术。
+        <div class="paper-authors">Sumukh Pinge, Chang Eun Song, Po-Kai Hsu, Zheyu Li 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库相关技术。
 
-核心内容：Traditional query processing engines require continuous development and extensions to support new techniques and user requirements, and in some cases, entirely new systems must be built from scratch. However, these engines are difficult to extend due to their internal complexity, and building new sy...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Traditional query processing engines require continuous development and extensions to support new techniques and user requirements, and in some cases, entirely new systems must be built from scratch. However, these engines are difficult to extend due to their internal complexity, and building new systems demands significant engineering effort and cost. To address this, we demonstrate GenDB, a generative query engine that shifts query processing from manually engineered systems to query processing code generation driven by Large Language Models (LLMs). An early prototype of GenDB uses LLM agents to generate instance-optimized query execution code tailored to specific data, workloads, and hardware resources. This prototype suits offline code generation for repetitive, templated queries, sinc...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型训练、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+核心内容：Open modification search (OMS) in mass spectrometry (MS) is a data-intensive workload whose performance is dominantly limited by reference data movement rather than computation. Prior OMS accelerators have largely been evaluated in isolation, making it difficult to understand system-level trade-offs...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Open modification search (OMS) in mass spectrometry (MS) is a data-intensive workload whose performance is dominantly limited by reference data movement rather than computation. Prior OMS accelerators have largely been evaluated in isolation, making it difficult to understand system-level trade-offs across platforms. This paper presents the first workload-driven, cross-platform survey of accelerators for MS search by studying not only commodity platforms, but also emerging memory- and storage-centric architectures, including GPUs, near-storage FPGAs, DRAM near-memory processing, ReRAM/PCM in-memory processing, and 3D NAND/FeNAND in-storage processing, under consistent algorithmic and accuracy assumptions. Leveraging a binary hyperdimensional computing (HDC)-based OMS formulation that reduc...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20630" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20630" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.17569v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.17569v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20881" target="_blank">DMG: A Scalable and Efficient Memory-Disaggregated Graph Processing System</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.18541v1" target="_blank">What Governs Decode Throughput in Absolute-Offset GPU LZ77? A Work-Granularity Mechanism and an Encode-Time Min-Match-Length Lever</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.279</span>
+            <span class="score-badge score-low">相关度 0.432</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Databases (cs.DB)</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
         </div>
-        <div class="paper-authors">Yizou Chen, ,, Tsun-Yu Yang, , 等 (9 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Yakiv Shavidze</div>
+        <div class="paper-abstract-cn">本文研究带宽优化、吞吐量相关技术。
 
-核心内容：Traditional graph processing systems are built on monolithic servers, which couple a fixed ratio of compute and memory resources but often result in resource under-utilization in data centers. Although the disaggregated memory (DM) architecture has emerged to address this inefficiency, we identify t...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Traditional graph processing systems are built on monolithic servers, which couple a fixed ratio of compute and memory resources but often result in resource under-utilization in data centers. Although the disaggregated memory (DM) architecture has emerged to address this inefficiency, we identify that existing graph processing systems on DM remain highly impractical. They rely on unscalable architectures that fail to scale beyond a single memory node and a single compute node, and they require compute-side caches that are orders of magnitude larger than conventional practice in DM. To this end, this paper presents DMG, the first practical graph processing system on DM, which demonstrates superior system scalability and cache efficiency while delivering high performance. To improve efficie...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it. This paper answers both. Through controlled ablations on an NVIDIA H100 we show that decode throughput is governed not by occupancy, compute, address scatter, or launch parallelism, but by work granularity: throughput is a function of the average match length, because a short match leaves most lanes of a cooperating warp idle. A synthetic copy kernel confirms a 3.5x throughput span (212 to 744 GB/s) as average match length grows from 32 to 1024 bytes. Real data sit at the low end (mean match leng...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20881" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20881" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.18541v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.18541v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.21377" target="_blank">A Logic-based Temporal Cohort Discovery Engine: Algorithms, Indices, and Experimental Results on the National Sleep Research Resource</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20120v1" target="_blank">Ascend to Science: Exploration of AI Chips for Scientific Computing</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.220</span>
+            <span class="score-badge score-low">相关度 0.409</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Databases (cs.DB)</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Yan Huang, ,, Xiaojin Li, , 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究隐私信息检索、内存数据库、延迟优化相关技术。
+        <div class="paper-authors">Weicheng Xue, Kai Yang, Yongxiang Liu, Baisong Xu 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究异构计算、通信优化相关技术。
 
-核心内容：Large sleep-study repositories contain rich time-stamped physiological annotations, but cohort discovery is still commonly implemented as ad hoc scripts or scalar-index filters. We present a logic-based temporal cohort discovery engine that brings formal semantics, model checking, specialized indexi...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large sleep-study repositories contain rich time-stamped physiological annotations, but cohort discovery is still commonly implemented as ad hoc scripts or scalar-index filters. We present a logic-based temporal cohort discovery engine that brings formal semantics, model checking, specialized indexing, and empirical evaluation into a unified biomedical informatics framework. We adopt Rational Ensemble Logic (QEL) as a dense-time formal foundation for sleep-data querying and represent each annotated polysomnogram as a Biomedical Event Structure Temporal Model (BEST), a finite mapping from event labels to non-overlapping rational interval ensembles. Cohort discovery is formulated as model checking of QEL formulas over BEST databases. We organize common sleep-research requirements into three ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、内存数据库、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+核心内容：The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalabi...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalability? Using the Ascend 910 NPU series as a representative tensor-centric platform, we characterize precision, execution, and memory-hierarchy bottlenecks that hinder the direct deployment of scientific codes. We then develop and evaluate workload-specific mappings across five application studies -- HPL-MxP, LRSVD, SGEMM-cube, PQSim, and SMC-X -- combining heterogeneous execution, mixed-precision numerical formulations, precision emulation, hierarchical memory orchestration, and communication--co...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.21377" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.21377" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.20120v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.20120v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20489" target="_blank">EvoSQL: Memory-Augmented Critic-Generator Co-Evolution for Text-to-SQL</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.21195v1" target="_blank">Chess\_db: A framework for working with large chess game datasets</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.209</span>
+            <span class="score-badge score-low">相关度 0.407</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Artificial Intelligence (cs.AI)</span> 
+            <span class="tag">cs.LO</span> <span class="tag">cs.AI</span> <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Jiawei Zhou, ,, Jianwei Wang, , 等 (11 位作者)</div>
-        <div class="paper-abstract-cn">本文研究聚合相关技术。
+        <div class="paper-authors">Nicos Angelopoulos, Jan Wielemaker</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
 
-核心内容：Text-to-SQL has advanced rapidly with large language models, but complex database queries still require reasoning beyond one-shot generation, including multi-step decomposition, execution-based diagnosis, and targeted correction. We present EvoSQL, a co-evolution framework that formulates SQL synthe...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Text-to-SQL has advanced rapidly with large language models, but complex database queries still require reasoning beyond one-shot generation, including multi-step decomposition, execution-based diagnosis, and targeted correction. We present EvoSQL, a co-evolution framework that formulates SQL synthesis as an iterative interaction between a generator and a critic. EvoSQL maintains a contextualized candidate memory, verifies SQL candidates with both execution signals and LLM-based critique, and updates its memory through utility-guided aggregation. To strengthen the underlying generator-critic pair, we further introduce a Self-Distillation Policy Optimization (SDPO) fine-tuning stage that injects execution-aware supervision into modern coding LLM backbones. Experiments on Spider and BIRD sho...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+核心内容：Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game. However, the opposite has come to pass, with a growing following for the game. A lot of the computational resources are now centered around training of players, where the engine output is just one aspect. Access to  past games is also an essential part, both in knowing what games a specific player has played previously, and also which continuations at a certain position have led to victory more often for each of the two colour players. We present Chess_db a suite of logic programming tools that can effectively mani...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
         <div class="paper-reasons">与数据库系统和查询处理相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20489" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20489" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.21195v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.21195v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20490" target="_blank">CRAWO: Custom Resources for Adaptive Workload Orchestration</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20650v1" target="_blank">PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.178</span>
+            <span class="score-badge score-low">相关度 0.401</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Artificial Intelligence (cs.AI)</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
         </div>
-        <div class="paper-authors">Eugênio Santos, ,, Daniel Maia, , 等 (21 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算、网络、带宽优化、延迟优化相关技术。
+        <div class="paper-authors">Alexander Strack, Marcel Graf, Alexander Van Craen, Dirk Pflüger</div>
+        <div class="paper-abstract-cn">本文研究异构计算、带宽优化、吞吐量相关技术。
 
-核心内容：Edge Intelligence has emerged as a key paradigm for enabling real-time applications in smart cities by shifting computation from centralized cloud data centers to the network edge, thereby reducing latency and bandwidth consumption. However, deploying Artificial Intelligence (AI) pipelines across he...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Edge Intelligence has emerged as a key paradigm for enabling real-time applications in smart cities by shifting computation from centralized cloud data centers to the network edge, thereby reducing latency and bandwidth consumption. However, deploying Artificial Intelligence (AI) pipelines across heterogeneous edge infrastructures remains challenging due to the wide range of device capabilities, from low-power microcontrollers to accelerator-equipped systems. Existing edge orchestration platforms primarily focus on deployment automation and infrastructure management, but these approaches are often inefficient and limit the ability to adaptively allocate resources under dynamic conditions. To tackle these issues, this paper introduces CRAWO (Custom Resources for Adaptive Workload Orchestrat...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、网络、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 支持分布式/多 GPU 扩展；2. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms.
+  We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, exa...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20490" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20490" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.20650v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.20650v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20929" target="_blank">The Consensus Number of Untraceable Cryptocurrencies</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.16831v1" target="_blank">Technical Report: AI-Assisted Gated DeltaNet Optimization on NVIDIA Blackwell</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.150</span>
+            <span class="score-badge score-low">相关度 0.398</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Christian Cachin, ,, David Lehnherr, , 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Hyunjun Shin, Jiseung Jang, Jaewoo Maeng, Hyunjun Kim</div>
+        <div class="paper-abstract-cn">本文研究CUDA相关技术。
 
-核心内容：Sender untraceability hides the account spent by a cryptocurrency transfer among a set of candidates, its masking set. What a transfer does to that set separates two designs: classical schemes retain the whole set and append a nullifier marking the spent account, so the ledger grows with every trans...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sender untraceability hides the account spent by a cryptocurrency transfer among a set of candidates, its masking set. What a transfer does to that set separates two designs: classical schemes retain the whole set and append a nullifier marking the spent account, so the ledger grows with every transfer; constant-state schemes instead consume and replace the entire set. We ask how this choice affects synchronization. We formalize the two designs as the linear and constant untraceable asset transfer objects (LUAT and CUAT) and locate them in the consensus hierarchy. In LUAT, transfers from distinct accounts commute. Its consensus number is 2, compared with 1 for standard asset transfer, independently of the masking-set size and of the untraceability notion, and LUAT is starvation-free. Parti...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+核心内容：AI-assisted GPU programming is often framed as a kernel-generation loop: ask a model to produce faster CUDA code, benchmark the result, and repeat. This case study argues that contest-grade optimization involves more than improving the kernel body。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">AI-assisted GPU programming is often framed as a kernel-generation loop: ask a model to produce faster CUDA code, benchmark the result, and repeat. This case study argues that contest-grade optimization involves more than improving the kernel body. We examine the Agent-Assisted submission by our team, MSInfer, to the MLSys 2026 FlashInfer Contest. The submission optimized Gated DeltaNet decode and prefill on NVIDIA B200/Blackwell and achieved an official $1.58\times$ speedup, with approximate average latencies of $9.315\,μ\mathrm{s}$ for decode and $239.48\,μ\mathrm{s}$ for prefill. Our experience shows that even effective local kernel improvements can plateau when a workload requires structural reformulation and evaluator-aligned measurement. We therefore characterize AI-assisted kernel o...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20929" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20929" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.16831v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.16831v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.21224" target="_blank">Controlled Periodic Synchronization for Efficient Data-Parallel Training</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.15951v1" target="_blank">Rendering 3D Gaussians on a Graph Processor</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.128</span>
+            <span class="score-badge score-low">相关度 0.385</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.GR</span> <span class="tag">cs.CV</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Imane Ettifouri, ,, Mostapha Zbakh, , 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究PyTorch、网络、通信优化、延迟优化相关技术。
+        <div class="paper-authors">Nicholas Fry, Ignacio Alzugaray, Mark Pupilli, Paul H. J. Kelly 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 核函数、通信优化、带宽优化相关技术。
 
-核心内容：Data-parallel training relies on frequent gradient synchronization across workers. Standard DDP synchronizes gradients at every iteration, which is effective on fast local-area networks but increasingly sensitive to communication latency and network variability in geographically distributed environm...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Data-parallel training relies on frequent gradient synchronization across workers. Standard DDP synchronizes gradients at every iteration, which is effective on fast local-area networks but increasingly sensitive to communication latency and network variability in geographically distributed environments. Periodic methods such as LocalSGD reduce synchronization frequency but rely mainly on parameter averaging, which may be insufficient when worker trajectories diverge. This paper studies synchronization frequency as a systems parameter for communication-constrained distributed training. We evaluate Controlled Periodic Data Parallelism (CPDP), a PyTorch-DDP-compatible strategy that alternates local updates with a reconciliation step combining gradient AllReduce and SlowMo parameter averaging...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦PyTorch、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 支持分布式/多 GPU 扩展；2. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：We present the first implementation of a 3D Gaussian renderer on an Intelligence Processing Unit (IPU), comprising 1,472 independent tiles with only on-chip SRAM; constraints that approximate properties of efficient sensor-processor architectures. Our input scenes are 3D Gaussian maps from real-worl...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present the first implementation of a 3D Gaussian renderer on an Intelligence Processing Unit (IPU), comprising 1,472 independent tiles with only on-chip SRAM; constraints that approximate properties of efficient sensor-processor architectures. Our input scenes are 3D Gaussian maps from real-world sequences. Each tile 'owns' a screen-space region of the framebuffer; Gaussian primitives are routed to destination tiles via Manhattan-distance hops on a north-east-west-south (NEWS) grid, then distributed to overlapping neighbours in an expanding tree pattern. Computation follows the IPU's Bulk Synchronous Parallel (BSP) model, with inter-tile communication defined at compile time. We show this hardware allows us to exploit spatial and temporal locality by enabling local data transfer betwee...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.21224" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.21224" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.15951v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.15951v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.20700" target="_blank">A Framework for Reputation Aware Uninorm-driven Consensus Algorithms for Blockchain Networks</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.16100v1" target="_blank">Every Microsecond Matters: Achieving Near Speed-of-Light Latency in GPU Collectives</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.076</span>
+            <span class="score-badge score-low">相关度 0.370</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Bruno Ramos-Cruz, ,, Javier Andreu-Perez, , 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究聚合、网络、通信优化相关技术。
+        <div class="paper-authors">Siyuan Shen, Anton Korzh, John Bachan, Tiancheng Chen 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、网络、通信优化、带宽优化、延迟优化相关技术。
 
-核心内容：The operation of blockchain is governed by consensus algorithms (CA). Several consensus mechanisms require significant computational power, while others necessitate high amounts of stakes to select the participant to validate and verify the transactions in the block, leading to centralisation of pow...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The operation of blockchain is governed by consensus algorithms (CA). Several consensus mechanisms require significant computational power, while others necessitate high amounts of stakes to select the participant to validate and verify the transactions in the block, leading to centralisation of power and participant exclusion. This paper proposes a novel methodology to address these issues in reputation-based consensus algorithms by studying the reputation behaviour of the validator using intuitionistic fuzzy sets (IFSs) and uninorm aggregation operations (UAOs). Our approach uses IFSs to express the &#34;reputation&#34; because the reputation values in a consensus algorithm eventually imply uncertainty, and IFSs facilitate the representation of a lack of precise knowledge about reputatio...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦聚合、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：GPU collective communication is typically optimized for bandwidth, yet many emerging workloads are increasingly limited by latency. Long-context decode-heavy large language model (LLM) inference is a prime example, where serving large models requires multiple GPUs, and many small collectives lie dir...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU collective communication is typically optimized for bandwidth, yet many emerging workloads are increasingly limited by latency. Long-context decode-heavy large language model (LLM) inference is a prime example, where serving large models requires multiple GPUs, and many small collectives lie directly on the critical path of token generation. Therefore, even microsecond of overhead can impact performance and cost. In this work, we study how to approach the hardware Speed-of-Light (SoL) lower bound for GPU collectives within a scale-up network. We identify key principles for near-optimal designs, including barrier-free synchronization and efficient use of symmetric memory and multicast. Building on NCCL's device-side API, we develop low-latency interfaces for constructing custom collecti...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.20700" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.20700" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.16100v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.16100v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -703,7 +705,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-07-24 04:03:50</span>
+            <span>上次运行：2026-07-24 04:51:25</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
