@@ -1,0 +1,292 @@
+[
+  {
+    "id": "2607.17571v1",
+    "title": "Terascale Query Processing in the Browser: Rethinking GPU Acceleration",
+    "authors": [
+      "Jiaxin Lu",
+      "Landon Dyken",
+      "Yihao Sun",
+      "Kristopher Micinski",
+      "Thomas Gilray",
+      "Sidharth Kumar"
+    ],
+    "abstract": "Recursive query computation, central to graph algorithms and relational databases, demands GPU acceleration due to its inherent computational intensity. While substantial prior work addresses GPU implementations of recursive queries that require fixed-point evaluation, existing systems are restricted to native execution environments. We introduce WGLog, the first web-browser-native GPU engine for compute-bound recursive database queries. WGLog is built entirely on WebGPU compute shaders, a cross-platform API that enables GPU acceleration in web browsers. WGLog leverages two key technical innovations. First, we replace hash-table-based joins with atomic-free sorted-array joins, eliminating the serialization bottleneck that hash tables suffer on skewed graphs. Second, we develop an asynchronous execution pipeline using WebGPU's indirect dispatch capability, which eliminates GPU-host synchronizations that would otherwise dominate per-iteration overhead. On representative workloads, WGLog delivers a 1.48--4.68x speedup over native GPU systems and orders-of-magnitude improvement over CPU and WebAssembly implementations.",
+    "published_date": "2026-07-20T05:29:59Z",
+    "updated_date": "2026-07-20T05:29:59Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.17571v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.17571v1",
+    "source": "arxiv",
+    "score": 0.6550761723518371,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 计算、GPU 加速、查询处理、哈希表相关技术。\n\n核心内容：Recursive query computation, central to graph algorithms and relational databases, demands GPU acceleration due to its inherent computational intensity. While substantial prior work addresses GPU implementations of recursive queries that require fixed-point evaluation, existing systems are restricte...。",
+    "takeaway": "本文聚焦GPU 计算、GPU 加速、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2607.19922v1",
+    "title": "DGNA: Dissecting GPU NUMA Architecture through Microbenchmarking and Data Analysis",
+    "authors": [
+      "Changxi Liu",
+      "Yun Chen",
+      "Trevor E. Carlson"
+    ],
+    "abstract": "Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit workload efficiency. To bridge this gap, a deep understanding of GPU memory architectures, particularly Non-Uniform Memory Access (NUMA) mechanisms within L2 and DRAM, is essential for optimizing applications, designing new architectures, and building accurate simulators. However, the latest GPU hardware from vendors like NVIDIA and AMD is still a black-box, making it challenging for researchers to understand the details of their design.\n  In this paper, we introduce DGNA, a methodology designed to unveil the NUMA architecture of the GPU memory hierarchy through microbenchmarking and data analysis. Specifically, we propose an approach to measuring the latency of L2 caches and DRAM without relying on the intrinsic instructions of the architecture and apply a Gaussian mixture model to filter out outliers and accurately determine latency distributions. We apply DGNA on NVIDIA's A100 and H100 GPUs, revealing NUMA node architecture, SM-NUMA relationships, and NUMA-aware memory allocation strategies used to maintain cache coherence. To the best of our knowledge, this is the first paper to detail the NUMA architecture within the GPU memory subsystem.",
+    "published_date": "2026-07-22T08:53:09Z",
+    "updated_date": "2026-07-22T08:53:09Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.19922v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.19922v1",
+    "source": "arxiv",
+    "score": 0.5161272275447846,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、延迟优化相关技术。\n\n核心内容：Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit wo...。",
+    "takeaway": "本文聚焦GPU 内存管理、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.17569v1",
+    "title": "Cross-Domain Acceleration of Open Modification Search: From Commodity Platforms to Emerging Memory and Storage Devices",
+    "authors": [
+      "Sumukh Pinge",
+      "Chang Eun Song",
+      "Po-Kai Hsu",
+      "Zheyu Li",
+      "Ashkan Moradifirouzabadi",
+      "Yanru Chen",
+      "Xiangjin Wu",
+      "Wei-Chen Chen",
+      "Eric Pop",
+      "Shimeng Yu",
+      "H. -S. Philip Wong",
+      "Tajana Rosing",
+      "Mingu Kang"
+    ],
+    "abstract": "Open modification search (OMS) in mass spectrometry (MS) is a data-intensive workload whose performance is dominantly limited by reference data movement rather than computation. Prior OMS accelerators have largely been evaluated in isolation, making it difficult to understand system-level trade-offs across platforms. This paper presents the first workload-driven, cross-platform survey of accelerators for MS search by studying not only commodity platforms, but also emerging memory- and storage-centric architectures, including GPUs, near-storage FPGAs, DRAM near-memory processing, ReRAM/PCM in-memory processing, and 3D NAND/FeNAND in-storage processing, under consistent algorithmic and accuracy assumptions. Leveraging a binary hyperdimensional computing (HDC)-based OMS formulation that reduces similarity evaluation to lightweight bitwise primitives and tolerates device-level non-idealities, we enable a robust execution on memory-centric architectures despite device-level non-idealities and limited computing capability. Overall, this study identifies memory- and storage-centric architectures as a key architectural breakthrough for large-scale, high-speed search acceleration, delivering up to >100x speedup and >40,000x improvement in energy efficiency.",
+    "published_date": "2026-07-20T05:28:32Z",
+    "updated_date": "2026-07-20T05:28:32Z",
+    "categories": [
+      "cs.AR",
+      "cs.ET",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.17569v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.17569v1",
+    "source": "arxiv",
+    "score": 0.436832412481308,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Open modification search (OMS) in mass spectrometry (MS) is a data-intensive workload whose performance is dominantly limited by reference data movement rather than computation. Prior OMS accelerators have largely been evaluated in isolation, making it difficult to understand system-level trade-offs...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.18541v1",
+    "title": "What Governs Decode Throughput in Absolute-Offset GPU LZ77? A Work-Granularity Mechanism and an Encode-Time Min-Match-Length Lever",
+    "authors": [
+      "Yakiv Shavidze"
+    ],
+    "abstract": "The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it. This paper answers both. Through controlled ablations on an NVIDIA H100 we show that decode throughput is governed not by occupancy, compute, address scatter, or launch parallelism, but by work granularity: throughput is a function of the average match length, because a short match leaves most lanes of a cooperating warp idle. A synthetic copy kernel confirms a 3.5x throughput span (212 to 744 GB/s) as average match length grows from 32 to 1024 bytes. Real data sit at the low end (mean match length 6.5 on enwik9, 10.1 on FASTQ). We then show that this mechanism yields a practical, encode-side lever: raising the minimum match length by distance class (6/8/10/12 to 12/16/24/32) improves both compression ratio and decode throughput simultaneously on all eight tested datasets, with no exceptions and no change to the decode kernel. FASTQ decode rises from 142.6 to 178.6 GB/s while ratio improves 1.8%; enwik9 throughput rises 78%. This is not a trade-off: both gains follow from one cause, removing short matches whose far offsets cost more entropy than they save. All figures are bit-perfect (FNV on GPU paths, byte compare on CPU paths) and git-verifiable. Scope is explicit: figures are match-phase, device-resident; entropy and host transfer are outside the timer; seek is read/block-level, not coordinate-level; and we do not claim to exceed the hardware bandwidth ceiling.",
+    "published_date": "2026-07-20T22:16:36Z",
+    "updated_date": "2026-07-20T22:16:36Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.18541v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.18541v1",
+    "source": "arxiv",
+    "score": 0.432367844581604,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究带宽优化、吞吐量相关技术。\n\n核心内容：The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it。",
+    "takeaway": "本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.20120v1",
+    "title": "Ascend to Science: Exploration of AI Chips for Scientific Computing",
+    "authors": [
+      "Weicheng Xue",
+      "Kai Yang",
+      "Yongxiang Liu",
+      "Baisong Xu",
+      "Dengdong Fan",
+      "Xianglin Liu",
+      "Pengxiang Xu",
+      "Yonghong Tian"
+    ],
+    "abstract": "The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalability? Using the Ascend 910 NPU series as a representative tensor-centric platform, we characterize precision, execution, and memory-hierarchy bottlenecks that hinder the direct deployment of scientific codes. We then develop and evaluate workload-specific mappings across five application studies -- HPL-MxP, LRSVD, SGEMM-cube, PQSim, and SMC-X -- combining heterogeneous execution, mixed-precision numerical formulations, precision emulation, hierarchical memory orchestration, and communication--computation overlap. These studies show that AI-native NPUs can achieve numerical robustness, competitive performance, and satisfactory scalability when numerical formulation, execution placement, and data movement are addressed in a coordinated manner. Our results provide a state-of-the-practice case study of how scientific workloads can be adapted to tensor-centric architectures, while distinguishing transferable optimization principles from Ascend-specific implementation details.",
+    "published_date": "2026-07-22T13:23:52Z",
+    "updated_date": "2026-07-22T13:23:52Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20120v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20120v1",
+    "source": "arxiv",
+    "score": 0.4089145064353943,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、通信优化相关技术。\n\n核心内容：The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalabi...。",
+    "takeaway": "本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.21195v1",
+    "title": "Chess\\_db: A framework for working with large chess game datasets",
+    "authors": [
+      "Nicos Angelopoulos",
+      "Jan Wielemaker"
+    ],
+    "abstract": "Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game. However, the opposite has come to pass, with a growing following for the game. A lot of the computational resources are now centered around training of players, where the engine output is just one aspect. Access to  past games is also an essential part, both in knowing what games a specific player has played previously, and also which continuations at a certain position have led to victory more often for each of the two colour players. We present Chess_db a suite of logic programming tools that can effectively manipulate games both in memory and via creating back end databases.  In particular, we provide versatile code that creates databases from PGN (portable game notation) game files and explore the suitability of open source key-value databases for  storing position tables that provide near-instant access to  information pertaining to substantially large number of games.",
+    "published_date": "2026-07-23T11:17:41Z",
+    "updated_date": "2026-07-23T11:17:41Z",
+    "categories": [
+      "cs.LO",
+      "cs.AI",
+      "cs.DB",
+      "cs.SC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.21195v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.21195v1",
+    "source": "arxiv",
+    "score": 0.40687151193618776,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20650v1",
+    "title": "PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs",
+    "authors": [
+      "Alexander Strack",
+      "Marcel Graf",
+      "Alexander Van Craen",
+      "Dirk Pflüger"
+    ],
+    "abstract": "The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms.\n  We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, examining the impact of three data layouts (stream, bundle, and collision) and four algorithmic variants on simulation throughput.\n  Our results show that no single configuration achieves optimal performance across all GPU vendors, confirming the need for system-specific tuning. The stream layout maximizes bandwidth and performs best on the contemporary NVIDIA and Intel GPUs, while the bundle layout improves cache efficiency and excels on the AMD GPU. Two-lattice schemes achieve higher throughput while one-lattice schemes are preferable under memory constraints. Our work underscores the necessity for adaptable, portable LBM software in increasingly heterogeneous computing environments.",
+    "published_date": "2026-07-22T18:21:27Z",
+    "updated_date": "2026-07-22T18:21:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20650v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20650v1",
+    "source": "arxiv",
+    "score": 0.40066824793815614,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。",
+    "takeaway": "本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.16831v1",
+    "title": "Technical Report: AI-Assisted Gated DeltaNet Optimization on NVIDIA Blackwell",
+    "authors": [
+      "Hyunjun Shin",
+      "Jiseung Jang",
+      "Jaewoo Maeng",
+      "Hyunjun Kim"
+    ],
+    "abstract": "AI-assisted GPU programming is often framed as a kernel-generation loop: ask a model to produce faster CUDA code, benchmark the result, and repeat. This case study argues that contest-grade optimization involves more than improving the kernel body. We examine the Agent-Assisted submission by our team, MSInfer, to the MLSys 2026 FlashInfer Contest. The submission optimized Gated DeltaNet decode and prefill on NVIDIA B200/Blackwell and achieved an official $1.58\\times$ speedup, with approximate average latencies of $9.315\\,μ\\mathrm{s}$ for decode and $239.48\\,μ\\mathrm{s}$ for prefill. Our experience shows that even effective local kernel improvements can plateau when a workload requires structural reformulation and evaluator-aligned measurement. We therefore characterize AI-assisted kernel optimization as an end-to-end systems problem that encompasses algorithm design, workload specialization, measurement tooling, build and evaluation surfaces, evaluator alignment, and human interpretation.",
+    "published_date": "2026-07-18T14:07:17Z",
+    "updated_date": "2026-07-18T14:07:17Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.16831v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.16831v1",
+    "source": "arxiv",
+    "score": 0.39771614789962767,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：AI-assisted GPU programming is often framed as a kernel-generation loop: ask a model to produce faster CUDA code, benchmark the result, and repeat. This case study argues that contest-grade optimization involves more than improving the kernel body。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.18002v2",
+    "title": "ExpertPlex: A High-Goodput Disaggregated Serving System for MoE LLMs with Adaptive Persistent Kernels",
+    "authors": [
+      "Bingyang Wu",
+      "Chao Jin",
+      "Zili Zhang",
+      "Xinming Wei",
+      "Yinmin Zhong",
+      "Ruidong Zhu",
+      "Chengxu Yang",
+      "Xin Jin",
+      "Yuliang Liu"
+    ],
+    "abstract": "LLMs scale Mixture-of-Experts (MoE) parameters for superior intelligence, but massive weights and dynamic computation impede efficient serving. Existing instance-level prefill-decode disaggregation isolates the phases on separate full-model replicas. As MoE weights grow, each instance may span tens to hundreds of GPUs, making resource allocation increasingly coarse. Configured prefill-to-decode ratios thus often mismatch demand, overprovisioning one phase while overloading the other. Prefill-decode colocation avoids this duplication, but existing Green Context solutions partition each GPU by phase and fix phase resources during a kernel. They cannot track resource changes across operations or layerwise variation in routed expert load, causing head-of-line blocking or idle reserved resources. Partitioning every GPU also leaves each phase with fewer local resources, forces wider parallelism and more communication, and lets prefill and decode traffic interfere on the shared network.\n  We present ExpertPlex, which shares massive MoE experts across phases while disaggregating lightweight attention modules. Expert sharing eliminates over 95% of duplicate model weights and multiplexes dynamically sparse computation, while attention disaggregation reduces attention communication cost. ExpertPlex further uses (1) adaptive persistent kernels to schedule dynamic expert computation at tile granularity for efficient, isolated execution; (2) attention-initiated MoE communication to avoid network interference and enable cross-phase communication-computation overlap; and (3) a tile-to-cluster model to optimize these mechanisms for maximum goodput. Experiments serving MiniMax-M2.7 and GLM-5.1-FP8 show that ExpertPlex improves goodput by up to 2.01$\\times$ over instance-level prefill-decode disaggregation and 1.66$\\times$ over prefill-decode colocation.",
+    "published_date": "2026-07-20T14:34:43Z",
+    "updated_date": "2026-07-21T05:51:58Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.18002v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.18002v2",
+    "source": "arxiv",
+    "score": 0.3695296335220337,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究聚合、网络、通信优化相关技术。\n\n核心内容：LLMs scale Mixture-of-Experts (MoE) parameters for superior intelligence, but massive weights and dynamic computation impede efficient serving. Existing instance-level prefill-decode disaggregation isolates the phases on separate full-model replicas。",
+    "takeaway": "本文聚焦聚合、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.19679v1",
+    "title": "Benchmarking the Full Pipeline of Materialized-View-Based Query Rewriting",
+    "authors": [
+      "Xinjie Hu",
+      "Zhengjie Miao"
+    ],
+    "abstract": "Materialized views (MVs) accelerate OLAP and data-warehouse workloads by precomputing reusable subexpressions, but practical MV-based query acceleration is a multi-stage pipeline: candidate enumeration, view selection under storage budgets, and query rewriting inside the optimizer. Existing evaluations typically study only parts of this pipeline and within a single system, leaving end-to-end trade-offs and cross-system behavior unclear.\n  In this paper, we benchmark MV-based query rewriting by jointly evaluating enumeration, selection, and rewriting with a modular evaluation framework and by using controlled ablations. We also introduce a cross-engine protocol allowing us to compare systems that expose only execution plans by contrasting native optimizer-level rewriting with portable SQL rewriting baselines when available. Across representative academic methods and modern open-source and commercial systems, we find strong interaction effects across stages and large variability in MV usage and realized savings. We identify recurring failure modes that explain performance regressions after rewriting. Our results highlight which pipeline stages most often limit performance and provide evidence to guide future MV enumeration, selection, and rewriting designs.",
+    "published_date": "2026-07-22T02:28:50Z",
+    "updated_date": "2026-07-22T02:28:50Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.19679v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.19679v1",
+    "source": "arxiv",
+    "score": 0.3568289124965668,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究OLAP相关技术。\n\n核心内容：Materialized views (MVs) accelerate OLAP and data-warehouse workloads by precomputing reusable subexpressions, but practical MV-based query acceleration is a multi-stage pipeline: candidate enumeration, view selection under storage budgets, and query rewriting inside the optimizer. Existing evaluati...。",
+    "takeaway": "本文聚焦OLAP，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  }
+]
