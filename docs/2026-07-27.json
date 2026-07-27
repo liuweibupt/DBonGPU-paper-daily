@@ -1,0 +1,298 @@
+[
+  {
+    "id": "2607.22432v1",
+    "title": "TileSight: A First-Principles Tile-Centric Analytical GPU Performance Model from Cores to Clusters",
+    "authors": [
+      "Zhiwen Mo",
+      "Yu Cheng",
+      "Lei Wang",
+      "Zhengju Tang",
+      "Lei Xu",
+      "Guoyu Li",
+      "Yuqi Dong",
+      "Lingxiao Ma",
+      "Yuqing Xia",
+      "Jilong Xue",
+      "Fan Yang",
+      "Luo Mai",
+      "Zhi Yang",
+      "Wayne Luk",
+      "Hongxiang Fan"
+    ],
+    "abstract": "Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, opaque ML predictors, or post-hoc profilers to understand kernel execution. This gap is acute for modern AI workloads, where kernel fusion and distributed inference depend on tensor cores, CUDA cores, cache hierarchies, memory pipelines, and inter-GPU networks. We present TileSight, a tile-centric performance-modeling tool that elevates the tile from a programming primitive to an analysis primitive. Within a GPU core, TileSight models compute-memory pipeline overlap; across cores, it models the cache hierarchy; across GPUs, it models inter-node communication. All layers share the tile abstraction: the intra-tile layer expresses work as a resource vector spanning network, memory, and compute pipelines; the inter-tile layer schedules dependent and ordered actions to expose legal overlap and infers multi-level cache hit rates from tile reuse distance; and the cross-device layer maps remote tensor accesses to placements and routes them through an alpha-beta stage cost. On A100, H200, B200, and B6000, TileSight predicts single-GPU kernel latency with 12.35% pooled mean absolute percentage error (MAPE), outperforming state-of-the-art baselines and transferring better across architectures. Its L2 cache-hit-rate predictions are within roughly one percentage point of measurements on every GPU. At up to 32 GPUs, TileSight achieves 16.18% weighted MAPE (wMAPE) on fused distributed kernels and 13.52% wMAPE on end-to-end vLLM serving. In optimization, TileSight selects tile configurations competitive with strong vendor and expert baselines. TileSight will be open-sourced upon publication.",
+    "published_date": "2026-07-24T15:50:23Z",
+    "updated_date": "2026-07-24T15:50:23Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22432v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22432v1",
+    "source": "arxiv",
+    "score": 0.5435964000225068,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、GPU 间通信、网络、通信优化相关技术。\n\n核心内容：Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, ...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、GPU 间通信，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.18541v1",
+    "title": "What Governs Decode Throughput in Absolute-Offset GPU LZ77? A Work-Granularity Mechanism and an Encode-Time Min-Match-Length Lever",
+    "authors": [
+      "Yakiv Shavidze"
+    ],
+    "abstract": "The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it. This paper answers both. Through controlled ablations on an NVIDIA H100 we show that decode throughput is governed not by occupancy, compute, address scatter, or launch parallelism, but by work granularity: throughput is a function of the average match length, because a short match leaves most lanes of a cooperating warp idle. A synthetic copy kernel confirms a 3.5x throughput span (212 to 744 GB/s) as average match length grows from 32 to 1024 bytes. Real data sit at the low end (mean match length 6.5 on enwik9, 10.1 on FASTQ). We then show that this mechanism yields a practical, encode-side lever: raising the minimum match length by distance class (6/8/10/12 to 12/16/24/32) improves both compression ratio and decode throughput simultaneously on all eight tested datasets, with no exceptions and no change to the decode kernel. FASTQ decode rises from 142.6 to 178.6 GB/s while ratio improves 1.8%; enwik9 throughput rises 78%. This is not a trade-off: both gains follow from one cause, removing short matches whose far offsets cost more entropy than they save. All figures are bit-perfect (FNV on GPU paths, byte compare on CPU paths) and git-verifiable. Scope is explicit: figures are match-phase, device-resident; entropy and host transfer are outside the timer; seek is read/block-level, not coordinate-level; and we do not claim to exceed the hardware bandwidth ceiling.",
+    "published_date": "2026-07-20T22:16:36Z",
+    "updated_date": "2026-07-20T22:16:36Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.18541v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.18541v1",
+    "source": "arxiv",
+    "score": 0.432367844581604,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究带宽优化、吞吐量相关技术。\n\n核心内容：The ACEAPEX line of work established a lossless LZ77 format whose back-references are absolute output positions, giving parallel, compressed-resident GPU decode with sub-millisecond region seek. What it did not establish is what governs the decode throughput of such a format, or how to improve it。",
+    "takeaway": "本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.22242v1",
+    "title": "Agentic CPU-GPU Scheduling for Heterogeneous AI Workloads",
+    "authors": [
+      "Tianxi Lu",
+      "Sherief Reda"
+    ],
+    "abstract": "Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer dominance, and 3 are device-neutral, establishing that blanket GPU-first scheduling is suboptimal. We formulate device scheduling as assigning each tool to one of three options: immediate GPU execution, queued GPU execution, or CPU offload, under a VRAM budget, and identify two runtime factors that cause end-to-end latency to diverge from static profiles: GPU utilization contention and VRAM capacity contention. We present an agentic scheduler that pairs an LLM agent with an algorithmic runtime monitor, where the monitor expands what the LLM can observe via running averages, symmetric reprobing, swap reprobing, and exploration hints, without ever prescribing which mapping to adopt. Across 13 scenarios spanning serial execution, parallel contention, and memory-constrained execution, the agentic scheduler reaches the brute-force optimal mapping in all 13 scenarios, matching the best classical baseline on mapping accuracy while avoiding bandit-style exploration over complete mappings, and outperforming HEFT, StarPU, and the all-GPU policy while requiring zero offline training.",
+    "published_date": "2026-07-24T12:18:36Z",
+    "updated_date": "2026-07-24T12:18:36Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22242v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22242v1",
+    "source": "arxiv",
+    "score": 0.42696352243423463,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 调度、异构计算、延迟优化相关技术。\n\n核心内容：Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer...。",
+    "takeaway": "本文聚焦GPU 调度、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.20120v1",
+    "title": "Ascend to Science: Exploration of AI Chips for Scientific Computing",
+    "authors": [
+      "Weicheng Xue",
+      "Kai Yang",
+      "Yongxiang Liu",
+      "Baisong Xu",
+      "Dengdong Fan",
+      "Xianglin Liu",
+      "Pengxiang Xu",
+      "Yonghong Tian"
+    ],
+    "abstract": "The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalability? Using the Ascend 910 NPU series as a representative tensor-centric platform, we characterize precision, execution, and memory-hierarchy bottlenecks that hinder the direct deployment of scientific codes. We then develop and evaluate workload-specific mappings across five application studies -- HPL-MxP, LRSVD, SGEMM-cube, PQSim, and SMC-X -- combining heterogeneous execution, mixed-precision numerical formulations, precision emulation, hierarchical memory orchestration, and communication--computation overlap. These studies show that AI-native NPUs can achieve numerical robustness, competitive performance, and satisfactory scalability when numerical formulation, execution placement, and data movement are addressed in a coordinated manner. Our results provide a state-of-the-practice case study of how scientific workloads can be adapted to tensor-centric architectures, while distinguishing transferable optimization principles from Ascend-specific implementation details.",
+    "published_date": "2026-07-22T13:23:52Z",
+    "updated_date": "2026-07-22T13:23:52Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20120v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20120v1",
+    "source": "arxiv",
+    "score": 0.4089145064353943,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、通信优化相关技术。\n\n核心内容：The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalabi...。",
+    "takeaway": "本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.20650v1",
+    "title": "PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs",
+    "authors": [
+      "Alexander Strack",
+      "Marcel Graf",
+      "Alexander Van Craen",
+      "Dirk Pflüger"
+    ],
+    "abstract": "The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms.\n  We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, examining the impact of three data layouts (stream, bundle, and collision) and four algorithmic variants on simulation throughput.\n  Our results show that no single configuration achieves optimal performance across all GPU vendors, confirming the need for system-specific tuning. The stream layout maximizes bandwidth and performs best on the contemporary NVIDIA and Intel GPUs, while the bundle layout improves cache efficiency and excels on the AMD GPU. Two-lattice schemes achieve higher throughput while one-lattice schemes are preferable under memory constraints. Our work underscores the necessity for adaptable, portable LBM software in increasingly heterogeneous computing environments.",
+    "published_date": "2026-07-22T18:21:27Z",
+    "updated_date": "2026-07-22T18:21:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20650v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20650v1",
+    "source": "arxiv",
+    "score": 0.40066824793815614,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。",
+    "takeaway": "本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.21865v1",
+    "title": "Decentralized Compute on Untrusted Hardware Using Intel TDX and Encrypted CVMs",
+    "authors": [
+      "Venish Patidar",
+      "Dhruv Bindra",
+      "Ahmed Darwich",
+      "Josh Brown",
+      "Haidong Xia",
+      "Sathi Nair"
+    ],
+    "abstract": "The rapid growth of artificial intelligence workloads has generated an unprecedented demand for secure and scalable compute resources. However, centralized cloud providers continue to dominate both pricing and security models. In an increasingly competitive AI landscape, where the compromise of training data or model weights can confer a significant advantage, there is a critical need for a computing infrastructure that safeguards data at rest, in transit, and in use, while remaining affordable and broadly accessible. Furthermore, existing GPU cluster offerings (e.g., 8xH100s, 8xH200s, 8xB200s) create financial barriers that limit access for organizations, startups, and independent researchers seeking secure, high-performance computing environments.\n  This paper introduces a decentralized, confidential computing platform that leverages Intel Trust Domain Extensions (TDX), Intel Trust Authority (ITA) and NVIDIA Confidential Computing (CC) to establish a distributed ecosystem of fully encrypted Confidential Virtual Machines (CVMs). The proposed architecture incentivizes hardware providers to contribute Intel TDX capable compute resources. Each participating provider is provisioned with a freshly instantiated, uniquely encrypted Ubuntu 24.04 CVM, providing data protection across all stages, at rest, in transit, and in use.\n  By decentralizing the confidential computing stack and leveraging confidential computing across independently operated nodes, this work demonstrates a viable alternative to traditional cloud-based infrastructures. The proposed system offers enhanced security assurances, transparent cost structures, and democratized access to enterprise-grade secure compute capabilities, paving the way for a more open, secure, and equitable foundation for next-generation AI development.",
+    "published_date": "2026-07-23T23:44:27Z",
+    "updated_date": "2026-07-23T23:44:27Z",
+    "categories": [
+      "cs.CR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.21865v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.21865v1",
+    "source": "arxiv",
+    "score": 0.37989957571029664,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The rapid growth of artificial intelligence workloads has generated an unprecedented demand for secure and scalable compute resources. However, centralized cloud providers continue to dominate both pricing and security models。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2607.21985v1",
+    "title": "Unified Static-Dynamic Pruning for Efficient LLM Inference",
+    "authors": [
+      "Jinhyeok Kim",
+      "Yejoon Lee",
+      "Jaeyoung Do"
+    ],
+    "abstract": "The increasing deployment of large language models (LLMs) has magnified the computational and memory bottlenecks of autoregressive decoding, where low compute intensity and bandwidth-bound kernels dominate inference cost. Weight pruning offers a promising remedy,\n  but existing methods remain confined to either static pruning (SP), which permanently removes redundant weights but lacks adaptivity, or dynamic pruning (DP), which adapts to input sparsity but introduces runtime irregularity. This paper presents SPDP, a unified\n  sparse-inference framework that integrates unstructured SP with input-adaptive DP for efficient LLM inference on GPUs. SPDP co-designs a new Tiled-Column-wise Bitmap Compressed (Tiled-CBC) format and two complementary GPU kernels: (1) a CUDA-core spMspV kernel\n  featuring Hybrid Activation-aware Dynamic Shared-Memory Bitmap Decoding (HAD-SMBD) for fine-grained, runtime activation skipping, and (2) a Tensor-Core SpMM kernel optimized for prefill computation. This joint format-kernel design harmonizes static and dynamic\n  sparsity, maintaining bandwidth-efficient memory access and high compute intensity under both phases of LLM inference. Comprehensive evaluations on inference-optimized GPUs demonstrate that SPDP achieves 1.24x-1.37x average speedup (up to 2.51x) over state-of-the-\n  art sparse frameworks such as SpInfer, while matching. perplexity with up to 25% higher sparsity. SPDP advances the inference efficiency-quality Pareto frontier, showing that unified static-dynamic pruning can deliver substantial throughput and performance-per-watt\n  improvements in large-scale LLM serving",
+    "published_date": "2026-07-24T05:19:41Z",
+    "updated_date": "2026-07-24T05:19:41Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI",
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.21985v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.21985v1",
+    "source": "arxiv",
+    "score": 0.37218414068222044,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、大模型推理、带宽优化、吞吐量相关技术。\n\n核心内容：The increasing deployment of large language models (LLMs) has magnified the computational and memory bottlenecks of autoregressive decoding, where low compute intensity and bandwidth-bound kernels dominate inference cost. Weight pruning offers a promising remedy,\n  but existing methods remain confin...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.21746v1",
+    "title": "PRISM: Evaluating POSIX Storage Systems for AI Research Workflows",
+    "authors": [
+      "Adithya Kumar",
+      "Aditya Basu",
+      "Jacob Kahn",
+      "Parth Malani",
+      "Leo Huang",
+      "Kalyan Saladi"
+    ],
+    "abstract": "The rapid advancement of AI research is driven by massive investments in GPU clusters, yet the critical role of storage systems in enabling efficient research workflows is often overlooked. Unlike traditional HPC workloads, AI research prioritizes researcher productivity and ease of iteration. Practitioners rely on POSIX compliant file systems for seamless prototyping, debugging, and experimentation before scaling to specialized storage backends. The primary selection criterion is therefore not peak throughput alone, but rather performance within a POSIX compatible, researcher friendly interface. However, existing benchmarks evaluate storage systems exclusively on peak performance and fail to capture the bursty, heterogeneous IO patterns characteristic of real world AI research - where workflows are dynamic, continuously evolving spanning all stages of research. We introduce PRISM, an evaluation framework that reproduces representative AI research workloads - spanning data ingestion, checkpoint IO, and developer workflows to assess and qualify POSIX storage systems along both usability and performance dimensions on GPU clusters. Using PRISM we were able to compare Lustre and NFS based POSIX storage systems across multiple research workload dimensions and select the appropriate storage solution for different environments. As a specific case study in our environment we observed that a flash backed NFS solution outperformed the flash backed Lustre solution by up to 3x for the distributed checkpoint load usecase which helped us make an informed cluster design",
+    "published_date": "2026-07-23T18:56:27Z",
+    "updated_date": "2026-07-23T18:56:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.21746v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.21746v1",
+    "source": "arxiv",
+    "score": 0.3716091358661652,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、吞吐量相关技术。\n\n核心内容：The rapid advancement of AI research is driven by massive investments in GPU clusters, yet the critical role of storage systems in enabling efficient research workflows is often overlooked. Unlike traditional HPC workloads, AI research prioritizes researcher productivity and ease of iteration。",
+    "takeaway": "本文聚焦异构计算、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.18002v2",
+    "title": "ExpertPlex: A High-Goodput Disaggregated Serving System for MoE LLMs with Adaptive Persistent Kernels",
+    "authors": [
+      "Bingyang Wu",
+      "Chao Jin",
+      "Zili Zhang",
+      "Xinming Wei",
+      "Yinmin Zhong",
+      "Ruidong Zhu",
+      "Chengxu Yang",
+      "Xin Jin",
+      "Yuliang Liu"
+    ],
+    "abstract": "LLMs scale Mixture-of-Experts (MoE) parameters for superior intelligence, but massive weights and dynamic computation impede efficient serving. Existing instance-level prefill-decode disaggregation isolates the phases on separate full-model replicas. As MoE weights grow, each instance may span tens to hundreds of GPUs, making resource allocation increasingly coarse. Configured prefill-to-decode ratios thus often mismatch demand, overprovisioning one phase while overloading the other. Prefill-decode colocation avoids this duplication, but existing Green Context solutions partition each GPU by phase and fix phase resources during a kernel. They cannot track resource changes across operations or layerwise variation in routed expert load, causing head-of-line blocking or idle reserved resources. Partitioning every GPU also leaves each phase with fewer local resources, forces wider parallelism and more communication, and lets prefill and decode traffic interfere on the shared network.\n  We present ExpertPlex, which shares massive MoE experts across phases while disaggregating lightweight attention modules. Expert sharing eliminates over 95% of duplicate model weights and multiplexes dynamically sparse computation, while attention disaggregation reduces attention communication cost. ExpertPlex further uses (1) adaptive persistent kernels to schedule dynamic expert computation at tile granularity for efficient, isolated execution; (2) attention-initiated MoE communication to avoid network interference and enable cross-phase communication-computation overlap; and (3) a tile-to-cluster model to optimize these mechanisms for maximum goodput. Experiments serving MiniMax-M2.7 and GLM-5.1-FP8 show that ExpertPlex improves goodput by up to 2.01$\\times$ over instance-level prefill-decode disaggregation and 1.66$\\times$ over prefill-decode colocation.",
+    "published_date": "2026-07-20T14:34:43Z",
+    "updated_date": "2026-07-21T05:51:58Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.18002v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.18002v2",
+    "source": "arxiv",
+    "score": 0.3695296335220337,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究聚合、网络、通信优化相关技术。\n\n核心内容：LLMs scale Mixture-of-Experts (MoE) parameters for superior intelligence, but massive weights and dynamic computation impede efficient serving. Existing instance-level prefill-decode disaggregation isolates the phases on separate full-model replicas。",
+    "takeaway": "本文聚焦聚合、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.18650v1",
+    "title": "Unstructured Hydrodynamics on Spatial Dataflow Architectures: A Joint Code and Data Decomposition Approach",
+    "authors": [
+      "Piotr Luczynski",
+      "Tal Ben-Nun",
+      "Leighton Wilson",
+      "Brian Van Essen"
+    ],
+    "abstract": "Spatial Dataflow Architectures are an emerging hardware pattern in high-performance computing, whose mesh-connected fixed-memory processing elements are tailored for structured grid kernels with two-dimensional neighborhoods. However, practical multiphysics codes are often computed on unstructured grids, which induce indirect memory accesses and high-dimensional communication patterns, making them infeasible to directly map onto said architectures. This work takes a principled, model-centric approach to partitioning unstructured problems onto spatial dataflow architectures. Through communication and memory modeling, we propose a joint decomposition that considers both the size of the application's fields and its subroutines. In particular, we automate the analysis process of the original code, define a high-dimensional decomposition that minimizes communication via space-filling curves, and apply memory optimization techniques, crucial in this memory-limited environment. We demonstrate mapping the Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) application to the Cerebras Wafer-Scale Engine, showing that larger, unstructured grid codes can still outperform GPUs.",
+    "published_date": "2026-07-21T02:42:45Z",
+    "updated_date": "2026-07-21T02:42:45Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.18650v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.18650v1",
+    "source": "arxiv",
+    "score": 0.35654672861099246,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：Spatial Dataflow Architectures are an emerging hardware pattern in high-performance computing, whose mesh-connected fixed-memory processing elements are tailored for structured grid kernels with two-dimensional neighborhoods. However, practical multiphysics codes are often computed on unstructured g...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
