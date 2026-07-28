@@ -1,0 +1,290 @@
+[
+  {
+    "id": "2607.22432v1",
+    "title": "TileSight: A First-Principles Tile-Centric Analytical GPU Performance Model from Cores to Clusters",
+    "authors": [
+      "Zhiwen Mo",
+      "Yu Cheng",
+      "Lei Wang",
+      "Zhengju Tang",
+      "Lei Xu",
+      "Guoyu Li",
+      "Yuqi Dong",
+      "Lingxiao Ma",
+      "Yuqing Xia",
+      "Jilong Xue",
+      "Fan Yang",
+      "Luo Mai",
+      "Zhi Yang",
+      "Wayne Luk",
+      "Hongxiang Fan"
+    ],
+    "abstract": "Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, opaque ML predictors, or post-hoc profilers to understand kernel execution. This gap is acute for modern AI workloads, where kernel fusion and distributed inference depend on tensor cores, CUDA cores, cache hierarchies, memory pipelines, and inter-GPU networks. We present TileSight, a tile-centric performance-modeling tool that elevates the tile from a programming primitive to an analysis primitive. Within a GPU core, TileSight models compute-memory pipeline overlap; across cores, it models the cache hierarchy; across GPUs, it models inter-node communication. All layers share the tile abstraction: the intra-tile layer expresses work as a resource vector spanning network, memory, and compute pipelines; the inter-tile layer schedules dependent and ordered actions to expose legal overlap and infers multi-level cache hit rates from tile reuse distance; and the cross-device layer maps remote tensor accesses to placements and routes them through an alpha-beta stage cost. On A100, H200, B200, and B6000, TileSight predicts single-GPU kernel latency with 12.35% pooled mean absolute percentage error (MAPE), outperforming state-of-the-art baselines and transferring better across architectures. Its L2 cache-hit-rate predictions are within roughly one percentage point of measurements on every GPU. At up to 32 GPUs, TileSight achieves 16.18% weighted MAPE (wMAPE) on fused distributed kernels and 13.52% wMAPE on end-to-end vLLM serving. In optimization, TileSight selects tile configurations competitive with strong vendor and expert baselines. TileSight will be open-sourced upon publication.",
+    "published_date": "2026-07-24T15:50:23Z",
+    "updated_date": "2026-07-24T15:50:23Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22432v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22432v1",
+    "source": "arxiv",
+    "score": 0.5435964000225068,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、GPU 间通信、网络、通信优化相关技术。\n\n核心内容：Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, ...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、GPU 间通信，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.19922v1",
+    "title": "DGNA: Dissecting GPU NUMA Architecture through Microbenchmarking and Data Analysis",
+    "authors": [
+      "Changxi Liu",
+      "Yun Chen",
+      "Trevor E. Carlson"
+    ],
+    "abstract": "Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit workload efficiency. To bridge this gap, a deep understanding of GPU memory architectures, particularly Non-Uniform Memory Access (NUMA) mechanisms within L2 and DRAM, is essential for optimizing applications, designing new architectures, and building accurate simulators. However, the latest GPU hardware from vendors like NVIDIA and AMD is still a black-box, making it challenging for researchers to understand the details of their design.\n  In this paper, we introduce DGNA, a methodology designed to unveil the NUMA architecture of the GPU memory hierarchy through microbenchmarking and data analysis. Specifically, we propose an approach to measuring the latency of L2 caches and DRAM without relying on the intrinsic instructions of the architecture and apply a Gaussian mixture model to filter out outliers and accurately determine latency distributions. We apply DGNA on NVIDIA's A100 and H100 GPUs, revealing NUMA node architecture, SM-NUMA relationships, and NUMA-aware memory allocation strategies used to maintain cache coherence. To the best of our knowledge, this is the first paper to detail the NUMA architecture within the GPU memory subsystem.",
+    "published_date": "2026-07-22T08:53:09Z",
+    "updated_date": "2026-07-22T08:53:09Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.19922v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.19922v1",
+    "source": "arxiv",
+    "score": 0.5161272275447846,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、延迟优化相关技术。\n\n核心内容：Graphics Processing Units (GPUs), due to their immense parallel processing capabilities, have become essential across various fields, including gaming and artificial intelligence. With significant advancements in GPU cores, GPU memory efficiency has lagged, resulting in bottlenecks that can limit wo...。",
+    "takeaway": "本文聚焦GPU 内存管理、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.22866v1",
+    "title": "$g$MAGNUS: Fast SpGEMM on GPUs for Irregular Matrices via Hierarchical Multisplit",
+    "authors": [
+      "Jordi Wolfson-Pou",
+      "Ahmed Helal",
+      "Fabrizio Petrini"
+    ],
+    "abstract": "We present $g$MAGNUS, a novel algorithm for sparse matrix-matrix multiplication (SpGEMM) of irregular matrices on GPUs. Such matrices often contain many \\emph{heavy rows}, those with large intermediate products that force local memory accumulators to spill to global memory. $g$MAGNUS addresses this by computing an intra-row reordering of intermediate products, subdividing heavy rows into independent chunks that can be accumulated completely in local memory. This reordering uses novel outer product and hierarchical multisplit operations. The algorithm is input- and system-aware, automatically determining the number of chunks and multisplit levels based on the input matrix dimensions and local memory size. Experimental results on two extensive datasets show that $g$MAGNUS achieves a geometric-mean speedup of 1.81 to 7.62$\\times$ over five leading algorithms (including MKL and cuSPARSE) on Intel Ponte Vecchio and NVIDIA H200. Additionally, the core kernels of $g$MAGNUS are evaluated, achieving near-peak performance compared to their theoretical upper bound.",
+    "published_date": "2026-07-24T19:11:46Z",
+    "updated_date": "2026-07-24T19:11:46Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22866v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22866v1",
+    "source": "arxiv",
+    "score": 0.4921982276439667,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present $g$MAGNUS, a novel algorithm for sparse matrix-matrix multiplication (SpGEMM) of irregular matrices on GPUs. Such matrices often contain many \\emph{heavy rows}, those with large intermediate products that force local memory accumulators to spill to global memory。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23815v1",
+    "title": "Kalypso: Relational LLM Serving",
+    "authors": [
+      "Hojae Son",
+      "Md Ashraful Islam",
+      "Huy Gia Cao",
+      "Hui Guan",
+      "Marco Serafini"
+    ],
+    "abstract": "Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance opportunities unused. This paper introduces relational LLM serving, an abstraction that makes LLM serving aware of semantic query structure while preserving query semantics and output accuracy. The key opportunity is pipelined execution across semantic operators: when intermediate tuples flow directly from one operator to the next, their KV-cache state can be reused instead of recomputed.\n  We present Kalypso, a relational LLM serving system that exposes an API for semantic query plans and executes them using an adaptive, memory-aware scheduling algorithm. Kalypso addresses a new online scheduling problem in which pipelined operator execution is coupled with GPU memory pressure management to reuse KV-cache state in the serving engine before eviction. Its scheduler continuously adjusts memory allocations to balance upstream parallelism, downstream progress, and GPU utilization. Our evaluation shows that Kalypso improves query completion time over baselines using request-centric LLM serving, with speedups up to 4.57x across diverse workloads, demonstrating that query-aware LLM serving can substantially improve the efficiency of semantic query execution.",
+    "published_date": "2026-07-26T19:29:31Z",
+    "updated_date": "2026-07-26T19:29:31Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.23815v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23815v1",
+    "source": "arxiv",
+    "score": 0.4598508906364441,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、查询处理相关技术。\n\n核心内容：Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance...。",
+    "takeaway": "本文聚焦GPU 内存管理、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.22242v1",
+    "title": "Agentic CPU-GPU Scheduling for Heterogeneous AI Workloads",
+    "authors": [
+      "Tianxi Lu",
+      "Sherief Reda"
+    ],
+    "abstract": "Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer dominance, and 3 are device-neutral, establishing that blanket GPU-first scheduling is suboptimal. We formulate device scheduling as assigning each tool to one of three options: immediate GPU execution, queued GPU execution, or CPU offload, under a VRAM budget, and identify two runtime factors that cause end-to-end latency to diverge from static profiles: GPU utilization contention and VRAM capacity contention. We present an agentic scheduler that pairs an LLM agent with an algorithmic runtime monitor, where the monitor expands what the LLM can observe via running averages, symmetric reprobing, swap reprobing, and exploration hints, without ever prescribing which mapping to adopt. Across 13 scenarios spanning serial execution, parallel contention, and memory-constrained execution, the agentic scheduler reaches the brute-force optimal mapping in all 13 scenarios, matching the best classical baseline on mapping accuracy while avoiding bandit-style exploration over complete mappings, and outperforming HEFT, StarPU, and the all-GPU policy while requiring zero offline training.",
+    "published_date": "2026-07-24T12:18:36Z",
+    "updated_date": "2026-07-24T12:18:36Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22242v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22242v1",
+    "source": "arxiv",
+    "score": 0.42696352243423463,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 调度、异构计算、延迟优化相关技术。\n\n核心内容：Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer...。",
+    "takeaway": "本文聚焦GPU 调度、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.22785v1",
+    "title": "FusionML: Prefill, Not Decode - Mechanism and Boundaries of CPU+GPU Co-Execution on Unified-Memory Apple Silicon",
+    "authors": [
+      "Om Mohite"
+    ],
+    "abstract": "Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins. We identify the cause: MLX's lazy-graph scheduler \\emph{serializes} cross-stream work whenever a CPU-stream operation consumes an unmaterialized GPU result inside one evaluation graph, so a row-split matmul that runs \\x{1.38} faster with materialized inputs runs \\x{0.66} slower than GPU-only inside a lazy graph; an eager materialization boundary restores concurrency (\\x{1.34}). \\sys{} implements a per-layer, contention-aware CPU+GPU row split for transformer prefill built on this fix. Evaluated across five chips and three Apple-Silicon generations, community-replicated, the split accelerates Llama-shaped decoder-block prefill by \\x{1.15}--\\x{1.38}, unchanged at full 32-block depth, and reaches \\x{1.18}--\\x{1.25} faster time-to-first-token on a real Qwen2.5-7B checkpoint served through stock MLX-LM, with token-identical outputs and unchanged decode throughput. We characterize the boundaries equally carefully: decode cannot benefit, bound by shared bandwidth co-execution does not add; precision-matched training loses \\x{0.86}--\\x{0.97} on all five chips; ANE dispatch overhead excludes it at layer granularity; and a no-regression runtime gate becomes self-defeating under memory pressure, where probing an alternative mode evicts the active mode's working set. Code, raw results, and generation transcripts are released.",
+    "published_date": "2026-07-24T11:42:17Z",
+    "updated_date": "2026-07-24T11:42:17Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.22785v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22785v1",
+    "source": "arxiv",
+    "score": 0.41534601092338563,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究带宽优化、吞吐量相关技术。\n\n核心内容：Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins。",
+    "takeaway": "本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23099v1",
+    "title": "Decoding the Skew: Distribution-Aware MoE Inference with Adaptive Kernel Dispatch",
+    "authors": [
+      "En-Ming Huang",
+      "An-Cheng Chang",
+      "Bai-Cheng Jeng",
+      "Shih-Hao Hung",
+      "H. T. Kung"
+    ],
+    "abstract": "Mixture-of-Experts (MoE) inference consists of sparse expert GEMMs whose shapes vary with the runtime routing distribution. Existing serving systems typically select fused-MoE kernels using static token-count buckets, ignoring the per-expert routing distribution that determines tile padding, memory reuse, and kernel efficiency. We introduce a distribution-aware framework for modeling and benchmarking MoE inference. The framework combines the compact Effective Experts metric with a Dirichlet-based reverse-modeling procedure that generates controllable routing distributions for systematic hardware studies. Using it, we show that the best fused-MoE kernel changes with routing skew and token count. We further present DA-MoE, a GPU-resident kernel-dispatch runtime for NVIDIA GPUs that matches the live routing histogram to offline-tuned distributions and selects a near-optimal fused-MoE kernel without CPU--GPU synchronization. On HumanEval-X serving traces, DA-MoE improves geomean fused-MoE latency by 1.16X on DeepSeek-V3 and 1.29X on Kimi K2, with peak speedups of 1.40X and 1.56X.",
+    "published_date": "2026-07-25T08:20:47Z",
+    "updated_date": "2026-07-25T08:20:47Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.23099v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23099v1",
+    "source": "arxiv",
+    "score": 0.4116500008106232,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Mixture-of-Experts (MoE) inference consists of sparse expert GEMMs whose shapes vary with the runtime routing distribution. Existing serving systems typically select fused-MoE kernels using static token-count buckets, ignoring the per-expert routing distribution that determines tile padding, memory ...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20120v1",
+    "title": "Ascend to Science: Exploration of AI Chips for Scientific Computing",
+    "authors": [
+      "Weicheng Xue",
+      "Kai Yang",
+      "Yongxiang Liu",
+      "Baisong Xu",
+      "Dengdong Fan",
+      "Xianglin Liu",
+      "Pengxiang Xu",
+      "Yonghong Tian"
+    ],
+    "abstract": "The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalability? Using the Ascend 910 NPU series as a representative tensor-centric platform, we characterize precision, execution, and memory-hierarchy bottlenecks that hinder the direct deployment of scientific codes. We then develop and evaluate workload-specific mappings across five application studies -- HPL-MxP, LRSVD, SGEMM-cube, PQSim, and SMC-X -- combining heterogeneous execution, mixed-precision numerical formulations, precision emulation, hierarchical memory orchestration, and communication--computation overlap. These studies show that AI-native NPUs can achieve numerical robustness, competitive performance, and satisfactory scalability when numerical formulation, execution placement, and data movement are addressed in a coordinated manner. Our results provide a state-of-the-practice case study of how scientific workloads can be adapted to tensor-centric architectures, while distinguishing transferable optimization principles from Ascend-specific implementation details.",
+    "published_date": "2026-07-22T13:23:52Z",
+    "updated_date": "2026-07-22T13:23:52Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20120v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20120v1",
+    "source": "arxiv",
+    "score": 0.4089145064353943,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、通信优化相关技术。\n\n核心内容：The rapid rise of AI-oriented accelerators has reshaped compute systems around low-precision tensor engines, raising a practical question for the HPC community: under what conditions can such hardware support scientific workloads that demand numerical robustness, irregular memory access, and scalabi...。",
+    "takeaway": "本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.21195v1",
+    "title": "Chess\\_db: A framework for working with large chess game datasets",
+    "authors": [
+      "Nicos Angelopoulos",
+      "Jan Wielemaker"
+    ],
+    "abstract": "Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game. However, the opposite has come to pass, with a growing following for the game. A lot of the computational resources are now centered around training of players, where the engine output is just one aspect. Access to  past games is also an essential part, both in knowing what games a specific player has played previously, and also which continuations at a certain position have led to victory more often for each of the two colour players. We present Chess_db a suite of logic programming tools that can effectively manipulate games both in memory and via creating back end databases.  In particular, we provide versatile code that creates databases from PGN (portable game notation) game files and explore the suitability of open source key-value databases for  storing position tables that provide near-instant access to  information pertaining to substantially large number of games.",
+    "published_date": "2026-07-23T11:17:41Z",
+    "updated_date": "2026-07-23T11:17:41Z",
+    "categories": [
+      "cs.LO",
+      "cs.AI",
+      "cs.DB",
+      "cs.SC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.21195v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.21195v1",
+    "source": "arxiv",
+    "score": 0.40687151193618776,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Chess is a two player strategic game that is embedded in classical AI  culture as it was once the frontier for intelligent behaviour.  There was the silent assumption that the advent of computer engines that  play better than the best humans will extinguish interest in the game。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.20650v1",
+    "title": "PortLBM: A Portable Lattice Boltzmann Tool Leveraging SYCL on AMD, NVIDIA, and Intel GPUs",
+    "authors": [
+      "Alexander Strack",
+      "Marcel Graf",
+      "Alexander Van Craen",
+      "Dirk Pflüger"
+    ],
+    "abstract": "The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency across diverse hardware platforms.\n  We present PortLBM, an extensible portable LBM framework built on SYCL that integrates cross-platform GPU support with interactive real-time visualization. PortLBM supports diverse simulation scenarios ranging from Kármán vortex streets and wing flows to porous media, and is designed for easy extension with new algorithms and backends. As part of a performance portability study, we evaluate PortLBM on contemporary GPU architectures from NVIDIA, AMD, and Intel, examining the impact of three data layouts (stream, bundle, and collision) and four algorithmic variants on simulation throughput.\n  Our results show that no single configuration achieves optimal performance across all GPU vendors, confirming the need for system-specific tuning. The stream layout maximizes bandwidth and performs best on the contemporary NVIDIA and Intel GPUs, while the bundle layout improves cache efficiency and excels on the AMD GPU. Two-lattice schemes achieve higher throughput while one-lattice schemes are preferable under memory constraints. Our work underscores the necessity for adaptable, portable LBM software in increasingly heterogeneous computing environments.",
+    "published_date": "2026-07-22T18:21:27Z",
+    "updated_date": "2026-07-22T18:21:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.20650v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.20650v1",
+    "source": "arxiv",
+    "score": 0.40066824793815614,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：The lattice Boltzmann method (LBM) is a well-established approach for simulating fluid flows at the mesoscopic scale. With the stagnation of Moore's law, high-performance computing has shifted toward GPU accelerators, necessitating programming models that ensure both portability and efficiency acros...。",
+    "takeaway": "本文聚焦异构计算、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  }
+]
