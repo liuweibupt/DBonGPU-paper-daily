@@ -1,0 +1,294 @@
+[
+  {
+    "id": "2607.22432v1",
+    "title": "TileSight: A First-Principles Tile-Centric Analytical GPU Performance Model from Cores to Clusters",
+    "authors": [
+      "Zhiwen Mo",
+      "Yu Cheng",
+      "Lei Wang",
+      "Zhengju Tang",
+      "Lei Xu",
+      "Guoyu Li",
+      "Yuqi Dong",
+      "Lingxiao Ma",
+      "Yuqing Xia",
+      "Jilong Xue",
+      "Fan Yang",
+      "Luo Mai",
+      "Zhi Yang",
+      "Wayne Luk",
+      "Hongxiang Fan"
+    ],
+    "abstract": "Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, opaque ML predictors, or post-hoc profilers to understand kernel execution. This gap is acute for modern AI workloads, where kernel fusion and distributed inference depend on tensor cores, CUDA cores, cache hierarchies, memory pipelines, and inter-GPU networks. We present TileSight, a tile-centric performance-modeling tool that elevates the tile from a programming primitive to an analysis primitive. Within a GPU core, TileSight models compute-memory pipeline overlap; across cores, it models the cache hierarchy; across GPUs, it models inter-node communication. All layers share the tile abstraction: the intra-tile layer expresses work as a resource vector spanning network, memory, and compute pipelines; the inter-tile layer schedules dependent and ordered actions to expose legal overlap and infers multi-level cache hit rates from tile reuse distance; and the cross-device layer maps remote tensor accesses to placements and routes them through an alpha-beta stage cost. On A100, H200, B200, and B6000, TileSight predicts single-GPU kernel latency with 12.35% pooled mean absolute percentage error (MAPE), outperforming state-of-the-art baselines and transferring better across architectures. Its L2 cache-hit-rate predictions are within roughly one percentage point of measurements on every GPU. At up to 32 GPUs, TileSight achieves 16.18% weighted MAPE (wMAPE) on fused distributed kernels and 13.52% wMAPE on end-to-end vLLM serving. In optimization, TileSight selects tile configurations competitive with strong vendor and expert baselines. TileSight will be open-sourced upon publication.",
+    "published_date": "2026-07-24T15:50:23Z",
+    "updated_date": "2026-07-24T15:50:23Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22432v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22432v1",
+    "source": "arxiv",
+    "score": 0.543596340417862,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、GPU 间通信、网络、通信优化相关技术。\n\n核心内容：Recent GPU programming frameworks such as Triton, TileLang, and CUDA Tile adopt tiles as first-class primitives, making tile-centric programming the prevailing approach for high-performance GPU kernels. Performance-analysis tooling has not followed: programmers still rely on coarse roofline bounds, ...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、GPU 间通信，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.22866v2",
+    "title": "$g$MAGNUS: Fast SpGEMM on GPUs for Irregular Matrices via Hierarchical Multisplit",
+    "authors": [
+      "Jordi Wolfson-Pou",
+      "Ahmed Helal",
+      "Fabrizio Petrini"
+    ],
+    "abstract": "We present $g$MAGNUS, a novel algorithm for sparse matrix-matrix multiplication (SpGEMM) of irregular matrices on GPUs. Such matrices often contain many heavy rows, those with large intermediate products that force local memory accumulators to spill to global memory. $g$MAGNUS addresses this by computing an intra-row reordering of intermediate products, subdividing heavy rows into independent chunks that can be accumulated completely in local memory. This reordering uses novel outer product and hierarchical multisplit operations. The algorithm is input- and system-aware, automatically determining the number of chunks and multisplit levels based on the input matrix dimensions and local memory size. Experimental results on two extensive datasets show that $g$MAGNUS achieves a geometric-mean speedup of 1.81 to 7.62$\\times$ over five leading algorithms (including MKL and cuSPARSE) on Intel Ponte Vecchio and NVIDIA H200. Additionally, the core kernels of $g$MAGNUS are evaluated, achieving near-peak performance compared to their theoretical upper bound.",
+    "published_date": "2026-07-24T19:11:46Z",
+    "updated_date": "2026-07-28T02:28:40Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22866v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.22866v2",
+    "source": "arxiv",
+    "score": 0.49192824840545657,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present $g$MAGNUS, a novel algorithm for sparse matrix-matrix multiplication (SpGEMM) of irregular matrices on GPUs. Such matrices often contain many heavy rows, those with large intermediate products that force local memory accumulators to spill to global memory。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.26584v1",
+    "title": "Unified Shared Memory in OpenMP: Implementation, Programmability, and Performance on Intel Accelerators",
+    "authors": [
+      "Harald Servat",
+      "François Dugast",
+      "Alejandro Duran",
+      "Abhinav Gaba",
+      "Rakesh Krishnaiyer"
+    ],
+    "abstract": "OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same memory address on different devices, thus avoiding the burden of explicit data transfers to maintain the consistency between the address spaces. Hence, the feature eases quick prototyping and porting of applications to OpenMP with accelerators.\n  In this paper, we introduce the Intel implementation for USM. We briefly discuss its implementation in the software stack (OS kernel, compiler, and runtime), then assess its adoption complexity in existing HPC applications using OpenMP for accelerators, and, finally, evaluate the performance of these applications when adopting USM on an Intel Battlemage GPU. USM is not expected to grant performance uplifts to already optimized applications with explicit, granular data-motion control and our results show an overhead with a geometric mean below 1.2x (1.03x seems achievable with further optimizations). Yet, in this paper we show there exist applications that benefit from this feature, making it attractive even for already ported applications.",
+    "published_date": "2026-07-29T08:04:24Z",
+    "updated_date": "2026-07-29T08:04:24Z",
+    "categories": [
+      "cs.PF",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26584v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26584v1",
+    "source": "arxiv",
+    "score": 0.46062017798423766,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same mem...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23815v1",
+    "title": "Kalypso: Relational LLM Serving",
+    "authors": [
+      "Hojae Son",
+      "Md Ashraful Islam",
+      "Huy Gia Cao",
+      "Hui Guan",
+      "Marco Serafini"
+    ],
+    "abstract": "Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance opportunities unused. This paper introduces relational LLM serving, an abstraction that makes LLM serving aware of semantic query structure while preserving query semantics and output accuracy. The key opportunity is pipelined execution across semantic operators: when intermediate tuples flow directly from one operator to the next, their KV-cache state can be reused instead of recomputed.\n  We present Kalypso, a relational LLM serving system that exposes an API for semantic query plans and executes them using an adaptive, memory-aware scheduling algorithm. Kalypso addresses a new online scheduling problem in which pipelined operator execution is coupled with GPU memory pressure management to reuse KV-cache state in the serving engine before eviction. Its scheduler continuously adjusts memory allocations to balance upstream parallelism, downstream progress, and GPU utilization. Our evaluation shows that Kalypso improves query completion time over baselines using request-centric LLM serving, with speedups up to 4.57x across diverse workloads, demonstrating that query-aware LLM serving can substantially improve the efficiency of semantic query execution.",
+    "published_date": "2026-07-26T19:29:31Z",
+    "updated_date": "2026-07-26T19:29:31Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.23815v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23815v1",
+    "source": "arxiv",
+    "score": 0.4598507714271545,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、查询处理相关技术。\n\n核心内容：Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance...。",
+    "takeaway": "本文聚焦GPU 内存管理、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.26633v1",
+    "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+    "authors": [
+      "Sookyung Choi",
+      "Seungyong Lee",
+      "Kangkyu Park",
+      "Yunseo Chun",
+      "Junseok Lee",
+      "Hyeongseok Gwak",
+      "Myunghyun Rhee",
+      "Euiseok Kim",
+      "Donguk Moon",
+      "Kwangsik Shin",
+      "Guseul Heo",
+      "Youngpyo Joo",
+      "Hoshik Kim",
+      "Jongse Park"
+    ],
+    "abstract": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation. We prototype NELSSA as an end-to-end system, implementing device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement over a CXL-enabled infrastructure with RPC and RDMA support. Across mixed-length LLM workloads, NELSSA improves decode throughput by up to 5.5x in tokens/sec and reduces P99 latency by up to 15x compared to GPU-only baselines. Our end-to-end prototype and experimental results suggest that integrated GPU-PNM serving, enabled by CXL-based disaggregation, is a promising system paradigm for scalable and flexible LLM infrastructures that support evolving workloads.",
+    "published_date": "2026-07-29T08:58:04Z",
+    "updated_date": "2026-07-29T08:58:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.26633v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26633v1",
+    "source": "arxiv",
+    "score": 0.4299607861042023,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、异构计算、聚合、延迟优化、吞吐量相关技术。\n\n核心内容：Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le...。",
+    "takeaway": "本文聚焦RDMA 网络、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.22242v1",
+    "title": "Agentic CPU-GPU Scheduling for Heterogeneous AI Workloads",
+    "authors": [
+      "Tianxi Lu",
+      "Sherief Reda"
+    ],
+    "abstract": "Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer dominance, and 3 are device-neutral, establishing that blanket GPU-first scheduling is suboptimal. We formulate device scheduling as assigning each tool to one of three options: immediate GPU execution, queued GPU execution, or CPU offload, under a VRAM budget, and identify two runtime factors that cause end-to-end latency to diverge from static profiles: GPU utilization contention and VRAM capacity contention. We present an agentic scheduler that pairs an LLM agent with an algorithmic runtime monitor, where the monitor expands what the LLM can observe via running averages, symmetric reprobing, swap reprobing, and exploration hints, without ever prescribing which mapping to adopt. Across 13 scenarios spanning serial execution, parallel contention, and memory-constrained execution, the agentic scheduler reaches the brute-force optimal mapping in all 13 scenarios, matching the best classical baseline on mapping accuracy while avoiding bandit-style exploration over complete mappings, and outperforming HEFT, StarPU, and the all-GPU policy while requiring zero offline training.",
+    "published_date": "2026-07-24T12:18:36Z",
+    "updated_date": "2026-07-24T12:18:36Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.22242v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22242v1",
+    "source": "arxiv",
+    "score": 0.42696343302726747,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 调度、异构计算、延迟优化相关技术。\n\n核心内容：Agentic AI systems compose heterogeneous tool workloads on shared GPU/CPU infrastructure, yet existing frameworks assign all GPU-capable tools to the GPU by default. We profile 19 AI tools across GPU and CPU and find that 11 are GPU-preferred, 4 are ambiguous, 1 is CPU-preferred due to PCIe transfer...。",
+    "takeaway": "本文聚焦GPU 调度、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.27090v1",
+    "title": "InferScale: GPU-Native KV Injection for Personalized LLM Serving",
+    "authors": [
+      "Peter Li",
+      "Prashant Pandey"
+    ],
+    "abstract": "Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory and inject it into the prompt, forcing the serving engine to repeatedly prefill the same content. As the retrieval budget grows, time-to-first-token (TTFT) increases even though the underlying memory is reused across requests.\n  We present InferScale, a GPU-native LLM memory system that replaces repeated prompt prefilling with reusable KV state. InferScale precomputes each memory fact's KV representation, stores it alongside a semantic embedding on the GPU, retrieves relevant facts at serving time, and injects their KV directly into vLLM's paged cache. To support dynamically assembled memories under rotary position embeddings, we introduce Chunked RoPE, which stores keys before rotation and applies their serving-time positions during injection. However, encoding memory facts independently omits the cross-fact context available during joint prefilling. We mitigate this with Context-Window Encoding, which encodes each memory fact together with a small window of preceding conversation context while caching only the target fact's KV.\n  InferScale is implemented through vLLM's KV-connector interface, requiring neither engine modifications nor model fine-tuning. Across three open-weight models on LoCoMo, InferScale keeps TTFT nearly constant as the retrieval budget increases: at k=50 it reduces TTFT by 72-79% (3.6-4.8x), achieves 60.3% accuracy versus 63.3% for Mem0 without serving-time recomputation, and delivers 3.7-4.5x the throughput under concurrent load. Reusable KV state thus decouples memory-conditioned serving latency from retrieved-context size while preserving application quality.",
+    "published_date": "2026-07-29T16:18:22Z",
+    "updated_date": "2026-07-29T16:18:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.27090v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.27090v1",
+    "source": "arxiv",
+    "score": 0.4257877016067505,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究缓存、延迟优化、吞吐量相关技术。\n\n核心内容：Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory an...。",
+    "takeaway": "本文聚焦缓存、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.26335v1",
+    "title": "The Fabric Is the Cluster Driver: Cross-Layer eBPF Policies for GPU-CXL Fabrics",
+    "authors": [
+      "Yiwei Yang",
+      "Andi Quinn"
+    ],
+    "abstract": "We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks. The key abstraction is a semantic movement graph: edges describe bytes, stride, reuse distance, read/write ratio, source and destination, ordering requirement, alias set, ownership, and transformations such as Move, Quantize, Compress, Checksum, Filter, Reduce, Scatter/Gather, Replicate, and Persist. The compiler lowers this graph into per-device eBPF programs, verifier obligations, consistency-classed BPF maps, and artifacts for bpftime and dputime. At the fabric edge, fabric_ext treats a near-Type-2 small core as a hardware-JIT and state manager: it specializes verified movement descriptors into local copy, placement, ordering, and transformation commands, while the surrounding Von Neumann island of memory, DMA, and compute engines performs the dataflow. Because this dataflow is data-driven, fabric_ext also places observation beside the island, where queues, DMA completions, memory placement, and ownership transitions are visible as they happen. The canonical stress case is LLM prefill: attention streams KV blocks and reductions while FFN streams activations, weights, and compressible intermediates, forcing one request to cross GPU tensor execution, DPU/NIC event execution, and CXL or switch-local dataflow islands.",
+    "published_date": "2026-07-28T23:14:45Z",
+    "updated_date": "2026-07-28T23:14:45Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26335v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26335v1",
+    "source": "arxiv",
+    "score": 0.41833551168441774,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.22785v1",
+    "title": "FusionML: Prefill, Not Decode - Mechanism and Boundaries of CPU+GPU Co-Execution on Unified-Memory Apple Silicon",
+    "authors": [
+      "Om Mohite"
+    ],
+    "abstract": "Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins. We identify the cause: MLX's lazy-graph scheduler \\emph{serializes} cross-stream work whenever a CPU-stream operation consumes an unmaterialized GPU result inside one evaluation graph, so a row-split matmul that runs \\x{1.38} faster with materialized inputs runs \\x{0.66} slower than GPU-only inside a lazy graph; an eager materialization boundary restores concurrency (\\x{1.34}). \\sys{} implements a per-layer, contention-aware CPU+GPU row split for transformer prefill built on this fix. Evaluated across five chips and three Apple-Silicon generations, community-replicated, the split accelerates Llama-shaped decoder-block prefill by \\x{1.15}--\\x{1.38}, unchanged at full 32-block depth, and reaches \\x{1.18}--\\x{1.25} faster time-to-first-token on a real Qwen2.5-7B checkpoint served through stock MLX-LM, with token-identical outputs and unchanged decode throughput. We characterize the boundaries equally carefully: decode cannot benefit, bound by shared bandwidth co-execution does not add; precision-matched training loses \\x{0.86}--\\x{0.97} on all five chips; ANE dispatch overhead excludes it at layer granularity; and a no-regression runtime gate becomes self-defeating under memory pressure, where probing an alternative mode evicts the active mode's working set. Code, raw results, and generation transcripts are released.",
+    "published_date": "2026-07-24T11:42:17Z",
+    "updated_date": "2026-07-24T11:42:17Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.22785v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.22785v1",
+    "source": "arxiv",
+    "score": 0.4153458321094513,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究带宽优化、吞吐量相关技术。\n\n核心内容：Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins。",
+    "takeaway": "本文聚焦带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23099v2",
+    "title": "Decoding the Skew: Distribution-Aware MoE Inference with Adaptive Kernel Dispatch",
+    "authors": [
+      "En-Ming Huang",
+      "An-Cheng Chang",
+      "Bai-Cheng Jeng",
+      "Shih-Hao Hung",
+      "H. T. Kung"
+    ],
+    "abstract": "Mixture-of-Experts (MoE) inference consists of sparse expert GEMMs whose shapes vary with the runtime routing distribution. Existing serving systems typically select fused-MoE kernels using static token-count buckets, ignoring the per-expert routing distribution that determines tile padding, memory reuse, and kernel efficiency. We introduce a distribution-aware framework for modeling and benchmarking MoE inference. The framework combines the compact Effective Experts metric with a Dirichlet-based reverse-modeling procedure that generates controllable routing distributions for systematic hardware studies. Using it, we show that the best fused-MoE kernel changes with routing skew and token count. We further present DA-MoE, a GPU-resident kernel-dispatch runtime for NVIDIA GPUs that matches the live routing histogram to offline-tuned distributions and selects a near-optimal fused-MoE kernel without CPU--GPU synchronization. On HumanEval-X serving traces, DA-MoE improves geomean fused-MoE latency by 1.16X on DeepSeek-V3 and 1.29X on Kimi K2, with peak speedups of 1.40X and 1.56X.",
+    "published_date": "2026-07-25T08:20:47Z",
+    "updated_date": "2026-07-28T02:21:18Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.23099v2",
+    "arxiv_url": "https://arxiv.org/abs/2607.23099v2",
+    "source": "arxiv",
+    "score": 0.4116499412059784,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Mixture-of-Experts (MoE) inference consists of sparse expert GEMMs whose shapes vary with the runtime routing distribution. Existing serving systems typically select fused-MoE kernels using static token-count buckets, ignoring the per-expert routing distribution that determines tile padding, memory ...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
