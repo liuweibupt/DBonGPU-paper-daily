@@ -466,7 +466,7 @@
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">0</div>
+            <div class="stat-value">4</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,225 +480,223 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.26584v1" target="_blank">Unified Shared Memory in OpenMP: Implementation, Programmability, and Performance on Intel Accelerators</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.07632v1" target="_blank">From Custom-Fit to Portable: Bridging the Gap Between Synthesized and Engineered GPU Query Execution</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.461</span>
+            <span class="score-badge score-high">相关度 0.932</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Harald Servat, François Dugast, Alejandro Duran, Abhinav Gaba 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Ivan Donchev Kabadzhov, Eugenio Marinelli, Raja Appuswamy</div>
+        <div class="paper-abstract-cn">本文研究GPU 数据库、GPU 查询处理、GPU 分析处理、CUDA、查询处理相关技术。
 
-核心内容：OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same mem...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same memory address on different devices, thus avoiding the burden of explicit data transfers to maintain the consistency between the address spaces. Hence, the feature eases quick prototyping and porting of applications to OpenMP with accelerators.
-  In this paper, we introduce the Intel implementation for USM. We briefly discuss its implementation in the software stack (OS kernel, compiler, and runtime), then assess its adoption complexity in existing HPC applications using OpenMP for accelerators, an...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engin...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs are increasingly used for analytical query processing, but developing GPU-based database engines that achieve the peak performance of the underlying hardware requires substantial research and engineering effort. A recent line of work argues that query processing should be synthesized, not engineered. In this scenario, instead of tuning a general-purpose engine to fit a workload, a large language model (LLM) generates code specialized to one query, one dataset, and one machine, thereby achieving an order-of-magnitude improvement in performance. This thesis, however, has so far been tested only on CPUs. In this work, we revisit the synthesize-versus-engineer debate for GPU analytics by answering three questions: (i) how good is synthesized GPU code?, (ii) why is it faster than engineere...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 数据库、GPU 查询处理、GPU 分析处理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题高度相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.26584v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.26584v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.07632v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.07632v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.23815v1" target="_blank">Kalypso: Relational LLM Serving</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16725v1" target="_blank">FliX: Flipped-Indexing for Scalable GPU Queries and Updates</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.460</span>
+            <span class="score-badge score-high">相关度 0.765</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AI</span> <span class="tag">cs.CL</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
         </div>
-        <div class="paper-authors">Hojae Son, Md Ashraful Islam, Huy Gia Cao, Hui Guan 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、查询处理相关技术。
+        <div class="paper-authors">Rosina Kharal, Trevor Brown, Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。
 
-核心内容：Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance opportunities unused. This paper introduces relational LLM serving, an abstraction that makes LLM serving aware of semantic query structure while preserving query semantics and output accuracy. The key opportunity is pipelined execution across semantic operators: when intermediate tuples flow directly from one operator to the next, their KV-cache state can be reused instead of recomputed.
-  We present Kalypso, a relational LLM serving system that exposes an API for semantic query plans and exec...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.
+  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.23815v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.23815v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2604.16725v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.16725v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.26633v1" target="_blank">NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2607.04489v1" target="_blank">Eiger: An Efficient Library for GPU-based Data Analytics</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.430</span>
+            <span class="score-badge score-high">相关度 0.708</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Sookyung Choi, Seungyong Lee, Kangkyu Park, Yunseo Chun 等 (14 位作者)</div>
-        <div class="paper-abstract-cn">本文研究RDMA 网络、异构计算、聚合、延迟优化、吞吐量相关技术。
+        <div class="paper-authors">Bowen Wu, Marko Kabić, Sven Hepkema, Vasilis Mageirakos 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 查询处理、查询处理、查询优化、排序、网络相关技术。
 
-核心内容：Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, inc...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦RDMA 网络、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the dominant bottleneck. This highlights the need for more efficient relational operators on GPUs than the widely used library, cuDF. While offering rich functionality, cuDF commits to a single, statically chosen implementation for most operators and barely uses runtime information about the data, limiting performance across diverse workloads and GPUs. We present Eiger, a high-performance library for GPU-based data analytics that improves single-GPU query processing through runtime workload adaptivi...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 查询处理、查询处理、查询优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.26633v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.26633v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2607.04489v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.04489v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.27090v1" target="_blank">InferScale: GPU-Native KV Injection for Personalized LLM Serving</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20121v3" target="_blank">A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.426</span>
+            <span class="score-badge score-high">相关度 0.707</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Peter Li, Prashant Pandey</div>
-        <div class="paper-abstract-cn">本文研究缓存、延迟优化、吞吐量相关技术。
+        <div class="paper-authors">Zhonggen Li, Haoran Yu, Zixuan Xu, Yifan Zhu 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。
 
-核心内容：Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory and inject it into the prompt, forcing the serving engine to repeatedly prefill the same content. As the retrieval budget grows, time-to-first-token (TTFT) increases even though the underlying memory is reused across requests.
-  We present InferScale, a GPU-native LLM memory system that replaces repeated prompt prefilling with reusable KV state. InferScale precomputes each memory fact's KV representation, stores it alongside a semantic embedding on the GPU, retrieves relevant facts at serving time...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦缓存、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-ce...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.27090v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.27090v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2604.20121v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.20121v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.26335v1" target="_blank">The Fabric Is the Cluster Driver: Cross-Layer eBPF Policies for GPU-CXL Fabrics</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2510.15095v1" target="_blank">Hive Hash Table: A Warp-Cooperative, Dynamically Resizable Hash Table for GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.418</span>
+            <span class="score-badge score-mid">相关度 0.693</span>
             <span class="tag">ARXIV</span>
             <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Yiwei Yang, Andi Quinn</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Md Sabbir Hossain Polak, David Troendle, Byunghyun Jang</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、哈希表、数据处理、吞吐量相关技术。
 
-核心内容：We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks. The key abstraction is a semantic movement graph: edges describe bytes, stride, reuse distance, read/write ratio, source and destination, ordering requirement, alias set, ownership, and transformations such as Move, Quantize, Compress, Checksum, Filter, Reduce, Scatter/Gather, Replicate, and Persist. The compiler lowers this graph into per-device eBPF programs, verifier obligations, consistency-classed BPF maps, and artifacts for bpftime and dputime. At the fabric edge, fabric_ext treats a near-Type-2 small core as a hardware-JIT and state manage...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU h...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Hash tables are essential building blocks in data-intensive applications, yet existing GPU implementations often struggle with concurrent updates, high load factors, and irregular memory access patterns. We present Hive hash table, a high-performance, warp-cooperative and dynamically resizable GPU hash table that adapts to varying workloads without global rehashing.
+  Hive hash table makes three key contributions. First, a cache-aligned packed bucket layout stores key-value pairs as 64-bit words, enabling coalesced memory access and atomic updates via single-CAS operations. Second, warp-synchronous concurrency protocols - Warp-Aggregated-Bitmask-Claim (WABC) and Warp-Cooperative Match-and-Elect (WCME) - reduce contention to one atomic operation per warp while ensuring lock-free progress. T...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、哈希表、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.26335v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.26335v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2510.15095v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2510.15095v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.26227v1" target="_blank">Two-sided RDMA Striking Back for Disaggregated Memory Databaases</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2502.09541v1" target="_blank">Vortex: Overcoming Memory Capacity Limitations in GPU-Accelerated Large-Scale Data Analytics</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.394</span>
+            <span class="score-badge score-mid">相关度 0.688</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Hokeun Cha, Aditya Akella, Xiangyao Yu</div>
-        <div class="paper-abstract-cn">本文研究RDMA 网络、缓存、网络、通信优化、延迟优化相关技术。
+        <div class="paper-authors">Yichao Yuan, Advait Iyer, Lin Ma, Nishil Talati</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 内存管理、GPU 核函数、多 GPU、缓存相关技术。
 
-核心内容：RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its remote CPU involvement. However, the heavy use of one-sided RDMA introduces fundamental limitations. Its limited APIs cannot express complex system functions such as starvation prevention, priority-based scheduling, and preemption, which are all critical functions in concurrency control protocols. Moreover, indexing requires multiple network round-trips, causing network amplification.
-  In this work, we revisit the long-standing debate between one-sided RDMA and two-sided RDMA in the context of ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦RDMA 网络、缓存、网络，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+核心内容：Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data anal...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Despite the high computational throughput of GPUs, limited memory capacity and bandwidth-limited CPU-GPU communication via PCIe links remain significant bottlenecks for accelerating large-scale data analytics workloads. This paper introduces Vortex, a GPU-accelerated framework designed for data analytics workloads that exceed GPU memory capacity. A key aspect of our framework is an optimized IO primitive that leverages all available PCIe links in multi-GPU systems for the IO demand of a single target GPU. It routes data through other GPUs to such target GPU that handles IO-intensive analytics tasks. This approach is advantageous when other GPUs are occupied with compute-bound workloads, such as popular AI applications that typically underutilize IO resources. We also introduce a novel prog...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 内存管理、GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.26227v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.26227v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2502.09541v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2502.09541v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.23402v1" target="_blank">Characterizing Warp Divergence from Pascal to Blackwell</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2602.17335v3" target="_blank">Do GPUs Really Need New Tabular File Formats?</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.389</span>
+            <span class="score-badge score-mid">相关度 0.673</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.PF</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Alpin Dale</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+        <div class="paper-authors">Jigao Luo, Qi Chen, Carsten Binnig</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 并行计算、数据处理、扫描、带宽优化相关技术。
 
-核心内容：Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline. Combining cycle-accurate microbenchmarks, hardware counters, and static analysis of compiler-generated SASS, we separate stable behavior from architectural change. Across all tested generations, divergent paths serialize linearly with the number of paths $k$, following $T(k) \approx sk$ with no super-linear reconvergence penalty. Warp execution efficiency falls as $32/k$, the penalty is independent of occupancy, and predication removes the serialization cost. The same behavior appears on Pascal, showing that this programmer-v...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+核心内容：Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely und...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Parquet is the de facto columnar file format in modern analytical systems, yet its configuration guidelines have largely been shaped by CPU-centric execution models. As GPU-accelerated data processing becomes increasingly prevalent, Parquet files generated with CPU-oriented defaults can severely underutilize GPU parallelism, turning GPU scans into a performance bottleneck. In this work, we systematically study how Parquet configurations affect GPU scan performance. We show that Parquet's poor GPU performance is not inherent to the format itself but rather a consequence of suboptimal configuration choices. By applying GPU-aware configurations, we increase effective read bandwidth up to 125 GB/s without modifying the Parquet specification.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 并行计算、数据处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-reasons">涉及 GPU 计算技术 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.23402v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.23402v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2602.17335v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.17335v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.24971v1" target="_blank">Right Multiplication on Grammar-Compressed Matrices: A Streaming, Memory-Bounded GPU Engine</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2602.08190v1" target="_blank">ZipFlow: a Compiler-based Framework to Unleash Compressed Data Movement for Modern GPUs</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.374</span>
+            <span class="score-badge score-mid">相关度 0.666</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.MS</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+            <span class="tag">cs.DB</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Francesco Tosoni, Gabriele Mencagli</div>
-        <div class="paper-abstract-cn">本文研究CUDA、吞吐量相关技术。
+        <div class="paper-authors">Gwangoo Yeo, Zhiyang Shen, Wei Cui, Matteo Interlandi 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 内存管理、查询处理、数据压缩、带宽优化相关技术。
 
-核心内容：Grammar-compressed matrices (the mm-repair family) store a matrix's non-zero structure as a RePair straight-line program (SLP), supporting matrix-vector products in time and space proportional to the compressed size. We target the regime where this is decisive on a GPU: when the uncompressed matrix ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Grammar-compressed matrices (the mm-repair family) store a matrix's non-zero structure as a RePair straight-line program (SLP), supporting matrix-vector products in time and space proportional to the compressed size. We target the regime where this is decisive on a GPU: when the uncompressed matrix exceeds device memory, so footprint (not floating-point throughput) is the binding constraint. Our SLP is a directed acyclic graph (DAG) of out-degree 2, and the right product $y=Mx$ is a single bottom-up sweep (leaves to roots): a conflict-free gather. We make the grammar properly layered (every nonterminal child one level below its parent) via pass-through completion, which inserts identity nodes to carry values upward until consumed. This yields a streaming evaluation in which each level read...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In GPU-accelerated data analytics, the overhead of data transfer from CPU to GPU becomes a performance bottleneck when the data scales beyond GPU memory capacity due to the limited PCIe bandwidth. Data compression has come to rescue for reducing the amount of data transfer while taking advantage of the powerful GPU computation for decompression. To optimize the end-to-end query performance, however, the workflow of data compression, transfer, and decompression must be holistically designed based on the compression strategies and hardware characteristics to balance the I/O latency and computational overhead. In this work, we present ZipFlow, a compiler-based framework for optimizing compressed data transfer in GPU-accelerated data analytics. ZipFlow classifies compression algorithms into th...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.24971v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.24971v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2602.08190v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.08190v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.24196v1" target="_blank">PIMID: A Full-System Simulator with Intricacy and Diversity for Processing-in-Memory</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2506.01576v3" target="_blank">Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.371</span>
+            <span class="score-badge score-mid">相关度 0.658</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Yuan He, Masaaki Kondo, Galen M. Shipman, Jered B. Dominguez-Trujillo 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、网络、通信优化、带宽优化相关技术。
+        <div class="paper-authors">Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、GPU 内存管理、排序相关技术。
 
-核心内容：Processing-in-Memory addresses the memory wall by co-locating computation with memory, but because real PIM hardware remains scarce, simulation is the primary way to explore the PIM design space. Yet existing PIM simulators each cover only part of that space: they typically model a single memory tec...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Processing-in-Memory addresses the memory wall by co-locating computation with memory, but because real PIM hardware remains scarce, simulation is the primary way to explore the PIM design space. Yet existing PIM simulators each cover only part of that space: they typically model a single memory technology, fix processing elements at one level of the memory hierarchy, support a single execution model, and stop at the device boundary. We therefore present PIMID, an execution- and trace-driven full-system simulator that closes these gaps in one tool. PIMID supports both the shared-memory and message-passing execution models, running annotated parallel code in OpenMP and MPI side by side across eleven memory technologies (seven DRAM standards, SRAM, and three non-volatile memories); it places...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.24196v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.24196v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2506.01576v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2506.01576v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2607.23763v1" target="_blank">Parallel Cascaded Recursive Filtering on Multi-Core CPUs and GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2508.05029v1" target="_blank">Theseus: A Distributed and Scalable GPU-Accelerated Query Processing Platform Optimized for Efficient Data Movement</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.370</span>
+            <span class="score-badge score-mid">相关度 0.656</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">eess.SP</span> <span class="tag">cs.DC</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.DB</span> 
         </div>
-        <div class="paper-authors">Haotian Zhai, Bernd-Peter Paris</div>
-        <div class="paper-abstract-cn">本文研究SIMD 并行、通信优化、带宽优化、延迟优化相关技术。
+        <div class="paper-authors">Felipe Aramburú, William Malpica, Kaouther Abrougui, Amin Aramoon 等 (21 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 计算、查询处理、网络、通信优化相关技术。
 
-核心内容：The companion of this paper reformulated cascaded second-order (biquad) recursive filtering as a block-tridiagonal linear system and developed two parallel solution algorithms, PH factorization and cyclic reduction, reaching over 600 Megasamples per second on a single SIMD core. This paper scales th...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The companion of this paper reformulated cascaded second-order (biquad) recursive filtering as a block-tridiagonal linear system and developed two parallel solution algorithms, PH factorization and cyclic reduction, reaching over 600 Megasamples per second on a single SIMD core. This paper scales that framework to multi-core CPUs and GPUs, where a new obstacle appears: the terminal outputs of each signal block group are the initial conditions of the next, so naively distributed groups serialize. The dependency is resolved by superposition -- each group's output splits into a zero-state response, computable immediately, and a homogeneous correction applied when the state arrives -- and by a divide-and-conquer form of cyclic reduction that exposes both terminal blocks before back substitutio...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦SIMD 并行、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Online analytical processing of queries on datasets in the many-terabyte range is only possible with costly distributed computing systems. To decrease the cost and increase the throughput, systems can leverage accelerators such as GPUs, which are now ubiquitous in the compute infrastructure。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Online analytical processing of queries on datasets in the many-terabyte range is only possible with costly distributed computing systems. To decrease the cost and increase the throughput, systems can leverage accelerators such as GPUs, which are now ubiquitous in the compute infrastructure. This introduces many challenges, the majority of which are related to when, where, and how to best move data around the system. We present Theseus -- a production-ready enterprise-scale distributed accelerator-native query engine designed to balance data movement, memory utilization, and computation in an accelerator-based system context. Specialized asynchronous control mechanisms are tightly coupled to the hardware resources for the purpose of network communication, data pre-loading, data spilling ac...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 计算、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2607.23763v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2607.23763v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2508.05029v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2508.05029v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -707,7 +705,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-08-02 04:19:22</span>
+            <span>上次运行：2026-08-02 05:05:39</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
