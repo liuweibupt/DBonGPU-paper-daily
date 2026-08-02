@@ -1,0 +1,283 @@
+[
+  {
+    "id": "2607.26584v1",
+    "title": "Unified Shared Memory in OpenMP: Implementation, Programmability, and Performance on Intel Accelerators",
+    "authors": [
+      "Harald Servat",
+      "François Dugast",
+      "Alejandro Duran",
+      "Abhinav Gaba",
+      "Rakesh Krishnaiyer"
+    ],
+    "abstract": "OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same memory address on different devices, thus avoiding the burden of explicit data transfers to maintain the consistency between the address spaces. Hence, the feature eases quick prototyping and porting of applications to OpenMP with accelerators.\n  In this paper, we introduce the Intel implementation for USM. We briefly discuss its implementation in the software stack (OS kernel, compiler, and runtime), then assess its adoption complexity in existing HPC applications using OpenMP for accelerators, and, finally, evaluate the performance of these applications when adopting USM on an Intel Battlemage GPU. USM is not expected to grant performance uplifts to already optimized applications with explicit, granular data-motion control and our results show an overhead with a geometric mean below 1.2x (1.03x seems achievable with further optimizations). Yet, in this paper we show there exist applications that benefit from this feature, making it attractive even for already ported applications.",
+    "published_date": "2026-07-29T08:04:24Z",
+    "updated_date": "2026-07-29T08:04:24Z",
+    "categories": [
+      "cs.PF",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26584v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26584v1",
+    "source": "arxiv",
+    "score": 0.46062017798423766,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same mem...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23815v1",
+    "title": "Kalypso: Relational LLM Serving",
+    "authors": [
+      "Hojae Son",
+      "Md Ashraful Islam",
+      "Huy Gia Cao",
+      "Hui Guan",
+      "Marco Serafini"
+    ],
+    "abstract": "Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance opportunities unused. This paper introduces relational LLM serving, an abstraction that makes LLM serving aware of semantic query structure while preserving query semantics and output accuracy. The key opportunity is pipelined execution across semantic operators: when intermediate tuples flow directly from one operator to the next, their KV-cache state can be reused instead of recomputed.\n  We present Kalypso, a relational LLM serving system that exposes an API for semantic query plans and executes them using an adaptive, memory-aware scheduling algorithm. Kalypso addresses a new online scheduling problem in which pipelined operator execution is coupled with GPU memory pressure management to reuse KV-cache state in the serving engine before eviction. Its scheduler continuously adjusts memory allocations to balance upstream parallelism, downstream progress, and GPU utilization. Our evaluation shows that Kalypso improves query completion time over baselines using request-centric LLM serving, with speedups up to 4.57x across diverse workloads, demonstrating that query-aware LLM serving can substantially improve the efficiency of semantic query execution.",
+    "published_date": "2026-07-26T19:29:31Z",
+    "updated_date": "2026-07-26T19:29:31Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.23815v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23815v1",
+    "source": "arxiv",
+    "score": 0.4598507714271545,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、查询处理相关技术。\n\n核心内容：Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance...。",
+    "takeaway": "本文聚焦GPU 内存管理、查询处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.26633v1",
+    "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+    "authors": [
+      "Sookyung Choi",
+      "Seungyong Lee",
+      "Kangkyu Park",
+      "Yunseo Chun",
+      "Junseok Lee",
+      "Hyeongseok Gwak",
+      "Myunghyun Rhee",
+      "Euiseok Kim",
+      "Donguk Moon",
+      "Kwangsik Shin",
+      "Guseul Heo",
+      "Youngpyo Joo",
+      "Hoshik Kim",
+      "Jongse Park"
+    ],
+    "abstract": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation. We prototype NELSSA as an end-to-end system, implementing device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement over a CXL-enabled infrastructure with RPC and RDMA support. Across mixed-length LLM workloads, NELSSA improves decode throughput by up to 5.5x in tokens/sec and reduces P99 latency by up to 15x compared to GPU-only baselines. Our end-to-end prototype and experimental results suggest that integrated GPU-PNM serving, enabled by CXL-based disaggregation, is a promising system paradigm for scalable and flexible LLM infrastructures that support evolving workloads.",
+    "published_date": "2026-07-29T08:58:04Z",
+    "updated_date": "2026-07-29T08:58:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.26633v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26633v1",
+    "source": "arxiv",
+    "score": 0.4299607861042023,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、异构计算、聚合、延迟优化、吞吐量相关技术。\n\n核心内容：Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le...。",
+    "takeaway": "本文聚焦RDMA 网络、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.27090v1",
+    "title": "InferScale: GPU-Native KV Injection for Personalized LLM Serving",
+    "authors": [
+      "Peter Li",
+      "Prashant Pandey"
+    ],
+    "abstract": "Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory and inject it into the prompt, forcing the serving engine to repeatedly prefill the same content. As the retrieval budget grows, time-to-first-token (TTFT) increases even though the underlying memory is reused across requests.\n  We present InferScale, a GPU-native LLM memory system that replaces repeated prompt prefilling with reusable KV state. InferScale precomputes each memory fact's KV representation, stores it alongside a semantic embedding on the GPU, retrieves relevant facts at serving time, and injects their KV directly into vLLM's paged cache. To support dynamically assembled memories under rotary position embeddings, we introduce Chunked RoPE, which stores keys before rotation and applies their serving-time positions during injection. However, encoding memory facts independently omits the cross-fact context available during joint prefilling. We mitigate this with Context-Window Encoding, which encodes each memory fact together with a small window of preceding conversation context while caching only the target fact's KV.\n  InferScale is implemented through vLLM's KV-connector interface, requiring neither engine modifications nor model fine-tuning. Across three open-weight models on LoCoMo, InferScale keeps TTFT nearly constant as the retrieval budget increases: at k=50 it reduces TTFT by 72-79% (3.6-4.8x), achieves 60.3% accuracy versus 63.3% for Mem0 without serving-time recomputation, and delivers 3.7-4.5x the throughput under concurrent load. Reusable KV state thus decouples memory-conditioned serving latency from retrieved-context size while preserving application quality.",
+    "published_date": "2026-07-29T16:18:22Z",
+    "updated_date": "2026-07-29T16:18:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.27090v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.27090v1",
+    "source": "arxiv",
+    "score": 0.4257877016067505,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究缓存、延迟优化、吞吐量相关技术。\n\n核心内容：Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory an...。",
+    "takeaway": "本文聚焦缓存、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.26335v1",
+    "title": "The Fabric Is the Cluster Driver: Cross-Layer eBPF Policies for GPU-CXL Fabrics",
+    "authors": [
+      "Yiwei Yang",
+      "Andi Quinn"
+    ],
+    "abstract": "We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks. The key abstraction is a semantic movement graph: edges describe bytes, stride, reuse distance, read/write ratio, source and destination, ordering requirement, alias set, ownership, and transformations such as Move, Quantize, Compress, Checksum, Filter, Reduce, Scatter/Gather, Replicate, and Persist. The compiler lowers this graph into per-device eBPF programs, verifier obligations, consistency-classed BPF maps, and artifacts for bpftime and dputime. At the fabric edge, fabric_ext treats a near-Type-2 small core as a hardware-JIT and state manager: it specializes verified movement descriptors into local copy, placement, ordering, and transformation commands, while the surrounding Von Neumann island of memory, DMA, and compute engines performs the dataflow. Because this dataflow is data-driven, fabric_ext also places observation beside the island, where queues, DMA completions, memory placement, and ownership transitions are visible as they happen. The canonical stress case is LLM prefill: attention streams KV blocks and reductions while FFN streams activations, weights, and compressible intermediates, forcing one request to cross GPU tensor execution, DPU/NIC event execution, and CXL or switch-local dataflow islands.",
+    "published_date": "2026-07-28T23:14:45Z",
+    "updated_date": "2026-07-28T23:14:45Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26335v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26335v1",
+    "source": "arxiv",
+    "score": 0.41833551168441774,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.26227v1",
+    "title": "Two-sided RDMA Striking Back for Disaggregated Memory Databaases",
+    "authors": [
+      "Hokeun Cha",
+      "Aditya Akella",
+      "Xiangyao Yu"
+    ],
+    "abstract": "RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its remote CPU involvement. However, the heavy use of one-sided RDMA introduces fundamental limitations. Its limited APIs cannot express complex system functions such as starvation prevention, priority-based scheduling, and preemption, which are all critical functions in concurrency control protocols. Moreover, indexing requires multiple network round-trips, causing network amplification.\n  In this work, we revisit the long-standing debate between one-sided RDMA and two-sided RDMA in the context of disaggregated memory databases. We present Lotus, which addresses the conventional limitation of two-sided RDMA, i.e., CPU bottlenecks in memory servers, by leveraging the rich functionality of two-sided RDMA with two key optimization techniques: (1) lightweight caching and (2) efficient batching. Lotus demonstrates that limited CPU resources in memory servers, when intelligently utilized, can transform a perceived weakness into a significant advantage. Our experimental study shows that Lotus achieves up to 8.2$\\times$ higher throughput and 42.9$\\times$ lower p999 tail latency than state-of-the-art one-sided RDMA-based approaches in YCSB benchmark.",
+    "published_date": "2026-07-28T20:04:01Z",
+    "updated_date": "2026-07-28T20:04:01Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.26227v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26227v1",
+    "source": "arxiv",
+    "score": 0.3939585530757904,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、缓存、网络、通信优化、延迟优化相关技术。\n\n核心内容：RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its ...。",
+    "takeaway": "本文聚焦RDMA 网络、缓存、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.23402v1",
+    "title": "Characterizing Warp Divergence from Pascal to Blackwell",
+    "authors": [
+      "Alpin Dale"
+    ],
+    "abstract": "Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline. Combining cycle-accurate microbenchmarks, hardware counters, and static analysis of compiler-generated SASS, we separate stable behavior from architectural change. Across all tested generations, divergent paths serialize linearly with the number of paths $k$, following $T(k) \\approx sk$ with no super-linear reconvergence penalty. Warp execution efficiency falls as $32/k$, the penalty is independent of occupancy, and predication removes the serialization cost. The same behavior appears on Pascal, showing that this programmer-visible cost model predates ITS. The compiler-emitted reconvergence machinery, however, has changed substantially. Pascal uses a per-warp SSY/SYNC instruction stack, whereas later generations use barrier-register instructions. Deferred reconvergence beyond the immediate post-dominator falls from 29 cases on Ampere to 2 on Blackwell. Blackwell also introduces a two-tier convergence-barrier classification, uniform-branch instructions, and explicit partial-mask warp synchronization, none of which appear on Ampere or Hopper. Controlled bit-flip experiments indicate that the new barrier class is a static compiler classification with no observable runtime effect in our tests. Thus, divergence retains a stable and predictable performance cost even as NVIDIA's control-flow ISA and reconvergence mechanisms continue to evolve.",
+    "published_date": "2026-07-26T00:47:07Z",
+    "updated_date": "2026-07-26T00:47:07Z",
+    "categories": [
+      "cs.AR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.23402v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23402v1",
+    "source": "arxiv",
+    "score": 0.3892018783092499,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.24971v1",
+    "title": "Right Multiplication on Grammar-Compressed Matrices: A Streaming, Memory-Bounded GPU Engine",
+    "authors": [
+      "Francesco Tosoni",
+      "Gabriele Mencagli"
+    ],
+    "abstract": "Grammar-compressed matrices (the mm-repair family) store a matrix's non-zero structure as a RePair straight-line program (SLP), supporting matrix-vector products in time and space proportional to the compressed size. We target the regime where this is decisive on a GPU: when the uncompressed matrix exceeds device memory, so footprint (not floating-point throughput) is the binding constraint. Our SLP is a directed acyclic graph (DAG) of out-degree 2, and the right product $y=Mx$ is a single bottom-up sweep (leaves to roots): a conflict-free gather. We make the grammar properly layered (every nonterminal child one level below its parent) via pass-through completion, which inserts identity nodes to carry values upward until consumed. This yields a streaming evaluation in which each level reads only the level below and writes the next, so the live set fits in two alternating read-only/write-only buffers instead of scaling with the whole grammar; the per-level width equals the live set. On genotype matrices, where a polygenic score is exactly the right product $y=Gβ$, a CUDA implementation shows a clear space advantage: a device footprint 4 to 8 times smaller than a materialized cuSPARSE CSR baseline, single-vector times within a small factor of cuSPARSE, and consistently lower energy. Because the sweep needs only an associative combine, the same engine and schedule evaluate any monoid homomorphism over the grammar by swapping a small leaf/combine/emit policy; the same reachability sweep then scales to the billion-edge Software Heritage graph ($261$ TB dense and unmaterializable, $21\\times$ smaller serialized than CSR), where the memory argument holds. We frame this as an algorithm-engineering case study: structural metrics (depth, live-set width, completion cost) are measured, architecture-independent grammar properties, whereas time and energy are profiled on a single board.",
+    "published_date": "2026-07-27T18:26:19Z",
+    "updated_date": "2026-07-27T18:26:19Z",
+    "categories": [
+      "cs.MS",
+      "cs.DC",
+      "cs.DS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.24971v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.24971v1",
+    "source": "arxiv",
+    "score": 0.37413239359855655,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Grammar-compressed matrices (the mm-repair family) store a matrix's non-zero structure as a RePair straight-line program (SLP), supporting matrix-vector products in time and space proportional to the compressed size. We target the regime where this is decisive on a GPU: when the uncompressed matrix ...。",
+    "takeaway": "本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.24196v1",
+    "title": "PIMID: A Full-System Simulator with Intricacy and Diversity for Processing-in-Memory",
+    "authors": [
+      "Yuan He",
+      "Masaaki Kondo",
+      "Galen M. Shipman",
+      "Jered B. Dominguez-Trujillo",
+      "Shigeki Tomishima",
+      "Kazi Asifuzzaman"
+    ],
+    "abstract": "Processing-in-Memory addresses the memory wall by co-locating computation with memory, but because real PIM hardware remains scarce, simulation is the primary way to explore the PIM design space. Yet existing PIM simulators each cover only part of that space: they typically model a single memory technology, fix processing elements at one level of the memory hierarchy, support a single execution model, and stop at the device boundary. We therefore present PIMID, an execution- and trace-driven full-system simulator that closes these gaps in one tool. PIMID supports both the shared-memory and message-passing execution models, running annotated parallel code in OpenMP and MPI side by side across eleven memory technologies (seven DRAM standards, SRAM, and three non-volatile memories); it places PEs anywhere from subarrays to logic dies, sweeps PE count and core-model fidelity, and prices the in-memory network per technology from measured congestion. Its single-process host-device co-simulation resolves an end-to-end time and energy breakdown (host preparation, device compute, and explicit boundary charges) that device-only tools cannot produce. Across the resulting dual-execution-model dataset, PIMID shows that the memory technology alone moves execution time by more than an order of magnitude and that the best host main memory is not the best PIM substrate; that regular kernels scale superlinearly with PE count as in-memory bandwidth co-scales with compute; that graph traversal under message-passing hits a collective-communication wall absent under shared memory; and that at full-system scope the offload trades time for energy only on the bandwidth-class memory: shared-memory offload saves energy on HBM3 while a 16-core host keeps every end-to-end time win. PIMID's plugin interfaces let new engines and models be added through standardized YAML specifications as PIM technology evolves.",
+    "published_date": "2026-07-27T09:14:57Z",
+    "updated_date": "2026-07-27T09:14:57Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.24196v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.24196v1",
+    "source": "arxiv",
+    "score": 0.371388076543808,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究内存数据库、网络、通信优化、带宽优化相关技术。\n\n核心内容：Processing-in-Memory addresses the memory wall by co-locating computation with memory, but because real PIM hardware remains scarce, simulation is the primary way to explore the PIM design space. Yet existing PIM simulators each cover only part of that space: they typically model a single memory tec...。",
+    "takeaway": "本文聚焦内存数据库、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2607.23763v1",
+    "title": "Parallel Cascaded Recursive Filtering on Multi-Core CPUs and GPUs",
+    "authors": [
+      "Haotian Zhai",
+      "Bernd-Peter Paris"
+    ],
+    "abstract": "The companion of this paper reformulated cascaded second-order (biquad) recursive filtering as a block-tridiagonal linear system and developed two parallel solution algorithms, PH factorization and cyclic reduction, reaching over 600 Megasamples per second on a single SIMD core. This paper scales that framework to multi-core CPUs and GPUs, where a new obstacle appears: the terminal outputs of each signal block group are the initial conditions of the next, so naively distributed groups serialize. The dependency is resolved by superposition -- each group's output splits into a zero-state response, computable immediately, and a homogeneous correction applied when the state arrives -- and by a divide-and-conquer form of cyclic reduction that exposes both terminal blocks before back substitution, as asynchronous state propagation requires. Two implementations pair the two dominant deployment scenarios with opposite treatments of the dependency. For real-time streaming, a wavefront pipeline realized with TBB flow graphs parallelizes across cascade sections, preserves first-in-first-out order, and achieves 3.95x scaling on six performance cores, about 2.4 Gigasamples per second for a 16th-order filter. For batched processing, a single-kernel GPU implementation carries each group through the entire cascade in registers and parallelizes across groups with a decoupled look-back protocol; a communication-based cost model, comprising a memory roof, a barrier price, and a latency-hiding floor, reduces tuning to two parameters and predicts the measured behavior across two GPU generations. The best kernels reach 38.2 Gigasamples per second for a single second-order section on an RTX~3060, 85% of the memory-bandwidth roof, exceed the strongest published parallel recurrence baseline at every filter order, and remain numerically valid at order 16, where the direct-form baseline fails.",
+    "published_date": "2026-07-26T17:17:42Z",
+    "updated_date": "2026-07-26T17:17:42Z",
+    "categories": [
+      "eess.SP",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.23763v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.23763v1",
+    "source": "arxiv",
+    "score": 0.3703199303150177,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究SIMD 并行、通信优化、带宽优化、延迟优化相关技术。\n\n核心内容：The companion of this paper reformulated cascaded second-order (biquad) recursive filtering as a block-tridiagonal linear system and developed two parallel solution algorithms, PH factorization and cyclic reduction, reaching over 600 Megasamples per second on a single SIMD core. This paper scales th...。",
+    "takeaway": "本文聚焦SIMD 并行、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  }
+]
