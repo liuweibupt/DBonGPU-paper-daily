@@ -1,0 +1,285 @@
+[
+  {
+    "id": "2607.28897v1",
+    "title": "High-Level Big Integer Arithmetic in Futhark for GPUs",
+    "authors": [
+      "Cosmin E. Oancea",
+      "Stephen M. Watt"
+    ],
+    "abstract": "We report on GPU implementations of block-level addition, subtraction, multiplication and division for midsize integers, with operands of $2^{15}$ to $2^{19}$ bits using the high-level functional language Futhark. Comparing with hand-written C++/CUDA versions and CGBN, we identify which functional constructs compile well, where memory placement and sequentialization are effective, and what compiler support is needed. The results show that high-level code can express the algorithms compactly while approaching competitive performance after certain compiler improvements. In particular, we find that automated placement of arrays in GPU register memory is critical for performance.",
+    "published_date": "2026-07-30T23:37:20Z",
+    "updated_date": "2026-07-30T23:37:20Z",
+    "categories": [
+      "cs.SC",
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.28897v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.28897v1",
+    "source": "arxiv",
+    "score": 0.5210646975040436,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：We report on GPU implementations of block-level addition, subtraction, multiplication and division for midsize integers, with operands of $2^{15}$ to $2^{19}$ bits using the high-level functional language Futhark. Comparing with hand-written C++/CUDA versions and CGBN, we identify which functional c...。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.26584v1",
+    "title": "Unified Shared Memory in OpenMP: Implementation, Programmability, and Performance on Intel Accelerators",
+    "authors": [
+      "Harald Servat",
+      "François Dugast",
+      "Alejandro Duran",
+      "Abhinav Gaba",
+      "Rakesh Krishnaiyer"
+    ],
+    "abstract": "OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same memory address on different devices, thus avoiding the burden of explicit data transfers to maintain the consistency between the address spaces. Hence, the feature eases quick prototyping and porting of applications to OpenMP with accelerators.\n  In this paper, we introduce the Intel implementation for USM. We briefly discuss its implementation in the software stack (OS kernel, compiler, and runtime), then assess its adoption complexity in existing HPC applications using OpenMP for accelerators, and, finally, evaluate the performance of these applications when adopting USM on an Intel Battlemage GPU. USM is not expected to grant performance uplifts to already optimized applications with explicit, granular data-motion control and our results show an overhead with a geometric mean below 1.2x (1.03x seems achievable with further optimizations). Yet, in this paper we show there exist applications that benefit from this feature, making it attractive even for already ported applications.",
+    "published_date": "2026-07-29T08:04:24Z",
+    "updated_date": "2026-07-29T08:04:24Z",
+    "categories": [
+      "cs.PF",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26584v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26584v1",
+    "source": "arxiv",
+    "score": 0.4606202673912048,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same mem...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.29575v1",
+    "title": "SLIM: Saturation-Aware Lightweight Performance Modeling for LLM Serving",
+    "authors": [
+      "Pol G. Recasens",
+      "Ferran Agullo",
+      "Yue Zhu",
+      "Chen Wang",
+      "Jordi Torres",
+      "Josep Ll. Berral"
+    ],
+    "abstract": "Large language model (LLM) serving commonly increases batch size to improve throughput, but performance eventually reaches a deployment-dependent plateau beyond which larger batches provide marginal gains while increasing latency and GPU memory consumption. Previous studies have attributed this behavior to HBM/DRAM bandwidth limitations, but the underlying causes have primarily been supported by conceptual arguments or high-level performance observations. As our first contribution, we present a detailed GPU characterization using hardware profiling techniques, demonstrating that throughput saturation originates in the attention kernels during the decode phase. Specifically, we show that their nearly constant arithmetic intensity as active-context lengths increases -not merely larger batch sizes- drives DRAM-bandwidth saturation, while the achieved compute throughput remains far below the hardware limit. Building on this analysis, we present the Batching Configuration Advisor (BCA), which selects the highest-throughput batching configuration satisfying a target latency constraint and identifies up to 55 GB of GPU memory allocation that can be avoided for the evaluated OPT models with minimal throughput loss. To enable these recommendations, we introduce SLIM (Saturation-Aware Lightweight Performance Model), a semi-analytical model that predicts LLM inference throughput and latency from analytical formulations of Transformer computation and memory traffic. Across the evaluated scenarios, SLIM outperforms representative performance-modeling baselines while successfully generalizing to previously unseen operating conditions.",
+    "published_date": "2026-07-31T16:02:31Z",
+    "updated_date": "2026-07-31T16:02:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.29575v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.29575v1",
+    "source": "arxiv",
+    "score": 0.4586604368686676,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、大模型推理、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) serving commonly increases batch size to improve throughput, but performance eventually reaches a deployment-dependent plateau beyond which larger batches provide marginal gains while increasing latency and GPU memory consumption. Previous studies have attributed this beha...。",
+    "takeaway": "本文聚焦GPU 内存管理、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.28824v1",
+    "title": "Characterizing LLM Kernel Access and Memory Interaction in Multi-Partition NUMA GPUs",
+    "authors": [
+      "Donghyeon Joo",
+      "Sooraj Puthoor",
+      "Nuwan Jayasena",
+      "Bahar Asgari"
+    ],
+    "abstract": "Large language model (LLM) workloads motivate multi-partition GPUs as a path to scaling compute and memory capacity, but their non-uniform memory access characteristics and inter-partition communication can amplify contention and degrade locality, leading to suboptimal kernel latency. To address this, we analyze performance-critical LLM kernel implementations spanning weight projection, mixture-of-experts, and attention variants of state-of-the-art serving engines to present a characterization of data access patterns in multi-partition GPUs. First, we introduce memory trace analysis methodology to derive workgroup-level data access and sharing behavior, then evaluate the locality implications on latency using a cycle-level simulator. Using these tools, we categorize LLM kernel operands into three inter-workgroup sharing patterns (global, partial, or private) and show that the required optimization strategies differ across categories, from simple per-workgroup pinning to subgroup-aware co-scheduling. Our findings highlight the need for placement-aware kernel programming and smarter architectural support for work and data locality in multi-partition GPUs.",
+    "published_date": "2026-07-30T20:26:58Z",
+    "updated_date": "2026-07-30T20:26:58Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.28824v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.28824v1",
+    "source": "arxiv",
+    "score": 0.4426577377319336,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化、延迟优化相关技术。\n\n核心内容：Large language model (LLM) workloads motivate multi-partition GPUs as a path to scaling compute and memory capacity, but their non-uniform memory access characteristics and inter-partition communication can amplify contention and degrade locality, leading to suboptimal kernel latency. To address thi...。",
+    "takeaway": "本文聚焦通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.29070v1",
+    "title": "Query Density-Driven Partitioning for Spatiotemporal Load Balancing on Processing-in-Memory Systems",
+    "authors": [
+      "Takato Hideshima",
+      "Shigeyuki Sato",
+      "Tomoharu Ugawa"
+    ],
+    "abstract": "Processing-in-Memory (PIM) systems, which consist of many processors with small local memory, have recently emerged as commercial products and attracted much attention as a means of overcoming the memory wall, particularly in the context of in-memory database technology. The state-of-the-art PIM-oriented index PIM-tree has been demonstrated to achieve asymptotically good spatiotemporal load balancing---query loads and data sizes are balanced among processors---for skewed queries, by trading spatial locality. Unfortunately, such a sacrifice of spatial locality hinders the PIM-oriented processing of range-aggregate queries. To achieve both spatiotemporal load balancing and efficiently executing range-aggregate queries on PIM systems, we develop a query density-driven key-range partitioning scheme. It balances query density among PIM processors, allowing us to strike a balance between query load and data size via a parameter. We then develop B${}^\\text{+}$-Forest, a PIM-oriented B${}^\\text{+}$-tree variant based on our partitioning scheme. Experimental results demonstrated that it exhibits higher skew resistance than a B${}^\\text{+}$-tree based on space-constrained, query-load-balanced, density-unaware partitioning, and performance comparable to PIM-tree in point-get queries, as well as efficient support for range-aggregate queries.",
+    "published_date": "2026-07-31T06:44:08Z",
+    "updated_date": "2026-07-31T06:44:08Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.29070v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.29070v1",
+    "source": "arxiv",
+    "score": 0.4300658392906189,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Processing-in-Memory (PIM) systems, which consist of many processors with small local memory, have recently emerged as commercial products and attracted much attention as a means of overcoming the memory wall, particularly in the context of in-memory database technology. The state-of-the-art PIM-ori...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.26633v1",
+    "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+    "authors": [
+      "Sookyung Choi",
+      "Seungyong Lee",
+      "Kangkyu Park",
+      "Yunseo Chun",
+      "Junseok Lee",
+      "Hyeongseok Gwak",
+      "Myunghyun Rhee",
+      "Euiseok Kim",
+      "Donguk Moon",
+      "Kwangsik Shin",
+      "Guseul Heo",
+      "Youngpyo Joo",
+      "Hoshik Kim",
+      "Jongse Park"
+    ],
+    "abstract": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation. We prototype NELSSA as an end-to-end system, implementing device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement over a CXL-enabled infrastructure with RPC and RDMA support. Across mixed-length LLM workloads, NELSSA improves decode throughput by up to 5.5x in tokens/sec and reduces P99 latency by up to 15x compared to GPU-only baselines. Our end-to-end prototype and experimental results suggest that integrated GPU-PNM serving, enabled by CXL-based disaggregation, is a promising system paradigm for scalable and flexible LLM infrastructures that support evolving workloads.",
+    "published_date": "2026-07-29T08:58:04Z",
+    "updated_date": "2026-07-29T08:58:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.26633v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26633v1",
+    "source": "arxiv",
+    "score": 0.42996087551116946,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、异构计算、聚合、延迟优化、吞吐量相关技术。\n\n核心内容：Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le...。",
+    "takeaway": "本文聚焦RDMA 网络、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2607.27090v1",
+    "title": "InferScale: GPU-Native KV Injection for Personalized LLM Serving",
+    "authors": [
+      "Peter Li",
+      "Prashant Pandey"
+    ],
+    "abstract": "Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory and inject it into the prompt, forcing the serving engine to repeatedly prefill the same content. As the retrieval budget grows, time-to-first-token (TTFT) increases even though the underlying memory is reused across requests.\n  We present InferScale, a GPU-native LLM memory system that replaces repeated prompt prefilling with reusable KV state. InferScale precomputes each memory fact's KV representation, stores it alongside a semantic embedding on the GPU, retrieves relevant facts at serving time, and injects their KV directly into vLLM's paged cache. To support dynamically assembled memories under rotary position embeddings, we introduce Chunked RoPE, which stores keys before rotation and applies their serving-time positions during injection. However, encoding memory facts independently omits the cross-fact context available during joint prefilling. We mitigate this with Context-Window Encoding, which encodes each memory fact together with a small window of preceding conversation context while caching only the target fact's KV.\n  InferScale is implemented through vLLM's KV-connector interface, requiring neither engine modifications nor model fine-tuning. Across three open-weight models on LoCoMo, InferScale keeps TTFT nearly constant as the retrieval budget increases: at k=50 it reduces TTFT by 72-79% (3.6-4.8x), achieves 60.3% accuracy versus 63.3% for Mem0 without serving-time recomputation, and delivers 3.7-4.5x the throughput under concurrent load. Reusable KV state thus decouples memory-conditioned serving latency from retrieved-context size while preserving application quality.",
+    "published_date": "2026-07-29T16:18:22Z",
+    "updated_date": "2026-07-29T16:18:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.27090v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.27090v1",
+    "source": "arxiv",
+    "score": 0.4257879102230072,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究缓存、延迟优化、吞吐量相关技术。\n\n核心内容：Large language models are increasingly deployed with persistent personalized context, such as accumulated memory profiles or long conversation histories, that is shared across a user's many requests. Production memory systems (e.g., Mem0, MemGPT, and Zep) retrieve a relevant subset of this memory an...。",
+    "takeaway": "本文聚焦缓存、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2607.26335v1",
+    "title": "The Fabric Is the Cluster Driver: Cross-Layer eBPF Policies for GPU-CXL Fabrics",
+    "authors": [
+      "Yiwei Yang",
+      "Andi Quinn"
+    ],
+    "abstract": "We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks. The key abstraction is a semantic movement graph: edges describe bytes, stride, reuse distance, read/write ratio, source and destination, ordering requirement, alias set, ownership, and transformations such as Move, Quantize, Compress, Checksum, Filter, Reduce, Scatter/Gather, Replicate, and Persist. The compiler lowers this graph into per-device eBPF programs, verifier obligations, consistency-classed BPF maps, and artifacts for bpftime and dputime. At the fabric edge, fabric_ext treats a near-Type-2 small core as a hardware-JIT and state manager: it specializes verified movement descriptors into local copy, placement, ordering, and transformation commands, while the surrounding Von Neumann island of memory, DMA, and compute engines performs the dataflow. Because this dataflow is data-driven, fabric_ext also places observation beside the island, where queues, DMA completions, memory placement, and ownership transitions are visible as they happen. The canonical stress case is LLM prefill: attention streams KV blocks and reductions while FFN streams activations, weights, and compressible intermediates, forcing one request to cross GPU tensor execution, DPU/NIC event execution, and CXL or switch-local dataflow islands.",
+    "published_date": "2026-07-28T23:14:45Z",
+    "updated_date": "2026-07-28T23:14:45Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26335v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26335v1",
+    "source": "arxiv",
+    "score": 0.4183355712890625,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：We present fabric_ext, an eBPF middleware compiler and runtime for extensible OS policies over GPU--CXL fabrics. fabric_ext lets one policy program execute across GPU hooks, driver/runtime hooks, DPU/NIC hooks, and CXL switch or near-memory hooks。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.29134v1",
+    "title": "InferQ: A Database-Oriented Benchmark for Quantum Circuits Simulation",
+    "authors": [
+      "Andrei Ilinescu",
+      "Aadi Patwardhan",
+      "Rihan Hai"
+    ],
+    "abstract": "Recent work suggests that relational database management systems (RDBMSs) can execute quantum circuit simulation by compiling the simulation into SQL workloads (primarily join-and-aggregate tensor contractions). While early results are promising, they largely focus on a narrow set of highly structured circuits and offer limited support for systematic database research, such as query optimization, physical design, and engine-level evaluation across a broad range of circuits. We present InferQ, a database-oriented benchmark for quantum circuit simulation. InferQ generates general, compositional circuits by assembling subcircuits from a set of circuit templates, emits each simulation task as an RDBMS-ready SQL workload, and extracts circuit and query features (static, graph, SQL, and dynamic) for workload characterization. InferQ also releases a large dataset of 202,975 circuits online, with a web-based viewer to support searching, filtering, and downloading circuits and feature records. In experiments across RDBMS engines (PostgreSQL, SQLite, DuckDB, and Umbra) and the widely used Qiskit Aer simulator, we find that RDBMSs achieve better peak memory usage than Qiskit Aer on more than 50% of the circuits generated by InferQ. Moreover, using InferQ features, lightweight machine learning models (linear and tree-based models) can accurately predict when SQL execution is preferable (with accuracy up to 95.3% for runtime and 97.4% for memory), enabling data-centric simulator selection and opening the door to principled optimization of SQL-based quantum circuit simulation.",
+    "published_date": "2026-07-31T08:05:15Z",
+    "updated_date": "2026-07-31T08:05:15Z",
+    "categories": [
+      "quant-ph",
+      "cs.AI",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.29134v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.29134v1",
+    "source": "arxiv",
+    "score": 0.40110202074050905,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究查询优化相关技术。\n\n核心内容：Recent work suggests that relational database management systems (RDBMSs) can execute quantum circuit simulation by compiling the simulation into SQL workloads (primarily join-and-aggregate tensor contractions). While early results are promising, they largely focus on a narrow set of highly structur...。",
+    "takeaway": "本文聚焦查询优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.26227v1",
+    "title": "Two-sided RDMA Striking Back for Disaggregated Memory Databaases",
+    "authors": [
+      "Hokeun Cha",
+      "Aditya Akella",
+      "Xiangyao Yu"
+    ],
+    "abstract": "RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its remote CPU involvement. However, the heavy use of one-sided RDMA introduces fundamental limitations. Its limited APIs cannot express complex system functions such as starvation prevention, priority-based scheduling, and preemption, which are all critical functions in concurrency control protocols. Moreover, indexing requires multiple network round-trips, causing network amplification.\n  In this work, we revisit the long-standing debate between one-sided RDMA and two-sided RDMA in the context of disaggregated memory databases. We present Lotus, which addresses the conventional limitation of two-sided RDMA, i.e., CPU bottlenecks in memory servers, by leveraging the rich functionality of two-sided RDMA with two key optimization techniques: (1) lightweight caching and (2) efficient batching. Lotus demonstrates that limited CPU resources in memory servers, when intelligently utilized, can transform a perceived weakness into a significant advantage. Our experimental study shows that Lotus achieves up to 8.2$\\times$ higher throughput and 42.9$\\times$ lower p999 tail latency than state-of-the-art one-sided RDMA-based approaches in YCSB benchmark.",
+    "published_date": "2026-07-28T20:04:01Z",
+    "updated_date": "2026-07-28T20:04:01Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.26227v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26227v1",
+    "source": "arxiv",
+    "score": 0.39395852327346803,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、缓存、网络、通信优化、延迟优化相关技术。\n\n核心内容：RDMA has enabled high-speed data access and low-latency communication in disaggregated memory databases. While various optimization techniques have been proposed to accelerate transactions with RDMA in this setting, two-sided RDMA has been largely underexplored in favor of one-sided RDMA due to its ...。",
+    "takeaway": "本文聚焦RDMA 网络、缓存、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
+  }
+]
