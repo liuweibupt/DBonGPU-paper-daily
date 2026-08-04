@@ -1,0 +1,297 @@
+[
+  {
+    "id": "2608.02414v1",
+    "title": "Analyzing GPU Performance in Virtualized Environments: A~Case Study",
+    "authors": [
+      "Adel Belkhiri",
+      "Michel Dagenais"
+    ],
+    "abstract": "The graphics processing unit (GPU) plays a crucial role in boosting application performance and enhancing computational tasks. Thanks to its parallel architecture and energy efficiency, the GPU has become essential in many computing scenarios. On the other hand, the advent of GPU virtualization has been a significant breakthrough, as it provides scalable and adaptable GPU resources for virtual machines. However, this technology faces challenges in debugging and analyzing the performance of GPU-accelerated applications. Most current performance tools do not support virtual GPUs (vGPUs), highlighting the need for more advanced tools. Thus, this article introduces a novel performance analysis tool that is designed for systems using vGPUs. Our tool is compatible with the Intel GVT-g virtualization solution, although its underlying principles can apply to many vGPU-based systems. Our tool uses software tracing techniques to gather detailed runtime data and generate relevant performance metrics. It also offers many synchronized graphical views, which gives practitioners deep insights into GVT-g operations and helps them identify potential performance bottlenecks in vGPU-enabled virtual machines.",
+    "published_date": "2026-08-03T15:53:47Z",
+    "updated_date": "2026-08-03T15:53:47Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.02414v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.02414v1",
+    "source": "arxiv",
+    "score": 0.5746361029148102,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：The graphics processing unit (GPU) plays a crucial role in boosting application performance and enhancing computational tasks. Thanks to its parallel architecture and energy efficiency, the GPU has become essential in many computing scenarios。",
+    "takeaway": "本文聚焦GPU 加速，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2607.28897v1",
+    "title": "High-Level Big Integer Arithmetic in Futhark for GPUs",
+    "authors": [
+      "Cosmin E. Oancea",
+      "Stephen M. Watt"
+    ],
+    "abstract": "We report on GPU implementations of block-level addition, subtraction, multiplication and division for midsize integers, with operands of $2^{15}$ to $2^{19}$ bits using the high-level functional language Futhark. Comparing with hand-written C++/CUDA versions and CGBN, we identify which functional constructs compile well, where memory placement and sequentialization are effective, and what compiler support is needed. The results show that high-level code can express the algorithms compactly while approaching competitive performance after certain compiler improvements. In particular, we find that automated placement of arrays in GPU register memory is critical for performance.",
+    "published_date": "2026-07-30T23:37:20Z",
+    "updated_date": "2026-07-30T23:37:20Z",
+    "categories": [
+      "cs.SC",
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.28897v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.28897v1",
+    "source": "arxiv",
+    "score": 0.5210648167133332,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：We report on GPU implementations of block-level addition, subtraction, multiplication and division for midsize integers, with operands of $2^{15}$ to $2^{19}$ bits using the high-level functional language Futhark. Comparing with hand-written C++/CUDA versions and CGBN, we identify which functional c...。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.00977v1",
+    "title": "TIDE-MC: Two-Sided Interpolative Decomposition for Billion-Scale GPU Matrix Completion",
+    "authors": [
+      "Chengying Huan",
+      "Yubo Wang",
+      "Pinhuan Wang",
+      "Lizheng Chen",
+      "Jie Zhang",
+      "Fangxin Liu",
+      "Qing Wang",
+      "Ruixuan Liu",
+      "Shaonan Ma",
+      "Mingxing Zhang",
+      "Zhibin Wang",
+      "Rong Gu",
+      "Guihai Chen",
+      "Chen Tian"
+    ],
+    "abstract": "Matrix completion supports large-scale recommendation and scientific computing, yet existing GPU solvers commonly assume that the observed matrix or its dense factors fit in device memory. On real workloads, this assumption leads to out-of-memory failures or severe PCIe overhead under naive paging.\n  We present TIDE-MC, a bounded-memory GPU framework built on Two-Sided Interpolative Decomposition (TSID). TSID uses a sampled template submatrix as an anchor for reconstructing the full low-rank matrix, allowing computation and storage to scale with the template and active data chunks rather than the complete matrix. TIDE-MC realizes this formulation through two execution stages. First, a conflict-free synchronization engine recovers the template using parallel factorization and hierarchical gradient aggregation. Second, a chunked reconstruction pipeline extends the recovered template to the remaining matrix while overlapping PCIe transfers with GPU computation. An asymmetric gradient-clipping scheme stabilizes mixed-precision Tensor Core execution.\n  Across 15 benchmarks, TIDE-MC completes workloads that cause existing GPU solvers to run out of memory. Compared with the evaluated state-of-the-art baselines, it achieves up to 11,647x speedup, reduces peak memory usage by up to 8.5x, and lowers reconstruction error by up to 99.7%. These results show that template-anchored decomposition and stage-specific GPU execution can scale matrix completion beyond device-memory capacity.",
+    "published_date": "2026-08-02T04:01:41Z",
+    "updated_date": "2026-08-02T04:01:41Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.00977v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.00977v1",
+    "source": "arxiv",
+    "score": 0.4749488377571106,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究聚合相关技术。\n\n核心内容：Matrix completion supports large-scale recommendation and scientific computing, yet existing GPU solvers commonly assume that the observed matrix or its dense factors fit in device memory. On real workloads, this assumption leads to out-of-memory failures or severe PCIe overhead under naive paging.\n...。",
+    "takeaway": "本文聚焦聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2607.26584v1",
+    "title": "Unified Shared Memory in OpenMP: Implementation, Programmability, and Performance on Intel Accelerators",
+    "authors": [
+      "Harald Servat",
+      "François Dugast",
+      "Alejandro Duran",
+      "Abhinav Gaba",
+      "Rakesh Krishnaiyer"
+    ],
+    "abstract": "OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same memory address on different devices, thus avoiding the burden of explicit data transfers to maintain the consistency between the address spaces. Hence, the feature eases quick prototyping and porting of applications to OpenMP with accelerators.\n  In this paper, we introduce the Intel implementation for USM. We briefly discuss its implementation in the software stack (OS kernel, compiler, and runtime), then assess its adoption complexity in existing HPC applications using OpenMP for accelerators, and, finally, evaluate the performance of these applications when adopting USM on an Intel Battlemage GPU. USM is not expected to grant performance uplifts to already optimized applications with explicit, granular data-motion control and our results show an overhead with a geometric mean below 1.2x (1.03x seems achievable with further optimizations). Yet, in this paper we show there exist applications that benefit from this feature, making it attractive even for already ported applications.",
+    "published_date": "2026-07-29T08:04:24Z",
+    "updated_date": "2026-07-29T08:04:24Z",
+    "categories": [
+      "cs.PF",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.26584v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26584v1",
+    "source": "arxiv",
+    "score": 0.4606202673912048,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：OpenMP 5.0 introduced the Unified Shared Memory (USM) feature through the requires directive. The feature simplifies the adoption of the OpenMP programming model by providing a unique and common address space between the accelerators and the host and allowing the access (dereference) of the same mem...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.29575v1",
+    "title": "SLIM: Saturation-Aware Lightweight Performance Modeling for LLM Serving",
+    "authors": [
+      "Pol G. Recasens",
+      "Ferran Agullo",
+      "Yue Zhu",
+      "Chen Wang",
+      "Jordi Torres",
+      "Josep Ll. Berral"
+    ],
+    "abstract": "Large language model (LLM) serving commonly increases batch size to improve throughput, but performance eventually reaches a deployment-dependent plateau beyond which larger batches provide marginal gains while increasing latency and GPU memory consumption. Previous studies have attributed this behavior to HBM/DRAM bandwidth limitations, but the underlying causes have primarily been supported by conceptual arguments or high-level performance observations. As our first contribution, we present a detailed GPU characterization using hardware profiling techniques, demonstrating that throughput saturation originates in the attention kernels during the decode phase. Specifically, we show that their nearly constant arithmetic intensity as active-context lengths increases -not merely larger batch sizes- drives DRAM-bandwidth saturation, while the achieved compute throughput remains far below the hardware limit. Building on this analysis, we present the Batching Configuration Advisor (BCA), which selects the highest-throughput batching configuration satisfying a target latency constraint and identifies up to 55 GB of GPU memory allocation that can be avoided for the evaluated OPT models with minimal throughput loss. To enable these recommendations, we introduce SLIM (Saturation-Aware Lightweight Performance Model), a semi-analytical model that predicts LLM inference throughput and latency from analytical formulations of Transformer computation and memory traffic. Across the evaluated scenarios, SLIM outperforms representative performance-modeling baselines while successfully generalizing to previously unseen operating conditions.",
+    "published_date": "2026-07-31T16:02:31Z",
+    "updated_date": "2026-07-31T16:02:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2607.29575v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.29575v1",
+    "source": "arxiv",
+    "score": 0.4586603474617004,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、大模型推理、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) serving commonly increases batch size to improve throughput, but performance eventually reaches a deployment-dependent plateau beyond which larger batches provide marginal gains while increasing latency and GPU memory consumption. Previous studies have attributed this beha...。",
+    "takeaway": "本文聚焦GPU 内存管理、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.01563v1",
+    "title": "Meganeura: Portable GPU Training and Inference through Vulkan and Metal",
+    "authors": [
+      "Dzmitry Malyshau"
+    ],
+    "abstract": "Training and deployed inference often cross export, conversion, and platform-specific runtime boundaries. Meganeura asks whether one compact native compiler can span both phases on consumer GPUs. Its typed static graph, automatic differentiation, optimizer, checkpoint, memory planner, and runtime lower specialized programs through Vulkan and Metal.\n  We compare five matched workloads with PyTorch on NVIDIA and AMD discrete GPUs, an AMD APU, Apple silicon, and an Intel iGPU. The protocol separates strict f32 from validated fast paths and gates forward and backward independently. Forty-eight of 50 device-workload-mode cells pass both gates; the other two share one unresolved backward-reference disagreement on a newly supported APU. In strict f32, Meganeura wins 12 of 20 GPU-referenced minimal-latency cells and has a median valid training gap of 1.8x. On the discrete AMD GPU, four of five inference workloads are within 1.10x of compiled ROCm PyTorch and three training workloads are faster. Under accelerated contracts, the worst training gap is 4.6x.\n  Compilation takes 0.1-2.4 seconds versus 6-96 seconds for torch.compile on supported GPU paths; the stripped binary is 13 MiB. Dispatch profiles localize the largest gaps to convolution derivatives and attention backward. A physical Android XR case study transfers a Meganeura-trained decoder into an Adreno/OpenXR application sharing the graphics queue. The results show that general consumer graphics APIs can support a compact shared train-to-deploy stack at useful, sometimes vendor-competitive performance. The measured gaps point to kernel coverage, scheduling, and arithmetic policy rather than an identified API limitation.",
+    "published_date": "2026-08-03T00:42:55Z",
+    "updated_date": "2026-08-03T00:42:55Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.01563v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.01563v1",
+    "source": "arxiv",
+    "score": 0.45262360453605655,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、延迟优化相关技术。\n\n核心内容：Training and deployed inference often cross export, conversion, and platform-specific runtime boundaries. Meganeura asks whether one compact native compiler can span both phases on consumer GPUs。",
+    "takeaway": "本文聚焦PyTorch、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.00867v1",
+    "title": "NUNA: Characterizing and Mitigating Non-Uniform Network Access in Multi-Die GPU Scale-Up Systems",
+    "authors": [
+      "Conor James Green",
+      "William Won",
+      "Tuan Ta",
+      "Bradford M. Beckmann"
+    ],
+    "abstract": "Graphics processing unit (GPU) architectures are growing in size to meet the increasing compute and memory requirements. As GPU sizes increase, intra-socket wire transfer delay increases significantly. While previous research has optimized for compute and memory locality within a socket, the spatial impact on inter-GPU communication has not been well-studied. We introduce the term non-uniform network access (NUNA) to describe this emerging optimization dimension in multi-GPU systems. We specifically focus on latency-sensitive collective communication, common in machine learning inference. First, we highlight the need for NUNA-aware routing (NAR), choosing optimized, spatially-aware inter-GPU paths in large scale-up network topologies. Second, we introduce NUNA-aware placement (NAP), placing threadblocks and data near I/O to optimize the inter-GPU traffic. We demonstrate that the NAP optimizations alone offer up to 1.5x collective speedups over a locality-unaware baseline. Combining NAP with NAR yields up to 1.8x faster collectives over the locality-unaware baseline. This leads to 7% mean (28% max) time per output token speedup in machine learning inference.",
+    "published_date": "2026-08-01T21:01:52Z",
+    "updated_date": "2026-08-01T21:01:52Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.00867v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.00867v1",
+    "source": "arxiv",
+    "score": 0.4448169016838074,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、GPU 间通信、网络、通信优化、延迟优化相关技术。\n\n核心内容：Graphics processing unit (GPU) architectures are growing in size to meet the increasing compute and memory requirements. As GPU sizes increase, intra-socket wire transfer delay increases significantly。",
+    "takeaway": "本文聚焦多 GPU、GPU 间通信、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2607.28824v1",
+    "title": "Characterizing LLM Kernel Access and Memory Interaction in Multi-Partition NUMA GPUs",
+    "authors": [
+      "Donghyeon Joo",
+      "Sooraj Puthoor",
+      "Nuwan Jayasena",
+      "Bahar Asgari"
+    ],
+    "abstract": "Large language model (LLM) workloads motivate multi-partition GPUs as a path to scaling compute and memory capacity, but their non-uniform memory access characteristics and inter-partition communication can amplify contention and degrade locality, leading to suboptimal kernel latency. To address this, we analyze performance-critical LLM kernel implementations spanning weight projection, mixture-of-experts, and attention variants of state-of-the-art serving engines to present a characterization of data access patterns in multi-partition GPUs. First, we introduce memory trace analysis methodology to derive workgroup-level data access and sharing behavior, then evaluate the locality implications on latency using a cycle-level simulator. Using these tools, we categorize LLM kernel operands into three inter-workgroup sharing patterns (global, partial, or private) and show that the required optimization strategies differ across categories, from simple per-workgroup pinning to subgroup-aware co-scheduling. Our findings highlight the need for placement-aware kernel programming and smarter architectural support for work and data locality in multi-partition GPUs.",
+    "published_date": "2026-07-30T20:26:58Z",
+    "updated_date": "2026-07-30T20:26:58Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.28824v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.28824v1",
+    "source": "arxiv",
+    "score": 0.4426577377319336,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化、延迟优化相关技术。\n\n核心内容：Large language model (LLM) workloads motivate multi-partition GPUs as a path to scaling compute and memory capacity, but their non-uniform memory access characteristics and inter-partition communication can amplify contention and degrade locality, leading to suboptimal kernel latency. To address thi...。",
+    "takeaway": "本文聚焦通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.29070v1",
+    "title": "Query Density-Driven Partitioning for Spatiotemporal Load Balancing on Processing-in-Memory Systems",
+    "authors": [
+      "Takato Hideshima",
+      "Shigeyuki Sato",
+      "Tomoharu Ugawa"
+    ],
+    "abstract": "Processing-in-Memory (PIM) systems, which consist of many processors with small local memory, have recently emerged as commercial products and attracted much attention as a means of overcoming the memory wall, particularly in the context of in-memory database technology. The state-of-the-art PIM-oriented index PIM-tree has been demonstrated to achieve asymptotically good spatiotemporal load balancing---query loads and data sizes are balanced among processors---for skewed queries, by trading spatial locality. Unfortunately, such a sacrifice of spatial locality hinders the PIM-oriented processing of range-aggregate queries. To achieve both spatiotemporal load balancing and efficiently executing range-aggregate queries on PIM systems, we develop a query density-driven key-range partitioning scheme. It balances query density among PIM processors, allowing us to strike a balance between query load and data size via a parameter. We then develop B${}^\\text{+}$-Forest, a PIM-oriented B${}^\\text{+}$-tree variant based on our partitioning scheme. Experimental results demonstrated that it exhibits higher skew resistance than a B${}^\\text{+}$-tree based on space-constrained, query-load-balanced, density-unaware partitioning, and performance comparable to PIM-tree in point-get queries, as well as efficient support for range-aggregate queries.",
+    "published_date": "2026-07-31T06:44:08Z",
+    "updated_date": "2026-07-31T06:44:08Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.29070v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.29070v1",
+    "source": "arxiv",
+    "score": 0.43006580948829654,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Processing-in-Memory (PIM) systems, which consist of many processors with small local memory, have recently emerged as commercial products and attracted much attention as a means of overcoming the memory wall, particularly in the context of in-memory database technology. The state-of-the-art PIM-ori...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2607.26633v1",
+    "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+    "authors": [
+      "Sookyung Choi",
+      "Seungyong Lee",
+      "Kangkyu Park",
+      "Yunseo Chun",
+      "Junseok Lee",
+      "Hyeongseok Gwak",
+      "Myunghyun Rhee",
+      "Euiseok Kim",
+      "Donguk Moon",
+      "Kwangsik Shin",
+      "Guseul Heo",
+      "Youngpyo Joo",
+      "Hoshik Kim",
+      "Jongse Park"
+    ],
+    "abstract": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation. We prototype NELSSA as an end-to-end system, implementing device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement over a CXL-enabled infrastructure with RPC and RDMA support. Across mixed-length LLM workloads, NELSSA improves decode throughput by up to 5.5x in tokens/sec and reduces P99 latency by up to 15x compared to GPU-only baselines. Our end-to-end prototype and experimental results suggest that integrated GPU-PNM serving, enabled by CXL-based disaggregation, is a promising system paradigm for scalable and flexible LLM infrastructures that support evolving workloads.",
+    "published_date": "2026-07-29T08:58:04Z",
+    "updated_date": "2026-07-29T08:58:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2607.26633v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.26633v1",
+    "source": "arxiv",
+    "score": 0.42996087551116946,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、异构计算、聚合、延迟优化、吞吐量相关技术。\n\n核心内容：Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le...。",
+    "takeaway": "本文聚焦RDMA 网络、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  }
+]
