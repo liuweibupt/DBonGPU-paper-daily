@@ -1,0 +1,310 @@
+[
+  {
+    "id": "2608.04338v1",
+    "title": "GPU-Resident CUDA Acceleration for OCUDU 5G PHY and O-RAN Fronthaul: Architecture and Preliminary Performance",
+    "authors": [
+      "Matthew Pennybacker",
+      "Wan Liu",
+      "Andriy Kharchenko",
+      "Timothy OShea"
+    ],
+    "abstract": "This paper describes DeepSig's CUDA-based acceleration backend for the OCUDU physical layer and O-RAN fronthaul path, integrated through acceleration interfaces that are largely independent of the underlying acceleration mechanism. The design accelerates PDSCH, PUSCH, SRS, PRACH, split-8 lower-PHY transforms, and O-RAN fronthaul (O-FH) IQ compression/decompression while preserving existing factories, resource-grid interfaces, PRACH-buffer interfaces, and channel processors. CUDA-visible grids, device-side softbit buffers, stream events, pinned staging buffers, and managed-memory policies keep data resident on the accelerator when the platform and radio split permit it. On an NVIDIA DGX Spark platform with a GB10 GPU and ARM CPU host, representative measurements with CPU baselines pinned to high-capacity cores show up to 10.3x PUSCH speedup, 2.7x PDSCH speedup, 19.7x split-8 low-PHY RX speedup with slot-shaped batching and scattered mapped zero-copy, 91.4x O-FH BFP12 decompression speedup, and 28.8x PRACH detector speedup against the production CPU path, with CPU and GPU 10% BLER thresholds agreeing to within 0.064 dB in the tested PUSCH sweeps. The same resident pipeline provides an execution substrate for AI-RAN, allowing machine-learned channel estimation, neural receivers, and AI-native air-interface research to run beside standards-compliant baseband kernels.",
+    "published_date": "2026-08-05T01:29:17Z",
+    "updated_date": "2026-08-05T01:29:17Z",
+    "categories": [
+      "eess.SP",
+      "cs.DC",
+      "cs.NI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.04338v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.04338v1",
+    "source": "arxiv",
+    "score": 0.5902238917350769,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：This paper describes DeepSig's CUDA-based acceleration backend for the OCUDU physical layer and O-RAN fronthaul path, integrated through acceleration interfaces that are largely independent of the underlying acceleration mechanism. The design accelerates PDSCH, PUSCH, SRS, PRACH, split-8 lower-PHY t...。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.02414v1",
+    "title": "Analyzing GPU Performance in Virtualized Environments: A~Case Study",
+    "authors": [
+      "Adel Belkhiri",
+      "Michel Dagenais"
+    ],
+    "abstract": "The graphics processing unit (GPU) plays a crucial role in boosting application performance and enhancing computational tasks. Thanks to its parallel architecture and energy efficiency, the GPU has become essential in many computing scenarios. On the other hand, the advent of GPU virtualization has been a significant breakthrough, as it provides scalable and adaptable GPU resources for virtual machines. However, this technology faces challenges in debugging and analyzing the performance of GPU-accelerated applications. Most current performance tools do not support virtual GPUs (vGPUs), highlighting the need for more advanced tools. Thus, this article introduces a novel performance analysis tool that is designed for systems using vGPUs. Our tool is compatible with the Intel GVT-g virtualization solution, although its underlying principles can apply to many vGPU-based systems. Our tool uses software tracing techniques to gather detailed runtime data and generate relevant performance metrics. It also offers many synchronized graphical views, which gives practitioners deep insights into GVT-g operations and helps them identify potential performance bottlenecks in vGPU-enabled virtual machines.",
+    "published_date": "2026-08-03T15:53:47Z",
+    "updated_date": "2026-08-03T15:53:47Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.02414v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.02414v1",
+    "source": "arxiv",
+    "score": 0.5746361029148102,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：The graphics processing unit (GPU) plays a crucial role in boosting application performance and enhancing computational tasks. Thanks to its parallel architecture and energy efficiency, the GPU has become essential in many computing scenarios。",
+    "takeaway": "本文聚焦GPU 加速，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.05033v1",
+    "title": "SparseDitto: Customizing GPU Kernels for Different Sparsity Patterns with LLM-Based Agentic System",
+    "authors": [
+      "Shiyang Li",
+      "Guangyan Sun",
+      "Jinwei Tang",
+      "Yanzhi Wang",
+      "Mingyi Hong",
+      "Caiwen Ding"
+    ],
+    "abstract": "Sparse matrix kernels are fundamental to scientific computing, graph analytics, and machine learning. Their GPU performance depends strongly on the input sparsity pattern and execution strategy. For the same SpMM on the same matrix, cuSPARSE exhibits a 350x performance gap between CSR and Blocked-ELL. Our study of multiple data formats, specialized systems, and sparse compilers shows that no single implementation consistently dominates across sparsity patterns and operators. This motivates a system that can adapt its representation, execution strategy, and hardware mapping to each workload and target GPU.\n  We present SparseDitto, an LLM-based system that constructs a GPU kernel for each matrix, operator, and target GPU. SparseDitto supports SpMV, SpMM, and SpGEMM within a unified design framework. A lightweight additive model ranks established strategies using structural features of the input matrix. An architecture-aware planner then proposes several candidate designs. Coding and verification agents implement and refine them using measurements from the target GPU. Across three sparse operators and a diverse set of matrices, SparseDitto achieves a geometric-mean speedup of 2.68x over cuSPARSE on an NVIDIA RTX PRO 6000 GPU, with a maximum of 146.61x. On an NVIDIA H200 GPU, it achieves 2.79x, with a maximum of 78.5x. Its generated SpMM kernels also accelerate full-batch GCN training by up to 3.39x.",
+    "published_date": "2026-08-05T16:41:03Z",
+    "updated_date": "2026-08-05T16:41:03Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.05033v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.05033v1",
+    "source": "arxiv",
+    "score": 0.5056398499011994,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数相关技术。\n\n核心内容：Sparse matrix kernels are fundamental to scientific computing, graph analytics, and machine learning. Their GPU performance depends strongly on the input sparsity pattern and execution strategy。",
+    "takeaway": "本文聚焦GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.05483v1",
+    "title": "PLoRA: An NDP-Enhanced Pooled-Memory System for Cost-Efficient Multi-LoRA Serving",
+    "authors": [
+      "Zhongkai Yu",
+      "Ohm Rishabh Venkatachalam",
+      "Zheng Wang",
+      "Yikai Li",
+      "Yichen Lin",
+      "Zihao Yu",
+      "Yuke Wang",
+      "Liu Liu",
+      "Xulong Tang",
+      "Shuyi Pei",
+      "Yangwook Kang",
+      "Yufei Ding"
+    ],
+    "abstract": "Multi-LoRA serving is how one base model becomes thousands of specialized variants, one adapter per user, task, or agent, and the deployments can hold 1000-plus adapters. Serving them is hard because the workload inverts what GPUs provide: terabytes of memory against only tens of TFLOPS, and because every published system stages its adapters from CPU DRAM over PCIe, where each access pays a kernel stop and a host-run copy and capacity ends at the motherboard's DIMM slots. Meanwhile, memory-semantic fabrics such as CXL and NVLink are converging on pooled memory that an accelerator addresses with its own loads and stores, and near-data processing (NDP) can place compute beside the pooled data. How to serve multi-LoRA workloads on such hardware remains unexplored.\n  This paper introduces PLoRA, an NDP-enhanced pooled-memory system for cost-efficient multi-LoRA serving. PLoRA keeps adapters and KV cache in the pool and returns only reduced results over the link, through a read-compute interface the GPU drives with its own loads and stores. Above this architecture, a GPU memory management system picks among four LoRA and two attention execution strategies for each adapter and caches the most performance-critical bytes in GPU memory, guided by a link-parameterized cost model. On one H100 serving 1000 adapters, PLoRA attains the lowest decode latency on every model and workload we measure, averaging 6.6x below a real-machine S-LoRA at under 3.4% added device area. The link itself stops mattering: throughput saturates at 32 GB/s on short contexts, a quarter of CXL 3.1, and the verdict survives scale: per-GPU demand falls from 7B to a modeled 1.2T deployment once adapter traffic shards with the tensor parallelism. The design runs unchanged from CXL-class to NVLink-class fabrics, and surplus bandwidth buys pooled capacity rather than speed.",
+    "published_date": "2026-08-06T00:19:56Z",
+    "updated_date": "2026-08-06T00:19:56Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.05483v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.05483v1",
+    "source": "arxiv",
+    "score": 0.4928860938549042,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、张量并行、数据处理、NVLink 互连、带宽优化相关技术。\n\n核心内容：Multi-LoRA serving is how one base model becomes thousands of specialized variants, one adapter per user, task, or agent, and the deployments can hold 1000-plus adapters. Serving them is hard because the workload inverts what GPUs provide: terabytes of memory against only tens of TFLOPS, and because...。",
+    "takeaway": "本文聚焦GPU 内存管理、张量并行、数据处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.06870v1",
+    "title": "G-Power: Architecture-level GPU Power Modeling with Aggregated Knowledge Foundations from Known GPUs",
+    "authors": [
+      "Qijun Zhang",
+      "Yao Lu",
+      "Shang Liu",
+      "Mengming Li",
+      "Chen Zhang",
+      "Dongbo Wang",
+      "Zhiyao Xie"
+    ],
+    "abstract": "Graphics Processing Units (GPUs) have been serving as critical computation resources for large-scale parallel computations. With increasing chip complexity, power efficiency has become an important design objective for modern GPUs. GPU power optimization relies on fast power evaluation, requiring architecture-level GPU power model. However, because of the time-consuming power label collection, only simple microbenchmarks are adopted for training. The limitation of microbenchmarks as training data incurs low accuracy for existing architecture-level GPU power models like AccelWattch.\n  To address the limitation of microbenchmarks as training data, we propose G-Power, an architecture-level GPU power modeling framework that utilizes additional known GPU chips to provide additional knowledge. G-Power utilizes the aggregated knowledge foundation from additional known GPU chips and then performs fine-tuning on our target GPU. To provide foundations with additional known GPU chips and capture the similarity to utilize these foundations for fine-tuning, G-Power adopts a three-phase algorithm consisting of 1) pre-training with additional known chips, 2) attention-inspired aggregation, and 3) fine-tuning on our target GPU. We evaluate G-Power on four modern NVIDIA GPUs, demonstrating high accuracy. G-Power can achieve a low MAPE of 14% and a high correlation coefficient R of 0.88 on average, which are 22% lower MAPE and 0.36 higher R than AccelWattch.",
+    "published_date": "2026-08-07T06:51:47Z",
+    "updated_date": "2026-08-07T06:51:47Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.06870v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.06870v1",
+    "source": "arxiv",
+    "score": 0.476719810962677,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、聚合相关技术。\n\n核心内容：Graphics Processing Units (GPUs) have been serving as critical computation resources for large-scale parallel computations. With increasing chip complexity, power efficiency has become an important design objective for modern GPUs。",
+    "takeaway": "本文聚焦隐私信息检索、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.07078v1",
+    "title": "Scalable High-Fidelity Macromolecular Docking for GPU-Accelerated Supercomputers",
+    "authors": [
+      "Xiangyu Meng",
+      "Peng Chen",
+      "Mingzhen Li",
+      "Jianmin Wang",
+      "Sen Wang",
+      "Guangming Tan",
+      "Weile Jia",
+      "Mohamed Wahib",
+      "Tao Luo",
+      "Xun Wang"
+    ],
+    "abstract": "Flexible macromolecular docking offers high-fidelity predictions of biomolecular interactions, but remains prohibitively expensive at scale. Among existing approaches, LightDock leverages Glowworm Swarm Optimization (GSO) for accuracy, yet suffers from limited parallelism, irregular computation, and severe load imbalance, preventing efficient execution on GPU supercomputers. We present SparkleDock, a scalable GSO-based docking framework enabling near-real-time flexible docking. We redesign GSO to expose massive fine-grained parallelism at the glowworm-agent level, and restructure the dominant energy scoring computation into a Tensor Core-compatible formulation, enabling efficient execution of irregular pairwise interactions through structured matrix operations. We further introduce a performance-model-driven scheduling for load balancing and out-of-core scaling across GPUs. SparkleDock achieves 9.7 $\\times$ and 18.9 $\\times$ speedups over LightDock on single A100 and H100 GPU, and delivers over two orders of magnitude acceleration at scale. On 512 GPUs, it reduces docking time from hours to seconds, enabling large-scale, high-fidelity virtual screening previously impractical with flexible docking.",
+    "published_date": "2026-08-07T10:29:20Z",
+    "updated_date": "2026-08-07T10:29:20Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.07078v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.07078v1",
+    "source": "arxiv",
+    "score": 0.46348533153533933,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Flexible macromolecular docking offers high-fidelity predictions of biomolecular interactions, but remains prohibitively expensive at scale. Among existing approaches, LightDock leverages Glowworm Swarm Optimization (GSO) for accuracy, yet suffers from limited parallelism, irregular computation, and...。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.01563v1",
+    "title": "Meganeura: Portable GPU Training and Inference through Vulkan and Metal",
+    "authors": [
+      "Dzmitry Malyshau"
+    ],
+    "abstract": "Training and deployed inference often cross export, conversion, and platform-specific runtime boundaries. Meganeura asks whether one compact native compiler can span both phases on consumer GPUs. Its typed static graph, automatic differentiation, optimizer, checkpoint, memory planner, and runtime lower specialized programs through Vulkan and Metal.\n  We compare five matched workloads with PyTorch on NVIDIA and AMD discrete GPUs, an AMD APU, Apple silicon, and an Intel iGPU. The protocol separates strict f32 from validated fast paths and gates forward and backward independently. Forty-eight of 50 device-workload-mode cells pass both gates; the other two share one unresolved backward-reference disagreement on a newly supported APU. In strict f32, Meganeura wins 12 of 20 GPU-referenced minimal-latency cells and has a median valid training gap of 1.8x. On the discrete AMD GPU, four of five inference workloads are within 1.10x of compiled ROCm PyTorch and three training workloads are faster. Under accelerated contracts, the worst training gap is 4.6x.\n  Compilation takes 0.1-2.4 seconds versus 6-96 seconds for torch.compile on supported GPU paths; the stripped binary is 13 MiB. Dispatch profiles localize the largest gaps to convolution derivatives and attention backward. A physical Android XR case study transfers a Meganeura-trained decoder into an Adreno/OpenXR application sharing the graphics queue. The results show that general consumer graphics APIs can support a compact shared train-to-deploy stack at useful, sometimes vendor-competitive performance. The measured gaps point to kernel coverage, scheduling, and arithmetic policy rather than an identified API limitation.",
+    "published_date": "2026-08-03T00:42:55Z",
+    "updated_date": "2026-08-03T00:42:55Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.01563v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.01563v1",
+    "source": "arxiv",
+    "score": 0.45262360453605655,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、延迟优化相关技术。\n\n核心内容：Training and deployed inference often cross export, conversion, and platform-specific runtime boundaries. Meganeura asks whether one compact native compiler can span both phases on consumer GPUs。",
+    "takeaway": "本文聚焦PyTorch、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.04450v1",
+    "title": "CommBench: Can LLMs Write Correct and Efficient GPU Communication Code?",
+    "authors": [
+      "Shuang Ma",
+      "Yuyi Li",
+      "Yihan Zhang",
+      "Hezhi Xie",
+      "Danyang Chen",
+      "Shuyang Ji",
+      "Ziming Mao",
+      "Cheng Ji",
+      "Ansha Prashanth",
+      "Wenting Yang",
+      "Yiran Wang",
+      "Chihan Cui",
+      "Pei Yu Lin",
+      "Ion Stoica",
+      "Yang Zhou"
+    ],
+    "abstract": "Training and serving large language models (LLMs) rely heavily on high-performance GPU communication, yet implementing efficient GPU communication primitives requires deep expertise in GPU architectures, networking hardware, and distributed communication patterns, making them particularly challenging for code generation models. We present CommBench, a comprehensive benchmark for GPU communication programming, consisting of over 100 expert-curated tasks spanning point-to-point communication, collective operations, expert-parallel communication, compute--communication fusion, and communication utility functions, with reference implementations either written by GPU communication experts or distilled from production codebases. We further introduce a cheat-resistant evaluation framework that automatically compiles, executes, and validates generated code on multi-GPU systems, and a unified metric that jointly measures functional correctness and communication performance. Evaluating leading frontier and open-source code generation models on both intra-node NVLink and inter-node RDMA platforms reveals that even the strongest model, GPT-5.5, correctly implements and achieves competitive performance on only 30.7\\% of the benchmark tasks. Our results expose a substantial gap between current LLMs and expert-written GPU communication code, establishing CommBench as a challenging benchmark for advancing AI-assisted systems programming.",
+    "published_date": "2026-08-05T04:55:21Z",
+    "updated_date": "2026-08-05T04:55:21Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.04450v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.04450v1",
+    "source": "arxiv",
+    "score": 0.4379722321033478,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、多 GPU、NVLink 互连、集合通信、网络相关技术。\n\n核心内容：Training and serving large language models (LLMs) rely heavily on high-performance GPU communication, yet implementing efficient GPU communication primitives requires deep expertise in GPU architectures, networking hardware, and distributed communication patterns, making them particularly challengin...。",
+    "takeaway": "本文聚焦RDMA 网络、多 GPU、NVLink 互连，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2608.07009v1",
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "authors": [
+      "Zhiqiang Xie",
+      "Zhangheng Huang",
+      "Tingwei Huang",
+      "Ziyi Xu",
+      "Ruiyang Ma",
+      "Christos Kozyrakis"
+    ],
+    "abstract": "Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill still grows with its full context length--decoding hits a capacity wall long before it runs out of compute, and a context whose KV cache exceeds HBM cannot be served at all. We present HiSparse, an exact, indexer-agnostic hierarchical KV cache for sparse-attention serving. HiSparse keeps each request's full KV history in host memory and bounds its decode footprint with a small, fixed-size GPU cache; a fused CUDA kernel resolves each layer's selections--hit detection, LRU replacement, and host-to-device fetches--inside the decode CUDA graph; and, for models that share selections across layers, exact layer-wise prefetching hides roughly half of the remaining miss overhead. Because only KV placement changes, model outputs are unchanged. HiSparse is merged into upstream SGLang and evaluated across three sparse-attention families (DSA, NSA, and Quest) on H200, B200, and GH200 platforms: it improves peak generation throughput by up to 4.7x on long-context workloads while preserving comparable per-token latency and reducing time-to-first-token at high load--and a no-IO oracle shows the resolution mechanism itself adds no measurable per-token cost, leaving host-device IO as the only price of bounded residency.",
+    "published_date": "2026-08-07T09:22:17Z",
+    "updated_date": "2026-08-07T09:22:17Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.07009v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.07009v1",
+    "source": "arxiv",
+    "score": 0.4367602002620697,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 缓存、CUDA、延迟优化、吞吐量相关技术。\n\n核心内容：Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill s...。",
+    "takeaway": "本文聚焦GPU 缓存、CUDA、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.03778v1",
+    "title": "DiffPower: GPU-Accelerated Differentiable Switching Power Analysis and Optimization",
+    "authors": [
+      "Isaac Jacobson",
+      "Zheng Zhao",
+      "Rashmi Mehrotra",
+      "Guanglei Zhou",
+      "Vineet Rashingkar",
+      "Yiran Chen"
+    ],
+    "abstract": "Accurate and scalable switching power analysis remains a critical bottleneck in modern physical design, often forcing a trade-off between computational speed and modeling fidelity. We present DiffPower, a GPU-accelerated framework for differentiable power analysis and optimization. DiffPower translates design netlists into a PDK-agnostic bytecode representation, enabling analytical gradient computation via reverse-mode automatic differentiation, achieving up to a $1{,}002\\times$ speedup over single-threaded CPU propagation on the largest evaluated design, with the GPU advantage growing with design scale. A hybrid propagation methodology fusing analytical modeling with parallel simulation achieves a median toggle-rate correlation of $r{=}0.96$ across ten industrial and benchmark designs. The resulting \\emph{power gradients}, computed up to $904\\times$ faster than CPU finite-difference methods with near-perfect rank agreement, enable two downstream applications: (1) gradient-weighted cell sizing, which achieves up to $2.98\\times$ improvement over local-power heuristics on industrial designs, with even stronger advantages at the 117K-cell scale where competing methods plateau; and (2) power virus generation via gradient ascent, which yields up to $2.13\\times$ higher transition-weighted power, replacing a search process that traditionally requires hours.",
+    "published_date": "2026-08-04T15:00:49Z",
+    "updated_date": "2026-08-04T15:00:49Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.03778v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.03778v1",
+    "source": "arxiv",
+    "score": 0.42882433652877805,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Accurate and scalable switching power analysis remains a critical bottleneck in modern physical design, often forcing a trade-off between computational speed and modeling fidelity. We present DiffPower, a GPU-accelerated framework for differentiable power analysis and optimization。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
