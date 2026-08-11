@@ -1,0 +1,316 @@
+[
+  {
+    "id": "2608.09647v1",
+    "title": "A Preliminary Study on Simultaneous Coscheduling for Discrete GPU vs. Fused GPU",
+    "authors": [
+      "Poorna Gunathilaka",
+      "Nabayan Chaudhury",
+      "Kirshanthan Sundararajah",
+      "Wu-chun Feng"
+    ],
+    "abstract": "CPU-GPU coscheduling enables simultaneous execution of an application across both processing units, but its efficiency depends on workload partitioning and memory architecture. This preliminary study evaluates coscheduling on the NVIDIA GH200 Superchip compared to a discrete H100 PCIe platform. Using sparse conjugate gradient (CG) as a case study, we assess various work divisions across three memory-management paradigms: explicit copy, managed memory, and mapped memory. Our evaluation highlights the run time and programmability tradeoffs of reducing manual CPU-GPU data movement. The results show that compared with the H100 PCIe platform, GH200 makes several hybrid CPU-GPU work divisions competitive and makes managed memory practical for several matrices. These results suggest that integrated CPU-GPU platforms such as GH200 can improve both performance and programmability for coscheduled workloads.",
+    "published_date": "2026-08-10T14:25:18Z",
+    "updated_date": "2026-08-10T14:25:18Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.09647v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.09647v1",
+    "source": "arxiv",
+    "score": 0.603624656200409,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：CPU-GPU coscheduling enables simultaneous execution of an application across both processing units, but its efficiency depends on workload partitioning and memory architecture. This preliminary study evaluates coscheduling on the NVIDIA GH200 Superchip compared to a discrete H100 PCIe platform。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.04338v1",
+    "title": "GPU-Resident CUDA Acceleration for OCUDU 5G PHY and O-RAN Fronthaul: Architecture and Preliminary Performance",
+    "authors": [
+      "Matthew Pennybacker",
+      "Wan Liu",
+      "Andriy Kharchenko",
+      "Timothy OShea"
+    ],
+    "abstract": "This paper describes DeepSig's CUDA-based acceleration backend for the OCUDU physical layer and O-RAN fronthaul path, integrated through acceleration interfaces that are largely independent of the underlying acceleration mechanism. The design accelerates PDSCH, PUSCH, SRS, PRACH, split-8 lower-PHY transforms, and O-RAN fronthaul (O-FH) IQ compression/decompression while preserving existing factories, resource-grid interfaces, PRACH-buffer interfaces, and channel processors. CUDA-visible grids, device-side softbit buffers, stream events, pinned staging buffers, and managed-memory policies keep data resident on the accelerator when the platform and radio split permit it. On an NVIDIA DGX Spark platform with a GB10 GPU and ARM CPU host, representative measurements with CPU baselines pinned to high-capacity cores show up to 10.3x PUSCH speedup, 2.7x PDSCH speedup, 19.7x split-8 low-PHY RX speedup with slot-shaped batching and scattered mapped zero-copy, 91.4x O-FH BFP12 decompression speedup, and 28.8x PRACH detector speedup against the production CPU path, with CPU and GPU 10% BLER thresholds agreeing to within 0.064 dB in the tested PUSCH sweeps. The same resident pipeline provides an execution substrate for AI-RAN, allowing machine-learned channel estimation, neural receivers, and AI-native air-interface research to run beside standards-compliant baseband kernels.",
+    "published_date": "2026-08-05T01:29:17Z",
+    "updated_date": "2026-08-05T01:29:17Z",
+    "categories": [
+      "eess.SP",
+      "cs.DC",
+      "cs.NI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.04338v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.04338v1",
+    "source": "arxiv",
+    "score": 0.5902238917350769,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：This paper describes DeepSig's CUDA-based acceleration backend for the OCUDU physical layer and O-RAN fronthaul path, integrated through acceleration interfaces that are largely independent of the underlying acceleration mechanism. The design accelerates PDSCH, PUSCH, SRS, PRACH, split-8 lower-PHY t...。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.08287v1",
+    "title": "What Irregularity Costs: CUDA C++, Rust, and Triton on a Hash-Blocked GPU Workload",
+    "authors": [
+      "Petr Korolev"
+    ],
+    "abstract": "GPU language comparisons are almost always run on tiled dense linear algebra, where every toolchain is good and the differences are small. We implement the same hash-blocked TSDF fusion kernel in CUDA C++, in Rust through NVIDIA's cuda-oxide, and in Triton, and measure it on a workload with the opposite character: an open-addressed hash table with compare-exchange insertion, data-dependent per-lane probe depth, and contended scatter.\n  The result is a split. On the regular stage, which walks a truncation band and accumulates, all three languages land within a small factor of each other. On the irregular stage, which probes and inserts, Rust stays close to hand-written CUDA C++ while Triton is more than an order of magnitude slower. Language choice is nearly free on the work that is usually benchmarked and expensive on the work that is not.\n  We attribute both gaps to specific things the languages cannot express, not to ratios. Triton's cost follows from a probe loop that must run to a compile-time bound and from tl.atomic_cas taking no mask, which forces a scratch structure with no counterpart in CUDA. Rust's cost was invisible in every instruction count: its kernel issues fewer instructions, fewer compare-exchanges and fewer registers at identical occupancy, yet was slower. Hardware counters located it in L1 residency. A GPU-scope atomic load must be coherent across SMs, no NVIDIA L1 is, so the type-correct way to read a shared location bypasses the cache on every access.\n  Triton's bounded probe is also a correctness problem for fusion: at load factors an ordinary depth trajectory reaches, it silently discards blocks and the reconstruction loses patches of surface with nothing reported. We also report a defect found and fixed in cuda-oxide itself, now merged upstream: its scoped atomic load and store could not be called at all in the build mode that produces real kernels.",
+    "published_date": "2026-08-08T18:39:16Z",
+    "updated_date": "2026-08-08T18:39:16Z",
+    "categories": [
+      "cs.CV",
+      "cs.DC",
+      "cs.PF",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.08287v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.08287v1",
+    "source": "arxiv",
+    "score": 0.5141887938976288,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、哈希表相关技术。\n\n核心内容：GPU language comparisons are almost always run on tiled dense linear algebra, where every toolchain is good and the differences are small. We implement the same hash-blocked TSDF fusion kernel in CUDA C++, in Rust through NVIDIA's cuda-oxide, and in Triton, and measure it on a workload with the oppo...。",
+    "takeaway": "本文聚焦CUDA、哈希表，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.05033v1",
+    "title": "SparseDitto: Customizing GPU Kernels for Different Sparsity Patterns with LLM-Based Agentic System",
+    "authors": [
+      "Shiyang Li",
+      "Guangyan Sun",
+      "Jinwei Tang",
+      "Yanzhi Wang",
+      "Mingyi Hong",
+      "Caiwen Ding"
+    ],
+    "abstract": "Sparse matrix kernels are fundamental to scientific computing, graph analytics, and machine learning. Their GPU performance depends strongly on the input sparsity pattern and execution strategy. For the same SpMM on the same matrix, cuSPARSE exhibits a 350x performance gap between CSR and Blocked-ELL. Our study of multiple data formats, specialized systems, and sparse compilers shows that no single implementation consistently dominates across sparsity patterns and operators. This motivates a system that can adapt its representation, execution strategy, and hardware mapping to each workload and target GPU.\n  We present SparseDitto, an LLM-based system that constructs a GPU kernel for each matrix, operator, and target GPU. SparseDitto supports SpMV, SpMM, and SpGEMM within a unified design framework. A lightweight additive model ranks established strategies using structural features of the input matrix. An architecture-aware planner then proposes several candidate designs. Coding and verification agents implement and refine them using measurements from the target GPU. Across three sparse operators and a diverse set of matrices, SparseDitto achieves a geometric-mean speedup of 2.68x over cuSPARSE on an NVIDIA RTX PRO 6000 GPU, with a maximum of 146.61x. On an NVIDIA H200 GPU, it achieves 2.79x, with a maximum of 78.5x. Its generated SpMM kernels also accelerate full-batch GCN training by up to 3.39x.",
+    "published_date": "2026-08-05T16:41:03Z",
+    "updated_date": "2026-08-05T16:41:03Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.05033v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.05033v1",
+    "source": "arxiv",
+    "score": 0.5056398499011994,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数相关技术。\n\n核心内容：Sparse matrix kernels are fundamental to scientific computing, graph analytics, and machine learning. Their GPU performance depends strongly on the input sparsity pattern and execution strategy。",
+    "takeaway": "本文聚焦GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.08751v1",
+    "title": "InSituANN: Revisiting IVF for PCIe-Efficient Billion-Scale Vector Search",
+    "authors": [
+      "Yuemeng Xu",
+      "Zongxi Liu",
+      "Junyu Long",
+      "Yiming Huang",
+      "Jiarui Guo",
+      "Yangyujia Wang",
+      "Jiachen Xu",
+      "Dongyuan Yu",
+      "Zongwei Lv",
+      "Tong Yang"
+    ],
+    "abstract": "Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched vector search, their limited VRAM capacity makes fully GPU-resident billion-scale indexes difficult to deploy. In CPU-GPU heterogeneous designs, keeping the base vectors in host memory avoids this capacity limit, but naively offloading fine search to the GPU introduces a new bottleneck: large volumes of base-vector data must be streamed over PCIe.\n  We present InSituANN, an IVF-based ANNS engine that enables billion-scale vector search on a single commodity GPU. InSituANN keeps original base vectors in host memory, performs fine search in situ, and uses the GPU for compact routing and optional pruning. As a result, query processing avoids PCIe transfers of high-dimensional base vectors while retaining the simplicity of IVF. Beyond query performance, we further design an ultra-fast IVF construction path for InSituANN. On SIFT-1B, InSituANN builds the IVF index in 5.2 minutes, about 350x faster than the measured 30.4-hour HNSW build. At matched recall on billion-scale datasets, InSituANN improves end-to-end throughput by 104.9x-4298.2x over the PCIe-bound Rummy baseline and by 2.4x-4.6x over DiskANN on SIFT-1B and DEEP-1B. Together with strong recall-throughput trade-offs and lower index space than graph-based alternatives, these gains make billion-scale retrieval practical on cost-efficient hardware.\n  We open-source InSituANN at https://github.com/mindtravel/InSituANN-OpenSource.",
+    "published_date": "2026-08-09T15:01:13Z",
+    "updated_date": "2026-08-09T15:01:13Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.08751v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.08751v1",
+    "source": "arxiv",
+    "score": 0.5014605808258057,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究查询处理、近邻搜索、异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched ve...。",
+    "takeaway": "本文聚焦查询处理、近邻搜索、异构计算，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2608.05483v1",
+    "title": "PLoRA: An NDP-Enhanced Pooled-Memory System for Cost-Efficient Multi-LoRA Serving",
+    "authors": [
+      "Zhongkai Yu",
+      "Ohm Rishabh Venkatachalam",
+      "Zheng Wang",
+      "Yikai Li",
+      "Yichen Lin",
+      "Zihao Yu",
+      "Yuke Wang",
+      "Liu Liu",
+      "Xulong Tang",
+      "Shuyi Pei",
+      "Yangwook Kang",
+      "Yufei Ding"
+    ],
+    "abstract": "Multi-LoRA serving is how one base model becomes thousands of specialized variants, one adapter per user, task, or agent, and the deployments can hold 1000-plus adapters. Serving them is hard because the workload inverts what GPUs provide: terabytes of memory against only tens of TFLOPS, and because every published system stages its adapters from CPU DRAM over PCIe, where each access pays a kernel stop and a host-run copy and capacity ends at the motherboard's DIMM slots. Meanwhile, memory-semantic fabrics such as CXL and NVLink are converging on pooled memory that an accelerator addresses with its own loads and stores, and near-data processing (NDP) can place compute beside the pooled data. How to serve multi-LoRA workloads on such hardware remains unexplored.\n  This paper introduces PLoRA, an NDP-enhanced pooled-memory system for cost-efficient multi-LoRA serving. PLoRA keeps adapters and KV cache in the pool and returns only reduced results over the link, through a read-compute interface the GPU drives with its own loads and stores. Above this architecture, a GPU memory management system picks among four LoRA and two attention execution strategies for each adapter and caches the most performance-critical bytes in GPU memory, guided by a link-parameterized cost model. On one H100 serving 1000 adapters, PLoRA attains the lowest decode latency on every model and workload we measure, averaging 6.6x below a real-machine S-LoRA at under 3.4% added device area. The link itself stops mattering: throughput saturates at 32 GB/s on short contexts, a quarter of CXL 3.1, and the verdict survives scale: per-GPU demand falls from 7B to a modeled 1.2T deployment once adapter traffic shards with the tensor parallelism. The design runs unchanged from CXL-class to NVLink-class fabrics, and surplus bandwidth buys pooled capacity rather than speed.",
+    "published_date": "2026-08-06T00:19:56Z",
+    "updated_date": "2026-08-06T00:19:56Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.05483v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.05483v1",
+    "source": "arxiv",
+    "score": 0.4928860938549042,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、张量并行、数据处理、NVLink 互连、带宽优化相关技术。\n\n核心内容：Multi-LoRA serving is how one base model becomes thousands of specialized variants, one adapter per user, task, or agent, and the deployments can hold 1000-plus adapters. Serving them is hard because the workload inverts what GPUs provide: terabytes of memory against only tens of TFLOPS, and because...。",
+    "takeaway": "本文聚焦GPU 内存管理、张量并行、数据处理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.06870v1",
+    "title": "G-Power: Architecture-level GPU Power Modeling with Aggregated Knowledge Foundations from Known GPUs",
+    "authors": [
+      "Qijun Zhang",
+      "Yao Lu",
+      "Shang Liu",
+      "Mengming Li",
+      "Chen Zhang",
+      "Dongbo Wang",
+      "Zhiyao Xie"
+    ],
+    "abstract": "Graphics Processing Units (GPUs) have been serving as critical computation resources for large-scale parallel computations. With increasing chip complexity, power efficiency has become an important design objective for modern GPUs. GPU power optimization relies on fast power evaluation, requiring architecture-level GPU power model. However, because of the time-consuming power label collection, only simple microbenchmarks are adopted for training. The limitation of microbenchmarks as training data incurs low accuracy for existing architecture-level GPU power models like AccelWattch.\n  To address the limitation of microbenchmarks as training data, we propose G-Power, an architecture-level GPU power modeling framework that utilizes additional known GPU chips to provide additional knowledge. G-Power utilizes the aggregated knowledge foundation from additional known GPU chips and then performs fine-tuning on our target GPU. To provide foundations with additional known GPU chips and capture the similarity to utilize these foundations for fine-tuning, G-Power adopts a three-phase algorithm consisting of 1) pre-training with additional known chips, 2) attention-inspired aggregation, and 3) fine-tuning on our target GPU. We evaluate G-Power on four modern NVIDIA GPUs, demonstrating high accuracy. G-Power can achieve a low MAPE of 14% and a high correlation coefficient R of 0.88 on average, which are 22% lower MAPE and 0.36 higher R than AccelWattch.",
+    "published_date": "2026-08-07T06:51:47Z",
+    "updated_date": "2026-08-07T06:51:47Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.06870v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.06870v1",
+    "source": "arxiv",
+    "score": 0.476719810962677,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、聚合相关技术。\n\n核心内容：Graphics Processing Units (GPUs) have been serving as critical computation resources for large-scale parallel computations. With increasing chip complexity, power efficiency has become an important design objective for modern GPUs。",
+    "takeaway": "本文聚焦隐私信息检索、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.07078v1",
+    "title": "Scalable High-Fidelity Macromolecular Docking for GPU-Accelerated Supercomputers",
+    "authors": [
+      "Xiangyu Meng",
+      "Peng Chen",
+      "Mingzhen Li",
+      "Jianmin Wang",
+      "Sen Wang",
+      "Guangming Tan",
+      "Weile Jia",
+      "Mohamed Wahib",
+      "Tao Luo",
+      "Xun Wang"
+    ],
+    "abstract": "Flexible macromolecular docking offers high-fidelity predictions of biomolecular interactions, but remains prohibitively expensive at scale. Among existing approaches, LightDock leverages Glowworm Swarm Optimization (GSO) for accuracy, yet suffers from limited parallelism, irregular computation, and severe load imbalance, preventing efficient execution on GPU supercomputers. We present SparkleDock, a scalable GSO-based docking framework enabling near-real-time flexible docking. We redesign GSO to expose massive fine-grained parallelism at the glowworm-agent level, and restructure the dominant energy scoring computation into a Tensor Core-compatible formulation, enabling efficient execution of irregular pairwise interactions through structured matrix operations. We further introduce a performance-model-driven scheduling for load balancing and out-of-core scaling across GPUs. SparkleDock achieves 9.7 $\\times$ and 18.9 $\\times$ speedups over LightDock on single A100 and H100 GPU, and delivers over two orders of magnitude acceleration at scale. On 512 GPUs, it reduces docking time from hours to seconds, enabling large-scale, high-fidelity virtual screening previously impractical with flexible docking.",
+    "published_date": "2026-08-07T10:29:20Z",
+    "updated_date": "2026-08-07T10:29:20Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.07078v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.07078v1",
+    "source": "arxiv",
+    "score": 0.46348533153533933,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Flexible macromolecular docking offers high-fidelity predictions of biomolecular interactions, but remains prohibitively expensive at scale. Among existing approaches, LightDock leverages Glowworm Swarm Optimization (GSO) for accuracy, yet suffers from limited parallelism, irregular computation, and...。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.04450v1",
+    "title": "CommBench: Can LLMs Write Correct and Efficient GPU Communication Code?",
+    "authors": [
+      "Shuang Ma",
+      "Yuyi Li",
+      "Yihan Zhang",
+      "Hezhi Xie",
+      "Danyang Chen",
+      "Shuyang Ji",
+      "Ziming Mao",
+      "Cheng Ji",
+      "Ansha Prashanth",
+      "Wenting Yang",
+      "Yiran Wang",
+      "Chihan Cui",
+      "Pei Yu Lin",
+      "Ion Stoica",
+      "Yang Zhou"
+    ],
+    "abstract": "Training and serving large language models (LLMs) rely heavily on high-performance GPU communication, yet implementing efficient GPU communication primitives requires deep expertise in GPU architectures, networking hardware, and distributed communication patterns, making them particularly challenging for code generation models. We present CommBench, a comprehensive benchmark for GPU communication programming, consisting of over 100 expert-curated tasks spanning point-to-point communication, collective operations, expert-parallel communication, compute--communication fusion, and communication utility functions, with reference implementations either written by GPU communication experts or distilled from production codebases. We further introduce a cheat-resistant evaluation framework that automatically compiles, executes, and validates generated code on multi-GPU systems, and a unified metric that jointly measures functional correctness and communication performance. Evaluating leading frontier and open-source code generation models on both intra-node NVLink and inter-node RDMA platforms reveals that even the strongest model, GPT-5.5, correctly implements and achieves competitive performance on only 30.7\\% of the benchmark tasks. Our results expose a substantial gap between current LLMs and expert-written GPU communication code, establishing CommBench as a challenging benchmark for advancing AI-assisted systems programming.",
+    "published_date": "2026-08-05T04:55:21Z",
+    "updated_date": "2026-08-05T04:55:21Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.04450v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.04450v1",
+    "source": "arxiv",
+    "score": 0.4379722321033478,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、多 GPU、NVLink 互连、集合通信、网络相关技术。\n\n核心内容：Training and serving large language models (LLMs) rely heavily on high-performance GPU communication, yet implementing efficient GPU communication primitives requires deep expertise in GPU architectures, networking hardware, and distributed communication patterns, making them particularly challengin...。",
+    "takeaway": "本文聚焦RDMA 网络、多 GPU、NVLink 互连，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2608.07009v1",
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "authors": [
+      "Zhiqiang Xie",
+      "Zhangheng Huang",
+      "Tingwei Huang",
+      "Ziyi Xu",
+      "Ruiyang Ma",
+      "Christos Kozyrakis"
+    ],
+    "abstract": "Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill still grows with its full context length--decoding hits a capacity wall long before it runs out of compute, and a context whose KV cache exceeds HBM cannot be served at all. We present HiSparse, an exact, indexer-agnostic hierarchical KV cache for sparse-attention serving. HiSparse keeps each request's full KV history in host memory and bounds its decode footprint with a small, fixed-size GPU cache; a fused CUDA kernel resolves each layer's selections--hit detection, LRU replacement, and host-to-device fetches--inside the decode CUDA graph; and, for models that share selections across layers, exact layer-wise prefetching hides roughly half of the remaining miss overhead. Because only KV placement changes, model outputs are unchanged. HiSparse is merged into upstream SGLang and evaluated across three sparse-attention families (DSA, NSA, and Quest) on H200, B200, and GH200 platforms: it improves peak generation throughput by up to 4.7x on long-context workloads while preserving comparable per-token latency and reducing time-to-first-token at high load--and a no-IO oracle shows the resolution mechanism itself adds no measurable per-token cost, leaving host-device IO as the only price of bounded residency.",
+    "published_date": "2026-08-07T09:22:17Z",
+    "updated_date": "2026-08-07T09:22:17Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.07009v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.07009v1",
+    "source": "arxiv",
+    "score": 0.4367602002620697,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 缓存、CUDA、延迟优化、吞吐量相关技术。\n\n核心内容：Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill s...。",
+    "takeaway": "本文聚焦GPU 缓存、CUDA、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  }
+]
