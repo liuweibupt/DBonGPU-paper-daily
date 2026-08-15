@@ -525,6 +525,29 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.08751v1" target="_blank">InSituANN: Revisiting IVF for PCIe-Efficient Billion-Scale Vector Search</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.501</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Yuemeng Xu, Zongxi Liu, Junyu Long, Yiming Huang 等 (10 位作者)</div>
+        <div class="paper-abstract-cn">本文研究查询处理、近邻搜索、异构计算、带宽优化、吞吐量相关技术。
+
+核心内容：Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched ve...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched vector search, their limited VRAM capacity makes fully GPU-resident billion-scale indexes difficult to deploy. In CPU-GPU heterogeneous designs, keeping the base vectors in host memory avoids this capacity limit, but naively offloading fine search to the GPU introduces a new bottleneck: large volumes of base-vector data must be streamed over PCIe.
+  We present InSituANN, an IVF-based ANNS engine that enables billion-scale vector search on a single commodity GPU. InSituANN keeps original base vecto...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、近邻搜索、异构计算，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.08751v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.08751v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.11882v1" target="_blank">Evaluating OpenMP Offloading for Intra-node Multi-GPU Programming across NVIDIA, AMD, and Intel Architectures: A 3D Heat Transfer Case Study</a></span>
         </div>
         <div class="paper-meta">
@@ -546,7 +569,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">4</span>
+            <span class="paper-rank">5</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.10103v1" target="_blank">Hand-Written PTX Tensor-Core GEMM Kernels: A Multi-Precision Study on NVIDIA L4</a></span>
         </div>
         <div class="paper-meta">
@@ -568,7 +591,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">5</span>
+            <span class="paper-rank">6</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.10586v1" target="_blank">FaCTz: Fast Critical-Point and Topology-Aware GPU Compression for Scientific Vector Fields</a></span>
         </div>
         <div class="paper-meta">
@@ -590,7 +613,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">6</span>
+            <span class="paper-rank">7</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.08340v1" target="_blank">OpRAG: A Resource-Deterministic Runtime for GPU-Backed Multi-Stage RAG Workflows</a></span>
         </div>
         <div class="paper-meta">
@@ -612,7 +635,29 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">7</span>
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.10139v1" target="_blank">AI Query Compilation for Unified and Optimized Execution</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.419</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Yeounoh Chung, Helena Caminal, Fatma Ozcan</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、延迟优化、吞吐量相关技术。
+
+核心内容：In this vision paper, we propose a novel architectural paradigm for accelerated AI query execution via a unified compiled execution strategy. By compiling the hybrid AI Query as a whole -- integrating both standard SQL relational constructs and LLM inference layers into a single, unified tensor comp...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In this vision paper, we propose a novel architectural paradigm for accelerated AI query execution via a unified compiled execution strategy. By compiling the hybrid AI Query as a whole -- integrating both standard SQL relational constructs and LLM inference layers into a single, unified tensor compute graph -- we completely alleviate PCIe data movement bottlenecks across execution boundaries and enable global compiler optimizations and efficient automatic sharding. We demonstrate the viability of this unified execution paradigm on select and extended AI queries on SemBench Reviews and Movies datasets, achieving up to 5.3x latency speedup and 9.8x throughput speedup on TPUs, and outline a research roadmap of open technical challenges to realize this vision.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.10139v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.10139v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.13122v1" target="_blank">Validation-Centric AI-Assisted GPU Porting of a 250,000+ Line Legacy Weather Simulation Code</a></span>
         </div>
         <div class="paper-meta">
@@ -634,69 +679,24 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.13057v1" target="_blank">TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.386</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.CL</span> 
-        </div>
-        <div class="paper-authors">Jie Li, Chenxin Jia, Jinliang Shen, Cunzhuang Liu 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究通信优化、延迟优化、吞吐量相关技术。
-
-核心内容：In expert-parallel (EP) MoE serving, every layer synchronizes at the slowest GPU. Dispatchers balance token counts (EPLB, LPLB, UltraEP) or activated-expert counts (METRO), assuming expert time is linear in one。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In expert-parallel (EP) MoE serving, every layer synchronizes at the slowest GPU. Dispatchers balance token counts (EPLB, LPLB, UltraEP) or activated-expert counts (METRO), assuming expert time is linear in one. Measurements on two datacenter GPU generations show it is neither: below $\nstar\!\approx\!156$--$168$ tokens, HBM weight streaming dominates---cost attaches to \emph{activated replicas}, not tokens; above it, grouped GEMM rounds tokens to 128-tile $M$-tiles, so \emph{splitting} an expert adds padded compute. A max-affine profile $t=\max(a+bG,\,c+βN)$ captures both regimes. Realistic decode batches hold hot experts in the linear regime and cold in the flat \emph{simultaneously}; recorded batches show proxy dispatches differ by $1.4$--$1.6\times$ in modeled block time (p95 up to $1....</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦通信优化、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.13057v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.13057v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.13499v1" target="_blank">OpScale: Operator-level Provisioning and Autoscaling for LLM Serving</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.384</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> 
-        </div>
-        <div class="paper-authors">Xingqi Cui, Chieh-Jan Mike Liang, Ziang Tang, Jiarong Xing 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：Achieving cost efficiency while meeting strict user-facing SLOs (e.g., time-to-first-token) remains a fundamental challenge for cloud GPU clusters serving large language models (LLMs). Autoscaling is the key mechanism for cluster resource management, yet a basic system design question is open for se...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Achieving cost efficiency while meeting strict user-facing SLOs (e.g., time-to-first-token) remains a fundamental challenge for cloud GPU clusters serving large language models (LLMs). Autoscaling is the key mechanism for cluster resource management, yet a basic system design question is open for serving LLMs: what should be the unit of scaling? Existing approaches primarily treat the entire model as a monolithic scaling unit--simple but unable to capture the fine-grained dynamics of inference workloads. As a result, such coarse-grained scaling often leads to either SLO violations under bursty demand or significant GPU under-utilization.
-  Our characterization reveals substantial operator heterogeneity, exposing operator-level elasticity as a viable scaling primitive. We present OpScale, a...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.13499v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.13499v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.08730v2" target="_blank">Measuring and Reducing WebGPU Dispatch Overhead for LLM Inference</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.09075v1" target="_blank">SLAC: Access-Driven CPU-to-GPU Side-channel Attacks via System-Level Cache on Apple Silicon</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.371</span>
+            <span class="score-badge score-low">相关度 0.391</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.LG</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Jędrzej Maczan</div>
-        <div class="paper-abstract-cn">本文研究大模型推理相关技术。
+        <div class="paper-authors">Tianhong Xu, Saion K. Roy, Ruyi Ding, Aidong Adam Ding 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、GPU 缓存、异构计算、网络、吞吐量相关技术。
 
-核心内容：Large Language Models are deployed to multiple types of environments, from internet browsers to edge devices, and WebGPU serves as a modern cross-platform standard. The engines for browser-based LLM inference have proliferated, yet the overhead of WebGPU per-operation dispatch remains poorly charact...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large Language Models are deployed to multiple types of environments, from internet browsers to edge devices, and WebGPU serves as a modern cross-platform standard. The engines for browser-based LLM inference have proliferated, yet the overhead of WebGPU per-operation dispatch remains poorly characterized. In this work, we introduce a sequential-dispatch measurement method and show that naive single-operation measurements overestimate per-dispatch cost by conflating dispatch with synchronization. Using our method, we measure the per-dispatch cost and show that it is independent of data type used. We show that the dispatch overhead, not kernel quality, is the bottleneck at batch size 1, and isolate the dispatch count as the cause. Therefore, we conclude that at batch size 1, the effective a...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Modern heterogeneous System-on-Chip designs integrate CPU cores and a GPU that share a last-level cache (LLC) or system-level cache (SLC). This sharing exposes a new cross-domain attack surface, and existing attacks on integrated platforms either exploit coarse-grained cache-occupancy contention or ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern heterogeneous System-on-Chip designs integrate CPU cores and a GPU that share a last-level cache (LLC) or system-level cache (SLC). This sharing exposes a new cross-domain attack surface, and existing attacks on integrated platforms either exploit coarse-grained cache-occupancy contention or require the adversary to co-reside on the GPU with the victim to obtain accurate timing measurements. In this work, we target Apple Silicon heterogeneous SoCs and discover that GPU memory accesses leave set-level footprints in the shared SLC, observable to an unprivileged CPU process. This keen observation enables the first fine-grained, access-driven, Prime+Probe-style CPU-to-GPU cache side-channel attacks against GPU workloads. We first reverse-engineer the Apple M1 SLC set-indexing functions ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、GPU 缓存、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.08730v2" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.08730v2" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2608.09075v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.09075v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -705,7 +705,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-08-15 02:12:49</span>
+            <span>上次运行：2026-08-15 02:37:01</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
