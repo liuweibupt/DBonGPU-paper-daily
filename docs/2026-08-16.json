@@ -1,0 +1,297 @@
+[
+  {
+    "id": "2608.09647v1",
+    "title": "A Preliminary Study on Simultaneous Coscheduling for Discrete GPU vs. Fused GPU",
+    "authors": [
+      "Poorna Gunathilaka",
+      "Nabayan Chaudhury",
+      "Kirshanthan Sundararajah",
+      "Wu-chun Feng"
+    ],
+    "abstract": "CPU-GPU coscheduling enables simultaneous execution of an application across both processing units, but its efficiency depends on workload partitioning and memory architecture. This preliminary study evaluates coscheduling on the NVIDIA GH200 Superchip compared to a discrete H100 PCIe platform. Using sparse conjugate gradient (CG) as a case study, we assess various work divisions across three memory-management paradigms: explicit copy, managed memory, and mapped memory. Our evaluation highlights the run time and programmability tradeoffs of reducing manual CPU-GPU data movement. The results show that compared with the H100 PCIe platform, GH200 makes several hybrid CPU-GPU work divisions competitive and makes managed memory practical for several matrices. These results suggest that integrated CPU-GPU platforms such as GH200 can improve both performance and programmability for coscheduled workloads.",
+    "published_date": "2026-08-10T14:25:18Z",
+    "updated_date": "2026-08-10T14:25:18Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.09647v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.09647v1",
+    "source": "arxiv",
+    "score": 0.6036245369911194,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：CPU-GPU coscheduling enables simultaneous execution of an application across both processing units, but its efficiency depends on workload partitioning and memory architecture. This preliminary study evaluates coscheduling on the NVIDIA GH200 Superchip compared to a discrete H100 PCIe platform。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.08751v1",
+    "title": "InSituANN: Revisiting IVF for PCIe-Efficient Billion-Scale Vector Search",
+    "authors": [
+      "Yuemeng Xu",
+      "Zongxi Liu",
+      "Junyu Long",
+      "Yiming Huang",
+      "Jiarui Guo",
+      "Yangyujia Wang",
+      "Jiachen Xu",
+      "Dongyuan Yu",
+      "Zongwei Lv",
+      "Tong Yang"
+    ],
+    "abstract": "Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched vector search, their limited VRAM capacity makes fully GPU-resident billion-scale indexes difficult to deploy. In CPU-GPU heterogeneous designs, keeping the base vectors in host memory avoids this capacity limit, but naively offloading fine search to the GPU introduces a new bottleneck: large volumes of base-vector data must be streamed over PCIe.\n  We present InSituANN, an IVF-based ANNS engine that enables billion-scale vector search on a single commodity GPU. InSituANN keeps original base vectors in host memory, performs fine search in situ, and uses the GPU for compact routing and optional pruning. As a result, query processing avoids PCIe transfers of high-dimensional base vectors while retaining the simplicity of IVF. Beyond query performance, we further design an ultra-fast IVF construction path for InSituANN. On SIFT-1B, InSituANN builds the IVF index in 5.2 minutes, about 350x faster than the measured 30.4-hour HNSW build. At matched recall on billion-scale datasets, InSituANN improves end-to-end throughput by 104.9x-4298.2x over the PCIe-bound Rummy baseline and by 2.4x-4.6x over DiskANN on SIFT-1B and DEEP-1B. Together with strong recall-throughput trade-offs and lower index space than graph-based alternatives, these gains make billion-scale retrieval practical on cost-efficient hardware.\n  We open-source InSituANN at https://github.com/mindtravel/InSituANN-OpenSource.",
+    "published_date": "2026-08-09T15:01:13Z",
+    "updated_date": "2026-08-09T15:01:13Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.08751v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.08751v1",
+    "source": "arxiv",
+    "score": 0.5014606404304505,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究查询处理、近邻搜索、异构计算、带宽优化、吞吐量相关技术。\n\n核心内容：Approximate nearest neighbor search (ANNS) over billion-scale vector datasets has become a foundational operator for modern retrieval systems, powering large-scale recommendation, semantic search, and LLM/RAG workloads. Although GPUs offer massive parallelism and high-bandwidth memory for batched ve...。",
+    "takeaway": "本文聚焦查询处理、近邻搜索、异构计算，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2608.11882v1",
+    "title": "Evaluating OpenMP Offloading for Intra-node Multi-GPU Programming across NVIDIA, AMD, and Intel Architectures: A 3D Heat Transfer Case Study",
+    "authors": [
+      "Ezhilmathi Krishnasamy"
+    ],
+    "abstract": "Currently, most supercomputers are equipped with GPUs from manufacturers such as NVIDIA, AMD, or Intel, which provide substantial parallelism and high throughput. It is common for a single compute node (intra-node) to host multiple GPUs, typically four or more. Therefore, effectively leveraging all these GPUs within a single compute node is essential for applications in scientific and engineering domains. However, several factors must be considered before utilizing these GPUs for scientific computing, including the implementation of data communication, the programming models available for use across these GPUs, and the level of performance that can be achieved with a single codebase across different GPU architectures and configurations within a single compute node. OpenMP Offloading is a prominent directive-based programming model that can be executed on all three GPU types: NVIDIA, AMD, and Intel. In this research, we present an analysis of the benefits and performance challenges of using OpenMP Offloading to address the 3D heat equations, which involve both primary computation, as well as halo computation and communication. We investigate how performance varies in relation to native GPU programming models--CUDA for NVIDIA, HIP for AMD, and SYCL for Intel. Furthermore, we demonstrate that OpenMP Offloading can achieve performance improvements of approximately 2x for 2 GPUs and around 4x for 4 GPUs when compared to single-GPU OpenMP Offloading implementations across all three GPU types. This analysis is conducted systematically through various OpenMP Offloading implementations that utilize different low-level APIs for memory allocation, memory transfer options (synchronous, asynchronous, and peer-to-peer), and other native GPU programming models such as CUDA (NVIDIA), HIP (AMD), and SYCL (Intel)",
+    "published_date": "2026-08-12T10:07:59Z",
+    "updated_date": "2026-08-12T10:07:59Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.11882v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.11882v1",
+    "source": "arxiv",
+    "score": 0.4898088562488556,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、多 GPU、通信优化、吞吐量相关技术。\n\n核心内容：Currently, most supercomputers are equipped with GPUs from manufacturers such as NVIDIA, AMD, or Intel, which provide substantial parallelism and high throughput. It is common for a single compute node (intra-node) to host multiple GPUs, typically four or more。",
+    "takeaway": "本文聚焦CUDA、多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2608.10103v1",
+    "title": "Hand-Written PTX Tensor-Core GEMM Kernels: A Multi-Precision Study on NVIDIA L4",
+    "authors": [
+      "Matt J. Borowski",
+      "Blazej Osinski"
+    ],
+    "abstract": "High-performance Tensor Core kernels rely on a low-level PTX pipeline built from asynchronous data movement with cp.async, warp-level matrix loads with ldmatrix, and matrix multiply-accumulate operations with mma.sync. However, most application code accesses Tensor Cores indirectly through the WMMA C++ API. This paper asks a focused, practical question: when does replacing WMMA with hand-written PTX actually pay off? To answer this question, we conduct a controlled, single-GPU study on an NVIDIA L4 GPU (Ada, SM89), comparing double-buffered WMMA baselines with a family of hand-written PTX GEMM kernels across FP16, INT8, and INT4 arithmetic and square problem sizes from $N=512$ to $N=8192$. Every kernel is profiled with Nsight Compute across the full metric set, and PTX speedups are reported relative to the corresponding same-precision WMMA baseline. Hand-written PTX provides no end-to-end speedup for FP16, because its instruction-level gains are offset by operand-packing overhead. In contrast, the PTX kernels achieve consistent speedups of 1.4x-1.8x for INT8, driven primarily by lower instruction counts and better global-memory coalescing, and 2.9x-4.3x for INT4, where native mma.sync.m16n8k64.s4 execution avoids the software-emulated sequence used by the WMMA path. Relative to the FP16 WMMA baseline, the best quantized kernels reach 34.4x (INT8) and 98.7x (INT4) at $N=8192$. Across these experiments, occupancy is a poor predictor of throughput. For large matrices, performance instead tracks memory-system behavior -- particularly global-load coalescing and DRAM-active cycles -- more closely than Tensor Core utilization. These results identify the precisions and operating regimes in which the additional complexity of hand-written PTX is justified.",
+    "published_date": "2026-08-10T18:13:00Z",
+    "updated_date": "2026-08-10T18:13:00Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.10103v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.10103v1",
+    "source": "arxiv",
+    "score": 0.4489972722530365,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：High-performance Tensor Core kernels rely on a low-level PTX pipeline built from asynchronous data movement with cp.async, warp-level matrix loads with ldmatrix, and matrix multiply-accumulate operations with mma.sync. However, most application code accesses Tensor Cores indirectly through the WMMA ...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.10586v1",
+    "title": "FaCTz: Fast Critical-Point and Topology-Aware GPU Compression for Scientific Vector Fields",
+    "authors": [
+      "Mingze Xia",
+      "Yuxiao Li",
+      "Sheng Di",
+      "Jiannan Tian",
+      "Baixi Sun",
+      "Boyi Zhang",
+      "Bei Wang",
+      "Hanqi Guo",
+      "Xin Liang"
+    ],
+    "abstract": "Error-bounded lossy compression is essential for storing and transferring the vector-field data produced by large-scale scientific simulations. Although it enforces a user-specified error bound to limit numerical distortion, it does not preserve the field's topology: small admissible perturbations can create or eliminate critical points on which downstream feature analysis depends. Existing GPU compressors achieve high throughput but are topology-agnostic, whereas the only compressor with provable critical-point preservation (cpSZ) runs on the CPU at throughput far below the data-generation rates of modern GPU-based systems. We observe that, although preserving critical points is inherently a coupled and sequential constraint, it can be reformulated into independent parallel tasks, either on a per-block basis or, speculatively, on a per-point basis. We present FaCTz, the first GPU-based error-bounded lossy compressor that guarantees critical-point preservation. FaCTz provides a block-wise mode optimized for throughput and a speculative per-point mode optimized for compression ratio. Across three vector-field datasets, FaCTz preserves every critical point while achieving throughput of up to 60 GB/s, approximately two orders of magnitude (up to approximately 640x) faster than the multithreaded CPU implementation of cpSZ. Its speculative mode further improves the compression ratio by approximately a factor of two over the throughput-oriented mode.",
+    "published_date": "2026-08-11T07:14:50Z",
+    "updated_date": "2026-08-11T07:14:50Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.10586v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.10586v1",
+    "source": "arxiv",
+    "score": 0.4353692376613617,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Error-bounded lossy compression is essential for storing and transferring the vector-field data produced by large-scale scientific simulations. Although it enforces a user-specified error bound to limit numerical distortion, it does not preserve the field's topology: small admissible perturbations c...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.10139v1",
+    "title": "AI Query Compilation for Unified and Optimized Execution",
+    "authors": [
+      "Yeounoh Chung",
+      "Helena Caminal",
+      "Fatma Ozcan"
+    ],
+    "abstract": "In this vision paper, we propose a novel architectural paradigm for accelerated AI query execution via a unified compiled execution strategy. By compiling the hybrid AI Query as a whole -- integrating both standard SQL relational constructs and LLM inference layers into a single, unified tensor compute graph -- we completely alleviate PCIe data movement bottlenecks across execution boundaries and enable global compiler optimizations and efficient automatic sharding. We demonstrate the viability of this unified execution paradigm on select and extended AI queries on SemBench Reviews and Movies datasets, achieving up to 5.3x latency speedup and 9.8x throughput speedup on TPUs, and outline a research roadmap of open technical challenges to realize this vision.",
+    "published_date": "2026-08-10T18:54:13Z",
+    "updated_date": "2026-08-10T18:54:13Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.10139v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.10139v1",
+    "source": "arxiv",
+    "score": 0.4188867211341858,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究大模型推理、延迟优化、吞吐量相关技术。\n\n核心内容：In this vision paper, we propose a novel architectural paradigm for accelerated AI query execution via a unified compiled execution strategy. By compiling the hybrid AI Query as a whole -- integrating both standard SQL relational constructs and LLM inference layers into a single, unified tensor comp...。",
+    "takeaway": "本文聚焦大模型推理、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.13122v1",
+    "title": "Validation-Centric AI-Assisted GPU Porting of a 250,000+ Line Legacy Weather Simulation Code",
+    "authors": [
+      "Tetsuya Hoshino",
+      "Masaya Kato",
+      "Kazuhisa Tsuboki",
+      "Daichi Mukunoki",
+      "Takahiro Katagiri",
+      "Toshihiro Hanawa"
+    ],
+    "abstract": "Recent advances in large language models have made CLI-based AI agents a practical tool for accelerating GPU porting of large legacy scientific applications. Such applications, however, are not merely old code bases; they are scientific assets whose credibility has been accumulated through long-term development, comparison with observations, and use in domain studies. GPU porting must therefore preserve this scientific validity while adapting the implementation to GPU-centric HPC systems. This paper presents a validation-centric AI-assisted GPU porting workflow through a case study of CReSS, a legacy Fortran weather simulation code with more than 250,000 lines. The workflow uses an AI agent to extract OpenMP regions, generate dump-based kernel benchmarks from physically meaningful simulation states, apply OpenACC transformations, and validate results through element-wise comparison with dumped reference data and application-level validation. Using a real typhoon simulation, the workflow produced numerically validated GPU implementations for 162 target kernels and achieved a 5.1x application-level speedup within practical wall-clock development cost. In particular, it detected numerical discrepancies in five kernels caused by floating-point and intrinsic-function differences, including threshold-sensitive branch divergence and cancellation effects, enabling feedback to the application developers. The case study suggests that, for large legacy scientific applications requiring dump-based validation, practical AI-assisted GPU porting must manage session-spanning context, runtime-state reconstruction, and costly recovery from small static-analysis omissions. These findings demonstrate that AI-assisted GPU porting requires not only code generation, but validation-centric workflow design.",
+    "published_date": "2026-08-13T11:52:51Z",
+    "updated_date": "2026-08-13T11:52:51Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.13122v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.13122v1",
+    "source": "arxiv",
+    "score": 0.393652378320694,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Recent advances in large language models have made CLI-based AI agents a practical tool for accelerating GPU porting of large legacy scientific applications. Such applications, however, are not merely old code bases; they are scientific assets whose credibility has been accumulated through long-term...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.09075v1",
+    "title": "SLAC: Access-Driven CPU-to-GPU Side-channel Attacks via System-Level Cache on Apple Silicon",
+    "authors": [
+      "Tianhong Xu",
+      "Saion K. Roy",
+      "Ruyi Ding",
+      "Aidong Adam Ding",
+      "Yunsi Fei"
+    ],
+    "abstract": "Modern heterogeneous System-on-Chip designs integrate CPU cores and a GPU that share a last-level cache (LLC) or system-level cache (SLC). This sharing exposes a new cross-domain attack surface, and existing attacks on integrated platforms either exploit coarse-grained cache-occupancy contention or require the adversary to co-reside on the GPU with the victim to obtain accurate timing measurements. In this work, we target Apple Silicon heterogeneous SoCs and discover that GPU memory accesses leave set-level footprints in the shared SLC, observable to an unprivileged CPU process. This keen observation enables the first fine-grained, access-driven, Prime+Probe-style CPU-to-GPU cache side-channel attacks against GPU workloads. We first reverse-engineer the Apple M1 SLC set-indexing functions and the interactions between local private caches and the SLC. Building on these findings, we construct the CPrime+CProbe SLC side-channel technique, which monitors GPU victim activity from the CPU at cache-set granularity. We then introduce an accelerated variant, GPrime+CProbe, in which an adversary leverages the GPU for faster SLC priming, yielding a 6.4x increase in the covert-channel throughput. Lastly, we demonstrate two end-to-end privacy attacks using the new side-channels: a graph-edge reconstruction attack on Graph Neural Networks (GNNs) that achieves 90% edge accuracy across five datasets, and an LLM privacy attack that recovers input keywords with up to 94.8% accuracy and model responses with up to 88.9% accuracy across TinyLlama and GPT-2 Medium models. Our results reveal a new class of microarchitectural vulnerabilities in Apple Silicon and call for secure system cache designs for heterogeneous SoCs.",
+    "published_date": "2026-08-10T03:25:16Z",
+    "updated_date": "2026-08-10T03:25:16Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.09075v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.09075v1",
+    "source": "arxiv",
+    "score": 0.39087858676910403,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 缓存、异构计算、网络、吞吐量相关技术。\n\n核心内容：Modern heterogeneous System-on-Chip designs integrate CPU cores and a GPU that share a last-level cache (LLC) or system-level cache (SLC). This sharing exposes a new cross-domain attack surface, and existing attacks on integrated platforms either exploit coarse-grained cache-occupancy contention or ...。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 缓存、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.13127v1",
+    "title": "Potential Applications of HBF in LLM Serving Systems",
+    "authors": [
+      "Yihan Yin",
+      "Yinlun Zhao",
+      "Zhixin Yun",
+      "Guanying Wu",
+      "Feng Zhu",
+      "Kai Tao",
+      "Shu Li",
+      "Fei Huang",
+      "Zhe Zhang",
+      "Shuangchen Li",
+      "Hongzhong Zheng"
+    ],
+    "abstract": "LLM serving is increasingly constrained by memory capacity as model weights, KV caches, and the number of served model variants continue to grow. This report examines High-Bandwidth Flash (HBF) as a capacity-oriented extension to HBM-based serving systems. We first discuss how HBF can be integrated into the GPU memory hierarchy without undermining the bandwidth expected by the compute die. We then model the system-level value of added capacity as expanded residency for read-mostly model-state objects. Under this view, HBF can improve MoE serving by enabling more expert replicas and can improve multi-model serving by reducing model loading and supporting hot-model replication. Our simulation results show that these benefits depend on preserving the HBM-resident execution path while using HBF to expand the resident set of model weights.",
+    "published_date": "2026-08-13T11:57:41Z",
+    "updated_date": "2026-08-13T11:57:41Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.13127v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.13127v1",
+    "source": "arxiv",
+    "score": 0.3877452600002289,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、带宽优化相关技术。\n\n核心内容：LLM serving is increasingly constrained by memory capacity as model weights, KV caches, and the number of served model variants continue to grow. This report examines High-Bandwidth Flash (HBF) as a capacity-oriented extension to HBM-based serving systems。",
+    "takeaway": "本文聚焦GPU 内存管理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.13057v1",
+    "title": "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes",
+    "authors": [
+      "Jie Li",
+      "Chenxin Jia",
+      "Jinliang Shen",
+      "Cunzhuang Liu",
+      "Ruiyi Ding",
+      "Jianwen Xian",
+      "Kang He",
+      "Chengru Song"
+    ],
+    "abstract": "In expert-parallel (EP) MoE serving, every layer synchronizes at the slowest GPU. Dispatchers balance token counts (EPLB, LPLB, UltraEP) or activated-expert counts (METRO), assuming expert time is linear in one. Measurements on two datacenter GPU generations show it is neither: below $\\nstar\\!\\approx\\!156$--$168$ tokens, HBM weight streaming dominates---cost attaches to \\emph{activated replicas}, not tokens; above it, grouped GEMM rounds tokens to 128-tile $M$-tiles, so \\emph{splitting} an expert adds padded compute. A max-affine profile $t=\\max(a+bG,\\,c+βN)$ captures both regimes. Realistic decode batches hold hot experts in the linear regime and cold in the flat \\emph{simultaneously}; recorded batches show proxy dispatches differ by $1.4$--$1.6\\times$ in modeled block time (p95 up to $1.7\\times$), and \\emph{which} proxy wins flips with the regime. We formalize per-batch dispatch as a fixed-charge makespan problem---NP-hard on two fully replicated GPUs, polynomial in degenerate limits---and present \\sys{}, a makespan-aware dispatcher solving it in milliseconds off the critical path; its SGLang integration runs out-of-process and fuses dispatch with count collection into one in-graph kernel. Anchored by an 8-GPU Testbed~A microbenchmark, \\sys{} stays within 1\\% of the best fixed baseline everywhere and wins by up to $15.5\\%$ where regimes mix. End-to-end on Testbed~B, Qwen3-235B (inside the win region) gains $4$--$6\\%$ throughput and cuts p99 latency by ${\\sim}15.6\\%$; DeepSeek-V3 (outside, communication-dominated) shows only mechanism cost. A phase diagram, not a universal win, is the claim: it predicts both outcomes before deployment.",
+    "published_date": "2026-08-13T10:21:11Z",
+    "updated_date": "2026-08-13T10:21:11Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI",
+      "cs.CL",
+      "cs.GT"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.13057v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.13057v1",
+    "source": "arxiv",
+    "score": 0.3863317656517029,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化、延迟优化、吞吐量相关技术。\n\n核心内容：In expert-parallel (EP) MoE serving, every layer synchronizes at the slowest GPU. Dispatchers balance token counts (EPLB, LPLB, UltraEP) or activated-expert counts (METRO), assuming expert time is linear in one。",
+    "takeaway": "本文聚焦通信优化、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
