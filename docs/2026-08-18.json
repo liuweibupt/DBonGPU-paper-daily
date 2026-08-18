@@ -1,0 +1,292 @@
+[
+  {
+    "id": "2608.13696v1",
+    "title": "Over the Memory Wall, Into the Instruction Wall: The New Bottleneck in GPU Data Processing",
+    "authors": [
+      "Sven Hepkema",
+      "Bowen Wu",
+      "Christos Kozyrakis",
+      "Yannis Chronis",
+      "Gustavo Alonso"
+    ],
+    "abstract": "Datacenter GPUs have seen an order-of-magnitude increase in memory bandwidth with the adoption of newer generations of HBM. Meanwhile, GPU database systems are gaining traction, many building on cuDF, an open-source library of GPU relational operators. Previously, query performance was bound by memory bandwidth, but the increase in memory bandwidth has not resulted in a proportional speedup of cuDF kernels. To investigate why performance has not kept up, we built Valk, a performance analysis tool that combines data from multiple profilers. We profile cuDF running TPC-H in-memory on two extremes of hardware capability, the L4 and GH200 GPUs. The GH200 has 13.4$\\times$ the memory bandwidth and 2.5$\\times$ the instruction throughput of the L4, yet is only 5.2$\\times$ faster in running TPC-H. Our analysis shows that when memory bandwidth is increased, kernels become compute bound. From our analysis, we make three recommendations to fully utilize the GPUs' potential for relational workloads when the memory wall is removed: kernels need to 1) make more efficient use of caches, and 2) increase occupancy and/or instruction level parallelism, and 3) execute fewer instructions per memory access.",
+    "published_date": "2026-08-13T18:41:04Z",
+    "updated_date": "2026-08-13T18:41:04Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.13696v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.13696v1",
+    "source": "arxiv",
+    "score": 0.8741106271743775,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题高度相关"
+    ],
+    "abstract_cn": "本文研究GPU 数据库、GPU 数据处理、内存数据库、数据处理、数据库系统相关技术。\n\n核心内容：Datacenter GPUs have seen an order-of-magnitude increase in memory bandwidth with the adoption of newer generations of HBM. Meanwhile, GPU database systems are gaining traction, many building on cuDF, an open-source library of GPU relational operators。",
+    "takeaway": "本文聚焦GPU 数据库、GPU 数据处理、内存数据库，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.16491v1",
+    "title": "FROG: Efficient Range-Filtering Approximate Nearest Neighbor Search on GPUs",
+    "authors": [
+      "Xiaokun Cui",
+      "Pengbo Liu",
+      "Jiadong Xie",
+      "Yingfan Liu",
+      "Hui Li",
+      "Jeffrey Xu Yu",
+      "Jiangtao Cui"
+    ],
+    "abstract": "Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the range predicate. However, existing RFANNS methods are not well suited to high-throughput GPU execution. CPU indexes offer limited parallel scalability, generic GPU filtering is highly selectivity-dependent, and GPU indexes built from locally optimized subgraphs can incur long search trajectories and redundant distance computations. To address these limitations, we present FROG, a GPU-oriented RFANNS index that replaces multiple locally optimal substructure building with a globally aware, vertex-centric design. It organizes diverse expansion neighbor candidates for each vertex in a GPU-friendly structure and rapidly identifies the expansion neighbors used for computation at query time. Moreover, GPU-oriented algorithms and implementations are developed for both index construction and query processing. Experiments on six datasets show that FROG improves mixed-selectivity query throughput by 14.7--37.7$\\times$ over 44-core CPU baselines and 4.5--7.6$\\times$ over the strongest GPU baseline. It also accelerates index construction by 2.4--14.8$\\times$ over the GPU baseline.",
+    "published_date": "2026-08-17T12:29:11Z",
+    "updated_date": "2026-08-17T12:29:11Z",
+    "categories": [
+      "cs.DB",
+      "cs.IR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.16491v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16491v1",
+    "source": "arxiv",
+    "score": 0.604717344045639,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 索引、查询处理、近邻搜索、向量数据库、吞吐量相关技术。\n\n核心内容：Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the...。",
+    "takeaway": "本文聚焦GPU 索引、查询处理、近邻搜索，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2608.16308v1",
+    "title": "DB-SpMSpV: Dual-View Blocked Sparse Matrix-Sparse Vector Multiplication for Dynamic GPU Workloads",
+    "authors": [
+      "Xing Cong",
+      "Chenhao Xie",
+      "Rui Wang",
+      "Zhongzhi Luan",
+      "Yi Liu",
+      "Depei Qian"
+    ],
+    "abstract": "Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution. Existing GPU SpMSpV methods often bind storage layouts, push/pull traversal, and kernels together, making fine-grained adaptation difficult without extra storage or scheduling overhead.\n  This paper presents DB-SpMSpV, a dual-view blocked SpMSpV framework for dynamic GPU workloads. DB-SpMSpV partitions the matrix into fixed-size 2D blocks, maintains block-level CSR/CSC views at the high level, and reuses a single low-level block payload to support both row-driven pull and column-driven push. At runtime, it selects the global traversal path based on input block sparsity, chooses block microkernels from the local matrix/vector block structure, and uses load balancing, asynchronous prefetching, and hierarchical writeback to reduce irregular memory accesses, writeback conflicts, and load imbalance. We further integrate the framework into DB-BFS and DB-Decoding.\n  We evaluate DB-SpMSpV on NVIDIA A100 and RTX 4090 using SuiteSparse matrices, symmetric graphs, and three open-source LLMs. Across input sparsities, DB-SpMSpV achieves average speedups of 5.48$\\times$--64.34$\\times$ over cuSPARSE and 2.36$\\times$--14.01$\\times$ over TileSpMSpV on A100, with similar gains on RTX 4090. DB-BFS further improves end-to-end graph traversal by 2.66$\\times$ over TileBFS on A100 and 3.60$\\times$ on RTX 4090 on average, while DB-Decoding accelerates single-token linear layers by up to 4.50$\\times$.",
+    "published_date": "2026-08-17T09:18:19Z",
+    "updated_date": "2026-08-17T09:18:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16308v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16308v1",
+    "source": "arxiv",
+    "score": 0.5088958728313446,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.11882v1",
+    "title": "Evaluating OpenMP Offloading for Intra-node Multi-GPU Programming across NVIDIA, AMD, and Intel Architectures: A 3D Heat Transfer Case Study",
+    "authors": [
+      "Ezhilmathi Krishnasamy"
+    ],
+    "abstract": "Currently, most supercomputers are equipped with GPUs from manufacturers such as NVIDIA, AMD, or Intel, which provide substantial parallelism and high throughput. It is common for a single compute node (intra-node) to host multiple GPUs, typically four or more. Therefore, effectively leveraging all these GPUs within a single compute node is essential for applications in scientific and engineering domains. However, several factors must be considered before utilizing these GPUs for scientific computing, including the implementation of data communication, the programming models available for use across these GPUs, and the level of performance that can be achieved with a single codebase across different GPU architectures and configurations within a single compute node. OpenMP Offloading is a prominent directive-based programming model that can be executed on all three GPU types: NVIDIA, AMD, and Intel. In this research, we present an analysis of the benefits and performance challenges of using OpenMP Offloading to address the 3D heat equations, which involve both primary computation, as well as halo computation and communication. We investigate how performance varies in relation to native GPU programming models--CUDA for NVIDIA, HIP for AMD, and SYCL for Intel. Furthermore, we demonstrate that OpenMP Offloading can achieve performance improvements of approximately 2x for 2 GPUs and around 4x for 4 GPUs when compared to single-GPU OpenMP Offloading implementations across all three GPU types. This analysis is conducted systematically through various OpenMP Offloading implementations that utilize different low-level APIs for memory allocation, memory transfer options (synchronous, asynchronous, and peer-to-peer), and other native GPU programming models such as CUDA (NVIDIA), HIP (AMD), and SYCL (Intel)",
+    "published_date": "2026-08-12T10:07:59Z",
+    "updated_date": "2026-08-12T10:07:59Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.11882v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.11882v1",
+    "source": "arxiv",
+    "score": 0.489808886051178,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、多 GPU、通信优化、吞吐量相关技术。\n\n核心内容：Currently, most supercomputers are equipped with GPUs from manufacturers such as NVIDIA, AMD, or Intel, which provide substantial parallelism and high throughput. It is common for a single compute node (intra-node) to host multiple GPUs, typically four or more。",
+    "takeaway": "本文聚焦CUDA、多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2608.16387v1",
+    "title": "GPU implementation of a resource-constrained virtual machine",
+    "authors": [
+      "Simone Li",
+      "Vladislav Brusokas",
+      "Andrei Ghita",
+      "Shuxuan Li",
+      "Wim Vanderbauwhede"
+    ],
+    "abstract": "One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal. In this paper we explore the deployment of one such resource constrained VM, Uxn, on GPU.\n  We show that for competitive performance it is essential to make use of the GPU data parallelism. We present an OpenMP-style parallelism API for Uxntal, the stack-based assembly-style language for the Uxn platform. We demonstrate that exemplar code using our API can run at comparable performance even on an integrated GPU. Specifically, our evaluation results show that using this approach improves performance on the compute-intensive Stencil benchmark with 19x and frame rate on the graphics-intensive Bunnymark benchmark with 7x.\n  In practice, all laptops and desktops and even mobile devices have a GPU and our work shows that they can be used to execute frugal workloads effectively.",
+    "published_date": "2026-08-17T10:38:56Z",
+    "updated_date": "2026-08-17T10:38:56Z",
+    "categories": [
+      "cs.DC",
+      "cs.GR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16387v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16387v1",
+    "source": "arxiv",
+    "score": 0.4540177130699158,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.15994v1",
+    "title": "Building An Integrated Vector Database System in PostgreSQL",
+    "authors": [
+      "Jiayi Liu",
+      "Te Guo",
+      "Jianguo Wang"
+    ],
+    "abstract": "This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance gap with specialized vector databases. In our earlier work, we introduced PostgreSQL-V 1.0, which addresses this issue by separating vector index structures from PostgreSQL's storage engine, enabling vector search performance close to that of native vector index libraries while preserving SQL compatibility. However, we find that PostgreSQL-V 1.0 has three limitations that matter for real-world workloads: it only supports a single connection (without concurrency), recovery time grows with index size, and physical replication is unsupported.\n  We further present PostgreSQL-V 2.0, which closes all three gaps. PostgreSQL-V 2.0's concurrency support enables fully concurrent vector searches and updates across PostgreSQL's multi-process backends, delivering up to 36.4x the throughput of PostgreSQL-V 1.0 while serving 32 concurrent clients. PostgreSQL-V 2.0's fast crash recovery keeps cost independent of total index size, remaining near 20 ms while PostgreSQL-V 1.0's grows into seconds-scale. PostgreSQL-V 2.0's physical replication support extends physical replication to the decoupled index, preserving index consistency on standbys without burdening the primary node. Together, these advances make PostgreSQL-V 2.0 a fully concurrent, crash-resilient, and replication-ready vector database inside PostgreSQL.",
+    "published_date": "2026-08-17T01:07:38Z",
+    "updated_date": "2026-08-17T01:07:38Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.15994v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15994v1",
+    "source": "arxiv",
+    "score": 0.4432052516937256,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究向量数据库、存储引擎、数据库系统、吞吐量相关技术。\n\n核心内容：This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance ...。",
+    "takeaway": "本文聚焦向量数据库、存储引擎、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2608.10586v1",
+    "title": "FaCTz: Fast Critical-Point and Topology-Aware GPU Compression for Scientific Vector Fields",
+    "authors": [
+      "Mingze Xia",
+      "Yuxiao Li",
+      "Sheng Di",
+      "Jiannan Tian",
+      "Baixi Sun",
+      "Boyi Zhang",
+      "Bei Wang",
+      "Hanqi Guo",
+      "Xin Liang"
+    ],
+    "abstract": "Error-bounded lossy compression is essential for storing and transferring the vector-field data produced by large-scale scientific simulations. Although it enforces a user-specified error bound to limit numerical distortion, it does not preserve the field's topology: small admissible perturbations can create or eliminate critical points on which downstream feature analysis depends. Existing GPU compressors achieve high throughput but are topology-agnostic, whereas the only compressor with provable critical-point preservation (cpSZ) runs on the CPU at throughput far below the data-generation rates of modern GPU-based systems. We observe that, although preserving critical points is inherently a coupled and sequential constraint, it can be reformulated into independent parallel tasks, either on a per-block basis or, speculatively, on a per-point basis. We present FaCTz, the first GPU-based error-bounded lossy compressor that guarantees critical-point preservation. FaCTz provides a block-wise mode optimized for throughput and a speculative per-point mode optimized for compression ratio. Across three vector-field datasets, FaCTz preserves every critical point while achieving throughput of up to 60 GB/s, approximately two orders of magnitude (up to approximately 640x) faster than the multithreaded CPU implementation of cpSZ. Its speculative mode further improves the compression ratio by approximately a factor of two over the throughput-oriented mode.",
+    "published_date": "2026-08-11T07:14:50Z",
+    "updated_date": "2026-08-11T07:14:50Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.10586v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.10586v1",
+    "source": "arxiv",
+    "score": 0.4353692674636841,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Error-bounded lossy compression is essential for storing and transferring the vector-field data produced by large-scale scientific simulations. Although it enforces a user-specified error bound to limit numerical distortion, it does not preserve the field's topology: small admissible perturbations c...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.15117v1",
+    "title": "Anatomy of a Quantized Agent: VRAM Stability and Forecasting in Code-Synthesis Agentic Workloads",
+    "authors": [
+      "Anubhab Banerjee"
+    ],
+    "abstract": "Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-based CUDA-kernel-synthesis agent (AgentK), a 4-bit quantization family (Q4 K M), a single NVIDIA H100 GPU, and four LLM backbones across 1,920 trajectories. Focusing on peak-memory forecasting behavior, we report two primary observations. First, closed-form analytical models achieve competitive accuracy when provided with two empirical constants: loaded-weight VRAM and a fixed activation-memory overhead. Supplied with live GPU readings and ground-truth trajectory parameters, the closed-form model matches or outperforms the best learned baseline on three of the four backbones (test MAPE 2.2-4.4% vs. 3.4-6.5%, p = 0.76). The exception is the smallest backbone (Phi-4-mini), where minimal VRAM variance (CV 0.3%) causes dynamic modeling to underperform simple regression. Second, compile success strictly bifurcates by backbone capacity (from 5.7% for Phi-4-mini to 62.0% for Qwen2.5-Coder-14B), demonstrating that functional code synthesis remains constrained by intrinsic LLM capabilities rather than available memory. Furthermore, because overall peak-memory variance is remarkably low across all backbones (CV 0.3-9.4%), learned prompt-feature regression offers statistically insignificant improvements over a constant-mean baseline. Consequently, we find no justification for deploying complex predictive VRAM models in highly quantized, weight-dominated regimes. We release the evaluated corpus and anonymized framework to support replication.",
+    "published_date": "2026-08-15T08:39:43Z",
+    "updated_date": "2026-08-15T08:39:43Z",
+    "categories": [
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.15117v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15117v1",
+    "source": "arxiv",
+    "score": 0.4325100016593933,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、隐私信息检索、大模型推理相关技术。\n\n核心内容：Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-b...。",
+    "takeaway": "本文聚焦CUDA、隐私信息检索、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.13122v1",
+    "title": "Validation-Centric AI-Assisted GPU Porting of a 250,000+ Line Legacy Weather Simulation Code",
+    "authors": [
+      "Tetsuya Hoshino",
+      "Masaya Kato",
+      "Kazuhisa Tsuboki",
+      "Daichi Mukunoki",
+      "Takahiro Katagiri",
+      "Toshihiro Hanawa"
+    ],
+    "abstract": "Recent advances in large language models have made CLI-based AI agents a practical tool for accelerating GPU porting of large legacy scientific applications. Such applications, however, are not merely old code bases; they are scientific assets whose credibility has been accumulated through long-term development, comparison with observations, and use in domain studies. GPU porting must therefore preserve this scientific validity while adapting the implementation to GPU-centric HPC systems. This paper presents a validation-centric AI-assisted GPU porting workflow through a case study of CReSS, a legacy Fortran weather simulation code with more than 250,000 lines. The workflow uses an AI agent to extract OpenMP regions, generate dump-based kernel benchmarks from physically meaningful simulation states, apply OpenACC transformations, and validate results through element-wise comparison with dumped reference data and application-level validation. Using a real typhoon simulation, the workflow produced numerically validated GPU implementations for 162 target kernels and achieved a 5.1x application-level speedup within practical wall-clock development cost. In particular, it detected numerical discrepancies in five kernels caused by floating-point and intrinsic-function differences, including threshold-sensitive branch divergence and cancellation effects, enabling feedback to the application developers. The case study suggests that, for large legacy scientific applications requiring dump-based validation, practical AI-assisted GPU porting must manage session-spanning context, runtime-state reconstruction, and costly recovery from small static-analysis omissions. These findings demonstrate that AI-assisted GPU porting requires not only code generation, but validation-centric workflow design.",
+    "published_date": "2026-08-13T11:52:51Z",
+    "updated_date": "2026-08-13T11:52:51Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.13122v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.13122v1",
+    "source": "arxiv",
+    "score": 0.393652378320694,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Recent advances in large language models have made CLI-based AI agents a practical tool for accelerating GPU porting of large legacy scientific applications. Such applications, however, are not merely old code bases; they are scientific assets whose credibility has been accumulated through long-term...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.13127v2",
+    "title": "Potential Applications of HBF in LLM Serving Systems",
+    "authors": [
+      "Yihan Yin",
+      "Yinlun Zhao",
+      "Zhixin Yun",
+      "Guanying Wu",
+      "Feng Zhu",
+      "Kai Tao",
+      "Shu Li",
+      "Fei Huang",
+      "Zhe Zhang",
+      "Shuangchen Li",
+      "Hongzhong Zheng"
+    ],
+    "abstract": "LLM serving is increasingly constrained by memory capacity as model weights, KV caches, and the number of served model variants continue to grow. This report examines High-Bandwidth Flash (HBF) as a capacity-oriented extension to HBM-based serving systems. We first discuss how HBF can be integrated into the GPU memory hierarchy without undermining the bandwidth expected by the compute die. We then model the system-level value of added capacity as expanded residency for read-mostly model-state objects. Under this view, HBF can improve MoE serving by enabling more expert replicas and can improve multi-model serving by reducing model loading and supporting hot-model replication. Our simulation results show that these benefits depend on preserving the HBM-resident execution path while using HBF to expand the resident set of model weights.",
+    "published_date": "2026-08-13T11:57:41Z",
+    "updated_date": "2026-08-14T07:56:34Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.13127v2",
+    "arxiv_url": "https://arxiv.org/abs/2608.13127v2",
+    "source": "arxiv",
+    "score": 0.3877452600002289,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、带宽优化相关技术。\n\n核心内容：LLM serving is increasingly constrained by memory capacity as model weights, KV caches, and the number of served model variants continue to grow. This report examines High-Bandwidth Flash (HBF) as a capacity-oriented extension to HBM-based serving systems。",
+    "takeaway": "本文聚焦GPU 内存管理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  }
+]
