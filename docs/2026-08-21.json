@@ -1,0 +1,301 @@
+[
+  {
+    "id": "2608.16491v1",
+    "title": "FROG: Efficient Range-Filtering Approximate Nearest Neighbor Search on GPUs",
+    "authors": [
+      "Xiaokun Cui",
+      "Pengbo Liu",
+      "Jiadong Xie",
+      "Yingfan Liu",
+      "Hui Li",
+      "Jeffrey Xu Yu",
+      "Jiangtao Cui"
+    ],
+    "abstract": "Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the range predicate. However, existing RFANNS methods are not well suited to high-throughput GPU execution. CPU indexes offer limited parallel scalability, generic GPU filtering is highly selectivity-dependent, and GPU indexes built from locally optimized subgraphs can incur long search trajectories and redundant distance computations. To address these limitations, we present FROG, a GPU-oriented RFANNS index that replaces multiple locally optimal substructure building with a globally aware, vertex-centric design. It organizes diverse expansion neighbor candidates for each vertex in a GPU-friendly structure and rapidly identifies the expansion neighbors used for computation at query time. Moreover, GPU-oriented algorithms and implementations are developed for both index construction and query processing. Experiments on six datasets show that FROG improves mixed-selectivity query throughput by 14.7--37.7$\\times$ over 44-core CPU baselines and 4.5--7.6$\\times$ over the strongest GPU baseline. It also accelerates index construction by 2.4--14.8$\\times$ over the GPU baseline.",
+    "published_date": "2026-08-17T12:29:11Z",
+    "updated_date": "2026-08-17T12:29:11Z",
+    "categories": [
+      "cs.DB",
+      "cs.IR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.16491v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16491v1",
+    "source": "arxiv",
+    "score": 0.6047172844409943,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 索引、查询处理、近邻搜索、向量数据库、吞吐量相关技术。\n\n核心内容：Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the...。",
+    "takeaway": "本文聚焦GPU 索引、查询处理、近邻搜索，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2608.19628v1",
+    "title": "A Thread-Register Decoupled GPU Execution Model for Efficient Tensor Computation",
+    "authors": [
+      "Zihan Liu",
+      "Jingwen Leng",
+      "Yangjie Zhou",
+      "Yitong Ding",
+      "Guanlin Zhu",
+      "Yilu Huang",
+      "Chiheng Jin",
+      "Chen Zhang",
+      "Shixuan Sun",
+      "Yu Feng",
+      "Anbang Wu",
+      "Minyi Guo",
+      "Jian Weng",
+      "Jiajin Tu",
+      "Junsong Wang"
+    ],
+    "abstract": "Modern GPUs increasingly integrate Tensor Cores into the execution pipeline. Although aggregate tensor throughput continues to grow, aided by an operand supply that has evolved from register-based in Ampere to redundancy-free, memory-based in Hopper and Blackwell, efficiently orchestrating the complete tensor compute pipeline for the modern AI workloads remains challenging. We identify the fundamental bottlenecks as fixed parallelism and coarse-grained scheduling, both of which are exposed by modern AI workloads that interleave diverse non-GEMM operations with GEMM. To orchestrate tensor computation efficiently, we propose FIBER, a new architecture that extends the GPU SIMT (single instruction, multiple thread) model. Its basic execution instance, the \\emph{fiber}, is decoupled from private register ownership, carrying only minimal control state while accessing an SM's registers through a shared view. This enables dynamic parallelism scaling, fine-grained register-level dataflow scheduling, and offers a redundancy-free alternative for matrix operand supply. We extend the ISA, microarchitecture, and compiler to realize shared-register addressing, conflict-free operand delivery, and fiber-based program mapping. Under a typical mixed-precision LLM serving scenario, FIBER achieves a 2.25x end-to-end speedup on Ampere (1.15x for the original FP16 computation), with 1.8x and 2.09x on Hopper and Blackwell respectively, and kernel-level gains up to 2.49x.",
+    "published_date": "2026-08-20T04:35:13Z",
+    "updated_date": "2026-08-20T04:35:13Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.19628v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.19628v1",
+    "source": "arxiv",
+    "score": 0.5152429032325745,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量计算、吞吐量相关技术。\n\n核心内容：Modern GPUs increasingly integrate Tensor Cores into the execution pipeline. Although aggregate tensor throughput continues to grow, aided by an operand supply that has evolved from register-based in Ampere to redundancy-free, memory-based in Hopper and Blackwell, efficiently orchestrating the compl...。",
+    "takeaway": "本文聚焦张量计算、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.16308v1",
+    "title": "DB-SpMSpV: Dual-View Blocked Sparse Matrix-Sparse Vector Multiplication for Dynamic GPU Workloads",
+    "authors": [
+      "Xing Cong",
+      "Chenhao Xie",
+      "Rui Wang",
+      "Zhongzhi Luan",
+      "Yi Liu",
+      "Depei Qian"
+    ],
+    "abstract": "Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution. Existing GPU SpMSpV methods often bind storage layouts, push/pull traversal, and kernels together, making fine-grained adaptation difficult without extra storage or scheduling overhead.\n  This paper presents DB-SpMSpV, a dual-view blocked SpMSpV framework for dynamic GPU workloads. DB-SpMSpV partitions the matrix into fixed-size 2D blocks, maintains block-level CSR/CSC views at the high level, and reuses a single low-level block payload to support both row-driven pull and column-driven push. At runtime, it selects the global traversal path based on input block sparsity, chooses block microkernels from the local matrix/vector block structure, and uses load balancing, asynchronous prefetching, and hierarchical writeback to reduce irregular memory accesses, writeback conflicts, and load imbalance. We further integrate the framework into DB-BFS and DB-Decoding.\n  We evaluate DB-SpMSpV on NVIDIA A100 and RTX 4090 using SuiteSparse matrices, symmetric graphs, and three open-source LLMs. Across input sparsities, DB-SpMSpV achieves average speedups of 5.48$\\times$--64.34$\\times$ over cuSPARSE and 2.36$\\times$--14.01$\\times$ over TileSpMSpV on A100, with similar gains on RTX 4090. DB-BFS further improves end-to-end graph traversal by 2.66$\\times$ over TileBFS on A100 and 3.60$\\times$ on RTX 4090 on average, while DB-Decoding accelerates single-token linear layers by up to 4.50$\\times$.",
+    "published_date": "2026-08-17T09:18:19Z",
+    "updated_date": "2026-08-17T09:18:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16308v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16308v1",
+    "source": "arxiv",
+    "score": 0.5088958132266999,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.16387v1",
+    "title": "GPU implementation of a resource-constrained virtual machine",
+    "authors": [
+      "Simone Li",
+      "Vladislav Brusokas",
+      "Andrei Ghita",
+      "Shuxuan Li",
+      "Wim Vanderbauwhede"
+    ],
+    "abstract": "One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal. In this paper we explore the deployment of one such resource constrained VM, Uxn, on GPU.\n  We show that for competitive performance it is essential to make use of the GPU data parallelism. We present an OpenMP-style parallelism API for Uxntal, the stack-based assembly-style language for the Uxn platform. We demonstrate that exemplar code using our API can run at comparable performance even on an integrated GPU. Specifically, our evaluation results show that using this approach improves performance on the compute-intensive Stencil benchmark with 19x and frame rate on the graphics-intensive Bunnymark benchmark with 7x.\n  In practice, all laptops and desktops and even mobile devices have a GPU and our work shows that they can be used to execute frugal workloads effectively.",
+    "published_date": "2026-08-17T10:38:56Z",
+    "updated_date": "2026-08-17T10:38:56Z",
+    "categories": [
+      "cs.DC",
+      "cs.GR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16387v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16387v1",
+    "source": "arxiv",
+    "score": 0.4540176236629486,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.15994v1",
+    "title": "Building An Integrated Vector Database System in PostgreSQL",
+    "authors": [
+      "Jiayi Liu",
+      "Te Guo",
+      "Jianguo Wang"
+    ],
+    "abstract": "This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance gap with specialized vector databases. In our earlier work, we introduced PostgreSQL-V 1.0, which addresses this issue by separating vector index structures from PostgreSQL's storage engine, enabling vector search performance close to that of native vector index libraries while preserving SQL compatibility. However, we find that PostgreSQL-V 1.0 has three limitations that matter for real-world workloads: it only supports a single connection (without concurrency), recovery time grows with index size, and physical replication is unsupported.\n  We further present PostgreSQL-V 2.0, which closes all three gaps. PostgreSQL-V 2.0's concurrency support enables fully concurrent vector searches and updates across PostgreSQL's multi-process backends, delivering up to 36.4x the throughput of PostgreSQL-V 1.0 while serving 32 concurrent clients. PostgreSQL-V 2.0's fast crash recovery keeps cost independent of total index size, remaining near 20 ms while PostgreSQL-V 1.0's grows into seconds-scale. PostgreSQL-V 2.0's physical replication support extends physical replication to the decoupled index, preserving index consistency on standbys without burdening the primary node. Together, these advances make PostgreSQL-V 2.0 a fully concurrent, crash-resilient, and replication-ready vector database inside PostgreSQL.",
+    "published_date": "2026-08-17T01:07:38Z",
+    "updated_date": "2026-08-17T01:07:38Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.15994v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15994v1",
+    "source": "arxiv",
+    "score": 0.44320516228675844,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究向量数据库、存储引擎、数据库系统、吞吐量相关技术。\n\n核心内容：This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance ...。",
+    "takeaway": "本文聚焦向量数据库、存储引擎、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2608.15117v1",
+    "title": "Anatomy of a Quantized Agent: VRAM Stability and Forecasting in Code-Synthesis Agentic Workloads",
+    "authors": [
+      "Anubhab Banerjee"
+    ],
+    "abstract": "Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-based CUDA-kernel-synthesis agent (AgentK), a 4-bit quantization family (Q4 K M), a single NVIDIA H100 GPU, and four LLM backbones across 1,920 trajectories. Focusing on peak-memory forecasting behavior, we report two primary observations. First, closed-form analytical models achieve competitive accuracy when provided with two empirical constants: loaded-weight VRAM and a fixed activation-memory overhead. Supplied with live GPU readings and ground-truth trajectory parameters, the closed-form model matches or outperforms the best learned baseline on three of the four backbones (test MAPE 2.2-4.4% vs. 3.4-6.5%, p = 0.76). The exception is the smallest backbone (Phi-4-mini), where minimal VRAM variance (CV 0.3%) causes dynamic modeling to underperform simple regression. Second, compile success strictly bifurcates by backbone capacity (from 5.7% for Phi-4-mini to 62.0% for Qwen2.5-Coder-14B), demonstrating that functional code synthesis remains constrained by intrinsic LLM capabilities rather than available memory. Furthermore, because overall peak-memory variance is remarkably low across all backbones (CV 0.3-9.4%), learned prompt-feature regression offers statistically insignificant improvements over a constant-mean baseline. Consequently, we find no justification for deploying complex predictive VRAM models in highly quantized, weight-dominated regimes. We release the evaluated corpus and anonymized framework to support replication.",
+    "published_date": "2026-08-15T08:39:43Z",
+    "updated_date": "2026-08-15T08:39:43Z",
+    "categories": [
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.15117v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15117v1",
+    "source": "arxiv",
+    "score": 0.4325099718570709,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、隐私信息检索、大模型推理相关技术。\n\n核心内容：Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-b...。",
+    "takeaway": "本文聚焦CUDA、隐私信息检索、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.19935v1",
+    "title": "ParaWeb: Parallel Programming Patterns for Web Development",
+    "authors": [
+      "Suejb Memeti"
+    ],
+    "abstract": "Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution, but developers lack high-level abstractions that capture recurring parallel structures as reusable patterns. In this paper, we present ParaWeb, a TypeScript library that implements ten parallel programming patterns for server-side Node.js, client-side browser environments, and WebGPU compute shaders. ParaWeb provides three implementation variants for each pattern: a message-passing (MP) variant based on structured cloning via postMessage, a shared-buffer (Shared) variant that uses SharedArrayBuffer with typed array views, and a GPU variant that uses WebGPU compute shaders for hardware-accelerated execution. We describe the architecture, design decisions, and pattern-specific implementation strategies, and we evaluate the performance of all thirty implementations across three data sizes. Experimental evaluation results show that the CPU-based variants achieve speedups of up to 11.6x with 16 threads for compute-bound patterns, while the GPU variants reach speedups of up to 260x for compute-bound patterns with high arithmetic intensity such as Farm, Scatter, Reduce, and Map. A case study on five image-convolution filters further shows that GPU acceleration reaches up to 414x speedup over single-threaded CPU on non-separable kernels, with consistent scaling across 1024x1024$, 2048x2048$, and 4K images.",
+    "published_date": "2026-08-20T11:50:27Z",
+    "updated_date": "2026-08-20T11:50:27Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.19935v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.19935v1",
+    "source": "arxiv",
+    "score": 0.405718652009964,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、GPU 加速相关技术。\n\n核心内容：Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution...。",
+    "takeaway": "本文聚焦GPU 计算、GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.14498v1",
+    "title": "Rollplex: Cross-Phase GPU Spatial Sharing for Vision Language Model Post-Training",
+    "authors": [
+      "Hanfeng Lu",
+      "Tianyu Feng",
+      "Suyi Li",
+      "Yuheng Zhao",
+      "Wei Gao",
+      "Shaopan Xiong",
+      "Ju Huang",
+      "Siran Yang",
+      "Jiamang Wang",
+      "Lin Qu",
+      "Wei Wang"
+    ],
+    "abstract": "Vision-language models (VLMs) enable embodied agents to reason and act from visual observations and language instructions. Reinforcement learning (RL) post-training enhances these capabilities using task feedback, but current on-policy RL runtimes execute rollout, reference scoring, and actor training in strict serial phases. While effective for text-only RL, this phase-granular execution is wasteful for VLMs, where processing dense video inputs and prompt prefixes occupies a large fraction of each phase. Because prefix processing is independent of the generated response, it can be run alongside rollout decoding, which leaves GPU compute capacity underutilized, without breaking synchronous on-policy semantics.\n  We present Rollplex, a runtime that decomposes the reference and training phase and moves the prefix computation into the rollout decode window. Realizing this schedule requires more than concurrent kernel launches: naive colocation of Qwen2.5-VL-32\\,B requires roughly 165\\,GiB per GPU, while rollout and training prefer different tensor-parallel (TP) degrees and weight layouts. Rollplex addresses these constraints with two mechanisms. Phase-aware memory management controls HBM residency according to producer--consumer lifetimes. Parallelism-aware weight sharing uses the same physical storage for layout-compatible tensors across distinct TP degrees and reconstructs only incompatible tensors, avoiding a complete second actor copy. On 32 H800 GPUs, Rollplex achieves $1.23\\times$--$1.30\\times$ speedup over serial colocation and $1.57\\times$--$2.24\\times$ over disaggregation under the same GPU budget, while preserving the synchronous RL update.",
+    "published_date": "2026-08-14T17:13:34Z",
+    "updated_date": "2026-08-14T17:13:34Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.14498v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.14498v1",
+    "source": "arxiv",
+    "score": 0.3837814164161682,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 计算、聚合相关技术。\n\n核心内容：Vision-language models (VLMs) enable embodied agents to reason and act from visual observations and language instructions. Reinforcement learning (RL) post-training enhances these capabilities using task feedback, but current on-policy RL runtimes execute rollout, reference scoring, and actor traini...。",
+    "takeaway": "本文聚焦GPU 计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.16157v1",
+    "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+    "authors": [
+      "Shuo Yang",
+      "Xiaoze Fan",
+      "Melissa Pan",
+      "Haocheng Xi",
+      "Zhe Wang",
+      "Shanlin Sun",
+      "Kurt Keutzer",
+      "Song Han",
+      "Matei Zaharia",
+      "Chenfeng Xu",
+      "Ion Stoica"
+    ],
+    "abstract": "Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the full serving stack, including model layout and loading, expert residency, CPU--GPU execution, agentic state reuse, and runtime memory management, around two realities of local AI: agent workloads continuously change their execution pattern, and edge hardware exposes heterogeneous resources whose balance differs from machine to machine. Rather than committing to a fixed offloading strategy, FreeToken continuously maps computation and model state onto the resources actually available. FreeToken supports more than 20 MoE models and real coding and tool-using agents across hardware ranging from an 8GB laptop GPU to a single workstation GPU. More importantly, it changes what these machines can practically serve, from a 35B model on a laptop to a 284B model on a gaming desktop and the 753B GLM-5.2 on a single workstation GPU. FreeToken turns open weights into deployable local software, making the machines users already own a practical platform for frontier-scale intelligence. We release the system at flashml.ai.",
+    "published_date": "2026-08-17T06:22:53Z",
+    "updated_date": "2026-08-17T06:22:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16157v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16157v1",
+    "source": "arxiv",
+    "score": 0.38347499012947084,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化相关技术。\n\n核心内容：Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform。",
+    "takeaway": "本文聚焦异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2608.17641v2",
+    "title": "rl-triton: High-Performance Triton GPU Kernels for Reinforcement Learning Credit Assignment",
+    "authors": [
+      "Lars Simon Zehnder"
+    ],
+    "abstract": "We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE), V-Trace, Retrace($λ$), TD($λ$) returns, discounted returns, eligibility traces, and episodic prefix sums - as instances of a single first-order linear recurrence solved in $O(\\log T)$ parallel steps. All algorithms share the same associative scan operator, with algorithm-specific fused Triton kernels constructing their recurrence coefficients on-chip. We verify the associative operator algebraically and define the treatment of terminated and truncated episodes explicitly. Benchmarks show a 1.6-5.70$\\times$ full-call speedup over a vectorized torch-compile baseline in the massively parallel simulation regime (thousands of environments, short rollouts). The reported range covers all seven algorithms on both GPUs, both with and without per-step truncation handling. For most algorithms, speedups increase at longer sequence lengths, as the baseline requires more scan stages as $\\log T$ grows, each adding an intermediate HBM round-trip. The library is available at https://github.com/simonsays1980/rl-triton.",
+    "published_date": "2026-08-18T10:58:20Z",
+    "updated_date": "2026-08-19T11:29:40Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.17641v2",
+    "arxiv_url": "https://arxiv.org/abs/2608.17641v2",
+    "source": "arxiv",
+    "score": 0.38049511432647704,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、向量化执行、扫描相关技术。\n\n核心内容：We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE...。",
+    "takeaway": "本文聚焦GPU 核函数、向量化执行、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
