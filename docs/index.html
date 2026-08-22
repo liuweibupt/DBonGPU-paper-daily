@@ -524,6 +524,52 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.16308v1" target="_blank">DB-SpMSpV: Dual-View Blocked Sparse Matrix-Sparse Vector Multiplication for Dynamic GPU Workloads</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.509</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Xing Cong, Chenhao Xie, Rui Wang, Zhongzhi Luan 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution. Existing GPU SpMSpV methods often bind storage layouts, push/pull traversal, and kernels together, making fine-grained adaptation difficult without extra storage or scheduling overhead.
+  This paper presents DB-SpMSpV, a dual-view blocked SpMSpV framework for dynamic GPU workloads. DB-SpMSpV partitions the matrix into fixed-size 2D blocks, maintains block-level CSR/CSC views at the high level, and reuses a single low-level block payload to support both row-driven pull and column-driven push. At runtime...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.16308v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.16308v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.16387v1" target="_blank">GPU implementation of a resource-constrained virtual machine</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.454</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.GR</span> 
+        </div>
+        <div class="paper-authors">Simone Li, Vladislav Brusokas, Andrei Ghita, Shuxuan Li 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal. In this paper we explore the deployment of one such resource constrained VM, Uxn, on GPU.
+  We show that for competitive performance it is essential to make use of the GPU data parallelism. We present an OpenMP-style parallelism API for Uxntal, the stack-based assembly-style language for the Uxn platform. We demonstrate that exemplar code using our API can run at comparable performance even on an integrated GPU. Specifically, our evaluation results show that using this approach improves performanc...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.16387v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.16387v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.15994v1" target="_blank">Building An Integrated Vector Database System in PostgreSQL</a></span>
         </div>
         <div class="paper-meta">
@@ -545,7 +591,95 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">4</span>
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.15117v1" target="_blank">Anatomy of a Quantized Agent: VRAM Stability and Forecasting in Code-Synthesis Agentic Workloads</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.433</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> 
+        </div>
+        <div class="paper-authors">Anubhab Banerjee</div>
+        <div class="paper-abstract-cn">本文研究CUDA、隐私信息检索、大模型推理相关技术。
+
+核心内容：Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-b...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-based CUDA-kernel-synthesis agent (AgentK), a 4-bit quantization family (Q4 K M), a single NVIDIA H100 GPU, and four LLM backbones across 1,920 trajectories. Focusing on peak-memory forecasting behavior, we report two primary observations. First, closed-form analytical models achieve competitive accuracy when provided with two empirical constants: loaded-weight VRAM and a fixed activation-memory overhead. Supplied with live GPU readings and ground-truth trajectory parameters, the closed-form mode...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、隐私信息检索、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.15117v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.15117v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.19935v1" target="_blank">ParaWeb: Parallel Programming Patterns for Web Development</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.406</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Suejb Memeti</div>
+        <div class="paper-abstract-cn">本文研究GPU 计算、GPU 加速相关技术。
+
+核心内容：Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution, but developers lack high-level abstractions that capture recurring parallel structures as reusable patterns. In this paper, we present ParaWeb, a TypeScript library that implements ten parallel programming patterns for server-side Node.js, client-side browser environments, and WebGPU compute shaders. ParaWeb provides three implementation variants for each pattern: a message-passing (MP) variant based on structured cloning via postMessage, a shared-buffer (Shared) variant that uses SharedArrayB...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 计算、GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.19935v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.19935v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.16157v1" target="_blank">FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.383</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Shuo Yang, Xiaoze Fan, Melissa Pan, Haocheng Xi 等 (11 位作者)</div>
+        <div class="paper-abstract-cn">本文研究异构计算、带宽优化相关技术。
+
+核心内容：Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the full serving stack, including model layout and loading, expert residency, CPU--GPU execution, agentic state reuse, and runtime memory management, around two realities of local AI: agent workloads continuously change their execution pattern, and edge hardware exposes heterogeneous resources whose balance differs from machine to machine. Rather than committing to a fixed offloading strategy, FreeToken continuously maps computation and model state onto the resources actually available. FreeToken su...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.16157v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.16157v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.17641v2" target="_blank">rl-triton: High-Performance Triton GPU Kernels for Reinforcement Learning Credit Assignment</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.380</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Lars Simon Zehnder</div>
+        <div class="paper-abstract-cn">本文研究GPU 核函数、向量化执行、扫描相关技术。
+
+核心内容：We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE), V-Trace, Retrace($λ$), TD($λ$) returns, discounted returns, eligibility traces, and episodic prefix sums - as instances of a single first-order linear recurrence solved in $O(\log T)$ parallel steps. All algorithms share the same associative scan operator, with algorithm-specific fused Triton kernels constructing their recurrence coefficients on-chip. We verify the associative operator algebraically and define the treatment of terminated and truncated episodes explicitly. Benchmarks show a 1....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数、向量化执行、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.17641v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.17641v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2608.15764v1" target="_blank">Concurrency Response of Plain Global Loads on the NVIDIA H100</a></span>
         </div>
         <div class="paper-meta">
@@ -565,147 +699,13 @@
             <a href="https://arxiv.org/pdf/2608.15764v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.15002v1" target="_blank">NPU Offloading of a Frozen Visual Encoder for Robot Policy Training</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.354</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.RO</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> 
-        </div>
-        <div class="paper-authors">Hyojun Yun, Seungjae Won, Hyungpil Moon</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、GPU 计算相关技术。
-
-核心内容：When a robot policy is trained for a new task or dataset, its visual encoder can be frozen and only its action generation module trained, reducing training cost. Freezing removes the encoder's backward pass, but its forward pass must still run at every training step because the input images change, ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">When a robot policy is trained for a new task or dataset, its visual encoder can be frozen and only its action generation module trained, reducing training cost. Freezing removes the encoder's backward pass, but its forward pass must still run at every training step because the input images change, so it keeps consuming GPU compute. We therefore ask whether moving this computation to a low power AI accelerator such as an NPU can reduce total energy despite the added data transfer and longer training time, and how it affects policy performance. We built an asynchronous training pipeline that uses both a GPU and an NPU for the AR-Actor specialist. The frozen visual encoder runs in A8W8 INT8 on a Mobilint Aries2 NPU, while the FP32 action expert is trained on an NVIDIA GeForce RTX 5060 Ti GPU...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、GPU 计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.15002v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.15002v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.19395v1" target="_blank">HYDRA: A Heterogeneous Chiplet DSE Framework for Serving Dynamic Hybrid LLM Workloads</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.351</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> <span class="tag">cs.LG</span> 
-        </div>
-        <div class="paper-authors">Jiahao Lin, Alish Kanani, Sangwan Lee, Jaehyun Park 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算、通信优化、带宽优化、吞吐量相关技术。
-
-核心内容：Hybrid Transformer-Mamba large language models (LLMs) enhance long-context efficiency, but their heterogeneous computation and communication patterns complicate efficient hardware acceleration. Chiplet-based architectures offer a scalable solution by integrating specialized compute and memory units。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Hybrid Transformer-Mamba large language models (LLMs) enhance long-context efficiency, but their heterogeneous computation and communication patterns complicate efficient hardware acceleration. Chiplet-based architectures offer a scalable solution by integrating specialized compute and memory units. However, the design space spanning static architectural configurations and dynamic runtime policies is prohibitively large to explore exhaustively. To address this challenge, we present HYDRA, a comprehensive design space exploration framework for hybrid LLM serving on heterogeneous chiplet systems. HYDRA jointly explores chiplet composition, placement, inter-chiplet bandwidth provisioning, dynamic batching, and runtime scheduling. It integrates communication-aware placement, dynamic batching, ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.19395v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.19395v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.15927v1" target="_blank">CQELS-TrieGS Report: Snapshot-Consistent Constant-Delay Enumeration for Streaming Graph Queries</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.331</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Danh Le-Phuoc</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：Continuous graph-query engines must process edge updates while making current query results available to concurrent consumers. Existing dynamic constant-delay enumeration methods provide strong per-answer delay guarantees, but are commonly formulated as a maintenance-then-enumeration process。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Continuous graph-query engines must process edge updates while making current query results available to concurrent consumers. Existing dynamic constant-delay enumeration methods provide strong per-answer delay guarantees, but are commonly formulated as a maintenance-then-enumeration process. Conversely, multicore graph-stream engines emphasize update throughput and match discovery without a query-level snapshot guarantee for concurrent full-result enumeration.
-  We present TrieGS, a shared-memory engine that maintains a query-specific CDE state over a streaming graph. Logically, TrieGS uses the classical free-connex witness-subtree enumerator; dynamically, it maintains multiplicity payloads using exact signed deltas; physically, RDF terms are dictionary-encoded and the required access str...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.15927v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.15927v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.15709v1" target="_blank">Logos: Certified Order-Sensitive SQL Rewrites with Mechanized Semantics and LLM Guidance</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.315</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Jingyu Ke, Jingyang Li, Guoqiang Li</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：SQL rewrite verification must account for duplicate rows, observable row order, and typed value semantics. Existing verifiers have yet to combine proofs over database instances of arbitrary finite cardinality with an ordered-list semantics for nested, tie-sensitive top-k。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">SQL rewrite verification must account for duplicate rows, observable row order, and typed value semantics. Existing verifiers have yet to combine proofs over database instances of arbitrary finite cardinality with an ordered-list semantics for nested, tie-sensitive top-k. Unbounded systems reason primarily over bags or handle ordering through syntax-directed restrictions, whereas bounded systems either support only restricted top-k forms or impose a deterministic ordering rather than retain all legal tie-induced outcomes. Support for typed expression and aggregate semantics, observable runtime errors, and integrity constraints also remains partial.
-  In Rocq, we mechanize a compositional logical semantics for a typed SQL core with order-sensitive operators, capturing all possible ordered l...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.15709v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.15709v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.16953v1" target="_blank">DTX: A Throughput-First Training Accelerator for Diffusion and Transformer Models</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.312</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Shashank</div>
-        <div class="paper-abstract-cn">本文研究吞吐量相关技术。
-
-核心内容：DTX is a throughput-first training accelerator for diffusion and transformer models. Any summation serialized through a single FP32 adder is a loop-carried dependence that pins a machine near 2 FLOP/cycle regardless of physical design; DTX is built so no such chain exists anywhere -- every reduction...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">DTX is a throughput-first training accelerator for diffusion and transformer models. Any summation serialized through a single FP32 adder is a loop-carried dependence that pins a machine near 2 FLOP/cycle regardless of physical design; DTX is built so no such chain exists anywhere -- every reduction is a pipelined binary tree, every FP operator a two-stage pipeline with initiation interval 1. An 8x8 weight-stationary systolic array with a fused bias/activation/cast epilogue, an 8-lane vector unit, an 8-lane fused AdamW pipeline, and a pipelined Philox Gaussian source are co-issued by a 4-slot VLIW word over a unified 64 KB tile space: 216 FLOP/cycle, roughly 108x the loop-carried floor per clock. With no canonical sum order, verification is tolerance-based against an FP64 golden model, wit...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.16953v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.16953v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2608.18366v1" target="_blank">MAGMA: Mixture-Model Adaptive Gaussian Model Acceleration</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.299</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Peter Forcha, Harshitha Kajekusumadhar, Mbua Peter, Muhammed Kawser 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
-
-核心内容：Conventional FPGA-based Gaussian Mixture Model (GMM) accelerators use offline-trained, fixed parameters, limiting their ability to adapt to evolving scene statistics in long-lived edge systems. We present MAGMA, a fully synthesizable fixed-point FPGA architecture that performs concurrent GMM inferen...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Conventional FPGA-based Gaussian Mixture Model (GMM) accelerators use offline-trained, fixed parameters, limiting their ability to adapt to evolving scene statistics in long-lived edge systems. We present MAGMA, a fully synthesizable fixed-point FPGA architecture that performs concurrent GMM inference and online Expectation-Maximization (EM) parameter adaptation from a streaming RGB pixel input. MAGMA combines a pipelined inference datapath with a background update engine using hardware-friendly transcendental approximations---a range-reduced Chebyshev exponential, a CLZ-based logarithm, and a shift-and-subtract divider---alongside guards against variance collapse and cluster death that stabilize online fixed-point EM. Implemented on an AMD Spartan-7 XC7S50 with $K=4$ clusters, MAGMA runs ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2608.18366v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2608.18366v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-08-22 02:12:24</span>
+            <span>上次运行：2026-08-22 02:38:23</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>

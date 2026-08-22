@@ -70,6 +70,64 @@
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
   },
   {
+    "id": "2608.16308v1",
+    "title": "DB-SpMSpV: Dual-View Blocked Sparse Matrix-Sparse Vector Multiplication for Dynamic GPU Workloads",
+    "authors": [
+      "Xing Cong",
+      "Chenhao Xie",
+      "Rui Wang",
+      "Zhongzhi Luan",
+      "Yi Liu",
+      "Depei Qian"
+    ],
+    "abstract": "Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution. Existing GPU SpMSpV methods often bind storage layouts, push/pull traversal, and kernels together, making fine-grained adaptation difficult without extra storage or scheduling overhead.\n  This paper presents DB-SpMSpV, a dual-view blocked SpMSpV framework for dynamic GPU workloads. DB-SpMSpV partitions the matrix into fixed-size 2D blocks, maintains block-level CSR/CSC views at the high level, and reuses a single low-level block payload to support both row-driven pull and column-driven push. At runtime, it selects the global traversal path based on input block sparsity, chooses block microkernels from the local matrix/vector block structure, and uses load balancing, asynchronous prefetching, and hierarchical writeback to reduce irregular memory accesses, writeback conflicts, and load imbalance. We further integrate the framework into DB-BFS and DB-Decoding.\n  We evaluate DB-SpMSpV on NVIDIA A100 and RTX 4090 using SuiteSparse matrices, symmetric graphs, and three open-source LLMs. Across input sparsities, DB-SpMSpV achieves average speedups of 5.48$\\times$--64.34$\\times$ over cuSPARSE and 2.36$\\times$--14.01$\\times$ over TileSpMSpV on A100, with similar gains on RTX 4090. DB-BFS further improves end-to-end graph traversal by 2.66$\\times$ over TileBFS on A100 and 3.60$\\times$ on RTX 4090 on average, while DB-Decoding accelerates single-token linear layers by up to 4.50$\\times$.",
+    "published_date": "2026-08-17T09:18:19Z",
+    "updated_date": "2026-08-17T09:18:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16308v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16308v1",
+    "source": "arxiv",
+    "score": 0.5088958728313446,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.16387v1",
+    "title": "GPU implementation of a resource-constrained virtual machine",
+    "authors": [
+      "Simone Li",
+      "Vladislav Brusokas",
+      "Andrei Ghita",
+      "Shuxuan Li",
+      "Wim Vanderbauwhede"
+    ],
+    "abstract": "One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal. In this paper we explore the deployment of one such resource constrained VM, Uxn, on GPU.\n  We show that for competitive performance it is essential to make use of the GPU data parallelism. We present an OpenMP-style parallelism API for Uxntal, the stack-based assembly-style language for the Uxn platform. We demonstrate that exemplar code using our API can run at comparable performance even on an integrated GPU. Specifically, our evaluation results show that using this approach improves performance on the compute-intensive Stencil benchmark with 19x and frame rate on the graphics-intensive Bunnymark benchmark with 7x.\n  In practice, all laptops and desktops and even mobile devices have a GPU and our work shows that they can be used to execute frugal workloads effectively.",
+    "published_date": "2026-08-17T10:38:56Z",
+    "updated_date": "2026-08-17T10:38:56Z",
+    "categories": [
+      "cs.DC",
+      "cs.GR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16387v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16387v1",
+    "source": "arxiv",
+    "score": 0.4540177130699158,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
     "id": "2608.15994v1",
     "title": "Building An Integrated Vector Database System in PostgreSQL",
     "authors": [
@@ -96,6 +154,116 @@
     "innovation": "1. 针对特定场景提出优化方案"
   },
   {
+    "id": "2608.15117v1",
+    "title": "Anatomy of a Quantized Agent: VRAM Stability and Forecasting in Code-Synthesis Agentic Workloads",
+    "authors": [
+      "Anubhab Banerjee"
+    ],
+    "abstract": "Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-based CUDA-kernel-synthesis agent (AgentK), a 4-bit quantization family (Q4 K M), a single NVIDIA H100 GPU, and four LLM backbones across 1,920 trajectories. Focusing on peak-memory forecasting behavior, we report two primary observations. First, closed-form analytical models achieve competitive accuracy when provided with two empirical constants: loaded-weight VRAM and a fixed activation-memory overhead. Supplied with live GPU readings and ground-truth trajectory parameters, the closed-form model matches or outperforms the best learned baseline on three of the four backbones (test MAPE 2.2-4.4% vs. 3.4-6.5%, p = 0.76). The exception is the smallest backbone (Phi-4-mini), where minimal VRAM variance (CV 0.3%) causes dynamic modeling to underperform simple regression. Second, compile success strictly bifurcates by backbone capacity (from 5.7% for Phi-4-mini to 62.0% for Qwen2.5-Coder-14B), demonstrating that functional code synthesis remains constrained by intrinsic LLM capabilities rather than available memory. Furthermore, because overall peak-memory variance is remarkably low across all backbones (CV 0.3-9.4%), learned prompt-feature regression offers statistically insignificant improvements over a constant-mean baseline. Consequently, we find no justification for deploying complex predictive VRAM models in highly quantized, weight-dominated regimes. We release the evaluated corpus and anonymized framework to support replication.",
+    "published_date": "2026-08-15T08:39:43Z",
+    "updated_date": "2026-08-15T08:39:43Z",
+    "categories": [
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.15117v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15117v1",
+    "source": "arxiv",
+    "score": 0.4325100016593933,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、隐私信息检索、大模型推理相关技术。\n\n核心内容：Analytical models of peak VRAM consumption for LLM inference decompose memory into weight-storage, KV-cache, and activation terms parameterized by step count, tool invocations, and context expansion. We evaluate this decomposition empirically within a strictly scoped measurement study: a LangGraph-b...。",
+    "takeaway": "本文聚焦CUDA、隐私信息检索、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.19935v1",
+    "title": "ParaWeb: Parallel Programming Patterns for Web Development",
+    "authors": [
+      "Suejb Memeti"
+    ],
+    "abstract": "Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution, but developers lack high-level abstractions that capture recurring parallel structures as reusable patterns. In this paper, we present ParaWeb, a TypeScript library that implements ten parallel programming patterns for server-side Node.js, client-side browser environments, and WebGPU compute shaders. ParaWeb provides three implementation variants for each pattern: a message-passing (MP) variant based on structured cloning via postMessage, a shared-buffer (Shared) variant that uses SharedArrayBuffer with typed array views, and a GPU variant that uses WebGPU compute shaders for hardware-accelerated execution. We describe the architecture, design decisions, and pattern-specific implementation strategies, and we evaluate the performance of all thirty implementations across three data sizes. Experimental evaluation results show that the CPU-based variants achieve speedups of up to 11.6x with 16 threads for compute-bound patterns, while the GPU variants reach speedups of up to 260x for compute-bound patterns with high arithmetic intensity such as Farm, Scatter, Reduce, and Map. A case study on five image-convolution filters further shows that GPU acceleration reaches up to 414x speedup over single-threaded CPU on non-separable kernels, with consistent scaling across 1024x1024$, 2048x2048$, and 4K images.",
+    "published_date": "2026-08-20T11:50:27Z",
+    "updated_date": "2026-08-20T11:50:27Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.19935v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.19935v1",
+    "source": "arxiv",
+    "score": 0.40571877121925354,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、GPU 加速相关技术。\n\n核心内容：Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution...。",
+    "takeaway": "本文聚焦GPU 计算、GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.16157v1",
+    "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+    "authors": [
+      "Shuo Yang",
+      "Xiaoze Fan",
+      "Melissa Pan",
+      "Haocheng Xi",
+      "Zhe Wang",
+      "Shanlin Sun",
+      "Kurt Keutzer",
+      "Song Han",
+      "Matei Zaharia",
+      "Chenfeng Xu",
+      "Ion Stoica"
+    ],
+    "abstract": "Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the full serving stack, including model layout and loading, expert residency, CPU--GPU execution, agentic state reuse, and runtime memory management, around two realities of local AI: agent workloads continuously change their execution pattern, and edge hardware exposes heterogeneous resources whose balance differs from machine to machine. Rather than committing to a fixed offloading strategy, FreeToken continuously maps computation and model state onto the resources actually available. FreeToken supports more than 20 MoE models and real coding and tool-using agents across hardware ranging from an 8GB laptop GPU to a single workstation GPU. More importantly, it changes what these machines can practically serve, from a 35B model on a laptop to a 284B model on a gaming desktop and the 753B GLM-5.2 on a single workstation GPU. FreeToken turns open weights into deployable local software, making the machines users already own a practical platform for frontier-scale intelligence. We release the system at flashml.ai.",
+    "published_date": "2026-08-17T06:22:53Z",
+    "updated_date": "2026-08-17T06:22:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16157v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16157v1",
+    "source": "arxiv",
+    "score": 0.3834751391410828,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化相关技术。\n\n核心内容：Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform。",
+    "takeaway": "本文聚焦异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2608.17641v2",
+    "title": "rl-triton: High-Performance Triton GPU Kernels for Reinforcement Learning Credit Assignment",
+    "authors": [
+      "Lars Simon Zehnder"
+    ],
+    "abstract": "We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE), V-Trace, Retrace($λ$), TD($λ$) returns, discounted returns, eligibility traces, and episodic prefix sums - as instances of a single first-order linear recurrence solved in $O(\\log T)$ parallel steps. All algorithms share the same associative scan operator, with algorithm-specific fused Triton kernels constructing their recurrence coefficients on-chip. We verify the associative operator algebraically and define the treatment of terminated and truncated episodes explicitly. Benchmarks show a 1.6-5.70$\\times$ full-call speedup over a vectorized torch-compile baseline in the massively parallel simulation regime (thousands of environments, short rollouts). The reported range covers all seven algorithms on both GPUs, both with and without per-step truncation handling. For most algorithms, speedups increase at longer sequence lengths, as the baseline requires more scan stages as $\\log T$ grows, each adding an intermediate HBM round-trip. The library is available at https://github.com/simonsays1980/rl-triton.",
+    "published_date": "2026-08-18T10:58:20Z",
+    "updated_date": "2026-08-19T11:29:40Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.17641v2",
+    "arxiv_url": "https://arxiv.org/abs/2608.17641v2",
+    "source": "arxiv",
+    "score": 0.38049529314041136,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、向量化执行、扫描相关技术。\n\n核心内容：We present rl-triton, an open-source library of high-performance GPU kernels for reinforcement learning credit assignment, implemented in Triton. The core contribution is a unified associative scan framework that recasts seven distinct RL estimation algorithms - Generalized Advantage Estimation (GAE...。",
+    "takeaway": "本文聚焦GPU 核函数、向量化执行、扫描，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
     "id": "2608.15764v1",
     "title": "Concurrency Response of Plain Global Loads on the NVIDIA H100",
     "authors": [
@@ -120,165 +288,5 @@
     "abstract_cn": "本文研究GPU 核函数、CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：The bandwidth a memory-bound GPU kernel sustains is set by how many bytes it keeps in flight. We use Little's Law here as throughput accounting, not as a measured hardware pool。",
     "takeaway": "本文聚焦GPU 核函数、CUDA、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2608.15002v1",
-    "title": "NPU Offloading of a Frozen Visual Encoder for Robot Policy Training",
-    "authors": [
-      "Hyojun Yun",
-      "Seungjae Won",
-      "Hyungpil Moon"
-    ],
-    "abstract": "When a robot policy is trained for a new task or dataset, its visual encoder can be frozen and only its action generation module trained, reducing training cost. Freezing removes the encoder's backward pass, but its forward pass must still run at every training step because the input images change, so it keeps consuming GPU compute. We therefore ask whether moving this computation to a low power AI accelerator such as an NPU can reduce total energy despite the added data transfer and longer training time, and how it affects policy performance. We built an asynchronous training pipeline that uses both a GPU and an NPU for the AR-Actor specialist. The frozen visual encoder runs in A8W8 INT8 on a Mobilint Aries2 NPU, while the FP32 action expert is trained on an NVIDIA GeForce RTX 5060 Ti GPU. We compared a GPU-only baseline with four conditions, L1 to L4, which gradually extend NPU offloading from one to four Transformer encoder layers. Each condition was trained for 30,000 steps with three random seeds. We measured GPU board power for the GPU-only condition and combined GPU and NPU board power for the NPU conditions. Energy per sample decreased by 17.1% in L1, which offloaded ResNet18 and the first encoder layer, and by 27.9% in L4, which offloaded ResNet18 and all four encoder layers. In contrast, training time per sample increased by 15.2% in L1 and 37.7% in L4, and peak allocated GPU memory decreased by 19.8 to 20.7%. The 15 resulting policies were each evaluated with the same 300 environment seeds, for a total of 4,500 simulator rollouts. The combined success rate was 93.33% for GPU-only and 91.44 to 92.89% for the NPU conditions. These results show that NPU offloading of a frozen visual encoder can reduce training energy, but it increases training time and lowers policy success rate by 0.44 to 1.89 percentage points compared with GPU-only training.",
-    "published_date": "2026-08-15T03:19:09Z",
-    "updated_date": "2026-08-15T03:19:09Z",
-    "categories": [
-      "cs.RO",
-      "cs.AR",
-      "cs.LG"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2608.15002v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.15002v1",
-    "source": "arxiv",
-    "score": 0.3541643154621124,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究GPU 内存管理、GPU 计算相关技术。\n\n核心内容：When a robot policy is trained for a new task or dataset, its visual encoder can be frozen and only its action generation module trained, reducing training cost. Freezing removes the encoder's backward pass, but its forward pass must still run at every training step because the input images change, ...。",
-    "takeaway": "本文聚焦GPU 内存管理、GPU 计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2608.19395v1",
-    "title": "HYDRA: A Heterogeneous Chiplet DSE Framework for Serving Dynamic Hybrid LLM Workloads",
-    "authors": [
-      "Jiahao Lin",
-      "Alish Kanani",
-      "Sangwan Lee",
-      "Jaehyun Park",
-      "Umit Ogras"
-    ],
-    "abstract": "Hybrid Transformer-Mamba large language models (LLMs) enhance long-context efficiency, but their heterogeneous computation and communication patterns complicate efficient hardware acceleration. Chiplet-based architectures offer a scalable solution by integrating specialized compute and memory units. However, the design space spanning static architectural configurations and dynamic runtime policies is prohibitively large to explore exhaustively. To address this challenge, we present HYDRA, a comprehensive design space exploration framework for hybrid LLM serving on heterogeneous chiplet systems. HYDRA jointly explores chiplet composition, placement, inter-chiplet bandwidth provisioning, dynamic batching, and runtime scheduling. It integrates communication-aware placement, dynamic batching, elastic task scheduling, and a fast Markov-based performance estimator that captures multi-tenant runtime dynamics for efficient and accurate exploration. Across all workloads, HYDRA delivers 1.55x the throughput and 43.7 percent lower time-to-first-token on average, with throughput gains reaching up to 2.3x compared to state-of-the-art baselines. These results highlight that co-designing architecture and runtime policies is critical for efficient large-scale LLM serving on heterogeneous chiplet systems.",
-    "published_date": "2026-08-19T19:26:21Z",
-    "updated_date": "2026-08-19T19:26:21Z",
-    "categories": [
-      "cs.AR",
-      "cs.AI",
-      "cs.LG"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2608.19395v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.19395v1",
-    "source": "arxiv",
-    "score": 0.3513093888759613,
-    "reasons": [
-      "与数据库系统和查询处理相关"
-    ],
-    "abstract_cn": "本文研究异构计算、通信优化、带宽优化、吞吐量相关技术。\n\n核心内容：Hybrid Transformer-Mamba large language models (LLMs) enhance long-context efficiency, but their heterogeneous computation and communication patterns complicate efficient hardware acceleration. Chiplet-based architectures offer a scalable solution by integrating specialized compute and memory units。",
-    "takeaway": "本文聚焦异构计算、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
-  },
-  {
-    "id": "2608.15927v1",
-    "title": "CQELS-TrieGS Report: Snapshot-Consistent Constant-Delay Enumeration for Streaming Graph Queries",
-    "authors": [
-      "Danh Le-Phuoc"
-    ],
-    "abstract": "Continuous graph-query engines must process edge updates while making current query results available to concurrent consumers. Existing dynamic constant-delay enumeration methods provide strong per-answer delay guarantees, but are commonly formulated as a maintenance-then-enumeration process. Conversely, multicore graph-stream engines emphasize update throughput and match discovery without a query-level snapshot guarantee for concurrent full-result enumeration.\n  We present TrieGS, a shared-memory engine that maintains a query-specific CDE state over a streaming graph. Logically, TrieGS uses the classical free-connex witness-subtree enumerator; dynamically, it maintains multiplicity payloads using exact signed deltas; physically, RDF terms are dictionary-encoded and the required access structures are realized as versioned LFNT relations (Lock-Free Nested Trie). The new systems problem is not relation-level snapshotting alone: an enumeration job must observe one consistent state across all interdependent base relations, projections, views, and indexes. TrieGS therefore publishes an atomic root vector only after an update epoch has fully propagated. Enumeration threads pin one published root vector and traverse immutable versions while later updates continue.",
-    "published_date": "2026-08-16T20:42:25Z",
-    "updated_date": "2026-08-16T20:42:25Z",
-    "categories": [
-      "cs.DB"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2608.15927v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.15927v1",
-    "source": "arxiv",
-    "score": 0.33050674200057983,
-    "reasons": [
-      "与数据库系统和查询处理相关"
-    ],
-    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Continuous graph-query engines must process edge updates while making current query results available to concurrent consumers. Existing dynamic constant-delay enumeration methods provide strong per-answer delay guarantees, but are commonly formulated as a maintenance-then-enumeration process。",
-    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
-  },
-  {
-    "id": "2608.15709v1",
-    "title": "Logos: Certified Order-Sensitive SQL Rewrites with Mechanized Semantics and LLM Guidance",
-    "authors": [
-      "Jingyu Ke",
-      "Jingyang Li",
-      "Guoqiang Li"
-    ],
-    "abstract": "SQL rewrite verification must account for duplicate rows, observable row order, and typed value semantics. Existing verifiers have yet to combine proofs over database instances of arbitrary finite cardinality with an ordered-list semantics for nested, tie-sensitive top-k. Unbounded systems reason primarily over bags or handle ordering through syntax-directed restrictions, whereas bounded systems either support only restricted top-k forms or impose a deterministic ordering rather than retain all legal tie-induced outcomes. Support for typed expression and aggregate semantics, observable runtime errors, and integrity constraints also remains partial.\n  In Rocq, we mechanize a compositional logical semantics for a typed SQL core with order-sensitive operators, capturing all possible ordered lists and observable SQL failures in the supported fragment. To our knowledge, this is the first mechanized SQL semantics to combine nested, tie-sensitive top-k with a closure-based lifting from bag equivalence to ordered-list equivalence, enabling sound reuse of bag-theoretic reasoning while preserving compositionality across order-sensitive and correlated contexts. The formalization further provides executable semantics for PostgreSQL-oriented scalar and aggregate evaluation and an explicit account of integrity constraints. Building on this semantics, we present Logos, an LLM-guided Rocq verifier for unbounded SQL rewrite equivalence. Its agent uses a verified SQL-specific lemma library to construct query-specific Rocq proofs. Our evaluation covers 389 query pairs from Apache Calcite optimizer tests, TPC-H and TPC-DS rewrites, and WeTune's real-application workloads. Logos solves 86.9% of them, compared with 64.0% for SQLSolver, the strongest baseline.",
-    "published_date": "2026-08-16T12:25:16Z",
-    "updated_date": "2026-08-16T12:25:16Z",
-    "categories": [
-      "cs.DB"
-    ],
-    "primary_category": "cs.DB",
-    "pdf_url": "https://arxiv.org/pdf/2608.15709v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.15709v1",
-    "source": "arxiv",
-    "score": 0.3150604510307312,
-    "reasons": [
-      "与数据库系统和查询处理相关"
-    ],
-    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：SQL rewrite verification must account for duplicate rows, observable row order, and typed value semantics. Existing verifiers have yet to combine proofs over database instances of arbitrary finite cardinality with an ordered-list semantics for nested, tie-sensitive top-k。",
-    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 优化查询处理流程"
-  },
-  {
-    "id": "2608.16953v1",
-    "title": "DTX: A Throughput-First Training Accelerator for Diffusion and Transformer Models",
-    "authors": [
-      "Shashank"
-    ],
-    "abstract": "DTX is a throughput-first training accelerator for diffusion and transformer models. Any summation serialized through a single FP32 adder is a loop-carried dependence that pins a machine near 2 FLOP/cycle regardless of physical design; DTX is built so no such chain exists anywhere -- every reduction is a pipelined binary tree, every FP operator a two-stage pipeline with initiation interval 1. An 8x8 weight-stationary systolic array with a fused bias/activation/cast epilogue, an 8-lane vector unit, an 8-lane fused AdamW pipeline, and a pipelined Philox Gaussian source are co-issued by a 4-slot VLIW word over a unified 64 KB tile space: 216 FLOP/cycle, roughly 108x the loop-carried floor per clock. With no canonical sum order, verification is tolerance-based against an FP64 golden model, with exact-equality carve-outs and a demonstrably tight bound (a premise-violating program measured 5,340x over budget; 17/17 tests, 107,108 elements, zero failures). Semantic gates confirm an on-device diffusion-MLP run reduces its loss (56.4 to 26.0), counter-level proof shows compute/DMA overlap sustains the peak, an analytical iso-node decomposition bounds the GPU comparison at 6-10x throughput per watt, and a sky130 campaign hardens the systolic array to DRC-clean GDS at 83.3 MHz post-route -- 1.9x an optimized loop-carried MAC baseline on the same node and flow.",
-    "published_date": "2026-08-16T08:33:37Z",
-    "updated_date": "2026-08-16T08:33:37Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2608.16953v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.16953v1",
-    "source": "arxiv",
-    "score": 0.31185264825820924,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：DTX is a throughput-first training accelerator for diffusion and transformer models. Any summation serialized through a single FP32 adder is a loop-carried dependence that pins a machine near 2 FLOP/cycle regardless of physical design; DTX is built so no such chain exists anywhere -- every reduction...。",
-    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
-  },
-  {
-    "id": "2608.18366v1",
-    "title": "MAGMA: Mixture-Model Adaptive Gaussian Model Acceleration",
-    "authors": [
-      "Peter Forcha",
-      "Harshitha Kajekusumadhar",
-      "Mbua Peter",
-      "Muhammed Kawser",
-      "Audrey Cyriell Mo"
-    ],
-    "abstract": "Conventional FPGA-based Gaussian Mixture Model (GMM) accelerators use offline-trained, fixed parameters, limiting their ability to adapt to evolving scene statistics in long-lived edge systems. We present MAGMA, a fully synthesizable fixed-point FPGA architecture that performs concurrent GMM inference and online Expectation-Maximization (EM) parameter adaptation from a streaming RGB pixel input. MAGMA combines a pipelined inference datapath with a background update engine using hardware-friendly transcendental approximations---a range-reduced Chebyshev exponential, a CLZ-based logarithm, and a shift-and-subtract divider---alongside guards against variance collapse and cluster death that stabilize online fixed-point EM. Implemented on an AMD Spartan-7 XC7S50 with $K=4$ clusters, MAGMA runs at 74.49~MHz using 7,779 LUTs, 91 DSPs, and no block RAM, consuming 274~mW. It achieves an $11.8\\times$ inference speedup and an $81\\times$ M-step speedup over software, while spatial subsampling reduces per-update pixel volume by $40\\times$ with minimal impact on EM convergence. Under a synthetic non-stationary scene, MAGMA's online adaptation improves mean pixel accuracy over a static baseline (81.5\\% vs.\\ 79.7\\%), demonstrating that full online GMM learning is achievable on a commodity edge FPGA.",
-    "published_date": "2026-08-18T22:37:36Z",
-    "updated_date": "2026-08-18T22:37:36Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2608.18366v1",
-    "arxiv_url": "https://arxiv.org/abs/2608.18366v1",
-    "source": "arxiv",
-    "score": 0.2994183301925659,
-    "reasons": [
-      "与硬件架构或数据系统相关"
-    ],
-    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Conventional FPGA-based Gaussian Mixture Model (GMM) accelerators use offline-trained, fixed parameters, limiting their ability to adapt to evolving scene statistics in long-lived edge systems. We present MAGMA, a fully synthesizable fixed-point FPGA architecture that performs concurrent GMM inferen...。",
-    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 针对特定场景提出优化方案"
   }
 ]
