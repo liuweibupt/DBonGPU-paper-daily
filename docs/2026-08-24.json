@@ -1,0 +1,304 @@
+[
+  {
+    "id": "2608.16491v1",
+    "title": "FROG: Efficient Range-Filtering Approximate Nearest Neighbor Search on GPUs",
+    "authors": [
+      "Xiaokun Cui",
+      "Pengbo Liu",
+      "Jiadong Xie",
+      "Yingfan Liu",
+      "Hui Li",
+      "Jeffrey Xu Yu",
+      "Jiangtao Cui"
+    ],
+    "abstract": "Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the range predicate. However, existing RFANNS methods are not well suited to high-throughput GPU execution. CPU indexes offer limited parallel scalability, generic GPU filtering is highly selectivity-dependent, and GPU indexes built from locally optimized subgraphs can incur long search trajectories and redundant distance computations. To address these limitations, we present FROG, a GPU-oriented RFANNS index that replaces multiple locally optimal substructure building with a globally aware, vertex-centric design. It organizes diverse expansion neighbor candidates for each vertex in a GPU-friendly structure and rapidly identifies the expansion neighbors used for computation at query time. Moreover, GPU-oriented algorithms and implementations are developed for both index construction and query processing. Experiments on six datasets show that FROG improves mixed-selectivity query throughput by 14.7--37.7$\\times$ over 44-core CPU baselines and 4.5--7.6$\\times$ over the strongest GPU baseline. It also accelerates index construction by 2.4--14.8$\\times$ over the GPU baseline.",
+    "published_date": "2026-08-17T12:29:11Z",
+    "updated_date": "2026-08-17T12:29:11Z",
+    "categories": [
+      "cs.DB",
+      "cs.IR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.16491v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16491v1",
+    "source": "arxiv",
+    "score": 0.604717344045639,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 索引、查询处理、近邻搜索、向量数据库、吞吐量相关技术。\n\n核心内容：Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the...。",
+    "takeaway": "本文聚焦GPU 索引、查询处理、近邻搜索，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2608.20586v1",
+    "title": "Portability of Fortran's 'do concurrent' on GPUs II",
+    "authors": [
+      "Ronald M. Caplan",
+      "Miko M. Stulajter",
+      "Jon A. Linker",
+      "Jeff Larkin",
+      "Nikolaos Tselepidis",
+      "Harald Servat",
+      "Shiquan Su",
+      "Giacomo Capodaglio",
+      "Johanna Potyka"
+    ],
+    "abstract": "There continues to be growing interest in using standard language constructs for parallel and accelerated HPC computing, avoiding the need for (sometimes vendor-specific) external APIs. For Fortran applications, language features such as 'do concurrent' loops open the door for compilers to implement multi-threaded, GPU-accelerated, and even distributed multi-node code with only the standard language. Here, we explore the current status of using 'do concurrent' for GPU-accelerated Fortran applications across three major GPU vendors (NVIDIA, AMD, and Intel). Using a production application, we test their current capabilities, showing where the standard language alone can be used, and where augmenting the code with a directive-based API (e.g., OpenMP) is still desirable or required. Multi-GPU tests are performed with GPU-aware MPI libraries. We find that the three GPU vendors can now GPU-accelerate pure Fortran (zero directives), but that manual data movement directives can help with performance and compatibility. The results show that there is rapid advancement towards making GPU-accelerated scientific HPC code performance portable using the Fortran standard language.",
+    "published_date": "2026-08-20T21:49:07Z",
+    "updated_date": "2026-08-20T21:49:07Z",
+    "categories": [
+      "cs.PL",
+      "astro-ph.IM",
+      "astro-ph.SR",
+      "cs.CE",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.20586v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.20586v1",
+    "source": "arxiv",
+    "score": 0.5833863031864166,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、多 GPU相关技术。\n\n核心内容：There continues to be growing interest in using standard language constructs for parallel and accelerated HPC computing, avoiding the need for (sometimes vendor-specific) external APIs. For Fortran applications, language features such as 'do concurrent' loops open the door for compilers to implement...。",
+    "takeaway": "本文聚焦GPU 加速、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2608.19628v1",
+    "title": "A Thread-Register Decoupled GPU Execution Model for Efficient Tensor Computation",
+    "authors": [
+      "Zihan Liu",
+      "Jingwen Leng",
+      "Yangjie Zhou",
+      "Yitong Ding",
+      "Guanlin Zhu",
+      "Yilu Huang",
+      "Chiheng Jin",
+      "Chen Zhang",
+      "Shixuan Sun",
+      "Yu Feng",
+      "Anbang Wu",
+      "Minyi Guo",
+      "Jian Weng",
+      "Jiajin Tu",
+      "Junsong Wang"
+    ],
+    "abstract": "Modern GPUs increasingly integrate Tensor Cores into the execution pipeline. Although aggregate tensor throughput continues to grow, aided by an operand supply that has evolved from register-based in Ampere to redundancy-free, memory-based in Hopper and Blackwell, efficiently orchestrating the complete tensor compute pipeline for the modern AI workloads remains challenging. We identify the fundamental bottlenecks as fixed parallelism and coarse-grained scheduling, both of which are exposed by modern AI workloads that interleave diverse non-GEMM operations with GEMM. To orchestrate tensor computation efficiently, we propose FIBER, a new architecture that extends the GPU SIMT (single instruction, multiple thread) model. Its basic execution instance, the \\emph{fiber}, is decoupled from private register ownership, carrying only minimal control state while accessing an SM's registers through a shared view. This enables dynamic parallelism scaling, fine-grained register-level dataflow scheduling, and offers a redundancy-free alternative for matrix operand supply. We extend the ISA, microarchitecture, and compiler to realize shared-register addressing, conflict-free operand delivery, and fiber-based program mapping. Under a typical mixed-precision LLM serving scenario, FIBER achieves a 2.25x end-to-end speedup on Ampere (1.15x for the original FP16 computation), with 1.8x and 2.09x on Hopper and Blackwell respectively, and kernel-level gains up to 2.49x.",
+    "published_date": "2026-08-20T04:35:13Z",
+    "updated_date": "2026-08-20T04:35:13Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.19628v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.19628v1",
+    "source": "arxiv",
+    "score": 0.515243022441864,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量计算、吞吐量相关技术。\n\n核心内容：Modern GPUs increasingly integrate Tensor Cores into the execution pipeline. Although aggregate tensor throughput continues to grow, aided by an operand supply that has evolved from register-based in Ampere to redundancy-free, memory-based in Hopper and Blackwell, efficiently orchestrating the compl...。",
+    "takeaway": "本文聚焦张量计算、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.16308v1",
+    "title": "DB-SpMSpV: Dual-View Blocked Sparse Matrix-Sparse Vector Multiplication for Dynamic GPU Workloads",
+    "authors": [
+      "Xing Cong",
+      "Chenhao Xie",
+      "Rui Wang",
+      "Zhongzhi Luan",
+      "Yi Liu",
+      "Depei Qian"
+    ],
+    "abstract": "Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution. Existing GPU SpMSpV methods often bind storage layouts, push/pull traversal, and kernels together, making fine-grained adaptation difficult without extra storage or scheduling overhead.\n  This paper presents DB-SpMSpV, a dual-view blocked SpMSpV framework for dynamic GPU workloads. DB-SpMSpV partitions the matrix into fixed-size 2D blocks, maintains block-level CSR/CSC views at the high level, and reuses a single low-level block payload to support both row-driven pull and column-driven push. At runtime, it selects the global traversal path based on input block sparsity, chooses block microkernels from the local matrix/vector block structure, and uses load balancing, asynchronous prefetching, and hierarchical writeback to reduce irregular memory accesses, writeback conflicts, and load imbalance. We further integrate the framework into DB-BFS and DB-Decoding.\n  We evaluate DB-SpMSpV on NVIDIA A100 and RTX 4090 using SuiteSparse matrices, symmetric graphs, and three open-source LLMs. Across input sparsities, DB-SpMSpV achieves average speedups of 5.48$\\times$--64.34$\\times$ over cuSPARSE and 2.36$\\times$--14.01$\\times$ over TileSpMSpV on A100, with similar gains on RTX 4090. DB-BFS further improves end-to-end graph traversal by 2.66$\\times$ over TileBFS on A100 and 3.60$\\times$ on RTX 4090 on average, while DB-Decoding accelerates single-token linear layers by up to 4.50$\\times$.",
+    "published_date": "2026-08-17T09:18:19Z",
+    "updated_date": "2026-08-17T09:18:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16308v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16308v1",
+    "source": "arxiv",
+    "score": 0.5088958728313446,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sparse Matrix-Sparse Vector Multiplication (SpMSpV) is a core primitive in graph traversal, sparse linear algebra, and sparse model inference. Its input vector is often dynamically sparse, so the best GPU execution path depends on both global sparsity and the local vector-block distribution。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.21157v1",
+    "title": "HIERA: Workload-Aware Planning Across Implementation Spaces for GPU Kernel Optimization",
+    "authors": [
+      "Jinghao Wang",
+      "Qiqi Gu",
+      "Chenpeng Wu",
+      "Jianguo Yao",
+      "Haibing Guan",
+      "Xijun Li"
+    ],
+    "abstract": "High-performance GPU kernels underpin modern deep learning and scientific computing. As workloads become increasingly diverse and GPU hardware evolves rapidly, developing efficient methods for automated GPU kernel generation and optimization has become increasingly important. Existing LLM-based methods typically optimize within a fixed implementation space, limiting either optimization flexibility or search efficiency. We propose \\textsc{HIERA}, a hierarchical search-space planning framework for GPU kernel optimization. \\textsc{HIERA} constructs contract-augmented task specifications, selects an appropriate implementation space across PyTorch operators, CUDA libraries, and custom CUDA kernels, and uses profiling feedback and expert knowledge to guide structured iterative refinement. Experiments on KernelBench across multiple various workload levels and base LLMs show that \\textsc{HIERA} delivers stronger overall implementation validity, sample efficiency, and optimization performance than existing training-free methods, while remaining competitive with the training-based CUDA-L1 without additional model training. A case study on a specialized stencil operator from scientific computing further achieves a \\(1.53\\times\\) speedup over cuDNN, demonstrating the potentiality of the general framework beyond standard machine-learning workloads.",
+    "published_date": "2026-08-21T14:29:20Z",
+    "updated_date": "2026-08-21T14:29:20Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.21157v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.21157v1",
+    "source": "arxiv",
+    "score": 0.48479182839393614,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、PyTorch相关技术。\n\n核心内容：High-performance GPU kernels underpin modern deep learning and scientific computing. As workloads become increasingly diverse and GPU hardware evolves rapidly, developing efficient methods for automated GPU kernel generation and optimization has become increasingly important。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、PyTorch，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.16387v1",
+    "title": "GPU implementation of a resource-constrained virtual machine",
+    "authors": [
+      "Simone Li",
+      "Vladislav Brusokas",
+      "Andrei Ghita",
+      "Shuxuan Li",
+      "Wim Vanderbauwhede"
+    ],
+    "abstract": "One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal. In this paper we explore the deployment of one such resource constrained VM, Uxn, on GPU.\n  We show that for competitive performance it is essential to make use of the GPU data parallelism. We present an OpenMP-style parallelism API for Uxntal, the stack-based assembly-style language for the Uxn platform. We demonstrate that exemplar code using our API can run at comparable performance even on an integrated GPU. Specifically, our evaluation results show that using this approach improves performance on the compute-intensive Stencil benchmark with 19x and frame rate on the graphics-intensive Bunnymark benchmark with 7x.\n  In practice, all laptops and desktops and even mobile devices have a GPU and our work shows that they can be used to execute frugal workloads effectively.",
+    "published_date": "2026-08-17T10:38:56Z",
+    "updated_date": "2026-08-17T10:38:56Z",
+    "categories": [
+      "cs.DC",
+      "cs.GR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.16387v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.16387v1",
+    "source": "arxiv",
+    "score": 0.4540177130699158,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：One of the main reasons compute hardware becomes obsolete is software bloat: resource requirements increase for every iteration of a software product. Resource constrained VMs are one way to combat software bloat as they post a hard limit on the resources and so force the programmer to be frugal。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2608.15994v1",
+    "title": "Building An Integrated Vector Database System in PostgreSQL",
+    "authors": [
+      "Jiayi Liu",
+      "Te Guo",
+      "Jianguo Wang"
+    ],
+    "abstract": "This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance gap with specialized vector databases. In our earlier work, we introduced PostgreSQL-V 1.0, which addresses this issue by separating vector index structures from PostgreSQL's storage engine, enabling vector search performance close to that of native vector index libraries while preserving SQL compatibility. However, we find that PostgreSQL-V 1.0 has three limitations that matter for real-world workloads: it only supports a single connection (without concurrency), recovery time grows with index size, and physical replication is unsupported.\n  We further present PostgreSQL-V 2.0, which closes all three gaps. PostgreSQL-V 2.0's concurrency support enables fully concurrent vector searches and updates across PostgreSQL's multi-process backends, delivering up to 36.4x the throughput of PostgreSQL-V 1.0 while serving 32 concurrent clients. PostgreSQL-V 2.0's fast crash recovery keeps cost independent of total index size, remaining near 20 ms while PostgreSQL-V 1.0's grows into seconds-scale. PostgreSQL-V 2.0's physical replication support extends physical replication to the decoupled index, preserving index consistency on standbys without burdening the primary node. Together, these advances make PostgreSQL-V 2.0 a fully concurrent, crash-resilient, and replication-ready vector database inside PostgreSQL.",
+    "published_date": "2026-08-17T01:07:38Z",
+    "updated_date": "2026-08-17T01:07:38Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.15994v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.15994v1",
+    "source": "arxiv",
+    "score": 0.4432052516937256,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究向量数据库、存储引擎、数据库系统、吞吐量相关技术。\n\n核心内容：This paper presents PostgreSQL-V 2.0, a scalable integrated vector database system inside PostgreSQL. Existing PostgreSQL-based vector search systems such as pgvector embed vector indexes into PostgreSQL's page-oriented storage engine, incurring significant overhead that leads to a huge performance ...。",
+    "takeaway": "本文聚焦向量数据库、存储引擎、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2608.20725v1",
+    "title": "Enabling Memory-efficient Im2win Convolution with Multi-precision Support on GPU CUDA and Tensor Cores",
+    "authors": [
+      "Xiang Fu",
+      "Jixiang Ma",
+      "Xinpeng Zhang",
+      "Peng Zhao",
+      "Shuai Lu",
+      "Xu Tony Liu"
+    ],
+    "abstract": "Convolution is a principal computational bottleneck in deep neural networks, and its efficiency depends on tight integration between algorithms and GPU hardware. Existing GPU convolution methods suffer from large memory overhead, poor cache utilization, limited effectiveness across kernel sizes, or numerical instability. This work extends the im2win paradigm -- a universal, memory-efficient convolution method with contiguous memory access for all kernel sizes -- to run efficiently in full precision on CUDA cores and half precision on tensor cores. By introducing new kernel designs and optimizations such as zig-zag memory access and asynchronous data movement, im2win efficiently exploits hardware-accelerated half-precision matrix multiply-accumulate operations. Across twelve CNN benchmarks, im2win achieves up to 2.8x higher TFLOPS than its CUDA core implementation, 1.4x higher than cuDNN, and 6.4x higher than GEMM-based convolution with cuBLAS, while using as little as 53% and 35% of their memory, respectively. These results establish im2win as a unified, high-performance convolution framework for modern GPU architectures.",
+    "published_date": "2026-08-21T04:09:32Z",
+    "updated_date": "2026-08-21T04:09:32Z",
+    "categories": [
+      "cs.DC",
+      "cs.CV"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.20725v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.20725v1",
+    "source": "arxiv",
+    "score": 0.43349058747291563,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、网络相关技术。\n\n核心内容：Convolution is a principal computational bottleneck in deep neural networks, and its efficiency depends on tight integration between algorithms and GPU hardware. Existing GPU convolution methods suffer from large memory overhead, poor cache utilization, limited effectiveness across kernel sizes, or ...。",
+    "takeaway": "本文聚焦CUDA、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.21163v1",
+    "title": "GrAND: GPU-based Dynamic Graph Indexes for Approximate Nearest Neighbour Search",
+    "authors": [
+      "Karthik Venkatasubba",
+      "Shivendra Deshpande",
+      "Shivram S",
+      "Jyothi Vedurada"
+    ],
+    "abstract": "Modern Approximate Nearest Neighbour Search (ANNS) applications operate over continuously evolving vector collections and require graph indexes that sustain high-throughput searches while incorporating insertions and deletions with high recall. However, most GPU graph indexes are static or provide limited update support. Updates require neighbour discovery, reverse-edge creation, pruning, and deletion-induced graph repair; executing these operations concurrently introduces redundant distance computations and conflicting accesses to shared adjacency lists. Background-rebuild-based deletion further incurs substantial computation, additional memory consumption, and interference with foreground queries.\n  We present GrAND (GPU-based Dynamic Graph Indexes for Approximate Nearest Neighbour Search), a GPU-native collection of dynamic-update algorithms for two popular graph indexes, Vamana and CAGRA. GrAND consolidates graph repair across a batch, eliminating redundant pruning computations, and employs a lock-free find-and-replace strategy for parallel adjacency-list updates. For reliable in-place deletion, GrAND constructs an on-demand reverse graph on the GPU, accurately identifying incoming edges without permanently duplicating the index. We evaluate GrAND on seven real-world datasets across five streaming workloads, comparing it against SVFusion and FreshDiskANN-GPU (our GPU adaptation of FreshDiskANN). GrAND improves overall workload throughput by 2.2x-8.7x and 6.5x-25.4x, respectively, while maintaining high search throughput and recall over sustained updates.",
+    "published_date": "2026-08-21T14:34:58Z",
+    "updated_date": "2026-08-21T14:34:58Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.21163v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.21163v1",
+    "source": "arxiv",
+    "score": 0.4091149115562439,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Modern Approximate Nearest Neighbour Search (ANNS) applications operate over continuously evolving vector collections and require graph indexes that sustain high-throughput searches while incorporating insertions and deletions with high recall. However, most GPU graph indexes are static or provide l...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.19935v1",
+    "title": "ParaWeb: Parallel Programming Patterns for Web Development",
+    "authors": [
+      "Suejb Memeti"
+    ],
+    "abstract": "Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution, but developers lack high-level abstractions that capture recurring parallel structures as reusable patterns. In this paper, we present ParaWeb, a TypeScript library that implements ten parallel programming patterns for server-side Node.js, client-side browser environments, and WebGPU compute shaders. ParaWeb provides three implementation variants for each pattern: a message-passing (MP) variant based on structured cloning via postMessage, a shared-buffer (Shared) variant that uses SharedArrayBuffer with typed array views, and a GPU variant that uses WebGPU compute shaders for hardware-accelerated execution. We describe the architecture, design decisions, and pattern-specific implementation strategies, and we evaluate the performance of all thirty implementations across three data sizes. Experimental evaluation results show that the CPU-based variants achieve speedups of up to 11.6x with 16 threads for compute-bound patterns, while the GPU variants reach speedups of up to 260x for compute-bound patterns with high arithmetic intensity such as Farm, Scatter, Reduce, and Map. A case study on five image-convolution filters further shows that GPU acceleration reaches up to 414x speedup over single-threaded CPU on non-separable kernels, with consistent scaling across 1024x1024$, 2048x2048$, and 4K images.",
+    "published_date": "2026-08-20T11:50:27Z",
+    "updated_date": "2026-08-20T11:50:27Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.19935v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.19935v1",
+    "source": "arxiv",
+    "score": 0.40571877121925354,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、GPU 加速相关技术。\n\n核心内容：Modern web applications increasingly require computationally intensive processing, yet JavaScript, the dominant language of the web, has traditionally been limited to a single-threaded execution model. Node.js Worker Threads and browser Web Workers provide low-level mechanisms for parallel execution...。",
+    "takeaway": "本文聚焦GPU 计算、GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
