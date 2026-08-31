@@ -1,0 +1,278 @@
+[
+  {
+    "id": "2608.25061v2",
+    "title": "DataKernelBench: Can LLMs Optimize Database Queries on GPUs?",
+    "authors": [
+      "Gokul Karthik Kumar",
+      "Yotam Perlitz",
+      "Corey Lammie",
+      "Andrea Giovannini",
+      "Katja Hose"
+    ],
+    "abstract": "GPUs increasingly accelerate database systems, but query-specific peak performance still often relies on hand-written kernels. Existing LLM kernel benchmarks focus on machine learning operators, leaving irregular, heterogeneous, data-movement-heavy database-style operators untested. We introduce DataKernelBench, which translates SQL into validated PyTorch TorchPlan programs and evaluates LLMs that optimize either the core tensor-bounded snippet or the full query in CUDA or Triton through execution-guided repair. Across ten proprietary and open-weight models on TPC-H SF10 with an H100 GPU, the strongest full-query CUDA configuration achieves $2.11\\times$ speedup over the TorchPlan baseline at full pass rate. We find that higher-performing implementations commonly use kernel fusion and execution-strategy changes, stronger models benefit most from full-query specialization, and workload context matters more than hardware context. To handle data larger than GPU memory, we extend TorchPlan with Dask-cuDF for on-demand partition loading on TPC-H SF100 with four H100 GPUs, achieving $2.54\\times$ speedup.\n  Project page: https://kerneldf.github.io/datakernelbench",
+    "published_date": "2026-08-25T18:57:39Z",
+    "updated_date": "2026-08-27T17:07:30Z",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.DB",
+      "cs.LG",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.25061v2",
+    "arxiv_url": "https://arxiv.org/abs/2608.25061v2",
+    "source": "arxiv",
+    "score": 0.5594251573085784,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、PyTorch、异构计算、数据库系统相关技术。\n\n核心内容：GPUs increasingly accelerate database systems, but query-specific peak performance still often relies on hand-written kernels. Existing LLM kernel benchmarks focus on machine learning operators, leaving irregular, heterogeneous, data-movement-heavy database-style operators untested。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、PyTorch，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.23553v2",
+    "title": "Chimera: Efficient Multi-Vector Retrieval via GPU-CPU Co-Processing",
+    "authors": [
+      "Yanqi Chen",
+      "Juelin Liu",
+      "Alexandra Meliou",
+      "Xiao Yan"
+    ],
+    "abstract": "Multi-vector retrieval has become an important primitive for fine-grained matching in information retrieval, with emerging applications in areas such as recommender systems and bioinformatics. However, its high computational complexity and memory costs make low-latency retrieval difficult. Prior systems have attempted to optimize query latency, but their designs remain CPU-centric. While GPUs offer substantial computational advantages, their limited memory capacity necessitates a heterogeneous architecture in which the dataset resides in host memory and the GPU serves as an accelerator. Existing GPU-based system, PLAID, is bottlenecked by CPU-GPU data movement, as vector data must be transferred from host memory to the GPU at query time. We propose Chimera, a GPU-CPU co-processing system for multi-vector retrieval that eliminates this transfer bottleneck. Chimera stores highly compressed, low-precision quantization codes on the GPU while maintaining high-precision data in CPU memory. At query time, it leverages GPU-resident data for efficient candidate generation and filtering, and further refines results through a GPU-CPU collaborative scoring scheme that completely avoids vector data transfer while enabling computation overlap. Experiments on real-world datasets demonstrate that Chimera significantly outperforms existing approaches, achieving up to 59.5x higher QPS at the same recall level.",
+    "published_date": "2026-08-24T17:54:50Z",
+    "updated_date": "2026-08-26T18:20:07Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.23553v2",
+    "arxiv_url": "https://arxiv.org/abs/2608.23553v2",
+    "source": "arxiv",
+    "score": 0.5293495798110962,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、延迟优化相关技术。\n\n核心内容：Multi-vector retrieval has become an important primitive for fine-grained matching in information retrieval, with emerging applications in areas such as recommender systems and bioinformatics. However, its high computational complexity and memory costs make low-latency retrieval difficult。",
+    "takeaway": "本文聚焦异构计算、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2608.24307v1",
+    "title": "An HPC Approach to Accelerate Tensor Decompositions",
+    "authors": [
+      "Markus Hellgren",
+      "Erna Begovic Kovac",
+      "Hans O. Karlsson",
+      "Roman Iakymchuk"
+    ],
+    "abstract": "Quantum systems grow in complexity so rapidly that even modest models become difficult to simulate, creating a strong need for methods that can handle high-dimensional data, also known as tensors. In this work, we investigate a novel Jacobi-type tensor algorithm for tensor decomposition and develop a CUDA-based algorithm that supports tensors of arbitrary order on a single GPU. We test the implementation on NVIDIA H100 GPUs and show that the algorithm converges correctly for diagonalizable tensors up to nine dimensions, with runtime scaling in a predictable way as tensor order grows. Finally, our general algorithm outperforms the original MATLAB reference by more than two orders of magnitude.",
+    "published_date": "2026-08-25T09:36:54Z",
+    "updated_date": "2026-08-25T09:36:54Z",
+    "categories": [
+      "cs.DC",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.24307v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.24307v1",
+    "source": "arxiv",
+    "score": 0.4666378486156464,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Quantum systems grow in complexity so rapidly that even modest models become difficult to simulate, creating a strong need for methods that can handle high-dimensional data, also known as tensors. In this work, we investigate a novel Jacobi-type tensor algorithm for tensor decomposition and develop ...。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.28048v1",
+    "title": "AI Hardware Accelerators for Large Language Models: Architectures and the Memory Wall",
+    "authors": [
+      "Siddharth Patel",
+      "Rohit Singh"
+    ],
+    "abstract": "Large language models (LLMs) place unprecedented and still-growing demands on the hardware that trains and serves them. This review surveys the full landscape of AI hardware accelerators for LLMs, including general-purpose GPUs, custom ASICs such as TPUs, Trainium, Groq, and Cerebras, reconfigurable FPGAs, processing-in-memory and near-memory architectures, and emerging neuromorphic and photonic approaches across cloud and edge deployment. Using the transformer's computational structure and roofline analysis as a common framework, we show that the decisive constraint on LLM acceleration is not arithmetic but memory: the autoregressive decode phase is bandwidth-bound, the key-value cache can rival the model weights in size, and data movement dominates energy. Comparing platforms on compute, memory, energy, programmability, and scalability, we find that no single architecture is optimal across workloads: GPUs remain the flexible default and the workhorse of training; domain-specific ASICs win at scale for stable, high-volume workloads; processing-in-memory is the most promising near-term response to the memory wall, entering systems as a heterogeneous complement; and neuromorphic and photonic computing, while promising, are not yet production-ready at frontier scale. Future progress depends on hardware-algorithm co-design and heterogeneous, memory-centric systems: for large language models, the memory system has become the computer.",
+    "published_date": "2026-08-28T08:10:01Z",
+    "updated_date": "2026-08-28T08:10:01Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2608.28048v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.28048v1",
+    "source": "arxiv",
+    "score": 0.45987863779067994,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究内存数据库、异构计算、带宽优化相关技术。\n\n核心内容：Large language models (LLMs) place unprecedented and still-growing demands on the hardware that trains and serves them. This review surveys the full landscape of AI hardware accelerators for LLMs, including general-purpose GPUs, custom ASICs such as TPUs, Trainium, Groq, and Cerebras, reconfigurable...。",
+    "takeaway": "本文聚焦内存数据库、异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2608.25469v1",
+    "title": "Hierarchical Shared Memory-Aware Optimization for TRSM on GPU Platforms",
+    "authors": [
+      "Xinzhe Chen",
+      "Haowei Li",
+      "Lijuan Hu",
+      "Wenjing Ma",
+      "Fangfang Liu"
+    ],
+    "abstract": "Triangular Solve with Multiple Right-hand Sides (TRSM) is a fundamental BLAS Level-3 operation that underpins LU/Cholesky decomposition, sparse direct solvers, and matrix inversion. In the left-side lower-triangular case studied in this paper, efficient GPU implementation remains challenging because forward substitution introduces strict row-wise dependencies, and shared memory is too scarce to hold both operand matrices for wide data types such as double complex. This paper presents HSMA-TRSM, a hierarchical shared memory-aware optimization framework for left-side lower-triangular TRSM on NVIDIA A100, NVIDIA H800, and Hygon DCU Z100 accelerators. For the small-scale regime (m,n<=64), we design a pipelined compute-memory overlap mechanism through loop unrolling and instruction reordering, and propose a dual thread-group seven-stage pipeline strategy to address shared memory constraints for double complex types. For large-scale problems, we introduce a diagonal block decoupling optimization with an O(IB)shared-memory footprint for diagonal block inversion, enabling adaptive block size selection based on matrix scale and hardware characteristics. A compile-time configuration selection framework based on offline profiling and online lookup selects the optimal block size per platform with zero runtime overhead. Evaluated on NVIDIA A100, H800, and Hygon DCU Z100, HSMA-TRSM achieves peak speedups of 2.05xover cuBLAS and 2.06xover rocBLAS. The gains are strongest in shared-memory-constrained double-complex small cases and in large real-type cases where adaptive blocking improves GEMM-dominated updates, while mature vendor kernels leave less optimization headroom in some regimes.",
+    "published_date": "2026-08-26T07:37:09Z",
+    "updated_date": "2026-08-26T07:37:09Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.25469v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.25469v1",
+    "source": "arxiv",
+    "score": 0.4480589163303375,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Triangular Solve with Multiple Right-hand Sides (TRSM) is a fundamental BLAS Level-3 operation that underpins LU/Cholesky decomposition, sparse direct solvers, and matrix inversion. In the left-side lower-triangular case studied in this paper, efficient GPU implementation remains challenging because...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.26575v1",
+    "title": "Benchmarking Confidential Computing Performance on NVIDIA Blackwell GPUs",
+    "authors": [
+      "Daniyal Khan",
+      "Amean Asad",
+      "Ansgar Grunseid"
+    ],
+    "abstract": "This paper measures the performance impact of running large language model inference and training inside a Trusted Execution Environment (TEE) on NVIDIA B200 GPUs, using Intel Trust Domain Extensions (TDX) confidential VMs together with NVIDIA Confidential Computing (CC) on Blackwell GPUs. The performance impact is derived from paired confidential versus non-confidential runs on a single physical host where the only variable is the GPU CC bit and the TDX guest object in the VM launch. The main result is that confidential inference on Blackwell achieves low single-digit throughput overhead when the stack is configured correctly, at about 1-3%. Stock inference stacks incur 30 to 40% penalties due to avoidable configurations rather than the achievable operating point. The cost is not fully represented by a single number because it is governed by two independent axes, a fixed per-host-operation cost that amortizes as batch size grows and a per-NVLink-traffic cost that tracks the share of the step spent in encrypted collectives, and which of the two dominates is set by the workload and the software. We localize each cost to a specific encrypted boundary, give a microbenchmark that predicts the serving penalty to within a submission count, and end with concrete deployment guidance. GPU compute, energy draw, and usable memory capacity are unaffected by CC.",
+    "published_date": "2026-08-27T03:37:35Z",
+    "updated_date": "2026-08-27T03:37:35Z",
+    "categories": [
+      "cs.DC",
+      "cs.CR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.26575v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.26575v1",
+    "source": "arxiv",
+    "score": 0.4358712124824524,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算、NVLink 互连、吞吐量相关技术。\n\n核心内容：This paper measures the performance impact of running large language model inference and training inside a Trusted Execution Environment (TEE) on NVIDIA B200 GPUs, using Intel Trust Domain Extensions (TDX) confidential VMs together with NVIDIA Confidential Computing (CC) on Blackwell GPUs. The perfo...。",
+    "takeaway": "本文聚焦GPU 计算、NVLink 互连、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.22853v1",
+    "title": "Why We Created Yet Another Memory Framework: Understanding MGA's Role in Next-Gen Database Systems",
+    "authors": [
+      "Vikramraj Sitpal",
+      "Pei Li",
+      "Shubham Kumar",
+      "Somansh Reddy Satish",
+      "Ravi Thammaiah",
+      "Nagarajan Muthukrishnan"
+    ],
+    "abstract": "Despite the presence of multiple memory regions in modern database systems, supporting an efficient form of memory remains a challenge under production constraints. In enterprise-grade data systems, existing abstractions impose a trade-off between coarse-grained global sharing and strict process isolation, resulting in data copying, memory fragmentation, and limited support for controlled sharing. These challenges become more pronounced as workloads grow more diverse, and systems must tolerate process failures while maintaining predictable performance. This paper introduces the Managed Global Area (MGA), a scoped shared-memory abstraction in Oracle AI Database that addresses these limitations. MGA allows components to explicitly define allocation source, membership, and coordination semantics across selected processes while integrating with a production database engine. Unlike fully shared memory regions in Oracle, such as the System Global Area (SGA), MGA supports dynamic process membership and modular memory usage without imposing system-wide visibility. We evaluate MGA on analytical and AI workloads that stress shared-memory execution, including TPC-H hash joins and ONNX Runtime inference. Under concurrent execution, MGA reduces latency for join-intensive TPC-H queries by up to 35%. For ONNX- based inference, MGA-enabled model sharing reduces memory footprint by up to 90% and lowers large-model inference latency by up to 37%. These results demonstrate that dynamically scoped shared memory can improve both efficiency and predictability in production database systems.",
+    "published_date": "2026-08-24T06:36:31Z",
+    "updated_date": "2026-08-24T06:36:31Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.22853v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.22853v1",
+    "source": "arxiv",
+    "score": 0.4228915858268738,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究数据库系统、延迟优化相关技术。\n\n核心内容：Despite the presence of multiple memory regions in modern database systems, supporting an efficient form of memory remains a challenge under production constraints. In enterprise-grade data systems, existing abstractions impose a trade-off between coarse-grained global sharing and strict process iso...。",
+    "takeaway": "本文聚焦数据库系统、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2608.27642v1",
+    "title": "Characterizing the I/O Behavior of HPC Applications through Modeling and Simulation",
+    "authors": [
+      "Njoud O. Almaaitah",
+      "David E. Singh",
+      "Taylan Özden",
+      "Jesus Carretero",
+      "Raffaele Montella"
+    ],
+    "abstract": "Parallel applications process large amounts of data, leading to intensive parallel I/O operations. These operations can exhibit different levels of complexity, including, among others, multiple I/O access patterns, data staging, and contention risks. Therefore, in order to exploit high-performance computing (HPC) systems efficiently and optimize the I/O performance, it is crucial to consider the I/O behaviour of the HPC applications. In this work, we have developed a framework that reproduces the I/O access pattern of real applications in a simulated environment provided by ElastiSim, a batch-system simulator for rigid, malleable, and evolving workloads. The simulated applications are generated based on I/O traces captured from real applications provided by the HPC Input/Output (HPCIO) analysis repository. The HPCIO analysis database includes traces combined with information about real applications' performance across different parallel I/O libraries and layers of the I/O stack. We have conducted detailed case studies of real-world applications' traces to demonstrate how the proposed modeling framework can provide insights into the performance characteristics of I/O applications, including the I/O congestion analysis based on the application's I/O access pattern.",
+    "published_date": "2026-08-27T19:30:08Z",
+    "updated_date": "2026-08-27T19:30:08Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.27642v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.27642v1",
+    "source": "arxiv",
+    "score": 0.3952758753299713,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Parallel applications process large amounts of data, leading to intensive parallel I/O operations. These operations can exhibit different levels of complexity, including, among others, multiple I/O access patterns, data staging, and contention risks。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  },
+  {
+    "id": "2608.28183v1",
+    "title": "Memory-efficient GPU pipelines for real-time non-line-of-sight reconstruction",
+    "authors": [
+      "Alfonso López-Ruiz",
+      "Diego Royo"
+    ],
+    "abstract": "Non-line-of-sight (NLOS) imaging reconstructs scenes hidden around a corner from indirect light recorded by a single-photon avalanche diode (SPAD). A single reconstruction is a large inverse problem: billions of photon timestamps must be binned, moved through memory, transformed and inverted. As SPAD arrays raise acquisition throughput, reconstruction becomes the limiting stage. We rebuild the GPU execution of two established wave-based algorithms, f-k migration and phasor-fields, for both streaming and offline processing. On the phasor-fields side we assemble the ring-and-radius kernels of previous work once and offline, using the analytic Fourier transform of a ring, so the propagation kernel never exists in dense form at runtime, reducing the memory and bandwidth. We reorganize the pipeline of both algorithms with fused kernels, warp-level photon binning, batched transforms, CUDA graph replay, and FP16 storage applied only where it reduces the actual bottleneck. Our implementations are up to 42x faster than the reference streaming pipeline and up to 14x faster than the fastest published GPU baseline, all while using a fraction of the memory (down to 2.5%), enabling vastly larger and finer reconstructions on the same hardware, or comparable ones within a much lower memory budget. We report an ablation of each implementation choice and propose three denoising strategies enabled by the resulting frame budget for next-generation NLOS video processing.",
+    "published_date": "2026-08-28T10:51:37Z",
+    "updated_date": "2026-08-28T10:51:37Z",
+    "categories": [
+      "cs.DC",
+      "cs.CV"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.28183v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.28183v1",
+    "source": "arxiv",
+    "score": 0.3845740234851837,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：Non-line-of-sight (NLOS) imaging reconstructs scenes hidden around a corner from indirect light recorded by a single-photon avalanche diode (SPAD). A single reconstruction is a large inverse problem: billions of photon timestamps must be binned, moved through memory, transformed and inverted。",
+    "takeaway": "本文聚焦CUDA、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2608.22964v1",
+    "title": "Exploring spectral element methods on the Tenstorrent RISC-V accelerator",
+    "authors": [
+      "Daniyal Arshad",
+      "Nick Brown"
+    ],
+    "abstract": "The growing availability of commodity RISC-V hardware has sparked interest in its use for High Performance Computing (HPC), with PCIe accelerator cards offering a practical near-term pathway to adoption. The Tenstorrent Wormhole is one example, with dedicated vector and matrix units across 128 Tensix cores, and is widely available. In this paper, we explore porting the AX kernel of Nekbone, a widely used HPC mini-application derived from the Gordon Bell Prize-winning Nek5000 spectral element solver, onto the Wormhole accelerator. This kernel evaluates the Poisson operator, and we describe the mapping of the algorithm onto the Tensix. The initial performance results reveal that the host-side data transposition, required for the z-direction gradient computation, is a severe bottleneck. Consequently, we investigated two optimisation strategies that yield dramatic improvements, achieving 242.97 GFLOPS for 100000 elements across 128 Tensix cores, outperforming a 24-core Xeon Platinum CPU and drawing approximately 7 times less power.",
+    "published_date": "2026-08-24T08:29:26Z",
+    "updated_date": "2026-08-24T08:29:26Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2608.22964v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.22964v1",
+    "source": "arxiv",
+    "score": 0.37631906509399415,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The growing availability of commodity RISC-V hardware has sparked interest in its use for High Performance Computing (HPC), with PCIe accelerator cards offering a practical near-term pathway to adoption. The Tenstorrent Wormhole is one example, with dedicated vector and matrix units across 128 Tensi...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  }
+]
