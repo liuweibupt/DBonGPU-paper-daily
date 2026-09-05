@@ -1,0 +1,285 @@
+[
+  {
+    "id": "2609.01975v1",
+    "title": "RT-HiSS: Ray Tracing Accelerated High Dimensional Vector Similarity Searches",
+    "authors": [
+      "Revanth Reddy Munugala",
+      "Michael Gowanlock"
+    ],
+    "abstract": "Recent GPU generations include special-purpose ray tracing (RT) cores for graphics applications. While RT cores are primarily used for rendering, recent works show they can be leveraged for general-purpose tasks, including similarity searches. However, existing approaches do not support datasets exceeding three dimensions. In this work, we propose RT-HiSS, the first exact GPU RT-core-based similarity search algorithm for high-dimensional datasets. GPU similarity search often scales poorly for large datasets with substantial search distances. To address this, RT-HiSS uses RT cores for fast index construction and searches, followed by candidate refinement on CUDA cores. We introduce a two-pass approach to estimate an upper bound on result size, enabling efficient batching under GPU memory constraints with near-perfect load balancing. Additionally, we examine shared memory tiling and compressed result masks to improve GPU resource utilization. RT-HiSS yields speedups up to 8.37$\\times$ over competitive state-of-the-art GPU algorithms and up to 2,368.26$\\times$ relative to the brute-force algorithm across six real-world datasets.",
+    "published_date": "2026-09-02T01:17:22Z",
+    "updated_date": "2026-09-02T01:17:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01975v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01975v1",
+    "source": "arxiv",
+    "score": 0.5221425867080689,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA相关技术。\n\n核心内容：Recent GPU generations include special-purpose ray tracing (RT) cores for graphics applications. While RT cores are primarily used for rendering, recent works show they can be leveraged for general-purpose tasks, including similarity searches。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.03905v1",
+    "title": "Every Kernel Is a Join: Automatic Multi-GPU Parallelism for AI Computations in Einsummable",
+    "authors": [
+      "Zhimin Ding",
+      "Chen-Kuan Liao",
+      "Chima Adiole",
+      "Brianna Barrow",
+      "Fangzhou Du",
+      "Yu Hsiao",
+      "Ge Huang",
+      "Yicheng Jin",
+      "Ismail Syed",
+      "Chris Jermaine"
+    ],
+    "abstract": "Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device assignments, sharding annotations, or communication operations written by the programmer. Einsummable models every operation as a relational join followed by an aggregation over tensor relations, in which the tuples contain sub-tensors. Each operation exposes its possible decompositions through what we call \"join-agg specs\". An optimizer then selects decompositions across the whole computation to minimize a communication-cost proxy. Because it searches decompositions rather than a menu of named strategies, Einsummable discovers plans that mesh-based auto-parallelizers cannot. Each decomposed operation is implemented by synthesizing an exchange program, which is a topology-aware generalization of Volcano's exchange operator. Einsummable invokes no canned collectives: all communication and aggregation is special-purpose, derived at compile time. Despite being fully automatic, Einsummable can outperform custom-designed implementations. For example, on LLaMA transformer blocks on an eight-GPU A100 server, Einsummable achieves a geometric-mean runtime of 8.97 ms, versus 13.80 ms for hand-tuned PyTorch and 15.90 ms for vLLM.",
+    "published_date": "2026-09-03T14:24:02Z",
+    "updated_date": "2026-09-03T14:24:02Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03905v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03905v1",
+    "source": "arxiv",
+    "score": 0.4863686990737915,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算、PyTorch、多 GPU、聚合、通信优化相关技术。\n\n核心内容：Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device as...。",
+    "takeaway": "本文聚焦GPU 并行计算、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.03352v1",
+    "title": "Efficient Constant Optimization for Symbolic Regression with GPU-Accelerated Tree-Based Genetic Programming",
+    "authors": [
+      "Hao Mao",
+      "Xu Tony Liu",
+      "Shuai Lu",
+      "Peng Zhao",
+      "Wenzheng Jiang",
+      "Yuntian Chen"
+    ],
+    "abstract": "Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms. We present a GPU-resident, batched Levenberg--Marquardt solver that optimizes constants across a structurally heterogeneous population of expression trees using a fixed number of population-wide CUDA launches per iteration. Reverse-mode automatic differentiation assembles the per-tree Jacobian in one backward sweep, making the dominant per-iteration cost independent of the number of constants per tree, and a double-precision delivery guard guarantees that returned constants are never worse than their initial values. On early-generation populations, the solver sustains up to $5.1{\\times}10^{5}$ trees per second on an NVIDIA A100; at a GPU-saturated benchmark configuration it delivers roughly $9.9{\\times}$ the throughput of Operon running on a 64-core EPYC 7763, while matching fp64-reference quality. Integrated in-process into EvoGP, the solver enables end-to-end search to recover governing equations on $10$ of $18$ constructed problems versus 0 for stock EvoGP. Our code is at https://github.com/TensorConv/CuSR.",
+    "published_date": "2026-09-03T04:20:27Z",
+    "updated_date": "2026-09-03T04:20:27Z",
+    "categories": [
+      "cs.NE",
+      "cs.DC",
+      "cs.LG",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03352v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03352v1",
+    "source": "arxiv",
+    "score": 0.46123705863952635,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA、异构计算、吞吐量相关技术。\n\n核心内容：Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms。",
+    "takeaway": "本文聚焦GPU 加速、CUDA、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.01983v1",
+    "title": "Dual-Metric Partitioning with Adaptive Kernel Execution for Efficient GCN Acceleration",
+    "authors": [
+      "Lingling Zhang",
+      "Hang Zeng",
+      "Pengpeng Qiao",
+      "Zhiwei Zhang",
+      "Ye Yuan",
+      "Guoren Wang"
+    ],
+    "abstract": "Graph Convolutional Networks (GCNs) are widely used for large graph-structured data, including social, citation, and e-commerce networks, but their deployment is constrained by irregular memory access and severe GPU workload imbalance. These challenges arise in two dimensions: width imbalance from power-law degree distributions and depth imbalance from heterogeneous neighborhood connectivity.We present DualGCN, a GPU acceleration framework addressing both dimensions through dual-metric graph partitioning and adaptive kernel execution. DualGCN combines node degree, reflecting aggregation width, with neighborhood density estimated by anonymous random walks, capturing multihop connectivity and access depth. This hybrid workload metric enables connectivity-aware partitioning of large graphs into sparse and dense regions while reducing workload imbalance from linear to logarithmic complexity. DualGCN then selects partition-specific execution strategies: sparse partitions use warp-level parallelism and coalesced memory access, whereas dense partitions exploit instruction-level parallelism to hide latency and improve GPU utilization. Experiments on twelve real-world graph datasets show that DualGCN consistently accelerates GCN computation, achieving average speedups of 2.53x, 3.8x, and 2.13x over cuSPARSE, GNNAdvisor, and ACCEL, respectively. These results demonstrate that jointly optimizing graph partitioning and kernel execution provides an effective solution for processing large-scale graph and socialnetwork workloads.",
+    "published_date": "2026-09-02T01:37:47Z",
+    "updated_date": "2026-09-02T01:37:47Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01983v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01983v1",
+    "source": "arxiv",
+    "score": 0.44919629096984864,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、异构计算、聚合、网络、延迟优化相关技术。\n\n核心内容：Graph Convolutional Networks (GCNs) are widely used for large graph-structured data, including social, citation, and e-commerce networks, but their deployment is constrained by irregular memory access and severe GPU workload imbalance. These challenges arise in two dimensions: width imbalance from p...。",
+    "takeaway": "本文聚焦GPU 加速、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.01818v1",
+    "title": "Zeta-Lite: A Concurrent, Branchable In-Browser SQL Database for Agentic Memory",
+    "authors": [
+      "Gene Zhang"
+    ],
+    "abstract": "The browser has become a first-class database host: applications increasingly want to store, query, and reason over structured data entirely on the client - for privacy, offline operation, local-first collaboration, and, most recently, as durable memory for in-browser AI agents. One way to get SQL in the browser, compiling PostgreSQL to WebAssembly (PGlite), inherits PostgreSQL's process model: a single backend connection that executes one statement at a time and blocks. That model cannot express concurrent transactions, and it leaves richer capabilities - graph queries, database branching - to whatever the compiled server happens to include. We present zeta-lite, the browser form factor of the Zeta database engine: a WebAssembly build that compiles the same Zeta server down to a 2.87 MB gzipped artifact. Zeta-lite keeps the engine's log-centric asynchronous MVCC core, which yields two capabilities no other in-browser SQL engine provides. First, overlapping snapshot-isolated transactions on a single thread: multiple transactions hold distinct read/commit timestamps and interleave, with snapshot-isolation conflict detection between them. Second, copy-on-write database branching - whole-database fork, merge, and rebase - is unique in a browser SQL database and rare even in servers. On top of these, zeta-lite exposes a feature-complete PostgreSQL surface (joins, CTEs, window functions, JSONB with GIN indexes, full-text search, HNSW vector search, SQL/PGQ graph queries, multi-database) and snapshot-to-OPFS durability. Across Chrome, Firefox, and a native reference runtime, zeta-lite sustains 268k-315k point reads/s and holds a mixed read/write workload flat over millions of operations. This small, fully-featured, concurrent SQL database is an especially good fit for agentic memory - where cheap branchable state lets an agent explore, inspect, and commit or discard speculative work.",
+    "published_date": "2026-09-01T19:47:01Z",
+    "updated_date": "2026-09-01T19:47:01Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01818v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01818v1",
+    "source": "arxiv",
+    "score": 0.43319849610328676,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The browser has become a first-class database host: applications increasingly want to store, query, and reason over structured data entirely on the client - for privacy, offline operation, local-first collaboration, and, most recently, as durable memory for in-browser AI agents. One way to get SQL i...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.00205v1",
+    "title": "BlockMGARD: Accelerating Adaptive Scientific Data Reduction with Region-of-Interest Error Control on GPUs",
+    "authors": [
+      "Yanliang Li",
+      "Qian Gong",
+      "Qing Liu",
+      "Jaemoon Lee",
+      "Norbert Podhorszki",
+      "Scott Klasky",
+      "Xin Liang",
+      "Jieyang Chen"
+    ],
+    "abstract": "The growing scale of scientific data makes lossy compression essential for reducing data volume under controllable error. Transformation-based compressors using multilevel decomposition, such as MGARD, achieve strong compression ratios but map poorly to GPU architectures. We propose BlockMGARD, an adaptive, Region-of-Interest (ROI)-supported GPU lossy compressor, with four contributions: (1) an In-cache Block decomposition leveraging GPU on-chip memory and constant lookup tables to accelerate decomposition; (2) a hybrid hierarchy combining In-cache Block and global decomposition to balance speed and compression ratio; (3) an end-to-end pipeline with fine-grained ROI error control for feature preservation; and (4) an evaluation against state-of-the-art methods on five real-world datasets. Compared to MGARD-X, BlockMGARD achieves up to 4.2x and 9.1x higher compression and decompression throughput, and up to 8.63x higher compression ratio than uniform-tolerance baselines under ROI-aware error control. Across four GPUs, BlockMGARD achieves near-ideal linear scaling and up to 1.58x I/O cost reduction over MGARD-X.",
+    "published_date": "2026-08-31T18:17:42Z",
+    "updated_date": "2026-08-31T18:17:42Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.00205v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.00205v1",
+    "source": "arxiv",
+    "score": 0.426044716835022,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：The growing scale of scientific data makes lossy compression essential for reducing data volume under controllable error. Transformation-based compressors using multilevel decomposition, such as MGARD, achieve strong compression ratios but map poorly to GPU architectures。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.01864v1",
+    "title": "CREDIT: Cost-guided Reduction-reuse with Efficient DSMEM Inter-CTA Tiling",
+    "authors": [
+      "Zhengxiong Li",
+      "Tsung-Wei Huang",
+      "Umit Ogras"
+    ],
+    "abstract": "NVIDIA distributed shared memory (DSMEM) enables direct shared-memory access within a thread block cluster. However, cluster synchronization, remote access, and resource costs make it difficult to determine when DSMEM improves performance. To fill this gap, we propose CREDIT, a cost-guided framework that identifies DSMEM-profitable workload patterns, predicts their profitability range, and delivers consistent speedups across diverse workloads. CREDIT combines three innovations: (1) a profiling-driven characterization that identifies workload patterns likely to benefit from DSMEM; (2) a transformation that applies DSMEM to reduction-reuse workloads; (3) a cost model based on profiling data, to determine its profitability range. Evaluations on diverse workloads show CREDIT achieves 91.7% prediction accuracy on profitability. CREDIT beats torch.compile, Triton, and optimized non-DSMEM CUDA baselines on all six workloads, with geometric-mean speedups of 1.466x on RTX 5090 and 1.318x on H100. CREDIT's source code is publicly available at https://github.com/zhengxiongli08/CREDIT.",
+    "published_date": "2026-09-01T20:54:29Z",
+    "updated_date": "2026-09-01T20:54:29Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.01864v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01864v1",
+    "source": "arxiv",
+    "score": 0.4180912208557129,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：NVIDIA distributed shared memory (DSMEM) enables direct shared-memory access within a thread block cluster. However, cluster synchronization, remote access, and resource costs make it difficult to determine when DSMEM improves performance。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.03459v1",
+    "title": "FlowTT: Exploiting Computation Flow Reuse in Irregular Tensor-Train Embedding",
+    "authors": [
+      "Jongmin Seok",
+      "Chae Eun Rhee"
+    ],
+    "abstract": "Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip between sequential TT-core contractions. We present FlowTT, a flow-aware GPU execution framework that reformulates TT gather as a set of prefix-shared irregular computation flows. FlowTT combines flow-aligned prefix-based index grouping, a fused TT-embedding execution path with on-chip intermediate retention, and persistent-thread scheduling with chunk-based work stealing and L2 checkpointing to preserve reuse under skewed workloads. By co-designing task formation, data buffering, and scheduling with the structure of TT gather, FlowTT reduces redundant TT-core operations, global-memory traffic, and load imbalance. On Meta's synthetic recommendation benchmarks (Meta-240, Meta-480, and Meta-788), FlowTT consistently achieves the lowest latency compared to existing methods. At batch size 32,768, it reduces latency by up to 42.2% in inference and 49.2% in training relative to EcoRec, while also achieving the lowest inference peak memory usage. These results show that exposing prefix-shared computation is key to efficient TT-based embedding execution.",
+    "published_date": "2026-09-03T07:17:33Z",
+    "updated_date": "2026-09-03T07:17:33Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.03459v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03459v1",
+    "source": "arxiv",
+    "score": 0.4106669867038727,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2608.31027v1",
+    "title": "GRBench: A Comprehensive Benchmark Evaluation for Graph-relational Data Management",
+    "authors": [
+      "Zepeng Liu",
+      "Xinxin Huang",
+      "Xuanming Liu",
+      "Sheng Wang",
+      "Zhiyong Peng"
+    ],
+    "abstract": "Modern data-intensive applications increasingly require database systems to manage structured records and graph data. This demand gives rise to graph-relational data management, spanning storage, query processing, and optimization across relational and graph data. In response, relational database extensions, multi-model databases, and dedicated graph-relational systems have emerged with diverse architectures. However, evaluation methodologies have not kept pace. Existing relational and graph benchmarks assess the two models largely in isolation, while multi-model benchmarks provide limited coverage of graph-relational workloads. Available graph-relational workloads mainly support functional validation and end-to-end latency measurement, revealing little about how storage, operator, and optimization designs affect performance. To evaluate system capabilities in graph-relational data management, we present GRBench. First, GRBench constructs a linked graph-relational schema from the real-world SciSciNet-v2 dataset and derives scalable instances through consistency-preserving subset extraction. Second, it organizes purpose-built query series for controlled evaluation of query processing and system components. Third, GRBench provides semantically equivalent native query formulations and evaluates representative system architectures through a unified, multidimensional methodology. Based on this evaluation, we analyze design trade-offs and identify open challenges to guide future system design and optimization.",
+    "published_date": "2026-08-31T16:09:04Z",
+    "updated_date": "2026-08-31T16:09:04Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2608.31027v1",
+    "arxiv_url": "https://arxiv.org/abs/2608.31027v1",
+    "source": "arxiv",
+    "score": 0.40990432977676394,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究查询处理、数据库系统、延迟优化相关技术。\n\n核心内容：Modern data-intensive applications increasingly require database systems to manage structured records and graph data. This demand gives rise to graph-relational data management, spanning storage, query processing, and optimization across relational and graph data。",
+    "takeaway": "本文聚焦查询处理、数据库系统、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2609.03922v1",
+    "title": "sp-DBA: a general framework for adaptive transform-domain computation",
+    "authors": [
+      "Jingkun Jiang",
+      "Pingchuan Deng",
+      "Yang Xia"
+    ],
+    "abstract": "Transform-domain methods simplify analysis and computation, making them central to scientific computing and signal processing. However, existing adaptive strategies often introduce new data structures or require substantial workflow redesign, limiting efficient execution on massively parallel hardware. Here we present spectral dynamic block activation (sp-DBA), an adaptive acceleration framework for transform-domain workflows. sp-DBA dynamically activates transform-domain computation blocks as a calculation evolves, concentrating computation where it is needed while retaining numerical accuracy and optimized transform operations. Across representative workflows in materials science, biology, and optical communications, the demonstrated implementations achieve speedups of up to 28.1-fold for transform-domain updates and up to 8.4-fold overall acceleration; strong- and weak-scaling tests on up to eight GPUs show that the local adaptive update remains effective within distributed FFT workflows. By introducing execution-level adaptivity into mature transform-domain workflows without rebuilding existing solvers, sp-DBA extends the scale, duration, and complexity of scientific simulations and signal-processing calculations on modern parallel systems.",
+    "published_date": "2026-09-03T14:38:06Z",
+    "updated_date": "2026-09-03T14:38:06Z",
+    "categories": [
+      "cs.CE",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03922v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03922v1",
+    "source": "arxiv",
+    "score": 0.40882728934288026,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：Transform-domain methods simplify analysis and computation, making them central to scientific computing and signal processing. However, existing adaptive strategies often introduce new data structures or require substantial workflow redesign, limiting efficient execution on massively parallel hardwa...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
