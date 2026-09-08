@@ -1,0 +1,277 @@
+[
+  {
+    "id": "2609.01975v1",
+    "title": "RT-HiSS: Ray Tracing Accelerated High Dimensional Vector Similarity Searches",
+    "authors": [
+      "Revanth Reddy Munugala",
+      "Michael Gowanlock"
+    ],
+    "abstract": "Recent GPU generations include special-purpose ray tracing (RT) cores for graphics applications. While RT cores are primarily used for rendering, recent works show they can be leveraged for general-purpose tasks, including similarity searches. However, existing approaches do not support datasets exceeding three dimensions. In this work, we propose RT-HiSS, the first exact GPU RT-core-based similarity search algorithm for high-dimensional datasets. GPU similarity search often scales poorly for large datasets with substantial search distances. To address this, RT-HiSS uses RT cores for fast index construction and searches, followed by candidate refinement on CUDA cores. We introduce a two-pass approach to estimate an upper bound on result size, enabling efficient batching under GPU memory constraints with near-perfect load balancing. Additionally, we examine shared memory tiling and compressed result masks to improve GPU resource utilization. RT-HiSS yields speedups up to 8.37$\\times$ over competitive state-of-the-art GPU algorithms and up to 2,368.26$\\times$ relative to the brute-force algorithm across six real-world datasets.",
+    "published_date": "2026-09-02T01:17:22Z",
+    "updated_date": "2026-09-02T01:17:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01975v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01975v1",
+    "source": "arxiv",
+    "score": 0.5221425867080689,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA相关技术。\n\n核心内容：Recent GPU generations include special-purpose ray tracing (RT) cores for graphics applications. While RT cores are primarily used for rendering, recent works show they can be leveraged for general-purpose tasks, including similarity searches。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.03905v1",
+    "title": "Every Kernel Is a Join: Automatic Multi-GPU Parallelism for AI Computations in Einsummable",
+    "authors": [
+      "Zhimin Ding",
+      "Chen-Kuan Liao",
+      "Chima Adiole",
+      "Brianna Barrow",
+      "Fangzhou Du",
+      "Yu Hsiao",
+      "Ge Huang",
+      "Yicheng Jin",
+      "Ismail Syed",
+      "Chris Jermaine"
+    ],
+    "abstract": "Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device assignments, sharding annotations, or communication operations written by the programmer. Einsummable models every operation as a relational join followed by an aggregation over tensor relations, in which the tuples contain sub-tensors. Each operation exposes its possible decompositions through what we call \"join-agg specs\". An optimizer then selects decompositions across the whole computation to minimize a communication-cost proxy. Because it searches decompositions rather than a menu of named strategies, Einsummable discovers plans that mesh-based auto-parallelizers cannot. Each decomposed operation is implemented by synthesizing an exchange program, which is a topology-aware generalization of Volcano's exchange operator. Einsummable invokes no canned collectives: all communication and aggregation is special-purpose, derived at compile time. Despite being fully automatic, Einsummable can outperform custom-designed implementations. For example, on LLaMA transformer blocks on an eight-GPU A100 server, Einsummable achieves a geometric-mean runtime of 8.97 ms, versus 13.80 ms for hand-tuned PyTorch and 15.90 ms for vLLM.",
+    "published_date": "2026-09-03T14:24:02Z",
+    "updated_date": "2026-09-03T14:24:02Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03905v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03905v1",
+    "source": "arxiv",
+    "score": 0.4863686990737915,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算、PyTorch、多 GPU、聚合、通信优化相关技术。\n\n核心内容：Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device as...。",
+    "takeaway": "本文聚焦GPU 并行计算、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.03352v1",
+    "title": "Efficient Constant Optimization for Symbolic Regression with GPU-Accelerated Tree-Based Genetic Programming",
+    "authors": [
+      "Hao Mao",
+      "Xu Tony Liu",
+      "Shuai Lu",
+      "Peng Zhao",
+      "Wenzheng Jiang",
+      "Yuntian Chen"
+    ],
+    "abstract": "Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms. We present a GPU-resident, batched Levenberg--Marquardt solver that optimizes constants across a structurally heterogeneous population of expression trees using a fixed number of population-wide CUDA launches per iteration. Reverse-mode automatic differentiation assembles the per-tree Jacobian in one backward sweep, making the dominant per-iteration cost independent of the number of constants per tree, and a double-precision delivery guard guarantees that returned constants are never worse than their initial values. On early-generation populations, the solver sustains up to $5.1{\\times}10^{5}$ trees per second on an NVIDIA A100; at a GPU-saturated benchmark configuration it delivers roughly $9.9{\\times}$ the throughput of Operon running on a 64-core EPYC 7763, while matching fp64-reference quality. Integrated in-process into EvoGP, the solver enables end-to-end search to recover governing equations on $10$ of $18$ constructed problems versus 0 for stock EvoGP. Our code is at https://github.com/TensorConv/CuSR.",
+    "published_date": "2026-09-03T04:20:27Z",
+    "updated_date": "2026-09-03T04:20:27Z",
+    "categories": [
+      "cs.NE",
+      "cs.DC",
+      "cs.LG",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03352v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03352v1",
+    "source": "arxiv",
+    "score": 0.46123705863952635,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA、异构计算、吞吐量相关技术。\n\n核心内容：Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms。",
+    "takeaway": "本文聚焦GPU 加速、CUDA、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.01983v1",
+    "title": "Dual-Metric Partitioning with Adaptive Kernel Execution for Efficient GCN Acceleration",
+    "authors": [
+      "Lingling Zhang",
+      "Hang Zeng",
+      "Pengpeng Qiao",
+      "Zhiwei Zhang",
+      "Ye Yuan",
+      "Guoren Wang"
+    ],
+    "abstract": "Graph Convolutional Networks (GCNs) are widely used for large graph-structured data, including social, citation, and e-commerce networks, but their deployment is constrained by irregular memory access and severe GPU workload imbalance. These challenges arise in two dimensions: width imbalance from power-law degree distributions and depth imbalance from heterogeneous neighborhood connectivity.We present DualGCN, a GPU acceleration framework addressing both dimensions through dual-metric graph partitioning and adaptive kernel execution. DualGCN combines node degree, reflecting aggregation width, with neighborhood density estimated by anonymous random walks, capturing multihop connectivity and access depth. This hybrid workload metric enables connectivity-aware partitioning of large graphs into sparse and dense regions while reducing workload imbalance from linear to logarithmic complexity. DualGCN then selects partition-specific execution strategies: sparse partitions use warp-level parallelism and coalesced memory access, whereas dense partitions exploit instruction-level parallelism to hide latency and improve GPU utilization. Experiments on twelve real-world graph datasets show that DualGCN consistently accelerates GCN computation, achieving average speedups of 2.53x, 3.8x, and 2.13x over cuSPARSE, GNNAdvisor, and ACCEL, respectively. These results demonstrate that jointly optimizing graph partitioning and kernel execution provides an effective solution for processing large-scale graph and socialnetwork workloads.",
+    "published_date": "2026-09-02T01:37:47Z",
+    "updated_date": "2026-09-02T01:37:47Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01983v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01983v1",
+    "source": "arxiv",
+    "score": 0.44919629096984864,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、异构计算、聚合、网络、延迟优化相关技术。\n\n核心内容：Graph Convolutional Networks (GCNs) are widely used for large graph-structured data, including social, citation, and e-commerce networks, but their deployment is constrained by irregular memory access and severe GPU workload imbalance. These challenges arise in two dimensions: width imbalance from p...。",
+    "takeaway": "本文聚焦GPU 加速、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.01818v1",
+    "title": "Zeta-Lite: A Concurrent, Branchable In-Browser SQL Database for Agentic Memory",
+    "authors": [
+      "Gene Zhang"
+    ],
+    "abstract": "The browser has become a first-class database host: applications increasingly want to store, query, and reason over structured data entirely on the client - for privacy, offline operation, local-first collaboration, and, most recently, as durable memory for in-browser AI agents. One way to get SQL in the browser, compiling PostgreSQL to WebAssembly (PGlite), inherits PostgreSQL's process model: a single backend connection that executes one statement at a time and blocks. That model cannot express concurrent transactions, and it leaves richer capabilities - graph queries, database branching - to whatever the compiled server happens to include. We present zeta-lite, the browser form factor of the Zeta database engine: a WebAssembly build that compiles the same Zeta server down to a 2.87 MB gzipped artifact. Zeta-lite keeps the engine's log-centric asynchronous MVCC core, which yields two capabilities no other in-browser SQL engine provides. First, overlapping snapshot-isolated transactions on a single thread: multiple transactions hold distinct read/commit timestamps and interleave, with snapshot-isolation conflict detection between them. Second, copy-on-write database branching - whole-database fork, merge, and rebase - is unique in a browser SQL database and rare even in servers. On top of these, zeta-lite exposes a feature-complete PostgreSQL surface (joins, CTEs, window functions, JSONB with GIN indexes, full-text search, HNSW vector search, SQL/PGQ graph queries, multi-database) and snapshot-to-OPFS durability. Across Chrome, Firefox, and a native reference runtime, zeta-lite sustains 268k-315k point reads/s and holds a mixed read/write workload flat over millions of operations. This small, fully-featured, concurrent SQL database is an especially good fit for agentic memory - where cheap branchable state lets an agent explore, inspect, and commit or discard speculative work.",
+    "published_date": "2026-09-01T19:47:01Z",
+    "updated_date": "2026-09-01T19:47:01Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.01818v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01818v1",
+    "source": "arxiv",
+    "score": 0.43319849610328676,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：The browser has become a first-class database host: applications increasingly want to store, query, and reason over structured data entirely on the client - for privacy, offline operation, local-first collaboration, and, most recently, as durable memory for in-browser AI agents. One way to get SQL i...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.01864v1",
+    "title": "CREDIT: Cost-guided Reduction-reuse with Efficient DSMEM Inter-CTA Tiling",
+    "authors": [
+      "Zhengxiong Li",
+      "Tsung-Wei Huang",
+      "Umit Ogras"
+    ],
+    "abstract": "NVIDIA distributed shared memory (DSMEM) enables direct shared-memory access within a thread block cluster. However, cluster synchronization, remote access, and resource costs make it difficult to determine when DSMEM improves performance. To fill this gap, we propose CREDIT, a cost-guided framework that identifies DSMEM-profitable workload patterns, predicts their profitability range, and delivers consistent speedups across diverse workloads. CREDIT combines three innovations: (1) a profiling-driven characterization that identifies workload patterns likely to benefit from DSMEM; (2) a transformation that applies DSMEM to reduction-reuse workloads; (3) a cost model based on profiling data, to determine its profitability range. Evaluations on diverse workloads show CREDIT achieves 91.7% prediction accuracy on profitability. CREDIT beats torch.compile, Triton, and optimized non-DSMEM CUDA baselines on all six workloads, with geometric-mean speedups of 1.466x on RTX 5090 and 1.318x on H100. CREDIT's source code is publicly available at https://github.com/zhengxiongli08/CREDIT.",
+    "published_date": "2026-09-01T20:54:29Z",
+    "updated_date": "2026-09-01T20:54:29Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.01864v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.01864v1",
+    "source": "arxiv",
+    "score": 0.4180912208557129,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：NVIDIA distributed shared memory (DSMEM) enables direct shared-memory access within a thread block cluster. However, cluster synchronization, remote access, and resource costs make it difficult to determine when DSMEM improves performance。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.03459v1",
+    "title": "FlowTT: Exploiting Computation Flow Reuse in Irregular Tensor-Train Embedding",
+    "authors": [
+      "Jongmin Seok",
+      "Chae Eun Rhee"
+    ],
+    "abstract": "Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip between sequential TT-core contractions. We present FlowTT, a flow-aware GPU execution framework that reformulates TT gather as a set of prefix-shared irregular computation flows. FlowTT combines flow-aligned prefix-based index grouping, a fused TT-embedding execution path with on-chip intermediate retention, and persistent-thread scheduling with chunk-based work stealing and L2 checkpointing to preserve reuse under skewed workloads. By co-designing task formation, data buffering, and scheduling with the structure of TT gather, FlowTT reduces redundant TT-core operations, global-memory traffic, and load imbalance. On Meta's synthetic recommendation benchmarks (Meta-240, Meta-480, and Meta-788), FlowTT consistently achieves the lowest latency compared to existing methods. At batch size 32,768, it reduces latency by up to 42.2% in inference and 49.2% in training relative to EcoRec, while also achieving the lowest inference peak memory usage. These results show that exposing prefix-shared computation is key to efficient TT-based embedding execution.",
+    "published_date": "2026-09-03T07:17:33Z",
+    "updated_date": "2026-09-03T07:17:33Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.03459v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03459v1",
+    "source": "arxiv",
+    "score": 0.4106669867038727,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.03922v1",
+    "title": "sp-DBA: a general framework for adaptive transform-domain computation",
+    "authors": [
+      "Jingkun Jiang",
+      "Pingchuan Deng",
+      "Yang Xia"
+    ],
+    "abstract": "Transform-domain methods simplify analysis and computation, making them central to scientific computing and signal processing. However, existing adaptive strategies often introduce new data structures or require substantial workflow redesign, limiting efficient execution on massively parallel hardware. Here we present spectral dynamic block activation (sp-DBA), an adaptive acceleration framework for transform-domain workflows. sp-DBA dynamically activates transform-domain computation blocks as a calculation evolves, concentrating computation where it is needed while retaining numerical accuracy and optimized transform operations. Across representative workflows in materials science, biology, and optical communications, the demonstrated implementations achieve speedups of up to 28.1-fold for transform-domain updates and up to 8.4-fold overall acceleration; strong- and weak-scaling tests on up to eight GPUs show that the local adaptive update remains effective within distributed FFT workflows. By introducing execution-level adaptivity into mature transform-domain workflows without rebuilding existing solvers, sp-DBA extends the scale, duration, and complexity of scientific simulations and signal-processing calculations on modern parallel systems.",
+    "published_date": "2026-09-03T14:38:06Z",
+    "updated_date": "2026-09-03T14:38:06Z",
+    "categories": [
+      "cs.CE",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03922v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03922v1",
+    "source": "arxiv",
+    "score": 0.40882728934288026,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：Transform-domain methods simplify analysis and computation, making them central to scientific computing and signal processing. However, existing adaptive strategies often introduce new data structures or require substantial workflow redesign, limiting efficient execution on massively parallel hardwa...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.00843v1",
+    "title": "Shared-Memory Range-Tiled CDF Sort for Small-Range Integer Keys on GPUs",
+    "authors": [
+      "Kento Ando",
+      "Kaito Takase",
+      "Noriyuki Fujimoto",
+      "Koichi Wada"
+    ],
+    "abstract": "We study unstable integer sorting on GPUs for arrays whose elements lie in a known integer range. Focusing on counting-sort-based methods that determine the output interval of each value from its frequency and the prefix sums of the frequencies, we propose and evaluate Range-Tiled CDF sort (RT-CDF), which partitions the possible value range into small intervals, called tiles, that fit in shared memory. For each tile, RT-CDF constructs a histogram, computes its prefix sum as a local CDF, and directly generates the output array from the local CDF. We compare RT-CDF against three baselines: CUB DeviceRadixSort, whose processed bit range is restricted to $[0,\\lceil\\log_2 R\\rceil)$ to exploit the known range size $R$; Ref-H-P sort; and an implementation based on the algorithm of Kolonias et al. Experiments on an NVIDIA GeForce RTX 4090 with range sizes from $R=2^7$ to $2^{18}$, input sizes from $n=10^6$ to $10^9$, and uniformly distributed, normally distributed, and all-equal inputs show that RT-CDF outperforms the baselines over a broad set of conditions for small to medium ranges, achieving a maximum speedup of 4.39 over the fastest baseline. For $R=2^{18}$, however, at least one baseline outperforms RT-CDF for every evaluated input size and input distribution, showing that the cost of histogram construction limits the applicability of RT-CDF to larger ranges.",
+    "published_date": "2026-09-01T07:42:07Z",
+    "updated_date": "2026-09-01T07:42:07Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.00843v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.00843v1",
+    "source": "arxiv",
+    "score": 0.4047052848339081,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究排序相关技术。\n\n核心内容：We study unstable integer sorting on GPUs for arrays whose elements lie in a known integer range. Focusing on counting-sort-based methods that determine the output interval of each value from its frequency and the prefix sums of the frequencies, we propose and evaluate Range-Tiled CDF sort (RT-CDF),...。",
+    "takeaway": "本文聚焦排序，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.03538v1",
+    "title": "Tree Databases",
+    "authors": [
+      "Nicolas Spyratos"
+    ],
+    "abstract": "We propose a novel database model whose basic structure is a labeled, directed tree with node identities. Intuitively, the root of the tree is seen as an object (or entity), the non-root nodes as attributes of the object and the semantics of each attribute is represented by the unique path leading from the root to the attribute. We define a tree database to be a set of such trees. The trees of the database can be combined to produce new trees using a set of operations on trees that we define in the paper. The query language of our model offers two types of queries, traversal queries and analytic queries. A query (whether traversal or analytic) is always defined over a tree, which is either a tree in the database or a tree derived from other trees using tree operations. The operations on trees and the query language are both defined using a simple functional algebra whose operations are: restriction of a function, composition of functions, pairing of functions and Cartesian product of sets.\n  A distinctive feature of our model is that traversal queries and analytic queries are both defined within the same formal framework; and in fact, traversal queries serve as the building blocks for analytic queries. This is in sharp contrast to the relational model, where analytic queries are defined outside the relational algebra, in the form of SQL Group-by queries. Therefore our model supports data access and data analysis within the same formal framework.\n  We demonstrate the expressive power of our model by showing: (a) how our model can support inheritance in a seamless manner, (b) how one can define consistent relational databases on top of a tree database - with the tree database playing the role of an underlying semantic layer and (c) how a tree database can be used as a user-friendly interface for accessing and analyzing relational data.",
+    "published_date": "2026-09-03T08:38:04Z",
+    "updated_date": "2026-09-03T08:38:04Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.03538v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03538v1",
+    "source": "arxiv",
+    "score": 0.39839540362358095,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究SHARP 集合计算相关技术。\n\n核心内容：We propose a novel database model whose basic structure is a labeled, directed tree with node identities. Intuitively, the root of the tree is seen as an object (or entity), the non-root nodes as attributes of the object and the semantics of each attribute is represented by the unique path leading f...。",
+    "takeaway": "本文聚焦SHARP 集合计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  }
+]
