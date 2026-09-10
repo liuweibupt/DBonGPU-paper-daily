@@ -1,0 +1,290 @@
+[
+  {
+    "id": "2609.08871v1",
+    "title": "Towards Standardized Evaluation of GPU Memory Safety with GMSBench",
+    "authors": [
+      "Saurabh Singh",
+      "Jaewon Lee",
+      "Seonjin Na",
+      "Hyesoon Kim"
+    ],
+    "abstract": "As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized benchmarks. In this paper, we present GMSBench, a GPU memory safety benchmark designed to evaluate a broad range of memory safety violations across different GPU memory spaces and execution scenarios. GMSBench comprises 149 self-contained CUDA tests spanning spatial, temporal, and concurrency errors. The suite provides a standardized foundation for the evaluation and comparative analysis of GPU memory safety mechanisms and helps expose gaps in their detection coverage. We demonstrate the utility of GMSBench by evaluating Compute Sanitizer, a widely used GPU memory error detection tool across multiple GPU architectures.",
+    "published_date": "2026-09-08T15:11:57Z",
+    "updated_date": "2026-09-08T15:11:57Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.08871v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.08871v1",
+    "source": "arxiv",
+    "score": 0.5450525116920472,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA相关技术。\n\n核心内容：As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.03905v1",
+    "title": "Every Kernel Is a Join: Automatic Multi-GPU Parallelism for AI Computations in Einsummable",
+    "authors": [
+      "Zhimin Ding",
+      "Chen-Kuan Liao",
+      "Chima Adiole",
+      "Brianna Barrow",
+      "Fangzhou Du",
+      "Yu Hsiao",
+      "Ge Huang",
+      "Yicheng Jin",
+      "Ismail Syed",
+      "Chris Jermaine"
+    ],
+    "abstract": "Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device assignments, sharding annotations, or communication operations written by the programmer. Einsummable models every operation as a relational join followed by an aggregation over tensor relations, in which the tuples contain sub-tensors. Each operation exposes its possible decompositions through what we call \"join-agg specs\". An optimizer then selects decompositions across the whole computation to minimize a communication-cost proxy. Because it searches decompositions rather than a menu of named strategies, Einsummable discovers plans that mesh-based auto-parallelizers cannot. Each decomposed operation is implemented by synthesizing an exchange program, which is a topology-aware generalization of Volcano's exchange operator. Einsummable invokes no canned collectives: all communication and aggregation is special-purpose, derived at compile time. Despite being fully automatic, Einsummable can outperform custom-designed implementations. For example, on LLaMA transformer blocks on an eight-GPU A100 server, Einsummable achieves a geometric-mean runtime of 8.97 ms, versus 13.80 ms for hand-tuned PyTorch and 15.90 ms for vLLM.",
+    "published_date": "2026-09-03T14:24:02Z",
+    "updated_date": "2026-09-03T14:24:02Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03905v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03905v1",
+    "source": "arxiv",
+    "score": 0.4863686990737915,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算、PyTorch、多 GPU、聚合、通信优化相关技术。\n\n核心内容：Distributing an AI computation across the GPUs of a multi-GPU server is one of the central problems in systems-for-AI. We present Einsummable, a prototype system that accepts a PyTorch-like description of an AI computation and automatically distributes it across a multi-GPU server, with no device as...。",
+    "takeaway": "本文聚焦GPU 并行计算、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.09800v1",
+    "title": "HBFSim: Fast and Faithful Simulation of High-Bandwidth Flash Under Real GPU Execution",
+    "authors": [
+      "Yanpeng Hu",
+      "Yiwei Yang",
+      "Yuanwu Zhu",
+      "Yusheng Zheng",
+      "Wei Zhang",
+      "Andi Quinn"
+    ],
+    "abstract": "Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in early 2027. Decisions about capacity and data placement cannot wait for silicon. No existing method settles those decisions: a storage simulator replaying a recorded access sequence never executes the workload, a GPU simulator does not run the real compute kernels, and a cycle-accurate simulator cannot finish one LLM inference run. We present HBFSim, the first evaluation platform that applies HBF timing, capacity, and thermal effects to a real inference workload while that workload executes on a real GPU. HBFSim rewrites PTX, the intermediate code NVIDIA's compiler emits, and gates kernel launches; issue is separated from consumption, so real hardware supplies the computation that hides an access. Timing comes from measurements of a real device rather than a parameter sheet, and junction temperature sets both the rate HBF sustains and the retention deadline that forces refresh writes. HBFSim matches the measured device exactly at all six calibration breakpoints, with zero unsafe launches, and an unmodified vLLM 0.15.1 serving Qwen3-30B-A3B returns the token identifiers of the uninstrumented baseline. The device fast path serves the same Qwen3-30B-A3B case in 2s against 44s on the detailed reference path, 20.8x faster. Before HBF parts sample, HBFSim lets a designer measure a capacity or placement decision under a real workload instead of assuming one.",
+    "published_date": "2026-09-09T06:51:45Z",
+    "updated_date": "2026-09-09T06:51:45Z",
+    "categories": [
+      "cs.AR",
+      "cs.ET"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.09800v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.09800v1",
+    "source": "arxiv",
+    "score": 0.4703907358646393,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究大模型推理、数据放置、带宽优化相关技术。\n\n核心内容：Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in ea...。",
+    "takeaway": "本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.09108v1",
+    "title": "Distributed Linear Programming on GPU Clusters at Extreme Scale",
+    "authors": [
+      "Arnaud Deza",
+      "Santanu Dey",
+      "Pascal Van Hentenryck"
+    ],
+    "abstract": "Large linear programs can exceed the memory of a single compute node. Although first-order methods replace sparse factorizations with GPU-suited matrix-vector products, other solver phases can reintroduce a single-node memory limit. We present SHARDLP, a distributed GPU LP solver that keeps the matrix and primal-dual state partitioned from sharded input through solution output. On the Google PDLP benchmark, SHARDLP reaches the published criterion on nine of eleven instances, compared with eight in the published CPU PDLP study. On the largest benchmark, eight H200 GPUs solve a 1.185-billion-variable, 6.338-billion-nonzero LP in 9.9 minutes; the published CPU experiment reports 21.06 hours on different hardware. Beyond this benchmark, separately checked multi-node solves reach up to 13.604 billion variables and 40.807 billion nonzeros, while validated executions span up to 76 GPUs across 29 compute nodes. For column-partitioned solves, support-aware communication skips GPUs that store no coefficients for a row; on an LP with 2.76 billion nonzeros, it cuts modelled communication by 92.97% and improves solver time by 1.27x-1.52x",
+    "published_date": "2026-09-08T17:43:32Z",
+    "updated_date": "2026-09-08T17:43:32Z",
+    "categories": [
+      "math.OC",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.09108v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.09108v1",
+    "source": "arxiv",
+    "score": 0.46140398025512697,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：Large linear programs can exceed the memory of a single compute node. Although first-order methods replace sparse factorizations with GPU-suited matrix-vector products, other solver phases can reintroduce a single-node memory limit。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.03352v1",
+    "title": "Efficient Constant Optimization for Symbolic Regression with GPU-Accelerated Tree-Based Genetic Programming",
+    "authors": [
+      "Hao Mao",
+      "Xu Tony Liu",
+      "Shuai Lu",
+      "Peng Zhao",
+      "Wenzheng Jiang",
+      "Yuntian Chen"
+    ],
+    "abstract": "Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms. We present a GPU-resident, batched Levenberg--Marquardt solver that optimizes constants across a structurally heterogeneous population of expression trees using a fixed number of population-wide CUDA launches per iteration. Reverse-mode automatic differentiation assembles the per-tree Jacobian in one backward sweep, making the dominant per-iteration cost independent of the number of constants per tree, and a double-precision delivery guard guarantees that returned constants are never worse than their initial values. On early-generation populations, the solver sustains up to $5.1{\\times}10^{5}$ trees per second on an NVIDIA A100; at a GPU-saturated benchmark configuration it delivers roughly $9.9{\\times}$ the throughput of Operon running on a 64-core EPYC 7763, while matching fp64-reference quality. Integrated in-process into EvoGP, the solver enables end-to-end search to recover governing equations on $10$ of $18$ constructed problems versus 0 for stock EvoGP. Our code is at https://github.com/TensorConv/CuSR.",
+    "published_date": "2026-09-03T04:20:27Z",
+    "updated_date": "2026-09-03T04:20:27Z",
+    "categories": [
+      "cs.NE",
+      "cs.DC",
+      "cs.LG",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.03352v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.03352v1",
+    "source": "arxiv",
+    "score": 0.46123705863952635,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA、异构计算、吞吐量相关技术。\n\n核心内容：Constant optimization refines the numerical coefficients of candidate expressions in tree-based genetic programming for symbolic regression. But its per-generation cost has led modern GPU-accelerated frameworks to omit it or restrict it to lightweight forms。",
+    "takeaway": "本文聚焦GPU 加速、CUDA、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.05960v1",
+    "title": "GPU-Accelerated Gate-Level Time-Based Power Analysis via Event-Density-Aware Partitioning and Kernel Fusion",
+    "authors": [
+      "Weihao Wang",
+      "Yikang Ouyang",
+      "Hongyuan Liu",
+      "Yuzhe Ma"
+    ],
+    "abstract": "Power analysis is crucial in modern chip design flow. Particularly, time-based power analysis can provide fine-grained power consumption information to facilitate the diagnosis of power issues and guide power optimization accordingly. However, it may take tens of hours to conduct time-based power analysis on modern large-scale circuits, which greatly slows down the power optimization flow. In this paper, we present the first GPU-accelerated gate-level time-based power analysis framework. We propose a novel data structure to enable efficient state-dependent power retrieval. To accommodate the imbalanced event distribution across gates, we propose an event-density-aware partitioning strategy that allocates GPU threads based on gate event density. Finally, we fuse the power computation into a single kernel invocation to reduce redundant work in separate kernels. Experimental results show that our proposed framework achieves high accuracy while delivering up to 37.63x end-to-end speedup compared to multi-threaded Synopsys PrimeTime PX.",
+    "published_date": "2026-09-05T07:53:52Z",
+    "updated_date": "2026-09-05T07:53:52Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.05960v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.05960v1",
+    "source": "arxiv",
+    "score": 0.4566496169567108,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Power analysis is crucial in modern chip design flow. Particularly, time-based power analysis can provide fine-grained power consumption information to facilitate the diagnosis of power issues and guide power optimization accordingly。",
+    "takeaway": "本文聚焦GPU 加速，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.07536v1",
+    "title": "Analytical Resource Management for Fine-grained MoE Computation-Communication Overlap",
+    "authors": [
+      "Hongyu Liu",
+      "Minyu Cui",
+      "Miquel Pericas"
+    ],
+    "abstract": "Fine-grained computation--communication overlap in distributed Mixture-of-Experts (MoE) inference allows communication to begin as partial compute results become ready. However, cooperative thread arrays (CTAs) performing computation and communication contend for finite residency capacity on streaming multiprocessors (SMs). Because a resident CTA generally retains its allocated SM resources until completion, CTAs that cannot be co-resident must wait for resources, resulting in wave-like execution. A fixed resource partition cannot adapt to changes in input size, routed expert load, and kernel configuration, potentially causing a communication backlog or reducing expert compute parallelism.\n  We present a wave-quantized analytical model and launch-time resource manager for dependency-coupled overlap pipelines. Using routed-tile counts, kernel occupancy, GPU residency constraints, and split-level readiness dependencies, it selects the communication-CTA count and resource partition before each launch without candidate execution, per-workload profiling, or kernel recompilation. We integrate the method into the public COMET A100 implementation in FLUX.\n  We evaluate three MoE models on four NVIDIA A100 GPUs under several parallelism strategies at the GEMM2+GatherRS operator, complete post-router MoE layer, and complete-model prefill levels. Across 15 real-p90 workloads, the analytical selector achieves 3.22 percent mean regret relative to the measured oracle with a mean solver overhead of 0.157 microseconds. Over COMET, our method achieves geometric-mean speedups of 2.528x at the GEMM2+GatherRS operator, 1.771x at the complete post-router MoE layer, and 1.185x for complete-model prefill, with maxima of 4.218x, 2.584x, and 1.439x, respectively. At every feasible TP=2/EP=2 sequence length of at least 4,096, our implementation outperforms COMET, Megatron core-TE, and FastMoE TP+NCCL.",
+    "published_date": "2026-09-07T14:20:36Z",
+    "updated_date": "2026-09-07T14:20:36Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.07536v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.07536v1",
+    "source": "arxiv",
+    "score": 0.44868242621421817,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究通信优化相关技术。\n\n核心内容：Fine-grained computation--communication overlap in distributed Mixture-of-Experts (MoE) inference allows communication to begin as partial compute results become ready. However, cooperative thread arrays (CTAs) performing computation and communication contend for finite residency capacity on streami...。",
+    "takeaway": "本文聚焦通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.10515v1",
+    "title": "PASCAL: A Phase-Aware Shared-Cache Model for Parallel Scans",
+    "authors": [
+      "Zhongchun Zhou",
+      "Chengtao Lai",
+      "Songtao Mao"
+    ],
+    "abstract": "In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators. We name this pattern parallel scan. Due to a significant amount of data reuse in this pattern, the cache is expected to capture as much data reuse as possible and largely reduce requests sent to the main memory for both performance and energy consumption concerns. However, in reality, because of the intrinsic asynchrony of multi-cores, the actual cache miss rate and DRAM traffic can be much higher compared to ideal cases. In this paper, we propose PASCAL, a shared-cache model for parallel scans. It is aware of the dynamic feature of progress divergence across multi-cores, correlate the divergence with the combination of different factors such as occupancy, and predicts the cache miss rate before execution. Because prediction needs no target trace, timing, or counters, PASCAL supports design-space exploration at scales where cycle-accurate simulation is impractical, and its policy-independent bound states how much traffic no replacement policy can avoid. A MAPE of 13.84% is achieved in a 60-configuration dataset with various software pipeline depths, occupancies, and memory access data paths on an NVIDIA GB10 GPU, against 44.79% for physical-wave TileSight and 54.16% for exact symbolic SDCM.",
+    "published_date": "2026-09-09T17:48:51Z",
+    "updated_date": "2026-09-09T17:48:51Z",
+    "categories": [
+      "cs.PF",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.10515v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.10515v1",
+    "source": "arxiv",
+    "score": 0.44494660139083864,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究扫描相关技术。\n\n核心内容：In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators。",
+    "takeaway": "本文聚焦扫描，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.07577v1",
+    "title": "GPU-Accelerated Hypergraph Partitioning and Placement to Map SNNs on Neuromorphic Hardware",
+    "authors": [
+      "Marco Ronzani",
+      "Cristina Silvano"
+    ],
+    "abstract": "SNNs running on neuromorphic hardware use spikes to achieve sparse and energy-efficient communication over a mesh of cores. In turn, system performance heavily depends on the assignment of neurons to cores: the mapping. Since hardware features inter-core multicast and intra-core replication of spikes, we model SNNs as hypergraphs to exploit both opportunities for reducing communication traffic. Mapping thus comprises two NP-hard problems: hypergraph partitioning and placement on the lattice of cores. High-quality solutions to both are critical, yet increasingly difficult as networks scale to millions of neurons. Therefore, we propose a GPU-accelerated pipeline for SNN mapping: a multi-level partitioning scheme is devised around hardware constraints, while placement is initialized through recursive bisection, followed by refinement pulling together strongly connected cores through repeated swaps. Model-based experiments show upwards of 16% lower latency and 42% lower energy for spike movements over existing sequential tools, while our parallel mapper is on average 18-280x faster.",
+    "published_date": "2026-09-07T14:52:48Z",
+    "updated_date": "2026-09-07T14:52:48Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.07577v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.07577v1",
+    "source": "arxiv",
+    "score": 0.44283530235290525,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、网络、通信优化、延迟优化相关技术。\n\n核心内容：SNNs running on neuromorphic hardware use spikes to achieve sparse and energy-efficient communication over a mesh of cores. In turn, system performance heavily depends on the assignment of neurons to cores: the mapping。",
+    "takeaway": "本文聚焦GPU 加速、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.05760v1",
+    "title": "RAGMark: A Comprehensive Framework for Benchmarking Retrieval-Augmented Generation Systems",
+    "authors": [
+      "Zlatan Feric",
+      "Amir Taherin",
+      "Bin Ren",
+      "Yanzhi Wang",
+      "Jennifer Dy",
+      "David Kaeli"
+    ],
+    "abstract": "We present RAGMark, a modular benchmarking framework for advanced Retrieval-Augmented Generation (RAG) systems targeting small-scale multi-GPU environments. RAGMark evaluates diverse RAG components, including retrievers, vector databases, prompt-processing methods, and generator models, while collecting detailed per-stage metrics such as latency, GPU utilization, memory consumption, power usage, time to first token (TTFT), throughput, and answer quality. The framework is highly extensible, separating RAG stages, timing, and resource monitoring into modular components, and is designed to efficiently sweep large configuration spaces while minimizing repeated model and database initialization overhead. Using RAGMark, we characterize five RAG workloads on open-domain QA datasets across varying retrieval depths, model scales, reranking, compression methods, and vector database configurations. We show that while autoregressive generation dominates latency in naive pipelines, context-reduction techniques shift bottlenecks across compute, memory bandwidth, and preprocessing stages. Reranking and compression produce compounding benefits: reranking reduces compression workload itself, while both jointly reduce prefill and KV-cache traversal costs, lowering energy consumption by up to 66%. We further observe strong cross-stage interactions, where small upstream context reductions cascade through downstream latency, memory traffic, and energy consumption. The RAGMark source code is publicly available at: https://github.com/zferic/RAGMark.",
+    "published_date": "2026-09-04T22:44:05Z",
+    "updated_date": "2026-09-04T22:44:05Z",
+    "categories": [
+      "cs.PF",
+      "cs.AI",
+      "cs.AR",
+      "cs.IR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.05760v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.05760v1",
+    "source": "arxiv",
+    "score": 0.4367318141460419,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究向量数据库、多 GPU、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：We present RAGMark, a modular benchmarking framework for advanced Retrieval-Augmented Generation (RAG) systems targeting small-scale multi-GPU environments. RAGMark evaluates diverse RAG components, including retrievers, vector databases, prompt-processing methods, and generator models, while collec...。",
+    "takeaway": "本文聚焦向量数据库、多 GPU、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 智能缓存与数据放置优化"
+  }
+]
