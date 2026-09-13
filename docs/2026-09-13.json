@@ -1,0 +1,342 @@
+[
+  {
+    "id": "2609.11923",
+    "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+    "authors": [
+      "Boning Li",
+      ",",
+      "Longbo Huang"
+    ],
+    "abstract": "Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface. On a GPU every kernel finishes in microseconds, so kernel launches and framework dispatch dominate the run time, and prior GPU implementations have lost to optimized CPU code. We observe that for a fixed game, everything about a CFR iteration except the numerical values is known before the first iteration runs. We propose GPU-CFR, a compiler and runtime built on this observation. It compiles any game once into static dataflow: flat edge and information-set arrays, precomputed indices, and depth-level batched passes fix the entire operation sequence, and only solver state changes between iterations. Static chance folding, depth-level execution blocks, and a dual-lane reach buffer cut the number of framework operations by up to 18.1x. Because shapes, indices, and buffer addresses never change, CUDA Graph Replay records the iteration once and replays it with a single graph launch. On one A100, across an eight-game suite that spans card games, dice games, and board games, GPU-CFR runs 29.8--80.4x faster than the fastest prior GPU CFR on the same accelerator, and 14--258x faster than LiteEFG, one of the fastest open-source CPU implementations, on the four largest games. The compiled representation carries most of that margin: on eight CPU threads with no accelerator it is already 2.2--51.1x faster than the GPU baseline. On the CPU the optimized path reproduces the reference iterates bitwise, and tree construction and graph capture pay for themselves within the first solve. GPU-CFR beats every CPU and GPU baseline on the mid-to-large games of the suite without changing the update rule.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11923",
+    "arxiv_url": "https://arxiv.org/abs/2609.11923",
+    "source": "arxiv",
+    "score": 0.5274148714542389,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.11562",
+    "title": "Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs",
+    "authors": [
+      "Kai Ma",
+      ",",
+      "Quanfeng Lv",
+      ",",
+      "Jingguo Ge",
+      ",",
+      "Bowei Dai",
+      ",",
+      "Kefan Ruan"
+    ],
+    "abstract": "Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap. We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine couples this schedule with fine-grained SM-based communication to process tile results with low latency and low overhead. Since the communication kernel also consumes SM resources, Entwine coordinates their allocation to balance communication progress against computation slowdown. Across representative tensor-parallel LLM workloads, Entwine achieves a geomean speedup of 1.232x (up to 1.433x) over cuBLAS+NCCL, and outperforms state-of-the-art overlap baselines by 3.1-9.8% in geomean. We will open-source our implementation upon publication.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11562",
+    "arxiv_url": "https://arxiv.org/abs/2609.11562",
+    "source": "arxiv",
+    "score": 0.4744432854652405,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量计算、通信优化、延迟优化相关技术。\n\n核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。",
+    "takeaway": "本文聚焦张量计算、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.11392",
+    "title": "PATTON: Enabling Commodity PIM for Production LLM Serving",
+    "authors": [
+      "Hangyeol Kim",
+      ",",
+      "Sanghyun Lee",
+      ",",
+      "Teokkyu Suh",
+      ",",
+      "Joo-Young Kim"
+    ],
+    "abstract": "Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity PIM requires efficient physical memory allocation, block-to-address mapping, and command generation. For the Value cache, these requirements create a fundamental conflict among GEMV efficiency, single-token write efficiency, and memory capacity: GEMV-optimized layouts scatter newly generated Value vectors across rows, making writes costly, while finer-grained memory sharing improves capacity utilization but fragments GEMV reductions. We present PATTON, a PIM runtime that integrates production LLM serving engines with commodity PIM. PATTON introduces hierarchical granule allocation: block-sized Key and Value granules map one-to-one to logical token blocks, fixing their physical placements and commands, while coarser granules group blocks for efficient GEMV execution and memory utilization. A Commit Zone stages partial Value blocks for efficient single-token writes before committing them to GEMV-optimized locations. PATTON tracks these placements to generate KV cache writes and QK-transpose/SV commands. Across attention execution and runtime-induced prefill recomputation, PATTON achieves an average 1.95x speedup and 4.83x higher energy efficiency over evaluated baselines, requires no PIM processing-unit modifications, and maintains a KV cache hit rate comparable to the native GPU KV cache in vLLM.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Hardware Architecture (cs.AR)"
+    ],
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11392",
+    "arxiv_url": "https://arxiv.org/abs/2609.11392",
+    "source": "arxiv",
+    "score": 0.4581075620651245,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity...。",
+    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.11356",
+    "title": "Taming Bitwise Behavior in GPU Kernels with Tensor Core: Black-Box Reconstruction, Compiler Enforcement, and Static Verification",
+    "authors": [
+      "Ziteng Yang",
+      ",",
+      "Nicholas J. Riasanovsky",
+      ",",
+      "Warren Deng",
+      ",",
+      "Vivek Sarkar"
+    ],
+    "abstract": "Determinism and numerical reproducibility are increasingly required of GPU kernels in machine learning systems, yet deterministic implementations of the same kernel can still differ bit for bit. Floating-point reduction order is the primary cause, alongside partial-sum precision, fused multiply-add operations, and rounding placement. These choices may be hand-coded, selected by a block-level language such as Triton, or hidden inside a closed-source library such as cuBLAS or rocBLAS. A tile shape chosen for performance therefore also determines the arithmetic, potentially breaking batch invariance. Preserving a fixed order can cost up to 20 percent, while an autotuner cannot identify which configurations are bitwise equivalent. We characterize the factors determining the bitwise behavior of reductions and general matrix multiplication (GEMM). First, we introduce a descriptor of GEMM reduction order, including the partitioning of K in split-K GEMM. Using it, we perform the first black-box reconstruction of a closed-source library's arithmetic for bit-level correctness. Our family of Triton GEMMs matches NVIDIA cuBLAS in all tested cases on Blackwell and Hopper. For realistic LLM shapes with fused epilogues, it matches or exceeds this http URL performance. Second, we enforce balanced-tree reduction during Triton lowering and introduce a data-layout optimization that brings 19 of 27 kernels on GB300 and H100 within 10 percent of free-order performance. Third, we develop sound static checkers for bitwise equivalence between compiled GPU kernels, including the first checker spanning NVIDIA PTX and AMD GCN. Integrated into Triton's autotuner, the checker restricts search to a single bit-equivalence class.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11356",
+    "arxiv_url": "https://arxiv.org/abs/2609.11356",
+    "source": "arxiv",
+    "score": 0.4180307674407959,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数相关技术。\n\n核心内容：Determinism and numerical reproducibility are increasingly required of GPU kernels in machine learning systems, yet deterministic implementations of the same kernel can still differ bit for bit. Floating-point reduction order is the primary cause, alongside partial-sum precision, fused multiply-add ...。",
+    "takeaway": "本文聚焦GPU 核函数，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.11148",
+    "title": "OmniTable: A Unified Wide-Table System for Petabyte-Scale LLM Data Curation and Exploration",
+    "authors": [
+      "Yuzhuo Fu",
+      ",",
+      "Xiangchun Wang",
+      ",",
+      "Chao Huang",
+      ",",
+      "Liyi Wang",
+      ",",
+      "Binwei Zeng",
+      ",",
+      "Yuhan Wang",
+      ",",
+      "Taotao Nie",
+      ",",
+      "Dongke Hu",
+      ",",
+      "Wang Hong",
+      ",",
+      "Jiayi Wang",
+      ",",
+      "Wenwen Cui",
+      ",",
+      "Zhuyan Zhou",
+      ",",
+      "Yushun Guo",
+      ",",
+      "Yuhan Xing",
+      ",",
+      "Jiaxin Lian",
+      ",",
+      "Peng Lin",
+      ",",
+      "Qing Cui",
+      ",",
+      "Wenhui Shi",
+      ",",
+      "Jun Zhou"
+    ],
+    "abstract": "Data curation is a critical bottleneck in industrial-grade LLM development, where petabyte-scale unstructured corpora are scattered across hundreds of physical tables, feature engineering relies on manual, table-centric pipeline orchestration, and data lineage is largely absent. We present OmniTable as an architecture blueprint for a unified wide-table layer built on Logical Unification, Physical Separation, targeting petabyte-scale LLM data curation and exploration. OmniTable makes four contributions: (1) a unified wide-table abstraction that consolidates multi-source heterogeneous data and thousands of derived features under a single logical schema via logical-physical mapping; (2) declarative feature lifecycle management that automates dependency resolution, execution planning, operator fusion, and lineage tracking, replacing manual pipeline orchestration with a &#34;declare-and-execute&#34; paradigm; (3) an adaptive execution engine with autonomous governance that achieves stable PB-scale feature backfill through heterogeneous compute routing (CPU/GPU), adaptive tuning, UDF-level fault tolerance, and automated storage layout optimization; and (4) hybrid-accelerated data exploration combining a global ID index, transparent OLAP offloading, and background materialized views to deliver second-level point lookups and filtered exports exceeding 20 TB/hour. In production, OmniTable manages over 35 PB of training data across web, code, PDF, and SFT domains, reducing the human-in-the-loop curation cycle from approximately 14 days to approximately 2.5 days (5.6x over the pre-OmniTable production workflow), with consistent feature versioning, auditable lineage, and minimal manual intervention.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Databases (cs.DB)"
+    ],
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11148",
+    "arxiv_url": "https://arxiv.org/abs/2609.11148",
+    "source": "arxiv",
+    "score": 0.41776740431785586,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究OLAP、异构计算相关技术。\n\n核心内容：Data curation is a critical bottleneck in industrial-grade LLM development, where petabyte-scale unstructured corpora are scattered across hundreds of physical tables, feature engineering relies on manual, table-centric pipeline orchestration, and data lineage is largely absent. We present OmniTable...。",
+    "takeaway": "本文聚焦OLAP、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.11288",
+    "title": "Bio-inspired Learning and Decision-Making with Probabilistic In-Memory Computing Hardware: Part 2",
+    "authors": [
+      "Thomas Dalgaty",
+      ",",
+      "Eiji Kawasaki",
+      ",",
+      "Miguel de Prado",
+      ",",
+      "Tommaso Salvatori",
+      ",",
+      "Germain Haugou",
+      ",",
+      "Eric Flamand"
+    ],
+    "abstract": "This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights. However, as noted in Part 1 and confirmed through GPU-based implementations, large-scale probabilistic energy-based models of this nature face significant scalability challenges due to excessive execution latency. This latency stems from a fundamental mismatch: massively parallel models with low arithmetic intensity (such as energy-based models) are being executed on processor architectures like GPUs that rely on high-bandwidth memory (HBM) interfaces. The HBM imposes brutally sequential execution constraints on inherently parallelizable models, creating the false impression that such models are unscalable. In reality, it is the GPU architecture itself, with its dependence on HBM interfaces, that is not a scalable processor architecture for this class of AI model. In this report, we demonstrate using a detailed transaction-level model (TLM) of a probabilistic analogue in-memory computing (AIMC) processor that the same energy-based model can execute well over 1000x faster than data-center-grade hardware by eliminating the HBM interface and performing computation directly within on-chip memory.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Hardware Architecture (cs.AR)"
+    ],
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11288",
+    "arxiv_url": "https://arxiv.org/abs/2609.11288",
+    "source": "arxiv",
+    "score": 0.38913132190704347,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究隐私信息检索、内存数据库、带宽优化、延迟优化相关技术。\n\n核心内容：This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights。",
+    "takeaway": "本文聚焦隐私信息检索、内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.11906",
+    "title": "AccelForge: Comprehensive Modeling and Co-Design Framework for AI Accelerators",
+    "authors": [
+      "Tanner Andrulis",
+      ",",
+      "Michael Gilbert",
+      ",",
+      "Vivienne Sze",
+      ",",
+      "Joel S. Emer"
+    ],
+    "abstract": "Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an accelerator modeling framework that captures salient attributes of devices, circuits, architectures, workloads, as well as optimizing the mapping of the workload onto the hardware. In this paper, we introduce AccelForge, which improves upon existing accelerator modeling frameworks in capabilities, speed, and ease-of-use. AccelForge unifies and multiple works into one framework, and it includes (1) composable user-defined and user-modifiable models of devices, circuits, and architectures, (2) fast mappers that enable accurate evaluation in orders of magnitude less (computer and human) time, and (3) easy-to-use and easy-to-extend, yet still high performance, Python implementations of both the model and mapper to enable rapid research and extension to novel optimizations.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Hardware Architecture (cs.AR)"
+    ],
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11906",
+    "arxiv_url": "https://arxiv.org/abs/2609.11906",
+    "source": "arxiv",
+    "score": 0.36746761202812195,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究网络、吞吐量相关技术。\n\n核心内容：Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an...。",
+    "takeaway": "本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.10554",
+    "title": "Memory Profiling and Migration for Heterogeneous Memory Architectures",
+    "authors": [
+      "Marios Asiminakis",
+      ",",
+      "Polydoros Petrakis",
+      ",",
+      "Manolis Marazakis"
+    ],
+    "abstract": "Heterogeneous memory systems that combine high-bandwidth memory (HBM) with commodity DRAM can accelerate bandwidth-bound HPC workloads, but current page placement largely depends on manual tuning or OS heuristics not designed for multi-tier dynamics. We present SHAMBLES, a kernel-integrated framework that profiles application memory behavior at low overhead and migrates data across tiers without requiring application changes. SHAMBLES exposes a policy-agnostic interface and a lightweight user-space runtime with pluggable policies (e.g. recency and frequency based) as well as static placement for controlled studies. A logging mode provides reproducible timelines of allocations and migrations to aid analysis. We implement SHAMBLES on a commodity Linux system with HBM and DDR exposed as NUMA nodes and evaluate it with the HPCG, DGEMM benchmarks and Himeno stencil mini-app. Our design and methodology show how transparent, policy-driven migration can respond to changing access locality and concentrate hot data in HBM without developer intervention, offering a practical path to performance portability on tiered memory. Results from HPCG show that we can maintain up to 93.75% of the all-in-HBM baseline performance, while keeping only 40% of the problem size in the HBM. DGEMM experiments show that dynamic policies in SHAMBLES sustain up to 99% of the all-in-HBM performance, while keeping only one third of the DGEMM matrix footprint in HBM. For Himeno, SHAMBLES shows that fast-tier selection must be both workload-aware and size-aware: with a 50% fast-tier budget, it can outperform fixed all-in-HBM and all-in-DDR placements for the L size, while the XL size shifts back toward HBM.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.10554",
+    "arxiv_url": "https://arxiv.org/abs/2609.10554",
+    "source": "arxiv",
+    "score": 0.3581954383850098,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、带宽优化相关技术。\n\n核心内容：Heterogeneous memory systems that combine high-bandwidth memory (HBM) with commodity DRAM can accelerate bandwidth-bound HPC workloads, but current page placement largely depends on manual tuning or OS heuristics not designed for multi-tier dynamics. We present SHAMBLES, a kernel-integrated framewor...。",
+    "takeaway": "本文聚焦异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.11744",
+    "title": "Building py-kvcache: A Performance Characterization of External KV Caching for vLLM with NVMe SSDs",
+    "authors": [
+      "Joseph Kanichai",
+      ",",
+      "Tiziano De Matteis",
+      ",",
+      "Animesh Trivedi"
+    ],
+    "abstract": "Prefix caching can reduce the time to first token (TTFT) of long-context LLM requests by reusing previously computed key-value (KV) states, but for short prefixes or fast GPUs, recomputation can be faster than loading from an external cache. We characterize this tradeoff in vLLM across GPU, CPU, and NVMe tiers using synthetic workloads, long-context benchmarks, production traces, and find that cache performance depends on transfer granularity, intermediate memory use, and when transfers enter the request schedule, not only on device bandwidth. These findings motivate py-kvcache, a vLLM KV Offload connector with asynchronous direct I/O, bounded shared staging, and scheduler-aware preloading, which starts disk reads while requests are still waiting, overlapping with compute. At 80k tokens, py-kvcache loading from disk is 2.0x faster than LMCache, with preloading contributing 1.34x. With GPU, CPU, and disk caching enabled, it is 1.23x faster than LMCache and within approximately 4% of the native vLLM KV Offload implementation. LongBench and SCBench show that these benefits extend to irregular prefix chains and multi-turn workloads. Bailian trace replays improve TTFT on a weaker GPU, but on an H100 the average request falls below the break-even point and GPU memory alone retains enough prefixes. External KV caching should therefore be treated as a setup specific admission decision. The py-kvcacheimplementation is available at: this https URL.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11744",
+    "arxiv_url": "https://arxiv.org/abs/2609.11744",
+    "source": "arxiv",
+    "score": 0.32395878314971926,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、NVMe 存储、缓存、带宽优化相关技术。\n\n核心内容：Prefix caching can reduce the time to first token (TTFT) of long-context LLM requests by reusing previously computed key-value (KV) states, but for short prefixes or fast GPUs, recomputation can be faster than loading from an external cache. We characterize this tradeoff in vLLM across GPU, CPU, and...。",
+    "takeaway": "本文聚焦GPU 内存管理、NVMe 存储、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.11352",
+    "title": "Rethinking Sparse Formats for RISC-V: A Hierarchical Approach to High-Performance SpMV",
+    "authors": [
+      "Anna Pirova",
+      ",",
+      "Anastasia Vodeneeva",
+      ",",
+      "Konstantin Kovalev",
+      ",",
+      "Alexander Ustinov",
+      ",",
+      "Maksim Zagriadskov",
+      ",",
+      "Daniil Litvyakov",
+      ",",
+      "Arthur Kulik",
+      ",",
+      "Evgeny Kozinov",
+      ",",
+      "Valentin Volokitin",
+      ",",
+      "Iosif Meyerov"
+    ],
+    "abstract": "The sparse matrix-vector multiplication (SpMV) algorithm is a fundamental computational kernel of linear algebra and serves as a building block for numerous applications, primarily iterative solvers for systems of linear equations used in scientific and engineering simulations. This paper compares vectorized implementations of the SpMV algorithm across eight established sparse matrix storage formats and proposes a novel modification of the CSR format, Hierarchical CSR (HCSR), which enhances SpMV performance on RISC-V processors. Our SpMV implementations utilize RVV 1.0 intrinsics and are publicly available as an open-source C++ library named RVVLASparse. Computational experiments conducted on SpacemiT K1 and K3 RISC-V boards demonstrate that selecting an appropriate matrix storage format accelerates SpMV computations by an average of 1.6x, while the proposed HCSR format achieves the shortest execution time among all considered formats across a broad class of sparse matrices.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11352",
+    "arxiv_url": "https://arxiv.org/abs/2609.11352",
+    "source": "arxiv",
+    "score": 0.32127985239028933,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究向量化执行相关技术。\n\n核心内容：The sparse matrix-vector multiplication (SpMV) algorithm is a fundamental computational kernel of linear algebra and serves as a building block for numerous applications, primarily iterative solvers for systems of linear equations used in scientific and engineering simulations. This paper compares v...。",
+    "takeaway": "本文聚焦向量化执行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 针对特定场景提出优化方案"
+  }
+]
