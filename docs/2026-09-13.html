@@ -480,58 +480,81 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11923" target="_blank">GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.08871v1" target="_blank">Towards Standardized Evaluation of GPU Memory Safety with GMSBench</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.527</span>
+            <span class="score-badge score-mid">相关度 0.545</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Boning Li, ,, Longbo Huang</div>
-        <div class="paper-abstract-cn">本文研究CUDA相关技术。
+        <div class="paper-authors">Saurabh Singh, Jaewon Lee, Seonjin Na, Hyesoon Kim</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、CUDA相关技术。
 
-核心内容：Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface. On a GPU every kernel finishes in microseconds, so kernel launches and framework dispatch dominate the run time, and prior GPU implementations have lost to optimized CPU code. We observe that for a fixed game, everything about a CFR iteration except the numerical values is known before the first iteration runs. We propose GPU-CFR, a compiler and runtime built on this observation. It compiles any game once into static dataflow: flat edge and information-set arrays, precomputed indices, and depth-lev...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+核心内容：As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized benchmarks. In this paper, we present GMSBench, a GPU memory safety benchmark designed to evaluate a broad range of memory safety violations across different GPU memory spaces and execution scenarios. GMSBench comprises 149 self-contained CUDA tests spanning spatial, temporal, and concurrency errors. The suite provides a standardized foundation for the evaluation and comparative analysis of GPU memory safety mechanisms and helps expose gaps in their detection coverage. We demonstrate the utilit...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11923" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11923" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.08871v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.08871v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11562" target="_blank">Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11562v1" target="_blank">Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs</a></span>
         </div>
         <div class="paper-meta">
             <span class="score-badge score-low">相关度 0.474</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Kai Ma, ,, Quanfeng Lv, , 等 (9 位作者)</div>
+        <div class="paper-authors">Kai Ma, Quanfeng Lv, Jingguo Ge, Bowei Dai 等 (5 位作者)</div>
         <div class="paper-abstract-cn">本文研究张量计算、通信优化、延迟优化相关技术。
 
-核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap. We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine co...</div></details>
+核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap.
+  We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine ...</div></details>
         <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量计算、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11562" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11562" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11562v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11562v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11392" target="_blank">PATTON: Enabling Commodity PIM for Production LLM Serving</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09800v1" target="_blank">HBFSim: Fast and Faithful Simulation of High-Bandwidth Flash Under Real GPU Execution</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.470</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+        </div>
+        <div class="paper-authors">Yanpeng Hu, Yiwei Yang, Yuanwu Zhu, Yusheng Zheng 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理、数据放置、带宽优化相关技术。
+
+核心内容：Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in ea...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in early 2027. Decisions about capacity and data placement cannot wait for silicon. No existing method settles those decisions: a storage simulator replaying a recorded access sequence never executes the workload, a GPU simulator does not run the real compute kernels, and a cycle-accurate simulator cannot finish one LLM inference run. We present HBFSim, the first evaluation platform that applies HBF timing, capacity, and thermal effects to a real inference workload while that workload executes on a r...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2609.09800v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.09800v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11392v1" target="_blank">PATTON: Enabling Commodity PIM for Production LLM Serving</a></span>
         </div>
         <div class="paper-meta">
             <span class="score-badge score-low">相关度 0.458</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Hardware Architecture (cs.AR)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Hangyeol Kim, ,, Sanghyun Lee, , 等 (7 位作者)</div>
+        <div class="paper-authors">Hangyeol Kim, Sanghyun Lee, Teokkyu Suh, Joo-Young Kim</div>
         <div class="paper-abstract-cn">本文研究内存数据库相关技术。
 
 核心内容：Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity PIM requires efficient physical memory allocation, block-to-address mapping, and command generation. For the Value cache, these requirements create a fundamental conflict among GEMV efficiency, single-token write efficiency, and memory capacity: GEMV-optimized layouts scatter newly generated Value vectors across rows, making writes costly, while finer-grained memory sharing improves capacity utilization but fragments GEMV reductions. We present PATTON, a PIM runtime that integrates production L...</div></details>
@@ -539,65 +562,43 @@
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11392" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11392" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11356" target="_blank">Taming Bitwise Behavior in GPU Kernels with Tensor Core: Black-Box Reconstruction, Compiler Enforcement, and Static Verification</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.418</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
-        </div>
-        <div class="paper-authors">Ziteng Yang, ,, Nicholas J. Riasanovsky, , 等 (7 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 核函数相关技术。
-
-核心内容：Determinism and numerical reproducibility are increasingly required of GPU kernels in machine learning systems, yet deterministic implementations of the same kernel can still differ bit for bit. Floating-point reduction order is the primary cause, alongside partial-sum precision, fused multiply-add ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Determinism and numerical reproducibility are increasingly required of GPU kernels in machine learning systems, yet deterministic implementations of the same kernel can still differ bit for bit. Floating-point reduction order is the primary cause, alongside partial-sum precision, fused multiply-add operations, and rounding placement. These choices may be hand-coded, selected by a block-level language such as Triton, or hidden inside a closed-source library such as cuBLAS or rocBLAS. A tile shape chosen for performance therefore also determines the arithmetic, potentially breaking batch invariance. Preserving a fixed order can cost up to 20 percent, while an autotuner cannot identify which configurations are bitwise equivalent. We characterize the factors determining the bitwise behavior of...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 核函数，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11356" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11356" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11392v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11392v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11148" target="_blank">OmniTable: A Unified Wide-Table System for Petabyte-Scale LLM Data Curation and Exploration</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.10515v1" target="_blank">PASCAL: A Phase-Aware Shared-Cache Model for Parallel Scans</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.418</span>
+            <span class="score-badge score-low">相关度 0.445</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Databases (cs.DB)</span> 
+            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Yuzhuo Fu, ,, Xiangchun Wang, , 等 (37 位作者)</div>
-        <div class="paper-abstract-cn">本文研究OLAP、异构计算相关技术。
+        <div class="paper-authors">Zhongchun Zhou, Chengtao Lai, Songtao Mao</div>
+        <div class="paper-abstract-cn">本文研究扫描相关技术。
 
-核心内容：Data curation is a critical bottleneck in industrial-grade LLM development, where petabyte-scale unstructured corpora are scattered across hundreds of physical tables, feature engineering relies on manual, table-centric pipeline orchestration, and data lineage is largely absent. We present OmniTable...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Data curation is a critical bottleneck in industrial-grade LLM development, where petabyte-scale unstructured corpora are scattered across hundreds of physical tables, feature engineering relies on manual, table-centric pipeline orchestration, and data lineage is largely absent. We present OmniTable as an architecture blueprint for a unified wide-table layer built on Logical Unification, Physical Separation, targeting petabyte-scale LLM data curation and exploration. OmniTable makes four contributions: (1) a unified wide-table abstraction that consolidates multi-source heterogeneous data and thousands of derived features under a single logical schema via logical-physical mapping; (2) declarative feature lifecycle management that automates dependency resolution, execution planning, operator...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦OLAP、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略</div>
+核心内容：In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators. We name this pattern parallel scan. Due to a significant amount of data reuse in this pattern, the cache is expected to capture as much data reuse as possible and largely reduce requests sent to the main memory for both performance and energy consumption concerns. However, in reality, because of the intrinsic asynchrony of multi-cores, the actual cache miss rate and DRAM traffic can be much higher compared to ideal cases. In this paper, we propose PASCAL, a shared-cache model for parallel scans. It is aware of the dynamic feat...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
         <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11148" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11148" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.10515v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.10515v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11288" target="_blank">Bio-inspired Learning and Decision-Making with Probabilistic In-Memory Computing Hardware: Part 2</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11288v1" target="_blank">Bio-inspired Learning and Decision-Making with Probabilistic In-Memory Computing Hardware: Part 2</a></span>
         </div>
         <div class="paper-meta">
             <span class="score-badge score-low">相关度 0.389</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Hardware Architecture (cs.AR)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Thomas Dalgaty, ,, Eiji Kawasaki, , 等 (11 位作者)</div>
+        <div class="paper-authors">Thomas Dalgaty, Eiji Kawasaki, Miguel de Prado, Tommaso Salvatori 等 (6 位作者)</div>
         <div class="paper-abstract-cn">本文研究隐私信息检索、内存数据库、带宽优化、延迟优化相关技术。
 
 核心内容：This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights. However, as noted in Part 1 and confirmed through GPU-based implementations, large-scale probabilistic energy-based models of this nature face significant scalability challenges due to excessive execution latency. This latency stems from a fundamental mismatch: massively parallel models with low arithmetic intensity (such as energy-based models) are being executed on processor architectures like GPUs that rely on high-bandwidth memory (HBM) interfaces. The HBM imposes brutally sequential execution constraint...</div></details>
@@ -605,96 +606,98 @@
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11288" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11288" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11288v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11288v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11906" target="_blank">AccelForge: Comprehensive Modeling and Co-Design Framework for AI Accelerators</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11906v1" target="_blank">AccelForge: Comprehensive Modeling and Co-Design Framework for AI Accelerators</a></span>
         </div>
         <div class="paper-meta">
             <span class="score-badge score-low">相关度 0.367</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Hardware Architecture (cs.AR)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Tanner Andrulis, ,, Michael Gilbert, , 等 (7 位作者)</div>
+        <div class="paper-authors">Tanner Andrulis, Michael Gilbert, Vivienne Sze, Joel S. Emer</div>
         <div class="paper-abstract-cn">本文研究网络、吞吐量相关技术。
 
-核心内容：Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an accelerator modeling framework that captures salient attributes of devices, circuits, architectures, workloads, as well as optimizing the mapping of the workload onto the hardware. In this paper, we introduce AccelForge, which improves upon existing accelerator modeling frameworks in capabilities, speed, and ease-of-use. AccelForge unifies and multiple works into one framework, and it includes (1) composable user-defined and user-modifiable models of devices, circuits, and architectures, (2) fa...</div></details>
+核心内容：Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an accelerator modeling framework that captures salient attributes of devices, circuits, architectures, workloads, as well as optimizing the mapping of the workload onto the hardware.
+  In this paper, we introduce AccelForge, which improves upon existing accelerator modeling frameworks in capabilities, speed, and ease-of-use. AccelForge unifies and multiple works into one framework, and it includes (1) composable user-defined and user-modifiable models of devices, circuits, and architectures, (2) ...</div></details>
         <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
         <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 基于张量计算运行时构建查询引擎</div>
         <div class="paper-reasons">与硬件架构或数据系统相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11906" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11906" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11906v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11906v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.10554" target="_blank">Memory Profiling and Migration for Heterogeneous Memory Architectures</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09823v1" target="_blank">AMEND: Audited Margins Enable Nonblocking Drops in GPU-PIM LLM Decoding</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.358</span>
+            <span class="score-badge score-low">相关度 0.364</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Marios Asiminakis, ,, Polydoros Petrakis, , 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究异构计算、带宽优化相关技术。
+        <div class="paper-authors">Zuxiong Tan, Will Wei-Jen Wang, Wei Shao, Ali Karkehabadi 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究内存数据库、带宽优化相关技术。
 
-核心内容：Heterogeneous memory systems that combine high-bandwidth memory (HBM) with commodity DRAM can accelerate bandwidth-bound HPC workloads, but current page placement largely depends on manual tuning or OS heuristics not designed for multi-tier dynamics. We present SHAMBLES, a kernel-integrated framewor...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Heterogeneous memory systems that combine high-bandwidth memory (HBM) with commodity DRAM can accelerate bandwidth-bound HPC workloads, but current page placement largely depends on manual tuning or OS heuristics not designed for multi-tier dynamics. We present SHAMBLES, a kernel-integrated framework that profiles application memory behavior at low overhead and migrates data across tiers without requiring application changes. SHAMBLES exposes a policy-agnostic interface and a lightweight user-space runtime with pluggable policies (e.g. recency and frequency based) as well as static placement for controlled studies. A logging mode provides reproducible timelines of allocations and migrations to aid analysis. We implement SHAMBLES on a commodity Linux system with HBM and DDR exposed as NUMA ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current quer...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current query-key (QK) product, such as max-relative block thresholding (BLASST), still reads every K block, and a processing-in-memory (PIM) filter that decides from the current query places a serial PIM stage on the critical path. We present AMEND, a GPU-PIM attention design that removes both dependencies. AMEND predicts each block's BLASST verdict from margins audited at earlier steps, so the GPU fetches only predicted survivors while near-bank PIM units in high-bandwidth memory (HBM) concurrently score ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.10554" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.10554" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.09823v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.09823v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11744" target="_blank">Building py-kvcache: A Performance Characterization of External KV Caching for vLLM with NVMe SSDs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09423v1" target="_blank">FPGA Acceleration of Fully Homomorphic Encryption with Adaptive Key Switching</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.324</span>
+            <span class="score-badge score-low">相关度 0.334</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Joseph Kanichai, ,, Tiziano De Matteis, , 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、NVMe 存储、缓存、带宽优化相关技术。
+        <div class="paper-authors">Zhihan Xu, Jayashree Adivarahan, Rajgopal Kannan, Viktor K. Prasanna</div>
+        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
 
-核心内容：Prefix caching can reduce the time to first token (TTFT) of long-context LLM requests by reusing previously computed key-value (KV) states, but for short prefixes or fast GPUs, recomputation can be faster than loading from an external cache. We characterize this tradeoff in vLLM across GPU, CPU, and...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Prefix caching can reduce the time to first token (TTFT) of long-context LLM requests by reusing previously computed key-value (KV) states, but for short prefixes or fast GPUs, recomputation can be faster than loading from an external cache. We characterize this tradeoff in vLLM across GPU, CPU, and NVMe tiers using synthetic workloads, long-context benchmarks, production traces, and find that cache performance depends on transfer granularity, intermediate memory use, and when transfers enter the request schedule, not only on device bandwidth. These findings motivate py-kvcache, a vLLM KV Offload connector with asynchronous direct I/O, bounded shared staging, and scheduler-aware preloading, which starts disk reads while requests are still waiting, overlapping with compute. At 80k tokens, p...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、NVMe 存储、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck. Recent cryptographic advances introduce a novel key-switching method (i.e., KLSS) that reduces certain operational complexity but demands higher computational precision than the traditional Hybrid Key Switching (HKS) method. This trade-off leads to distinct computation and memory requirements, making the relative latency of KLSS and HKS highly dependent on hardware parallelism, FHE security parameters, and available on-chip memory capacity, particularly on FPGA platforms, where memory resources and parallelism must be carefully balanced.
+  In this work, we firs...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11744" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11744" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.09423v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.09423v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11352" target="_blank">Rethinking Sparse Formats for RISC-V: A Hierarchical Approach to High-Performance SpMV</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.08682v1" target="_blank">HDA-MoE: Hybrid Parallelism and Dynamic, Adaptive Scheduling for Mixture-of-Experts with 3D Near-Memory Processing</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.321</span>
+            <span class="score-badge score-low">相关度 0.320</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
+            <span class="tag">cs.AR</span> 
         </div>
-        <div class="paper-authors">Anna Pirova, ,, Anastasia Vodeneeva, , 等 (19 位作者)</div>
-        <div class="paper-abstract-cn">本文研究向量化执行相关技术。
+        <div class="paper-authors">Haochen Huang, Shuzhang Zhong, Shengxuan Qiu, Zhe Zhang 等 (11 位作者)</div>
+        <div class="paper-abstract-cn">本文研究张量并行、通信优化、带宽优化相关技术。
 
-核心内容：The sparse matrix-vector multiplication (SpMV) algorithm is a fundamental computational kernel of linear algebra and serves as a building block for numerous applications, primarily iterative solvers for systems of linear equations used in scientific and engineering simulations. This paper compares v...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The sparse matrix-vector multiplication (SpMV) algorithm is a fundamental computational kernel of linear algebra and serves as a building block for numerous applications, primarily iterative solvers for systems of linear equations used in scientific and engineering simulations. This paper compares vectorized implementations of the SpMV algorithm across eight established sparse matrix storage formats and proposes a novel modification of the CSR format, Hierarchical CSR (HCSR), which enhances SpMV performance on RISC-V processors. Our SpMV implementations utilize RVV 1.0 intrinsics and are publicly available as an open-source C++ library named RVVLASparse. Computational experiments conducted on SpacemiT K1 and K3 RISC-V boards demonstrate that selecting an appropriate matrix storage format a...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦向量化执行，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 针对特定场景提出优化方案</div>
+核心内容：Mixture-of-Experts (MoE) architectures have become a key technique for scaling Large Language Models (LLMs), enabling high model capacity with reduced computational cost. However, this efficiency comes at the expense of increased memory capacity and bandwidth demands。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Mixture-of-Experts (MoE) architectures have become a key technique for scaling Large Language Models (LLMs), enabling high model capacity with reduced computational cost. However, this efficiency comes at the expense of increased memory capacity and bandwidth demands. Recent 3D Near-Memory Processing (NMP) architectures, which vertically integrate memory and compute through hybrid bonding, provide high internal bandwidth and energy efficiency, making them attractive for accelerating MoE inference. Nevertheless, the distributed memory and compute organization of NMP systems introduces new challenges for mapping MoE workloads. Existing parallelization strategies, such as Tensor Parallelism (TP) and Expert Parallelism (EP), suffer from either high communication costs or unbalanced computation...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量并行、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎</div>
         <div class="paper-reasons">与硬件架构或数据系统相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11352" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11352" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.08682v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.08682v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -703,7 +706,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-09-13 05:48:37</span>
+            <span>上次运行：2026-09-13 06:45:43</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
