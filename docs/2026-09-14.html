@@ -480,225 +480,221 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.08871v1" target="_blank">Towards Standardized Evaluation of GPU Memory Safety with GMSBench</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11938" target="_blank">Hardware-Attributed Operator Profiling for PyTorch</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-mid">相关度 0.545</span>
+            <span class="score-badge score-low">相关度 0.450</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+            <span class="tag">Hardware Architecture (cs.AR)</span> 
         </div>
-        <div class="paper-authors">Saurabh Singh, Jaewon Lee, Seonjin Na, Hyesoon Kim</div>
-        <div class="paper-abstract-cn">本文研究GPU 内存管理、CUDA相关技术。
+        <div class="paper-authors">Logan Chu, ,, Dong Li</div>
+        <div class="paper-abstract-cn">本文研究PyTorch、聚合相关技术。
 
-核心内容：As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized benchmarks. In this paper, we present GMSBench, a GPU memory safety benchmark designed to evaluate a broad range of memory safety violations across different GPU memory spaces and execution scenarios. GMSBench comprises 149 self-contained CUDA tests spanning spatial, temporal, and concurrency errors. The suite provides a standardized foundation for the evaluation and comparative analysis of GPU memory safety mechanisms and helps expose gaps in their detection coverage. We demonstrate the utilit...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Framework profilers expose operator timing without hardware counters; GPU profilers expose hardware counters without operator attribution. Bridging this gap manually is error-prone and does not scale。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Framework profilers expose operator timing without hardware counters; GPU profilers expose hardware counters without operator attribution. Bridging this gap manually is error-prone and does not scale. We present Operator Profiler, a hardware attribution pipeline that automatically links hardware metrics to PyTorch operators via three complementary attribution paths: this http URL CUPTI correlation, NVTX temporal enclosure with per-stream interval trees, and Inductor fusion- map enrichment from debug artifacts. NVIDIA Nsight Compute (ncu) hardware counters are matched to NVIDIA Nsight Systems (nsys) kernel records via invocation-order matching, avoiding timestamp joins across incompatible clock domains. A curated 20-counter metric set with duration-weighted aggregation covers all hardware b...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦PyTorch、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.08871v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.08871v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11938" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11938" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11562v1" target="_blank">Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11936" target="_blank">One Simple Trick for Improving the Performance of Energy-Limited Local Inference and Training</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.474</span>
+            <span class="score-badge score-low">相关度 0.430</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+            <span class="tag">Performance (cs.PF)</span> 
         </div>
-        <div class="paper-authors">Kai Ma, Quanfeng Lv, Jingguo Ge, Bowei Dai 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究张量计算、通信优化、延迟优化相关技术。
+        <div class="paper-authors">Erik Schultheis, ,, Maximilian Kleinegger, , 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究多 GPU相关技术。
 
-核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap.
-  We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦张量计算、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+核心内容：Energy supply and heat dissipation are two of the main challenges with modern GPU deployments. While typically discussed in the context of new datacenter constructions, the same constraints also apply to small form-factor consumer devices, such as the DGX spark。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Energy supply and heat dissipation are two of the main challenges with modern GPU deployments. While typically discussed in the context of new datacenter constructions, the same constraints also apply to small form-factor consumer devices, such as the DGX spark. In workloads characterized by alternating compute-intensive tasks such as matmuls with memory-bound operations such as norms or cross-entropy, the compute-intensive parts might hit power and/or thermal limits and start throttling. In this short paper, we show that chunking the workload into smaller parts that alternate compute and memory in higher frequencies, these power and temperature spikes can be smoothed out, preventing throttling and resulting in considerably faster wall-clock time and reduced total energy consumption. We pr...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11562v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11562v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.11936" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.11936" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09800v1" target="_blank">HBFSim: Fast and Faithful Simulation of High-Bandwidth Flash Under Real GPU Execution</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12923" target="_blank">Dissecting GPU Utilization for LLM Inference on Nvidia Hopper</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.470</span>
+            <span class="score-badge score-low">相关度 0.415</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.ET</span> 
+            <span class="tag">Performance (cs.PF)</span> 
         </div>
-        <div class="paper-authors">Yanpeng Hu, Yiwei Yang, Yuanwu Zhu, Yusheng Zheng 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究大模型推理、数据放置、带宽优化相关技术。
+        <div class="paper-authors">Mohammad Siavashi, ,, Gerald Q. Maguire Jr., , 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型推理相关技术。
 
-核心内容：Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in ea...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in early 2027. Decisions about capacity and data placement cannot wait for silicon. No existing method settles those decisions: a storage simulator replaying a recorded access sequence never executes the workload, a GPU simulator does not run the real compute kernels, and a cycle-accurate simulator cannot finish one LLM inference run. We present HBFSim, the first evaluation platform that applies HBF timing, capacity, and thermal effects to a real inference workload while that workload executes on a r...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number. This is most severe during decode, where each request contributes only one new token and dense projection GEMMs become small-row matrix multiplications. On Hopper, the bfloat16 GMMA path executes these operations in fixed 64-row matrix fragments, so small-batch decode can fill only a small fraction of each fragment with real token rows. In this paper, we profile vLLM with FlashAttention-3 and cuBLASLt on an H100 NVL across cold prefill, warm prefill, and decode, sweeping sequence length and batch size. We replace the usual single utilizat...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.09800v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.09800v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12923" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12923" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11392v1" target="_blank">PATTON: Enabling Commodity PIM for Production LLM Serving</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12299" target="_blank">Argus: Orchestrating Cross-Layer GPU Performance Measurements around Semantic Regions</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.458</span>
+            <span class="score-badge score-low">相关度 0.406</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Hangyeol Kim, Sanghyun Lee, Teokkyu Suh, Joo-Young Kim</div>
-        <div class="paper-abstract-cn">本文研究内存数据库相关技术。
+        <div class="paper-authors">Jianzhu Yao, ,, Yue Guan, , 等 (27 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、多 GPU、网络、通信优化相关技术。
 
-核心内容：Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity PIM requires efficient physical memory allocation, block-to-address mapping, and command generation. For the Value cache, these requirements create a fundamental conflict among GEMV efficiency, single-token write efficiency, and memory capacity: GEMV-optimized layouts scatter newly generated Value vectors across rows, making writes costly, while finer-grained memory sharing improves capacity utilization but fragments GEMV reductions. We present PATTON, a PIM runtime that integrates production L...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：GPU developers and automated optimizers need performance evidence for semantic code regions--such as neural-network operator implementations and pipeline stages--but this evidence is fragmented across profiling tools. Answering a region-level question can require manually constructing probes and pro...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU developers and automated optimizers need performance evidence for semantic code regions--such as neural-network operator implementations and pipeline stages--but this evidence is fragmented across profiling tools. Answering a region-level question can require manually constructing probes and program variants, isolating interfering measurements, and mapping evidence to regions and execution contexts. We present Argus, a region-centric measurement planner and runtime that automates this workflow. Clients identify regions with boundary markers and select signals and execution scopes. Argus preserves region identity across compilation, execution, and measurement variants, constructs interference-aware multi-run plans, and orchestrates transformations and profiling across backends. It joins...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11392v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11392v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12299" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12299" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.10515v1" target="_blank">PASCAL: A Phase-Aware Shared-Cache Model for Parallel Scans</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12597" target="_blank">Invisible Yet Dominant: Big Stalls of Kernel I/O Mechanisms in Cloud OLTP Databases</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.445</span>
+            <span class="score-badge score-low">相关度 0.384</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">Databases (cs.DB)</span> 
         </div>
-        <div class="paper-authors">Zhongchun Zhou, Chengtao Lai, Songtao Mao</div>
-        <div class="paper-abstract-cn">本文研究扫描相关技术。
+        <div class="paper-authors">Mitsumasa Kondo</div>
+        <div class="paper-abstract-cn">本文研究OLTP、数据放置、带宽优化、延迟优化、吞吐量相关技术。
 
-核心内容：In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators. We name this pattern parallel scan. Due to a significant amount of data reuse in this pattern, the cache is expected to capture as much data reuse as possible and largely reduce requests sent to the main memory for both performance and energy consumption concerns. However, in reality, because of the intrinsic asynchrony of multi-cores, the actual cache miss rate and DRAM traffic can be much higher compared to ideal cases. In this paper, we propose PASCAL, a shared-cache model for parallel scans. It is aware of the dynamic feat...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦扫描，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+核心内容：Most databases, including PostgreSQL, RocksDB, and recent AI KV-cache middleware, rely on buffered I/O, delegating write-back to the Linux kernel. On the distributed block storage standard in the cloud, this delegation inherits a hidden bottleneck: each device is drained by a single kernel flusher t...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Most databases, including PostgreSQL, RocksDB, and recent AI KV-cache middleware, rely on buffered I/O, delegating write-back to the Linux kernel. On the distributed block storage standard in the cloud, this delegation inherits a hidden bottleneck: each device is drained by a single kernel flusher thread over a high-latency, shallow-queue path. When the drain falls behind, dirty throttling pauses write() system calls, and even reads that must evict dirty pages stall. These stalls are invisible to iostat and every standard counter. This poster observes the stall from inside the kernel, using the multi-volume data placement proposed in SteelDB as the experimental lever. eBPF probes on writeback and block tracepoints separate write-back by issuing context and count every throttle pause. Acros...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦OLTP、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 支持分布式/多 GPU 扩展；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.10515v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.10515v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12597" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12597" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12923v1" target="_blank">Dissecting GPU Utilization for LLM Inference on Nvidia Hopper</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12091" target="_blank">Shards on a Shoestring: Empirical Characterization of NEAR Protocol Nightshade Sharding on Commodity Hardware</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.415</span>
+            <span class="score-badge score-low">相关度 0.351</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.PF</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Mohammad Siavashi, Gerald Q. Maguire, Dejan Kostic, Marco Chiesa</div>
-        <div class="paper-abstract-cn">本文研究大模型推理相关技术。
+        <div class="paper-authors">Sohini Sahukar, ,, Om Amit Gandhi, , 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索、延迟优化相关技术。
 
-核心内容：A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number. This is most severe during decode, where each request contributes only one new token and dense projection GEMMs become small-row matrix multiplications. On Hopper, the bfloat16 GMMA path executes these operations in fixed 64-row matrix fragments, so small-batch decode can fill only a small fraction of each fragment with real token rows.
-  In this paper, we profile vLLM with FlashAttention-3 and cuBLASLt on an H100 NVL across cold prefill, warm prefill, and decode, sweeping sequence length and batch size. We replace the usual single utiliz...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：NEAR Protocol's Nightshade architecture targets one million transactions per second (TPS) through horizontal sharding of both state and computation. Published benchmarks were produced on expensive Google Cloud Platform infrastructure costing approximately \$700 per hour, leaving a significant reprod...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">NEAR Protocol's Nightshade architecture targets one million transactions per second (TPS) through horizontal sharding of both state and computation. Published benchmarks were produced on expensive Google Cloud Platform infrastructure costing approximately \$700 per hour, leaving a significant reproducibility gap for academic research. We present the first independent empirical characterization of NEAR Nightshade sharding on commodity hardware: a Chameleon Cloud bare-metal node with 48 hyperthreaded Intel Xeon cores, 128\,GB RAM, and HDD storage at 80--100\,MB/s. We systematically sweep shard count from $N{=}1$ to $N{=}24$, measuring aggregate TPS, per-shard TPS, block time, BFT finality, memory, and disk I/O. We identify three distinct bottleneck regimes: L3 cache pressure at low $N$, witn...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与硬件架构或数据系统相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.12923v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.12923v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12091" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12091" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11288v1" target="_blank">Bio-inspired Learning and Decision-Making with Probabilistic In-Memory Computing Hardware: Part 2</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12330" target="_blank">Unleashing the Power of Equality Saturation for Tensor Program Superoptimization</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.389</span>
+            <span class="score-badge score-low">相关度 0.349</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Thomas Dalgaty, Eiji Kawasaki, Miguel de Prado, Tommaso Salvatori 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究隐私信息检索、内存数据库、带宽优化、延迟优化相关技术。
+        <div class="paper-authors">Qi Zhan, ,, Xing Hu, , 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
 
-核心内容：This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights. However, as noted in Part 1 and confirmed through GPU-based implementations, large-scale probabilistic energy-based models of this nature face significant scalability challenges due to excessive execution latency. This latency stems from a fundamental mismatch: massively parallel models with low arithmetic intensity (such as energy-based models) are being executed on processor architectures like GPUs that rely on high-bandwidth memory (HBM) interfaces. The HBM imposes brutally sequential execution constraint...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">涉及 GPU 计算技术</div>
+核心内容：Efficient GPU implementations of tensor programs often require joint optimization of high-level algebraic formulations and low-level execution strategies. However, the resulting search space grows rapidly as transformations combine across operators, making joint optimization difficult to scale。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Efficient GPU implementations of tensor programs often require joint optimization of high-level algebraic formulations and low-level execution strategies. However, the resulting search space grows rapidly as transformations combine across operators, making joint optimization difficult to scale. We present EqiForge, a tensor program superoptimizer based on equality saturation. Its unified IR represents high-level tensor expressions and tiled computations in a single expression language. By composing equality rules, EqiForge derives fused implementations such as FlashAttention-style kernels directly from tensor expressions. Early compaction prunes redundant partial programs before completion, while subgraph composition extends the search to larger graphs. Across tensor-program benchmarks, Eq...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11288v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11288v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12330" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12330" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.11906v1" target="_blank">AccelForge: Comprehensive Modeling and Co-Design Framework for AI Accelerators</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12075" target="_blank">Efficient Vision-Language-Action Management and Serving for Robot Factories</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.367</span>
+            <span class="score-badge score-low">相关度 0.297</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Tanner Andrulis, Michael Gilbert, Vivienne Sze, Joel S. Emer</div>
-        <div class="paper-abstract-cn">本文研究网络、吞吐量相关技术。
+        <div class="paper-authors">Dionysios Adamopoulos, ,, Nattapol Chanpaisit, , 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究多 GPU、聚合、延迟优化、吞吐量相关技术。
 
-核心内容：Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an accelerator modeling framework that captures salient attributes of devices, circuits, architectures, workloads, as well as optimizing the mapping of the workload onto the hardware.
-  In this paper, we introduce AccelForge, which improves upon existing accelerator modeling frameworks in capabilities, speed, and ease-of-use. AccelForge unifies and multiple works into one framework, and it includes (1) composable user-defined and user-modifiable models of devices, circuits, and architectures, (2) ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 基于张量计算运行时构建查询引擎</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：Vision-Language-Action (VLA) models show high robotic manipulation capabilities via a two-stage design: a Vision-Language Model (VLM) stage followed by an Action Diffusion Transformer (ADiT) stage. Since robots must meet strict Service-Level Objectives (SLOs) for safety, VLA inference is inherently ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Vision-Language-Action (VLA) models show high robotic manipulation capabilities via a two-stage design: a Vision-Language Model (VLM) stage followed by an Action Diffusion Transformer (ADiT) stage. Since robots must meet strict Service-Level Objectives (SLOs) for safety, VLA inference is inherently latency-critical. Meeting these SLOs requires high-end GPUs, yet weight, cost, and power constraints preclude integrating such GPUs on-robot. Prior works offload VLA inference to edge servers that serve many robots on VLA models. However, current VLA systems lack support for multi-request, multi-model execution on a multi-GPU server under SLOs, while existing serving systems for multi-stage models are optimized for throughput and stage disaggregation across separate GPUs, which are ill-suited fo...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU、聚合、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.11906v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.11906v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12075" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12075" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09823v1" target="_blank">AMEND: Audited Margins Enable Nonblocking Drops in GPU-PIM LLM Decoding</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.12412" target="_blank">HoliBench: A Cross-Platform Benchmarking and Deployment Toolkit for Foundation Models in CPS-IoT Applications</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.364</span>
+            <span class="score-badge score-low">相关度 0.295</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Zuxiong Tan, Will Wei-Jen Wang, Wei Shao, Ali Karkehabadi 等 (6 位作者)</div>
-        <div class="paper-abstract-cn">本文研究内存数据库、带宽优化相关技术。
+        <div class="paper-authors">Inesh Chakrabarti, ,, Zejun Xiong, , 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究异构计算、延迟优化相关技术。
 
-核心内容：Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current quer...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current query-key (QK) product, such as max-relative block thresholding (BLASST), still reads every K block, and a processing-in-memory (PIM) filter that decides from the current query places a serial PIM stage on the critical path. We present AMEND, a GPU-PIM attention design that removes both dependencies. AMEND predicts each block's BLASST verdict from margins audited at earlier steps, so the GPU fetches only predicted survivors while near-bank PIM units in high-bandwidth memory (HBM) concurrently score ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
+核心内容：Foundation models, including large language models, vision-language models, and time-series foundation models, are increasingly deployed on embedded and edge platforms for CPS and IoT applications, where energy, latency, and memory are as critical as task accuracy. Existing benchmarking tools evalua...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Foundation models, including large language models, vision-language models, and time-series foundation models, are increasingly deployed on embedded and edge platforms for CPS and IoT applications, where energy, latency, and memory are as critical as task accuracy. Existing benchmarking tools evaluate model capability in isolation, reporting accuracy assuming sufficient compute, while hardware profiling tools remain platform-specific and mutually incompatible. As a result, users lack a unified workflow for making deployment decisions across heterogeneous devices. We present HoliBench, a modular benchmarking and deployment toolkit that jointly characterizes accuracy, latency, and energy across platforms from single-board computers to GPU servers. Its platform abstraction layer calibrates cr...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略</div>
         <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.09823v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.09823v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.12412" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.12412" target="_blank">⬇ PDF</a>
         </div>
     </div>
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2609.09423v1" target="_blank">FPGA Acceleration of Fully Homomorphic Encryption with Adaptive Key Switching</a></span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2609.06691" target="_blank">Gutenberg: Taming Latency-Critical Cloud Services with Near-Data-Processing</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.334</span>
+            <span class="score-badge score-low">相关度 0.287</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.CR</span> <span class="tag">cs.AR</span> 
+            <span class="tag">Distributed, Parallel, and Cluster Computing (cs.DC)</span> 
         </div>
-        <div class="paper-authors">Zhihan Xu, Jayashree Adivarahan, Rajgopal Kannan, Viktor K. Prasanna</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
+        <div class="paper-authors">Qiushi Lin, ,, Phillip B. Gibbons, , 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究数据处理、缓存、延迟优化、吞吐量相关技术。
 
-核心内容：Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck. Recent cryptographic advances introduce a novel key-switching method (i.e., KLSS) that reduces certain operational complexity but demands higher computational precision than the traditional Hybrid Key Switching (HKS) method. This trade-off leads to distinct computation and memory requirements, making the relative latency of KLSS and HKS highly dependent on hardware parallelism, FHE security parameters, and available on-chip memory capacity, particularly on FPGA platforms, where memory resources and parallelism must be carefully balanced.
-  In this work, we firs...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略</div>
-        <div class="paper-reasons">与硬件架构或数据系统相关</div>
+核心内容：Latency-critical cloud services place growing pressure on memory while requiring isolation, fairness, and predictable QoS. Near-data processing (NDP) reduces data movement by executing requests close to memory, and prior systems further improve locality through caching and replication。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Latency-critical cloud services place growing pressure on memory while requiring isolation, fairness, and predictable QoS. Near-data processing (NDP) reduces data movement by executing requests close to memory, and prior systems further improve locality through caching and replication. However, writes make replica maintenance expensive, while uneven compute and memory traffic can overload a few NDP units and increase tail latency. Existing throughput-oriented schedulers do not fully address these challenges for co-located cloud services. We present Gutenberg, a CPU+NDP for mutable, latency-critical cloud services. Gutenberg stages subpage updates in a CPU-resident delta buffer, allowing hot writable pages to remain replicated without eager full-page synchronization. It also adopts CPU help...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦数据处理、缓存、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 改进内存管理策略；2. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">与数据库系统和查询处理相关</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2609.09423v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2609.09423v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2609.06691" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2609.06691" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -707,7 +703,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-09-14 05:38:40</span>
+            <span>上次运行：2026-09-14 07:08:51</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>

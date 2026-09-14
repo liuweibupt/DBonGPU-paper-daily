@@ -1,169 +1,81 @@
 [
   {
-    "id": "2609.08871v1",
-    "title": "Towards Standardized Evaluation of GPU Memory Safety with GMSBench",
+    "id": "2609.11938",
+    "title": "Hardware-Attributed Operator Profiling for PyTorch",
     "authors": [
-      "Saurabh Singh",
-      "Jaewon Lee",
-      "Seonjin Na",
-      "Hyesoon Kim"
+      "Logan Chu",
+      ",",
+      "Dong Li"
     ],
-    "abstract": "As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized benchmarks. In this paper, we present GMSBench, a GPU memory safety benchmark designed to evaluate a broad range of memory safety violations across different GPU memory spaces and execution scenarios. GMSBench comprises 149 self-contained CUDA tests spanning spatial, temporal, and concurrency errors. The suite provides a standardized foundation for the evaluation and comparative analysis of GPU memory safety mechanisms and helps expose gaps in their detection coverage. We demonstrate the utility of GMSBench by evaluating Compute Sanitizer, a widely used GPU memory error detection tool across multiple GPU architectures.",
-    "published_date": "2026-09-08T15:11:57Z",
-    "updated_date": "2026-09-08T15:11:57Z",
+    "abstract": "Framework profilers expose operator timing without hardware counters; GPU profilers expose hardware counters without operator attribution. Bridging this gap manually is error-prone and does not scale. We present Operator Profiler, a hardware attribution pipeline that automatically links hardware metrics to PyTorch operators via three complementary attribution paths: this http URL CUPTI correlation, NVTX temporal enclosure with per-stream interval trees, and Inductor fusion- map enrichment from debug artifacts. NVIDIA Nsight Compute (ncu) hardware counters are matched to NVIDIA Nsight Systems (nsys) kernel records via invocation-order matching, avoiding timestamp joins across incompatible clock domains. A curated 20-counter metric set with duration-weighted aggregation covers all hardware bottleneck axes, layer deduplication reduces ncu replay time by a factor of N/K for models with N layers across K unique structural classes, and GPU clock locking controls the kernel-duration aggregates used for operator-level comparison. On an NVIDIA RTX PRO 6000 Blackwell, Operator Profiler attributes 95-100% of kernel runtime for compiled workloads (GPT-2, SDPA Attention); black-box library backends such as cuDNN RNN are correctly surfaced as greater than 85% unattributed rather than silently dropped. Applied to profile-guided FX graph optimization, attributed profiles yield 1.76x-2.24x profiled-kernel-time speedups on the two compiled optimization case studies; a third LSTM diagnostic case identifies cuDNN re-dispatch as a structural fix rather than an FX graph rewrite.",
+    "published_date": "",
+    "updated_date": "",
     "categories": [
-      "cs.CR",
-      "cs.AR"
+      "Hardware Architecture (cs.AR)"
     ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.08871v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.08871v1",
+    "primary_category": "Hardware Architecture (cs.AR)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11938",
+    "arxiv_url": "https://arxiv.org/abs/2609.11938",
     "source": "arxiv",
-    "score": 0.5450524520874024,
+    "score": 0.4496303188800812,
     "reasons": [
-      "涉及 GPU 计算技术"
+      "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、CUDA相关技术。\n\n核心内容：As GPUs become increasingly integral to high-performance computing and machine learning, ensuring memory safety in GPU programs has become crucial for reliable and secure execution. However, evaluating GPU memory safety techniques remains challenging due to the lack of comprehensive and standardized...。",
-    "takeaway": "本文聚焦GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2609.11562v1",
-    "title": "Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs",
-    "authors": [
-      "Kai Ma",
-      "Quanfeng Lv",
-      "Jingguo Ge",
-      "Bowei Dai",
-      "Kefan Ruan"
-    ],
-    "abstract": "Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap.\n  We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine couples this schedule with fine-grained SM-based communication to process tile results with low latency and low overhead. Since the communication kernel also consumes SM resources, Entwine coordinates their allocation to balance communication progress against computation slowdown. Across representative tensor-parallel LLM workloads, Entwine achieves a geomean speedup of 1.232x (up to 1.433x) over cuBLAS+NCCL, and outperforms state-of-the-art overlap baselines by 3.1-9.8% in geomean. We will open-source our implementation upon publication.",
-    "published_date": "2026-09-10T13:53:39Z",
-    "updated_date": "2026-09-10T13:53:39Z",
-    "categories": [
-      "cs.DC",
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.11562v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.11562v1",
-    "source": "arxiv",
-    "score": 0.47444340467453006,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究张量计算、通信优化、延迟优化相关技术。\n\n核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。",
-    "takeaway": "本文聚焦张量计算、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "abstract_cn": "本文研究PyTorch、聚合相关技术。\n\n核心内容：Framework profilers expose operator timing without hardware counters; GPU profilers expose hardware counters without operator attribution. Bridging this gap manually is error-prone and does not scale。",
+    "takeaway": "本文聚焦PyTorch、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
   },
   {
-    "id": "2609.09800v1",
-    "title": "HBFSim: Fast and Faithful Simulation of High-Bandwidth Flash Under Real GPU Execution",
+    "id": "2609.11936",
+    "title": "One Simple Trick for Improving the Performance of Energy-Limited Local Inference and Training",
     "authors": [
-      "Yanpeng Hu",
-      "Yiwei Yang",
-      "Yuanwu Zhu",
-      "Yusheng Zheng",
-      "Wei Zhang",
-      "Andi Quinn"
+      "Erik Schultheis",
+      ",",
+      "Maximilian Kleinegger",
+      ",",
+      "Dan Alistarh"
     ],
-    "abstract": "Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in early 2027. Decisions about capacity and data placement cannot wait for silicon. No existing method settles those decisions: a storage simulator replaying a recorded access sequence never executes the workload, a GPU simulator does not run the real compute kernels, and a cycle-accurate simulator cannot finish one LLM inference run. We present HBFSim, the first evaluation platform that applies HBF timing, capacity, and thermal effects to a real inference workload while that workload executes on a real GPU. HBFSim rewrites PTX, the intermediate code NVIDIA's compiler emits, and gates kernel launches; issue is separated from consumption, so real hardware supplies the computation that hides an access. Timing comes from measurements of a real device rather than a parameter sheet, and junction temperature sets both the rate HBF sustains and the retention deadline that forces refresh writes. HBFSim matches the measured device exactly at all six calibration breakpoints, with zero unsafe launches, and an unmodified vLLM 0.15.1 serving Qwen3-30B-A3B returns the token identifiers of the uninstrumented baseline. The device fast path serves the same Qwen3-30B-A3B case in 2s against 44s on the detailed reference path, 20.8x faster. Before HBF parts sample, HBFSim lets a designer measure a capacity or placement decision under a real workload instead of assuming one.",
-    "published_date": "2026-09-09T06:51:45Z",
-    "updated_date": "2026-09-09T06:51:45Z",
+    "abstract": "Energy supply and heat dissipation are two of the main challenges with modern GPU deployments. While typically discussed in the context of new datacenter constructions, the same constraints also apply to small form-factor consumer devices, such as the DGX spark. In workloads characterized by alternating compute-intensive tasks such as matmuls with memory-bound operations such as norms or cross-entropy, the compute-intensive parts might hit power and/or thermal limits and start throttling. In this short paper, we show that chunking the workload into smaller parts that alternate compute and memory in higher frequencies, these power and temperature spikes can be smoothed out, preventing throttling and resulting in considerably faster wall-clock time and reduced total energy consumption. We present several scenarios in which this effect can be exploited on a DGX Spark with up to 2% performance and energy improvements, and demonstrate that the same phenomenon also happens on less constrained systems, such as a multi-GPU server, albeit at significantly reduced effect size of 1-2%.",
+    "published_date": "",
+    "updated_date": "",
     "categories": [
-      "cs.AR",
-      "cs.ET"
+      "Performance (cs.PF)"
     ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.09800v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.09800v1",
+    "primary_category": "Performance (cs.PF)",
+    "pdf_url": "https://arxiv.org/pdf/2609.11936",
+    "arxiv_url": "https://arxiv.org/abs/2609.11936",
     "source": "arxiv",
-    "score": 0.4703907358646393,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作"
-    ],
-    "abstract_cn": "本文研究大模型推理、数据放置、带宽优化相关技术。\n\n核心内容：Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in ea...。",
-    "takeaway": "本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2609.11392v1",
-    "title": "PATTON: Enabling Commodity PIM for Production LLM Serving",
-    "authors": [
-      "Hangyeol Kim",
-      "Sanghyun Lee",
-      "Teokkyu Suh",
-      "Joo-Young Kim"
-    ],
-    "abstract": "Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity PIM requires efficient physical memory allocation, block-to-address mapping, and command generation. For the Value cache, these requirements create a fundamental conflict among GEMV efficiency, single-token write efficiency, and memory capacity: GEMV-optimized layouts scatter newly generated Value vectors across rows, making writes costly, while finer-grained memory sharing improves capacity utilization but fragments GEMV reductions. We present PATTON, a PIM runtime that integrates production LLM serving engines with commodity PIM. PATTON introduces hierarchical granule allocation: block-sized Key and Value granules map one-to-one to logical token blocks, fixing their physical placements and commands, while coarser granules group blocks for efficient GEMV execution and memory utilization. A Commit Zone stages partial Value blocks for efficient single-token writes before committing them to GEMV-optimized locations. PATTON tracks these placements to generate KV cache writes and QK-transpose/SV commands. Across attention execution and runtime-induced prefill recomputation, PATTON achieves an average 1.95x speedup and 4.83x higher energy efficiency over evaluated baselines, requires no PIM processing-unit modifications, and maintains a KV cache hit rate comparable to the native GPU KV cache in vLLM.",
-    "published_date": "2026-09-10T11:28:07Z",
-    "updated_date": "2026-09-10T11:28:07Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.11392v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.11392v1",
-    "source": "arxiv",
-    "score": 0.4581077706813812,
+    "score": 0.4295987629890442,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究内存数据库相关技术。\n\n核心内容：Processing-in-Memory (PIM) is promising for accelerating memory-bound decode attention, but attention acceleration alone is insufficient for production LLM serving, where engines dynamically allocate, populate, share, cache, and reclaim logical KV cache blocks. Supporting this lifecycle on commodity...。",
-    "takeaway": "本文聚焦内存数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+    "abstract_cn": "本文研究多 GPU相关技术。\n\n核心内容：Energy supply and heat dissipation are two of the main challenges with modern GPU deployments. While typically discussed in the context of new datacenter constructions, the same constraints also apply to small form-factor consumer devices, such as the DGX spark。",
+    "takeaway": "本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
   },
   {
-    "id": "2609.10515v1",
-    "title": "PASCAL: A Phase-Aware Shared-Cache Model for Parallel Scans",
-    "authors": [
-      "Zhongchun Zhou",
-      "Chengtao Lai",
-      "Songtao Mao"
-    ],
-    "abstract": "In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators. We name this pattern parallel scan. Due to a significant amount of data reuse in this pattern, the cache is expected to capture as much data reuse as possible and largely reduce requests sent to the main memory for both performance and energy consumption concerns. However, in reality, because of the intrinsic asynchrony of multi-cores, the actual cache miss rate and DRAM traffic can be much higher compared to ideal cases. In this paper, we propose PASCAL, a shared-cache model for parallel scans. It is aware of the dynamic feature of progress divergence across multi-cores, correlate the divergence with the combination of different factors such as occupancy, and predicts the cache miss rate before execution. Because prediction needs no target trace, timing, or counters, PASCAL supports design-space exploration at scales where cycle-accurate simulation is impractical, and its policy-independent bound states how much traffic no replacement policy can avoid. A MAPE of 13.84% is achieved in a 60-configuration dataset with various software pipeline depths, occupancies, and memory access data paths on an NVIDIA GB10 GPU, against 44.79% for physical-wave TileSight and 54.16% for exact symbolic SDCM.",
-    "published_date": "2026-09-09T17:48:51Z",
-    "updated_date": "2026-09-09T17:48:51Z",
-    "categories": [
-      "cs.PF",
-      "cs.AR",
-      "cs.DC"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.10515v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.10515v1",
-    "source": "arxiv",
-    "score": 0.44494657158851625,
-    "reasons": [
-      "直接涉及 GPU 加速数据库操作"
-    ],
-    "abstract_cn": "本文研究扫描相关技术。\n\n核心内容：In modern AI Accelerators and GPGPUs, many concurrent cores repeatedly access the same shared data. This pattern occurs in attention, where different query tiles share the same K/V block, GEMM, where every tile in a row reads the same panel, and many other operators。",
-    "takeaway": "本文聚焦扫描，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
-  },
-  {
-    "id": "2609.12923v1",
+    "id": "2609.12923",
     "title": "Dissecting GPU Utilization for LLM Inference on Nvidia Hopper",
     "authors": [
       "Mohammad Siavashi",
-      "Gerald Q. Maguire",
+      ",",
+      "Gerald Q. Maguire Jr.",
+      ",",
       "Dejan Kostic",
+      ",",
       "Marco Chiesa"
     ],
-    "abstract": "A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number. This is most severe during decode, where each request contributes only one new token and dense projection GEMMs become small-row matrix multiplications. On Hopper, the bfloat16 GMMA path executes these operations in fixed 64-row matrix fragments, so small-batch decode can fill only a small fraction of each fragment with real token rows.\n  In this paper, we profile vLLM with FlashAttention-3 and cuBLASLt on an H100 NVL across cold prefill, warm prefill, and decode, sweeping sequence length and batch size. We replace the usual single utilization number with eight counter-validated views derived from raw Nsight Compute reports, each pinned to an NCU counter or explicit formula. Together, these views map utilization gaps to concrete mechanisms - fragment fill, occupancy limits, stall signatures, wave quantization, and kernel selection - across four production models and six per-layer kernel roles.",
-    "published_date": "2026-09-11T14:49:05Z",
-    "updated_date": "2026-09-11T14:49:05Z",
+    "abstract": "A single SM utilization percentage can make an LLM inference workload look compute-saturated while hiding how much useful work is being done. The problem is not that the counter is wrong, but that it collapses several different mechanisms into one number. This is most severe during decode, where each request contributes only one new token and dense projection GEMMs become small-row matrix multiplications. On Hopper, the bfloat16 GMMA path executes these operations in fixed 64-row matrix fragments, so small-batch decode can fill only a small fraction of each fragment with real token rows. In this paper, we profile vLLM with FlashAttention-3 and cuBLASLt on an H100 NVL across cold prefill, warm prefill, and decode, sweeping sequence length and batch size. We replace the usual single utilization number with eight counter-validated views derived from raw Nsight Compute reports, each pinned to an NCU counter or explicit formula. Together, these views map utilization gaps to concrete mechanisms - fragment fill, occupancy limits, stall signatures, wave quantization, and kernel selection - across four production models and six per-layer kernel roles.",
+    "published_date": "",
+    "updated_date": "",
     "categories": [
-      "cs.PF",
-      "cs.AR",
-      "cs.DC",
-      "cs.LG"
+      "Performance (cs.PF)"
     ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.12923v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.12923v1",
+    "primary_category": "Performance (cs.PF)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12923",
+    "arxiv_url": "https://arxiv.org/abs/2609.12923",
     "source": "arxiv",
-    "score": 0.41467431068420413,
+    "score": 0.4146743702888489,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -172,116 +84,225 @@
     "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
   },
   {
-    "id": "2609.11288v1",
-    "title": "Bio-inspired Learning and Decision-Making with Probabilistic In-Memory Computing Hardware: Part 2",
+    "id": "2609.12299",
+    "title": "Argus: Orchestrating Cross-Layer GPU Performance Measurements around Semantic Regions",
     "authors": [
-      "Thomas Dalgaty",
-      "Eiji Kawasaki",
-      "Miguel de Prado",
-      "Tommaso Salvatori",
-      "Germain Haugou",
-      "Eric Flamand"
+      "Jianzhu Yao",
+      ",",
+      "Yue Guan",
+      ",",
+      "Srivatsan Ramesh",
+      ",",
+      "Yuanwei Fang",
+      ",",
+      "Jian Jiao",
+      ",",
+      "Boda Li",
+      ",",
+      "Yueming Hao",
+      ",",
+      "Xinwei Qiang",
+      ",",
+      "Pramod Viswanath",
+      ",",
+      "Yufei Ding",
+      ",",
+      "Bill Yoshimi",
+      ",",
+      "Alexey Loginov",
+      ",",
+      "Shane Nay",
+      ",",
+      "Adnan Aziz"
     ],
-    "abstract": "This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights. However, as noted in Part 1 and confirmed through GPU-based implementations, large-scale probabilistic energy-based models of this nature face significant scalability challenges due to excessive execution latency. This latency stems from a fundamental mismatch: massively parallel models with low arithmetic intensity (such as energy-based models) are being executed on processor architectures like GPUs that rely on high-bandwidth memory (HBM) interfaces. The HBM imposes brutally sequential execution constraints on inherently parallelizable models, creating the false impression that such models are unscalable. In reality, it is the GPU architecture itself, with its dependence on HBM interfaces, that is not a scalable processor architecture for this class of AI model. In this report, we demonstrate using a detailed transaction-level model (TLM) of a probabilistic analogue in-memory computing (AIMC) processor that the same energy-based model can execute well over 1000x faster than data-center-grade hardware by eliminating the HBM interface and performing computation directly within on-chip memory.",
-    "published_date": "2026-09-10T09:20:36Z",
-    "updated_date": "2026-09-10T09:20:36Z",
+    "abstract": "GPU developers and automated optimizers need performance evidence for semantic code regions--such as neural-network operator implementations and pipeline stages--but this evidence is fragmented across profiling tools. Answering a region-level question can require manually constructing probes and program variants, isolating interfering measurements, and mapping evidence to regions and execution contexts. We present Argus, a region-centric measurement planner and runtime that automates this workflow. Clients identify regions with boundary markers and select signals and execution scopes. Argus preserves region identity across compilation, execution, and measurement variants, constructs interference-aware multi-run plans, and orchestrates transformations and profiling across backends. It joins compiler-, hardware-, and system-level evidence using region identity and dynamic execution context, producing reports that record measurement origins and attribution ambiguity. We evaluate Argus across agentic kernel optimization, persistent megakernel optimization, and cross-level PGO. Across 44 persistent-GEMM and attention configurations, Argus improves 39/44 cases and raises AlphaEvolve's geometric-mean speedup from 5.4% to 8.9%. On a persistent TinyLlama-1.1B decode megakernel, an optimization agent reaches 1.65 ms/token with Argus versus 4.92 ms/token without it, producing a kernel $2.1\\times$ faster than PyTorch with CUDA Graphs. Finally, Argus-guided cross-level PGO improves compute--communication overlap, increasing throughput by 7% on average across five multi-GPU settings.",
+    "published_date": "",
+    "updated_date": "",
     "categories": [
-      "cs.AR"
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
     ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.11288v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.11288v1",
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12299",
+    "arxiv_url": "https://arxiv.org/abs/2609.12299",
     "source": "arxiv",
-    "score": 0.3891315007209778,
-    "reasons": [
-      "涉及 GPU 计算技术"
-    ],
-    "abstract_cn": "本文研究隐私信息检索、内存数据库、带宽优化、延迟优化相关技术。\n\n核心内容：This report extends our previous work (Part 1), which introduced an energy-based model for learning and decision-making under uncertainty. The model leverages stochastic Langevin dynamics to continuously evolve approximate probability distributions over neuron states and model weights。",
-    "takeaway": "本文聚焦隐私信息检索、内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
-  },
-  {
-    "id": "2609.11906v1",
-    "title": "AccelForge: Comprehensive Modeling and Co-Design Framework for AI Accelerators",
-    "authors": [
-      "Tanner Andrulis",
-      "Michael Gilbert",
-      "Vivienne Sze",
-      "Joel S. Emer"
-    ],
-    "abstract": "Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an accelerator modeling framework that captures salient attributes of devices, circuits, architectures, workloads, as well as optimizing the mapping of the workload onto the hardware.\n  In this paper, we introduce AccelForge, which improves upon existing accelerator modeling frameworks in capabilities, speed, and ease-of-use. AccelForge unifies and multiple works into one framework, and it includes (1) composable user-defined and user-modifiable models of devices, circuits, and architectures, (2) fast mappers that enable accurate evaluation in orders of magnitude less (computer and human) time, and (3) easy-to-use and easy-to-extend, yet still high performance, Python implementations of both the model and mapper to enable rapid research and extension to novel optimizations.",
-    "published_date": "2026-09-10T17:56:27Z",
-    "updated_date": "2026-09-10T17:56:27Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.11906v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.11906v1",
-    "source": "arxiv",
-    "score": 0.36746764183044434,
-    "reasons": [
-      "与硬件架构或数据系统相关"
-    ],
-    "abstract_cn": "本文研究网络、吞吐量相关技术。\n\n核心内容：Tensor algebra workloads, of which deep neural networks are prominent examples, are energy-intensive workloads in modern datacenter and edge deployments, making accelerators necessary to achieve energy efficiency and high throughput. To quickly evaluate and iterate on accelerator designs, we need an...。",
-    "takeaway": "本文聚焦网络、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 基于张量计算运行时构建查询引擎"
-  },
-  {
-    "id": "2609.09823v1",
-    "title": "AMEND: Audited Margins Enable Nonblocking Drops in GPU-PIM LLM Decoding",
-    "authors": [
-      "Zuxiong Tan",
-      "Will Wei-Jen Wang",
-      "Wei Shao",
-      "Ali Karkehabadi",
-      "Houman Homayoun",
-      "Avesta Sasan"
-    ],
-    "abstract": "Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current query-key (QK) product, such as max-relative block thresholding (BLASST), still reads every K block, and a processing-in-memory (PIM) filter that decides from the current query places a serial PIM stage on the critical path. We present AMEND, a GPU-PIM attention design that removes both dependencies. AMEND predicts each block's BLASST verdict from margins audited at earlier steps, so the GPU fetches only predicted survivors while near-bank PIM units in high-bandwidth memory (HBM) concurrently score the omitted complement. A stack-level controller merges both observations, updates the predictor, and eagerly generates the next step's mask, so every predicted drop is re-observed without blocking the current token. Operating points are selected offline by constrained Bayesian optimization under a false-drop budget. Across LongBench and RULER runs, AMEND preserves near-baseline task quality; in simulation at batch size 8, it achieves $1.40$-$3.63\\times$ end-to-end decode speedup and 28-66% lower dynamic decode energy than dense attention across 8K-64K contexts.",
-    "published_date": "2026-09-09T07:25:14Z",
-    "updated_date": "2026-09-09T07:25:14Z",
-    "categories": [
-      "cs.AR"
-    ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.09823v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.09823v1",
-    "source": "arxiv",
-    "score": 0.364483996629715,
+    "score": 0.40565605282783507,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究内存数据库、带宽优化相关技术。\n\n核心内容：Autoregressive large language model (LLM) decoding re-reads a growing key-value (KV) cache at every step, so long-context attention is bound by graphics processing unit (GPU) memory bandwidth. Block-sparse attention skips low-contribution KV blocks, but a selector that decides after the current quer...。",
-    "takeaway": "本文聚焦内存数据库、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+    "abstract_cn": "本文研究CUDA、PyTorch、多 GPU、网络、通信优化相关技术。\n\n核心内容：GPU developers and automated optimizers need performance evidence for semantic code regions--such as neural-network operator implementations and pipeline stages--but this evidence is fragmented across profiling tools. Answering a region-level question can require manually constructing probes and pro...。",
+    "takeaway": "本文聚焦CUDA、PyTorch、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
   },
   {
-    "id": "2609.09423v1",
-    "title": "FPGA Acceleration of Fully Homomorphic Encryption with Adaptive Key Switching",
+    "id": "2609.12597",
+    "title": "Invisible Yet Dominant: Big Stalls of Kernel I/O Mechanisms in Cloud OLTP Databases",
     "authors": [
-      "Zhihan Xu",
-      "Jayashree Adivarahan",
-      "Rajgopal Kannan",
-      "Viktor K. Prasanna"
+      "Mitsumasa Kondo"
     ],
-    "abstract": "Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck. Recent cryptographic advances introduce a novel key-switching method (i.e., KLSS) that reduces certain operational complexity but demands higher computational precision than the traditional Hybrid Key Switching (HKS) method. This trade-off leads to distinct computation and memory requirements, making the relative latency of KLSS and HKS highly dependent on hardware parallelism, FHE security parameters, and available on-chip memory capacity, particularly on FPGA platforms, where memory resources and parallelism must be carefully balanced.\n  In this work, we first propose a memory-efficient KLSS datapath that eliminates off-chip ciphertext transfers. We then develop a performance model to analyze and compare the overheads of both KLSS and HKS. Our analysis reveals that an adaptive solution supporting both methods can achieve lower overall latency than a static method during FHE computation. Guided by the performance model, we design an adaptive FPGA-based FHE accelerator that dynamically selects between HKS and KLSS during computation. We implement the accelerator on an Alveo U280 and evaluate it across multiple FHE benchmarks. Experimental results demonstrate that our adaptive solution achieves a 1.84-3.31$\\times$ speedup in bootstrapping latency and a 1.66-2.52$\\times$ speedup in secure image classification compared to state-of-the-art FPGA accelerators.",
-    "published_date": "2026-09-08T20:24:21Z",
-    "updated_date": "2026-09-08T20:24:21Z",
+    "abstract": "Most databases, including PostgreSQL, RocksDB, and recent AI KV-cache middleware, rely on buffered I/O, delegating write-back to the Linux kernel. On the distributed block storage standard in the cloud, this delegation inherits a hidden bottleneck: each device is drained by a single kernel flusher thread over a high-latency, shallow-queue path. When the drain falls behind, dirty throttling pauses write() system calls, and even reads that must evict dirty pages stall. These stalls are invisible to iostat and every standard counter. This poster observes the stall from inside the kernel, using the multi-volume data placement proposed in SteelDB as the experimental lever. eBPF probes on writeback and block tracepoints separate write-back by issuing context and count every throttle pause. Across three configurations with identical provisioned IOPS and bandwidth but 1, 2, and 4 devices, we show that adding drains, not bandwidth, cuts throttle pauses by 70%, reduces maximum transaction latency by 59%, and raises throughput by 23%.",
+    "published_date": "",
+    "updated_date": "",
     "categories": [
-      "cs.CR",
-      "cs.AR"
+      "Databases (cs.DB)"
     ],
-    "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2609.09423v1",
-    "arxiv_url": "https://arxiv.org/abs/2609.09423v1",
+    "primary_category": "Databases (cs.DB)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12597",
+    "arxiv_url": "https://arxiv.org/abs/2609.12597",
     "source": "arxiv",
-    "score": 0.3344722390174866,
+    "score": 0.3843847644329071,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究OLTP、数据放置、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Most databases, including PostgreSQL, RocksDB, and recent AI KV-cache middleware, rely on buffered I/O, delegating write-back to the Linux kernel. On the distributed block storage standard in the cloud, this delegation inherits a hidden bottleneck: each device is drained by a single kernel flusher t...。",
+    "takeaway": "本文聚焦OLTP、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 支持分布式/多 GPU 扩展；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.12091",
+    "title": "Shards on a Shoestring: Empirical Characterization of NEAR Protocol Nightshade Sharding on Commodity Hardware",
+    "authors": [
+      "Sohini Sahukar",
+      ",",
+      "Om Amit Gandhi",
+      ",",
+      "Ioan Raicu"
+    ],
+    "abstract": "NEAR Protocol's Nightshade architecture targets one million transactions per second (TPS) through horizontal sharding of both state and computation. Published benchmarks were produced on expensive Google Cloud Platform infrastructure costing approximately \\$700 per hour, leaving a significant reproducibility gap for academic research. We present the first independent empirical characterization of NEAR Nightshade sharding on commodity hardware: a Chameleon Cloud bare-metal node with 48 hyperthreaded Intel Xeon cores, 128\\,GB RAM, and HDD storage at 80--100\\,MB/s. We systematically sweep shard count from $N{=}1$ to $N{=}24$, measuring aggregate TPS, per-shard TPS, block time, BFT finality, memory, and disk I/O. We identify three distinct bottleneck regimes: L3 cache pressure at low $N$, witness gossip pipeline saturation at mid $N$, and coherence collapse at high $N$. A key unexpected finding is that HDD write latency acts as implicit flow control for the witness gossip pipeline. Removing it via RAM-backed tmpfs causes complete chain stall at $N{=}16$, with a 29$\\times$ spike in orphan witness rate at 47\\% CPU utilization. Aggregate TPS peaks at $N{=}8$ (+40\\% over $N{=}1$) then reverses, with per-shard TPS collapsing 23$\\times$ by $N{=}24$. Our dataset provides the first commodity-hardware calibration baseline for the companion SimPy sharding simulator.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12091",
+    "arxiv_url": "https://arxiv.org/abs/2609.12091",
+    "source": "arxiv",
+    "score": 0.3514259159564972,
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Fully Homomorphic Encryption (FHE) enables privacy-preserving cloud services but incurs substantial computation overhead, making hardware acceleration essential. Among FHE operations, key-switching is a major performance bottleneck。",
-    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 改进内存管理策略"
+    "abstract_cn": "本文研究隐私信息检索、延迟优化相关技术。\n\n核心内容：NEAR Protocol's Nightshade architecture targets one million transactions per second (TPS) through horizontal sharding of both state and computation. Published benchmarks were produced on expensive Google Cloud Platform infrastructure costing approximately \\$700 per hour, leaving a significant reprod...。",
+    "takeaway": "本文聚焦隐私信息检索、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.12330",
+    "title": "Unleashing the Power of Equality Saturation for Tensor Program Superoptimization",
+    "authors": [
+      "Qi Zhan",
+      ",",
+      "Xing Hu",
+      ",",
+      "Xin Xia",
+      ",",
+      "Shanping Li"
+    ],
+    "abstract": "Efficient GPU implementations of tensor programs often require joint optimization of high-level algebraic formulations and low-level execution strategies. However, the resulting search space grows rapidly as transformations combine across operators, making joint optimization difficult to scale. We present EqiForge, a tensor program superoptimizer based on equality saturation. Its unified IR represents high-level tensor expressions and tiled computations in a single expression language. By composing equality rules, EqiForge derives fused implementations such as FlashAttention-style kernels directly from tensor expressions. Early compaction prunes redundant partial programs before completion, while subgraph composition extends the search to larger graphs. Across tensor-program benchmarks, EqiForge achieves a geometric mean speedup of 1.32x and a maximum of 2.74x over the fastest available baseline per configuration. Its attention kernels outperform FlashAttention by up to 1.87x in decode and approach its performance in prefill. EqiForge also discovers new implementations that outperform this http URL on various Transformer layers, including QK-normalized MLA (3.16x) and mHC (5.84x).",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12330",
+    "arxiv_url": "https://arxiv.org/abs/2609.12330",
+    "source": "arxiv",
+    "score": 0.3488585937023163,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Efficient GPU implementations of tensor programs often require joint optimization of high-level algebraic formulations and low-level execution strategies. However, the resulting search space grows rapidly as transformations combine across operators, making joint optimization difficult to scale。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.12075",
+    "title": "Efficient Vision-Language-Action Management and Serving for Robot Factories",
+    "authors": [
+      "Dionysios Adamopoulos",
+      ",",
+      "Nattapol Chanpaisit",
+      ",",
+      "Basel Fakhri",
+      ",",
+      "Christina Giannoula"
+    ],
+    "abstract": "Vision-Language-Action (VLA) models show high robotic manipulation capabilities via a two-stage design: a Vision-Language Model (VLM) stage followed by an Action Diffusion Transformer (ADiT) stage. Since robots must meet strict Service-Level Objectives (SLOs) for safety, VLA inference is inherently latency-critical. Meeting these SLOs requires high-end GPUs, yet weight, cost, and power constraints preclude integrating such GPUs on-robot. Prior works offload VLA inference to edge servers that serve many robots on VLA models. However, current VLA systems lack support for multi-request, multi-model execution on a multi-GPU server under SLOs, while existing serving systems for multi-stage models are optimized for throughput and stage disaggregation across separate GPUs, which are ill-suited for the millisecond-scale stages of VLA models. We design Robion, the first VLA serving and management system for multi-robot, multi-model requests on multi-GPU edge servers that meets SLOs. Our serving engine disaggregates the VLM and ADiT stages within a GPU via two streams, dynamically restricting the SMs on VLM stream so ADiT always finds SMs to run alongside it, and co-locates multiple models by sharing these streams across them, prioritizing requests by least remaining SLO time. Our management engine enables flexible model placements on multi-GPU servers, and integrates an intelligent traffic controller that maximizes per-model batching under the chosen placement while bounding each GPU's load to meet SLOs. For individual models, Robion serves on average 6.7$\\times$ and 1.5$\\times$ higher robot load within 98% SLO attainment over vLLM-Omni, the most widely used multi-stage serving system, and Monolithic, which runs VLM and ADiT as a single pipeline, respectively. In a large-scale experiment of serving 8 different models on a 4-GPU server, Robion can serve up to 64 robots within 98% SLO attainment.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12075",
+    "arxiv_url": "https://arxiv.org/abs/2609.12075",
+    "source": "arxiv",
+    "score": 0.29671828389167787,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、聚合、延迟优化、吞吐量相关技术。\n\n核心内容：Vision-Language-Action (VLA) models show high robotic manipulation capabilities via a two-stage design: a Vision-Language Model (VLM) stage followed by an Action Diffusion Transformer (ADiT) stage. Since robots must meet strict Service-Level Objectives (SLOs) for safety, VLA inference is inherently ...。",
+    "takeaway": "本文聚焦多 GPU、聚合、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.12412",
+    "title": "HoliBench: A Cross-Platform Benchmarking and Deployment Toolkit for Foundation Models in CPS-IoT Applications",
+    "authors": [
+      "Inesh Chakrabarti",
+      ",",
+      "Zejun Xiong",
+      ",",
+      "Pragya Sharma",
+      ",",
+      "Mani Srivastava"
+    ],
+    "abstract": "Foundation models, including large language models, vision-language models, and time-series foundation models, are increasingly deployed on embedded and edge platforms for CPS and IoT applications, where energy, latency, and memory are as critical as task accuracy. Existing benchmarking tools evaluate model capability in isolation, reporting accuracy assuming sufficient compute, while hardware profiling tools remain platform-specific and mutually incompatible. As a result, users lack a unified workflow for making deployment decisions across heterogeneous devices. We present HoliBench, a modular benchmarking and deployment toolkit that jointly characterizes accuracy, latency, and energy across platforms from single-board computers to GPU servers. Its platform abstraction layer calibrates cross-device measurement, and the toolkit supports multiple model modalities, inference engines, concurrencies, and existing evaluation harnesses. An interactive interface exposes constraint-aware configuration selection over a design space that is profiled once and reused across studies. Using HoliBench, we characterize 20 models across 7 device types, 3 quantization levels, 8 inference backends, and over 30 tasks, surfacing tradeoffs that existing tools miss: quantization reduces latency only on hardware with low-precision support, accuracy gains show diminishing returns relative to energy, and for autoregressive workloads, average inference power is approximately constant across output lengths. We further find that single-model profiles compose under sequential co-resident execution. In a multi-model CPS deployment, standalone profiles predict combined-pipeline latency and power within 1.2% and 2.5%, enabling deployment exploration without exhaustively profiling every pipeline configuration. We release HoliBench as open-source infrastructure for deployment-aware evaluation of foundation models.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.12412",
+    "arxiv_url": "https://arxiv.org/abs/2609.12412",
+    "source": "arxiv",
+    "score": 0.2947061800956726,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、延迟优化相关技术。\n\n核心内容：Foundation models, including large language models, vision-language models, and time-series foundation models, are increasingly deployed on embedded and edge platforms for CPS and IoT applications, where energy, latency, and memory are as critical as task accuracy. Existing benchmarking tools evalua...。",
+    "takeaway": "本文聚焦异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.06691",
+    "title": "Gutenberg: Taming Latency-Critical Cloud Services with Near-Data-Processing",
+    "authors": [
+      "Qiushi Lin",
+      ",",
+      "Phillip B. Gibbons",
+      ",",
+      "Jovan Stojkovic",
+      ",",
+      "Yiwei Zhao"
+    ],
+    "abstract": "Latency-critical cloud services place growing pressure on memory while requiring isolation, fairness, and predictable QoS. Near-data processing (NDP) reduces data movement by executing requests close to memory, and prior systems further improve locality through caching and replication. However, writes make replica maintenance expensive, while uneven compute and memory traffic can overload a few NDP units and increase tail latency. Existing throughput-oriented schedulers do not fully address these challenges for co-located cloud services. We present Gutenberg, a CPU+NDP for mutable, latency-critical cloud services. Gutenberg stages subpage updates in a CPU-resident delta buffer, allowing hot writable pages to remain replicated without eager full-page synchronization. It also adopts CPU helper cores to assist request execution when NDP execution or replica maintenance becomes costly. An online controller jointly decides page placement, replication, CPU/NDP execution, and routing using access patterns, queue pressure, and feedback from prior decisions. The system further enforces isolation and fair resource allocation across services. We also model-check CPU--NDP coordination protocol for correctness. We evaluate on TailBench using ZSim with Ramulator-calibrated memory timing. Across evaluated services, Gutenberg outperforms prior systems, reducing average and p99 latency by up to 80.4% and 85.8%. It also improves isolation and fairness while adapting to changing workload behaviors.",
+    "published_date": "",
+    "updated_date": "",
+    "categories": [
+      "Distributed, Parallel, and Cluster Computing (cs.DC)"
+    ],
+    "primary_category": "Distributed, Parallel, and Cluster Computing (cs.DC)",
+    "pdf_url": "https://arxiv.org/pdf/2609.06691",
+    "arxiv_url": "https://arxiv.org/abs/2609.06691",
+    "source": "arxiv",
+    "score": 0.2865902626514435,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究数据处理、缓存、延迟优化、吞吐量相关技术。\n\n核心内容：Latency-critical cloud services place growing pressure on memory while requiring isolation, fairness, and predictable QoS. Near-data processing (NDP) reduces data movement by executing requests close to memory, and prior systems further improve locality through caching and replication。",
+    "takeaway": "本文聚焦数据处理、缓存、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 智能缓存与数据放置优化"
   }
 ]
