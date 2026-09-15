@@ -19,7 +19,7 @@
     "pdf_url": "https://arxiv.org/pdf/2608.13696v1",
     "arxiv_url": "https://arxiv.org/abs/2608.13696v1",
     "source": "arxiv",
-    "score": 0.874110746383667,
+    "score": 0.8741106271743775,
     "reasons": [
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题高度相关"
