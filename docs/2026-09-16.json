@@ -1,0 +1,306 @@
+[
+  {
+    "id": "2609.11923v1",
+    "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+    "authors": [
+      "Boning Li",
+      "Longbo Huang"
+    ],
+    "abstract": "Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface. On a GPU every kernel finishes in microseconds, so kernel launches and framework dispatch dominate the run time, and prior GPU implementations have lost to optimized CPU code. We observe that for a fixed game, everything about a CFR iteration except the numerical values is known before the first iteration runs. We propose GPU-CFR, a compiler and runtime built on this observation. It compiles any game once into static dataflow: flat edge and information-set arrays, precomputed indices, and depth-level batched passes fix the entire operation sequence, and only solver state changes between iterations. Static chance folding, depth-level execution blocks, and a dual-lane reach buffer cut the number of framework operations by up to 18.1x. Because shapes, indices, and buffer addresses never change, CUDA Graph Replay records the iteration once and replays it with a single graph launch. On one A100, across an eight-game suite that spans card games, dice games, and board games, GPU-CFR runs 29.8--80.4x faster than the fastest prior GPU CFR on the same accelerator, and 14--258x faster than LiteEFG, one of the fastest open-source CPU implementations, on the four largest games. The compiled representation carries most of that margin: on eight CPU threads with no accelerator it is already 2.2--51.1x faster than the GPU baseline. On the CPU the optimized path reproduces the reference iterates bitwise, and tree construction and graph capture pay for themselves within the first solve. GPU-CFR beats every CPU and GPU baseline on the mid-to-large games of the suite without changing the update rule.",
+    "published_date": "2026-09-10T17:58:14Z",
+    "updated_date": "2026-09-10T17:58:14Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI",
+      "cs.GT",
+      "cs.MS",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.11923v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.11923v1",
+    "source": "arxiv",
+    "score": 0.5274149906635285,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.13537v1",
+    "title": "Dynamic HBM Repartitioning for Multi-Turn MoE Serving",
+    "authors": [
+      "Jinpyo Kim",
+      "Mingi Kwon",
+      "Younghoon Min",
+      "Jongryool Kim",
+      "Jishen Zhao"
+    ],
+    "abstract": "Long-running multi-turn requests accumulate reusable key-value (KV) state. Once this state exceeds a fixed GPU KV-cache allocation, serving systems evict reusable prefixes, repeat prefill work, and may preempt requests. This pressure is particularly acute for Mixture-of-Experts (MoE) models: their expert weights occupy most GPU high-bandwidth memory (HBM), even though each token activates only a sparse subset of experts. A static boundary between weights and the KV cache prevents serving systems from using expert memory to preserve reusable state as conversations grow.\n  We present VAMP, an MoE serving framework that changes this HBM boundary at runtime. When a KV allocation cannot be satisfied, VAMP compares the estimated future work of three alternatives: staging expert weights from host memory, evicting cached prefixes that may require re-prefill, or preempting and rescheduling requests. It then converts a bounded expert-weight region into KV-cache capacity when that action has the lowest estimated penalty. CUDA Virtual Memory Management page remapping performs this conversion without copying resident KV data.\n  We implement VAMP in the vLLM serving engine and evaluate Qwen3-Next-80B on recorded and controlled multi-turn workloads. Across five replays of a recorded 2,103-turn SWE-bench agent workload, VAMP with a 15% maximum expert-offloading ratio reduces time-to-first-token (TTFT) p90 from 26.1 s to 1.10 s (23.6 times) and increases request throughput by 20.7% relative to unmodified vLLM, while increasing time per output token (TPOT) by 31.1%.",
+    "published_date": "2026-09-11T21:06:26Z",
+    "updated_date": "2026-09-11T21:06:26Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.13537v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.13537v1",
+    "source": "arxiv",
+    "score": 0.5130332565307617,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：Long-running multi-turn requests accumulate reusable key-value (KV) state. Once this state exceeds a fixed GPU KV-cache allocation, serving systems evict reusable prefixes, repeat prefill work, and may preempt requests。",
+    "takeaway": "本文聚焦CUDA、带宽优化、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.13592v1",
+    "title": "BOOST: Concurrent Access to Host Memory and HBM to Accelerate LLM Inference",
+    "authors": [
+      "Anish Saxena",
+      "Jae Hyung Ju",
+      "Hritvik Taneja",
+      "Po-An Tsai",
+      "Aamer Jaleel",
+      "Christos Kozyrakis",
+      "Moinuddin Qureshi"
+    ],
+    "abstract": "GPU memory bandwidth and capacity limit throughput in large language model (LLM) inference. The GPU memory system consists of a primary tier of high-bandwidth memory (HBM) and a secondary tier of host memory connected via CPU-to-GPU interconnect. Current serving systems treat the tiers hierarchically: they serve exclusively from HBM when data fits, and otherwise prefetch data from host memory to HBM before use. In both cases, the host memory bandwidth is never well utilized. Prefetching expands capacity by utilizing host memory, but consumes HBM bandwidth for writes, reducing the bandwidth available for demand loads. We observe that fully utilizing both host and HBM bandwidth requires each wave of GPU threadblocks to access both tiers concurrently and in proportion to their bandwidth ratio. Existing bandwidth-proportional placement strategies fail to provide concurrency because they are not aware of GPU waves, and the large 2MB GPU page size.\n  This paper presents BOOST, the first runtime system that provides concurrent and proportional access to both GPU memory tiers, extracting the combined bandwidth of host memory and HBM for LLM inference without kernel changes. The key insight in BOOST is to use kernel access patterns to make page allocation and runtime data management wave-aware. For static model weights, BOOST applies modulo-based page placement that eliminates access-ratio variance; for dynamically provisioned attention key-value (KV) pairs, it makes the free KV page pool wave-aware. We integrate BOOST into vLLM and evaluate on a Grace Hopper system. At iso-batch size, BOOST improves Time-per-Output-Token (TPOT) by 4.3% over HBM-only serving, whereas prefetching degrades TPOT by 6%. In high-throughput serving, BOOST improves throughput by 31% on average, outperforming prefetching by 15%.",
+    "published_date": "2026-09-11T23:02:24Z",
+    "updated_date": "2026-09-11T23:02:24Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.13592v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.13592v1",
+    "source": "arxiv",
+    "score": 0.5092165899276734,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、大模型推理、带宽优化、吞吐量相关技术。\n\n核心内容：GPU memory bandwidth and capacity limit throughput in large language model (LLM) inference. The GPU memory system consists of a primary tier of high-bandwidth memory (HBM) and a secondary tier of host memory connected via CPU-to-GPU interconnect。",
+    "takeaway": "本文聚焦GPU 内存管理、大模型推理、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.15311v1",
+    "title": "FlashGPU-sim: Enabling GPU Modeling for Modern Architectures and AI Workloads",
+    "authors": [
+      "Siying Yu",
+      "Yixun Hong",
+      "Guozhi Qiu",
+      "Jingci Liu",
+      "Feng Gu",
+      "Chenbo Geng",
+      "Zhengrong Wang",
+      "Chen Zhang",
+      "Bei Yu"
+    ],
+    "abstract": "As AI becomes increasingly ubiquitous, modern AI systems are shaped by a tight software-hardware co-design loop. Later GPUs expose features such as asynchronous data movement, tensor core pipelines, and fine-grained synchronization that high-performance kernels aggressively exploit, while emerging application behaviors increasingly influence the next generation of hardware design. Unfortunately, the latest open-source simulators for NVIDIA GPUs focus on architectures and software stacks from roughly six years ago. Therefore, they cannot support many state-of-the-art AI kernels generated by modern compiler stacks, e.g. Triton, or accurately model the hardware features they depend on. As a result, architects lack a credible platform for analyzing bottlenecks in this flywheel or evaluating design trade-offs for future AI systems. To bridge this gap, we present FlashGPU-sim, an open-source, execution-driven, cycle-accurate GPU simulator for modern AI workloads. FlashGPU-sim faithfully models modern hardware features such as asynchronous data movement, fine-grained synchronization, tensor-core execution, and distributed shared memory. A Triton extraction front-end allows direct simulation of optimized AI operators without manual porting, while multi-threaded execution makes large-scale software-hardware co-design practical. Across 131 workload configurations on RTX 5090, H100, and B200, FlashGPU-sim achieves a cycle-level MAPE of 5.24%, while multi-threaded simulation reaches a 7.86x speedup with 16 host threads. An H100 case study further demonstrates its utility for microarchitectural design exploration.",
+    "published_date": "2026-09-14T10:02:01Z",
+    "updated_date": "2026-09-14T10:02:01Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.15311v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.15311v1",
+    "source": "arxiv",
+    "score": 0.5001348686218262,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：As AI becomes increasingly ubiquitous, modern AI systems are shaped by a tight software-hardware co-design loop. Later GPUs expose features such as asynchronous data movement, tensor core pipelines, and fine-grained synchronization that high-performance kernels aggressively exploit, while emerging a...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.16500v1",
+    "title": "High-Performance Tensor Formulation of the Viterbi Algorithm for Hidden Semi-Markov Models",
+    "authors": [
+      "Lorenzo Piarulli",
+      "Elia Belli",
+      "Daniele De Sensi"
+    ],
+    "abstract": "Hidden Semi-Markov Models (HSMMs) are fundamental probabilistic models widely adopted across diverse domains, from computational biology to finance and signal processing. The Viterbi algorithm decodes the most likely state sequence given an HSMM and can be applied iteratively for ab initio model learning. However, existing Viterbi implementations remain sequential, and GPU-accelerated solutions are entirely absent, making HSMM decoding impractical for large-scale workloads. We present a tensor-based formulation of the Viterbi algorithm for HSMMs, restructuring the inner loops into tensor operations that naturally map onto SIMD units and massively parallel architectures. Building on this formulation, we provide optimized implementations spanning single- and multi-core CPUs, and, for the first time, GPU. Experimental evaluation demonstrates speedups of up to 14x on a single core, over 200x with multi-core, and over 570x on GPU over the state-of-the-art sequential baseline, establishing a new performance baseline for large-scale HSMM decoding.",
+    "published_date": "2026-09-15T01:45:34Z",
+    "updated_date": "2026-09-15T01:45:34Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC",
+      "cs.DS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.16500v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.16500v1",
+    "source": "arxiv",
+    "score": 0.48561842799186705,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、SIMD 并行相关技术。\n\n核心内容：Hidden Semi-Markov Models (HSMMs) are fundamental probabilistic models widely adopted across diverse domains, from computational biology to finance and signal processing. The Viterbi algorithm decodes the most likely state sequence given an HSMM and can be applied iteratively for ab initio model lea...。",
+    "takeaway": "本文聚焦GPU 加速、SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.11562v1",
+    "title": "Entwine: Coordinating Tiled Computation and Fine-Grained Communication across GPUs",
+    "authors": [
+      "Kai Ma",
+      "Quanfeng Lv",
+      "Jingguo Ge",
+      "Bowei Dai",
+      "Kefan Ruan"
+    ],
+    "abstract": "Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication. However, a mismatch between computation and communication progress can limit these opportunities. Communication stalls when no data is ready, and may lag when data arrives in bursts. Communication can also slow computation by consuming shared resources, offsetting the benefits of overlap.\n  We present Entwine, which coordinates tile computation order, fine-grained communication, and SM resource allocation to minimize overall completion time. Entwine reorders tile computation to produce data for communication at a more regular pace. Entwine couples this schedule with fine-grained SM-based communication to process tile results with low latency and low overhead. Since the communication kernel also consumes SM resources, Entwine coordinates their allocation to balance communication progress against computation slowdown. Across representative tensor-parallel LLM workloads, Entwine achieves a geomean speedup of 1.232x (up to 1.433x) over cuBLAS+NCCL, and outperforms state-of-the-art overlap baselines by 3.1-9.8% in geomean. We will open-source our implementation upon publication.",
+    "published_date": "2026-09-10T13:53:39Z",
+    "updated_date": "2026-09-10T13:53:39Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.11562v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.11562v1",
+    "source": "arxiv",
+    "score": 0.47444343447685244,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量计算、通信优化、延迟优化相关技术。\n\n核心内容：Modern high-performance GPU computations partition tensors into tiles to exploit data reuse and parallelism. Individual tile computations complete earlier than the full tensor computation, creating opportunities to overlap computation and communication。",
+    "takeaway": "本文聚焦张量计算、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.09800v1",
+    "title": "HBFSim: Fast and Faithful Simulation of High-Bandwidth Flash Under Real GPU Execution",
+    "authors": [
+      "Yanpeng Hu",
+      "Yiwei Yang",
+      "Yuanwu Zhu",
+      "Yusheng Zheng",
+      "Wei Zhang",
+      "Andi Quinn"
+    ],
+    "abstract": "Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in early 2027. Decisions about capacity and data placement cannot wait for silicon. No existing method settles those decisions: a storage simulator replaying a recorded access sequence never executes the workload, a GPU simulator does not run the real compute kernels, and a cycle-accurate simulator cannot finish one LLM inference run. We present HBFSim, the first evaluation platform that applies HBF timing, capacity, and thermal effects to a real inference workload while that workload executes on a real GPU. HBFSim rewrites PTX, the intermediate code NVIDIA's compiler emits, and gates kernel launches; issue is separated from consumption, so real hardware supplies the computation that hides an access. Timing comes from measurements of a real device rather than a parameter sheet, and junction temperature sets both the rate HBF sustains and the retention deadline that forces refresh writes. HBFSim matches the measured device exactly at all six calibration breakpoints, with zero unsafe launches, and an unmodified vLLM 0.15.1 serving Qwen3-30B-A3B returns the token identifiers of the uninstrumented baseline. The device fast path serves the same Qwen3-30B-A3B case in 2s against 44s on the detailed reference path, 20.8x faster. Before HBF parts sample, HBFSim lets a designer measure a capacity or placement decision under a real workload instead of assuming one.",
+    "published_date": "2026-09-09T06:51:45Z",
+    "updated_date": "2026-09-09T06:51:45Z",
+    "categories": [
+      "cs.AR",
+      "cs.ET"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.09800v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.09800v1",
+    "source": "arxiv",
+    "score": 0.4703907358646393,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究大模型推理、数据放置、带宽优化相关技术。\n\n核心内容：Serving a large language model (LLM) is limited by memory capacity. High-Bandwidth Flash (HBF) stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory (HBM); the specification was published on August 3, 2026, and the first inference devices are expected to sample in ea...。",
+    "takeaway": "本文聚焦大模型推理、数据放置、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.15217v1",
+    "title": "Accelerating the Solving of Many Tiny General Linear Systems on GPUs: Application to Constitutive Laws",
+    "authors": [
+      "Tristan Chenaille",
+      "Francesca Cuteri",
+      "Rapha{ë}l Prat",
+      "Guillaume Latu",
+      "Thomas Helfer"
+    ],
+    "abstract": "Many applications require solving large numbers of independent linear systems on GPUs. While this need is well addressed for small to large systems, tiny ones, understood here as systems of dimension below 32, remain challenging. This is especially relevant in constitutive law evaluation, where millions of integration points are handled independently, and where each constitutive update generally relies on a Newton iterative method. Each iteration then requires the double-precision solution of a tiny general square linear system using LU factorization with partial pivoting (LUpp). The present study was conducted within a closed-source prototype, which serves as a demonstrator for porting to NVIDIA GPUs constitutive law evaluations currently provided on CPUs by TFEL/MFront, an open-source code generation tool for material knowledge. We compare several double-precision LUpp solvers, including implementations from GPU linear algebra libraries as well as custom-designed CUDA kernels. The comparison is performed first on large batches of standalone linear systems, and then within the full constitutive-law evaluation workflow, where each integration point requires a sequence of distinct linear systems, one per iteration of its own Newton loop. The study shows that the best LUpp solving strategy strongly depends on several factors including system size and application context. We discuss several key aspects, including register pressure, occupancy, the ability to invoke the LUpp solver directly from device code, and whether assigning several threads to each system is the most efficient strategy. Experiments on an NVIDIA H100 GPU show that the specialized LUpp solvers proposed in this work can outperform existing state-of-the-art approaches for this class of workloads, with speedups of up to 6.5x over cuSolverDx, and up to 17.7x over MAGMA.",
+    "published_date": "2026-09-14T08:38:21Z",
+    "updated_date": "2026-09-14T08:38:21Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.15217v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.15217v1",
+    "source": "arxiv",
+    "score": 0.4669227135181427,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Many applications require solving large numbers of independent linear systems on GPUs. While this need is well addressed for small to large systems, tiny ones, understood here as systems of dimension below 32, remain challenging。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.15034v1",
+    "title": "FastPair: GPU-Optimized String Decoding",
+    "authors": [
+      "Joseph Isaacs",
+      "Francesco Gargiulo",
+      "Peter Boncz",
+      "Robert Kruszewski",
+      "Nicholas Gates",
+      "Rossano Venturini",
+      "Will Manning",
+      "Martin Prammer"
+    ],
+    "abstract": "Modern data systems compress data at rest and decompress it only when needed to preserve interconnect bandwidth. This design is often inefficient on GPU-based compute platforms because many conventional compression techniques exhibit serial data dependencies that limit GPU parallelism, leaving resources idle. Recent NVIDIA GPUs address this decoding deficiency through the Decompression Engine (DE), an on-die, fixed-function decompression accelerator for general-purpose compression formats such as Deflate, LZ4, and Snappy. Recent work has proposed string codecs that replace frequent substrings with fixed-width codes from a small, trained dictionary, making each code's lookup independent. While these lookups can run in parallel, the resulting scattered reads and short output writes still do not align well with GPU hardware, which handles contiguous memory accesses more efficiently. We present FastPair, a GPU decoder that optimizes the existing dictionary decoding process by reorganizing lookups and assembling decoded substrings for contiguous output writes. On a B300, FastPair decodes ten real-world columns 2.4 to 4.2x faster than the DE, reaching up to 1.6 TB/s.",
+    "published_date": "2026-09-14T04:51:52Z",
+    "updated_date": "2026-09-14T04:51:52Z",
+    "categories": [
+      "cs.DB",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.15034v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.15034v1",
+    "source": "arxiv",
+    "score": 0.4656983602046967,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算、带宽优化相关技术。\n\n核心内容：Modern data systems compress data at rest and decompress it only when needed to preserve interconnect bandwidth. This design is often inefficient on GPU-based compute platforms because many conventional compression techniques exhibit serial data dependencies that limit GPU parallelism, leaving resou...。",
+    "takeaway": "本文聚焦GPU 并行计算、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.13585v1",
+    "title": "mKernel: Fast Multi-GPU, Multi-Node Fused Kernels",
+    "authors": [
+      "Ziming Mao",
+      "Yihan Zhang",
+      "Shawn Wei Chew",
+      "Shuang Ma",
+      "Costin Raiciu",
+      "Yang Zhou",
+      "Scott Shenker",
+      "Ion Stoica"
+    ],
+    "abstract": "Communication has become a bottleneck in distributed training and inference of large models. Overlapping communication with computation at the granularity of kernels, on separate streams, reduces only part of this communication cost. Fused kernels often have better performance by transmitting each output tile as soon as it is produced, but existing fused kernels are largely confined to a single NVLink domain. We present mKernel, a library of multi-GPU, multi-node fused kernels that overlap computation, intra-node NVLink communication, and inter-node RDMA at tile granularity. mKernel partitions the streaming multiprocessors (SMs) of a persistent kernel into compute and communication roles, and an on-GPU controller tunes the SM partition adaptively at run time, since the best SM partition varies with the kernel and the input shape. It structures data movement hierarchically so that data traversing the inter-node network is minimized. Finally, it drives the network from the GPU through a lightweight command queue and host proxy implemented directly on RDMA verbs, which allows the same kernels to run on any network backend (e.g. InfiniBand and on AWS EFA); we observe, surprisingly, that GPUDirect Async (IBGDA) yields little additional benefit over host-assisted GPU-initiated communication. We implement five kernels spanning tensor, sequence, and expert parallelism. On two 16-GPU H200 clusters, mKernel achieves speedups of up to 1.72x on GEMM+AllReduce and $1.88\\times$ on Ring Attention.",
+    "published_date": "2026-09-11T22:50:04Z",
+    "updated_date": "2026-09-11T22:50:04Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI",
+      "cs.LG",
+      "cs.NI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.13585v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.13585v1",
+    "source": "arxiv",
+    "score": 0.459105281829834,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、多 GPU、NVLink 互连、网络、通信优化相关技术。\n\n核心内容：Communication has become a bottleneck in distributed training and inference of large models. Overlapping communication with computation at the granularity of kernels, on separate streams, reduces only part of this communication cost。",
+    "takeaway": "本文聚焦RDMA 网络、多 GPU、NVLink 互连，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 基于张量计算运行时构建查询引擎"
+  }
+]
