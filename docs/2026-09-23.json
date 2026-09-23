@@ -1,0 +1,306 @@
+[
+  {
+    "id": "2609.24628v1",
+    "title": "Bridging the Vendor Gap: Enabling AMD GPU Support for Awkward Array via ROCm/HIP for the HL-LHC Era",
+    "authors": [
+      "Ianna Osborne",
+      "Maxym Naumchyk",
+      "Tai Sakuma",
+      "Andres Rios-Tascon",
+      "Peter Elmer"
+    ],
+    "abstract": "The High-Luminosity LHC (HL-LHC) will demand order-of-magnitude gains in analysis throughput, and increasingly those gains must come from GPUs that are not made by a single vendor. Leadership-class systems such as El Capitan, Frontier and LUMI are built on AMD accelerators, yet the Scikit-HEP analysis stack---and Awkward Array in particular---has grown up CUDA-first. We report on $rawkward$, a Rust-backed kernel engine that adds a ROCm/HIP backend for Awkward Array's nested, jagged, variable-length data structures. Our central finding is that a naive source-level port of CUDA kernels to HIP loses $5$--$10\\times$ in performance on irregular kernels, because AMD's $64$-lane wavefronts, higher register pressure and more expensive divergence behave fundamentally differently from NVIDIA's $32$-thread warps. We show that a small, reusable set of optimization patterns---loop flattening, $128$-bit vectorized loads, splitting fused kernels, and profile-guided launch configuration---recovers CUDA-class performance without changing the public API. A Rust macro-and-match dispatch layer keeps a single, backend-agnostic call site while emitting vendor-specific kernel strategies, and the type system enforces buffer-size and lifetime correctness at compile time. On a two-socket AMD Instinct MI210 node we measure GPU speedups from $1.03\\times$ (bandwidth-bound $sum$) up to $12.5\\times$ ($count$) over $128$ EPYC~7763 CPU cores, and the Rust CPU kernels match or beat on aggregate the incumbent C++ kernels (geometric-mean runtime ratio $0.37\\times$ across twelve kernels). We argue that these patterns constitute a practical recipe for performance-portable, vendor-agnostic HEP analysis kernels.",
+    "published_date": "2026-09-21T14:11:12Z",
+    "updated_date": "2026-09-21T14:11:12Z",
+    "categories": [
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.24628v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24628v1",
+    "source": "arxiv",
+    "score": 0.5239824020862579,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、向量化执行、带宽优化、吞吐量相关技术。\n\n核心内容：The High-Luminosity LHC (HL-LHC) will demand order-of-magnitude gains in analysis throughput, and increasingly those gains must come from GPUs that are not made by a single vendor. Leadership-class systems such as El Capitan, Frontier and LUMI are built on AMD accelerators, yet the Scikit-HEP analys...。",
+    "takeaway": "本文聚焦CUDA、向量化执行、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.25869v1",
+    "title": "Decoupling Logical Masks from GPU Execution for Dynamic Block-Sparse Attention",
+    "authors": [
+      "Shanghao Liu",
+      "Xiaoyun Yu",
+      "Wanting Li",
+      "Wenqi Jiang"
+    ],
+    "abstract": "Attention computation makes inference expensive in video diffusion transformers (vDiTs), which generate videos through iterative denoising. Block-sparse attention (BSA) reduces\n  this cost by computing only blocks selected by a logical mask, which specifies attention interactions to compute. However, coupling logical block geometry to execution choices\n  limits adaptation to varying masks and graphics processing units (GPUs), while runtime kernel specialization can incur preparation overhead that outweighs execution time savings.\n  We present Tessera, a specialized runtime for dynamic BSA that decouples logical masks from GPU execution while preserving specified attention interactions. Its physical mapping\n  layer retains, combines, or subdivides logical attention blocks into physical tiles suited to different attention mask shapes and GPU architectures. Its task organization layer\n  groups and schedules tiles within GPU tasks to reuse data, expose parallelism, and overlap data movement with computation. Finally, profile-guided regime selection enables low-\n  overhead execution plan selection through a lookup table constructed from offline profiling. We implement Tessera with specialized CUDA kernels supporting four NVIDIA GPU\n  generations. Evaluated on 2,315 real attention masks and industrial video diffusion models, Tessera achieves up to 6.79x BSA request speedup over baseline systems in the evaluated\n  video diffusion models.",
+    "published_date": "2026-09-22T08:33:32Z",
+    "updated_date": "2026-09-22T08:33:32Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.25869v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.25869v1",
+    "source": "arxiv",
+    "score": 0.49172703742980955,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Attention computation makes inference expensive in video diffusion transformers (vDiTs), which generate videos through iterative denoising. Block-sparse attention (BSA) reduces\n  this cost by computing only blocks selected by a logical mask, which specifies attention interactions to compute。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.24270v1",
+    "title": "Dissecting How Die Scaling Breaks GPU Fine-grained Scheduling",
+    "authors": [
+      "Xiaoze Fan",
+      "Jianhao Wang",
+      "Weihao Cui",
+      "Han Zhao",
+      "Zhuobin Huang",
+      "Yangjie Zhou",
+      "Yuxian Qiu",
+      "Shixuan Sun",
+      "Bingsheng He",
+      "Quan Chen",
+      "Minyi Guo"
+    ],
+    "abstract": "Modern GPUs are no longer physically symmetric. Die scaling leads to both manufacturing-driven floorsweeping and cache and memory partitioning. The former creates chip-specific compute topologies, while the latter causes non-uniform memory access. These asymmetries are substantial. Topology-oblivious compute unit allocation can lead to up to 1.33x performance variation, while remote accesses increase HBM latency by up to 67% and nearly double L2 latency.\n  However, these asymmetries are hidden behind the GPU's logical resource abstractions and can vary across chips. We develop lightweight characterization methods to uncover per-chip compute topology and memory affinity. We then use the discovered information to make existing fine-grained scheduling asymmetry-aware, considering not only how many resources are allocated but also which physical resources are assigned. Across full-GPU kernel execution, intra-application multiplexing, and inter-application co-location, asymmetry-aware scheduling improves mainstream kernels by up to 1.22x, multiplexed LLM inference by up to 14.3%, and avoids up to 1.33x performance variation.",
+    "published_date": "2026-09-21T08:34:29Z",
+    "updated_date": "2026-09-21T08:34:29Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.24270v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24270v1",
+    "source": "arxiv",
+    "score": 0.4778496313095093,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理、延迟优化相关技术。\n\n核心内容：Modern GPUs are no longer physically symmetric. Die scaling leads to both manufacturing-driven floorsweeping and cache and memory partitioning。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.21281v1",
+    "title": "Hybrid GPU-CPU Retrieval for Personalized Search at Ultra-Large Scale",
+    "authors": [
+      "Hao Fu",
+      "Jichao Sun",
+      "Baiting Zhu",
+      "Qiaoling Liu",
+      "Yan Shi",
+      "Cheng Lu",
+      "Liu Liu",
+      "Yubo Wang",
+      "Xin Yao",
+      "Xiangyu Niu",
+      "Xu Dong",
+      "Wenhan Lyu",
+      "Chiyao Shen",
+      "Yinjie Huang",
+      "Minglei Chen",
+      "Shuai Ding",
+      "Li Fan",
+      "Xiao Kong"
+    ],
+    "abstract": "Embedding-based retrieval on user-generated content at the trillion-document scale exposes a sharp conflict between two production demands: deep, expressive personalization for queries with rich user intent, and broad coverage of a massive inventory under fixed latency and resource budgets. We characterize this as the personalization-scale paradox: hosting the full serving inventory in GPU memory is too resource intensive, while CPU compute cannot execute the same interaction-heavy model on the latency-critical path.\n  We present a hybrid GPU-CPU co-serving system that resolves the paradox through orchestration rather than a new model class. A high-depth GPU pathway fuses retrieval and interaction pre-ranking over a curated online pool on the order of a billion documents, while a high-breadth CPU pathway searches an independently selected online inventory roughly twenty times larger with lightweight personalized scoring. Either or both pathways can run per request; candidates are deduplicated before shared downstream ranking.\n  The system is deployed in production. A full-system A/B test against the legacy CPU-only configuration improves model-scored relevance and substantive engagement, while separate pathway experiments show positive value at their own deployment scopes. Retrieval logs show that the pathways contribute structurally distinct candidates, production serving measurements characterize their latency, and a matched capacity plan quantifies the economic rationale for assigning modeling depth to GPUs and inventory breadth to CPUs. Together, these results validate a practical, independently evolvable depth-breadth architecture for ultra-large-scale personalized search.",
+    "published_date": "2026-09-18T03:47:18Z",
+    "updated_date": "2026-09-18T03:47:18Z",
+    "categories": [
+      "cs.IR",
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.21281v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.21281v1",
+    "source": "arxiv",
+    "score": 0.4603390979766846,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、SHARP 集合计算、延迟优化相关技术。\n\n核心内容：Embedding-based retrieval on user-generated content at the trillion-document scale exposes a sharp conflict between two production demands: deep, expressive personalization for queries with rich user intent, and broad coverage of a massive inventory under fixed latency and resource budgets. We chara...。",
+    "takeaway": "本文聚焦GPU 内存管理、SHARP 集合计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.22343v1",
+    "title": "Design-Space Exploration of Post-Quantum Cryptography Acceleration on an Open-Source RISC-V GPGPU",
+    "authors": [
+      "Hossam Hassan",
+      "Marc Xander Makkes",
+      "Chae Eun Lee",
+      "Hyungmin Yoon"
+    ],
+    "abstract": "Post-quantum cryptography (PQC) acceleration has been studied for CPUs and FPGAs, yet GPGPUs - dominating high-throughput computing - remain unexplored for PQC hardware integration as a functional unit. We present what is, to our knowledge, the first such integration: the Vortex Post-Quantum Crypto Unit (PCU) on the open-source Vortex RISC-V GPGPU. The PCU implements a 256-point NTT over Kyber (q=3329) and Dilithium (q=8380417) moduli in 134 logic cells (73 LUT4 + 61 CCU2C) - the smallest reported NTT accelerator by logic-cell count, 2.8x smaller than the next smallest design. It achieves 228.78 MHz on Lattice ECP5 and 299.8 MHz place-and-route on Xilinx Artix-7, and passes 253 functional tests across 7 suites. On Vortex SimX, it achieves 42.6x acceleration over GPU ALU execution, projecting to roughly 36x speedup on RTL. Synthesized to ASAP7 7nm, the NTT datapath occupies 96.53 um^2 (post-route) at 702 MHz. This work establishes a foundation for integrating PQC hardware acceleration into general-purpose parallel computing.",
+    "published_date": "2026-09-16T23:22:32Z",
+    "updated_date": "2026-09-16T23:22:32Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.22343v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.22343v1",
+    "source": "arxiv",
+    "score": 0.4479095482826233,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Post-quantum cryptography (PQC) acceleration has been studied for CPUs and FPGAs, yet GPGPUs - dominating high-throughput computing - remain unexplored for PQC hardware integration as a functional unit. We present what is, to our knowledge, the first such integration: the Vortex Post-Quantum Crypto ...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.24513v1",
+    "title": "Pierce: GPU Ray Tracing for Spatial Joins over Complex 3D Data",
+    "authors": [
+      "Anton Hackl",
+      "Eleni Tzirita Zacharatou"
+    ],
+    "abstract": "Many emerging applications, from computational biology to digital twins and urban planning, rely heavily on three-dimensional spatial joins over polyhedral meshes. These joins comprise computationally-intensive triangle--triangle intersection tests that pairwise compare the faces of polyhedral meshes. Since each mesh may contain thousands of faces, the resulting cost challenges the responsiveness of spatial data management techniques. Existing techniques follow the filter-and-refine paradigm, accelerating either the filtering step through indexing or the refinement step through progressive mesh compression combined with GPU parallelization of triangle--triangle tests. However, the former neglects the high cost of intra-geometry refinements, whereas the latter lowers this cost but still relies on the same pairwise triangle--triangle tests. In this paper, we introduce Pierce, an approach that reformulates three-dimensional spatial joins over complex polyhedral meshes as ray-tracing operations and leverages the hardware ray-tracing units (RT cores) of modern GPUs to accelerate query execution. Our approach casts rays along the edges of one mesh against a spatial hierarchy built over the other, performing ray--node tests at the internal levels to prune distant geometries and ray--triangle tests at the leaves to identify intersecting meshes, both of which RT cores accelerate in hardware. We evaluated Pierce on real and synthetic data against multiple baselines, demonstrating more than two orders of magnitude speedup on digital pathology data compared to the state-of-the-art approach.",
+    "published_date": "2026-09-21T12:52:10Z",
+    "updated_date": "2026-09-21T12:52:10Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.24513v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24513v1",
+    "source": "arxiv",
+    "score": 0.4355755734443665,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算相关技术。\n\n核心内容：Many emerging applications, from computational biology to digital twins and urban planning, rely heavily on three-dimensional spatial joins over polyhedral meshes. These joins comprise computationally-intensive triangle--triangle intersection tests that pairwise compare the faces of polyhedral meshe...。",
+    "takeaway": "本文聚焦GPU 并行计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2609.18662v1",
+    "title": "Automated Instruction Encoding Synthesis for Modern GPU ISA Compression",
+    "authors": [
+      "Mingyuan Ma",
+      "Hu He"
+    ],
+    "abstract": "Modern GPU kernels increasingly stress the instruction supply path, while fixed instruction containers can leave substantial footprint slack. This paper presents an automated encoding-synthesis framework that treats instruction layout as a constrained slot-assignment problem over a validated instruction-form field specification. The formulation separates semantic field identity from physical bit positions and supports tied, pinned, and free placement constraints, making it applicable when recurring decoded fields are not frozen by a public format contract. We instantiate the framework for NVIDIA SASS: raw public encoding text is normalized into a machine-readable specification, a SASS disassembler is validated against nvdisasm on 3.78M instructions, released as an open benchmark, and CP-SAT synthesis is used for fixed-length and variable-length encodings. On 142 Blackwell kernel inputs, variable-length synthesis reduces instruction footprint by 33%, with comparable reductions after re-synthesis on Ampere and Hopper; fixed-length synthesis on the same specification reduces decoder area by 16% against a decoder generated from the NVIDIA-observed 128-bit layout by the same generator and flow. Generated fetch/decode RTL meets 1.5 GHz in TSMC 22 nm with a replicated area delta of 0.12% of a GA100-class die; a same-node SRAM comparison shows the footprint reduction corresponds to about 9x this added logic in instruction-SRAM bit-cell area.",
+    "published_date": "2026-09-16T13:41:42Z",
+    "updated_date": "2026-09-16T13:41:42Z",
+    "categories": [
+      "cs.AR",
+      "cs.PL"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.18662v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.18662v1",
+    "source": "arxiv",
+    "score": 0.4293950188159943,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数相关技术。\n\n核心内容：Modern GPU kernels increasingly stress the instruction supply path, while fixed instruction containers can leave substantial footprint slack. This paper presents an automated encoding-synthesis framework that treats instruction layout as a constrained slot-assignment problem over a validated instruc...。",
+    "takeaway": "本文聚焦GPU 核函数，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.23315v1",
+    "title": "Graph Memory for LLM Agents: At What Cost? A Comparative Evaluation of Query, Ingest, and Update Performance Across Graph Database Engines",
+    "authors": [
+      "Donald Nguyen",
+      "Gurbinder Gill",
+      "Hadi Ahmadi",
+      "Christopher J. Rossbach"
+    ],
+    "abstract": "Graph databases are frequently positioned as categorically necessary for connected-data workloads, yet the systems dimension along which they actually differ - query planning, indexing, and data-readiness cost - is rarely isolated from vendor framing. We construct a synthetic, biomedical-shaped property graph (1.02 million nodes, 5.34 million total node and edge rows) and a twenty-query workload spanning neighborhood lookups, bounded paths, set intersections, anti-joins, grouped aggregation, top-k ranking, temporal filters, full scans, and relational joins. We benchmark Corvic AI - a purpose-built columnar query engine underlying Corvic's ontology management layer (\"memories\")- against seven purpose-built or graph-extension database systems (LoraDB, Ladybug, DuckPGQ, Memgraph, Neo4j, HugeGraph, and FalkorDB) at three graph scales spanning three orders of magnitude. We report query latency geomeans, bulk-ingest throughput, point-update latency, and answer correctness for each system, and we derive a simple total-cost-of-ownership model that expresses the ingest/query trade-off as a function of query volume. Our central finding is that no system in this sample is categorically fastest: a native graph engine (Ladybug) outperforms Corvic AI on narrow, bounded-neighborhood shapes, while Corvic AI is faster on shapes that scan or join a large fraction of the graph, and a system implementing graph query syntax via SQL/PGQ (DuckPGQ) is measurably slower purely due to query-plan choice. The dominant cost differential in our data is not query latency but the cost of making data queryable at all: bulk-ingest throughput varies by three orders of magnitude across engines (5.0k-4.3M rows/s), a gap that a simple crossover-point calculation shows dominates total cost for any workload with fewer than roughly 105 queries per data refresh.",
+    "published_date": "2026-09-20T03:04:30Z",
+    "updated_date": "2026-09-20T03:04:30Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.23315v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.23315v1",
+    "source": "arxiv",
+    "score": 0.4282695496082306,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究扫描、聚合、数据库系统、延迟优化、吞吐量相关技术。\n\n核心内容：Graph databases are frequently positioned as categorically necessary for connected-data workloads, yet the systems dimension along which they actually differ - query planning, indexing, and data-readiness cost - is rarely isolated from vendor framing. We construct a synthetic, biomedical-shaped prop...。",
+    "takeaway": "本文聚焦扫描、聚合、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.18703v1",
+    "title": "RayOrch: Programming and Executing Lineage-Controlled Multi-Grain Dataflows for Foundation-Model Data Preparation",
+    "authors": [
+      "Xiaochen Ma",
+      "Zimo Meng",
+      "Junzhu Liang",
+      "Youhe Jiang",
+      "Yue Cheng",
+      "Hao Liang",
+      "Bohan Zeng",
+      "Dengchun Li",
+      "Lu Ma",
+      "Zhengyang Zhao",
+      "Zhen Hao Wong",
+      "Runming He",
+      "Meiyi Qiang",
+      "Jiangtao Guan",
+      "Binhang Yuan",
+      "Wentao Zhang"
+    ],
+    "abstract": "Preparing high quality training data for foundation models requires scalable pipelines that transform heterogeneous documents and videos into structured records. Such pipelines expand each parent item into an ordered and input dependent sequence of children, whose counts may be long tailed. GPUs should batch children across parents while preserving parent relationships, child order, completion status, and result routing. Existing systems either hide parallelism behind coarse grained jobs or expose flat records that force applications to manage lineage and regrouping. We present RayOrch, a programming model and distributed execution engine that preserves parent child relations throughout execution. Programs declare ordered variable cardinality expansions and matching gathers. The compiler validates each pair, while the runtime records child membership, immediate parents, immutable ordinals, and terminal states. Per Call FIFO Ready Queues batch ready children across parents. Gathers reconstruct results from declared membership and ordinals rather than batch boundaries or completion order. Parents can advance as soon as all required children become terminal. Typed parent scoped failures suppress undispatched siblings of the failed parent while allowing unrelated parents to continue. On NVIDIA H20 GPUs, RayOrch achieves 15.14 times speedup when scaling MinerU from 4 to 64 GPUs and 7.82 times speedup when scaling a video pipeline from 8 to 64 GPUs. It reduces end to end time by 13.1 percent versus Ray Data and 29.0 percent versus Daft on MinerU, and by 16.0 percent versus Ray Data on Docling. Code available at https://github.com/OpenDCAI/RayOrch .",
+    "published_date": "2026-09-16T14:12:37Z",
+    "updated_date": "2026-09-16T14:12:37Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.18703v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.18703v1",
+    "source": "arxiv",
+    "score": 0.4199144983291626,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算相关技术。\n\n核心内容：Preparing high quality training data for foundation models requires scalable pipelines that transform heterogeneous documents and videos into structured records. Such pipelines expand each parent item into an ordered and input dependent sequence of children, whose counts may be long tailed。",
+    "takeaway": "本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.24802v1",
+    "title": "Tiga: Compiling Graph Message Passing at Scale",
+    "authors": [
+      "Mingyuan Chi"
+    ],
+    "abstract": "Graph message passing offers a common way to express learning algorithms, physical simulations, and numerical solvers. Efficient execution depends on interaction structure and data movement, which can be obscured when a program is expressed as a sequence of tensor operations. On memory-constrained systems such as laptops, materializing connectivity and intermediate messages can also exhaust device memory. We present Tiga, a just-in-time compiler that separates the definition of a message-passing program from how its interactions are traversed, computed, and stored. Tiga preserves graph relations and reducer algebra in a multi-level intermediate representation, enabling traversal specialization, fusion of relation generation with aggregation, and reverse-mode automatic differentiation. Backend-specific lowering targets CPUs and GPUs. Its runtime extends execution beyond device-memory capacity by streaming graph partitions from disk through host memory with page-sized device staging buffers; partition ownership and halo exchange extend the same programming model to distributed execution. A Python interface interoperates with ordinary PyTorch tensors and autograd for forward and backward computation. Numerical checks validate outputs and gradients for differentiable workloads. A differentiated geometric workload characterizes the memory--time tradeoff of fused forward and backward execution. Evaluation against matched Torch and PyTorch Geometric baselines demonstrates reduced runtime and device-memory use for generated-relation workloads, while offloaded forward execution processes billion-edge graphs on a single memory-limited GPU. Measurements on heterogeneous devices further characterize the communication and load-balance costs of distributed execution.",
+    "published_date": "2026-09-21T16:01:21Z",
+    "updated_date": "2026-09-21T16:01:21Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.24802v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24802v1",
+    "source": "arxiv",
+    "score": 0.4169007384777069,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、异构计算、聚合、通信优化相关技术。\n\n核心内容：Graph message passing offers a common way to express learning algorithms, physical simulations, and numerical solvers. Efficient execution depends on interaction structure and data movement, which can be obscured when a program is expressed as a sequence of tensor operations。",
+    "takeaway": "本文聚焦PyTorch、异构计算、聚合，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  }
+]
