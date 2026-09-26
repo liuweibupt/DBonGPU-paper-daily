@@ -1,0 +1,294 @@
+[
+  {
+    "id": "2609.24628v1",
+    "title": "Bridging the Vendor Gap: Enabling AMD GPU Support for Awkward Array via ROCm/HIP for the HL-LHC Era",
+    "authors": [
+      "Ianna Osborne",
+      "Maxym Naumchyk",
+      "Tai Sakuma",
+      "Andres Rios-Tascon",
+      "Peter Elmer"
+    ],
+    "abstract": "The High-Luminosity LHC (HL-LHC) will demand order-of-magnitude gains in analysis throughput, and increasingly those gains must come from GPUs that are not made by a single vendor. Leadership-class systems such as El Capitan, Frontier and LUMI are built on AMD accelerators, yet the Scikit-HEP analysis stack---and Awkward Array in particular---has grown up CUDA-first. We report on $rawkward$, a Rust-backed kernel engine that adds a ROCm/HIP backend for Awkward Array's nested, jagged, variable-length data structures. Our central finding is that a naive source-level port of CUDA kernels to HIP loses $5$--$10\\times$ in performance on irregular kernels, because AMD's $64$-lane wavefronts, higher register pressure and more expensive divergence behave fundamentally differently from NVIDIA's $32$-thread warps. We show that a small, reusable set of optimization patterns---loop flattening, $128$-bit vectorized loads, splitting fused kernels, and profile-guided launch configuration---recovers CUDA-class performance without changing the public API. A Rust macro-and-match dispatch layer keeps a single, backend-agnostic call site while emitting vendor-specific kernel strategies, and the type system enforces buffer-size and lifetime correctness at compile time. On a two-socket AMD Instinct MI210 node we measure GPU speedups from $1.03\\times$ (bandwidth-bound $sum$) up to $12.5\\times$ ($count$) over $128$ EPYC~7763 CPU cores, and the Rust CPU kernels match or beat on aggregate the incumbent C++ kernels (geometric-mean runtime ratio $0.37\\times$ across twelve kernels). We argue that these patterns constitute a practical recipe for performance-portable, vendor-agnostic HEP analysis kernels.",
+    "published_date": "2026-09-21T14:11:12Z",
+    "updated_date": "2026-09-21T14:11:12Z",
+    "categories": [
+      "cs.DC",
+      "cs.PL"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.24628v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24628v1",
+    "source": "arxiv",
+    "score": 0.5239823126792907,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、向量化执行、带宽优化、吞吐量相关技术。\n\n核心内容：The High-Luminosity LHC (HL-LHC) will demand order-of-magnitude gains in analysis throughput, and increasingly those gains must come from GPUs that are not made by a single vendor. Leadership-class systems such as El Capitan, Frontier and LUMI are built on AMD accelerators, yet the Scikit-HEP analys...。",
+    "takeaway": "本文聚焦CUDA、向量化执行、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.28862v1",
+    "title": "pytest-gpu-proof: Enabling Cloud-CPU Continuous Integration for GPU Code with Local GPU Attestation",
+    "authors": [
+      "Brian Plancher"
+    ],
+    "abstract": "GPU acceleration is now routine across robotics, but cloud-hosted GPU continuous integration (CI) runners are expensive, resulting in severe under-testing of GPU-accelerated code. We present pytest-gpu-proof, an open-source pytest plugin offering a practical middle ground. Tests can be run on a local machine, signed with a receipt of exactly what ran and what it produced, and integrated into standard CPU CI workflows (e.g., GitHub Actions). The tool is open source and on PyPI, and we are actively integrating it across our lab's software stack.",
+    "published_date": "2026-09-24T00:06:11Z",
+    "updated_date": "2026-09-24T00:06:11Z",
+    "categories": [
+      "cs.DC",
+      "cs.SE"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.28862v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.28862v1",
+    "source": "arxiv",
+    "score": 0.5145768678188324,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：GPU acceleration is now routine across robotics, but cloud-hosted GPU continuous integration (CI) runners are expensive, resulting in severe under-testing of GPU-accelerated code. We present pytest-gpu-proof, an open-source pytest plugin offering a practical middle ground。",
+    "takeaway": "本文聚焦GPU 加速，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.28179v1",
+    "title": "GLASS: Architecture-Tuned, Composable, Device-Side Linear Algebra for Edge Robotics and Beyond",
+    "authors": [
+      "Brian Plancher"
+    ],
+    "abstract": "GPU robotics lacks the reusable numerical infrastructure of mature CPU stacks, instead relying on compiler frameworks that introduce overhead or repeatedly reimplementing numerical libraries. To address this, we introduce GLASS (GPU Linear Algebra Simple Subroutines), a header-only CUDA C++ library that provides thread-, warp-, block-, and NVIDIA-backed implementations of robotics-scale linear algebra and geometric computations under one composable device API. GLASS treats implementation choice, execution scope, and launch packing as architecture-specific placement decisions determined by offline measurement and resolved statically at compile time. This is critical as the best and worst placements differ by a median of 4.9x (max 81x), with 145 of 396 recommended placements changing between a Jetson AGX Orin and an RTX 5090, and 162 of 396 versus an AGX Xavier. These stakes are highest at the edge as GLASS's advantage over the best of PyTorch and JAX is as much as 73x on the Orin versus 12x on the RTX 5090. GLASS is released open source with independent numerical oracles and source-bound local-GPU test attestation. Finally, integrating GLASS with published robotics systems both exposed a pre-existing numerical bug and improved embedded runtimes by up to 1.5x.",
+    "published_date": "2026-09-23T14:23:39Z",
+    "updated_date": "2026-09-23T14:23:39Z",
+    "categories": [
+      "cs.RO",
+      "cs.DC",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.28179v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.28179v1",
+    "source": "arxiv",
+    "score": 0.492208434343338,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、PyTorch相关技术。\n\n核心内容：GPU robotics lacks the reusable numerical infrastructure of mature CPU stacks, instead relying on compiler frameworks that introduce overhead or repeatedly reimplementing numerical libraries. To address this, we introduce GLASS (GPU Linear Algebra Simple Subroutines), a header-only CUDA C++ library ...。",
+    "takeaway": "本文聚焦CUDA、PyTorch，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.25869v1",
+    "title": "Decoupling Logical Masks from GPU Execution for Dynamic Block-Sparse Attention",
+    "authors": [
+      "Shanghao Liu",
+      "Xiaoyun Yu",
+      "Wanting Li",
+      "Wenqi Jiang"
+    ],
+    "abstract": "Attention computation makes inference expensive in video diffusion transformers (vDiTs), which generate videos through iterative denoising. Block-sparse attention (BSA) reduces\n  this cost by computing only blocks selected by a logical mask, which specifies attention interactions to compute. However, coupling logical block geometry to execution choices\n  limits adaptation to varying masks and graphics processing units (GPUs), while runtime kernel specialization can incur preparation overhead that outweighs execution time savings.\n  We present Tessera, a specialized runtime for dynamic BSA that decouples logical masks from GPU execution while preserving specified attention interactions. Its physical mapping\n  layer retains, combines, or subdivides logical attention blocks into physical tiles suited to different attention mask shapes and GPU architectures. Its task organization layer\n  groups and schedules tiles within GPU tasks to reuse data, expose parallelism, and overlap data movement with computation. Finally, profile-guided regime selection enables low-\n  overhead execution plan selection through a lookup table constructed from offline profiling. We implement Tessera with specialized CUDA kernels supporting four NVIDIA GPU\n  generations. Evaluated on 2,315 real attention masks and industrial video diffusion models, Tessera achieves up to 6.79x BSA request speedup over baseline systems in the evaluated\n  video diffusion models.",
+    "published_date": "2026-09-22T08:33:32Z",
+    "updated_date": "2026-09-22T08:33:32Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.25869v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.25869v1",
+    "source": "arxiv",
+    "score": 0.4917269778251648,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：Attention computation makes inference expensive in video diffusion transformers (vDiTs), which generate videos through iterative denoising. Block-sparse attention (BSA) reduces\n  this cost by computing only blocks selected by a logical mask, which specifies attention interactions to compute。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.29246v1",
+    "title": "HBF-Sim: An Extensible HBF Simulator for Large-scale GPU Memory Systems",
+    "authors": [
+      "Yaqi Li",
+      "Jing Wang",
+      "Junfeng Wang",
+      "Long Yang",
+      "Han Yan",
+      "Xiaohu Chai",
+      "Liang Shi"
+    ],
+    "abstract": "High-bandwidth flash (HBF) is introduced to address the memory wall, which can co-package a dense NAND stack with the GPU, targeting the performance gap between near-accelerator bandwidth and flash density. HBF, however, is neither a large HBM nor a fast NVMe SSD. Its usable bandwidth depends on how GPU cache-line requests map onto NAND pages, how concurrency spreads across channel-affine die sets, and how media management interacts with the GPU memory pipeline. To our knowledge, existing GPU, SSD, or HBF simulators cannot faithfully model this behavior. We present HBF-Sim, an extensible, reusable, and faithful HBF simulator integrated with simulated GPUs. It closes the loop between GPU issue limits, device queuing, and NAND behavior in one end-to-end request path. HBF-Sim separates a GPU-HBF interaction controller from page-based parallel stack storage, and it models the full GPU-HBF request path. It provides an MSHR-based address mapping table that merges cache-line requests into page-based operations, as well as a page-based multi-stack flash manager for highly parallel reads and writes. Validation tests and device-level microbenchmarks expose performance bottlenecks caused by limited channel distribution and resource conflicts, offering concrete guidance for next-generation HBF architectures.",
+    "published_date": "2026-09-24T08:51:37Z",
+    "updated_date": "2026-09-24T08:51:37Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.29246v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.29246v1",
+    "source": "arxiv",
+    "score": 0.48521467924118045,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 缓存、NVMe 存储、带宽优化相关技术。\n\n核心内容：High-bandwidth flash (HBF) is introduced to address the memory wall, which can co-package a dense NAND stack with the GPU, targeting the performance gap between near-accelerator bandwidth and flash density. HBF, however, is neither a large HBM nor a fast NVMe SSD。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 缓存、NVMe 存储，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.28769v1",
+    "title": "Xtrace: High-Fidelity GPU Intra-Kernel Tracing via Binary-Level Instruction Splicing",
+    "authors": [
+      "Zhuobin Huang",
+      "Kai Zhang",
+      "Weihao Cui",
+      "Hongshi Tan",
+      "Liang Luo",
+      "Christopher Dewan",
+      "Shen Li",
+      "Bingsheng He"
+    ],
+    "abstract": "Modern GPU kernels fuse increasingly more work into a single kernel, and intra-kernel tracing has become the mainstream method to profile them. Tracing inserts probes into the kernel to record its runtime states, and the fidelity of the trace determines the efficiency of performance optimization. Unfortunately, existing tools insert probes before compilation. These tools interfere with the compiler's optimizations, so they trace a different binary from the one the GPU executes. They also add significant runtime overhead.\n  Xtrace is the first GPU kernel tracing system with near-zero compile-time interference and minimized runtime overhead. Xtrace inserts probes directly into the compiled kernel binary. It reuses only the registers that hold dead values at the insertion address and resolves all hazards with the compiler's hazard tables. It further schedules the instruction order, register allocation, and control bits to minimize the runtime overhead the probe introduces. Xtrace supports 19 NVIDIA and AMD GPU architectures, and is publicly available for use at https://g-watch.github.io.\n  We evaluate Xtrace on major production large language model (LLM) kernels against the state-of-the-art tracers Neutrino and IKET from NVIDIA. On H100, B300, and MI300X GPUs, Xtrace preserves 94-98% of the instructions of the kernel, while existing tools preserve only 8-48%. Xtrace adds only 0.9-2.8% overhead, while existing tools add 3.8-75.6%. Xtrace guides a coding agent to reach the same FlashAttention-3 performance with 3.9x fewer iterations than existing traces do. Thanks to our binary-level instrumentation, Xtrace also traces the faster closed-source cuDNN kernel, which guides the agent to lift the open-source FlashAttention-4 by 5.2-13.3% in throughput.",
+    "published_date": "2026-09-23T20:27:04Z",
+    "updated_date": "2026-09-23T20:27:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.28769v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.28769v1",
+    "source": "arxiv",
+    "score": 0.480564980506897,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、吞吐量相关技术。\n\n核心内容：Modern GPU kernels fuse increasingly more work into a single kernel, and intra-kernel tracing has become the mainstream method to profile them. Tracing inserts probes into the kernel to record its runtime states, and the fidelity of the trace determines the efficiency of performance optimization。",
+    "takeaway": "本文聚焦GPU 核函数、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.24270v1",
+    "title": "Dissecting How Die Scaling Breaks GPU Fine-grained Scheduling",
+    "authors": [
+      "Xiaoze Fan",
+      "Jianhao Wang",
+      "Weihao Cui",
+      "Han Zhao",
+      "Zhuobin Huang",
+      "Yangjie Zhou",
+      "Yuxian Qiu",
+      "Shixuan Sun",
+      "Bingsheng He",
+      "Quan Chen",
+      "Minyi Guo"
+    ],
+    "abstract": "Modern GPUs are no longer physically symmetric. Die scaling leads to both manufacturing-driven floorsweeping and cache and memory partitioning. The former creates chip-specific compute topologies, while the latter causes non-uniform memory access. These asymmetries are substantial. Topology-oblivious compute unit allocation can lead to up to 1.33x performance variation, while remote accesses increase HBM latency by up to 67% and nearly double L2 latency.\n  However, these asymmetries are hidden behind the GPU's logical resource abstractions and can vary across chips. We develop lightweight characterization methods to uncover per-chip compute topology and memory affinity. We then use the discovered information to make existing fine-grained scheduling asymmetry-aware, considering not only how many resources are allocated but also which physical resources are assigned. Across full-GPU kernel execution, intra-application multiplexing, and inter-application co-location, asymmetry-aware scheduling improves mainstream kernels by up to 1.22x, multiplexed LLM inference by up to 14.3%, and avoids up to 1.33x performance variation.",
+    "published_date": "2026-09-21T08:34:29Z",
+    "updated_date": "2026-09-21T08:34:29Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.24270v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24270v1",
+    "source": "arxiv",
+    "score": 0.4778496015071869,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理、延迟优化相关技术。\n\n核心内容：Modern GPUs are no longer physically symmetric. Die scaling leads to both manufacturing-driven floorsweeping and cache and memory partitioning。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.30057v1",
+    "title": "KREX: Concurrent Kernel Benchmarking on Shared GPUs via Region-Granular Exclusivity",
+    "authors": [
+      "Tianyu Feng",
+      "Haoxuan Yu",
+      "Tianyuan Wu",
+      "Lingyun Yang",
+      "Daocheng Ying",
+      "Yuxiao Wang",
+      "Ruibo Fan",
+      "Yinghao Yu",
+      "Guodong Yang",
+      "Liping Zhang",
+      "Wei Wang"
+    ],
+    "abstract": "LLM agents automate GPU kernel optimization by repeatedly composing candidates and measuring their duration on real GPUs. Existing systems preserve measurement fidelity by reserving a GPU for an entire agent session or benchmarking command. However, this results in poor utilization because only a small fraction of command execution requires exclusive GPU access. Sharing GPUs could recover this idle capacity, but introduces contention that compromises measurement fidelity and misdirects the agent's search.\n  We present KREX, a runtime for concurrent kernel agent benchmarking with region-granular exclusivity. KREX lets agents mark critical regions involving timing-sensitive operations within a benchmarking command. The runtime then enforces exclusivity within marked regions and allows concurrent execution outside them, achieving high throughput while preserving measurement fidelity. To enforce in-region exclusivity, KREX blocks new competing GPU submissions and drains outstanding work before freezing sibling processes and isolating CPU cores, protecting both GPU execution and the host threads that drive measurements. To maximize off-region concurrency, KREX reuses GPU contexts in persistent context processes to avoid repeated, node-wide serialized context creation. We evaluate KREX on NVIDIA and AMD GPUs. Compared with command-granular exclusivity baselines, KREX delivers up to $3.4\\times$ the benchmarking throughput with a negligible p95 timing inflation of $0.30\\%$, $1.58\\%$, and $3.90\\%$ for kernels longer than 10 ms, 1 ms, and 0.1 ms, respectively.",
+    "published_date": "2026-09-24T16:14:04Z",
+    "updated_date": "2026-09-24T16:14:04Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.30057v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.30057v1",
+    "source": "arxiv",
+    "score": 0.4424557971954346,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、吞吐量相关技术。\n\n核心内容：LLM agents automate GPU kernel optimization by repeatedly composing candidates and measuring their duration on real GPUs. Existing systems preserve measurement fidelity by reserving a GPU for an entire agent session or benchmarking command。",
+    "takeaway": "本文聚焦GPU 核函数、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.24513v1",
+    "title": "Pierce: GPU Ray Tracing for Spatial Joins over Complex 3D Data",
+    "authors": [
+      "Anton Hackl",
+      "Eleni Tzirita Zacharatou"
+    ],
+    "abstract": "Many emerging applications, from computational biology to digital twins and urban planning, rely heavily on three-dimensional spatial joins over polyhedral meshes. These joins comprise computationally-intensive triangle--triangle intersection tests that pairwise compare the faces of polyhedral meshes. Since each mesh may contain thousands of faces, the resulting cost challenges the responsiveness of spatial data management techniques. Existing techniques follow the filter-and-refine paradigm, accelerating either the filtering step through indexing or the refinement step through progressive mesh compression combined with GPU parallelization of triangle--triangle tests. However, the former neglects the high cost of intra-geometry refinements, whereas the latter lowers this cost but still relies on the same pairwise triangle--triangle tests. In this paper, we introduce Pierce, an approach that reformulates three-dimensional spatial joins over complex polyhedral meshes as ray-tracing operations and leverages the hardware ray-tracing units (RT cores) of modern GPUs to accelerate query execution. Our approach casts rays along the edges of one mesh against a spatial hierarchy built over the other, performing ray--node tests at the internal levels to prune distant geometries and ray--triangle tests at the leaves to identify intersecting meshes, both of which RT cores accelerate in hardware. We evaluated Pierce on real and synthetic data against multiple baselines, demonstrating more than two orders of magnitude speedup on digital pathology data compared to the state-of-the-art approach.",
+    "published_date": "2026-09-21T12:52:10Z",
+    "updated_date": "2026-09-21T12:52:10Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.24513v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.24513v1",
+    "source": "arxiv",
+    "score": 0.4355755436420441,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 并行计算相关技术。\n\n核心内容：Many emerging applications, from computational biology to digital twins and urban planning, rely heavily on three-dimensional spatial joins over polyhedral meshes. These joins comprise computationally-intensive triangle--triangle intersection tests that pairwise compare the faces of polyhedral meshe...。",
+    "takeaway": "本文聚焦GPU 并行计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  },
+  {
+    "id": "2609.23315v1",
+    "title": "Graph Memory for LLM Agents: At What Cost? A Comparative Evaluation of Query, Ingest, and Update Performance Across Graph Database Engines",
+    "authors": [
+      "Donald Nguyen",
+      "Gurbinder Gill",
+      "Hadi Ahmadi",
+      "Christopher J. Rossbach"
+    ],
+    "abstract": "Graph databases are frequently positioned as categorically necessary for connected-data workloads, yet the systems dimension along which they actually differ - query planning, indexing, and data-readiness cost - is rarely isolated from vendor framing. We construct a synthetic, biomedical-shaped property graph (1.02 million nodes, 5.34 million total node and edge rows) and a twenty-query workload spanning neighborhood lookups, bounded paths, set intersections, anti-joins, grouped aggregation, top-k ranking, temporal filters, full scans, and relational joins. We benchmark Corvic AI - a purpose-built columnar query engine underlying Corvic's ontology management layer (\"memories\")- against seven purpose-built or graph-extension database systems (LoraDB, Ladybug, DuckPGQ, Memgraph, Neo4j, HugeGraph, and FalkorDB) at three graph scales spanning three orders of magnitude. We report query latency geomeans, bulk-ingest throughput, point-update latency, and answer correctness for each system, and we derive a simple total-cost-of-ownership model that expresses the ingest/query trade-off as a function of query volume. Our central finding is that no system in this sample is categorically fastest: a native graph engine (Ladybug) outperforms Corvic AI on narrow, bounded-neighborhood shapes, while Corvic AI is faster on shapes that scan or join a large fraction of the graph, and a system implementing graph query syntax via SQL/PGQ (DuckPGQ) is measurably slower purely due to query-plan choice. The dominant cost differential in our data is not query latency but the cost of making data queryable at all: bulk-ingest throughput varies by three orders of magnitude across engines (5.0k-4.3M rows/s), a gap that a simple crossover-point calculation shows dominates total cost for any workload with fewer than roughly 105 queries per data refresh.",
+    "published_date": "2026-09-20T03:04:30Z",
+    "updated_date": "2026-09-20T03:04:30Z",
+    "categories": [
+      "cs.DB",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2609.23315v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.23315v1",
+    "source": "arxiv",
+    "score": 0.428269579410553,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究扫描、聚合、数据库系统、延迟优化、吞吐量相关技术。\n\n核心内容：Graph databases are frequently positioned as categorically necessary for connected-data workloads, yet the systems dimension along which they actually differ - query planning, indexing, and data-readiness cost - is rarely isolated from vendor framing. We construct a synthetic, biomedical-shaped prop...。",
+    "takeaway": "本文聚焦扫描、聚合、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略"
+  }
+]
