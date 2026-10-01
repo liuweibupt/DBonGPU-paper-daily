@@ -1,0 +1,284 @@
+[
+  {
+    "id": "2609.32375v1",
+    "title": "GPUPHOT: A Python Framework for High-Performance GPU-Accelerated Photometry and Distributed Astronomical Data Reduction",
+    "authors": [
+      "Samuel Lemes-Perera",
+      "Miguel R. Alarcon",
+      "Miquel Serra-Ricart",
+      "Pino Caballero-Gil"
+    ],
+    "abstract": "We present GPUPHOT, an open-source Python framework for GPU-accelerated real-time photometry and astrometry of astronomical CCD and scientific CMOS images. Four of its seven stages run entirely on the GPU through CuPy (background estimation, source detection, PSF modeling and aperture photometry); the catalog crossmatch selects a CPU or GPU backend by problem size, and the zero-point and astrometric calibrations run on the CPU, within a containerized distributed system. Checkpoint-based GPU memory monitoring and an opt-in spatial-binning fallback let a single container image run on GPUs from a 4 GB laptop card to 80 GB datacenter accelerators. We benchmark the framework on nineteen observations from two robotic facilities, the Two-meter Twin Telescope and the Transient Survey Telescope, spanning 4.2 to 151.2 megapixels and 228 to 134,206 cataloged sources, on eight NVIDIA GPU platforms with one process per image. The H100 completes the densest 151.2-megapixel field end-to-end in 31.9 s, and GPU source detection on the A100 is 6-15x faster than the CPU library sep on the same frames. Once three sources of non-determinism are pinned, catalogs and zero points agree to the fourth decimal across GPU models and host CPUs. In this one-process-per-image regime the CuPy 14 / cuML stack showed a 7% lower peak memory and a median 38% higher per-image latency than CuPy 12, both due to the RAPIDS allocator displacing the CuPy memory pool at import; restoring the pool removes the memory difference and cuts the median overhead on datacenter GPUs to 11%, with identical output. Long-lived workers, the production mode, run the two stacks near parity. We recommend the CuPy 14 stack for its reproducibility and maintained libraries, not for memory or speed. GPUPHOT and its benchmark scripts are released for autonomous facilities that require end-to-end photometric reduction at survey cadence.",
+    "published_date": "2026-09-26T08:51:45Z",
+    "updated_date": "2026-09-26T08:51:45Z",
+    "categories": [
+      "astro-ph.IM",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.32375v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.32375v1",
+    "source": "arxiv",
+    "score": 0.5494702017307281,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、延迟优化相关技术。\n\n核心内容：We present GPUPHOT, an open-source Python framework for GPU-accelerated real-time photometry and astrometry of astronomical CCD and scientific CMOS images. Four of its seven stages run entirely on the GPU through CuPy (background estimation, source detection, PSF modeling and aperture photometry); t...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.28862v1",
+    "title": "pytest-gpu-proof: Enabling Cloud-CPU Continuous Integration for GPU Code with Local GPU Attestation",
+    "authors": [
+      "Brian Plancher"
+    ],
+    "abstract": "GPU acceleration is now routine across robotics, but cloud-hosted GPU continuous integration (CI) runners are expensive, resulting in severe under-testing of GPU-accelerated code. We present pytest-gpu-proof, an open-source pytest plugin offering a practical middle ground. Tests can be run on a local machine, signed with a receipt of exactly what ran and what it produced, and integrated into standard CPU CI workflows (e.g., GitHub Actions). The tool is open source and on PyPI, and we are actively integrating it across our lab's software stack.",
+    "published_date": "2026-09-24T00:06:11Z",
+    "updated_date": "2026-09-24T00:06:11Z",
+    "categories": [
+      "cs.DC",
+      "cs.SE"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.28862v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.28862v1",
+    "source": "arxiv",
+    "score": 0.5145768678188324,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：GPU acceleration is now routine across robotics, but cloud-hosted GPU continuous integration (CI) runners are expensive, resulting in severe under-testing of GPU-accelerated code. We present pytest-gpu-proof, an open-source pytest plugin offering a practical middle ground。",
+    "takeaway": "本文聚焦GPU 加速，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.29246v1",
+    "title": "HBF-Sim: An Extensible HBF Simulator for Large-scale GPU Memory Systems",
+    "authors": [
+      "Yaqi Li",
+      "Jing Wang",
+      "Junfeng Wang",
+      "Long Yang",
+      "Han Yan",
+      "Xiaohu Chai",
+      "Liang Shi"
+    ],
+    "abstract": "High-bandwidth flash (HBF) is introduced to address the memory wall, which can co-package a dense NAND stack with the GPU, targeting the performance gap between near-accelerator bandwidth and flash density. HBF, however, is neither a large HBM nor a fast NVMe SSD. Its usable bandwidth depends on how GPU cache-line requests map onto NAND pages, how concurrency spreads across channel-affine die sets, and how media management interacts with the GPU memory pipeline. To our knowledge, existing GPU, SSD, or HBF simulators cannot faithfully model this behavior. We present HBF-Sim, an extensible, reusable, and faithful HBF simulator integrated with simulated GPUs. It closes the loop between GPU issue limits, device queuing, and NAND behavior in one end-to-end request path. HBF-Sim separates a GPU-HBF interaction controller from page-based parallel stack storage, and it models the full GPU-HBF request path. It provides an MSHR-based address mapping table that merges cache-line requests into page-based operations, as well as a page-based multi-stack flash manager for highly parallel reads and writes. Validation tests and device-level microbenchmarks expose performance bottlenecks caused by limited channel distribution and resource conflicts, offering concrete guidance for next-generation HBF architectures.",
+    "published_date": "2026-09-24T08:51:37Z",
+    "updated_date": "2026-09-24T08:51:37Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.29246v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.29246v1",
+    "source": "arxiv",
+    "score": 0.48521467924118045,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 缓存、NVMe 存储、带宽优化相关技术。\n\n核心内容：High-bandwidth flash (HBF) is introduced to address the memory wall, which can co-package a dense NAND stack with the GPU, targeting the performance gap between near-accelerator bandwidth and flash density. HBF, however, is neither a large HBM nor a fast NVMe SSD。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 缓存、NVMe 存储，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.35639v1",
+    "title": "GPUPhysBench: Benchmarking Coding Agents for Correct and Efficient GPU Physics Simulation",
+    "authors": [
+      "Yuchen Sun",
+      "Jinjin He",
+      "Sinan Wang",
+      "Bo Zhu"
+    ],
+    "abstract": "Writing fast GPU code for physical simulation is difficult: implementations must preserve numerical accuracy while handling irregular data access, synchronization, and iterative solvers. We introduce GPUPhysBench, a benchmark of 50 tasks testing whether coding agents can meet these demands. Tasks cover fluids, deformable solids, and granular materials, from individual simulation operators to complete simulators. Agents write, compile, test, and optimize GPU code with access to a NVIDIA GPU under fixed time budgets. We report pass rates and runtime performance relative to expert-optimized reference implementations. In a single-attempt evaluation of six frontier model-harness pairs, the two strongest pass all 50 tasks, but even the fastest reaches at least 0.9 the reference speed on only 22% of them, and no submission is more than 5% faster than the reference. The largest gaps arise in collision detection, constraint solving, and iterative solvers. GPUPhysBench brings physical simulation workloads to coding-agent evaluation, testing both the ability to implement numerical methods correctly and the ability to make them run efficiently.",
+    "published_date": "2026-09-28T17:06:44Z",
+    "updated_date": "2026-09-28T17:06:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.35639v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.35639v1",
+    "source": "arxiv",
+    "score": 0.4616340243816376,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Writing fast GPU code for physical simulation is difficult: implementations must preserve numerical accuracy while handling irregular data access, synchronization, and iterative solvers. We introduce GPUPhysBench, a benchmark of 50 tasks testing whether coding agents can meet these demands。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.32237v1",
+    "title": "Bandwidth, Not FLOPS: FFT Kernels, Matrix Units and SAR Imaging on Apple M6",
+    "authors": [
+      "Mohamed Amine Bergach"
+    ],
+    "abstract": "The fast Fourier transform (FFT) underlies radar, imaging and scientific computing. A classic rule for fast GPU FFTs is to compute the largest block that fits on chip and compose larger transforms from such blocks. We test this rule on Apple's M6 chip, whose GPU performs 29 arithmetic operations in the time it reads one byte from main memory, and which adds matrix units to both its GPU and CPU. Comparing our kernels with Apple's MPSGraph and vDSP libraries and MLX, we find that data movement, not arithmetic, sets FFT speed. Large batches run at or near the main-memory bandwidth limit in every GPU library, and benchmarks that keep data in cache overstate real throughput by up to $3.7\\times$. The on-chip rule still predicts where speed collapses: MPSGraph and MLX lose half or more of their speed once a transform outgrows the GPU's 32\\,KiB local memory. Keeping such transforms in registers avoids an extra trip through memory: $2.2\\times$ faster than MPSGraph, and $4.4\\times$ with half-precision storage. The GPU's matrix units do not help, because recasting the FFT as matrix products adds as much arithmetic as they save. The CPU's matrix unit, 47 times faster than its vector units, does: our kernel for it beats vDSP by up to $5.3\\times$. End to end, a $4096\\times4096$ synthetic aperture radar image takes 8.1\\,ms on the GPU (6.0\\,ms with half-precision intermediates), $14$--$19\\times$ faster than a CPU reference. Running the CPU's matrix unit alongside the GPU gains nothing: both share one memory bandwidth.",
+    "published_date": "2026-09-26T04:55:00Z",
+    "updated_date": "2026-09-26T04:55:00Z",
+    "categories": [
+      "cs.PF",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.32237v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.32237v1",
+    "source": "arxiv",
+    "score": 0.45772611975669864,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究内存数据库、带宽优化、吞吐量相关技术。\n\n核心内容：The fast Fourier transform (FFT) underlies radar, imaging and scientific computing. A classic rule for fast GPU FFTs is to compute the largest block that fits on chip and compose larger transforms from such blocks。",
+    "takeaway": "本文聚焦内存数据库、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.30497v1",
+    "title": "Unifying In-Memory Data Analytics through Sparse Compilation",
+    "authors": [
+      "Anand Jayarajan",
+      "Gennady Pekhimenko"
+    ],
+    "abstract": "As modern data analytics workloads become increasingly heterogeneous and hardware-intensive, achieving efficient multi-core performance across diverse applications remains an open challenge. We present Reffine, a compiler-based in-memory analytics engine that delivers high performance across a broad range of data analytics workloads. Reffine introduces a novel intermediate representation (IR), grounded in relational algebra and sparse iteration theory, that provides a unified abstraction for data and computation. This representation enables workload-agnostic, end-to-end optimizations such as operator fusion and automatic parallelization across diverse analytics applications. We further develop a sparse compiler backend that translates Reffine IR into hardware-efficient imperative code, achieving high multi-core performance without domain-specific implementations. On the TPC-H benchmark, Reffine outperforms the in-memory analytical database DuckDB by up to $24.9\\times$ and the state-of-the-art compilation-based database Umbra by up to $3.2\\times$. Reffine also achieves average speedups of $18.3\\times$ and $47.9\\times$ over Polars and NetworkX on streaming and graph analytics workloads, respectively. Source code: https://github.com/ampersand-projects/reffine",
+    "published_date": "2026-09-24T19:34:26Z",
+    "updated_date": "2026-09-24T19:34:26Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.30497v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.30497v1",
+    "source": "arxiv",
+    "score": 0.45557083129882814,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究内存数据库、异构计算、网络相关技术。\n\n核心内容：As modern data analytics workloads become increasingly heterogeneous and hardware-intensive, achieving efficient multi-core performance across diverse applications remains an open challenge. We present Reffine, a compiler-based in-memory analytics engine that delivers high performance across a broad...。",
+    "takeaway": "本文聚焦内存数据库、异构计算、网络，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.40093v1",
+    "title": "Efficient Expert-Parallel Communication on PCIe-Connected Consumer GPUs",
+    "authors": [
+      "Jaehwan Lee",
+      "Sangmin Lee",
+      "Chaewon Kim",
+      "Junsik Shin",
+      "Jaejin Lee"
+    ],
+    "abstract": "Expert parallelism (EP) enables inference of large Mixture-of-Experts (MoE) models by placing their experts across multiple GPUs, but requires substantial communication between GPUs at every MoE layer. As contemporary MoE models activate more experts per token, this communication accounts for a growing fraction of inference time. The cost becomes particularly pronounced on PCIe-based consumer GPU systems, where all inter-GPU transfers traverse CPU memory. However, existing MoE-specialized EP communication libraries assume that direct GPU-to-GPU access is available, largely overlooking consumer GPUs. Therefore, most LLM frameworks instead rely on NCCL, whose CPU-staged communication incurs redundant PCIe transfers and competes with expert computation for GPU resources, limiting their overlap. We present ThunderEP, a novel communication design for such systems that removes the relay hops of traditional ring algorithm, moves data through DMA engines to avoid compute resource contention, and minimizes synchronization latency by reducing the polling overhead of completion flags in CPU memory. We integrate the proposed design into vLLM and evaluate it on three widely used MoE models. Experiments on two PCIe systems equipped with RTX 4090 and RTX 5090 GPUs show that ThunderEP achieves average speedups of 2.00$\\times$ and 1.53$\\times$ over NCCL for dispatch and combine, respectively, and up to 1.66$\\times$ end-to-end speedup over state-of-the-art MoE inference frameworks.",
+    "published_date": "2026-09-30T16:32:25Z",
+    "updated_date": "2026-09-30T16:32:25Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.40093v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.40093v1",
+    "source": "arxiv",
+    "score": 0.450657411813736,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 间通信、通信优化、延迟优化相关技术。\n\n核心内容：Expert parallelism (EP) enables inference of large Mixture-of-Experts (MoE) models by placing their experts across multiple GPUs, but requires substantial communication between GPUs at every MoE layer. As contemporary MoE models activate more experts per token, this communication accounts for a grow...。",
+    "takeaway": "本文聚焦GPU 间通信、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.36074v1",
+    "title": "GEM-KMeans: Memory-Efficient and Accurate Clustering on Massive Scale with GPU Optimization",
+    "authors": [
+      "Peng Xu",
+      "Nihar Koganti",
+      "Volodymyr Kindratenko",
+      "Xiaohui Chen"
+    ],
+    "abstract": "Memory-efficient scaling on clustering problems without sacrificing statistical accuracy is of central interest for large-scale data analysis and machine learning problems. Nonnegative low-rank (NLR) matrix factorization for $K$-means is a scalable clustering method, which connects to semidefinite relaxations with optimal average-case exact recovery guarantees. However, a direct GPU implementation of NLR requires multiple large factor-sized buffers and substantial data movements that are essentially memory-bound. In this paper, we introduce GEM-KMeans, a spectrally normalized yet mathematically equivalent NLR formulation that fuses the gradient update, nonnegative projection, and sufficient statistics for normalization and iterate movement into a matrix-multiplication epilogue. Instead of retaining three massive factor-sized arrays, our IO-aware GPU implementation materializes only one single factor with small tile-reduction arrays as additional storage in the High Bandwidth Memory (HBM). We derive explicit memory costs and spectrally normalized smoothness bounds for optimizing the clustering objective function. Accurate clustering is demonstrated at massive scales on synthetic and real datasets, where performance gains of GEM-KMeans over existing GPU-accelerated Lloyd's algorithms involve data-dependent runtime tradeoffs.",
+    "published_date": "2026-09-28T18:23:05Z",
+    "updated_date": "2026-09-28T18:23:05Z",
+    "categories": [
+      "cs.LG",
+      "cs.AR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.36074v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.36074v1",
+    "source": "arxiv",
+    "score": 0.4456522476673126,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、带宽优化相关技术。\n\n核心内容：Memory-efficient scaling on clustering problems without sacrificing statistical accuracy is of central interest for large-scale data analysis and machine learning problems. Nonnegative low-rank (NLR) matrix factorization for $K$-means is a scalable clustering method, which connects to semidefinite r...。",
+    "takeaway": "本文聚焦GPU 加速、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.30057v1",
+    "title": "KREX: Concurrent Kernel Benchmarking on Shared GPUs via Region-Granular Exclusivity",
+    "authors": [
+      "Tianyu Feng",
+      "Haoxuan Yu",
+      "Tianyuan Wu",
+      "Lingyun Yang",
+      "Daocheng Ying",
+      "Yuxiao Wang",
+      "Ruibo Fan",
+      "Yinghao Yu",
+      "Guodong Yang",
+      "Liping Zhang",
+      "Wei Wang"
+    ],
+    "abstract": "LLM agents automate GPU kernel optimization by repeatedly composing candidates and measuring their duration on real GPUs. Existing systems preserve measurement fidelity by reserving a GPU for an entire agent session or benchmarking command. However, this results in poor utilization because only a small fraction of command execution requires exclusive GPU access. Sharing GPUs could recover this idle capacity, but introduces contention that compromises measurement fidelity and misdirects the agent's search.\n  We present KREX, a runtime for concurrent kernel agent benchmarking with region-granular exclusivity. KREX lets agents mark critical regions involving timing-sensitive operations within a benchmarking command. The runtime then enforces exclusivity within marked regions and allows concurrent execution outside them, achieving high throughput while preserving measurement fidelity. To enforce in-region exclusivity, KREX blocks new competing GPU submissions and drains outstanding work before freezing sibling processes and isolating CPU cores, protecting both GPU execution and the host threads that drive measurements. To maximize off-region concurrency, KREX reuses GPU contexts in persistent context processes to avoid repeated, node-wide serialized context creation. We evaluate KREX on NVIDIA and AMD GPUs. Compared with command-granular exclusivity baselines, KREX delivers up to $3.4\\times$ the benchmarking throughput with a negligible p95 timing inflation of $0.30\\%$, $1.58\\%$, and $3.90\\%$ for kernels longer than 10 ms, 1 ms, and 0.1 ms, respectively.",
+    "published_date": "2026-09-24T16:14:04Z",
+    "updated_date": "2026-09-24T16:14:04Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.30057v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.30057v1",
+    "source": "arxiv",
+    "score": 0.4424557971954346,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、吞吐量相关技术。\n\n核心内容：LLM agents automate GPU kernel optimization by repeatedly composing candidates and measuring their duration on real GPUs. Existing systems preserve measurement fidelity by reserving a GPU for an entire agent session or benchmarking command。",
+    "takeaway": "本文聚焦GPU 核函数、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.36954v1",
+    "title": "Purlin: Separating Orchestration from the Datapath of Collectives",
+    "authors": [
+      "Osayamen Jonathan Aimuyo",
+      "Swapnil Gandhi",
+      "Christos Kozyrakis"
+    ],
+    "abstract": "Distributed inference depends on GPU collective communication that must keep pace with evolving hardware and specialized workloads. However, existing collective implementations often couple semantics, orchestration (where and when data moves), and the datapath (how data moves). This coupling makes it costly to adopt new hardware mechanisms and customize communication for applications. We present Purlin, a scale-up communication framework that separates these concerns. At the top of Purlin, we specify collectives as a naming of an input and output layout and a copy or reduction operation. In the middle, we introduce a shared orchestration protocol, Stage, Notify, And Consume (SNAC), which derives coordination from these specifications. Below SNAC sits a hardware-specific datapath we call Atom, which implements two key data movement primitives for collectives: copy and reduce. This separation lets us customize collectives and adopt new hardware mechanisms while reusing orchestration via SNAC. We evaluate Purlin on A100, H200, and B200 GPUs. Across seven collectives, Purlin achieves latency speedups of up to 5.14x and bandwidth improvements of up to 4.50x over baselines. Integrated into SGLang, Purlin improves offline LLM serving throughput and interactivity by 1.13x on average and up to 1.37x over baselines. For online LLM inference, Purlin improves interactivity by 1.26x on average and up to 2.85x, with the largest gain occurring under overload. For diffusion image generation, Purlin reduces end-to-end latency by up to 1.13x.",
+    "published_date": "2026-09-29T07:57:27Z",
+    "updated_date": "2026-09-29T07:57:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.36954v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.36954v1",
+    "source": "arxiv",
+    "score": 0.4416814887523651,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型推理、通信优化、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Distributed inference depends on GPU collective communication that must keep pace with evolving hardware and specialized workloads. However, existing collective implementations often couple semantics, orchestration (where and when data moves), and the datapath (how data moves)。",
+    "takeaway": "本文聚焦大模型推理、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
