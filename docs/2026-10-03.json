@@ -1,0 +1,283 @@
+[
+  {
+    "id": "2609.32375v1",
+    "title": "GPUPHOT: A Python Framework for High-Performance GPU-Accelerated Photometry and Distributed Astronomical Data Reduction",
+    "authors": [
+      "Samuel Lemes-Perera",
+      "Miguel R. Alarcon",
+      "Miquel Serra-Ricart",
+      "Pino Caballero-Gil"
+    ],
+    "abstract": "We present GPUPHOT, an open-source Python framework for GPU-accelerated real-time photometry and astrometry of astronomical CCD and scientific CMOS images. Four of its seven stages run entirely on the GPU through CuPy (background estimation, source detection, PSF modeling and aperture photometry); the catalog crossmatch selects a CPU or GPU backend by problem size, and the zero-point and astrometric calibrations run on the CPU, within a containerized distributed system. Checkpoint-based GPU memory monitoring and an opt-in spatial-binning fallback let a single container image run on GPUs from a 4 GB laptop card to 80 GB datacenter accelerators. We benchmark the framework on nineteen observations from two robotic facilities, the Two-meter Twin Telescope and the Transient Survey Telescope, spanning 4.2 to 151.2 megapixels and 228 to 134,206 cataloged sources, on eight NVIDIA GPU platforms with one process per image. The H100 completes the densest 151.2-megapixel field end-to-end in 31.9 s, and GPU source detection on the A100 is 6-15x faster than the CPU library sep on the same frames. Once three sources of non-determinism are pinned, catalogs and zero points agree to the fourth decimal across GPU models and host CPUs. In this one-process-per-image regime the CuPy 14 / cuML stack showed a 7% lower peak memory and a median 38% higher per-image latency than CuPy 12, both due to the RAPIDS allocator displacing the CuPy memory pool at import; restoring the pool removes the memory difference and cuts the median overhead on datacenter GPUs to 11%, with identical output. Long-lived workers, the production mode, run the two stacks near parity. We recommend the CuPy 14 stack for its reproducibility and maintained libraries, not for memory or speed. GPUPHOT and its benchmark scripts are released for autonomous facilities that require end-to-end photometric reduction at survey cadence.",
+    "published_date": "2026-09-26T08:51:45Z",
+    "updated_date": "2026-09-26T08:51:45Z",
+    "categories": [
+      "astro-ph.IM",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.32375v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.32375v1",
+    "source": "arxiv",
+    "score": 0.5494701719284057,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、延迟优化相关技术。\n\n核心内容：We present GPUPHOT, an open-source Python framework for GPU-accelerated real-time photometry and astrometry of astronomical CCD and scientific CMOS images. Four of its seven stages run entirely on the GPU through CuPy (background estimation, source detection, PSF modeling and aperture photometry); t...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.01380v1",
+    "title": "GPU-Initiated Communication: Dissecting Down to the Bone",
+    "authors": [
+      "Javid Baydamirli",
+      "Ismayil Ismayilov",
+      "Kaan Oktay",
+      "Didem Unat"
+    ],
+    "abstract": "GPU-initiated communication lets GPU threads post RDMA operations directly to the NIC. It underpins NVSHMEM, NCCL GIN, and DeepEP, which serve the fine-grained, latency-critical communication of Mixture-of-Experts (MoE) models, yet its performance characteristics and optimizations remain scarcely documented beyond source code, and library comparisons fail to separate the costs of the hardware mechanism from those of the library around it.\n  This paper dissects GPU-initiated communication at the GPU-NIC boundary. We first detail the GPU-side network path: queue placement, work-request construction, doorbell ordering, and completion semantics. We then introduce mini-gda and mini-proxy, minimal transports for the GPU and CPU-proxy submission paths, and measure them alongside NVSHMEM IBGDA, NCCL GIN, DeepEP, UCCL-EP, MSCCL++, and fabric-lib on NVIDIA H100, H200, B200, and GB200 platforms. A minimal GPU path issues an operation in 0.7 $μ$s and completes in 4.0 $μ$s; libraries add up to 4.6 $μ$s of issue time through queue management, memory ordering, and completion scope, and issue time scales with the SM clock. A tuned CPU proxy matches or beats the GPU path at idle, at the cost of a dedicated core whose operating state sets its latency and throughput. On either path, sharing a queue with bulk traffic raises latency by one to three orders of magnitude. Reaching the 260 M msg/s ceiling of our InfiniBand platform requires doorbell batching and queue parallelism, and both have resource costs: communication code can reduce GPU block residency even when unused, and all-to-all traffic loses 59% of its NIC message rate at about 3,000 active connections. The submission path alone therefore does not predict communication performance. Our experiment code and results are available at https://github.com/ParCoreLab/Dissecting-GPU-Communication-Experiments.",
+    "published_date": "2026-10-01T09:46:08Z",
+    "updated_date": "2026-10-01T09:46:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.NI",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.01380v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.01380v1",
+    "source": "arxiv",
+    "score": 0.5050281727313995,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、网络、通信优化、延迟优化、吞吐量相关技术。\n\n核心内容：GPU-initiated communication lets GPU threads post RDMA operations directly to the NIC. It underpins NVSHMEM, NCCL GIN, and DeepEP, which serve the fine-grained, latency-critical communication of Mixture-of-Experts (MoE) models, yet its performance characteristics and optimizations remain scarcely do...。",
+    "takeaway": "本文聚焦RDMA 网络、网络、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.35639v1",
+    "title": "GPUPhysBench: Benchmarking Coding Agents for Correct and Efficient GPU Physics Simulation",
+    "authors": [
+      "Yuchen Sun",
+      "Jinjin He",
+      "Sinan Wang",
+      "Bo Zhu"
+    ],
+    "abstract": "Writing fast GPU code for physical simulation is difficult: implementations must preserve numerical accuracy while handling irregular data access, synchronization, and iterative solvers. We introduce GPUPhysBench, a benchmark of 50 tasks testing whether coding agents can meet these demands. Tasks cover fluids, deformable solids, and granular materials, from individual simulation operators to complete simulators. Agents write, compile, test, and optimize GPU code with access to a NVIDIA GPU under fixed time budgets. We report pass rates and runtime performance relative to expert-optimized reference implementations. In a single-attempt evaluation of six frontier model-harness pairs, the two strongest pass all 50 tasks, but even the fastest reaches at least 0.9 the reference speed on only 22% of them, and no submission is more than 5% faster than the reference. The largest gaps arise in collision detection, constraint solving, and iterative solvers. GPUPhysBench brings physical simulation workloads to coding-agent evaluation, testing both the ability to implement numerical methods correctly and the ability to make them run efficiently.",
+    "published_date": "2026-09-28T17:06:44Z",
+    "updated_date": "2026-09-28T17:06:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.35639v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.35639v1",
+    "source": "arxiv",
+    "score": 0.46163405418396,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Writing fast GPU code for physical simulation is difficult: implementations must preserve numerical accuracy while handling irregular data access, synchronization, and iterative solvers. We introduce GPUPhysBench, a benchmark of 50 tasks testing whether coding agents can meet these demands。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2609.32237v1",
+    "title": "Bandwidth, Not FLOPS: FFT Kernels, Matrix Units and SAR Imaging on Apple M6",
+    "authors": [
+      "Mohamed Amine Bergach"
+    ],
+    "abstract": "The fast Fourier transform (FFT) underlies radar, imaging and scientific computing. A classic rule for fast GPU FFTs is to compute the largest block that fits on chip and compose larger transforms from such blocks. We test this rule on Apple's M6 chip, whose GPU performs 29 arithmetic operations in the time it reads one byte from main memory, and which adds matrix units to both its GPU and CPU. Comparing our kernels with Apple's MPSGraph and vDSP libraries and MLX, we find that data movement, not arithmetic, sets FFT speed. Large batches run at or near the main-memory bandwidth limit in every GPU library, and benchmarks that keep data in cache overstate real throughput by up to $3.7\\times$. The on-chip rule still predicts where speed collapses: MPSGraph and MLX lose half or more of their speed once a transform outgrows the GPU's 32\\,KiB local memory. Keeping such transforms in registers avoids an extra trip through memory: $2.2\\times$ faster than MPSGraph, and $4.4\\times$ with half-precision storage. The GPU's matrix units do not help, because recasting the FFT as matrix products adds as much arithmetic as they save. The CPU's matrix unit, 47 times faster than its vector units, does: our kernel for it beats vDSP by up to $5.3\\times$. End to end, a $4096\\times4096$ synthetic aperture radar image takes 8.1\\,ms on the GPU (6.0\\,ms with half-precision intermediates), $14$--$19\\times$ faster than a CPU reference. Running the CPU's matrix unit alongside the GPU gains nothing: both share one memory bandwidth.",
+    "published_date": "2026-09-26T04:55:00Z",
+    "updated_date": "2026-09-26T04:55:00Z",
+    "categories": [
+      "cs.PF",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.32237v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.32237v1",
+    "source": "arxiv",
+    "score": 0.4577262091636658,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究内存数据库、带宽优化、吞吐量相关技术。\n\n核心内容：The fast Fourier transform (FFT) underlies radar, imaging and scientific computing. A classic rule for fast GPU FFTs is to compute the largest block that fits on chip and compose larger transforms from such blocks。",
+    "takeaway": "本文聚焦内存数据库、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2609.40093v1",
+    "title": "Efficient Expert-Parallel Communication on PCIe-Connected Consumer GPUs",
+    "authors": [
+      "Jaehwan Lee",
+      "Sangmin Lee",
+      "Chaewon Kim",
+      "Junsik Shin",
+      "Jaejin Lee"
+    ],
+    "abstract": "Expert parallelism (EP) enables inference of large Mixture-of-Experts (MoE) models by placing their experts across multiple GPUs, but requires substantial communication between GPUs at every MoE layer. As contemporary MoE models activate more experts per token, this communication accounts for a growing fraction of inference time. The cost becomes particularly pronounced on PCIe-based consumer GPU systems, where all inter-GPU transfers traverse CPU memory. However, existing MoE-specialized EP communication libraries assume that direct GPU-to-GPU access is available, largely overlooking consumer GPUs. Therefore, most LLM frameworks instead rely on NCCL, whose CPU-staged communication incurs redundant PCIe transfers and competes with expert computation for GPU resources, limiting their overlap. We present ThunderEP, a novel communication design for such systems that removes the relay hops of traditional ring algorithm, moves data through DMA engines to avoid compute resource contention, and minimizes synchronization latency by reducing the polling overhead of completion flags in CPU memory. We integrate the proposed design into vLLM and evaluate it on three widely used MoE models. Experiments on two PCIe systems equipped with RTX 4090 and RTX 5090 GPUs show that ThunderEP achieves average speedups of 2.00$\\times$ and 1.53$\\times$ over NCCL for dispatch and combine, respectively, and up to 1.66$\\times$ end-to-end speedup over state-of-the-art MoE inference frameworks.",
+    "published_date": "2026-09-30T16:32:25Z",
+    "updated_date": "2026-09-30T16:32:25Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.40093v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.40093v1",
+    "source": "arxiv",
+    "score": 0.4506575310230255,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 间通信、通信优化、延迟优化相关技术。\n\n核心内容：Expert parallelism (EP) enables inference of large Mixture-of-Experts (MoE) models by placing their experts across multiple GPUs, but requires substantial communication between GPUs at every MoE layer. As contemporary MoE models activate more experts per token, this communication accounts for a grow...。",
+    "takeaway": "本文聚焦GPU 间通信、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.36074v1",
+    "title": "GEM-KMeans: Memory-Efficient and Accurate Clustering on Massive Scale with GPU Optimization",
+    "authors": [
+      "Peng Xu",
+      "Nihar Koganti",
+      "Volodymyr Kindratenko",
+      "Xiaohui Chen"
+    ],
+    "abstract": "Memory-efficient scaling on clustering problems without sacrificing statistical accuracy is of central interest for large-scale data analysis and machine learning problems. Nonnegative low-rank (NLR) matrix factorization for $K$-means is a scalable clustering method, which connects to semidefinite relaxations with optimal average-case exact recovery guarantees. However, a direct GPU implementation of NLR requires multiple large factor-sized buffers and substantial data movements that are essentially memory-bound. In this paper, we introduce GEM-KMeans, a spectrally normalized yet mathematically equivalent NLR formulation that fuses the gradient update, nonnegative projection, and sufficient statistics for normalization and iterate movement into a matrix-multiplication epilogue. Instead of retaining three massive factor-sized arrays, our IO-aware GPU implementation materializes only one single factor with small tile-reduction arrays as additional storage in the High Bandwidth Memory (HBM). We derive explicit memory costs and spectrally normalized smoothness bounds for optimizing the clustering objective function. Accurate clustering is demonstrated at massive scales on synthetic and real datasets, where performance gains of GEM-KMeans over existing GPU-accelerated Lloyd's algorithms involve data-dependent runtime tradeoffs.",
+    "published_date": "2026-09-28T18:23:05Z",
+    "updated_date": "2026-09-28T18:23:05Z",
+    "categories": [
+      "cs.LG",
+      "cs.AR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2609.36074v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.36074v1",
+    "source": "arxiv",
+    "score": 0.4456522178649902,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、带宽优化相关技术。\n\n核心内容：Memory-efficient scaling on clustering problems without sacrificing statistical accuracy is of central interest for large-scale data analysis and machine learning problems. Nonnegative low-rank (NLR) matrix factorization for $K$-means is a scalable clustering method, which connects to semidefinite r...。",
+    "takeaway": "本文聚焦GPU 加速、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2609.36954v1",
+    "title": "Purlin: Separating Orchestration from the Datapath of Collectives",
+    "authors": [
+      "Osayamen Jonathan Aimuyo",
+      "Swapnil Gandhi",
+      "Christos Kozyrakis"
+    ],
+    "abstract": "Distributed inference depends on GPU collective communication that must keep pace with evolving hardware and specialized workloads. However, existing collective implementations often couple semantics, orchestration (where and when data moves), and the datapath (how data moves). This coupling makes it costly to adopt new hardware mechanisms and customize communication for applications. We present Purlin, a scale-up communication framework that separates these concerns. At the top of Purlin, we specify collectives as a naming of an input and output layout and a copy or reduction operation. In the middle, we introduce a shared orchestration protocol, Stage, Notify, And Consume (SNAC), which derives coordination from these specifications. Below SNAC sits a hardware-specific datapath we call Atom, which implements two key data movement primitives for collectives: copy and reduce. This separation lets us customize collectives and adopt new hardware mechanisms while reusing orchestration via SNAC. We evaluate Purlin on A100, H200, and B200 GPUs. Across seven collectives, Purlin achieves latency speedups of up to 5.14x and bandwidth improvements of up to 4.50x over baselines. Integrated into SGLang, Purlin improves offline LLM serving throughput and interactivity by 1.13x on average and up to 1.37x over baselines. For online LLM inference, Purlin improves interactivity by 1.26x on average and up to 2.85x, with the largest gain occurring under overload. For diffusion image generation, Purlin reduces end-to-end latency by up to 1.13x.",
+    "published_date": "2026-09-29T07:57:27Z",
+    "updated_date": "2026-09-29T07:57:27Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.36954v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.36954v1",
+    "source": "arxiv",
+    "score": 0.4416815781593323,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型推理、通信优化、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Distributed inference depends on GPU collective communication that must keep pace with evolving hardware and specialized workloads. However, existing collective implementations often couple semantics, orchestration (where and when data moves), and the datapath (how data moves)。",
+    "takeaway": "本文聚焦大模型推理、通信优化、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2609.37828v1",
+    "title": "Joint Effects of GPU Server Topology, Parallelism, and Congestion Control on MoE Inference: A Controlled Simulation Study",
+    "authors": [
+      "Kaikai Yuan",
+      "Rui Xi",
+      "Yu Liu"
+    ],
+    "abstract": "Mixture-of-experts (MoE) models expand capacity via sparse activation, but inference across GPUs introduces tensor-parallel (TP) collectives and expert-parallel (EP) dispatch and combine operations. Completion time depends not just on communication volume but on how logical groups map onto intra-server interconnects, GPU--NIC connections, and the inter-node network. Using ASTRA-sim with the NS-3 discrete-event backend, we build a controlled matrix of 32 GPU ranks with data and pipeline parallelism fixed at one. Workloads are fixed-length 4096-token prefill-like synthetic Chakra traces from four MoE configurations. Experiments cover six server topologies, four TP/EP partitions, two TP collective algorithms, and four network/congestion-control modes, yielding 768 deterministic simulations. In the 144-configuration feedback-enabled subset per model, exposed communication accounts for 89.9%--95.8% of mean completion time. TP16EP2 requires 3.68--4.35x the mean completion time of TP2EP16. With fixed rank mapping, ASTRA-sim Double Binary Tree (DBT) incurs 28.3%--83.2% more time than Ring. InfiniBand-like High Precision Congestion Control (HPCC) is ~0.9% lower than HPCC over RDMA over Converged Ethernet (RoCE), whereas RoCE with Data Center Quantized Congestion Notification (DCQCN) is 23.8%--35.7% slower than RoCE HPCC. Topology effects are conditional: Topology~6 leads at low TP degrees but loses its advantage at high TP degrees, and additional GPUs or NICs help only when rank mapping balances traffic across injection paths. Under uniform 32-way sharding, the largest checkpoint-weight shard is ~48.75 GB per rank, so all configurations meet a 64 GB per-accelerator weight-residency criterion. Within the evaluated workload and simulator semantics, server topology, parallelism, collective implementation, and congestion control jointly determine exposed communication and completion time.",
+    "published_date": "2026-09-29T15:34:39Z",
+    "updated_date": "2026-09-29T15:34:39Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.37828v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.37828v1",
+    "source": "arxiv",
+    "score": 0.43878517985343934,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、网络、通信优化相关技术。\n\n核心内容：Mixture-of-experts (MoE) models expand capacity via sparse activation, but inference across GPUs introduces tensor-parallel (TP) collectives and expert-parallel (EP) dispatch and combine operations. Completion time depends not just on communication volume but on how logical groups map onto intra-ser...。",
+    "takeaway": "本文聚焦RDMA 网络、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2609.35276v1",
+    "title": "Weaver: A System for AI-RAN Compute Sharing with Foundation Model Training",
+    "authors": [
+      "Leyang Xue",
+      "Tianxin Wang",
+      "Xin Zhe Khooi",
+      "Jiaxun Yang",
+      "Dheeraj Mahendiran",
+      "Yufeng Xia",
+      "Mun Choon Chan",
+      "Myungjin Lee",
+      "Mahesh K. Marina"
+    ],
+    "abstract": "The emergence of AI-RAN infrastructure, which equips cell sites with GPU-accelerated hardware, creates an opportunity to colocate non-RAN workloads with primary RAN processing. We explore using this spare capacity for decentralized training of foundation models (FMs), one of the most compute-intensive AI workloads. We present the first characterization of spare GPU capacity in AI-RAN systems at both micro-scale--across transmission slots within a cell site--and macro-scale--across sites. Our analysis finds that 40-85% of GPU capacity is unused; although this capacity is temporally bursty at individual sites, it is spatially complementary across sites. To safely and efficiently harness these resources, we present Weaver, a system that opportunistically trains FMs alongside latency-critical RAN workloads without degrading RAN performance. Weaver adopts a RAN-first design: a spare-compute controller integrated into the MAC scheduler uses compute-aware scheduling to smooth RAN GPU demand and exposes more usable spare GPU capacity. A two-level elastic training framework then adapts to dynamic, heterogeneous spare capacity within and across sites. Experiments on an O-RAN-aligned system prototype show that Weaver creates up to 4.9x more usable spare compute and utilizes up to 83% of the available spare capacity. On a multi-site testbed, Weaver improves training throughput by 2.1-3.7x over baseline approaches.",
+    "published_date": "2026-09-28T14:29:48Z",
+    "updated_date": "2026-09-28T14:29:48Z",
+    "categories": [
+      "cs.DC",
+      "cs.NI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.35276v1",
+    "arxiv_url": "https://arxiv.org/abs/2609.35276v1",
+    "source": "arxiv",
+    "score": 0.43287059783935544,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、异构计算、延迟优化、吞吐量相关技术。\n\n核心内容：The emergence of AI-RAN infrastructure, which equips cell sites with GPU-accelerated hardware, creates an opportunity to colocate non-RAN workloads with primary RAN processing. We explore using this spare capacity for decentralized training of foundation models (FMs), one of the most compute-intensi...。",
+    "takeaway": "本文聚焦GPU 加速、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2609.34818v2",
+    "title": "Accelerator Choice Is Not Enough: AlphaFold2 Inference on Cloud TPUs",
+    "authors": [
+      "Lorenzo Pazienza",
+      "Ihab El Bani"
+    ],
+    "abstract": "AlphaFold2 is written in JAX, so the same inference code compiles and runs unchanged on CPUs, GPUs and Google Cloud TPUs. That portability makes the accelerator look like the main decision a user has to make. We show that it is not. Running one AlphaFold2 inference workload across a Colab CPU runtime, an NVIDIA T4 GPU and a dedicated eight-chip Cloud TPU v5e slice, we find a large hardware advantage for the TPU, 0.47 s per call in steady state on a single chip against 13.1 s on the T4 in the same measurement campaign, and three ways in which the software layer decides how much of it a user actually gets. The default execution path uses one chip of the eight, and at list prices the idle capacity makes the slice cost about as much per prediction as the GPU. Batching with JAX's vmap never exceeds single-query throughput, while mapping queries across chips with JAX's pmap gives eight chips 6.5-7.9x the throughput of one on a matched grid; automatic sharding leaves the per-chip footprint unchanged, consistent with replication, most plausibly because AlphaFold2 carries no sharding annotations. Our retained trace analysis of a first call at a new input shape reports about three quarters of the traced span in JAX tracing and compilation rather than execution. Reruns five weeks later reproduced neither cloud baseline, the GPU one off by roughly a factor of two, so the hardware ratio above is specific to one campaign.",
+    "published_date": "2026-09-28T10:17:25Z",
+    "updated_date": "2026-09-29T07:02:41Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2609.34818v2",
+    "arxiv_url": "https://arxiv.org/abs/2609.34818v2",
+    "source": "arxiv",
+    "score": 0.43137447476387025,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：AlphaFold2 is written in JAX, so the same inference code compiles and runs unchanged on CPUs, GPUs and Google Cloud TPUs. That portability makes the accelerator look like the main decision a user has to make。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  }
+]
