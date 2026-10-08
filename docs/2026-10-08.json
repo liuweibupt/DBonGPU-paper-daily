@@ -1,0 +1,275 @@
+[
+  {
+    "id": "2610.08238v1",
+    "title": "GPU Acceleration of Awkward Arrays: Using Python cuda.compute",
+    "authors": [
+      "Maksym Naumchyk",
+      "Ianna Osborne"
+    ],
+    "abstract": "Awkward Array is a widely used library in high-energy physics (HEP) for representing and manipulating nested, variable-length data in Python. Previous CHEP contributions have explored GPU acceleration for Awkward Array, demonstrating the feasibility and performance benefits of CUDA-based backend while also identifying limitations related to irregular data access, fine-grained kernel launches, and composability of operations. In this contribution, we present recent developments that build directly on these earlier efforts by introducing a CUDA execution model for Awkward Array based on the Python CUDA Core Compute Libraries (CCCL).\n  Using CCCL, we eliminate the need for custom CUDA kernels and can instead use a high-level Python interface. The CCCL-based approach also enables fusion of multiple Awkward operations into a reduced number of CUDA kernels, addressing kernel launch overhead observed in earlier GPU implementations. Lazy execution allows expression graphs to be constructed and optimized prior to kernel generation, improving performance for analysis workflows involving jagged arrays, combinatorial operations, and reductions. In contrast to earlier approaches, this design also emphasizes extensibility, allowing user-defined Python code to be incorporated into GPU execution paths with minimal boilerplate and without breaking existing analysis semantics.\n  We present performance studies that demonstrate improvements over previously reported eager GPU execution strategies for representative HEP analysis patterns. These developments extend the GPU capabilities of Awkward Array toward a more composable and sustainable backend, aligned with the needs of Python-based analysis at the HL-LHC and beyond.",
+    "published_date": "2026-10-06T12:23:44Z",
+    "updated_date": "2026-10-06T12:23:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF",
+      "cs.SE"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.08238v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.08238v1",
+    "source": "arxiv",
+    "score": 0.6021854257583619,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA相关技术。\n\n核心内容：Awkward Array is a widely used library in high-energy physics (HEP) for representing and manipulating nested, variable-length data in Python. Previous CHEP contributions have explored GPU acceleration for Awkward Array, demonstrating the feasibility and performance benefits of CUDA-based backend whi...。",
+    "takeaway": "本文聚焦GPU 加速、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.02658v1",
+    "title": "Annotation-Driven Migration of CUDA Programs to Tenstorrent Blackhole",
+    "authors": [
+      "Ayumi Ohno",
+      "Shinya Takamaeda-Yamazaki"
+    ],
+    "abstract": "Tenstorrent Blackhole combines distributed local memories, explicit inter-core communication, and Tensix cores decoupling data movement from computation. CUDA offers a substantial HPC software base but leaves physical data placement and scheduling largely implicit. Migrating CUDA HPC kernels to Blackhole requires spatial mapping across cores and per-core coordination of compute and data-movement kernels. We present an MLIR-based compiler deriving data placement, inter-core communication, and tile computation from a statically shaped affine CUDA subset. Declarative annotations express choices not fixed by the source, including compute/DM operation placement and streaming granularity. We evaluate it on Gaussian elimination, five-point stencil, and symmetric rank-k update. Relative to our compiler's default realizations, the best measured configurations achieve a 4.2x speedup for BF16 Gaussian and 2.1-2.2x for FP32 Gaussian and Jacobi. A choice's performance impact can reverse with surrounding policies, precision, and loop schedule, motivating comparison of alternative per-core realizations rather than independent policy selection.",
+    "published_date": "2026-10-02T01:27:48Z",
+    "updated_date": "2026-10-02T01:27:48Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.02658v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.02658v1",
+    "source": "arxiv",
+    "score": 0.5257038760185242,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、数据放置、通信优化相关技术。\n\n核心内容：Tenstorrent Blackhole combines distributed local memories, explicit inter-core communication, and Tensix cores decoupling data movement from computation. CUDA offers a substantial HPC software base but leaves physical data placement and scheduling largely implicit。",
+    "takeaway": "本文聚焦CUDA、数据放置、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.03090v1",
+    "title": "PaNGEA: Parallel Node Generation and Exploration Algorithm on GPU",
+    "authors": [
+      "Jean Pauphilet",
+      "Yupeng Wu"
+    ],
+    "abstract": "Primal heuristics for finding high-quality feasible solutions are an important component in mixed-integer optimization (MIO) solvers. Recent advances in GPU-accelerated optimization algorithms show the potential of GPU acceleration for continuous optimization. In this paper, we introduce the Parallel Node Generation and Exploration Algorithm (PaNGEA), a GPU-friendly MIO primal heuristic. PaNGEA explores restricted subproblems by combining linear-relaxation solves with a local-search procedure designed for efficient batched execution on GPUs. In addition, instead of relying on a single heuristic for iterative variable fixing, we leverage GPU batching capabilities to generate and explore multiple subproblems in parallel. PaNGEA leverages GPU capabilities in two ways. First, on 283 MIPcc26 and MIPLIB instances, implementing a single-node primal heuristic on the GPU reduces the average gap integral by 8-18% relative to its CPU counterpart. Second, generating and exploring multiple nodes in parallel further reduces the average gap integral by 12-19%.",
+    "published_date": "2026-10-02T10:09:00Z",
+    "updated_date": "2026-10-02T10:09:00Z",
+    "categories": [
+      "cs.DC",
+      "math.OC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.03090v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.03090v1",
+    "source": "arxiv",
+    "score": 0.5218374288082123,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速相关技术。\n\n核心内容：Primal heuristics for finding high-quality feasible solutions are an important component in mixed-integer optimization (MIO) solvers. Recent advances in GPU-accelerated optimization algorithms show the potential of GPU acceleration for continuous optimization。",
+    "takeaway": "本文聚焦GPU 加速，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.01380v1",
+    "title": "GPU-Initiated Communication: Dissecting Down to the Bone",
+    "authors": [
+      "Javid Baydamirli",
+      "Ismayil Ismayilov",
+      "Kaan Oktay",
+      "Didem Unat"
+    ],
+    "abstract": "GPU-initiated communication lets GPU threads post RDMA operations directly to the NIC. It underpins NVSHMEM, NCCL GIN, and DeepEP, which serve the fine-grained, latency-critical communication of Mixture-of-Experts (MoE) models, yet its performance characteristics and optimizations remain scarcely documented beyond source code, and library comparisons fail to separate the costs of the hardware mechanism from those of the library around it.\n  This paper dissects GPU-initiated communication at the GPU-NIC boundary. We first detail the GPU-side network path: queue placement, work-request construction, doorbell ordering, and completion semantics. We then introduce mini-gda and mini-proxy, minimal transports for the GPU and CPU-proxy submission paths, and measure them alongside NVSHMEM IBGDA, NCCL GIN, DeepEP, UCCL-EP, MSCCL++, and fabric-lib on NVIDIA H100, H200, B200, and GB200 platforms. A minimal GPU path issues an operation in 0.7 $μ$s and completes in 4.0 $μ$s; libraries add up to 4.6 $μ$s of issue time through queue management, memory ordering, and completion scope, and issue time scales with the SM clock. A tuned CPU proxy matches or beats the GPU path at idle, at the cost of a dedicated core whose operating state sets its latency and throughput. On either path, sharing a queue with bulk traffic raises latency by one to three orders of magnitude. Reaching the 260 M msg/s ceiling of our InfiniBand platform requires doorbell batching and queue parallelism, and both have resource costs: communication code can reduce GPU block residency even when unused, and all-to-all traffic loses 59% of its NIC message rate at about 3,000 active connections. The submission path alone therefore does not predict communication performance. Our experiment code and results are available at https://github.com/ParCoreLab/Dissecting-GPU-Communication-Experiments.",
+    "published_date": "2026-10-01T09:46:08Z",
+    "updated_date": "2026-10-01T09:46:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.NI",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.01380v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.01380v1",
+    "source": "arxiv",
+    "score": 0.5050281727313995,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、网络、通信优化、延迟优化、吞吐量相关技术。\n\n核心内容：GPU-initiated communication lets GPU threads post RDMA operations directly to the NIC. It underpins NVSHMEM, NCCL GIN, and DeepEP, which serve the fine-grained, latency-critical communication of Mixture-of-Experts (MoE) models, yet its performance characteristics and optimizations remain scarcely do...。",
+    "takeaway": "本文聚焦RDMA 网络、网络、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.06622v1",
+    "title": "GPU-Initiated Discrete Simulated Bifurcation: Low-Latency Requests and Streaming Dense Couplings",
+    "authors": [
+      "Yaocheng Chen"
+    ],
+    "abstract": "GPU-based optimization faces two communication bottlenecks: coordinating frequent requests and delivering dense models that exceed device memory. We present a discrete simulated bifurcation (dSB) architecture that addresses both through NVIDIA DOCA GPUNetIO. For resident models, a persistent service receives field updates, executes each solve within one GPU thread block, and returns the result. Exact integer coupling sums, GPU work queues, and batched transmission keep the receive--solve--reply path on the device without a dedicated CPU data-path core. In comparisons with socket-based servers using the same solver, the largest latency gains occur under concurrent load. As the offered load increases from 400 to 800 thousand requests per second, median round-trip latency rises by only 6\\%. At the highest tested load, median and 99th-percentile latencies are 189 and 218~$μ$s, compared with 288 and 609~$μ$s for the tuned persistent CPU proxy across repeated runs. For models larger than device memory, a streaming solver retains dynamical state on the GPU and reuses incoming coupling tiles across replicas. It evaluates ten-million-variable dense binary matrices at approximately 307~Gb/s, consuming a 12.5-TB logical matrix through a 64-MiB packet buffer. Ground-state recovery on planted instances and agreement with reference executions verify the computation. Together, the two modes scale dSB to concurrent requests and dense models beyond GPU memory.",
+    "published_date": "2026-10-05T16:20:06Z",
+    "updated_date": "2026-10-05T16:20:06Z",
+    "categories": [
+      "cs.DC",
+      "physics.comp-ph",
+      "quant-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.06622v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.06622v1",
+    "source": "arxiv",
+    "score": 0.49264330983161925,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、通信优化、延迟优化相关技术。\n\n核心内容：GPU-based optimization faces two communication bottlenecks: coordinating frequent requests and delivering dense models that exceed device memory. We present a discrete simulated bifurcation (dSB) architecture that addresses both through NVIDIA DOCA GPUNetIO。",
+    "takeaway": "本文聚焦GPU 内存管理、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.04277v1",
+    "title": "SyclKittens: A Tile Programming Model for Programmers and Coding Agents on Intel GPUs",
+    "authors": [
+      "Yehong Jiang",
+      "Sheng Chen",
+      "Fangwen Fu",
+      "Yen-Kuang Chen",
+      "Xinmin Tian",
+      "Stuart H. Sul",
+      "Simran Arora"
+    ],
+    "abstract": "New AI accelerators arrive before the kernels that make them fast, because peak kernel performance requires architecture-specific expertise in operand pipelines and data-movement techniques. Coding agents can now write, compile, and tune kernels on their own, so they could greatly accelerate kernel development and optimization. What agents produce depends on the interfaces they are given. These interfaces may expose a machine's raw capabilities or encode the known-good methods for exploiting its hardware features efficiently. We test the performance impact of these two interfaces on Intel GPUs through controlled experiments with three coding models on three kernels. With raw SYCL and execution feedback, Opus 4.8, the strongest of the three models tested, writes a single-GPU GEMM kernel reaching only 57.5% of Intel's tuned oneDNN library. We present SyclKittens, a hardware-aware tile programming model for Intel GPUs that encodes these known-good methods, so its operations place operands in matrix-engine layouts, prefetch through the L1 cache, and communicate over the fabric that links GPU stacks into a node. With SyclKittens under the same agent, task, and feedback budget, the agent reaches 82.1%, showing that encoded methods turn hardware capabilities into performance. Workload-specific policies stay programmable, and engineers and agents jointly refine these schedules in SyclKittens to build a kernel suite that reaches ~96% of oneDNN in geometric mean across GEMM shapes. The suite runs Llama-3.1-8B inference 1.59x faster than torch$.$compile on one GPU and up to 2.91x faster than a matched multi-GPU decode path on Intel's oneCCL. SyclKittens is open source and available at https://github.com/intel/SyclKittens.",
+    "published_date": "2026-10-03T04:06:24Z",
+    "updated_date": "2026-10-03T04:06:24Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.04277v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.04277v1",
+    "source": "arxiv",
+    "score": 0.4807177472114563,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究多 GPU相关技术。\n\n核心内容：New AI accelerators arrive before the kernels that make them fast, because peak kernel performance requires architecture-specific expertise in operand pipelines and data-movement techniques. Coding agents can now write, compile, and tune kernels on their own, so they could greatly accelerate kernel ...。",
+    "takeaway": "本文聚焦多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.07126v1",
+    "title": "CUDA-MPQS: A GPU-Resident Self-Initializing Quadratic Sieve, and the Factorization of RSA-155",
+    "authors": [
+      "Fabian Januszewski",
+      "Christoph Heinrichs"
+    ],
+    "abstract": "The quadratic sieve (QS) is an irregular, cache-hostile, branch-heavy integer factorization algorithm; prior GPU work accelerates individual stages of it. We present \\swname{}, a self-initializing quadratic sieve in which \\emph{every} stage --- polynomial initialization, sieving, relation post-processing, large-prime matching, \\GFtwo{} matrix construction, Block Wiedemann linear algebra and the square root --- executes on the GPU, the CPU restricted to orchestration, setup and I/O, the sieve window 99.9\\% GPU-busy with no device-wide or event synchronization and no synchronous copy. With it we factored the 512-bit RSA-155 challenge modulus end to end on GPUs: a 64$\\times$H100 sieve feeding a single-H100 \\GFtwo{} solve, 700.6~GPU-h and 242~kWh in total, 98.4\\% of it sieving. To our knowledge this is the largest integer factored by the quadratic sieve, exceeding the prior QS record RSA-150 (Buhrow, YAFU, 2025); all comparable general factorizations since 1996, RSA-155's own in 1999 included, used the number field sieve. On a single device we factor RSA-100 in 29.2~s on an H100 and 51.0~s on a consumer RTX~5070~Ti; in a controlled same-modulus measurement, with energy measured on both sides, the H100 is faster than the fastest CPU quadratic sieve, YAFU, on 96 cores of an EPYC~9655 (106--122~s), and than CADO-NFS's SIQS (292~s) and GNFS (263~s). Across four discrete GPUs (a 3.7$\\times$ range in CUDA cores) RSA-100 throughput is close to proportional to core count, memory bandwidth being a weaker predictor, and measured cost over seven benchmark factorizations from RSA-100 to RSA-155 grows as $\\LN{1/2}{1}^{1.04}$ ($R^2=0.993$). On RSA-150, the identical modulus on which the prior QS record was set, we measure 302.9~GPU-h against that run's 11{,}664 core-hours.",
+    "published_date": "2026-10-05T17:51:11Z",
+    "updated_date": "2026-10-05T17:51:11Z",
+    "categories": [
+      "math.NT",
+      "cs.DC",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.07126v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.07126v1",
+    "source": "arxiv",
+    "score": 0.47841340184211734,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：The quadratic sieve (QS) is an irregular, cache-hostile, branch-heavy integer factorization algorithm; prior GPU work accelerates individual stages of it. We present \\swname{}, a self-initializing quadratic sieve in which \\emph{every} stage --- polynomial initialization, sieving, relation post-proce...。",
+    "takeaway": "本文聚焦CUDA、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.02522v1",
+    "title": "Beaver: Elastic GPU Sharing between ML and Latency-Critical vRAN Workloads",
+    "authors": [
+      "Yuncheng Yao",
+      "Zhenzhou Qi",
+      "Junyao Zheng",
+      "Chung-Hsuan Tung",
+      "Danyang Zhuo",
+      "Tingjun Chen"
+    ],
+    "abstract": "Within the shared industry vision of AI-RAN, AI-and-RAN seeks to co-locate virtualized radio access network (vRAN) workloads and AI services on shared GPUs. This sharing is inherently asymmetric: vRAN workload is latency-critical, whereas the machine learning (ML) workload is a throughput-oriented, best-effort co-tenant. We present Beaver, a GPU sharing system that jointly manages compute and memory resources while protecting the vRAN's strict processing deadline. Beaver sizes the vRAN's streaming multiprocessor (SM) allocation from each slot's scheduled workload, repartitions SM allocations at slot granularity, and rewrites compiled ML kernels to yield HBM bandwidth during the vRAN's memory-critical phases. We implement Beaver and evaluate it using NVIDIA Aerial with heterogeneous multi-cell workloads, real-world cellular traces, production inference kernels, and full-stack LLM serving. On an H200 GPU, Beaver keeps the vRAN's p99.9 latency within its 1.5ms uplink deadline while retaining 74% of Llama-3.3-70B serving throughput. It also incurs no observed deadline misses under replayed cellular traces, protects a 375us downlink deadline, and generalizes to other GPUs including A100, GB10 and GH200.",
+    "published_date": "2026-10-01T21:52:30Z",
+    "updated_date": "2026-10-01T21:52:30Z",
+    "categories": [
+      "cs.DC",
+      "cs.NI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.02522v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.02522v1",
+    "source": "arxiv",
+    "score": 0.46285155296325686,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算、网络、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：Within the shared industry vision of AI-RAN, AI-and-RAN seeks to co-locate virtualized radio access network (vRAN) workloads and AI services on shared GPUs. This sharing is inherently asymmetric: vRAN workload is latency-critical, whereas the machine learning (ML) workload is a throughput-oriented, ...。",
+    "takeaway": "本文聚焦异构计算、网络、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.02502v1",
+    "title": "RAPID: Row-Parallel Arithmetic Processing in DRAM",
+    "authors": [
+      "William C. Tegge",
+      "João Paulo Cardoso de Lima",
+      "Shouzhi Fang",
+      "Jeronimo Castrillon",
+      "Alex K. Jones"
+    ],
+    "abstract": "Processing-using-memory (PUM) architectures perform computation directly within DRAM to reduce costly data movement between memory and processors. Because charge-sharing operations are confined to individual bitlines, existing DRAM-PUM architectures reorganize data into column-oriented, bit-serial representations. This organization is fundamentally incompatible with the row-oriented, word-parallel layouts used by conventional processors and accelerators, requiring expensive data-layout transformations whenever computation transitions between PUM and conventional execution. In this paper, we present RAPID, a Row-parallel Arithmetic Processing-In-DRAM architecture. RAPID augments the DRAM subarray with two lightweight extensions: migration cells that enable localized horizontal data movement between neighboring bitlines and inversion cells that provide efficient in-array logical inversion. These primitives enable RAPID to operate directly on row-parallel, bit-parallel data, preserving CPU-compatible layouts while exploiting the massive parallelism of the DRAM subarray. In particular, RAPID demonstrates that localized horizontal communication is sufficient to realize shallow arithmetic networks and efficient parallel reduction for multiplication, reducing arithmetic latency while preserving throughput and eliminating costly data-layout transformations, all while maintaining the conventional DRAM array organization. We demonstrate the feasibility and overhead of augmenting DRAM subarrays with migration and inversion cells through detailed transistor-level layout and SPICE-validated circuit simulations. Using the RAPID compiler it is possible to evaluate the performance and data reorganization tradeoffs to ensure the best execution across combined CPU and PUM. Evaluating RAPID on 19 MLPerf benchmarks, there is a 5.9x higher end-to-end performance compared to SIMDRAM for DDR4 PUM execution.",
+    "published_date": "2026-10-01T21:24:56Z",
+    "updated_date": "2026-10-01T21:24:56Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.02502v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.02502v1",
+    "source": "arxiv",
+    "score": 0.44952367186546327,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究SIMD 并行、网络、通信优化、延迟优化、吞吐量相关技术。\n\n核心内容：Processing-using-memory (PUM) architectures perform computation directly within DRAM to reduce costly data movement between memory and processors. Because charge-sharing operations are confined to individual bitlines, existing DRAM-PUM architectures reorganize data into column-oriented, bit-serial r...。",
+    "takeaway": "本文聚焦SIMD 并行、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2610.06718v2",
+    "title": "One Global Beam Across Many GPUs: High-Throughput Beam Search at Billion-Record Frontier Scale",
+    "authors": [
+      "Ivan Litvak"
+    ],
+    "abstract": "Beam search repeatedly makes many children, removes duplicates, and keeps the best $B$. We show how many GPUs can perform these steps as one search even when the retained set does not fit on one device. States and candidates stay on the GPUs; the CPU receives only small control and ancestry records. We prove that an abstract distributed pipeline returns the monolithic reduced-key top-$B$ for the same complete candidates, integer scores, Hash128 equivalence, and a fully specified physical-layout tie order, provided that its implementation performs one global reduction per key and race-free routing. A static audit of the historical one-T4 pin leaves cross-buffer uniqueness unresolved and identifies a separate multi-rank scatter risk; neither is a reproduced failure, and other revisions inherit neither defects nor correctness without comparison. On eight H200 GPUs, a Cube4 run completed saturated depth 8 at $B_{\\rm eff}=2{,}900{,}361{,}216$ in $931.266$ s: $69{,}608{,}669{,}184$ nominal parent--generator pairs, or a derived $74.746$ million pairs/s. A separate two-T4 Megaminx run yielded a derived $30.274$ million nominal parent--generator pairs/s at $B_{\\rm eff}=82{,}837{,}504$. Those tasks and hardware differ, so they do not establish strong scaling. Separately, on one eight-RTX-3060 host, fixed-count eight-GPU speedup was $7.487$ under a common execution profile and $5.605$ under selected stable profiles; weak actual-work throughput gain was $6.113$ and $7.295$. These profile-sensitive ratios use each series' own one-GPU baseline.",
+    "published_date": "2026-10-05T17:11:32Z",
+    "updated_date": "2026-10-06T12:01:33Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.06718v2",
+    "arxiv_url": "https://arxiv.org/abs/2610.06718v2",
+    "source": "arxiv",
+    "score": 0.4433941984176636,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Beam search repeatedly makes many children, removes duplicates, and keeps the best $B$. We show how many GPUs can perform these steps as one search even when the retained set does not fit on one device。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
