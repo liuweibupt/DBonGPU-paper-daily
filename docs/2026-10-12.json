@@ -1,0 +1,287 @@
+[
+  {
+    "id": "2610.13809v1",
+    "title": "GPU-resident Execution for Timing-predictable Sensor Processing Systems",
+    "authors": [
+      "Soham Sinha",
+      "Rahul Choudhury",
+      "Shekhar Dwivedi",
+      "Gregory Lee",
+      "Gigon Bae",
+      "Anisha Goel",
+      "Elena Agostini",
+      "Patrick O'Grady",
+      "Yosi Levi",
+      "Mahdi Azizian"
+    ],
+    "abstract": "Real-time embedded systems increasingly place GPU-accelerated processing of high-bandwidth sensor streams inside closed-loop systems, but the CPU (the host) remains the primary orchestrator of each iteration. The host observes sensor inputs, submits CUDA work, waits for completion, and commits actuation. This host-mediated path exposes the closed-loop end-to-end latency to I/O interrupts, host scheduler decisions, and CUDA API overheads even after common host-side mitigations such as GPU-memory RDMA or CPU core isolation. This paper presents GPU-resident Execution, a new execution model for real-time sensor processing pipelines that keeps I/O and GPU execution in a long-lived device-resident loop. Sensor inputs arrive in GPU memory, trigger GPU-side processing, and reach GPU-visible output endpoints without any host wakeups. We implement the model in the NVIDIA Holoscan C++ framework and provide reference components for building GPU-resident applications. We evaluate our system on NVIDIA GPUs and SoCs with inference, host-contention, multi-loop, and streaming camera workloads. On an industry-grade 1080p, 60 Hz real-time camera-to-display application, GPU-resident Execution reduces photon-to-display jitter from 4.83 ms to 0.66 ms (7.3x) relative to a CPU-driven GPU-memory RDMA baseline and reduces software-processing jitter from 1.70 ms to 0.01 ms (170x).",
+    "published_date": "2026-10-09T16:21:12Z",
+    "updated_date": "2026-10-09T16:21:12Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13809v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13809v1",
+    "source": "arxiv",
+    "score": 0.603312075138092,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、CUDA、RDMA 网络、扫描相关技术。\n\n核心内容：Real-time embedded systems increasingly place GPU-accelerated processing of high-bandwidth sensor streams inside closed-loop systems, but the CPU (the host) remains the primary orchestrator of each iteration. The host observes sensor inputs, submits CUDA work, waits for completion, and commits actua...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.08238v1",
+    "title": "GPU Acceleration of Awkward Arrays: Using Python cuda.compute",
+    "authors": [
+      "Maksym Naumchyk",
+      "Ianna Osborne"
+    ],
+    "abstract": "Awkward Array is a widely used library in high-energy physics (HEP) for representing and manipulating nested, variable-length data in Python. Previous CHEP contributions have explored GPU acceleration for Awkward Array, demonstrating the feasibility and performance benefits of CUDA-based backend while also identifying limitations related to irregular data access, fine-grained kernel launches, and composability of operations. In this contribution, we present recent developments that build directly on these earlier efforts by introducing a CUDA execution model for Awkward Array based on the Python CUDA Core Compute Libraries (CCCL).\n  Using CCCL, we eliminate the need for custom CUDA kernels and can instead use a high-level Python interface. The CCCL-based approach also enables fusion of multiple Awkward operations into a reduced number of CUDA kernels, addressing kernel launch overhead observed in earlier GPU implementations. Lazy execution allows expression graphs to be constructed and optimized prior to kernel generation, improving performance for analysis workflows involving jagged arrays, combinatorial operations, and reductions. In contrast to earlier approaches, this design also emphasizes extensibility, allowing user-defined Python code to be incorporated into GPU execution paths with minimal boilerplate and without breaking existing analysis semantics.\n  We present performance studies that demonstrate improvements over previously reported eager GPU execution strategies for representative HEP analysis patterns. These developments extend the GPU capabilities of Awkward Array toward a more composable and sustainable backend, aligned with the needs of Python-based analysis at the HL-LHC and beyond.",
+    "published_date": "2026-10-06T12:23:44Z",
+    "updated_date": "2026-10-06T12:23:44Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF",
+      "cs.SE"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.08238v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.08238v1",
+    "source": "arxiv",
+    "score": 0.6021853661537171,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、CUDA相关技术。\n\n核心内容：Awkward Array is a widely used library in high-energy physics (HEP) for representing and manipulating nested, variable-length data in Python. Previous CHEP contributions have explored GPU acceleration for Awkward Array, demonstrating the feasibility and performance benefits of CUDA-based backend whi...。",
+    "takeaway": "本文聚焦GPU 加速、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.13125v1",
+    "title": "Characterizing CPU-GPU Memory Sharing over Unified Memory Architecture",
+    "authors": [
+      "Jinrong Yang",
+      "Zimeng Wang",
+      "Rong Chen",
+      "Haibo Chen"
+    ],
+    "abstract": "Unified Memory Architecture (UMA) enables the CPU and GPU to share a single physical memory. However, its complexity and opacity often drive applications back to inefficient copying or to incorrect direct access that sacrifices performance or even correctness. This paper presents a comprehensive study of CPU-GPU memory sharing on UMA, covering correctness and performance across data-plane transmission and control-plane coordination on four platforms. It yields four findings that guide libumsh, a portable library that delivers correct and efficient memory sharing across platforms and extends to emerging ones (e.g., NVIDIA DGX Spark). Applied to nine real-world systems, libumsh reduces data-plane time by 16-75% and control-plane overhead by 7-90%.",
+    "published_date": "2026-10-09T07:20:21Z",
+    "updated_date": "2026-10-09T07:20:21Z",
+    "categories": [
+      "cs.OS",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.13125v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13125v1",
+    "source": "arxiv",
+    "score": 0.5373349475860596,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理相关技术。\n\n核心内容：Unified Memory Architecture (UMA) enables the CPU and GPU to share a single physical memory. However, its complexity and opacity often drive applications back to inefficient copying or to incorrect direct access that sacrifices performance or even correctness。",
+    "takeaway": "本文聚焦GPU 内存管理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.13408v1",
+    "title": "Ember: Making Unified Virtual Memory Practical for Discrete-Memory GPUs",
+    "authors": [
+      "Senad-Leandro Lemes Galera",
+      "Michail Georgoulakis Misegiannis",
+      "Ferdinand Gruber",
+      "Jana Giceva",
+      "Dimitrios Stavrakakis"
+    ],
+    "abstract": "GPU working sets have outgrown GPU memory, so applications must oversubscribe it, keeping only hot data on the GPU. NVIDIA's Unified Virtual Memory (UVM) supports oversubscription, but its performance degrades once data exceeds the GPU's memory. This stems from its fault-driven data placement, wasting interconnect bandwidth, and underutilizing the GPU. This raises the question: can UVM oversubscription become practical on stock GPUs, exploiting GPU memory speed and minimizing wasted interconnect bandwidth, without placement hints, profiling runs, or application changes?\n  To this end, we present Ember, a UVM management framework for oversubscribed workloads. Ember introduces a hybrid address space; allocations start as mapped into host memory, omitting data migration. Ember's counter-driven region promotion uses GPU's hardware counters to fetch hot regions to the GPU, its decay-based eager reclamation proactively evicts cold regions in batches, while via online region re-placement, Ember tracks the hot set at runtime.\n  We implement Ember within NVIDIA's open-source UVM driver for unmodified applications and as a userspace variant on stock CUDA. At 1.5x oversubscription, it is 6.8-10.6x faster than UVM on six applications across three PCIe GPUs, and generates LLM tokens 4.7-16x faster at sizes where manual placement cannot run at all. Without a profiling run, it beats a profile-guided alternative by 2.1x on kernel time.",
+    "published_date": "2026-10-09T11:20:30Z",
+    "updated_date": "2026-10-09T11:20:30Z",
+    "categories": [
+      "cs.OS",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13408v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13408v1",
+    "source": "arxiv",
+    "score": 0.5228230929374695,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、数据放置、带宽优化相关技术。\n\n核心内容：GPU working sets have outgrown GPU memory, so applications must oversubscribe it, keeping only hot data on the GPU. NVIDIA's Unified Virtual Memory (UVM) supports oversubscription, but its performance degrades once data exceeds the GPU's memory。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、数据放置，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.11230v1",
+    "title": "CORAL: Cross-modal Vector Retrieval via Incremental Graph Construction at Scale",
+    "authors": [
+      "Shixin Wan",
+      "Guoyu Hu",
+      "Yifan Wu",
+      "Ke Chen",
+      "Lidan Shou"
+    ],
+    "abstract": "Cross-modal vector retrieval is widely used in multimodal systems, such as search engines and vector databases. It typically operates in out-of-distribution (OOD) settings, where query vectors follow a distribution that differs from that of the vectors stored in the database. In such cases, conventional indexes suffer significant performance degradation, and even methods specially designed for OOD remain limited by inefficient use of query modal characteristics, restricted GPU parallelism, and inadequate support for dynamic updates. We present CORAL, a novel GPU-accelerated graph-based vector index for scalable cross-modal retrieval, featuring hierarchical memory management that spans GPU, CPU, and disk. Specifically, CORAL incrementally incorporates the characteristics of query modality and terminates index construction timely. Crucially, it introduces coverage-aware adaptive pruning to address the imbalanced coverage of the query vector's neighbors. Moreover, CORAL presents a fully neighborhood-aware projection approach to efficiently utilize GPUs for highly parallel index construction, and a targeted connectivity enhancement method to refine the index structure. Besides, CORAL also supports modal-semantics-based vector insertion and topology-repairing deletion that restore node connectivity. Experimental results demonstrate that CORAL outperforms existing methods with up to 1.6 times the throughput at matched recall while reducing construction time by up to 56%. Furthermore, it exhibits remarkable resilience under dynamic updates and remains effective at the billion scale.",
+    "published_date": "2026-10-08T04:31:16Z",
+    "updated_date": "2026-10-08T04:31:16Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.11230v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.11230v1",
+    "source": "arxiv",
+    "score": 0.4972532391548157,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、向量数据库、吞吐量相关技术。\n\n核心内容：Cross-modal vector retrieval is widely used in multimodal systems, such as search engines and vector databases. It typically operates in out-of-distribution (OOD) settings, where query vectors follow a distribution that differs from that of the vectors stored in the database。",
+    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、向量数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2610.06622v1",
+    "title": "GPU-Initiated Discrete Simulated Bifurcation: Low-Latency Requests and Streaming Dense Couplings",
+    "authors": [
+      "Yaocheng Chen"
+    ],
+    "abstract": "GPU-based optimization faces two communication bottlenecks: coordinating frequent requests and delivering dense models that exceed device memory. We present a discrete simulated bifurcation (dSB) architecture that addresses both through NVIDIA DOCA GPUNetIO. For resident models, a persistent service receives field updates, executes each solve within one GPU thread block, and returns the result. Exact integer coupling sums, GPU work queues, and batched transmission keep the receive--solve--reply path on the device without a dedicated CPU data-path core. In comparisons with socket-based servers using the same solver, the largest latency gains occur under concurrent load. As the offered load increases from 400 to 800 thousand requests per second, median round-trip latency rises by only 6\\%. At the highest tested load, median and 99th-percentile latencies are 189 and 218~$μ$s, compared with 288 and 609~$μ$s for the tuned persistent CPU proxy across repeated runs. For models larger than device memory, a streaming solver retains dynamical state on the GPU and reuses incoming coupling tiles across replicas. It evaluates ten-million-variable dense binary matrices at approximately 307~Gb/s, consuming a 12.5-TB logical matrix through a 64-MiB packet buffer. Ground-state recovery on planted instances and agreement with reference executions verify the computation. Together, the two modes scale dSB to concurrent requests and dense models beyond GPU memory.",
+    "published_date": "2026-10-05T16:20:06Z",
+    "updated_date": "2026-10-05T16:20:06Z",
+    "categories": [
+      "cs.DC",
+      "physics.comp-ph",
+      "quant-ph"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.06622v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.06622v1",
+    "source": "arxiv",
+    "score": 0.4926432204246521,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、通信优化、延迟优化相关技术。\n\n核心内容：GPU-based optimization faces two communication bottlenecks: coordinating frequent requests and delivering dense models that exceed device memory. We present a discrete simulated bifurcation (dSB) architecture that addresses both through NVIDIA DOCA GPUNetIO。",
+    "takeaway": "本文聚焦GPU 内存管理、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.07126v1",
+    "title": "CUDA-MPQS: A GPU-Resident Self-Initializing Quadratic Sieve, and the Factorization of RSA-155",
+    "authors": [
+      "Fabian Januszewski",
+      "Christoph Heinrichs"
+    ],
+    "abstract": "The quadratic sieve (QS) is an irregular, cache-hostile, branch-heavy integer factorization algorithm; prior GPU work accelerates individual stages of it. We present \\swname{}, a self-initializing quadratic sieve in which \\emph{every} stage --- polynomial initialization, sieving, relation post-processing, large-prime matching, \\GFtwo{} matrix construction, Block Wiedemann linear algebra and the square root --- executes on the GPU, the CPU restricted to orchestration, setup and I/O, the sieve window 99.9\\% GPU-busy with no device-wide or event synchronization and no synchronous copy. With it we factored the 512-bit RSA-155 challenge modulus end to end on GPUs: a 64$\\times$H100 sieve feeding a single-H100 \\GFtwo{} solve, 700.6~GPU-h and 242~kWh in total, 98.4\\% of it sieving. To our knowledge this is the largest integer factored by the quadratic sieve, exceeding the prior QS record RSA-150 (Buhrow, YAFU, 2025); all comparable general factorizations since 1996, RSA-155's own in 1999 included, used the number field sieve. On a single device we factor RSA-100 in 29.2~s on an H100 and 51.0~s on a consumer RTX~5070~Ti; in a controlled same-modulus measurement, with energy measured on both sides, the H100 is faster than the fastest CPU quadratic sieve, YAFU, on 96 cores of an EPYC~9655 (106--122~s), and than CADO-NFS's SIQS (292~s) and GNFS (263~s). Across four discrete GPUs (a 3.7$\\times$ range in CUDA cores) RSA-100 throughput is close to proportional to core count, memory bandwidth being a weaker predictor, and measured cost over seven benchmark factorizations from RSA-100 to RSA-155 grows as $\\LN{1/2}{1}^{1.04}$ ($R^2=0.993$). On RSA-150, the identical modulus on which the prior QS record was set, we measure 302.9~GPU-h against that run's 11{,}664 core-hours.",
+    "published_date": "2026-10-05T17:51:11Z",
+    "updated_date": "2026-10-05T17:51:11Z",
+    "categories": [
+      "math.NT",
+      "cs.DC",
+      "cs.MS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.07126v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.07126v1",
+    "source": "arxiv",
+    "score": 0.4784133124351502,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、吞吐量相关技术。\n\n核心内容：The quadratic sieve (QS) is an irregular, cache-hostile, branch-heavy integer factorization algorithm; prior GPU work accelerates individual stages of it. We present \\swname{}, a self-initializing quadratic sieve in which \\emph{every} stage --- polynomial initialization, sieving, relation post-proce...。",
+    "takeaway": "本文聚焦CUDA、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.13325v1",
+    "title": "Taking Tokenization off the Host for Agentic LLM Serving",
+    "authors": [
+      "Mohammad Siavashi",
+      "Pascal Schwinte",
+      "Ali Banaei",
+      "Gerald Q. Maguire",
+      "Marco Chiesa",
+      "Dejan Kostić"
+    ],
+    "abstract": "Agentic workloads resend long contexts that barely change between calls. Prefix caching now skips most of their prefill, yet every request must still be tokenized in full before the cache can even be consulted. Tokenization, a CPU stage long treated as negligible, becomes the largest part of time-to-first-token (TTFT), and a frontend that tokenizes for a whole GPU fleet limits how many GPUs it can feed. We present GraphTok, a GPU tokenizer that runs the entire encoding pipeline, from pre-tokenization through byte-pair encoding (BPE) merging to token-ID assembly, as one replayable CUDA graph. GraphTok reproduces the reference token IDs bit-for-bit on GPT-2, Llama 3, Qwen 2.5, DeepSeek-V3, and Gemma 3, hands short inputs to a CPU engine where the GPU cannot win, and plugs into unmodified vLLM and NVIDIA Dynamo. GraphTok encodes one million GPT-2 tokens in 1.7-3.2 ms including data transfers, and on Llama 3 it is 4.7-6.0x faster than gigatoken, the strongest CPU tokenizer. On TokTier's own single-request benchmark, it is 2.6-3.9x faster than gigatoken and up to 18.1x faster than TokTier. In vLLM with a cached prefix, it lowers mean TTFT by 2.1-2.4x. The largest gain is capacity. Within a 2 s P99 target, one Dynamo frontend with GraphTok sustains 518 requests/s of 121k-token traffic, the busiest-hour load of 56 GPUs, against 296 with gigatoken and 18.5 with the default tokenizer. Across 121k to one million tokens, this is 1.75-2.5x the load gigatoken sustains, with a P99 up to 64x lower where gigatoken's tail breaks.",
+    "published_date": "2026-10-09T10:05:09Z",
+    "updated_date": "2026-10-09T10:05:09Z",
+    "categories": [
+      "cs.DC",
+      "cs.CL",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13325v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13325v1",
+    "source": "arxiv",
+    "score": 0.46479448556900027,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、缓存相关技术。\n\n核心内容：Agentic workloads resend long contexts that barely change between calls. Prefix caching now skips most of their prefill, yet every request must still be tokenized in full before the cache can even be consulted。",
+    "takeaway": "本文聚焦CUDA、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.11525v1",
+    "title": "Should Your Database Systems Use Hardware-Assisted Memory Safety Extensions in Production?",
+    "authors": [
+      "Ilya Meignan--Masson",
+      "Martin Fink",
+      "Masanori Misono",
+      "Dimitrios Stavrakakis",
+      "Pramod Bhatotia"
+    ],
+    "abstract": "Database systems are predominantly developed in unsafe languages (e.g., C/C++) to meet performance requirements through low-level memory management, yet this reliance renders them prone to systemic memory-safety issues that compromise reliability, consistency, security, and durability. Through an extensive bug analysis of prominent database systems, we show that these memory-safety issues persist in production environments despite advancements in database testing tools. While emerging hardware-assisted extensions, such as Arm's Memory Tagging Extension (MTE) and CHERI, offer a promising mitigation path for memory safety, their practical applicability and performance overhead within the specialized constraints of database systems remain largely unexplored.\n  In this paper, we evaluate hardware extensions through the lens of what we define as the database trilemma: the fundamental trade-off between safety, performance, and portability, to determine their viability for production-grade database systems. We provide the first side-by-side comparison of MTE and CHERI across a database workload suite. Our bottom-up study spans microarchitecture, the compiler/runtime/OS stack, core data structures (ART, B+Tree, hash table, skip list, linked list, and queue), and full database systems (Redis, LevelDB, SQLite, MySQL, DuckDB, and LadyBugDB) to characterize their performance, safety guarantees, and ease of adoption.\n  We find that while hardware extensions can offer near-deterministic protection, they introduce non-uniform performance taxes: MTE provides high portability with modest overheads (~10%), while CHERI delivers superior safety guarantees with higher performance penalties (20-60%) and significant porting effort. Our study equips database systems architects with an actionable guide toward building the next generation of reliable, secure databases using hardware-assisted safety mechanisms.",
+    "published_date": "2026-10-08T08:55:45Z",
+    "updated_date": "2026-10-08T08:55:45Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.11525v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.11525v1",
+    "source": "arxiv",
+    "score": 0.45237770557403567,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究哈希表、数据库系统相关技术。\n\n核心内容：Database systems are predominantly developed in unsafe languages (e.g., C/C++) to meet performance requirements through low-level memory management, yet this reliance renders them prone to systemic memory-safety issues that compromise reliability, consistency, security, and durability. Through an ex...。",
+    "takeaway": "本文聚焦哈希表、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2610.06718v2",
+    "title": "One Global Beam Across Many GPUs: High-Throughput Beam Search at Billion-Record Frontier Scale",
+    "authors": [
+      "Ivan Litvak"
+    ],
+    "abstract": "Beam search repeatedly makes many children, removes duplicates, and keeps the best $B$. We show how many GPUs can perform these steps as one search even when the retained set does not fit on one device. States and candidates stay on the GPUs; the CPU receives only small control and ancestry records. We prove that an abstract distributed pipeline returns the monolithic reduced-key top-$B$ for the same complete candidates, integer scores, Hash128 equivalence, and a fully specified physical-layout tie order, provided that its implementation performs one global reduction per key and race-free routing. A static audit of the historical one-T4 pin leaves cross-buffer uniqueness unresolved and identifies a separate multi-rank scatter risk; neither is a reproduced failure, and other revisions inherit neither defects nor correctness without comparison. On eight H200 GPUs, a Cube4 run completed saturated depth 8 at $B_{\\rm eff}=2{,}900{,}361{,}216$ in $931.266$ s: $69{,}608{,}669{,}184$ nominal parent--generator pairs, or a derived $74.746$ million pairs/s. A separate two-T4 Megaminx run yielded a derived $30.274$ million nominal parent--generator pairs/s at $B_{\\rm eff}=82{,}837{,}504$. Those tasks and hardware differ, so they do not establish strong scaling. Separately, on one eight-RTX-3060 host, fixed-count eight-GPU speedup was $7.487$ under a common execution profile and $5.605$ under selected stable profiles; weak actual-work throughput gain was $6.113$ and $7.295$. These profile-sensitive ratios use each series' own one-GPU baseline.",
+    "published_date": "2026-10-05T17:11:32Z",
+    "updated_date": "2026-10-06T12:01:33Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.06718v2",
+    "arxiv_url": "https://arxiv.org/abs/2610.06718v2",
+    "source": "arxiv",
+    "score": 0.4433941984176636,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Beam search repeatedly makes many children, removes duplicates, and keeps the best $B$. We show how many GPUs can perform these steps as one search even when the retained set does not fit on one device。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
