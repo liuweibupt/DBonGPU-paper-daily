@@ -1,0 +1,297 @@
+[
+  {
+    "id": "2610.13809v1",
+    "title": "GPU-resident Execution for Timing-predictable Sensor Processing Systems",
+    "authors": [
+      "Soham Sinha",
+      "Rahul Choudhury",
+      "Shekhar Dwivedi",
+      "Gregory Lee",
+      "Gigon Bae",
+      "Anisha Goel",
+      "Elena Agostini",
+      "Patrick O'Grady",
+      "Yosi Levi",
+      "Mahdi Azizian"
+    ],
+    "abstract": "Real-time embedded systems increasingly place GPU-accelerated processing of high-bandwidth sensor streams inside closed-loop systems, but the CPU (the host) remains the primary orchestrator of each iteration. The host observes sensor inputs, submits CUDA work, waits for completion, and commits actuation. This host-mediated path exposes the closed-loop end-to-end latency to I/O interrupts, host scheduler decisions, and CUDA API overheads even after common host-side mitigations such as GPU-memory RDMA or CPU core isolation. This paper presents GPU-resident Execution, a new execution model for real-time sensor processing pipelines that keeps I/O and GPU execution in a long-lived device-resident loop. Sensor inputs arrive in GPU memory, trigger GPU-side processing, and reach GPU-visible output endpoints without any host wakeups. We implement the model in the NVIDIA Holoscan C++ framework and provide reference components for building GPU-resident applications. We evaluate our system on NVIDIA GPUs and SoCs with inference, host-contention, multi-loop, and streaming camera workloads. On an industry-grade 1080p, 60 Hz real-time camera-to-display application, GPU-resident Execution reduces photon-to-display jitter from 4.83 ms to 0.66 ms (7.3x) relative to a CPU-driven GPU-memory RDMA baseline and reduces software-processing jitter from 1.70 ms to 0.01 ms (170x).",
+    "published_date": "2026-10-09T16:21:12Z",
+    "updated_date": "2026-10-09T16:21:12Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13809v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13809v1",
+    "source": "arxiv",
+    "score": 0.603312075138092,
+    "reasons": [
+      "涉及 GPU 计算技术",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、CUDA、RDMA 网络、扫描相关技术。\n\n核心内容：Real-time embedded systems increasingly place GPU-accelerated processing of high-bandwidth sensor streams inside closed-loop systems, but the CPU (the host) remains the primary orchestrator of each iteration. The host observes sensor inputs, submits CUDA work, waits for completion, and commits actua...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.13125v1",
+    "title": "Characterizing CPU-GPU Memory Sharing over Unified Memory Architecture",
+    "authors": [
+      "Jinrong Yang",
+      "Zimeng Wang",
+      "Rong Chen",
+      "Haibo Chen"
+    ],
+    "abstract": "Unified Memory Architecture (UMA) enables the CPU and GPU to share a single physical memory. However, its complexity and opacity often drive applications back to inefficient copying or to incorrect direct access that sacrifices performance or even correctness. This paper presents a comprehensive study of CPU-GPU memory sharing on UMA, covering correctness and performance across data-plane transmission and control-plane coordination on four platforms. It yields four findings that guide libumsh, a portable library that delivers correct and efficient memory sharing across platforms and extends to emerging ones (e.g., NVIDIA DGX Spark). Applied to nine real-world systems, libumsh reduces data-plane time by 16-75% and control-plane overhead by 7-90%.",
+    "published_date": "2026-10-09T07:20:21Z",
+    "updated_date": "2026-10-09T07:20:21Z",
+    "categories": [
+      "cs.OS",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.13125v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13125v1",
+    "source": "arxiv",
+    "score": 0.5373349475860596,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理相关技术。\n\n核心内容：Unified Memory Architecture (UMA) enables the CPU and GPU to share a single physical memory. However, its complexity and opacity often drive applications back to inefficient copying or to incorrect direct access that sacrifices performance or even correctness。",
+    "takeaway": "本文聚焦GPU 内存管理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.13408v1",
+    "title": "Ember: Making Unified Virtual Memory Practical for Discrete-Memory GPUs",
+    "authors": [
+      "Senad-Leandro Lemes Galera",
+      "Michail Georgoulakis Misegiannis",
+      "Ferdinand Gruber",
+      "Jana Giceva",
+      "Dimitrios Stavrakakis"
+    ],
+    "abstract": "GPU working sets have outgrown GPU memory, so applications must oversubscribe it, keeping only hot data on the GPU. NVIDIA's Unified Virtual Memory (UVM) supports oversubscription, but its performance degrades once data exceeds the GPU's memory. This stems from its fault-driven data placement, wasting interconnect bandwidth, and underutilizing the GPU. This raises the question: can UVM oversubscription become practical on stock GPUs, exploiting GPU memory speed and minimizing wasted interconnect bandwidth, without placement hints, profiling runs, or application changes?\n  To this end, we present Ember, a UVM management framework for oversubscribed workloads. Ember introduces a hybrid address space; allocations start as mapped into host memory, omitting data migration. Ember's counter-driven region promotion uses GPU's hardware counters to fetch hot regions to the GPU, its decay-based eager reclamation proactively evicts cold regions in batches, while via online region re-placement, Ember tracks the hot set at runtime.\n  We implement Ember within NVIDIA's open-source UVM driver for unmodified applications and as a userspace variant on stock CUDA. At 1.5x oversubscription, it is 6.8-10.6x faster than UVM on six applications across three PCIe GPUs, and generates LLM tokens 4.7-16x faster at sizes where manual placement cannot run at all. Without a profiling run, it beats a profile-guided alternative by 2.1x on kernel time.",
+    "published_date": "2026-10-09T11:20:30Z",
+    "updated_date": "2026-10-09T11:20:30Z",
+    "categories": [
+      "cs.OS",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13408v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13408v1",
+    "source": "arxiv",
+    "score": 0.5228230929374695,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、数据放置、带宽优化相关技术。\n\n核心内容：GPU working sets have outgrown GPU memory, so applications must oversubscribe it, keeping only hot data on the GPU. NVIDIA's Unified Virtual Memory (UVM) supports oversubscription, but its performance degrades once data exceeds the GPU's memory。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、数据放置，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.18565v1",
+    "title": "Orrery: Modeling and Simulation of GPU-direct MPI Communication with SimGrid",
+    "authors": [
+      "Ahmad Moh'd Saleh A. Belbeisi",
+      "Amir Raoofy",
+      "Josef Weidendorfer",
+      "Majid Salimi Beni"
+    ],
+    "abstract": "Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU data transfers. Modeling these mechanisms is therefore critical for simulating HPC applications on current systems. In this paper, we introduce Orrery, an interposition layer built on SimGrid's SMPI to model GPU-aware MPI communication using existing collective implementations and flow-based simulation. Orrery intercepts GPU memory allocations, kernel launches, data transfers, and MPI operations, and models their execution in SimGrid according to target system specifications, enabling simulation without requiring physical GPUs. We validate Orrery using CUDA-aware MPI microbenchmarks and a Jacobi solver on up to 32 nodes of the MUSICA supercomputer and demonstrate that it reproduces key GPU-aware MPI mechanisms.",
+    "published_date": "2026-10-13T15:33:31Z",
+    "updated_date": "2026-10-13T15:33:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.18565v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.18565v1",
+    "source": "arxiv",
+    "score": 0.510299664735794,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 加速、CUDA、通信优化相关技术。\n\n核心内容：Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU dat...。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 加速、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.11230v1",
+    "title": "CORAL: Cross-modal Vector Retrieval via Incremental Graph Construction at Scale",
+    "authors": [
+      "Shixin Wan",
+      "Guoyu Hu",
+      "Yifan Wu",
+      "Ke Chen",
+      "Lidan Shou"
+    ],
+    "abstract": "Cross-modal vector retrieval is widely used in multimodal systems, such as search engines and vector databases. It typically operates in out-of-distribution (OOD) settings, where query vectors follow a distribution that differs from that of the vectors stored in the database. In such cases, conventional indexes suffer significant performance degradation, and even methods specially designed for OOD remain limited by inefficient use of query modal characteristics, restricted GPU parallelism, and inadequate support for dynamic updates. We present CORAL, a novel GPU-accelerated graph-based vector index for scalable cross-modal retrieval, featuring hierarchical memory management that spans GPU, CPU, and disk. Specifically, CORAL incrementally incorporates the characteristics of query modality and terminates index construction timely. Crucially, it introduces coverage-aware adaptive pruning to address the imbalanced coverage of the query vector's neighbors. Moreover, CORAL presents a fully neighborhood-aware projection approach to efficiently utilize GPUs for highly parallel index construction, and a targeted connectivity enhancement method to refine the index structure. Besides, CORAL also supports modal-semantics-based vector insertion and topology-repairing deletion that restore node connectivity. Experimental results demonstrate that CORAL outperforms existing methods with up to 1.6 times the throughput at matched recall while reducing construction time by up to 56%. Furthermore, it exhibits remarkable resilience under dynamic updates and remains effective at the billion scale.",
+    "published_date": "2026-10-08T04:31:16Z",
+    "updated_date": "2026-10-08T04:31:16Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.11230v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.11230v1",
+    "source": "arxiv",
+    "score": 0.4972532391548157,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、向量数据库、吞吐量相关技术。\n\n核心内容：Cross-modal vector retrieval is widely used in multimodal systems, such as search engines and vector databases. It typically operates in out-of-distribution (OOD) settings, where query vectors follow a distribution that differs from that of the vectors stored in the database。",
+    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、向量数据库，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2610.15878v1",
+    "title": "Multi-GPU Communication Schemes for Iterative Solvers: When CPUs are Not in Charge",
+    "authors": [
+      "Ismayil Ismayilov",
+      "Javid Baydamirli",
+      "Doğan Sağbili",
+      "Mohamed Wahib",
+      "Didem Unat"
+    ],
+    "abstract": "This paper proposes a fully autonomous execution model for multi-GPU applications that completely excludes the involvement of the CPU beyond the initial kernel launch. In a typical multi-GPU application, the host serves as the orchestrator of execution by directly launching kernels, issuing communication calls, and acting as a synchronizer for devices. We argue that this orchestration, or control flow path, causes undue overhead and can be delegated entirely to devices to improve performance in applications that require communication among peers. For the proposed CPU-free execution model, we leverage existing techniques such as persistent kernels, thread block specialization, device-side barriers, and device-initiated communication routines to write fully autonomous multi-GPU code and achieve significantly reduced communication overheads. We demonstrate our proposed model on two broadly used iterative solvers, 2D/3D Jacobi stencil and Conjugate Gradient(CG). Compared to the CPU-controlled baselines, the CPU-free model can improve 3D stencil communication latency by 58.8% and provide a 1.63x speedup for CG on 8 NVIDIA A100 GPUs. The project code is available at https://github.com/ParCoreLab/CPU-Free-model.",
+    "published_date": "2026-10-11T19:49:50Z",
+    "updated_date": "2026-10-11T19:49:50Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.15878v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.15878v1",
+    "source": "arxiv",
+    "score": 0.4904432129859924,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、通信优化、延迟优化相关技术。\n\n核心内容：This paper proposes a fully autonomous execution model for multi-GPU applications that completely excludes the involvement of the CPU beyond the initial kernel launch. In a typical multi-GPU application, the host serves as the orchestrator of execution by directly launching kernels, issuing communic...。",
+    "takeaway": "本文聚焦多 GPU、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.13325v1",
+    "title": "Taking Tokenization off the Host for Agentic LLM Serving",
+    "authors": [
+      "Mohammad Siavashi",
+      "Pascal Schwinte",
+      "Ali Banaei",
+      "Gerald Q. Maguire",
+      "Marco Chiesa",
+      "Dejan Kostić"
+    ],
+    "abstract": "Agentic workloads resend long contexts that barely change between calls. Prefix caching now skips most of their prefill, yet every request must still be tokenized in full before the cache can even be consulted. Tokenization, a CPU stage long treated as negligible, becomes the largest part of time-to-first-token (TTFT), and a frontend that tokenizes for a whole GPU fleet limits how many GPUs it can feed. We present GraphTok, a GPU tokenizer that runs the entire encoding pipeline, from pre-tokenization through byte-pair encoding (BPE) merging to token-ID assembly, as one replayable CUDA graph. GraphTok reproduces the reference token IDs bit-for-bit on GPT-2, Llama 3, Qwen 2.5, DeepSeek-V3, and Gemma 3, hands short inputs to a CPU engine where the GPU cannot win, and plugs into unmodified vLLM and NVIDIA Dynamo. GraphTok encodes one million GPT-2 tokens in 1.7-3.2 ms including data transfers, and on Llama 3 it is 4.7-6.0x faster than gigatoken, the strongest CPU tokenizer. On TokTier's own single-request benchmark, it is 2.6-3.9x faster than gigatoken and up to 18.1x faster than TokTier. In vLLM with a cached prefix, it lowers mean TTFT by 2.1-2.4x. The largest gain is capacity. Within a 2 s P99 target, one Dynamo frontend with GraphTok sustains 518 requests/s of 121k-token traffic, the busiest-hour load of 56 GPUs, against 296 with gigatoken and 18.5 with the default tokenizer. Across 121k to one million tokens, this is 1.75-2.5x the load gigatoken sustains, with a P99 up to 64x lower where gigatoken's tail breaks.",
+    "published_date": "2026-10-09T10:05:09Z",
+    "updated_date": "2026-10-09T10:05:09Z",
+    "categories": [
+      "cs.DC",
+      "cs.CL",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.13325v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.13325v1",
+    "source": "arxiv",
+    "score": 0.46479448556900027,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、缓存相关技术。\n\n核心内容：Agentic workloads resend long contexts that barely change between calls. Prefix caching now skips most of their prefill, yet every request must still be tokenized in full before the cache can even be consulted。",
+    "takeaway": "本文聚焦CUDA、缓存，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.17321v1",
+    "title": "GPU Goldmines: Tunable WebGPU Kernels for Edge LLM Inference",
+    "authors": [
+      "Rithik Sharma",
+      "Reese Levine",
+      "Zheyuan Chen",
+      "Ananthajit Srikanth",
+      "Yanwen Xu",
+      "Tyler Sorensen"
+    ],
+    "abstract": "As demand for LLM inference grows and consumer GPUs grow more capable, edge deployment is becoming increasingly attractive. WebGPU is compelling in this setting because it offers cross-platform portability and browser accessibility. However, these same strengths also make high performance difficult to achieve, as an implementation that performs well in one context may not perform well in another. To address this, we present GPU Goldmines, a framework for specifying, executing, and tuning WebGPU kernels. We instantiate GPU Goldmines with kernels for key LLM building blocks: matrix multiplication, matrix-vector multiplication, and flash attention. We characterize performance across diverse devices, shapes, and browsers, and use the resulting database to accelerate subsequent autotuning and configuration selection. On shapes drawn from Llama and Qwen models, our matrix multiplication kernels outperform ONNX Runtime and llama.cpp WebGPU kernels by 7.0x and 1.41x geometric mean, respectively, and deliver end-to-end improvements of 1.48x in the prefill stage of llama.cpp for chat workloads.",
+    "published_date": "2026-10-12T19:22:19Z",
+    "updated_date": "2026-10-12T19:22:19Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.17321v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.17321v1",
+    "source": "arxiv",
+    "score": 0.46427939653396605,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理相关技术。\n\n核心内容：As demand for LLM inference grows and consumer GPUs grow more capable, edge deployment is becoming increasingly attractive. WebGPU is compelling in this setting because it offers cross-platform portability and browser accessibility。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.11525v1",
+    "title": "Should Your Database Systems Use Hardware-Assisted Memory Safety Extensions in Production?",
+    "authors": [
+      "Ilya Meignan--Masson",
+      "Martin Fink",
+      "Masanori Misono",
+      "Dimitrios Stavrakakis",
+      "Pramod Bhatotia"
+    ],
+    "abstract": "Database systems are predominantly developed in unsafe languages (e.g., C/C++) to meet performance requirements through low-level memory management, yet this reliance renders them prone to systemic memory-safety issues that compromise reliability, consistency, security, and durability. Through an extensive bug analysis of prominent database systems, we show that these memory-safety issues persist in production environments despite advancements in database testing tools. While emerging hardware-assisted extensions, such as Arm's Memory Tagging Extension (MTE) and CHERI, offer a promising mitigation path for memory safety, their practical applicability and performance overhead within the specialized constraints of database systems remain largely unexplored.\n  In this paper, we evaluate hardware extensions through the lens of what we define as the database trilemma: the fundamental trade-off between safety, performance, and portability, to determine their viability for production-grade database systems. We provide the first side-by-side comparison of MTE and CHERI across a database workload suite. Our bottom-up study spans microarchitecture, the compiler/runtime/OS stack, core data structures (ART, B+Tree, hash table, skip list, linked list, and queue), and full database systems (Redis, LevelDB, SQLite, MySQL, DuckDB, and LadyBugDB) to characterize their performance, safety guarantees, and ease of adoption.\n  We find that while hardware extensions can offer near-deterministic protection, they introduce non-uniform performance taxes: MTE provides high portability with modest overheads (~10%), while CHERI delivers superior safety guarantees with higher performance penalties (20-60%) and significant porting effort. Our study equips database systems architects with an actionable guide toward building the next generation of reliable, secure databases using hardware-assisted safety mechanisms.",
+    "published_date": "2026-10-08T08:55:45Z",
+    "updated_date": "2026-10-08T08:55:45Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.11525v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.11525v1",
+    "source": "arxiv",
+    "score": 0.45237770557403567,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究哈希表、数据库系统相关技术。\n\n核心内容：Database systems are predominantly developed in unsafe languages (e.g., C/C++) to meet performance requirements through low-level memory management, yet this reliance renders them prone to systemic memory-safety issues that compromise reliability, consistency, security, and durability. Through an ex...。",
+    "takeaway": "本文聚焦哈希表、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2610.17035v1",
+    "title": "FlashT2S: GPU-Accelerated Tensor-to-Spike Conversion Operators for Heterogeneous Neuromorphic LLM Backends",
+    "authors": [
+      "Rongyuan Guo",
+      "Haotian Wang",
+      "Yufeng Zhang",
+      "Wangdong Yang",
+      "Kenli Li"
+    ],
+    "abstract": "Artificial intelligence faces two growing challenges: computational bottlenecks and energy inefficiency inherent to the von Neumann architecture. Neuromorphic computing offers a promising alternative, yet its immature ecosystem still relies on conventional systems for data supply, requiring efficient conversion between tensor and spike dataflow.\n  We observe a clear mismatch, where data conversion is slow while downstream computation is fast. As data size grows quadratically with large language models, this mismatch becomes a major bottleneck.\n  In this work, we examine the data-conversion components that appear on the critical path of training and inference in neuromorphic LLMs. The work presents FlashT2S (Flash Tensor-to-Spike): GPU-Accelerated Tensor-to-Spike Conversion Operators, which applies architecture-aware and data-centric optimizations to reduce conversion latency. Experimental results show that FlashT2S delivers an average speedup of 850.78x over the native operators across individual operators and 802.83x in realistic workloads. Additionally, compared with GPU kernels automatically generated by torch.compile, our kernels achieve 5-11x speedups. Notably, it achieves near-optimal absolute performance: large-scale conversions are reduced to tens of microseconds (10-99 us), while small-scale conversions reach single-digit microsecond levels (less than 10 us). Furthermore, its standardized output enables seamless integration across heterogeneous backends, including diverse neuromorphic hardware.",
+    "published_date": "2026-10-12T16:11:53Z",
+    "updated_date": "2026-10-12T16:11:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.17035v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.17035v1",
+    "source": "arxiv",
+    "score": 0.44818590641021727,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 核函数、异构计算、延迟优化相关技术。\n\n核心内容：Artificial intelligence faces two growing challenges: computational bottlenecks and energy inefficiency inherent to the von Neumann architecture. Neuromorphic computing offers a promising alternative, yet its immature ecosystem still relies on conventional systems for data supply, requiring efficien...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 核函数、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  }
+]
