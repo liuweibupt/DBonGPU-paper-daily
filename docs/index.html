@@ -462,11 +462,11 @@
 
     <div class="stats-row">
         <div class="stat-card">
-            <div class="stat-value">2</div>
+            <div class="stat-value">8</div>
             <div class="stat-label">推荐论文</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">1</div>
+            <div class="stat-value">3</div>
             <div class="stat-label">高相关度</div>
         </div>
         <div class="stat-card">
@@ -480,6 +480,29 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.16725v1" target="_blank">FliX: Flipped-Indexing for Scalable GPU Queries and Updates</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.765</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> 
+        </div>
+        <div class="paper-authors">Rosina Kharal, Trevor Brown, Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、哈希表、B 树索引、延迟优化、吞吐量相关技术。
+
+核心内容：GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU-based concurrent data structures (CDSs) achieve high throughput for read-only queries, but efficient support for dynamic updates on fully GPU-resident data remains challenging. Ordered CDSs (e.g., B-trees and LSM-trees) maintain an index layer that directs operations to a data layer (buckets or leaves), while hash tables avoid the cost of maintaining order but do not support range or successor queries. On GPUs, maintaining and traversing an index layer under frequent updates introduces contention and warp divergence.
+  To tackle these problems, we flip the indexing paradigm on its head with FliX, a comparison-based, flipped indexing strategy for dynamic, fully GPU-resident CDSs. Traditional GPU CDSs typically take a batch of operations and assign each operation to a GPU thread or warp....</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、哈希表、B 树索引，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.16725v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.16725v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2607.04489v1" target="_blank">Eiger: An Efficient Library for GPU-based Data Analytics</a></span>
         </div>
         <div class="paper-meta">
@@ -501,7 +524,51 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">2</span>
+            <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2604.20121v3" target="_blank">A GPU-Accelerated Framework for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-high">相关度 0.707</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Zhonggen Li, Haoran Yu, Zixuan Xu, Yifan Zhu 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、GPU 索引、GPU 内存管理、查询处理、近邻搜索相关技术。
+
+核心内容：Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Range-filtered approximate nearest neighbor search (RFANNS) is increasingly critical for modern vector databases. However, existing solutions suffer from severe index inflation and construction overhead. Furthermore, they rely exclusively on CPUs for the heavy indexing and query processing, significantly restricting the throughput due to the limited memory bandwidth and parallelism. In this paper, we present Garfield, a GPU-accelerated framework for multi-attribute range filtered ANNS that overcomes these bottlenecks through designing a lightweight index structure and hardware-aware execution pipeline. Garfield introduces the GMG index, which partitions data into cells and builds local graph indexes. It guarantees linear storage and indexing overhead by adding a constant number of cross-ce...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、GPU 索引、GPU 内存管理，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.20121v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2604.20121v3" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2506.01576v3" target="_blank">Bigger Is Not Better: The Fastest Static GPU Index Is Also Lightweight!</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.658</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Justus Henneberg, Felix Schuhknecht</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、GPU 内存管理、排序相关技术。
+
+核心内容：Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sorting and binary searching a dense array can be considered the simplest and most space efficient form of indexing. This holds especially on GPUs as they exhibit exceptional sorting performance. However, the popular opinion is that such a primitive approach cannot compete with large, highly-sophisticated GPU index structures in terms of lookup performance, and hence, should not actually be considered in practice. In this work, we will investigate whether binary search actually still deserves this bad reputation or whether it can be a fast and space-minimal alternative to more heavy-weight index structures, in particular when utilizing all the advancements of current highly-parallel GPU architectures. To find out, we introduce advanced variants of binary search to GPUs and equip them with ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、GPU 内存管理、排序，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2506.01576v3" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2506.01576v3" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2512.02862v3" target="_blank">PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage</a></span>
         </div>
         <div class="paper-meta">
@@ -521,13 +588,80 @@
             <a href="https://arxiv.org/pdf/2512.02862v3" target="_blank">⬇ PDF</a>
         </div>
     </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2608.16491v1" target="_blank">FROG: Efficient Range-Filtering Approximate Nearest Neighbor Search on GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.605</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.IR</span> 
+        </div>
+        <div class="paper-authors">Xiaokun Cui, Pengbo Liu, Jiadong Xie, Yingfan Liu 等 (7 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、查询处理、近邻搜索、向量数据库、吞吐量相关技术。
+
+核心内容：Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Range-filtering approximate nearest neighbor search (RFANNS) is a fundamental operation in modern vector databases. Given a query vector $q$ and a numerical range predicate, RFANNS returns the $k$-approximate nearest neighbors ($k$-ANN) of the query $q$ among the objects whose attributes satisfy the range predicate. However, existing RFANNS methods are not well suited to high-throughput GPU execution. CPU indexes offer limited parallel scalability, generic GPU filtering is highly selectivity-dependent, and GPU indexes built from locally optimized subgraphs can incur long search trajectories and redundant distance computations. To address these limitations, we present FROG, a GPU-oriented RFANNS index that replaces multiple locally optimal substructure building with a globally aware, vertex...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、查询处理、近邻搜索，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作 &middot; 与 GPU 数据库主题中等相关</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2608.16491v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.16491v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2602.23999v2" target="_blank">GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.560</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> <span class="tag">cs.DS</span> <span class="tag">cs.IR</span> 
+        </div>
+        <div class="paper-authors">Jifan Shi, Jianyang Gao, James Xia, Tamás Béla Fehér 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、近邻搜索、带宽优化、吞吐量相关技术。
+
+核心内容：Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Approximate nearest neighbor search (ANNS) on GPUs is gaining increasing popularity for modern retrieval and recommendation workloads that operate over massive high-dimensional vectors. Graph-based indexes deliver high recall and throughput but incur heavy build-time and storage costs. In contrast, cluster-based methods build and scale efficiently yet often need many probes for high recall, straining memory bandwidth and compute. Aiming to simultaneously achieve fast index build, high-throughput search, high recall, and low storage requirement for GPUs, we present IVF-RaBitQ (GPU), a GPU-native ANNS solution that integrates the cluster-based method IVF with RaBitQ quantization into an efficient GPU index build/search pipeline. Specifically, for index build, we develop a scalable GPU-native...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、近邻搜索、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2602.23999v2" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.23999v2" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2605.10135v1" target="_blank">ScaleGANN: Accelerate Large-Scale ANN Indexing by Cost-effective Cloud GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.541</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Lan Lu, Peiqi Yin, Isaac Yang, Tao Luo 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、多 GPU相关技术。
+
+核心内容：Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and ...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Graph-based ANNS algorithms have gained increasing research interest and market adoption due to their efficiency and accuracy in retrieval. Existing approaches primarily rely on CPUs for graph index construction and retrieval, but this often requires significant time, especially for large-scale and high-dimensional datasets. Some studies have explored GPU-based solutions. However, GPUs are costly and their limited memory makes handling large datasets challenging.
+  In this paper, we propose a novel end-to-end system ScaleGANN that enables users to efficiently construct graph indexes for large-scale, high-dimensional datasets by leveraging low-cost spot GPU resources in a distributed cloud system. ScaleGANN utilized the idea of divide-and-merge, with an optimized vector partitioning algorit...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、多 GPU，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.10135v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.10135v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-10-17 05:30:07</span>
+            <span>上次运行：2026-10-17 06:18:33</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
