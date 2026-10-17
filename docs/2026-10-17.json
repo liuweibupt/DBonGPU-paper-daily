@@ -1,0 +1,60 @@
+[
+  {
+    "id": "2607.04489v1",
+    "title": "Eiger: An Efficient Library for GPU-based Data Analytics",
+    "authors": [
+      "Bowen Wu",
+      "Marko Kabić",
+      "Sven Hepkema",
+      "Vasilis Mageirakos",
+      "Christos Kozyrakis",
+      "Gustavo Alonso"
+    ],
+    "abstract": "GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the dominant bottleneck. This highlights the need for more efficient relational operators on GPUs than the widely used library, cuDF. While offering rich functionality, cuDF commits to a single, statically chosen implementation for most operators and barely uses runtime information about the data, limiting performance across diverse workloads and GPUs. We present Eiger, a high-performance library for GPU-based data analytics that improves single-GPU query processing through runtime workload adaptivity. Adaptivity in Eiger rests on two principles. First, Eiger provides multiple implementation variants and tunable knobs for most operators, covering not only joins and group-bys but also expensive yet often overlooked operations, such as expression evaluation, string processing, and multi-key sorting, for which it contributes new optimization techniques. Second, Eiger profiles intermediate data during query execution using lightweight statistics, such as value ranges and HyperLogLog++ sketches, and uses them to select implementations, tune knobs, and compress data on the fly, overcoming the limitations of traditional static query optimization. The breadth of operators and variants also enables a more comprehensive performance analysis, covering more operations and workloads than previous work. We evaluate Eiger with operator microbenchmarks on two GPU architectures and the complete TPC-H benchmark (up to scale factor 100). Across the 22 queries, Eiger reduces total runtime by up to 1.8x compared to the state-of-the-art cuDF library; for individual queries, Eiger achieves up to 6.1x better performance.",
+    "published_date": "2026-07-05T20:25:54Z",
+    "updated_date": "2026-07-05T20:25:54Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2607.04489v1",
+    "arxiv_url": "https://arxiv.org/abs/2607.04489v1",
+    "source": "arxiv",
+    "score": 0.7081955528259277,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 查询处理、查询处理、查询优化、排序、网络相关技术。\n\n核心内容：GPUs have become an increasingly attractive platform for accelerating analytical workloads due to their massive parallelism and high memory bandwidth. Recent studies show that in systems with fast CPU-GPU interconnects and networks, query processing within the GPU, rather than data movement, is the ...。",
+    "takeaway": "本文聚焦GPU 查询处理、查询处理、查询优化，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2512.02862v3",
+    "title": "PystachIO: Efficient Distributed GPU Query Processing with PyTorch over Fast Networks & Fast Storage",
+    "authors": [
+      "Jigao Luo",
+      "Nils Boeschen",
+      "Muhammad El-Hindi",
+      "Carsten Binnig"
+    ],
+    "abstract": "The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data. Tensor computation runtimes (TCRs), such as PyTorch, originally designed for AI workloads, have recently been shown to accelerate analytical workloads. However, prior work has primarily considered settings where the data fits in aggregated GPU memory. In this paper, we systematically study how TCRs can support scalable, distributed query processing for large-scale, storage-resident OLAP workloads. Although TCRs provide abstractions for network and storage I/O, naive use often underutilizes GPU and I/O bandwidth due to insufficient overlap between computation and data movement. As a core contribution, we present PystachIO, a prototype of a PyTorch-based distributed OLAP engine that combines fast network and storage I/O with key optimizations to maximize GPU, network, and storage utilization. Our evaluation shows up to 3x end-to-end speedups over existing distributed GPU-based query processing approaches.",
+    "published_date": "2025-12-02T15:22:06Z",
+    "updated_date": "2026-05-20T06:32:33Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2512.02862v3",
+    "arxiv_url": "https://arxiv.org/abs/2512.02862v3",
+    "source": "arxiv",
+    "score": 0.6482024335861206,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 查询处理、GPU 内存管理、查询处理、OLAP、RDMA 网络相关技术。\n\n核心内容：The AI hardware boom has led modern data centers to adopt HPC-style architectures centered on distributed, GPU-centric computation. Large GPU clusters interconnected by fast RDMA networks and backed by high-bandwidth NVMe storage enable scalable computation and rapid access to storage-resident data。",
+    "takeaway": "本文聚焦GPU 查询处理、GPU 内存管理、查询处理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 支持分布式/多 GPU 扩展"
+  }
+]
