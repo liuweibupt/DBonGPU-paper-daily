@@ -1,0 +1,350 @@
+[
+  {
+    "id": "2610.20354v1",
+    "title": "Understanding NVIDIA Grace-Blackwell Unified Memory Through Placement-Controlled Microbenchmarks",
+    "authors": [
+      "Nathan Graddon",
+      "Aaron Jarmusch",
+      "Sunita Chandrasekaran"
+    ],
+    "abstract": "NVIDIA Grace--Blackwell systems make CPU--GPU memory increasingly unified at the programming level, but unified addressability does not make the memory system uniform. A CUDA managed allocation on GB200 may be served from GPU-local HBM, accessed through host/system memory, demand-migrated, prefetched, reused after GPU access, or evicted and reloaded under capacity pressure. The problem is that these states share a programming interface while exercising different hardware paths and runtime mechanisms, making a single ``Unified Memory bandwidth'' number misleading.\n  This paper presents a placement-controlled microbenchmark study of CUDA Unified Memory on NVIDIA GB200, using GH200 as a Grace--Hopper baseline and GB10/DGX Spark as a validation platform. Our methodology separates local HBM access, host/system-memory access, explicit movement, managed first touch, prefetch, reuse, access-pattern sensitivity, oversubscription, and CPU--GPU handoff, then summarizes the observations with a measurement-calibrated model of compute, access, migration, eviction, synchronization, and handoff costs. On GB200, a 1~GB STREAM-style triad reaches 3963~GB/s from local HBM but 304~GB/s through host-mapped CPU/system memory; for a 256~MB streaming kernel, cold CPU-initialized managed memory reaches 14.1~GB/s, while managed prefetch and reuse reach 4606~GB/s and 4504~GB/s. Below the capacity boundary, prefetched and reused managed memory remain above 4.6~TB/s, but at 125\\% of CUDA-visible memory they fall to 968~GB/s and 1214~GB/s, showing that Grace--Blackwell unified memory must be understood through placement, access history, locality, reuse, and capacity pressure.",
+    "published_date": "2026-10-14T15:30:19Z",
+    "updated_date": "2026-10-14T15:30:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.20354v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.20354v1",
+    "source": "arxiv",
+    "score": 0.5675200200080872,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、带宽优化相关技术。\n\n核心内容：NVIDIA Grace--Blackwell systems make CPU--GPU memory increasingly unified at the programming level, but unified addressability does not make the memory system uniform. A CUDA managed allocation on GB200 may be served from GPU-local HBM, accessed through host/system memory, demand-migrated, prefetche...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.18565v1",
+    "title": "Orrery: Modeling and Simulation of GPU-direct MPI Communication with SimGrid",
+    "authors": [
+      "Ahmad Moh'd Saleh A. Belbeisi",
+      "Amir Raoofy",
+      "Josef Weidendorfer",
+      "Majid Salimi Beni"
+    ],
+    "abstract": "Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU data transfers. Modeling these mechanisms is therefore critical for simulating HPC applications on current systems. In this paper, we introduce Orrery, an interposition layer built on SimGrid's SMPI to model GPU-aware MPI communication using existing collective implementations and flow-based simulation. Orrery intercepts GPU memory allocations, kernel launches, data transfers, and MPI operations, and models their execution in SimGrid according to target system specifications, enabling simulation without requiring physical GPUs. We validate Orrery using CUDA-aware MPI microbenchmarks and a Jacobi solver on up to 32 nodes of the MUSICA supercomputer and demonstrate that it reproduces key GPU-aware MPI mechanisms.",
+    "published_date": "2026-10-13T15:33:31Z",
+    "updated_date": "2026-10-13T15:33:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.18565v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.18565v1",
+    "source": "arxiv",
+    "score": 0.5102996945381164,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 加速、CUDA、通信优化相关技术。\n\n核心内容：Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU dat...。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 加速、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.15878v1",
+    "title": "Multi-GPU Communication Schemes for Iterative Solvers: When CPUs are Not in Charge",
+    "authors": [
+      "Ismayil Ismayilov",
+      "Javid Baydamirli",
+      "Doğan Sağbili",
+      "Mohamed Wahib",
+      "Didem Unat"
+    ],
+    "abstract": "This paper proposes a fully autonomous execution model for multi-GPU applications that completely excludes the involvement of the CPU beyond the initial kernel launch. In a typical multi-GPU application, the host serves as the orchestrator of execution by directly launching kernels, issuing communication calls, and acting as a synchronizer for devices. We argue that this orchestration, or control flow path, causes undue overhead and can be delegated entirely to devices to improve performance in applications that require communication among peers. For the proposed CPU-free execution model, we leverage existing techniques such as persistent kernels, thread block specialization, device-side barriers, and device-initiated communication routines to write fully autonomous multi-GPU code and achieve significantly reduced communication overheads. We demonstrate our proposed model on two broadly used iterative solvers, 2D/3D Jacobi stencil and Conjugate Gradient(CG). Compared to the CPU-controlled baselines, the CPU-free model can improve 3D stencil communication latency by 58.8% and provide a 1.63x speedup for CG on 8 NVIDIA A100 GPUs. The project code is available at https://github.com/ParCoreLab/CPU-Free-model.",
+    "published_date": "2026-10-11T19:49:50Z",
+    "updated_date": "2026-10-11T19:49:50Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.15878v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.15878v1",
+    "source": "arxiv",
+    "score": 0.4904432725906372,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、通信优化、延迟优化相关技术。\n\n核心内容：This paper proposes a fully autonomous execution model for multi-GPU applications that completely excludes the involvement of the CPU beyond the initial kernel launch. In a typical multi-GPU application, the host serves as the orchestrator of execution by directly launching kernels, issuing communic...。",
+    "takeaway": "本文聚焦多 GPU、通信优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.17321v1",
+    "title": "GPU Goldmines: Tunable WebGPU Kernels for Edge LLM Inference",
+    "authors": [
+      "Rithik Sharma",
+      "Reese Levine",
+      "Zheyuan Chen",
+      "Ananthajit Srikanth",
+      "Yanwen Xu",
+      "Tyler Sorensen"
+    ],
+    "abstract": "As demand for LLM inference grows and consumer GPUs grow more capable, edge deployment is becoming increasingly attractive. WebGPU is compelling in this setting because it offers cross-platform portability and browser accessibility. However, these same strengths also make high performance difficult to achieve, as an implementation that performs well in one context may not perform well in another. To address this, we present GPU Goldmines, a framework for specifying, executing, and tuning WebGPU kernels. We instantiate GPU Goldmines with kernels for key LLM building blocks: matrix multiplication, matrix-vector multiplication, and flash attention. We characterize performance across diverse devices, shapes, and browsers, and use the resulting database to accelerate subsequent autotuning and configuration selection. On shapes drawn from Llama and Qwen models, our matrix multiplication kernels outperform ONNX Runtime and llama.cpp WebGPU kernels by 7.0x and 1.41x geometric mean, respectively, and deliver end-to-end improvements of 1.48x in the prefill stage of llama.cpp for chat workloads.",
+    "published_date": "2026-10-12T19:22:19Z",
+    "updated_date": "2026-10-12T19:22:19Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.17321v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.17321v1",
+    "source": "arxiv",
+    "score": 0.46427939653396605,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理相关技术。\n\n核心内容：As demand for LLM inference grows and consumer GPUs grow more capable, edge deployment is becoming increasingly attractive. WebGPU is compelling in this setting because it offers cross-platform portability and browser accessibility。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.20527v1",
+    "title": "JetStream: Generating Verified Query Accelerators for Existing Database Systems",
+    "authors": [
+      "Akhilesh Balasingam",
+      "Amadou Ngom",
+      "Geoffrey X. Yu",
+      "Tim Kraska"
+    ],
+    "abstract": "Recent work has shown that LLMs can synthesize highly specialized database systems for fixed workloads, but these systems replace the DBMS's native storage and assume static data: users must migrate their data, often give up ad-hoc queries, and lose acceleration once the data changes. We present JetStream, which instead generates query-specific accelerators that extend an existing DBMS. Given a set of parametrized query templates, a staged agentic workflow synthesizes accelerators that run directly over the DBMS's native tables and may maintain custom auxiliary state, while the DBMS remains responsible for storage, transactions, recovery, and all other queries. A fixed, engine-neutral substrate handles engine-specific hooks and keeps auxiliary state transactionally consistent under writes. JetStream generates two kinds of accelerators: tested accelerators, which may use any optimization and are validated by differential testing, and verified accelerators which trade some performance for a machine-checked proof that every answer satisfies a trusted specification derived from the SQL. On TPC-H at SF=20, JetStream achieves a $315 \\times$ geomean read speedup over DuckDB ($93 \\times$ verified) and retains $120 \\times$ under a continuous update stream of 10,000 modified rows per second.",
+    "published_date": "2026-10-14T17:25:51Z",
+    "updated_date": "2026-10-14T17:25:51Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.20527v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.20527v1",
+    "source": "arxiv",
+    "score": 0.45929785013198854,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究数据库系统相关技术。\n\n核心内容：Recent work has shown that LLMs can synthesize highly specialized database systems for fixed workloads, but these systems replace the DBMS's native storage and assume static data: users must migrate their data, often give up ad-hoc queries, and lose acceleration once the data changes. We present Jet...。",
+    "takeaway": "本文聚焦数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2610.17035v1",
+    "title": "FlashT2S: GPU-Accelerated Tensor-to-Spike Conversion Operators for Heterogeneous Neuromorphic LLM Backends",
+    "authors": [
+      "Rongyuan Guo",
+      "Haotian Wang",
+      "Yufeng Zhang",
+      "Wangdong Yang",
+      "Kenli Li"
+    ],
+    "abstract": "Artificial intelligence faces two growing challenges: computational bottlenecks and energy inefficiency inherent to the von Neumann architecture. Neuromorphic computing offers a promising alternative, yet its immature ecosystem still relies on conventional systems for data supply, requiring efficient conversion between tensor and spike dataflow.\n  We observe a clear mismatch, where data conversion is slow while downstream computation is fast. As data size grows quadratically with large language models, this mismatch becomes a major bottleneck.\n  In this work, we examine the data-conversion components that appear on the critical path of training and inference in neuromorphic LLMs. The work presents FlashT2S (Flash Tensor-to-Spike): GPU-Accelerated Tensor-to-Spike Conversion Operators, which applies architecture-aware and data-centric optimizations to reduce conversion latency. Experimental results show that FlashT2S delivers an average speedup of 850.78x over the native operators across individual operators and 802.83x in realistic workloads. Additionally, compared with GPU kernels automatically generated by torch.compile, our kernels achieve 5-11x speedups. Notably, it achieves near-optimal absolute performance: large-scale conversions are reduced to tens of microseconds (10-99 us), while small-scale conversions reach single-digit microsecond levels (less than 10 us). Furthermore, its standardized output enables seamless integration across heterogeneous backends, including diverse neuromorphic hardware.",
+    "published_date": "2026-10-12T16:11:53Z",
+    "updated_date": "2026-10-12T16:11:53Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.17035v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.17035v1",
+    "source": "arxiv",
+    "score": 0.4481858468055725,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 核函数、异构计算、延迟优化相关技术。\n\n核心内容：Artificial intelligence faces two growing challenges: computational bottlenecks and energy inefficiency inherent to the von Neumann architecture. Neuromorphic computing offers a promising alternative, yet its immature ecosystem still relies on conventional systems for data supply, requiring efficien...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 核函数、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.18391v1",
+    "title": "HULK: An Efficient Algorithm for Enabling Fast Bulk Bitwise Operations on Homomorphically Encrypted Data",
+    "authors": [
+      "Mayank Kabra",
+      "Phillip Widdowson",
+      "Harshita Gupta",
+      "Rakesh Nadig",
+      "Nisa Bostancı",
+      "Eirini Tzermpou",
+      "Rakesh Kumar",
+      "Spiros Galanopoulos",
+      "Ataberk Olgun",
+      "Abdullah Giray Yağlıkçı",
+      "Mohammad Sadrosadati",
+      "Onur Mutlu"
+    ],
+    "abstract": "A wide range of important cloud applications, e.g., database analytics, graph analytics, and genome analysis, spend a considerable amount of time performing bulk bitwise operations (e.g., AND, OR, XOR). These applications often operate on highly sensitive data, making data privacy a critical concern. Homomorphic encryption (HE) enables secure computation on encrypted data without requiring decryption, ensuring privacy in untrusted and shared environments. We analyze 13 end-to-end applications across three domains (healthcare, graph, and database analytics) and observe that bulk bitwise operations take 62-100% of the execution time of the healthcare and graph workloads. The key problem is that existing HE approaches perform them with high-latency homomorphic operations (e.g., multiplication or lookup tables) and significantly increase the data size. Our goal is to enable fast bulk bitwise operations on homomorphically encrypted data by designing an efficient HE algorithm that reduces the use of these costly operations. To this end, we propose HULK, which performs two key steps: (1) it constructs bulk bitwise operations using low-cost homomorphic additions, which compute the Hamming weight of the encrypted operand bits in every slot of a packed ciphertext without any homomorphic multiplication, and (2) it decodes the result of an AND, OR, or XOR from the Hamming weight with a single indicator polynomial, keeping the result in the standard encoding. Across 13 end-to-end applications in healthcare, graph, and database analytics, HULK improves performance over the arithmetic approach used by prior works by up to 7.26x (CPU) and 6.65x (GPU), and on average by 2.32x/1.78x/1.45x (CPU) and 2.08x/1.70x/1.51x (GPU) for healthcare/graph/database analytics. When we increase the reduction depth in a representative application, HULK's speedup grows to 10.10x over the state-of-the-art GPU baseline.",
+    "published_date": "2026-10-13T13:41:41Z",
+    "updated_date": "2026-10-13T13:41:41Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.18391v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.18391v1",
+    "source": "arxiv",
+    "score": 0.44744819283485415,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：A wide range of important cloud applications, e.g., database analytics, graph analytics, and genome analysis, spend a considerable amount of time performing bulk bitwise operations (e.g., AND, OR, XOR). These applications often operate on highly sensitive data, making data privacy a critical concern。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.21264v1",
+    "title": "AdaBool: Sparse Boolean Matrix Processing with Adaptive Data Representation",
+    "authors": [
+      "Xiangrui Yang",
+      "Yifan Lei",
+      "Jiawei Yang",
+      "Yekang Zhan",
+      "Yuxin Zheng",
+      "Lei Mao",
+      "Zhaoren Wu",
+      "Yibo Huang",
+      "Yiming Qiu"
+    ],
+    "abstract": "Many data processing tasks revolve around determining whether logical relationships exist between two sets of entities, a pattern that can be naturally modeled as Sparse Boolean Matrix Multiplication (SpBMM). Under Boolean semantics, matrix representations no longer need to store numerical values and instead focus on encoding the positions of non-zero elements, making it highly amenable to data compression for substantially lower memory access overhead. The key challenge, however, is that the most effective compression depends heavily on sparsity distribution: different methods perform best at different sparsity levels, while real-world matrices often contain sharply varying sparsity across regions. Consequently, forcing the entire matrix into any fixed, monolithic representation leaves considerable optimization opportunities untapped.\n  We present AdaBool, a SpBMM framework designed to reconcile this tension through an adaptive data representation. AdaBool partitions matrices into fine-grained element blocks and represents each block with the encoding best matched to its local sparsity. On top of this adaptive encoding, AdaBool introduces a heterogeneous GPU execution model that groups blocks by encoding type and maps them to matching processing paths, enabling efficient execution and scheduling across GPU resources. We implement AdaBool end to end with low-level system optimizations, evaluate it on both production and public workloads, and show that it outperforms representative baselines by over an order of magnitude.",
+    "published_date": "2026-10-15T05:00:41Z",
+    "updated_date": "2026-10-15T05:00:41Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.21264v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.21264v1",
+    "source": "arxiv",
+    "score": 0.43867564082145694,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究数据处理、数据压缩、异构计算、SHARP 集合计算相关技术。\n\n核心内容：Many data processing tasks revolve around determining whether logical relationships exist between two sets of entities, a pattern that can be naturally modeled as Sparse Boolean Matrix Multiplication (SpBMM). Under Boolean semantics, matrix representations no longer need to store numerical values an...。",
+    "takeaway": "本文聚焦数据处理、数据压缩、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.22230v1",
+    "title": "Architecting for Hardware Diversity: Meta's End-to-End Co-Design for High-Performance AI Training on AMD GPUs",
+    "authors": [
+      "Haoyu Zhang",
+      "Arshad Rahman",
+      "Adnan Aziz",
+      "Ajith Prabhudev",
+      "Amin Farmahini",
+      "Ben Rhoads",
+      "Benson Ma",
+      "Brian Shi",
+      "Cen Zhao",
+      "CK Luk",
+      "Dingming Wu",
+      "Emad El-Haraty",
+      "Eric Chen",
+      "Frank Li",
+      "Gary Huang",
+      "Gefei Zuo",
+      "Haoran Zhang",
+      "Hiwot Kassa",
+      "Hongyi Zeng",
+      "Jack Taylor",
+      "Jeremy Hadidjojo",
+      "John Donati",
+      "Jonathan Sheffield",
+      "Julio Machado Silva",
+      "Karthik Ganesan",
+      "Kent Russell",
+      "KR Kishore",
+      "Lei Tian",
+      "Liu Ke",
+      "Muhammad Osama",
+      "Peng Chen",
+      "Rakesh Hemnani",
+      "Ryan Swann",
+      "Saleel Kudchadker",
+      "Shankar Yanamandram",
+      "Shobhit Kanaujia",
+      "Shucai Xiao",
+      "Srinath Bayareddy",
+      "Srinivas Vaidyanathan",
+      "Sudharssun Subramanian",
+      "Supadchaya Puangpontip",
+      "Taylor Robie",
+      "Tianhao Huang",
+      "Tyler Hart",
+      "Viswesh Sankaran",
+      "Weijun Jiang",
+      "Wenkai Du",
+      "Xiaodong Wang",
+      "Xiaohu Guo",
+      "Yao Rong",
+      "Yinbin Ma",
+      "Yue Dong",
+      "Yuzhen Huang",
+      "Yvonne Liu",
+      "Zhan Shu",
+      "Dan Rabinovitsj",
+      "Ajit Mathews",
+      "Chunqiang Tang"
+    ],
+    "abstract": "Meta deploys a heterogeneous fleet comprising NVIDIA GPUs, AMD GPUs, and proprietary MTIA accelerators to reduce costs and mitigate vendor lock-in. However, the extensive history of NVIDIA-specific optimizations hinders performance portability to other hardware. This paper presents our methods for optimizing alternative accelerators, using AMD Instinct MI350X versus NVIDIA B200 for recommendation model training as a case study. We propose three reusable principles. First, hardware-model co-design is essential: rather than directly porting models from NVIDIA GPUs, revising model structures and software recipes allows full exploitation of accelerator-specific strengths (e.g., MI350X's 1.6x HBM capacity relative to B200). Second, our analytical performance model enables zero-warmup optimal kernel selection across diverse datatypes and matrix shapes in production models, drastically simplifying tuning. Third, increasingly mature agentic workflows have lowered the barrier to porting from the CUDA ecosystem; we extend these workflows for microarchitecture-aware kernel optimizations and custom shim generation. Compared to the directly ported baseline, these methods deliver up to 1.5x improvement in end-to-end training throughput. To our knowledge, this is the first hyperscaler report on productionizing AMD GPUs for large-scale training. Our contributions have been upstreamed to the open-source PyTorch, Triton, and ROCm ecosystems.",
+    "published_date": "2026-10-15T17:09:08Z",
+    "updated_date": "2026-10-15T17:09:08Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.22230v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.22230v1",
+    "source": "arxiv",
+    "score": 0.4295902979373932,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、PyTorch、异构计算、吞吐量相关技术。\n\n核心内容：Meta deploys a heterogeneous fleet comprising NVIDIA GPUs, AMD GPUs, and proprietary MTIA accelerators to reduce costs and mitigate vendor lock-in. However, the extensive history of NVIDIA-specific optimizations hinders performance portability to other hardware。",
+    "takeaway": "本文聚焦CUDA、PyTorch、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.15899v1",
+    "title": "Lightweight Scheduling Policies for Continuously Batched LLM Serving Across GPU Architectures",
+    "authors": [
+      "Ashman Mehra",
+      "Akshan Agarwal",
+      "Aryeh Carmi"
+    ],
+    "abstract": "Large language model serving is increasingly limited not only by model size and GPU speed, but also by scheduling during autoregressive decoding, where continuous batching interleaves requests at token granularity as sequences arrive and finish. We study whether lightweight scheduling policies can improve latency-throughput tradeoffs without changing model architectures, kernels, or deploying learned schedulers. We implement a Python/PyTorch continuous-batching testbench with real Hugging Face execution and evaluate eight policies across 1,152 GPU-model-scheduler-workload runs using ShareGPT-derived traffic, six Qwen, Gemma, and Mistral models, and Modal L40S, A100, and H100 GPUs. Scheduler choice changes throughput, TTFT, completion latency, and tail behavior under fixed model, GPU, workload, batch size, and prefill budget. Aging shortest-prompt-first is the strongest practical baseline in many L40S and mixed-workload settings, while oracle remaining-length scheduling shows that job-size knowledge alone is insufficient because batching and hardware effects also shape performance. The custom dataset has been uploaded to Hugging Face.",
+    "published_date": "2026-10-11T20:27:58Z",
+    "updated_date": "2026-10-11T20:27:58Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.15899v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.15899v1",
+    "source": "arxiv",
+    "score": 0.4255117464065552,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究PyTorch、延迟优化、吞吐量相关技术。\n\n核心内容：Large language model serving is increasingly limited not only by model size and GPU speed, but also by scheduling during autoregressive decoding, where continuous batching interleaves requests at token granularity as sequences arrive and finish. We study whether lightweight scheduling policies can i...。",
+    "takeaway": "本文聚焦PyTorch、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  }
+]
