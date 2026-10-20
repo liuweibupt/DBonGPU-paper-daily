@@ -1,0 +1,279 @@
+[
+  {
+    "id": "2610.20354v1",
+    "title": "Understanding NVIDIA Grace-Blackwell Unified Memory Through Placement-Controlled Microbenchmarks",
+    "authors": [
+      "Nathan Graddon",
+      "Aaron Jarmusch",
+      "Sunita Chandrasekaran"
+    ],
+    "abstract": "NVIDIA Grace--Blackwell systems make CPU--GPU memory increasingly unified at the programming level, but unified addressability does not make the memory system uniform. A CUDA managed allocation on GB200 may be served from GPU-local HBM, accessed through host/system memory, demand-migrated, prefetched, reused after GPU access, or evicted and reloaded under capacity pressure. The problem is that these states share a programming interface while exercising different hardware paths and runtime mechanisms, making a single ``Unified Memory bandwidth'' number misleading.\n  This paper presents a placement-controlled microbenchmark study of CUDA Unified Memory on NVIDIA GB200, using GH200 as a Grace--Hopper baseline and GB10/DGX Spark as a validation platform. Our methodology separates local HBM access, host/system-memory access, explicit movement, managed first touch, prefetch, reuse, access-pattern sensitivity, oversubscription, and CPU--GPU handoff, then summarizes the observations with a measurement-calibrated model of compute, access, migration, eviction, synchronization, and handoff costs. On GB200, a 1~GB STREAM-style triad reaches 3963~GB/s from local HBM but 304~GB/s through host-mapped CPU/system memory; for a 256~MB streaming kernel, cold CPU-initialized managed memory reaches 14.1~GB/s, while managed prefetch and reuse reach 4606~GB/s and 4504~GB/s. Below the capacity boundary, prefetched and reused managed memory remain above 4.6~TB/s, but at 125\\% of CUDA-visible memory they fall to 968~GB/s and 1214~GB/s, showing that Grace--Blackwell unified memory must be understood through placement, access history, locality, reuse, and capacity pressure.",
+    "published_date": "2026-10-14T15:30:19Z",
+    "updated_date": "2026-10-14T15:30:19Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.20354v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.20354v1",
+    "source": "arxiv",
+    "score": 0.5675200200080872,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、带宽优化相关技术。\n\n核心内容：NVIDIA Grace--Blackwell systems make CPU--GPU memory increasingly unified at the programming level, but unified addressability does not make the memory system uniform. A CUDA managed allocation on GB200 may be served from GPU-local HBM, accessed through host/system memory, demand-migrated, prefetche...。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、带宽优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.18565v1",
+    "title": "Orrery: Modeling and Simulation of GPU-direct MPI Communication with SimGrid",
+    "authors": [
+      "Ahmad Moh'd Saleh A. Belbeisi",
+      "Amir Raoofy",
+      "Josef Weidendorfer",
+      "Majid Salimi Beni"
+    ],
+    "abstract": "Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU data transfers. Modeling these mechanisms is therefore critical for simulating HPC applications on current systems. In this paper, we introduce Orrery, an interposition layer built on SimGrid's SMPI to model GPU-aware MPI communication using existing collective implementations and flow-based simulation. Orrery intercepts GPU memory allocations, kernel launches, data transfers, and MPI operations, and models their execution in SimGrid according to target system specifications, enabling simulation without requiring physical GPUs. We validate Orrery using CUDA-aware MPI microbenchmarks and a Jacobi solver on up to 32 nodes of the MUSICA supercomputer and demonstrate that it reproduces key GPU-aware MPI mechanisms.",
+    "published_date": "2026-10-13T15:33:31Z",
+    "updated_date": "2026-10-13T15:33:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.18565v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.18565v1",
+    "source": "arxiv",
+    "score": 0.5102996945381164,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 加速、CUDA、通信优化相关技术。\n\n核心内容：Simulation of HPC applications is an essential tool for analyzing system design trade-offs and enabling effective hardware--software co-design. As modern supercomputers increasingly rely on GPU acceleration, MPI implementations have evolved to support GPU-aware communication, enabling direct GPU dat...。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 加速、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.22673v1",
+    "title": "The Case for TPU-Accelerated Analytical Query Processing",
+    "authors": [
+      "Yeounoh Chung",
+      "Jaehyun Ha",
+      "Helena Caminal",
+      "Fatma Ozcan",
+      "Aditya K Kamath",
+      "Arvind Krishnamurthy",
+      "Henry M. Levy"
+    ],
+    "abstract": "Large-scale analytical query processing requires computing substrates capable of immense distributed scale-out. Tensor Processing Units (TPUs) perfectly embody this extreme-scale architecture, offering massive computational density and highly scalable optical pod-level interconnects. Despite these advantages, TPUs have so far remained largely unexplored for analytical database workloads. In this paper, we present the first comprehensive case for TPU-accelerated analytical query processing by running all the TPC-H queries entirely on the TPUs. We introduce Native TPU Accelerator (NTA) for analytical query processing, which provides hardware-conscious algorithm design and optimizations in JAX/XLA. By exposing the TPU's structural mechanics, we demonstrate how dynamic, memory-bound database operations can be rewritten into deterministic JAX programs. We engineer a suite of novel execution strategies that leverage both the TPU's TensorCore and SparseCore to trade sparse, unpredictable memory accesses for dense, hardware-aligned ones. At the core of NTA, a compiler uses catalog statistics to assign guarded static capacities and a hardware-calibrated local cost model to select a TPU-native implementation for each relational operator before JIT compilation.\n  We evaluate our system using the TPC-H benchmark. Taking full advantage of TPU slices and JAX distributed computing, we seamlessly scale our execution environment to run TPC-H benchmark up to Scale Factor 1000 (SF1000). Evaluated against a rigorous CPU ground truth (DuckDB), our native TPU accelerator achieves state-of-the-art performance, achieving a 7.0x single-device speedup over DuckDB at SF100 and a 68.6x speedup with 16 TPUs at SF1000 (1TB). The results establish TPUs not merely as dense neural compute hardware, but as a highly competitive, massively scalable substrate for the next generation of analytical query processing.",
+    "published_date": "2026-10-15T21:41:13Z",
+    "updated_date": "2026-10-15T21:41:13Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.22673v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.22673v1",
+    "source": "arxiv",
+    "score": 0.5093033146858216,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究查询处理、分析查询相关技术。\n\n核心内容：Large-scale analytical query processing requires computing substrates capable of immense distributed scale-out. Tensor Processing Units (TPUs) perfectly embody this extreme-scale architecture, offering massive computational density and highly scalable optical pod-level interconnects。",
+    "takeaway": "本文聚焦查询处理、分析查询，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 优化查询处理流程；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2610.23072v1",
+    "title": "ScaleRAN: A Runtime for Elastic GPU Resource Management in AI-RAN",
+    "authors": [
+      "Arthur Hamard",
+      "Jérémie Leguay",
+      "Gopalasingham Aravinthan",
+      "Alberto Conte",
+      "Julien Lallet",
+      "Abdelkader Outtagarts"
+    ],
+    "abstract": "AI-RAN is driving the convergence of radio access network (RAN) processing and artificial intelligence (AI) workloads on GPU-enabled computing platforms, ranging from GPU-accelerated base stations to cloud-native infrastructures. While GPU acceleration improves the efficiency of virtualized RAN functions, the computational demand of latency-critical baseband processing varies with traffic load, creating transient spare GPU capacity that can be reclaimed by co-located AI applications. Existing GPU-sharing mechanisms rely on coarse-grained hardware partitioning or static resource allocation, limiting their ability to adapt to slot-level workload fluctuations while preserving strict timing requirements.\n  This paper presents ScaleRAN, a node-local runtime for elastic GPU resource management in AI-RAN. ScaleRAN leverages NVIDIA Green Contexts to dynamically partition Streaming Multiprocessors (SMs) between RAN and AI workloads through a ladder of pre-created GPU partitions, enabling low-overhead resource reallocation at RAN slot granularity. The proposed runtime naturally supports Open-RAN (O-RAN) O-Cloud deployments, one representative AI-RAN deployment scenario. To drive these reallocations, we propose a reactive controller inspired by Kubernetes autoscaling and a proactive controller based on quantile regression and conformal prediction. We also develop LDPCSim, a GPU-accelerated workload generator built on NVIDIA Aerial for reproducible evaluation. Results show that predictive fine-grained GPU partitioning satisfies slot-level RAN deadlines while increasing the GPU resources available to co-located AI workloads, demonstrating the practicality of elastic GPU sharing for future AI-RAN platforms.",
+    "published_date": "2026-10-16T07:42:50Z",
+    "updated_date": "2026-10-16T07:42:50Z",
+    "categories": [
+      "cs.NI",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.23072v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.23072v1",
+    "source": "arxiv",
+    "score": 0.5047884142398834,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、隐私信息检索、网络、延迟优化相关技术。\n\n核心内容：AI-RAN is driving the convergence of radio access network (RAN) processing and artificial intelligence (AI) workloads on GPU-enabled computing platforms, ranging from GPU-accelerated base stations to cloud-native infrastructures. While GPU acceleration improves the efficiency of virtualized RAN func...。",
+    "takeaway": "本文聚焦GPU 加速、隐私信息检索、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.24997v1",
+    "title": "Hierarchical Rule Auditing with Exact Ternary GPU Correlation",
+    "authors": [
+      "shengwei wang"
+    ],
+    "abstract": "Auditing firewall logs against requirements mapped to controls and frameworks must retain overlapping obligations, preserve uncertainty from missing attributes and count distinct affected records. Direct, bitmap and relational methods can express this audit; a correlation implementation must preserve distinctions that ordinary match counts and rule-hit totals discard. We present an exact ternary correlation algorithm that compiles categorical conjunctions into one bounded-integer matrix product. A dominating false-predicate penalty separates known mismatches from missing evidence, while per-record hierarchy unions prevent duplicate counting. We prove their composition and handle high-cardinality endpoints through exact address classes and versioned labels. Evaluation compares eight CPU/GPU implementations, includes public traffic and 133 published source-address ACLs with generated observations, and measures hierarchy and policy-rebuild costs. On an NVIDIA L4, matched fused execution reduces latency by 8.8 to 11.2 percent relative to two-product correlation across five tested shapes. At 100,000 records and 1,024 requirements, it takes 12.28 ms versus 13.82 ms for two products and 12.29 ms for GPU bitmaps. Bitmaps remain faster in most regimes, with hierarchy operations and reductions dominating the measured fused-correlation stage intervals.",
+    "published_date": "2026-10-18T03:58:42Z",
+    "updated_date": "2026-10-18T03:58:42Z",
+    "categories": [
+      "cs.DC",
+      "cs.CR"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.24997v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.24997v1",
+    "source": "arxiv",
+    "score": 0.46769161462783815,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：Auditing firewall logs against requirements mapped to controls and frameworks must retain overlapping obligations, preserve uncertainty from missing attributes and count distinct affected records. Direct, bitmap and relational methods can express this audit; a correlation implementation must preserv...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.24328v1",
+    "title": "SigmaTrace: Library-Agnostic Observability for CPU/GPU-Initiated RDMA Communication",
+    "authors": [
+      "Javid Baydamirli",
+      "Didem Unat"
+    ],
+    "abstract": "RDMA networking enables low-latency, high-bandwidth communication on large systems. Despite its adoption, however, observability is lacking. Existing tools target specific communication libraries or only report aggregated data, missing per-operation behavior. The gap is widest for GPU-initiated networking, whose in-kernel RDMA operations are invisible to the host.\n  We present SigmaTrace, a library-agnostic RDMA profiling framework providing fine-grained, per-operation visibility for CPU and GPU-initiated networking. It traces operations at the libibverbs/mlx5dv layers, the common denominator beneath communication libraries on InfiniBand and RoCE, and employs a low-overhead memory interposition technique that, to our knowledge, gives the first observability into GPU-initiated RDMA without source patching or binary instrumentation.\n  Host-side tracing adds 1.3% overhead on NCCL AllReduce at 128 GPUs and under 2% on RCCL at 1024 GPUs. On a persistent-kernel BFS and Mixture-of-Experts inference, SigmaTrace exposes an in-kernel barrier spread and 2.13x inter-node traffic skew invisible to existing profilers.",
+    "published_date": "2026-10-16T23:49:40Z",
+    "updated_date": "2026-10-16T23:49:40Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.24328v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.24328v1",
+    "source": "arxiv",
+    "score": 0.4626996505260468,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、网络、通信优化、带宽优化、延迟优化相关技术。\n\n核心内容：RDMA networking enables low-latency, high-bandwidth communication on large systems. Despite its adoption, however, observability is lacking。",
+    "takeaway": "本文聚焦RDMA 网络、网络、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.20527v1",
+    "title": "JetStream: Generating Verified Query Accelerators for Existing Database Systems",
+    "authors": [
+      "Akhilesh Balasingam",
+      "Amadou Ngom",
+      "Geoffrey X. Yu",
+      "Tim Kraska"
+    ],
+    "abstract": "Recent work has shown that LLMs can synthesize highly specialized database systems for fixed workloads, but these systems replace the DBMS's native storage and assume static data: users must migrate their data, often give up ad-hoc queries, and lose acceleration once the data changes. We present JetStream, which instead generates query-specific accelerators that extend an existing DBMS. Given a set of parametrized query templates, a staged agentic workflow synthesizes accelerators that run directly over the DBMS's native tables and may maintain custom auxiliary state, while the DBMS remains responsible for storage, transactions, recovery, and all other queries. A fixed, engine-neutral substrate handles engine-specific hooks and keeps auxiliary state transactionally consistent under writes. JetStream generates two kinds of accelerators: tested accelerators, which may use any optimization and are validated by differential testing, and verified accelerators which trade some performance for a machine-checked proof that every answer satisfies a trusted specification derived from the SQL. On TPC-H at SF=20, JetStream achieves a $315 \\times$ geomean read speedup over DuckDB ($93 \\times$ verified) and retains $120 \\times$ under a continuous update stream of 10,000 modified rows per second.",
+    "published_date": "2026-10-14T17:25:51Z",
+    "updated_date": "2026-10-14T17:25:51Z",
+    "categories": [
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.20527v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.20527v1",
+    "source": "arxiv",
+    "score": 0.45929785013198854,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究数据库系统相关技术。\n\n核心内容：Recent work has shown that LLMs can synthesize highly specialized database systems for fixed workloads, but these systems replace the DBMS's native storage and assume static data: users must migrate their data, often give up ad-hoc queries, and lose acceleration once the data changes. We present Jet...。",
+    "takeaway": "本文聚焦数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  },
+  {
+    "id": "2610.25066v1",
+    "title": "Ineffective Occupancy in Heterogeneous GPU Clusters: Prediction, Contribution Analysis, and Readiness-Aware Scheduling",
+    "authors": [
+      "Tao Zhang",
+      "Bin Liao"
+    ],
+    "abstract": "In heterogeneous GPU clusters, GPUs are costly and scarce, yet placing a job on a machine does not mean that the job becomes ready to run. A large amount of allocated capacity can remain occupied for long periods without producing useful computation, further aggravating the waste of compute resources. On the Alibaba GPU cluster trace we find that, even when GPU capacity is sufficient and placement is complete, 52.70% of execution records never became ready. We term this phenomenon ineffective occupancy. Building on this diagnosis, and keeping the placement policy fixed, we propose Readiness-Aware Scheduling (RAS): it uses only nine attributes observable at admission time to predict readiness probability and reorders admission accordingly. Under a five-fold split grouped by machine, the gradient-boosted model reaches an ROC-AUC of 0.8187. A feature-group contribution analysis shows that the model's score is driven mainly by job profile, duration, and GPU model, with the request-size group contributing least, followed by the scheduling and concurrency group. In GPU terms, RAS reduces the ineffective-occupancy ratio (the share of cluster GPUs held under ineffective occupancy) from 43.64% to 27.15% and raises the effective coverage of large requests (eight GPUs or more) from 46.11% to 63.18%, without sacrificing capacity utilization. Relative to the upper bound obtained by ordering with ground-truth labels, RAS captures 65.1% of the attainable improvement, well above the interpretable rules built only from the contribution-analysis conclusions; the gain therefore comes mainly from predicting with all nine attributes jointly rather than from combining rules built on any single attribute group. These results indicate that readiness status is a measurable, predictable, and optimizable dimension of admission decisions in heterogeneous GPU clusters.",
+    "published_date": "2026-10-18T07:14:08Z",
+    "updated_date": "2026-10-18T07:14:08Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.25066v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.25066v1",
+    "source": "arxiv",
+    "score": 0.4492322945594788,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究异构计算相关技术。\n\n核心内容：In heterogeneous GPU clusters, GPUs are costly and scarce, yet placing a job on a machine does not mean that the job becomes ready to run. A large amount of allocated capacity can remain occupied for long periods without producing useful computation, further aggravating the waste of compute resource...。",
+    "takeaway": "本文聚焦异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.18391v1",
+    "title": "HULK: An Efficient Algorithm for Enabling Fast Bulk Bitwise Operations on Homomorphically Encrypted Data",
+    "authors": [
+      "Mayank Kabra",
+      "Phillip Widdowson",
+      "Harshita Gupta",
+      "Rakesh Nadig",
+      "Nisa Bostancı",
+      "Eirini Tzermpou",
+      "Rakesh Kumar",
+      "Spiros Galanopoulos",
+      "Ataberk Olgun",
+      "Abdullah Giray Yağlıkçı",
+      "Mohammad Sadrosadati",
+      "Onur Mutlu"
+    ],
+    "abstract": "A wide range of important cloud applications, e.g., database analytics, graph analytics, and genome analysis, spend a considerable amount of time performing bulk bitwise operations (e.g., AND, OR, XOR). These applications often operate on highly sensitive data, making data privacy a critical concern. Homomorphic encryption (HE) enables secure computation on encrypted data without requiring decryption, ensuring privacy in untrusted and shared environments. We analyze 13 end-to-end applications across three domains (healthcare, graph, and database analytics) and observe that bulk bitwise operations take 62-100% of the execution time of the healthcare and graph workloads. The key problem is that existing HE approaches perform them with high-latency homomorphic operations (e.g., multiplication or lookup tables) and significantly increase the data size. Our goal is to enable fast bulk bitwise operations on homomorphically encrypted data by designing an efficient HE algorithm that reduces the use of these costly operations. To this end, we propose HULK, which performs two key steps: (1) it constructs bulk bitwise operations using low-cost homomorphic additions, which compute the Hamming weight of the encrypted operand bits in every slot of a packed ciphertext without any homomorphic multiplication, and (2) it decodes the result of an AND, OR, or XOR from the Hamming weight with a single indicator polynomial, keeping the result in the standard encoding. Across 13 end-to-end applications in healthcare, graph, and database analytics, HULK improves performance over the arithmetic approach used by prior works by up to 7.26x (CPU) and 6.65x (GPU), and on average by 2.32x/1.78x/1.45x (CPU) and 2.08x/1.70x/1.51x (GPU) for healthcare/graph/database analytics. When we increase the reduction depth in a representative application, HULK's speedup grows to 10.10x over the state-of-the-art GPU baseline.",
+    "published_date": "2026-10-13T13:41:41Z",
+    "updated_date": "2026-10-13T13:41:41Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.18391v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.18391v1",
+    "source": "arxiv",
+    "score": 0.44744819283485415,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：A wide range of important cloud applications, e.g., database analytics, graph analytics, and genome analysis, spend a considerable amount of time performing bulk bitwise operations (e.g., AND, OR, XOR). These applications often operate on highly sensitive data, making data privacy a critical concern。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.24038v1",
+    "title": "Merge Hulls Without Copying Vertices: GPU Isotonic Regression",
+    "authors": [
+      "Elena Raikova"
+    ],
+    "abstract": "Isotonic regression finds the monotone sequence closest to the data in weighted least squares. It is used to calibrate probabilities and inside differentiable ranking. Its standard algorithm, pool adjacent violators, is sequential within a sequence, and torchsort, the exact GPU solver of differentiable sorting libraries, runs it with one thread per sequence, which is slow on long ones. The fit is the slope sequence of the lower convex hull of cumulative sums, and hulls of sorted points can be merged in parallel. Merging partial hulls level by level, however, copies the surviving vertices at every level, which moves $Θ(n \\log n)$ data when most points survive. We store each chunk's hull once and represent a merged hull as a list of segments of these chunk hulls, at most one per chunk; a merge then updates the list. We prove the representation correct, bound the work and depth of the merge phase, and measure a CUDA implementation on four NVIDIA GPUs against a control that copies the surviving vertices with the whole GPU at every level. On dense hulls the merge phase is 17 to 276 times faster with segment lists and the whole operator 3.9 to 19 times; on noisy data, where few vertices survive, the difference is small. In a differentiable soft rank, replacing torchsort's isotonic solver makes forward and backward 2.3 to 230 times faster on a T4, and the training step of a compact model with a Spearman loss 1.6 to 9 times.",
+    "published_date": "2026-10-16T12:04:44Z",
+    "updated_date": "2026-10-16T12:04:44Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.24038v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.24038v1",
+    "source": "arxiv",
+    "score": 0.44357025504112246,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、排序相关技术。\n\n核心内容：Isotonic regression finds the monotone sequence closest to the data in weighted least squares. It is used to calibrate probabilities and inside differentiable ranking。",
+    "takeaway": "本文聚焦CUDA、排序，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  }
+]
