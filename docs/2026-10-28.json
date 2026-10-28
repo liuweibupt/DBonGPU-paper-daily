@@ -1,0 +1,292 @@
+[
+  {
+    "id": "2610.32695v1",
+    "title": "Tile-Based Decompression in Compiled GPU Engines",
+    "authors": [
+      "Antonio Boffa",
+      "Ananya Gupta",
+      "Hamish Nicholson",
+      "Anastasia Ailamaki"
+    ],
+    "abstract": "Modern GPUs reach record analytical performance only when a query's working set fits within its GPU memory budget, and that budget is under growing pressure: GPUs are partitioned and shared, working sets are outgrowing high-bandwidth memory (HBM), and HBM is a fixed on-device resource whose per-dollar capacity has stagnated across generations. Lightweight compression can relieve this pressure by shrinking both footprint and bandwidth demand, but existing GPU compressed-execution techniques either bind decompression to a specific execution model or materialize decompressed columns in HBM before query execution. We present a compression subsystem for compiled GPU query engines that treats decompression as a first-class physical operator. Compression-specific logic is isolated behind a narrow backend interface, so new GPU-oriented encodings can be added without rewriting downstream operators. We implement the design in Proteus and study where decompressed values should be materialized in the GPU memory hierarchy. Our compiler-integrated shared-memory strategy fuses cooperative tile decompression with tuple-at-a-time query execution inside a single generated GPU kernel, avoiding decompressed-column materialization in HBM. Compared with HeavyDB and Sirius on GPU-resident data, fused on-chip decompression achieves competitive query times while reducing the resident memory footprint by up to 4x and memory-bandwidth consumption by up to 6x.",
+    "published_date": "2026-10-23T14:21:42Z",
+    "updated_date": "2026-10-23T14:21:42Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2610.32695v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.32695v1",
+    "source": "arxiv",
+    "score": 0.66632080078125,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "本文研究GPU 查询处理、GPU 内存管理、GPU 核函数、带宽优化相关技术。\n\n核心内容：Modern GPUs reach record analytical performance only when a query's working set fits within its GPU memory budget, and that budget is under growing pressure: GPUs are partitioned and shared, working sets are outgrowing high-bandwidth memory (HBM), and HBM is a fixed on-device resource whose per-doll...。",
+    "takeaway": "本文聚焦GPU 查询处理、GPU 内存管理、GPU 核函数，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略"
+  },
+  {
+    "id": "2610.29820v1",
+    "title": "UlaCache: Unified Logical Addressing for Sparse LLM Serving",
+    "authors": [
+      "Isaac Zhu",
+      "Alan Cao",
+      "Hugh Yin",
+      "Rocky Wang",
+      "Orion Wang",
+      "Hscos Zhang",
+      "Jack Li",
+      "Jason Zhao"
+    ],
+    "abstract": "Long contexts increase the memory cost of the key-value (KV) cache in large language model (LLM) inference. Sparse attention reduces attention computation and memory traffic by selecting historical tokens, but the retained KV cache must remain available for later decoding steps. We present UlaCache, a KV cache management system built around a unified logical address space spanning GPU KV pools and optional CPU memory. Stable logical references let the inference engine allocate and select KV independently of physical placement. Common allocation and sparse-access interfaces support data-parallel (DP) and tensor-parallel (TP) attention. For distributed storage, local GPU buffers retain selected KV across decoding steps, so only missing entries require transfers. When CPU storage is enabled, Parallel Bucketed LRU (PB-LRU) manages a GPU pool shared across requests. It updates recency metadata and selects eviction victims in parallel. UlaCache transfers KV and then updates the address mappings. With speculative decoding enabled under matched CPU and GPU memory budgets, UlaCache achieves peak decoding throughput speedups of 1.16 $\\times$ (DP) and 1.70 $\\times$ (TP) on H200, and 1.73 $\\times$ (DP) and 2.51 $\\times$ (TP) on B300, compared with the state-of-the-art baseline.",
+    "published_date": "2026-10-21T14:46:11Z",
+    "updated_date": "2026-10-21T14:46:11Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.29820v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.29820v1",
+    "source": "arxiv",
+    "score": 0.5529631233215332,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、吞吐量相关技术。\n\n核心内容：Long contexts increase the memory cost of the key-value (KV) cache in large language model (LLM) inference. Sparse attention reduces attention computation and memory traffic by selecting historical tokens, but the retained KV cache must remain available for later decoding steps。",
+    "takeaway": "本文聚焦GPU 内存管理、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展；4. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2610.30868v2",
+    "title": "uGDS: A User-Space Development Kit for High-Performance GPU Direct Storage",
+    "authors": [
+      "Jing Wei",
+      "Guanyi Chen",
+      "Qi Chen",
+      "Chuyu Zhang",
+      "Zheng Zhou",
+      "Chutian Wang",
+      "Jian Zhang"
+    ],
+    "abstract": "Data-intensive GPU applications increasingly rely on NVMe SSDs to extend GPU memory. NVIDIA GPU Direct Storage (GDS) enables direct SSD-GPU transfers via PCIe peer-to-peer DMA, eliminating host staging. However, GDS retains three key limitations: (1) its control path traverses the kernel for every I/O request, introducing software overhead; (2) its stream-ordered path imposes strict total ordering even when workloads only require batch-level ordering; and (3) its closed-source user-space engine hinders diagnosis and custom scheduling.\n  We present uGDS, https://github.com/ScaleX-IO/uGDS, an open-source user-space GPU Direct Storage library built on four principles: user-space control, unified cross-vendor abstraction, workload-aware scheduling, and end-to-end transparency. The host CPU manages the entire NVMe command lifecycle in user space, while payloads move via PCIe P2P DMA without consuming GPU compute. A minimal kernel module is used only for one-time privileged setup. uGDS partitions hardware queues between synchronous and batch traffic, enforces DMA-safe buffer lifetimes, and provides cuFile-compatible synchronous, batched, and stream-ordered APIs with polling or interrupt completion on both NVIDIA CUDA and AMD HIP.\n  Evaluated on an A100 with a Samsung 990 PRO, uGDS achieves up to 12.12x GDS's batch-read bandwidth and 30.69x its batch-write bandwidth (8- and 4-KiB requests, batch size 128), and reduces 4-KiB synchronous write latency by 84.1% with two threads. Its stream-ordered path sustains 5.49 GiB/s on a single stream, where GDS retains only 40.8% of its synchronous bandwidth. In LMCache, uGDS reduces median time-to-first-token (TTFT) by up to 62.7% and raises serving goodput by 2.63x. On AMD, uGDS achieves up to 1.19x hipFile's synchronous-write bandwidth.",
+    "published_date": "2026-10-22T07:45:58Z",
+    "updated_date": "2026-10-23T01:57:07Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.30868v2",
+    "arxiv_url": "https://arxiv.org/abs/2610.30868v2",
+    "source": "arxiv",
+    "score": 0.541145247220993,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 计算、CUDA、NVMe 存储、带宽优化相关技术。\n\n核心内容：Data-intensive GPU applications increasingly rely on NVMe SSDs to extend GPU memory. NVIDIA GPU Direct Storage (GDS) enables direct SSD-GPU transfers via PCIe peer-to-peer DMA, eliminating host staging。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.36329v1",
+    "title": "Plenty of Room in the Middle: Revealing Opportunities on a GPU Cluster via Fine-Grained Monitoring",
+    "authors": [
+      "Andrew Sheinberg",
+      "Samyak Gupta",
+      "Kai Li"
+    ],
+    "abstract": "GPU clusters have become essential computing resources for AI and scientific research in academia and industry. However, their high cost and growing demand often result in long queueing delays. While previous monitoring efforts have operated at second- or minute-level frequencies, they primarily informed job-level scheduling for clusters and lacked the detail needed to optimize GPU-level utilization.\n  This paper presents an in-depth study of a university research GPU cluster, analyzing resource usage at 100 ms intervals. We have developed a lightweight monitoring tool that leverages Nvidia's DCGM library to capture fine-grained \"compute utilization\" metrics within GPUs. Deployed on a cluster with 89 nodes and 319 GPUs, our tool collected data over several months. This paper focuses on a 10-day period with 7,399 jobs submitted by 150 users from 12 departments. Our study reveals three key findings: (1) the GPU cluster exhibits significant underutilization, with over 70% of jobs using less than 20% of GPU memory and 50% averaging below 5% Streaming Multiprocessor (SM) utilization; (2) 80% of jobs have a drastic mismatch between their requested and actual durations, significantly limiting the scheduler's effectiveness; and (3) the multi-GPU jobs we examined show highly periodic communication patterns. These findings suggest there is plenty of room in the middle: substantial utilization gains are available through better job scheduling and GPU multitasking, independent of hardware or application improvements.\n  Our monitoring solution is available as open-source software at https://github.com/als244/gpu_server_monitoring.",
+    "published_date": "2026-10-26T21:56:13Z",
+    "updated_date": "2026-10-26T21:56:13Z",
+    "categories": [
+      "cs.AI",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.36329v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.36329v1",
+    "source": "arxiv",
+    "score": 0.5080683815479279,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、多 GPU、通信优化相关技术。\n\n核心内容：GPU clusters have become essential computing resources for AI and scientific research in academia and industry. However, their high cost and growing demand often result in long queueing delays。",
+    "takeaway": "本文聚焦GPU 内存管理、多 GPU、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.33275v1",
+    "title": "LooseLeaf: Enabling Serverless GPUs for Computational Notebooks",
+    "authors": [
+      "Yusen Wu",
+      "Tingfeng Lan",
+      "Benjamin Carver",
+      "Haoliang Wang",
+      "Geoffrey Fox",
+      "Yue Cheng"
+    ],
+    "abstract": "Computational notebooks reserve a GPU for the whole session, yet the GPU computes only while a cell executes and sits idle otherwise. Serverless execution would release the GPU between cells, but reconstructing the accumulated notebook state on a fresh worker imposes substantial cost on every GPU cell. This paper presents LooseLeaf, a serverless GPU platform for interactive notebooks. LooseLeaf derives the state and import closures of each cell, the minimal variables and packages that the cell needs. Our analysis on 5,000 real-world notebooks shows that these closures are small, and user-cell editing leaves seconds to prepare them. LooseLeaf prepares a GPU worker with these closures while the user edits the cell. After execution, the worker saves the updated state within seconds, so the GPU is reclaimable after every cell. LooseLeaf starts 95-98% of GPU cells with no visible delay, matches the interactivity of a pinned session, and provisions 32-55% fewer GPU-hours than state-of-the-art notebook platforms.",
+    "published_date": "2026-10-23T20:36:56Z",
+    "updated_date": "2026-10-23T20:36:56Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.33275v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33275v1",
+    "source": "arxiv",
+    "score": 0.46823432922363284,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 计算相关技术。\n\n核心内容：Computational notebooks reserve a GPU for the whole session, yet the GPU computes only while a cell executes and sits idle otherwise. Serverless execution would release the GPU between cells, but reconstructing the accumulated notebook state on a fresh worker imposes substantial cost on every GPU ce...。",
+    "takeaway": "本文聚焦GPU 计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.33719v1",
+    "title": "ZipFusion: Fusing Lossless KV Decompression with Attention for Efficient LLM Decoding",
+    "authors": [
+      "Yuetao Chen",
+      "Peng Wang",
+      "Hong Xu"
+    ],
+    "abstract": "The key-value (KV) cache places growing demands on GPU memory capacity and bandwidth as large language models serve longer contexts and more concurrent requests. Its footprint limits concurrency, while repeated KV reads during attention can make decoding memory-bandwidth bound. Prior lossless KV cache compression methods reduce transfers between devices but restore the uncompressed KV cache in GPU memory before attention. They therefore leave these repeated KV reads unchanged and require additional work and memory for decompression. We present ZipFusion, which enables attention to consume the losslessly compressed KV cache directly. ZipFusion co-designs the compression format and attention kernel to reduce the bytes read from GPU memory during attention. The kernel reconstructs the original values directly in registers using simple bit operations, avoiding a separate decompression pass and easing the memory-bandwidth bound. ZipFusion also reassigns memory freed by compression across layers to store additional KV cache. Its memory manager reserves space for ongoing generation and makes the remaining capacity available to new requests. We implement ZipFusion on top of FlashInfer and integrate it with SGLang. On an NVIDIA H100, ZipFusion achieves about 1.25x speedup over FlashInfer in decode attention. With 8K context, it improves model decode throughput by up to 26.3% over uncompressed SGLang under the same GPU memory budget. At each method's largest supported batch, it also delivers up to 2.76x the throughput of the best-performing lossless KV cache compression baseline.",
+    "published_date": "2026-10-24T15:07:10Z",
+    "updated_date": "2026-10-24T15:07:10Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.33719v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33719v1",
+    "source": "arxiv",
+    "score": 0.46218190908432005,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、带宽优化、吞吐量相关技术。\n\n核心内容：The key-value (KV) cache places growing demands on GPU memory capacity and bandwidth as large language models serve longer contexts and more concurrent requests. Its footprint limits concurrency, while repeated KV reads during attention can make decoding memory-bandwidth bound。",
+    "takeaway": "本文聚焦GPU 内存管理、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.33501v1",
+    "title": "DualPace: Decoupled Scheduling and Cooperative GPU--CPU Decoding for LLM Serving",
+    "authors": [
+      "YuXuan Lin",
+      "KeQiang Wu",
+      "Kingsum Chow"
+    ],
+    "abstract": "Large language model (LLM) serving relies on batching to improve inference throughput, but the key-value (KV) cache grows with sequence length and limits GPU-resident concurrency. CPU offloading can expand KV capacity using host memory, yet existing systems remain largely GPU-gated: CPU-resident requests make progress only when the GPU scheduler exposes suitable overlap opportunities. As a result, host memory and CPU compute cannot act as an independent serving resource, leading to bursty CPU-side progress and inflated tail inter-token latency (ITL) under load.\n  We present DualPace, an LLM serving runtime that turns the host into an independently scheduled decode engine. DualPace separates scheduling authority across two engines: the GPU engine executes prefills and GPU-resident decodes, while an AMX-enabled CPU engine independently batches and advances CPU-resident decodes. The engines are decoupled in scheduling but cooperative in execution: the CPU can execute a complete decode iteration locally or selectively invoke GPU Dense Assist for dense stages, while offline profiles guide hardware-specific batching and routing.\n  Our evaluations show that, in decode-oriented scenarios, DualPace improves serving throughput by 6.9--43.2\\% over NEO, a state-of-the-art open-source CPU-offloading system, and by 11.5--90.6\\% over vLLM, a widely used GPU serving system, while maintaining the same level of latency. DualPace also preserves NEO's P99 time-to-first-token (TTFT) advantage over vLLM while sustaining 7.3--50.5\\% higher request rates than NEO at the same level of P99 ITL.",
+    "published_date": "2026-10-24T07:10:20Z",
+    "updated_date": "2026-10-24T07:10:20Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.33501v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33501v1",
+    "source": "arxiv",
+    "score": 0.45803476810455324,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) serving relies on batching to improve inference throughput, but the key-value (KV) cache grows with sequence length and limits GPU-resident concurrency. CPU offloading can expand KV capacity using host memory, yet existing systems remain largely GPU-gated: CPU-resident req...。",
+    "takeaway": "本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.37200v1",
+    "title": "PipeLink: Contract-Guided Linking of GPU Kernel Components",
+    "authors": [
+      "Jize Guo",
+      "Xupeng Miao"
+    ],
+    "abstract": "The fastest machine-learning kernels are compositions of components, such as loaders, matrix-multiply mainloops, epilogues and communication stages, that run concurrently on one GPU streaming multiprocessor and share its on-chip memory, barriers, warps and registers. Because these components hard-code where they sit in this shared space, they cannot be compiled, shipped or replaced on their own: combining components from different sources means forking them by hand or keeping them in separate kernels. We present PipeLink, a contract-guided linker for GPU kernel components. Each component is compiled separately into an LTO object that carries a contract stating what it requires and what it promises; PipeLink checks the contracts against each other, relocates every component by solving one joint placement of the SM's resources, and generates the transfers between them, and the vendor LTO backend folds the result into constants. Across 51 configurations on Hopper and Blackwell GPUs, linked kernels run within 0.2% of the same sources compiled as one unit. Linking makes new compositions practical: a CuTe attention operator inside a ThunderKittens decode megakernel speeds up decoding by 2.16$\\times$, a four-owner MoE training megakernel matches the original monolith, one unchanged attention core yields sparse and context-parallel variants that outperform FlexAttention, vLLM and Transformer Engine, and a GEMM + SwiGLU composition whose consumer serves three GPU architectures runs 1.2$\\times$ faster on Blackwell than cuBLAS with a compiled activation.",
+    "published_date": "2026-10-27T13:20:13Z",
+    "updated_date": "2026-10-27T13:20:13Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.37200v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.37200v1",
+    "source": "arxiv",
+    "score": 0.4488693904876709,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、通信优化相关技术。\n\n核心内容：The fastest machine-learning kernels are compositions of components, such as loaders, matrix-multiply mainloops, epilogues and communication stages, that run concurrently on one GPU streaming multiprocessor and share its on-chip memory, barriers, warps and registers. Because these components hard-co...。",
+    "takeaway": "本文聚焦GPU 核函数、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.31479v1",
+    "title": "Evaluating the Applicability of LLM Inference Optimizations on Apple Silicon",
+    "authors": [
+      "Kyrylo Yemets",
+      "Andrii Yaroshevych",
+      "Victor Muryn",
+      "Ostap Khomenko",
+      "Pavlo Kryven",
+      "Maksym Kmet",
+      "Maksym Shamrai",
+      "Mariya Hirna"
+    ],
+    "abstract": "Apple Silicon is among the most widely used platforms for local LLM inference, yet nearly all inference optimizations are designed and validated on server-class NVIDIA GPUs under batched serving workloads. Which optimizations retain their benefits when moved to Apple Silicon, and what determines their applicability? We evaluate four optimization families: KV-cache pruning, speculative decoding, ported GPU kernels, and post-training quantization. Experiments span four Apple machines under a common single-request decode workload, with matched RTX 4090 comparisons where possible. KV-cache pruning can reach up to 1.75 times end-to-end throughput on Apple but can reduce throughput on desktop NVIDIA GPUs. Under the common benchmark, all evaluated speculative decoding methods reduce throughput on Apple, despite reported 2-6 times gains on server GPUs. CUDA kernel designs transfer only partially: public Metal lacks asynchronous copy, and batch-one decode makes several serving-oriented mechanisms inapplicable, although transferable components yield up to 1.20 times decode throughput. Quantization gains vary by machine. Across four families, a reported speedup is not a portable property of a technique alone but a joint function of technique, runtime, hardware contract, and workload regime.",
+    "published_date": "2026-10-22T16:04:40Z",
+    "updated_date": "2026-10-22T16:04:40Z",
+    "categories": [
+      "cs.LG",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.31479v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.31479v1",
+    "source": "arxiv",
+    "score": 0.4460663032531738,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、CUDA、大模型推理、吞吐量相关技术。\n\n核心内容：Apple Silicon is among the most widely used platforms for local LLM inference, yet nearly all inference optimizations are designed and validated on server-class NVIDIA GPUs under batched serving workloads. Which optimizations retain their benefits when moved to Apple Silicon, and what determines the...。",
+    "takeaway": "本文聚焦GPU 核函数、CUDA、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.30990v1",
+    "title": "SnakeCharmer: Orchestrating Utility, Timeliness, and Placement in GPU Prefetching",
+    "authors": [
+      "Yuhan Tang",
+      "Tiejun Li",
+      "Jianmin Zhang",
+      "An Hu",
+      "Guangyu Sun",
+      "Sheng Ma",
+      "Yiqun Lang",
+      "Hanqing Li",
+      "Siqing Fu"
+    ],
+    "abstract": "GPUs rely on massive thread-level parallelism to tolerate long memory latency, yet they still suffer severe stalls when many warps simultaneously wait for data from the memory system. Address-prediction-based GPU prefetchers can mitigate such stalls, but accurate prediction alone does not guarantee performance improvement: a predicted prefetch becomes beneficial only if it is worth issuing, arrives at the right time, and is retained without harmful interference. Because these requirements interact, optimizing any single dimension in isolation can simply move the bottleneck to another.\n  We capture these requirements with a predicted-prefetch-to-realized-benefit perspective and propose SnakeCharmer, a unified backend prefetch-control framework for address-prediction-based GPU prefetchers. SnakeCharmer separates address prediction from prefetch realization: the frontend predictor generates prefetch candidates, while the backend control path jointly controls utility, timeliness, and placement by determining whether each candidate should be issued, when it should be issued, and where the returned data should be retained. SnakeCharmer realizes this control path with zero-value-aware filtering for utility, hierarchical feedback-driven distance tuning for timeliness, and a register-assisted prefetch buffer for placement. We design and implement SnakeCharmer primarily on top of Snake, and adapt the same backend-control principles to APOGEE to demonstrate that SnakeCharmer's benefits are not limited to a single frontend predictor. On an A100 GPU model, SnakeCharmer improves performance/energy efficiency by 12.8%/20.8% over Snake and by 1.7%/3.2% over APOGEE, with modest hardware overhead.",
+    "published_date": "2026-10-22T09:35:19Z",
+    "updated_date": "2026-10-22T09:35:19Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.30990v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.30990v1",
+    "source": "arxiv",
+    "score": 0.4445983755588532,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究延迟优化相关技术。\n\n核心内容：GPUs rely on massive thread-level parallelism to tolerate long memory latency, yet they still suffer severe stalls when many warps simultaneously wait for data from the memory system. Address-prediction-based GPU prefetchers can mitigate such stalls, but accurate prediction alone does not guarantee ...。",
+    "takeaway": "本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  }
+]
