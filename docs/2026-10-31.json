@@ -1,0 +1,281 @@
+[
+  {
+    "id": "2610.36329v1",
+    "title": "Plenty of Room in the Middle: Revealing Opportunities on a GPU Cluster via Fine-Grained Monitoring",
+    "authors": [
+      "Andrew Sheinberg",
+      "Samyak Gupta",
+      "Kai Li"
+    ],
+    "abstract": "GPU clusters have become essential computing resources for AI and scientific research in academia and industry. However, their high cost and growing demand often result in long queueing delays. While previous monitoring efforts have operated at second- or minute-level frequencies, they primarily informed job-level scheduling for clusters and lacked the detail needed to optimize GPU-level utilization.\n  This paper presents an in-depth study of a university research GPU cluster, analyzing resource usage at 100 ms intervals. We have developed a lightweight monitoring tool that leverages Nvidia's DCGM library to capture fine-grained \"compute utilization\" metrics within GPUs. Deployed on a cluster with 89 nodes and 319 GPUs, our tool collected data over several months. This paper focuses on a 10-day period with 7,399 jobs submitted by 150 users from 12 departments. Our study reveals three key findings: (1) the GPU cluster exhibits significant underutilization, with over 70% of jobs using less than 20% of GPU memory and 50% averaging below 5% Streaming Multiprocessor (SM) utilization; (2) 80% of jobs have a drastic mismatch between their requested and actual durations, significantly limiting the scheduler's effectiveness; and (3) the multi-GPU jobs we examined show highly periodic communication patterns. These findings suggest there is plenty of room in the middle: substantial utilization gains are available through better job scheduling and GPU multitasking, independent of hardware or application improvements.\n  Our monitoring solution is available as open-source software at https://github.com/als244/gpu_server_monitoring.",
+    "published_date": "2026-10-26T21:56:13Z",
+    "updated_date": "2026-10-26T21:56:13Z",
+    "categories": [
+      "cs.AI",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.36329v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.36329v1",
+    "source": "arxiv",
+    "score": 0.5080683815479279,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、多 GPU、通信优化相关技术。\n\n核心内容：GPU clusters have become essential computing resources for AI and scientific research in academia and industry. However, their high cost and growing demand often result in long queueing delays。",
+    "takeaway": "本文聚焦GPU 内存管理、多 GPU、通信优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2610.37710v1",
+    "title": "zkDuel: Characterizing SumCheck Prover Kernels across GPU Programming Models",
+    "authors": [
+      "Samarth Narang",
+      "Alhad Daftardar",
+      "Brandon Reagen"
+    ],
+    "abstract": "SumCheck is a central prover primitive in zero-knowledge proofs, exposing table-parallel work that maps naturally to GPUs but becomes increasingly arithmetic-intensive as finite fields widen. We study how this shift affects the cost of programming SumCheck in Triton rather than CUDA. Our benchmark, zkDuel, provides matched implementations of 25 zkPHIRE-derived constraints alongside diagnostic polynomials, covering 32-, 64-, 128-, and 256-bit prime fields, with independent CPU-reference validation and cross-backend checksum gating. Of 800 configurations attempted on an NVIDIA H100, 758 complete with matching checksums. CUDA's median advantage over Triton falls from 3.5x at 32 bits to 1.4x at 256 bits, and Triton is faster on 19 large-table configurations; the same convergence appears on an A100, where the gap falls from 4.4x to 1.6x. Profiling shows that the small-field gap largely reflects host launch overhead and redundant modular additions in Triton's original block reduction, whose relative costs diminish as multi-limb Montgomery work grows. Replacing that reduction with tl.reduce brings Triton's median kernel time within 8% of CUDA on both GPUs, while specialized point interpolation improves 256-bit evaluation kernels by 1.55-1.75x. At cryptographic widths, these results show that a Python-embedded DSL can approach CUDA performance, although the largest fully unrolled constraints still expose compiler-scalability limits.",
+    "published_date": "2026-10-26T21:28:29Z",
+    "updated_date": "2026-10-26T21:28:29Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.37710v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.37710v1",
+    "source": "arxiv",
+    "score": 0.46348617792129515,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：SumCheck is a central prover primitive in zero-knowledge proofs, exposing table-parallel work that maps naturally to GPUs but becomes increasingly arithmetic-intensive as finite fields widen. We study how this shift affects the cost of programming SumCheck in Triton rather than CUDA。",
+    "takeaway": "本文聚焦CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2610.33719v1",
+    "title": "ZipFusion: Fusing Lossless KV Decompression with Attention for Efficient LLM Decoding",
+    "authors": [
+      "Yuetao Chen",
+      "Peng Wang",
+      "Hong Xu"
+    ],
+    "abstract": "The key-value (KV) cache places growing demands on GPU memory capacity and bandwidth as large language models serve longer contexts and more concurrent requests. Its footprint limits concurrency, while repeated KV reads during attention can make decoding memory-bandwidth bound. Prior lossless KV cache compression methods reduce transfers between devices but restore the uncompressed KV cache in GPU memory before attention. They therefore leave these repeated KV reads unchanged and require additional work and memory for decompression. We present ZipFusion, which enables attention to consume the losslessly compressed KV cache directly. ZipFusion co-designs the compression format and attention kernel to reduce the bytes read from GPU memory during attention. The kernel reconstructs the original values directly in registers using simple bit operations, avoiding a separate decompression pass and easing the memory-bandwidth bound. ZipFusion also reassigns memory freed by compression across layers to store additional KV cache. Its memory manager reserves space for ongoing generation and makes the remaining capacity available to new requests. We implement ZipFusion on top of FlashInfer and integrate it with SGLang. On an NVIDIA H100, ZipFusion achieves about 1.25x speedup over FlashInfer in decode attention. With 8K context, it improves model decode throughput by up to 26.3% over uncompressed SGLang under the same GPU memory budget. At each method's largest supported batch, it also delivers up to 2.76x the throughput of the best-performing lossless KV cache compression baseline.",
+    "published_date": "2026-10-24T15:07:10Z",
+    "updated_date": "2026-10-24T15:07:10Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.33719v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33719v1",
+    "source": "arxiv",
+    "score": 0.46218190908432005,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、带宽优化、吞吐量相关技术。\n\n核心内容：The key-value (KV) cache places growing demands on GPU memory capacity and bandwidth as large language models serve longer contexts and more concurrent requests. Its footprint limits concurrency, while repeated KV reads during attention can make decoding memory-bandwidth bound。",
+    "takeaway": "本文聚焦GPU 内存管理、带宽优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.33501v1",
+    "title": "DualPace: Decoupled Scheduling and Cooperative GPU--CPU Decoding for LLM Serving",
+    "authors": [
+      "YuXuan Lin",
+      "KeQiang Wu",
+      "Kingsum Chow"
+    ],
+    "abstract": "Large language model (LLM) serving relies on batching to improve inference throughput, but the key-value (KV) cache grows with sequence length and limits GPU-resident concurrency. CPU offloading can expand KV capacity using host memory, yet existing systems remain largely GPU-gated: CPU-resident requests make progress only when the GPU scheduler exposes suitable overlap opportunities. As a result, host memory and CPU compute cannot act as an independent serving resource, leading to bursty CPU-side progress and inflated tail inter-token latency (ITL) under load.\n  We present DualPace, an LLM serving runtime that turns the host into an independently scheduled decode engine. DualPace separates scheduling authority across two engines: the GPU engine executes prefills and GPU-resident decodes, while an AMX-enabled CPU engine independently batches and advances CPU-resident decodes. The engines are decoupled in scheduling but cooperative in execution: the CPU can execute a complete decode iteration locally or selectively invoke GPU Dense Assist for dense stages, while offline profiles guide hardware-specific batching and routing.\n  Our evaluations show that, in decode-oriented scenarios, DualPace improves serving throughput by 6.9--43.2\\% over NEO, a state-of-the-art open-source CPU-offloading system, and by 11.5--90.6\\% over vLLM, a widely used GPU serving system, while maintaining the same level of latency. DualPace also preserves NEO's P99 time-to-first-token (TTFT) advantage over vLLM while sustaining 7.3--50.5\\% higher request rates than NEO at the same level of P99 ITL.",
+    "published_date": "2026-10-24T07:10:20Z",
+    "updated_date": "2026-10-24T07:10:20Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.33501v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33501v1",
+    "source": "arxiv",
+    "score": 0.45803476810455324,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) serving relies on batching to improve inference throughput, but the key-value (KV) cache grows with sequence length and limits GPU-resident concurrency. CPU offloading can expand KV capacity using host memory, yet existing systems remain largely GPU-gated: CPU-resident req...。",
+    "takeaway": "本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.39216v1",
+    "title": "PDScope: Breaking the Prefill-Decode Seesaw for Memory-Bound MoE Inference",
+    "authors": [
+      "Enda Yu",
+      "Dezun Dong",
+      "Zhaoning Zhang",
+      "Xiaojian Yang",
+      "Weiling Yang",
+      "Shaonan Ma",
+      "Dongsheng Li",
+      "Yongwei Wu",
+      "Xiangke Liao"
+    ],
+    "abstract": "Local deployment of MoE-based LLMs on CPU-GPU nodes is attractive for cost and privacy reasons, yet limited GPU memory forces most experts into CPU memory. Prefill is then compute-bound and benefits from aggressive GPU loading, while decode is I/O-bound and requires conservative PCIe transfers. These demands cannot be amortized under low batching---typical of local assistants and document tools---forcing phase-agnostic schedulers into a seesaw: favoring prefill's aggressive loading injects unmaskable I/O that stalls decode, while favoring decode's conservative transfers starves prefill's GPU of work. We observe that expert routing is predictable in phase-specific ways, allowing us to decouple the two phases and optimize prediction, scheduling, and execution independently for each phase. PDScope predicts expert activations to guide placement and prefetching, adapts these policies to each phase's bottleneck via cross-layer cost modeling, and compiles decisions into overhead-free pipelines using a static computation graph, cache prefetching, and zero-copy asynchronous I/O. On mainstream MoE models, PDScope achieves 2.5-10.3x higher prefill throughput and 2.1-6.1x higher decode throughput than existing systems, showing that phase-aware co-design unlocks efficient MoE inference under memory constraints and extends naturally to multi-batch settings.",
+    "published_date": "2026-10-29T02:37:09Z",
+    "updated_date": "2026-10-29T02:37:09Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.39216v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.39216v1",
+    "source": "arxiv",
+    "score": 0.4515143918991089,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、吞吐量相关技术。\n\n核心内容：Local deployment of MoE-based LLMs on CPU-GPU nodes is attractive for cost and privacy reasons, yet limited GPU memory forces most experts into CPU memory. Prefill is then compute-bound and benefits from aggressive GPU loading, while decode is I/O-bound and requires conservative PCIe transfers。",
+    "takeaway": "本文聚焦GPU 内存管理、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2610.39999v1",
+    "title": "PhOSv1: Efficient Scaling of Model Sleeping on a Single Server for Autoscaling with GPU-Context Deduplication",
+    "authors": [
+      "Tianle Sun",
+      "Xingda Wei",
+      "Rong Chen"
+    ],
+    "abstract": "Autoscaling is a key mechanism in model-as-a-service systems, where fast scale-up is essential because the scale-up time directly determines how long a model service remains overloaded, which in turn governs serving quality. The state-of-the-art approach, model sleeping, adopted by mainstream serving engines including vLLM and SGLang, achieves near-zero-cost scale-up by pausing pre-spawned engines on the GPU. However, sleeping is not a free lunch: each sleeping model must keep its GPU context resident, and this cost grows linearly with the number of models, degrading serving performance. Because providers must support many models, they face a dilemma between fast scale-up for all models and high service performance.\n  In this paper, we show that a single server can keep many models asleep without paying this GPU context tax. The key observation is that the contexts of sleeping models are largely duplicated: the driver (CUDA) context can be shared across models, and their GPU kernel binaries overlap heavily due to common operators and libraries. PhOSv1 deduplicates this context by transparently delegating each engine's GPU context allocation to a central daemon through API remoting; therefore, a single server can keep far more models asleep than current engines allow. Our evaluation shows that PhOSv1 matches the scale-up time of vanilla vLLM sleep mode while substantially reducing the GPU memory footprint, improving end-to-end multi-model serving performance.",
+    "published_date": "2026-10-29T13:19:00Z",
+    "updated_date": "2026-10-29T13:19:00Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.39999v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.39999v1",
+    "source": "arxiv",
+    "score": 0.4499868130683899,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、GPU 核函数、CUDA相关技术。\n\n核心内容：Autoscaling is a key mechanism in model-as-a-service systems, where fast scale-up is essential because the scale-up time directly determines how long a model service remains overloaded, which in turn governs serving quality. The state-of-the-art approach, model sleeping, adopted by mainstream servin...。",
+    "takeaway": "本文聚焦GPU 内存管理、GPU 核函数、CUDA，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.37200v1",
+    "title": "PipeLink: Contract-Guided Linking of GPU Kernel Components",
+    "authors": [
+      "Jize Guo",
+      "Xupeng Miao"
+    ],
+    "abstract": "The fastest machine-learning kernels are compositions of components, such as loaders, matrix-multiply mainloops, epilogues and communication stages, that run concurrently on one GPU streaming multiprocessor and share its on-chip memory, barriers, warps and registers. Because these components hard-code where they sit in this shared space, they cannot be compiled, shipped or replaced on their own: combining components from different sources means forking them by hand or keeping them in separate kernels. We present PipeLink, a contract-guided linker for GPU kernel components. Each component is compiled separately into an LTO object that carries a contract stating what it requires and what it promises; PipeLink checks the contracts against each other, relocates every component by solving one joint placement of the SM's resources, and generates the transfers between them, and the vendor LTO backend folds the result into constants. Across 51 configurations on Hopper and Blackwell GPUs, linked kernels run within 0.2% of the same sources compiled as one unit. Linking makes new compositions practical: a CuTe attention operator inside a ThunderKittens decode megakernel speeds up decoding by 2.16$\\times$, a four-owner MoE training megakernel matches the original monolith, one unchanged attention core yields sparse and context-parallel variants that outperform FlexAttention, vLLM and Transformer Engine, and a GEMM + SwiGLU composition whose consumer serves three GPU architectures runs 1.2$\\times$ faster on Blackwell than cuBLAS with a compiled activation.",
+    "published_date": "2026-10-27T13:20:13Z",
+    "updated_date": "2026-10-27T13:20:13Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.37200v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.37200v1",
+    "source": "arxiv",
+    "score": 0.4488693904876709,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、通信优化相关技术。\n\n核心内容：The fastest machine-learning kernels are compositions of components, such as loaders, matrix-multiply mainloops, epilogues and communication stages, that run concurrently on one GPU streaming multiprocessor and share its on-chip memory, barriers, warps and registers. Because these components hard-co...。",
+    "takeaway": "本文聚焦GPU 核函数、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2610.33380v1",
+    "title": "Operating System Support for Accelerators as First-Class Compute Elements in Heterogeneous Systems",
+    "authors": [
+      "Mohammad Shahidzadeh",
+      "Lesley Shannon"
+    ],
+    "abstract": "Heterogeneous systems-on-chip (SoCs) increasingly rely on domain-specific hardware accelerators (HAs) to deliver performance and energy efficiency gains beyond what general-purpose processors can provide. However, operating systems (O/S), such as Linux, assume that processors are the Compute Elements (CEs) and HAs are peripheral devices rather than specialized CEs. As a result, HA execution incurs substantial software (SW) overheads that reduce the effective benefits of hardware (HW) acceleration.\n  This work demonstrates that significant inefficiencies arise from ``O/S peripheral device taxes'' (O/S taxes), including SW stack-accelerator communication, invocation, interrupt handling, and scheduling. We built MEERKAT, a Field-Programmable Gate Array (FPGA)-based framework for configurable multicore systems that include HAs; it allows the user to migrate Linux O/S support from SW to HW and identify, study, and quantify the impact. Here we study four major sources of O/S tax and introduce techniques to mitigate them. These include a virtual-memory-aware (VMA) communication method that enables efficient HA access to application data, a lightweight HA invocation interface, Interrupt Policy Adaptation (IPA) for dynamic polling and interrupt selection, and an HA-aware scheduler that dynamically distributes work across Central Processing Units (CPUs) and multiple HA instances.\n  Experimental results demonstrate up to $260\\times$ faster communication and $2$--$6\\times$ performance improvements in wall-clock time over conventional schedulers. Furthermore, our study reveals that overall system performance depends not only on HA speed, but also on O/S overheads, resource availability, and scheduling decisions. These findings highlight the importance of treating HAs as first-class computational resources and motivate a more accelerator-centric O/S design for future heterogeneous systems.",
+    "published_date": "2026-10-24T00:26:26Z",
+    "updated_date": "2026-10-24T00:26:26Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.33380v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.33380v1",
+    "source": "arxiv",
+    "score": 0.4409451484680176,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究异构计算、通信优化相关技术。\n\n核心内容：Heterogeneous systems-on-chip (SoCs) increasingly rely on domain-specific hardware accelerators (HAs) to deliver performance and energy efficiency gains beyond what general-purpose processors can provide. However, operating systems (O/S), such as Linux, assume that processors are the Compute Element...。",
+    "takeaway": "本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略；2. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.39222v1",
+    "title": "When Does Heterogeneity Pay Off? Understanding GPU-WSE System Complementarity",
+    "authors": [
+      "Ziyu Hu",
+      "Zhijing Ye",
+      "Jiamin Wang",
+      "Zhiqing Zhong",
+      "Zhendong Mi",
+      "Shaoyi Huang",
+      "Weijian Zheng",
+      "Rajkumar Kettimuthu",
+      "Xiaodong Yu"
+    ],
+    "abstract": "As AI accelerator architectures become increasingly diverse, integrating different architectures into a unified system is emerging as a new heterogeneous computing paradigm. GPUs and WSEs differ substantially in compute, memory, and communication organization, creating both architectural complementarity and additional overheads, yet how to translate this heterogeneity into practical performance gains remains unclear. To address this gap, we propose a hierarchical benchmarking methodology to characterize GPU--WSE heterogeneous execution and the conditions for exploiting complementarity, together with an analytical performance model that identifies when heterogeneity becomes a bottleneck and when it yields system-level performance gains.",
+    "published_date": "2026-10-29T02:42:48Z",
+    "updated_date": "2026-10-29T02:42:48Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.39222v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.39222v1",
+    "source": "arxiv",
+    "score": 0.4351062023639679,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究异构计算、通信优化相关技术。\n\n核心内容：As AI accelerator architectures become increasingly diverse, integrating different architectures into a unified system is emerging as a new heterogeneous computing paradigm. GPUs and WSEs differ substantially in compute, memory, and communication organization, creating both architectural complementa...。",
+    "takeaway": "本文聚焦异构计算、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略"
+  },
+  {
+    "id": "2610.37466v1",
+    "title": "Kernel Performance Engineering under Physical Non-Idealities",
+    "authors": [
+      "Supun Kuruppu",
+      "Pranav Dangi",
+      "Wei Li",
+      "Zhenyu Bai",
+      "Tulika Mitra"
+    ],
+    "abstract": "Physical non-idealities in integrated circuit (IC) design and fabrication are concealed by conventional hardware abstractions, yet they can limit kernel performance and obscure optimization opportunities. Using distributed shared memory (DSMEM) on NVIDIA H100 GPUs as a case study, we show how floorsweeping restricts hardware resources available for clustered execution, potentially offsetting the benefits of reduced data movement enabled by DSMEM. Guided by these insights, we develop a wave-aware clustering strategy that accounts for these resource constraints to improve kernel performance. Evaluations using a global-load-and-broadcast microbenchmark, GEMM, and the Hopper version of FlashAttention 4 demonstrate the performance implications of these constraints, with wave-aware clustering improving FlashAttention 4 throughput by up to 5.30% over its baseline. We further show that, under thermal design power (TDP) limits, reduced data movement enables higher Streaming Multiprocessor (SM) frequencies through Dynamic Voltage and Frequency Scaling (DVFS), explaining otherwise unexpected throughput improvements. Extending this analysis beyond GPUs, we show that power constraints also limit throughput scaling on Tenstorrent's Wormhole accelerator, highlighting the broader importance of accounting for physical non-idealities when analyzing and optimizing kernel performance.",
+    "published_date": "2026-10-27T16:00:56Z",
+    "updated_date": "2026-10-27T16:00:56Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2610.37466v1",
+    "arxiv_url": "https://arxiv.org/abs/2610.37466v1",
+    "source": "arxiv",
+    "score": 0.4301967453956604,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究吞吐量相关技术。\n\n核心内容：Physical non-idealities in integrated circuit (IC) design and fabrication are concealed by conventional hardware abstractions, yet they can limit kernel performance and obscure optimization opportunities. Using distributed shared memory (DSMEM) on NVIDIA H100 GPUs as a case study, we show how floors...。",
+    "takeaway": "本文聚焦吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 支持分布式/多 GPU 扩展"
+  }
+]
