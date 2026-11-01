@@ -18,7 +18,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.36329v1",
     "arxiv_url": "https://arxiv.org/abs/2610.36329v1",
     "source": "arxiv",
-    "score": 0.5080683815479279,
+    "score": 0.5080683517456055,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -44,7 +44,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.37710v1",
     "arxiv_url": "https://arxiv.org/abs/2610.37710v1",
     "source": "arxiv",
-    "score": 0.46348617792129515,
+    "score": 0.4634861183166504,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -76,7 +76,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.39216v1",
     "arxiv_url": "https://arxiv.org/abs/2610.39216v1",
     "source": "arxiv",
-    "score": 0.4515143918991089,
+    "score": 0.4515143620967865,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -128,7 +128,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.37200v1",
     "arxiv_url": "https://arxiv.org/abs/2610.37200v1",
     "source": "arxiv",
-    "score": 0.4488693904876709,
+    "score": 0.44886945009231566,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -189,7 +189,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.37466v1",
     "arxiv_url": "https://arxiv.org/abs/2610.37466v1",
     "source": "arxiv",
-    "score": 0.4301967453956604,
+    "score": 0.43019680500030516,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -221,7 +221,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.38262v1",
     "arxiv_url": "https://arxiv.org/abs/2610.38262v1",
     "source": "arxiv",
-    "score": 0.39671392560005186,
+    "score": 0.3967138361930847,
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
@@ -249,7 +249,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.34422v1",
     "arxiv_url": "https://arxiv.org/abs/2610.34422v1",
     "source": "arxiv",
-    "score": 0.3881740415096283,
+    "score": 0.38817398190498353,
     "reasons": [
       "涉及 GPU 计算技术"
     ],
@@ -273,7 +273,7 @@
     "pdf_url": "https://arxiv.org/pdf/2610.40620v1",
     "arxiv_url": "https://arxiv.org/abs/2610.40620v1",
     "source": "arxiv",
-    "score": 0.37899781703948976,
+    "score": 0.3789979362487793,
     "reasons": [
       "与数据库系统和查询处理相关"
     ],
