@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU 数据库论文日报 - 2026-11-09</title>
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --bg-secondary: #111827;
+            --card-bg: #151d2e;
+            --card-hover: #1a2540;
+            --border: #1e2d4a;
+            --border-hover: #2d4a7a;
+            --text: #e2e8f0;
+            --text-secondary: #8892a8;
+            --text-dim: #5a6480;
+            --accent: #60a5fa;
+            --accent-bright: #93c5fd;
+            --accent-green: #34d399;
+            --accent-orange: #fbbf24;
+            --accent-red: #f87171;
+            --accent-purple: #a78bfa;
+            --gradient-1: linear-gradient(135deg, #60a5fa, #34d399);
+            --gradient-2: linear-gradient(135deg, #60a5fa, #a78bfa);
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: rgba(10,14,23,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(96,165,250,0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(96,165,250,0.15);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.4em;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15em;
+            margin-bottom: 16px;
+        }
+        .hero-date {
+            display: inline-block;
+            background: rgba(96,165,250,0.12);
+            color: var(--accent-bright);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            border: 1px solid rgba(96,165,250,0.2);
+        }
+
+        /* Date Navigation */
+        .date-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 24px;
+            margin-bottom: 30px;
+        }
+        .date-nav a {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88em;
+            transition: all 0.2s;
+        }
+        .date-nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(96,165,250,0.08);
+        }
+        .date-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(96,165,250,0.15);
+            font-weight: 600;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 0 auto 36px;
+            padding: 0 24px;
+            flex-wrap: wrap;
+            max-width: 800px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 28px;
+            text-align: center;
+            min-width: 120px;
+            transition: border-color 0.2s;
+        }
+        .stat-card:hover {
+            border-color: var(--border-hover);
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 0.82em;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* Paper List - Two Column Grid */
+        .paper-list {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.25s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .paper-card:hover {
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .paper-card.compact {
+            padding: 18px 22px;
+        }
+
+        .paper-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .paper-rank {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9em;
+            color: #fff;
+            background: var(--gradient-1);
+        }
+        .compact .paper-rank {
+            width: 28px;
+            height: 28px;
+            font-size: 0.8em;
+            border-radius: 8px;
+        }
+        .paper-title {
+            font-size: 1.12em;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .compact .paper-title {
+            font-size: 1.0em;
+        }
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+
+        .paper-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82em;
+            font-weight: 600;
+        }
+        .score-high { background: rgba(52,211,153,0.12); color: var(--accent-green); }
+        .score-mid { background: rgba(251,191,36,0.12); color: var(--accent-orange); }
+        .score-low { background: rgba(90,100,128,0.15); color: var(--text-dim); }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.78em;
+            background: rgba(96,165,250,0.08);
+            color: var(--accent);
+            border: 1px solid rgba(96,165,250,0.15);
+        }
+
+        .paper-authors {
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            margin-top: 8px;
+        }
+
+        .paper-abstract {
+            color: var(--text-secondary);
+            font-size: 0.92em;
+            margin-top: 12px;
+            line-height: 1.75;
+        }
+        .compact .paper-abstract {
+            font-size: 0.86em;
+            margin-top: 8px;
+        }
+
+        .paper-abstract-cn {
+            color: var(--text);
+            font-size: 0.93em;
+            margin-top: 12px;
+            line-height: 1.8;
+            background: rgba(96,165,250,0.04);
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .compact .paper-abstract-cn {
+            font-size: 0.88em;
+            margin-top: 8px;
+            padding: 8px 12px;
+        }
+
+        .paper-takeaway {
+            margin-top: 10px;
+            padding: 8px 14px;
+            background: rgba(52,211,153,0.06);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-green);
+        }
+        .compact .paper-takeaway {
+            font-size: 0.84em;
+            margin-top: 8px;
+            padding: 6px 12px;
+        }
+
+        .paper-innovation {
+            margin-top: 8px;
+            padding: 8px 14px;
+            background: rgba(251,191,36,0.06);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--accent-orange);
+        }
+        .compact .paper-innovation {
+            font-size: 0.84em;
+            padding: 6px 12px;
+        }
+
+        .section-label {
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .paper-reasons {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(52,211,153,0.06);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88em;
+            color: var(--accent-green);
+        }
+
+        .paper-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+        }
+        .paper-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86em;
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .paper-links a:hover {
+            border-color: var(--accent);
+            background: rgba(96,165,250,0.1);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+        .empty-text {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .empty-hint {
+            font-size: 0.9em;
+            color: var(--text-dim);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            color: var(--text-dim);
+            font-size: 0.82em;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+        }
+        .footer-sep {
+            color: var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* Details/Summary */
+        details {
+            margin-top: 6px;
+        }
+        details summary {
+            cursor: pointer;
+            color: var(--text-dim);
+            font-size: 0.85em;
+            user-select: none;
+        }
+        details summary:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 40px 16px 20px; }
+            .hero h1 { font-size: 1.7em; }
+            .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
+            .paper-card { padding: 16px; }
+            .paper-title { font-size: 1.02em; }
+            .top-nav { padding: 10px 12px; }
+            .nav-brand { font-size: 1em; }
+            .stats-row { gap: 10px; padding: 0 12px; }
+            .stat-card { padding: 12px 18px; min-width: 90px; }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+            .paper-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand">⚡ GPU DB Daily</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
+            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>GPU 数据库论文日报</h1>
+        <p class="hero-desc">自动追踪 GPU 加速数据库领域最新研究进展</p>
+        <div class="hero-date">2026-11-09</div>
+    </section>
+
+    <nav class="date-nav"><a href="2026-11-09.html" class="active">2026-11-09</a><a href="2026-11-08.html" class="">2026-11-08</a><a href="2026-11-07.html" class="">2026-11-07</a><a href="2026-11-06.html" class="">2026-11-06</a><a href="2026-11-05.html" class="">2026-11-05</a><a href="2026-11-04.html" class="">2026-11-04</a><a href="2026-11-03.html" class="">2026-11-03</a><a href="2026-11-02.html" class="">2026-11-02</a><a href="2026-11-01.html" class="">2026-11-01</a><a href="2026-10-31.html" class="">2026-10-31</a><a href="2026-10-30.html" class="">2026-10-30</a><a href="2026-10-29.html" class="">2026-10-29</a><a href="2026-10-28.html" class="">2026-10-28</a><a href="2026-10-27.html" class="">2026-10-27</a><a href="2026-10-26.html" class="">2026-10-26</a><a href="2026-10-25.html" class="">2026-10-25</a><a href="2026-10-24.html" class="">2026-10-24</a><a href="2026-10-23.html" class="">2026-10-23</a><a href="2026-10-22.html" class="">2026-10-22</a><a href="2026-10-21.html" class="">2026-10-21</a><a href="2026-10-20.html" class="">2026-10-20</a><a href="2026-10-19.html" class="">2026-10-19</a><a href="2026-10-18.html" class="">2026-10-18</a><a href="2026-10-17.html" class="">2026-10-17</a><a href="2026-10-16.html" class="">2026-10-16</a><a href="2026-10-15.html" class="">2026-10-15</a><a href="2026-10-14.html" class="">2026-10-14</a><a href="2026-10-13.html" class="">2026-10-13</a><a href="2026-10-12.html" class="">2026-10-12</a><a href="2026-10-11.html" class="">2026-10-11</a><a href="2026-10-10.html" class="">2026-10-10</a><a href="2026-10-09.html" class="">2026-10-09</a><a href="2026-10-08.html" class="">2026-10-08</a><a href="2026-10-07.html" class="">2026-10-07</a><a href="2026-10-06.html" class="">2026-10-06</a><a href="2026-10-05.html" class="">2026-10-05</a><a href="2026-10-04.html" class="">2026-10-04</a><a href="2026-10-03.html" class="">2026-10-03</a><a href="2026-10-02.html" class="">2026-10-02</a><a href="2026-10-01.html" class="">2026-10-01</a><a href="2026-09-30.html" class="">2026-09-30</a><a href="2026-09-29.html" class="">2026-09-29</a><a href="2026-09-28.html" class="">2026-09-28</a><a href="2026-09-27.html" class="">2026-09-27</a><a href="2026-09-26.html" class="">2026-09-26</a><a href="2026-09-25.html" class="">2026-09-25</a><a href="2026-09-24.html" class="">2026-09-24</a><a href="2026-09-23.html" class="">2026-09-23</a><a href="2026-09-22.html" class="">2026-09-22</a><a href="2026-09-21.html" class="">2026-09-21</a><a href="2026-09-20.html" class="">2026-09-20</a><a href="2026-09-19.html" class="">2026-09-19</a><a href="2026-09-18.html" class="">2026-09-18</a><a href="2026-09-17.html" class="">2026-09-17</a><a href="2026-09-16.html" class="">2026-09-16</a><a href="2026-09-15.html" class="">2026-09-15</a><a href="2026-09-14.html" class="">2026-09-14</a><a href="2026-09-13.html" class="">2026-09-13</a><a href="2026-09-12.html" class="">2026-09-12</a><a href="2026-09-11.html" class="">2026-09-11</a><a href="2026-09-10.html" class="">2026-09-10</a><a href="2026-09-09.html" class="">2026-09-09</a><a href="2026-09-08.html" class="">2026-09-08</a><a href="2026-09-07.html" class="">2026-09-07</a><a href="2026-09-06.html" class="">2026-09-06</a><a href="2026-09-05.html" class="">2026-09-05</a><a href="2026-09-04.html" class="">2026-09-04</a><a href="2026-09-03.html" class="">2026-09-03</a><a href="2026-09-02.html" class="">2026-09-02</a><a href="2026-09-01.html" class="">2026-09-01</a><a href="2026-08-31.html" class="">2026-08-31</a><a href="2026-08-30.html" class="">2026-08-30</a><a href="2026-08-29.html" class="">2026-08-29</a><a href="2026-08-28.html" class="">2026-08-28</a><a href="2026-08-27.html" class="">2026-08-27</a><a href="2026-08-26.html" class="">2026-08-26</a><a href="2026-08-25.html" class="">2026-08-25</a><a href="2026-08-24.html" class="">2026-08-24</a><a href="2026-08-23.html" class="">2026-08-23</a><a href="2026-08-22.html" class="">2026-08-22</a><a href="2026-08-21.html" class="">2026-08-21</a><a href="2026-08-20.html" class="">2026-08-20</a><a href="2026-08-19.html" class="">2026-08-19</a><a href="2026-08-18.html" class="">2026-08-18</a><a href="2026-08-17.html" class="">2026-08-17</a><a href="2026-08-16.html" class="">2026-08-16</a><a href="2026-08-15.html" class="">2026-08-15</a><a href="2026-08-14.html" class="">2026-08-14</a><a href="2026-08-13.html" class="">2026-08-13</a><a href="2026-08-12.html" class="">2026-08-12</a><a href="2026-08-11.html" class="">2026-08-11</a><a href="2026-08-10.html" class="">2026-08-10</a><a href="2026-08-09.html" class="">2026-08-09</a><a href="2026-08-08.html" class="">2026-08-08</a><a href="2026-08-07.html" class="">2026-08-07</a><a href="2026-08-06.html" class="">2026-08-06</a><a href="2026-08-05.html" class="">2026-08-05</a><a href="2026-08-04.html" class="">2026-08-04</a><a href="2026-08-03.html" class="">2026-08-03</a><a href="2026-08-02.html" class="">2026-08-02</a><a href="2026-08-01.html" class="">2026-08-01</a><a href="2026-07-31.html" class="">2026-07-31</a><a href="2026-07-30.html" class="">2026-07-30</a><a href="2026-07-29.html" class="">2026-07-29</a><a href="2026-07-28.html" class="">2026-07-28</a><a href="2026-07-27.html" class="">2026-07-27</a><a href="2026-07-26.html" class="">2026-07-26</a><a href="2026-07-25.html" class="">2026-07-25</a><a href="2026-07-24.html" class="">2026-07-24</a><a href="2026-07-23.html" class="">2026-07-23</a><a href="2026-07-22.html" class="">2026-07-22</a><a href="2026-07-21.html" class="">2026-07-21</a><a href="2026-07-20.html" class="">2026-07-20</a><a href="2026-07-19.html" class="">2026-07-19</a><a href="2026-07-18.html" class="">2026-07-18</a><a href="2026-07-17.html" class="">2026-07-17</a><a href="2026-07-16.html" class="">2026-07-16</a><a href="2026-07-15.html" class="">2026-07-15</a><a href="2026-07-14.html" class="">2026-07-14</a><a href="2026-07-13.html" class="">2026-07-13</a><a href="2026-07-12.html" class="">2026-07-12</a><a href="2026-07-11.html" class="">2026-07-11</a><a href="2026-07-10.html" class="">2026-07-10</a><a href="2026-07-09.html" class="">2026-07-09</a><a href="2026-07-08.html" class="">2026-07-08</a><a href="2026-07-07.html" class="">2026-07-07</a><a href="2026-07-06.html" class="">2026-07-06</a><a href="2026-07-05.html" class="">2026-07-05</a><a href="2026-07-04.html" class="">2026-07-04</a><a href="2026-07-03.html" class="">2026-07-03</a><a href="2026-07-02.html" class="">2026-07-02</a><a href="2026-07-01.html" class="">2026-07-01</a><a href="2026-06-30.html" class="">2026-06-30</a><a href="2026-06-29.html" class="">2026-06-29</a><a href="2026-06-28.html" class="">2026-06-28</a><a href="2026-06-27.html" class="">2026-06-27</a><a href="2026-06-26.html" class="">2026-06-26</a><a href="2026-06-25.html" class="">2026-06-25</a><a href="2026-06-24.html" class="">2026-06-24</a><a href="2026-06-23.html" class="">2026-06-23</a><a href="2026-06-22.html" class="">2026-06-22</a><a href="2026-06-21.html" class="">2026-06-21</a><a href="2026-06-20.html" class="">2026-06-20</a><a href="2026-06-19.html" class="">2026-06-19</a><a href="2026-06-18.html" class="">2026-06-18</a><a href="2026-06-17.html" class="">2026-06-17</a><a href="2026-06-16.html" class="">2026-06-16</a><a href="2026-06-15.html" class="">2026-06-15</a><a href="2026-06-14.html" class="">2026-06-14</a><a href="2026-06-13.html" class="">2026-06-13</a><a href="2026-06-12.html" class="">2026-06-12</a><a href="2026-06-11.html" class="">2026-06-11</a><a href="2026-06-10.html" class="">2026-06-10</a><a href="2026-06-09.html" class="">2026-06-09</a><a href="2026-06-08.html" class="">2026-06-08</a><a href="2026-06-07.html" class="">2026-06-07</a><a href="2026-06-06.html" class="">2026-06-06</a><a href="2026-06-05.html" class="">2026-06-05</a><a href="2026-06-04.html" class="">2026-06-04</a><a href="2026-06-03.html" class="">2026-06-03</a><a href="2026-06-02.html" class="">2026-06-02</a><a href="2026-06-01.html" class="">2026-06-01</a><a href="2026-05-31.html" class="">2026-05-31</a><a href="2026-05-30.html" class="">2026-05-30</a><a href="2026-05-29.html" class="">2026-05-29</a><a href="2026-05-28.html" class="">2026-05-28</a><a href="2026-05-27.html" class="">2026-05-27</a><a href="2026-05-26.html" class="">2026-05-26</a></nav>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value">10</div>
+            <div class="stat-label">推荐论文</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">0</div>
+            <div class="stat-label">高相关度</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">2026-11-09</div>
+            <div class="stat-label">更新日期</div>
+        </div>
+    </div>
+
+    <div class="paper-list">
+        
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.02556v1" target="_blank">OctEx: Billion-Scale Vector Search by Precomputed Lattice Neighbor Lists on GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.581</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Dongfang Zhao</div>
+        <div class="paper-abstract-cn">本文研究GPU 索引、GPU 内存管理、CUDA相关技术。
+
+核心内容：Approximate nearest-neighbor search on GPUs serves retrieval-augmented generation, recommendation, and deduplication over datasets of up to billions of vectors. The fastest GPU indexes at high recall, such as CAGRA, walk proximity graphs in chained rounds, each of which waits for the distances of th...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Approximate nearest-neighbor search on GPUs serves retrieval-augmented generation, recommendation, and deduplication over datasets of up to billions of vectors. The fastest GPU indexes at high recall, such as CAGRA, walk proximity graphs in chained rounds, each of which waits for the distances of the previous one. High recall therefore costs many dependent rounds per query. Our insight is to spend the HBM of the GPUs on precomputed neighbor lists, so that a query reads its candidates in one parallel step instead of a chain of rounds. This paper turns the above insight into a GPU vector search system, namely OctEx, which holds hundreds of randomly projected copies of the dataset in GPU memory. Every copy rounds its vectors to the nearest points of a regular grid whose cells are nearly round...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 索引、GPU 内存管理、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.02556v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.02556v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">2</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.07535v1" target="_blank">Characterizing CUDA Locality Domains on Blackwell GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.566</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Rocky Wang, Joyce Zhou, Keith Jiang, Jason Zhao</div>
+        <div class="paper-abstract-cn">本文研究GPU 内存管理、CUDA、数据放置、通信优化、带宽优化相关技术。
+
+核心内容：Low latency is critical to user experience. As NVIDIA Blackwell and Rubin GPUs advance multi-die scaling, data placement and cross-die communication become increasingly important。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Low latency is critical to user experience. As NVIDIA Blackwell and Rubin GPUs advance multi-die scaling, data placement and cross-die communication become increasingly important. However, the latency implications and underlying costs of cross-die communication and die-aware execution remain largely unexplored. In this report, we present a comprehensive evaluation of the Locality Domain (LD) feature introduced in CUDA 13.4. Conducted on a single node equipped with eight NVIDIA B300 GPUs, our study examines three aspects: memory management and access, computation, and communication, to identify the sources of latency and, more importantly, explore how LD can mitigate them. Our measurements show that the benefits of LD depend on data access patterns. Through die-aware adaptations and integra...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 内存管理、CUDA、数据放置，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.07535v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.07535v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">3</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.02376v1" target="_blank">High-Throughput Private Information Retrieval with on-CPU Accelerators</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.548</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.OS</span> <span class="tag">cs.CR</span> <span class="tag">cs.DB</span> 
+        </div>
+        <div class="paper-authors">Gyuyeong Kim</div>
+        <div class="paper-abstract-cn">本文研究隐私信息检索、扫描、吞吐量相关技术。
+
+核心内容：Private information retrieval (PIR) hides which record a client retrieves by scanning the entire database, and batching is an effective technique to improve throughput by sharing this scan across queries. However, existing CPU-based solutions gain little from batching because each query still requir...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Private information retrieval (PIR) hides which record a client retrieves by scanning the entire database, and batching is an effective technique to improve throughput by sharing this scan across queries. However, existing CPU-based solutions gain little from batching because each query still requires its own multiplications, and vector instructions perform only a few at a time. GPUs and other discrete accelerators can accelerate these computations, but require extra hardware and can constrain database size due to their limited memory capacity. In this paper, we present AltoPIR, the first PIR system that leverages on-CPU matrix accelerators such as Intel AMX. AltoPIR keeps the accelerator fed from the CPU caches, reading each database byte from memory once for all queries in a batch and ne...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦隐私信息检索、扫描、吞吐量，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.02376v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.02376v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.05751v1" target="_blank">Scheduling Data to Compute: Hierarchical Data Pipelining for LLM Training on AMD GPUs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.518</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.AR</span> <span class="tag">cs.AI</span> 
+        </div>
+        <div class="paper-authors">Gengyu Rao, Ghadeer Ahmed H Alabandi, Su Ann Chong, Thomas Huber 等 (31 位作者)</div>
+        <div class="paper-abstract-cn">本文研究大模型训练、RDMA 网络、网络、通信优化、带宽优化相关技术。
+
+核心内容：Large language models (LLM) have been the key focus of recent machine learning breakthroughs. As the model size grows exponentially, the computation needed for training is astronomical。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Large language models (LLM) have been the key focus of recent machine learning breakthroughs. As the model size grows exponentially, the computation needed for training is astronomical. A GPU can do a huge amount of arithmetic. However, the data its compute units need is not always available when they are ready. This data may still be in slow memory or on another GPU. While the chip waits, expensive compute sits idle, and at scale even a small drop in utilization translates into substantial cost. In this paper, we treat this waiting time as the primary bottleneck. We focus on hardware features designed for explicit data movement. These features load data from off-chip memory onto the chip, rearrange it into the layout the computation requires as it is loaded, and transfer it between GPUs. ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型训练、RDMA 网络、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.05751v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.05751v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.04222v1" target="_blank">GC-MoE: Overlapping Expert-Parallel Token Dispatch with FP8/FP4 Grouped GEMM via CUDA Green Contexts</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.503</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Yong Li, Kan Liu, Tao Lan</div>
+        <div class="paper-abstract-cn">本文研究CUDA、通信优化、延迟优化相关技术。
+
+核心内容：Under expert parallelism, mixture-of-experts (MoE) layers pay all-to-all token dispatch, grouped GEMMs, and a combine step in every layer. In decode each rank holds only 1-256 tokens: dispatch latency and weight traffic dominate while tensor-core utilization is inherently low。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Under expert parallelism, mixture-of-experts (MoE) layers pay all-to-all token dispatch, grouped GEMMs, and a combine step in every layer. In decode each rank holds only 1-256 tokens: dispatch latency and weight traffic dominate while tensor-core utilization is inherently low. In fused operators such as DeepGEMM's Mega MoE, dispatch and computation overlap only by sharing every SM: dispatch warps compete with TMA/MMA and epilogue warps for registers, shared memory, and issue slots; every phase shares one CTA resource budget, synchronization spans the whole SM array, and every replay ends with a workspace-clean pass and a cross-rank barrier. We present GC-MoE, an open-source FP8/FP4 MoE inference operator for NVIDIA Hopper and Blackwell GPUs that uses CUDA Green Contexts to split the device...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、通信优化、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.04222v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.04222v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.02449v1" target="_blank">Turbo-GMM: FlashAttention-Inspired GPU-Accelerated Gaussian Mixture Model</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.502</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> 
+        </div>
+        <div class="paper-authors">Momin Abbas, Sadia Asif, Asad Ul Haq, Kaoutar El Maghraoui</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、隐私信息检索、PyTorch相关技术。
+
+核心内容：Expectation-maximization (EM) for Gaussian mixture models (GMMs) requires scoring $N$ data points against $K$ mixture components. Prior fused GPU implementations, notably Flash-GMM, eliminate materialization of the $N \times K$ responsibility matrix but traverse the component dimension twice to comp...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Expectation-maximization (EM) for Gaussian mixture models (GMMs) requires scoring $N$ data points against $K$ mixture components. Prior fused GPU implementations, notably Flash-GMM, eliminate materialization of the $N \times K$ responsibility matrix but traverse the component dimension twice to compute normalization terms and accumulate sufficient statistics. We introduce Turbo-GMM, a single-sweep fused EM kernel that completes responsibility normalization and sufficient-statistic accumulation within one traversal of the component dimension. By retaining the complete component axis on chip, Turbo-GMM avoids the second score computation required by the released two-sweep Flash-GMM implementation. Its applicability is limited by register pressure, occupancy, and the component and feature dim...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、隐私信息检索、PyTorch，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.02449v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.02449v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.03610v1" target="_blank">A GPU Engine for Sparse Matrix-Vector Products on $k^2$-Tree-Compressed Graphs</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.502</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DS</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Francesco Tosoni, Gabriele Mencagli</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：The $k^2$-tree is a compact representation of Boolean matrices: it stores the recursive hierarchy of their non-empty submatrices, with neither values nor coordinates, and serves rows and columns alike. Its traversal, however, locates the children of each node by rank queries, a chain of dependent ir...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The $k^2$-tree is a compact representation of Boolean matrices: it stores the recursive hierarchy of their non-empty submatrices, with neither values nor coordinates, and serves rows and columns alike. Its traversal, however, locates the children of each node by rank queries, a chain of dependent irregular loads that leaves a GPU waiting on memory. We implement sparse matrix-vector multiplication (SpMV) on $k^2$-trees for the GPU. Since the traversal does not depend on the vector, the positions of the children are static: we descend the tree one level at a time and obtain them from a parallel prefix sum or from a sampled directory of about 0.1 bits per node. Descending in tiles bounds the temporary memory by the depth of the tree, so the device memory of a product is known before it runs. ...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.03610v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.03610v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.06207v1" target="_blank">Performance Portability of Out-of-Kernel Optimizations on GPUs: A Molecular Docking Case Study</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.493</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Gianmarco Accordi, Leonardo Beltrame, Theresa Pollinger, Jens Domke 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、吞吐量相关技术。
+
+核心内容：Achieving performance portability is challenging for irregular scientific applications built as repeated multi-kernel GPU pipelines, because throughput depends on out-of-kernel decisions as much as on kernel efficiency. Using molecular docking as a representative case study, we propose an out-of-ker...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Achieving performance portability is challenging for irregular scientific applications built as repeated multi-kernel GPU pipelines, because throughput depends on out-of-kernel decisions as much as on kernel efficiency. Using molecular docking as a representative case study, we propose an out-of-kernel tuning methodology that treats batching policy, worker concurrency, and per-worker memory allocation as explicit optimization parameters, replacing backend-dependent occupancy-driven choices with a more portable execution strategy based on explicit resource bounds. We implement this methodology in the muDock mini-app under a manager/worker execution model where multiple host workers share a GPU through independent streams. We then evaluate the methodology on NVIDIA, AMD, and Intel GPUs acros...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.06207v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.06207v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.08720v1" target="_blank">The GPU Needs an Operating System</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.477</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Reza Nourai, Behnam Bastani</div>
+        <div class="paper-abstract-cn">本文研究硬件架构或数据系统相关技术。
+
+核心内容：AI chips sit mostly idle while serving models, because replies must be fast and each step waits on memory. On two large open models, the math units were busy only about 6-11% of the time。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">AI chips sit mostly idle while serving models, because replies must be fast and each step waits on memory. On two large open models, the math units were busy only about 6-11% of the time. We argue the GPU needs an operating system that keeps urgent work on schedule and fills idle capacity with other useful work. A feature that ships today recovers a quarter of a GPU with work designed to share, and a tenth with real jobs, at 5% slower decode. Our research system does better: one resident kernel runs a whole model faster than vLLM's best for a single request, and shares the GPU at under 2% slowdown. Scaling beyond one hand-built model needs compilers and a few new chip features, which we specify.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.08720v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.08720v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.09411v1" target="_blank">DataHelix: A CPU-GPU Co-Scheduling Data Plane for Multimodal Model Training</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.474</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.AI</span> 
+        </div>
+        <div class="paper-authors">Yuanhe Li, Jiazhen Wu, Dian Ding, Guangtao Xue 等 (5 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 计算、延迟优化、吞吐量相关技术。
+
+核心内容：Multimodal model training breaks the loose coupling between data loading and model execution assumed by conventional training pipelines. Large per-sample variation in decoding cost, token/latent count, and tensor size causes both CPU preprocessing time and GPU compute time to vary substantially acro...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multimodal model training breaks the loose coupling between data loading and model execution assumed by conventional training pipelines. Large per-sample variation in decoding cost, token/latent count, and tensor size causes both CPU preprocessing time and GPU compute time to vary substantially across data-parallel ranks (training processes). In synchronous training, these two sources of heterogeneity interact tightly: GPU execution determines how long the input pipeline has to prepare the next batch, while delayed preprocessing in any rank in turn stalls all GPUs at synchronization. As a result, optimizing CPU throughput or GPU load balance in isolation cannot eliminate pipeline bubbles. We present DataHelix, a metadata-first CPU-GPU co-scheduling data plane for multimodal training. DataH...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 计算、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.09411v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.09411v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
+            <span class="footer-sep">·</span>
+            <span>上次运行：2026-11-09 07:20:46</span>
+            <span class="footer-sep">·</span>
+            <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
+        </div>
+    </footer>
+</body>
+</html>
