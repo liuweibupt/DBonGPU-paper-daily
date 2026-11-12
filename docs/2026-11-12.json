@@ -1,0 +1,272 @@
+[
+  {
+    "id": "2611.07535v1",
+    "title": "Characterizing CUDA Locality Domains on Blackwell GPUs",
+    "authors": [
+      "Rocky Wang",
+      "Joyce Zhou",
+      "Keith Jiang",
+      "Jason Zhao"
+    ],
+    "abstract": "Low latency is critical to user experience. As NVIDIA Blackwell and Rubin GPUs advance multi-die scaling, data placement and cross-die communication become increasingly important. However, the latency implications and underlying costs of cross-die communication and die-aware execution remain largely unexplored. In this report, we present a comprehensive evaluation of the Locality Domain (LD) feature introduced in CUDA 13.4. Conducted on a single node equipped with eight NVIDIA B300 GPUs, our study examines three aspects: memory management and access, computation, and communication, to identify the sources of latency and, more importantly, explore how LD can mitigate them. Our measurements show that the benefits of LD depend on data access patterns. Through die-aware adaptations and integration with widely used libraries and tools, we achieve speedups of up to 43.5% for NCCL 2.32.3 (AllGather), 111.3% for nvbandwidth (DtoD), and 37% for DeepGEMM (EP). We also identify non-negligible LD-related GPU memory allocation overhead when allocation sizes exceed 32 MB due to barrier and TLB invalidation, we propose a fix to the GPU driver kernel module (submitted to NVIDIA) and show that overhead could be reduced 7x ~ 10x without requiring any user-code changes.",
+    "published_date": "2026-11-05T06:44:09Z",
+    "updated_date": "2026-11-05T06:44:09Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.07535v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.07535v1",
+    "source": "arxiv",
+    "score": 0.5657199001312256,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、CUDA、数据放置、通信优化、带宽优化相关技术。\n\n核心内容：Low latency is critical to user experience. As NVIDIA Blackwell and Rubin GPUs advance multi-die scaling, data placement and cross-die communication become increasingly important。",
+    "takeaway": "本文聚焦GPU 内存管理、CUDA、数据放置，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.13860v1",
+    "title": "Uncovering the Memory Hierarchy of Modern NVIDIA GPUs for Accurate Simulation",
+    "authors": [
+      "Ziwen Wang",
+      "Jiapeng Zhou",
+      "Changxi Liu",
+      "Dongsheng Wang",
+      "Yun Chen"
+    ],
+    "abstract": "Emerging artificial intelligence workloads, particularly Large Language Models (LLMs), place unprecedented demands on GPU memory systems. Consequently, architectural innovations increasingly target the memory system to alleviate these bottlenecks. However, existing works still rely on outdated memory hierarchy models that fail to capture the complexities of modern hardware. This fidelity gap leads to inaccurate characterization and could misguide optimization strategies. To bridge this gap, we present GemAtlas, the first systematic reverse engineering of the memory hierarchy in modern NVIDIA GPUs. By developing fine-grained SASS-level benchmarking, we expose critical, previously undocumented micro-architectural details across different cache levels, including cache set associativity, slice-routing and set-indexing hash functions, replacement policies, coherence behavior, and interconnect topologies. We integrate these discovered micro-architecture details into the state-of-the-art GPU simulation framework. The final results demonstrate that GemAtlas reduces the mean absolute percentage error (MAPE) from 31.69% to 22.24% on average across four GPUs. Specifically, GemAtlas reduces the MAPE from 34.04% to 23.98% for real-world LLM operators.",
+    "published_date": "2026-11-10T10:19:20Z",
+    "updated_date": "2026-11-10T10:19:20Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.13860v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.13860v1",
+    "source": "arxiv",
+    "score": 0.5409829306602478,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理相关技术。\n\n核心内容：Emerging artificial intelligence workloads, particularly Large Language Models (LLMs), place unprecedented demands on GPU memory systems. Consequently, architectural innovations increasingly target the memory system to alleviate these bottlenecks。",
+    "takeaway": "本文聚焦GPU 内存管理，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.11043v1",
+    "title": "GARDEN: Efficient GPU-Accelerated Billion-Scale GNN Training via Caching-Sampling-Batching Co-Design",
+    "authors": [
+      "Qingrui Zhu",
+      "Lei Liu",
+      "Yushu Cai",
+      "Kai Sheng",
+      "Zhiwen Chen",
+      "Xin He"
+    ],
+    "abstract": "Graph Neural Networks (GNNs) have shown impressive performance in diverse tasks such as social network analysis and recommendation systems. However, scaling their training to billion-edge graphs is hindered by the memory wall: GPU memory capacity falls short of the massive storage requirements for node features and topology. Sampling-based GNN training frameworks mitigate this by streaming subgraphs from CPU to GPU, but they incur prohibitive PCIe data transfers and non-coalesced memory accesses, resulting in bandwidth underutilization and low compute efficiency. We propose GARDEN, a GPU-accelerated sampling-based system that co-designs caching, sampling, and batching to eliminate these bottlenecks. GARDEN introduces three key innovations: (1) an Adaptive High-Fidelity Cache Allocator (AHFCA) that combines offline reuse profiling and online hotness tracking to dynamically cache features and adjacency lists within a fixed GPU memory budget, avoiding static allocation waste; (2) a Grouping-based Parallel Sampler that reorders stochastic neighborhood accesses(GPS) to maximize warp occupancy and hide latency on power-law graphs; and (3) a Super-batch Degree Classifier(SDC) that fuses mini-batches into degree-homogeneous groups, enabling cache-friendly coalesced transfers and high GPU utilization. Evaluations on real-world billion-scale graphs demonstrate that GARDEN achieves 4.54x, 1.27x, and 2.97x end-to-end training speedups over DGL-UVA, DUCATI, and FastGL, respectively, while maintaining model convergence and accuracy.",
+    "published_date": "2026-11-08T00:50:37Z",
+    "updated_date": "2026-11-08T00:50:37Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.11043v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.11043v1",
+    "source": "arxiv",
+    "score": 0.5278748416900635,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、GPU 内存管理、缓存、网络、带宽优化相关技术。\n\n核心内容：Graph Neural Networks (GNNs) have shown impressive performance in diverse tasks such as social network analysis and recommendation systems. However, scaling their training to billion-edge graphs is hindered by the memory wall: GPU memory capacity falls short of the massive storage requirements for n...。",
+    "takeaway": "本文聚焦GPU 加速、GPU 内存管理、缓存，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.11402v1",
+    "title": "A Per-Step Load-Balancing Engine for Expert-Parallel MoE Serving",
+    "authors": [
+      "Jingyuan Li",
+      "Maolin Wang",
+      "Hayden So"
+    ],
+    "abstract": "In expert-parallel Mixture-of-Experts serving, a layer finishes only when the most loaded GPU of its group does. Token routing shifts at every decode step and concentrates on a few experts, so most of the group's reserved GPU time waits on stragglers. Recovering that time means re-deciding, at every layer of every decode step, how each replicated expert's tokens divide between its copies. The exact linear-program solvers that make this decision optimally take longer than many of the layers they serve, and their working set outgrows GPU shared memory at deployment scale. We introduce Relief, a bidirectional pairwise relaxation that makes the linear program unnecessary, coming within a fraction of a point of the per-step optimum in a few passes of integer halving over the token counts. We build and measure three deployments, CUDA kernels on the serving GPU, the same verified engine on an FPGA over PCIe, and a fixed-function block beside the accelerator. On decode routing from three open MoE families, Relief holds the balance near the per-step optimum at every group size and layer time measured. Scored as effective utilization relative to that optimum, the kernel alone matches or exceeds every deployable scheme at every group size, from the hundred-microsecond layer on. The on-die engine widens that lead at every point, recovering up to 37.3 percentage points over the deployed static placement, while adding 0.02% of a current accelerator's transistors.",
+    "published_date": "2026-11-08T14:16:54Z",
+    "updated_date": "2026-11-08T14:16:54Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.11402v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.11402v1",
+    "source": "arxiv",
+    "score": 0.5078884935379029,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA相关技术。\n\n核心内容：In expert-parallel Mixture-of-Experts serving, a layer finishes only when the most loaded GPU of its group does. Token routing shifts at every decode step and concentrates on a few experts, so most of the group's reserved GPU time waits on stragglers。",
+    "takeaway": "本文聚焦CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.13879v1",
+    "title": "SFU-Sim: Bit-Exact Reverse Engineering of NVIDIA MUFU and Validation of PTX Paths",
+    "authors": [
+      "Haozhi Xie",
+      "Tao Su"
+    ],
+    "abstract": "Reproducing the numerical behavior of a GPU requires predicting the exact output of special function instructions. Vendor documents give only the function semantics and error bounds. These do not fix the output bit pattern. We present SFU-Sim, which builds bit-exact models of NVIDIA multi-function unit (MUFU) instructions by black-box reverse engineering on real GPUs. We first model a single bare MUFU instruction. We then add the surrounding operations found in the disassembly to model full PTX paths. The model covers 12 common MUFU forms and two BF16 forms on the tested Blackwell GPU. Using SIN/COS as a complete case study, we show how we analyze the PTX-to-SASS compilation path and recover the segment structure, the equivalent coefficient tables, and the finite-width arithmetic. On NVIDIA GPUs of three architectures (Ampere, Ada Lovelace, and Blackwell), we exhaustively compare every tested PTX path over its specified input domain. FP16 and FP32 paths cover all $2^{16}$ and $2^{32}$ input encodings, respectively. The model output matches the hardware bit for bit, with zero mismatches. SFU-Sim computes each output directly from its input. It needs neither a lookup table of all inputs nor access to a physical GPU. It can serve as a bit-exact special function component for instruction simulators. It can also serve as an arithmetic reference for hardware design and functional verification that target the same numerical behavior. SFU-Sim and its validation programs are open source at https://github.com/hzX40000000/SFU-Sim",
+    "published_date": "2026-11-10T10:38:04Z",
+    "updated_date": "2026-11-10T10:38:04Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.13879v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.13879v1",
+    "source": "arxiv",
+    "score": 0.49794326663017274,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Reproducing the numerical behavior of a GPU requires predicting the exact output of special function instructions. Vendor documents give only the function semantics and error bounds。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2611.13762v1",
+    "title": "Exploiting What NVIDIA Profilers Hide: Fast and Accurate Analytical GPU Performance Modeling",
+    "authors": [
+      "Ziwen Wang",
+      "Qi Luo",
+      "Kunlin Li",
+      "Changxi Liu",
+      "Dongsheng Wang",
+      "Yun Chen"
+    ],
+    "abstract": "GPUs have become essential to many fields, including AI and scientific computing. As GPUs grow more complex, the design space of their hardware configurations becomes increasingly large, yet cycle-level simulators remain too slow to explore it. Analytical models make this exploration much faster. However, existing GPU analytical models fall short of accurately predicting performance across hardware configurations, because they re-estimate or scale every stall of a warp on the target configuration. We observe that fixed-latency stalls stay the same across configurations, whereas queueing stalls vary with the pressure on each hardware unit. Based on this observation, we propose ForeSight, a queueing analytical model that reuses the fixed-latency stalls measured on GPU hardware and recomputes the queueing stalls of each hardware unit from its pressure. To provide ForeSight with the counter values of each hardware unit, we build UnitSight, a profiler that recovers these values, which NVIDIA's official profilers hide by aggregating across units. Our evaluation on hardware configurations of nine NVIDIA GPUs shows that ForeSight predicts kernel execution time with a mean absolute percentage error (MAPE) of 8.3%, compared with 14.1% for the best baseline. ForeSight also predicts the end-to-end execution time of LLM inference on vLLM with a MAPE of 2.0%. It runs 49x faster than the cycle-level simulator Accel-Sim and faster than interval-based models such as GCoM. With the aid of ForeSight, we explore configurations derived from the H20 GPU for LLM inference and find one with 1.78x its performance/cost.",
+    "published_date": "2026-11-10T09:02:38Z",
+    "updated_date": "2026-11-10T09:02:38Z",
+    "categories": [
+      "cs.AR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.13762v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.13762v1",
+    "source": "arxiv",
+    "score": 0.4927545320987701,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究大模型推理、延迟优化相关技术。\n\n核心内容：GPUs have become essential to many fields, including AI and scientific computing. As GPUs grow more complex, the design space of their hardware configurations becomes increasingly large, yet cycle-level simulators remain too slow to explore it。",
+    "takeaway": "本文聚焦大模型推理、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2611.08720v1",
+    "title": "The GPU Needs an Operating System",
+    "authors": [
+      "Reza Nourai",
+      "Behnam Bastani"
+    ],
+    "abstract": "AI chips sit mostly idle while serving models, because replies must be fast and each step waits on memory. On two large open models, the math units were busy only about 6-11% of the time. We argue the GPU needs an operating system that keeps urgent work on schedule and fills idle capacity with other useful work. A feature that ships today recovers a quarter of a GPU with work designed to share, and a tenth with real jobs, at 5% slower decode. Our research system does better: one resident kernel runs a whole model faster than vLLM's best for a single request, and shares the GPU at under 2% slowdown. Scaling beyond one hand-built model needs compilers and a few new chip features, which we specify.",
+    "published_date": "2026-11-05T21:14:16Z",
+    "updated_date": "2026-11-05T21:14:16Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.08720v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.08720v1",
+    "source": "arxiv",
+    "score": 0.476727454662323,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：AI chips sit mostly idle while serving models, because replies must be fast and each step waits on memory. On two large open models, the math units were busy only about 6-11% of the time。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.09411v1",
+    "title": "DataHelix: A CPU-GPU Co-Scheduling Data Plane for Multimodal Model Training",
+    "authors": [
+      "Yuanhe Li",
+      "Jiazhen Wu",
+      "Dian Ding",
+      "Guangtao Xue",
+      "Yiming Zhang"
+    ],
+    "abstract": "Multimodal model training breaks the loose coupling between data loading and model execution assumed by conventional training pipelines. Large per-sample variation in decoding cost, token/latent count, and tensor size causes both CPU preprocessing time and GPU compute time to vary substantially across data-parallel ranks (training processes). In synchronous training, these two sources of heterogeneity interact tightly: GPU execution determines how long the input pipeline has to prepare the next batch, while delayed preprocessing in any rank in turn stalls all GPUs at synchronization. As a result, optimizing CPU throughput or GPU load balance in isolation cannot eliminate pipeline bubbles. We present DataHelix, a metadata-first CPU-GPU co-scheduling data plane for multimodal training. DataHelix jointly reasons about preprocessing demand and GPU execution progress, treating each GPU compute window as the readiness budget for the next batch and coordinating preprocessing across ranks to minimize deadline misses rather than CPU makespan. To avoid expensive data movement, placement is decided while samples remain lightweight descriptors, before decoding and collation amplify them into large tensors. Descriptor-level token-latent-aware batching performs coarse pre-balancing, while cost-gated collective rebalancing corrects residual skew only when its expected benefit exceeds transfer cost. Across 11 video and multimodal workloads on 8 Ascend 910B accelerators, DataHelix reduces mean deadline-miss rate by 67.8% and mean p95 input-wait latency by 87.0%, while achieving 2.72x geometric-mean throughput over rank-local DataLoaders and 1.82x over a Ray actor pool under the same CPU budget.",
+    "published_date": "2026-11-06T12:43:45Z",
+    "updated_date": "2026-11-06T12:43:45Z",
+    "categories": [
+      "cs.DC",
+      "cs.AI"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.09411v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.09411v1",
+    "source": "arxiv",
+    "score": 0.47400700926780703,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 计算、延迟优化、吞吐量相关技术。\n\n核心内容：Multimodal model training breaks the loose coupling between data loading and model execution assumed by conventional training pipelines. Large per-sample variation in decoding cost, token/latent count, and tensor size causes both CPU preprocessing time and GPU compute time to vary substantially acro...。",
+    "takeaway": "本文聚焦GPU 计算、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.11820v1",
+    "title": "Exploiting Native Hardware Heterogeneity: Custom GPSIMD Operators for Accelerating Emerging LLM Memory on AWS Trainium",
+    "authors": [
+      "Zifan He",
+      "Jason Cong"
+    ],
+    "abstract": "Emerging memory modules of large language models, such as Engram in DeepSeek-V4.1-Flash, mix irregular integer work (a 64-bit n-gram hash and a sparse table lookup) with dense computation (a GEMM and a gate). When deploying on a GPU-FPGA system, we can disaggregate operations to different devices for Engram to speed up by 5.9$\\times$. AWS Trainium provides a similar heterogeneity natively: each Trainium NeuronCore pairs dense engines with a customizable GPSIMD Engine, and all engines share the on-chip SBUF. However, the Neuron Kernel Interface (NKI) exposes the GPSIMD cores only through fixed built-in instructions, and the official GPSIMD custom-operator toolchain does not support Trainium 2 or 3 and cannot be used with NKI. In this work, we build a toolchain that compiles C++ custom operators for the GPSIMD cores and injects them into the compiled NEFF from the NKI kernel on Trainium 3, expanding the customizability of GPSIMD with the current software stack. Over a hand-optimized NKI baseline of DeepSeek-V4.1-Flash, two GPSIMD operators speed up the n-gram hashing by 1.79$\\times$ at decode, the table retrieval by up to 4.95$\\times$, and the whole Engram computation by up to 1.14$\\times$.",
+    "published_date": "2026-11-09T03:28:54Z",
+    "updated_date": "2026-11-09T03:28:54Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.11820v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.11820v1",
+    "source": "arxiv",
+    "score": 0.45103965520858763,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究SIMD 并行相关技术。\n\n核心内容：Emerging memory modules of large language models, such as Engram in DeepSeek-V4.1-Flash, mix irregular integer work (a 64-bit n-gram hash and a sparse table lookup) with dense computation (a GEMM and a gate). When deploying on a GPU-FPGA system, we can disaggregate operations to different devices fo...。",
+    "takeaway": "本文聚焦SIMD 并行，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.07971v1",
+    "title": "ArcadeDB in Python: An In-Process Multi-Model Database",
+    "authors": [
+      "Taewoon Kim"
+    ],
+    "abstract": "Some Python workflows need transactional reads and writes over documents, traversals over a graph, and similarity search over vector embeddings. In practice these are split across separate systems (a document store, a graph engine, and a vector index), and the data is copied between them and kept consistent by application code. ArcadeDB is an open-source multi-model database engine, written in Java, that supports all three access patterns and can be embedded in a host process. We present arcadedb-embedded, a Python package that runs ArcadeDB inside the Python process via JPype, using a Java Runtime Environment bundled in the wheel. One pip install gives a database with documents, a property graph, and vector search, and needs no Java installation. Query results can be returned as Python lists, NumPy arrays, pandas DataFrames, or Arrow tables. We demonstrate a hybrid retrieval workflow that chains vector search, SQL filtering, and graph traversal over one dataset. We benchmark arcadedb-embedded against SQLite, DuckDB, LadybugDB, and Chroma, and report its costs.",
+    "published_date": "2026-11-05T13:04:20Z",
+    "updated_date": "2026-11-05T13:04:20Z",
+    "categories": [
+      "cs.DB",
+      "cs.IR"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2611.07971v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.07971v1",
+    "source": "arxiv",
+    "score": 0.4473036074638367,
+    "reasons": [
+      "与数据库系统和查询处理相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Some Python workflows need transactional reads and writes over documents, traversals over a graph, and similarity search over vector embeddings. In practice these are split across separate systems (a document store, a graph engine, and a vector index), and the data is copied between them and kept co...。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 优化查询处理流程"
+  }
+]
