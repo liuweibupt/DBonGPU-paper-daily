@@ -1,0 +1,289 @@
+[
+  {
+    "id": "2611.17824v1",
+    "title": "TailGuard-GDS: Tail-Safe Control of GPU Storage Data Movement",
+    "authors": [
+      "Jiaqi Liu",
+      "Fan Yang",
+      "Xiaohang Shi",
+      "Xianzhe Zhang",
+      "Tao Jiang",
+      "Guojun Yuan",
+      "Zhan Wang",
+      "Guangming Tan"
+    ],
+    "abstract": "AI runtimes move state between NVMe storage and GPU memory on critical paths. GPUDirect Storage (GDS) removes host staging, yet our eight-H100 measurements show it is not consistently tail-optimal for semantically identical GPU-buffer operations. The preferred path varies with operation, request size, concurrency, placement, and resource contention; bandwidth and tail-latency winners can disagree. Frameworks specify what moves and when, while GPU I/O stacks expose mechanisms; neither combines phase semantics with measured tail behavior to choose a delivery plan.\n  We present TailGuard-GDS, a runtime that selects a semantically equivalent plan per application phase. It profiles plans varying backend, request shape, and placement, minimizes GPU-visible tail latency under phase constraints, and revisits decisions as conditions change. Resource reuse keeps policy lookup and switching at microsecond-scale overhead.\n  Integrated with PyTorch FSDP and DeepSpeed ZeRO-3, TailGuard reduces FSDP step p95 by 18.4% and GPU-idle p95 by 25.3% versus the strongest fixed path. Across five eight-GPU ZeRO-3 workloads, step p95 falls 7.9-24.6% versus fixed host staging and 28.4-42.6% versus fixed GDS. Against tuned DeepSpeed AIO, TailGuard reduces step p95 by 5.6% and raises estimated throughput by 6.1%.",
+    "published_date": "2026-11-13T06:59:39Z",
+    "updated_date": "2026-11-13T06:59:39Z",
+    "categories": [
+      "cs.DC",
+      "cs.OS"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.17824v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.17824v1",
+    "source": "arxiv",
+    "score": 0.5212111032009125,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 存储、GPU 内存管理、NVMe 存储、PyTorch、带宽优化相关技术。\n\n核心内容：AI runtimes move state between NVMe storage and GPU memory on critical paths. GPUDirect Storage (GDS) removes host staging, yet our eight-H100 measurements show it is not consistently tail-optimal for semantically identical GPU-buffer operations。",
+    "takeaway": "本文聚焦GPU 存储、GPU 内存管理、NVMe 存储，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.20409v1",
+    "title": "Integrated GPU Core for Mamba-3",
+    "authors": [
+      "Shiva Raja",
+      "William Desueza",
+      "Ajay Joshi"
+    ],
+    "abstract": "Mamba-3, the latest Mamba state-space model (SSM), enables efficient long-context modeling, matching Mamba-2 perplexity with half the state size and increasing decoding arithmetic intensity. However, its multi-input multi-output (MIMO) computation, exponential-trapezoidal discretization, and rotary positional embeddings (RoPE) introduce dense, element-wise, and sequential operations. Despite kernel fusion, conventional GPUs execute these operations inefficiently. Our characterization of Mamba-3 hybrid models reveals numerous kernel launches, substantial data movement, and increased register pressure that reduces warp occupancy and memory-latency hiding.\n  We propose RescuCore, a specialized GPU execution unit for Mamba-3 inference that retains other hybrid model layers on existing GPU resources. Integrated alongside CUDA Cores and Tensor Cores within each Streaming Multiprocessor (SM) sub-partition, RescuCore shares the register file, shared memory, and warp schedulers. Dense projections remain on conventional GPU resources, while RescuCore pipelines discretization, normalization, RoPE, MIMO computation, recurrent state updates, and output gating to reduce kernel fragmentation and intermediate data movement.\n  We select BF16 after evaluating multiple numerical formats, preserving model accuracy with an estimated area overhead of 5.9% of an A100 die for state size 32 and MIMO rank 4. We evaluate RescuCore using cycle-accurate Accel-Sim simulation, RTL synthesis, and synthesis-informed AccelWattch power modeling. Compared with conventional GPU execution, RescuCore achieves 1.4-9.4x speedup and 1.4-5.0x energy reduction during prefill, and 1.3-2.8x speedup and 1.2-2.6x energy reduction during autoregressive decoding. These results demonstrate the potential of GPU-integrated specialized execution for SSM-based hybrid models.",
+    "published_date": "2026-11-16T02:15:03Z",
+    "updated_date": "2026-11-16T02:15:03Z",
+    "categories": [
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.20409v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.20409v1",
+    "source": "arxiv",
+    "score": 0.5086098432540893,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、延迟优化相关技术。\n\n核心内容：Mamba-3, the latest Mamba state-space model (SSM), enables efficient long-context modeling, matching Mamba-2 perplexity with half the state size and increasing decoding arithmetic intensity. However, its multi-input multi-output (MIMO) computation, exponential-trapezoidal discretization, and rotary ...。",
+    "takeaway": "本文聚焦CUDA、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.21288v1",
+    "title": "GNoF: A Low-SM-Overhead GPU-Native NVMe-over-Fabrics Completion Path for Data-Intensive GPU Workloads",
+    "authors": [
+      "Lei Tian",
+      "Wenhao Gu"
+    ],
+    "abstract": "GPUs are the main compute engine for data-intensive workloads whose datasets exceed device memory and reside on remote flash. The conventional host CPU orchestrates every NVMe-over-Fabrics (NVMe-oF) transaction and stages data through host memory, costing high CPU usage, repeated CPU-GPU synchronization, and redundant data movement. GPU-initiated storage removes the CPU from the I/O path, but existing designs leave two problems: synchronous lock-step completion pins streaming multiprocessors (SMs) in spin-polling, wasteful over a 10-100 microsecond RDMA round trip, and current GPU-native remote systems focus on target-side firmware while using per-command doorbells and periodic CQ polling.\n  We present GNoF, a GPU-native NVMe-oF/RDMA data path where GPU threads build command capsules, post send work-queue elements, ring doorbells, and reap completions entirely on the device; the CPU only handles one-time connection setup, the admin queue, and a keep-alive thread. Three mechanisms target long fabric round trips: a doorbell mover that coalesces a burst's doorbells into one MMIO ring; a batched CQ poller with a lock-free fast peek and monotonic completion counters that cannot lose a wakeup; and a set-associative, reference-pinned GPU page cache with split fetch/wait pipelining and orphan-fill takeover. GNoF needs no target or firmware change and runs against an unmodified SPDK target.\n  On a 200 Gb/s InfiniBand fabric, GNoF reaches 1.77 million 4 KB IOPS per client at 0.37% host CPU and about 1% SM occupancy, versus 40% CPU for kernel nvme-rdma and about 100% SM occupancy for lock-step polling. Against three existing baselines (kernel nvme-rdma, BaM over a BlueField-3 DPU, and BaM on a local SSD) under identical workloads, we show 10-22x gains on selective column I/O, CPU-burn immunity, and the regime where bulk staging is faster.",
+    "published_date": "2026-11-16T15:55:18Z",
+    "updated_date": "2026-11-16T15:55:18Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.21288v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.21288v1",
+    "source": "arxiv",
+    "score": 0.5057181406021118,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、NVMe 存储相关技术。\n\n核心内容：GPUs are the main compute engine for data-intensive workloads whose datasets exceed device memory and reside on remote flash. The conventional host CPU orchestrates every NVMe-over-Fabrics (NVMe-oF) transaction and stages data through host memory, costing high CPU usage, repeated CPU-GPU synchroniza...。",
+    "takeaway": "本文聚焦RDMA 网络、NVMe 存储，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.18075v1",
+    "title": "Zero-SM NCCL: A Systematic Guide to Designing and Deploying SM-Free GPU Communication",
+    "authors": [
+      "Zhenhao He",
+      "Siyuan Shen",
+      "Ke Wen",
+      "Prajwal Singhania",
+      "Shiqing Fan",
+      "Youngeun Kwon",
+      "Sangkug Lym",
+      "Vasudevan Rengasamy",
+      "Vishnuswaroop Ramesh",
+      "Yicheng Qiang",
+      "Craig Belusar",
+      "Jeff Hammond",
+      "Torsten Hoefler"
+    ],
+    "abstract": "GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost that grows with interconnect bandwidth. We present Zero-SM NCCL, which communicates within and across scale-up domains without launching any SM kernel. It synchronizes through CUDA stream memory operations, moves data asynchronously with copy engines within a scale-up domain, and drives network RDMA from a stream-ordered CPU proxy. It supports data-movement collectives such as AllGather and AlltoAll, plus one-sided ncclPutSignal and ncclWaitSignal APIs. On GB200 NVL72 and B200 NVL8 systems, Zero-SM collectives reach up to 1.36x higher AllGather bandwidth than NCCL's legacy SM-based kernels and cut the median slowdown of overlapped GEMMs from 33% to 4%, at a higher latency per operation. In Megatron-LM training, they accelerate FSDP by up to 3.5%, and one-sided puts accelerate pipeline parallelism by up to 15%. Zero-SM communication is not a universal win, however. Through an end-to-end study across models and parallelism strategies, we show that it pays off for large transfers in GPU-bound workloads and for deep pipelines with large bubbles, but loses on small messages and host-bound workloads. We distill these findings into guidelines for enabling zero-SM communication in NCCL and building it into other libraries.",
+    "published_date": "2026-11-13T12:00:40Z",
+    "updated_date": "2026-11-13T12:00:40Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.18075v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.18075v1",
+    "source": "arxiv",
+    "score": 0.5004244875907898,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、RDMA 网络、网络、通信优化、带宽优化相关技术。\n\n核心内容：GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost that grows with interconnect bandwidth. We present Zero-SM NCCL, which communicates within and across scale-up domains without launching any SM...。",
+    "takeaway": "本文聚焦CUDA、RDMA 网络、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.16330v1",
+    "title": "Snoopie: A Multi-GPU Communication Profiler and Visualizer",
+    "authors": [
+      "Mohammad Kefah Taha Issa",
+      "Muhammad Aditya Sasongko",
+      "Ilyas Turimbetov",
+      "Javid Baydamirli",
+      "Doğan Sağbili",
+      "Didem Unat"
+    ],
+    "abstract": "With data movement becoming one of the most expensive bottlenecks in computing, the need for profiling tools to analyze communication becomes crucial for effectively scaling multi-GPU applications. While existing profiling tools including first-party software by GPU vendors are robust and excel at capturing compute operations within a single GPU, support for monitoring GPU-GPU data transfers and calls issued by communication libraries is currently inadequate. To fill these gaps, we introduce Snoopie, an instrumentation-based multi-GPU communication profiling tool built on NVBit, capable of tracking peer-to-peer transfers and GPU-centric communication library calls. To increase programmer productivity, Snoopie can attribute data movement to the source code line and the data objects involved. It comes with multiple visualization modes at varying granularities, from a coarse view of the data movement in the system as a whole to specific instructions and addresses. Our case studies demonstrate Snoopie's effectiveness in monitoring data movement, locating performance bugs in applications, and understanding concrete data transfers abstracted beneath communication libraries. The tool is publicly available at https://github.com/ParCoreLab/snoopie.",
+    "published_date": "2026-11-12T05:53:50Z",
+    "updated_date": "2026-11-12T05:53:50Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.16330v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.16330v1",
+    "source": "arxiv",
+    "score": 0.4967953109741211,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究多 GPU、通信优化相关技术。\n\n核心内容：With data movement becoming one of the most expensive bottlenecks in computing, the need for profiling tools to analyze communication becomes crucial for effectively scaling multi-GPU applications. While existing profiling tools including first-party software by GPU vendors are robust and excel at c...。",
+    "takeaway": "本文聚焦多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2611.14904v1",
+    "title": "SubGPU Pipelining: Intra-GPU Fine-Grained Spatial Parallelism for LLM Inference",
+    "authors": [
+      "Muralidhar Andoorveedu",
+      "Marius Juston",
+      "Tingkai Liu",
+      "Sanjay Patel"
+    ],
+    "abstract": "Large language model (LLM) decode is dominated by short, predominantly memory-bound kernels that make bursty use of on-chip execution resources and memory bandwidth. This paper introduces SubGPU Pipelining, a fine-grained, intra-GPU spatial execution model that cuts an operator graph into ordered contiguous segments, binds those segments to spatial stages backed by disjoint streaming-multiprocessor (SM) pools, and streams microbatches through the resulting schedule. Selecting the graph cuts, segment-to-stage binding, per-stage SM allocation, and microbatch size is a coupled optimization problem: each choice changes the overlap pattern, shared-resource contention, cache state, and execution times of the others.\n  We evaluate SubGPU Pipelining through both simulation and silicon experiment using the GPT-OSS 120B workload with 32-GPU B200 deployment settings. The analytical shared-resource simulator searches across SubGPU pipeline structures and batch sizes to map the per-user/per-GPU throughput Pareto frontier. At matched per-GPU throughput, the modeled SubGPU frontier provides up to 2.2x higher per-user throughput than temporal execution, and at matched per-user throughput it provides up to 1.9x higher per-GPU throughput. To test physical feasibility and further validate the simulation results, silicon experiments are performed, using one B200 GPU to emulate a 32-GPU B200 deployment. The experiment evaluates one selected two-stage pipeline configuration at global batch 2,048 using CUDA Green Contexts and TensorRT-LLM kernels. Results show that SubGPU Pipelining improves mean DRAM read-plus-write throughput from 71.8% to 83.6% of peak, and reduces the 36-layer decoder iteration time by 10.33%.",
+    "published_date": "2026-11-11T01:51:44Z",
+    "updated_date": "2026-11-11T01:51:44Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.14904v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.14904v1",
+    "source": "arxiv",
+    "score": 0.4964977931976318,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究CUDA、大模型推理、带宽优化、吞吐量相关技术。\n\n核心内容：Large language model (LLM) decode is dominated by short, predominantly memory-bound kernels that make bursty use of on-chip execution resources and memory bandwidth. This paper introduces SubGPU Pipelining, a fine-grained, intra-GPU spatial execution model that cuts an operator graph into ordered co...。",
+    "takeaway": "本文聚焦CUDA、大模型推理、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.15951v1",
+    "title": "Starscream: Reimagining LLM Sharding on AMD Instinct GPUs with GPU Partitioning",
+    "authors": [
+      "Sumanth Gudaparthi",
+      "Smeet Chheda",
+      "Ganesh Dasika"
+    ],
+    "abstract": "As GPU accelerators grow larger to meet rising compute demands, they exhibit increasingly pronounced non-uniform memory access (NUMA) characteristics that challenge existing LLM frameworks. Chiplet-based architectures provide a practical path to larger GPUs while mitigating manufacturing yield constraints. Modern GPUs such as AMD Instinct MI300X employs such a multi-die design, and further offer GPU partitioning capabilities, partitioning a single physical GPU into multiple logical devices with NUMA-aware memory domains, promising faster kernel launches, and reduced memory access latencies with improved locality. However, current parallelization strategies, designed for homogeneous GPU topologies, when applied under partitioning, extend its unidimensional sharding causing significant performance degradation. Three bottlenecks emerge: (1) memory redundancy; (2) arithmetic intensity collapse; (3) communication overhead from flat collectives. We present Starscream, a rethinking of LLM sharding for the chiplet era. Rather than stretching inter-GPU sharding thinner, Starscream adds intra-GPU sharding along an orthogonal dimension, grounded in three foundational principles: kernel shape preservation, memory redundancy elimination, and communication overhead minimization. These principles form the basis for extending any sharding strategy into the partitioning regime. We demonstrate their effectiveness using tensor parallelism as a case study. On AMD MI300X and MI355X, exploiting partitioning capabilities yields up to 4x speedup for attention and 1.43x for fused GEMMs compared to chiplet-oblivious baselines, demonstrating the effectiveness of chiplet-aware designs. Starscream's principles generalize across sharding strategies and future architectures.",
+    "published_date": "2026-11-11T19:44:22Z",
+    "updated_date": "2026-11-11T19:44:22Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.15951v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.15951v1",
+    "source": "arxiv",
+    "score": 0.496412752866745,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究张量并行、GPU 间通信、通信优化相关技术。\n\n核心内容：As GPU accelerators grow larger to meet rising compute demands, they exhibit increasingly pronounced non-uniform memory access (NUMA) characteristics that challenge existing LLM frameworks. Chiplet-based architectures provide a practical path to larger GPUs while mitigating manufacturing yield const...。",
+    "takeaway": "本文聚焦张量并行、GPU 间通信、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.15926v1",
+    "title": "NVIDIA Vera: A Microarchitecture-Level Comparison with Grace, Turin, and Granite Rapids",
+    "authors": [
+      "Joseph Moore",
+      "Thomas Green",
+      "Simon McIntosh-Smith"
+    ],
+    "abstract": "The majority of new HPC systems are centered around NVIDIA, AMD, or Intel CPUs. Vera is NVIDIA's latest data-center CPU, including its first custom data-center core design, Olympus. This paper investigates Vera in comparison to AMD Turin and Intel Granite Rapids, using NVIDIA Grace as a baseline. We navigate up the performance ladder, from microbenchmarks that isolate performance metrics, through NAS kernels and miniapps, to single-socket performance of a range of scientific codes.\n  We find that Vera achieves the best performance of the architectures evaluated in most codes tested, and that this gain is primarily attributed to its high memory bandwidth, effective Spatial Multithreading implementation, and low-latency memory subsystem aided by the architecture's predictive structures. While Vera represents a major leap over its predecessor, we show that its comparatively modest floating-point performance trails Intel and AMD in a small number of compute-bound workloads reflecting NVIDIA's GPU focus for such workloads.",
+    "published_date": "2026-11-11T19:19:57Z",
+    "updated_date": "2026-11-11T19:19:57Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.15926v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.15926v1",
+    "source": "arxiv",
+    "score": 0.491717963218689,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究带宽优化、延迟优化相关技术。\n\n核心内容：The majority of new HPC systems are centered around NVIDIA, AMD, or Intel CPUs. Vera is NVIDIA's latest data-center CPU, including its first custom data-center core design, Olympus。",
+    "takeaway": "本文聚焦带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+  },
+  {
+    "id": "2611.17565v1",
+    "title": "Performance-Portable Exact Gaussian Process Regression in Python via SYCL and oneMath",
+    "authors": [
+      "Alexander Strack",
+      "Marcel Graf",
+      "Alexander Van Craen",
+      "Dirk Pflüger"
+    ],
+    "abstract": "Modern multi-vendor GPU environments force a choice between portable code and native performance. GPRat is an open-source Python library for exact Gaussian process regression built on the HPX asynchronous many-task runtime, tiled algorithms, and CPU/CUDA BLAS backends. We contribute a UXL Foundation oneMath backend with a hybrid HPX/SYCL design, extending GPRat to AMD and Intel GPUs. The new SYCL backend comes within 3% of native CUDA on an NVIDIA A30 at the largest problem size and outperforms the GPflow and GPyTorch libraries by up to 1.75x and 2.17x on the A30 and up to 1.79x and 4.62x on an AMD Instinct MI210. On an Intel Arc B580, a consumer-class card with FP64 throughput below our CPUs, the unmodified SYCL backend trails GPRat's CPU backend. Overall, oneMath's dispatch to vendor-native BLAS lets a single SYCL codebase match CUDA on NVIDIA and outperform established Python GP frameworks on AMD, without vendor-specific code.",
+    "published_date": "2026-11-12T22:44:29Z",
+    "updated_date": "2026-11-12T22:44:29Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.17565v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.17565v1",
+    "source": "arxiv",
+    "score": 0.4874834704399109,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、PyTorch、吞吐量相关技术。\n\n核心内容：Modern multi-vendor GPU environments force a choice between portable code and native performance. GPRat is an open-source Python library for exact Gaussian process regression built on the HPX asynchronous many-task runtime, tiled algorithms, and CPU/CUDA BLAS backends。",
+    "takeaway": "本文聚焦CUDA、PyTorch、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.18111v1",
+    "title": "Multi-GPU Tridiagonal Partition Algorithm",
+    "authors": [
+      "Milena Veneva"
+    ],
+    "abstract": "This paper presents a multi-GPU version and a multi-GPU recursive version of the parallel partition method for systems of linear algebraic equations with tridiagonal coefficient matrices and their implementations in CUDA. Computational experiments on one and two GPU cards, for different system sizes and with different number of recursive steps are conducted. The results are analyzed and discussed.",
+    "published_date": "2026-11-13T12:35:41Z",
+    "updated_date": "2026-11-13T12:35:41Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.18111v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.18111v1",
+    "source": "arxiv",
+    "score": 0.48486560463905337,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、多 GPU相关技术。\n\n核心内容：This paper presents a multi-GPU version and a multi-GPU recursive version of the parallel partition method for systems of linear algebraic equations with tridiagonal coefficient matrices and their implementations in CUDA. Computational experiments on one and two GPU cards, for different system sizes...。",
+    "takeaway": "本文聚焦CUDA、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  }
+]
