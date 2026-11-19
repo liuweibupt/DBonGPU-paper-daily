@@ -480,6 +480,29 @@
     <div class="paper-card">
         <div class="paper-header">
             <span class="paper-rank">1</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.17824v1" target="_blank">TailGuard-GDS: Tail-Safe Control of GPU Storage Data Movement</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.521</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.OS</span> 
+        </div>
+        <div class="paper-authors">Jiaqi Liu, Fan Yang, Xiaohang Shi, Xianzhe Zhang 等 (8 位作者)</div>
+        <div class="paper-abstract-cn">本文研究GPU 存储、GPU 内存管理、NVMe 存储、PyTorch、带宽优化相关技术。
+
+核心内容：AI runtimes move state between NVMe storage and GPU memory on critical paths. GPUDirect Storage (GDS) removes host staging, yet our eight-H100 measurements show it is not consistently tail-optimal for semantically identical GPU-buffer operations。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">AI runtimes move state between NVMe storage and GPU memory on critical paths. GPUDirect Storage (GDS) removes host staging, yet our eight-H100 measurements show it is not consistently tail-optimal for semantically identical GPU-buffer operations. The preferred path varies with operation, request size, concurrency, placement, and resource contention; bandwidth and tail-latency winners can disagree. Frameworks specify what moves and when, while GPU I/O stacks expose mechanisms; neither combines phase semantics with measured tail behavior to choose a delivery plan.
+  We present TailGuard-GDS, a runtime that selects a semantically equivalent plan per application phase. It profiles plans varying backend, request shape, and placement, minimizes GPU-visible tail latency under phase constraints, a...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 存储、GPU 内存管理、NVMe 存储，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.17824v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.17824v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">2</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2611.20409v1" target="_blank">Integrated GPU Core for Mamba-3</a></span>
         </div>
         <div class="paper-meta">
@@ -502,7 +525,7 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">2</span>
+            <span class="paper-rank">3</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2611.21288v1" target="_blank">GNoF: A Low-SM-Overhead GPU-Native NVMe-over-Fabrics Completion Path for Data-Intensive GPU Workloads</a></span>
         </div>
         <div class="paper-meta">
@@ -525,7 +548,51 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">3</span>
+            <span class="paper-rank">4</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.18075v1" target="_blank">Zero-SM NCCL: A Systematic Guide to Designing and Deploying SM-Free GPU Communication</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-mid">相关度 0.500</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Zhenhao He, Siyuan Shen, Ke Wen, Prajwal Singhania 等 (13 位作者)</div>
+        <div class="paper-abstract-cn">本文研究CUDA、RDMA 网络、网络、通信优化、带宽优化相关技术。
+
+核心内容：GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost that grows with interconnect bandwidth. We present Zero-SM NCCL, which communicates within and across scale-up domains without launching any SM...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost that grows with interconnect bandwidth. We present Zero-SM NCCL, which communicates within and across scale-up domains without launching any SM kernel. It synchronizes through CUDA stream memory operations, moves data asynchronously with copy engines within a scale-up domain, and drives network RDMA from a stream-ordered CPU proxy. It supports data-movement collectives such as AllGather and AlltoAll, plus one-sided ncclPutSignal and ncclWaitSignal APIs. On GB200 NVL72 and B200 NVL8 systems, Zero-SM collectives reach up to 1.36x higher AllGather bandwidth than NCCL's legacy SM-based kernels and cut the median slowdown of overlapped GEMM...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、RDMA 网络、网络，与 GPU 数据库主题中等相关，可能提供间接参考价值。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.18075v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.18075v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">5</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.16330v1" target="_blank">Snoopie: A Multi-GPU Communication Profiler and Visualizer</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.497</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Mohammad Kefah Taha Issa, Muhammad Aditya Sasongko, Ilyas Turimbetov, Javid Baydamirli 等 (6 位作者)</div>
+        <div class="paper-abstract-cn">本文研究多 GPU、通信优化相关技术。
+
+核心内容：With data movement becoming one of the most expensive bottlenecks in computing, the need for profiling tools to analyze communication becomes crucial for effectively scaling multi-GPU applications. While existing profiling tools including first-party software by GPU vendors are robust and excel at c...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">With data movement becoming one of the most expensive bottlenecks in computing, the need for profiling tools to analyze communication becomes crucial for effectively scaling multi-GPU applications. While existing profiling tools including first-party software by GPU vendors are robust and excel at capturing compute operations within a single GPU, support for monitoring GPU-GPU data transfers and calls issued by communication libraries is currently inadequate. To fill these gaps, we introduce Snoopie, an instrumentation-based multi-GPU communication profiling tool built on NVBit, capable of tracking peer-to-peer transfers and GPU-centric communication library calls. To increase programmer productivity, Snoopie can attribute data movement to the source code line and the data objects involved...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.16330v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.16330v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">6</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2611.24458v1" target="_blank">A Runtime System for Mitigating Crossbar Port Contention on SM-Partitioned GPUs</a></span>
         </div>
         <div class="paper-meta">
@@ -547,7 +614,51 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">4</span>
+            <span class="paper-rank">7</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.17565v1" target="_blank">Performance-Portable Exact Gaussian Process Regression in Python via SYCL and oneMath</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.487</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="tag">cs.PF</span> 
+        </div>
+        <div class="paper-authors">Alexander Strack, Marcel Graf, Alexander Van Craen, Dirk Pflüger</div>
+        <div class="paper-abstract-cn">本文研究CUDA、PyTorch、吞吐量相关技术。
+
+核心内容：Modern multi-vendor GPU environments force a choice between portable code and native performance. GPRat is an open-source Python library for exact Gaussian process regression built on the HPX asynchronous many-task runtime, tiled algorithms, and CPU/CUDA BLAS backends。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Modern multi-vendor GPU environments force a choice between portable code and native performance. GPRat is an open-source Python library for exact Gaussian process regression built on the HPX asynchronous many-task runtime, tiled algorithms, and CPU/CUDA BLAS backends. We contribute a UXL Foundation oneMath backend with a hybrid HPX/SYCL design, extending GPRat to AMD and Intel GPUs. The new SYCL backend comes within 3% of native CUDA on an NVIDIA A30 at the largest problem size and outperforms the GPflow and GPyTorch libraries by up to 1.75x and 2.17x on the A30 and up to 1.79x and 4.62x on an AMD Instinct MI210. On an Intel Arc B580, a consumer-class card with FP64 throughput below our CPUs, the unmodified SYCL backend trails GPRat's CPU backend. Overall, oneMath's dispatch to vendor-nat...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、PyTorch、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 基于张量计算运行时构建查询引擎</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.17565v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.17565v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">8</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.18111v1" target="_blank">Multi-GPU Tridiagonal Partition Algorithm</a></span>
+        </div>
+        <div class="paper-meta">
+            <span class="score-badge score-low">相关度 0.485</span>
+            <span class="tag">ARXIV</span>
+            <span class="tag">cs.DC</span> 
+        </div>
+        <div class="paper-authors">Milena Veneva</div>
+        <div class="paper-abstract-cn">本文研究CUDA、多 GPU相关技术。
+
+核心内容：This paper presents a multi-GPU version and a multi-GPU recursive version of the parallel partition method for systems of linear algebraic equations with tridiagonal coefficient matrices and their implementations in CUDA. Computational experiments on one and two GPU cards, for different system sizes...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">This paper presents a multi-GPU version and a multi-GPU recursive version of the parallel partition method for systems of linear algebraic equations with tridiagonal coefficient matrices and their implementations in CUDA. Computational experiments on one and two GPU cards, for different system sizes and with different number of recursive steps are conducted. The results are analyzed and discussed.</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦CUDA、多 GPU，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
+        <div class="paper-reasons">涉及 GPU 计算技术</div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2611.18111v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.18111v1" target="_blank">⬇ PDF</a>
+        </div>
+    </div>
+    <div class="paper-card">
+        <div class="paper-header">
+            <span class="paper-rank">9</span>
             <span class="paper-title"><a href="https://arxiv.org/abs/2611.24437v1" target="_blank">Dissecting an Unexplored SASS Control-Code Field: Barrier Exemption and Programmable Warp Priority</a></span>
         </div>
         <div class="paper-meta">
@@ -569,134 +680,24 @@
     </div>
     <div class="paper-card">
         <div class="paper-header">
-            <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.22079v1" target="_blank">SIMQ: A Single Graph-based Index for Multi-Vector Query</a></span>
+            <span class="paper-rank">10</span>
+            <span class="paper-title"><a href="https://arxiv.org/abs/2611.23512v1" target="_blank">DexAttention: Distributed Sparse Attention through Rapid Online Planning and Persistent GPU Execution</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.437</span>
+            <span class="score-badge score-low">相关度 0.465</span>
             <span class="tag">ARXIV</span>
-            <span class="tag">cs.IR</span> <span class="tag">cs.DB</span> 
+            <span class="tag">cs.DC</span> 
         </div>
-        <div class="paper-authors">Yifan Lu, Jiabao Jin, Xiaoyao Zhong, Peng Cheng 等 (10 位作者)</div>
-        <div class="paper-abstract-cn">本文研究GPU 加速、吞吐量相关技术。
+        <div class="paper-authors">Sirui Chen, Xuehai Qian</div>
+        <div class="paper-abstract-cn">本文研究GPU 加速、通信优化相关技术。
 
-核心内容：Multi-vector retrieval models such as ColBERT achieve state-of-the-art effectiveness by representing documents as sets of token-level vectors and scoring via MaxSim, but their high computational cost limits scalability to large corpora. Existing approximate methods face fundamental bottlenecks: cent...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Multi-vector retrieval models such as ColBERT achieve state-of-the-art effectiveness by representing documents as sets of token-level vectors and scoring via MaxSim, but their high computational cost limits scalability to large corpora. Existing approximate methods face fundamental bottlenecks: centroid interaction matrix approaches require computing a full matrix at every query and rely on GPU-accelerated clustering, while data-oblivious compression methods yield unstable recall that requires repeated compensation. We propose SIMQ (Single graph Index for Multi-vector Query), a framework that bridges single-vector graph indices and multi-vector retrieval through data-aware sampling-based clustering and per-token graph navigation, simultaneously bypassing all aforementioned bottlenecks. SIM...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.22079v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.22079v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.20807v1" target="_blank">QuarkDB: A Hybrid Database System for Quantum Data Management</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.436</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Wenrui Zhang, Yu Wang, Xiao Zhang</div>
-        <div class="paper-abstract-cn">本文研究存储引擎、数据库系统、通信优化、延迟优化相关技术。
-
-核心内容：Emerging quantum applications like quantum communication generate large volumes of high-dimensional quantum data, requiring efficient data analysis and storage. However, classical database systems often struggle to meet requirements such as quantum processing or version management。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Emerging quantum applications like quantum communication generate large volumes of high-dimensional quantum data, requiring efficient data analysis and storage. However, classical database systems often struggle to meet requirements such as quantum processing or version management. This paper presents QuarkDB designed for efficient quantum data management. QuarkDB establishes a unified object model for relational and quantum data and defines the syntax of Quantum Structured Query Language. To support efficient quantum data management, QuarkDB integrates three key components: (1) a Hybrid Query Engine with cost-based hybrid plan selection over classical and quantum operators, (2) an Execution Engine with a three-level instructions intermediate representation, QuarkDB-IR, to support quantum ...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦存储引擎、数据库系统、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.20807v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.20807v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.23022v1" target="_blank">Dissecting the GPU Load/Store Unit and Exposing Its Security Risks</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.426</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.CR</span> 
-        </div>
-        <div class="paper-authors">Wenbo Han, Pierre Talbot</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
-
-核心内容：GPUs are the main platform for large-scale machine learning and power the largest supercomputers. Their load/store units (LSUs) often determine kernel performance and have been exploited in prior attacks。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs are the main platform for large-scale machine learning and power the largest supercomputers. Their load/store units (LSUs) often determine kernel performance and have been exploited in prior attacks. Yet what is known about the LSU is only a few isolated mechanisms and parameters, and even a single one has been enough for an attack. In particular, it is still unknown what a load costs, where loads contend, and even whether a warp can starve due to contention. Until each is measured, neither its security risk nor a defense is known. We reverse-engineer how the LSU serves load instructions on recent NVIDIA GPUs with microbenchmarks and analyze the security implications. We give a cycle-accurate latency formula for a global L1 hit or shared memory access from the addresses it touches, wh...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
+核心内容：Sparse attention reduces computation, but distributed execution may still transfer unnecessary data and incur substantial per-operation overhead. Mask-aware assignment and scheduling can reduce these costs, but replanning for dynamic masks must be cheaper than the execution time it saves。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Sparse attention reduces computation, but distributed execution may still transfer unnecessary data and incur substantial per-operation overhead. Mask-aware assignment and scheduling can reduce these costs, but replanning for dynamic masks must be cheaper than the execution time it saves. We present DexAttention, a distributed sparse attention system that co-designs fast online planning with persistent execution. Its assigner uses GPU-accelerated, topology-aware clustering to balance computational load and reduce communication. A lightweight greedy scheduler orders coarse communication and computation operations, while a persistent kernel on each GPU enforces fine-grained dependencies and dispatches ready tasks. This division keeps detailed synchronization out of planning while enabling ov...</div></details>
+        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦GPU 加速、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
+        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</div>
         <div class="paper-reasons">涉及 GPU 计算技术</div>
         <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.23022v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.23022v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.21677v1" target="_blank">Chimera: A Configurable LLM Decode Accelerator Architecture with Compute-Memory-Floorplan Co-Design for HBM-Equipped Multi-Die FPGAs</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.425</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.AR</span> 
-        </div>
-        <div class="paper-authors">Zhiheng Chen, Yifan Zhang, Yu-An Chou, Ye Qiao 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究大模型推理、带宽优化、延迟优化、吞吐量相关技术。
-
-核心内容：GPUs are widely used for LLM inference, but single-request decoding is memory-bound, leaving their compute underutilized while they draw substantial power. HBM-equipped FPGAs are well suited to LLM decoding: their customizable datapaths use memory bandwidth more energy-efficiently than GPUs。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">GPUs are widely used for LLM inference, but single-request decoding is memory-bound, leaving their compute underutilized while they draw substantial power. HBM-equipped FPGAs are well suited to LLM decoding: their customizable datapaths use memory bandwidth more energy-efficiently than GPUs. However, high memory bandwidth alone does not ensure high decode performance: exploiting it requires parallel compute and memory interfaces, whose resource costs and placement on the chip can limit the throughput. We present Chimera, a configurable LLM decode accelerator architecture that co-designs compute, memory access, and floorplan. Specifically, HBM Proxy Ports extend HBM access to compute lanes on every super logic region (SLR) die, and tiered expert storage holds mixture-of-experts weights beyo...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦大模型推理、带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.21677v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.21677v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.18119v1" target="_blank">Query Processing with eBPF-Offload on Computational Storage</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.421</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> 
-        </div>
-        <div class="paper-authors">Alexander Krause, Niclas Hedam, Johannes Pietrzyk, Dirk Habich 等 (8 位作者)</div>
-        <div class="paper-abstract-cn">本文研究查询处理、NVMe 存储、数据库系统相关技术。
-
-核心内容：The idea of pushing computation to storage devices has been explored for decades. In recent years, research has focused on computational storage, i.e., devices that allow a host to execute functions as I/O commands on local data。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">The idea of pushing computation to storage devices has been explored for decades. In recent years, research has focused on computational storage, i.e., devices that allow a host to execute functions as I/O commands on local data. Today, the NVMe and SNIA computational storage standards share an execution model in which the host invokes functions on the device, on data that the host has moved into device memory. Both standards single out eBPF as a format for functions offloaded by the host. In this paper, we study whether this form of computational storage is a good match for query processing. We present the design and implementation of Delilah, a prototype based on an open-hardware device that implements the standard execution model on an actual device and runs eBPF programs calling device...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦查询处理、NVMe 存储、数据库系统，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 优化查询处理流程；2. 改进内存管理策略</div>
-        <div class="paper-reasons">与数据库系统和查询处理相关</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.18119v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.18119v1" target="_blank">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.20546v1" target="_blank">A Gaussian Primitive Data Management Framework for Efficient 3DGS Trajectory Rendering</a></span>
-        </div>
-        <div class="paper-meta">
-            <span class="score-badge score-low">相关度 0.412</span>
-            <span class="tag">ARXIV</span>
-            <span class="tag">cs.DB</span> <span class="tag">cs.CV</span> <span class="tag">cs.GR</span> 
-        </div>
-        <div class="paper-authors">Haolun Ma, Ziyi Liu, Zizhuo Xu, Chuhan Hu 等 (5 位作者)</div>
-        <div class="paper-abstract-cn">本文研究延迟优化相关技术。
-
-核心内容：Trajectory rendering, which renders novel views of a reconstructed 3D scene along a camera path, is a core operation in digital twins and autonomous inspection. Structured 3D Gaussian Splatting (3DGS) renders a single view in real time by decoding sparse anchors into Gaussians on demand, but it rend...。</div><details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">Trajectory rendering, which renders novel views of a reconstructed 3D scene along a camera path, is a core operation in digital twins and autonomous inspection. Structured 3D Gaussian Splatting (3DGS) renders a single view in real time by decoding sparse anchors into Gaussians on demand, but it renders a trajectory view by view: every view projects all anchors to select them, re-decodes anchors already requested by neighboring views, and runs all steps on the GPU while the CPU idles. We treat this as a spatial data management problem, where anchors are spatial objects, views are range queries, and decoded Gaussians are shared derived data, and propose GDM-GS, which removes redundancy at three levels. Within a view, an anchor index and an occluder index answer each view as a holed-frustum r...</div></details>
-        <div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>本文聚焦延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</div>
-        <div class="paper-innovation"><span class="section-label">🚀 创新点</span>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略</div>
-        <div class="paper-reasons">直接涉及 GPU 加速数据库操作</div>
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.20546v1" target="_blank">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.20546v1" target="_blank">⬇ PDF</a>
+            <a href="https://arxiv.org/abs/2611.23512v1" target="_blank">📄 arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.23512v1" target="_blank">⬇ PDF</a>
         </div>
     </div>
     </div>
@@ -705,7 +706,7 @@
         <div class="footer-content">
             <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：2026-11-19 08:08:44</span>
+            <span>上次运行：2026-11-19 09:16:49</span>
             <span class="footer-sep">·</span>
             <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
         </div>
