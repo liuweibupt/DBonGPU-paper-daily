@@ -1,0 +1,293 @@
+[
+  {
+    "id": "2611.20409v1",
+    "title": "Integrated GPU Core for Mamba-3",
+    "authors": [
+      "Shiva Raja",
+      "William Desueza",
+      "Ajay Joshi"
+    ],
+    "abstract": "Mamba-3, the latest Mamba state-space model (SSM), enables efficient long-context modeling, matching Mamba-2 perplexity with half the state size and increasing decoding arithmetic intensity. However, its multi-input multi-output (MIMO) computation, exponential-trapezoidal discretization, and rotary positional embeddings (RoPE) introduce dense, element-wise, and sequential operations. Despite kernel fusion, conventional GPUs execute these operations inefficiently. Our characterization of Mamba-3 hybrid models reveals numerous kernel launches, substantial data movement, and increased register pressure that reduces warp occupancy and memory-latency hiding.\n  We propose RescuCore, a specialized GPU execution unit for Mamba-3 inference that retains other hybrid model layers on existing GPU resources. Integrated alongside CUDA Cores and Tensor Cores within each Streaming Multiprocessor (SM) sub-partition, RescuCore shares the register file, shared memory, and warp schedulers. Dense projections remain on conventional GPU resources, while RescuCore pipelines discretization, normalization, RoPE, MIMO computation, recurrent state updates, and output gating to reduce kernel fragmentation and intermediate data movement.\n  We select BF16 after evaluating multiple numerical formats, preserving model accuracy with an estimated area overhead of 5.9% of an A100 die for state size 32 and MIMO rank 4. We evaluate RescuCore using cycle-accurate Accel-Sim simulation, RTL synthesis, and synthesis-informed AccelWattch power modeling. Compared with conventional GPU execution, RescuCore achieves 1.4-9.4x speedup and 1.4-5.0x energy reduction during prefill, and 1.3-2.8x speedup and 1.2-2.6x energy reduction during autoregressive decoding. These results demonstrate the potential of GPU-integrated specialized execution for SSM-based hybrid models.",
+    "published_date": "2026-11-16T02:15:03Z",
+    "updated_date": "2026-11-16T02:15:03Z",
+    "categories": [
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.20409v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.20409v1",
+    "source": "arxiv",
+    "score": 0.5086098432540893,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、延迟优化相关技术。\n\n核心内容：Mamba-3, the latest Mamba state-space model (SSM), enables efficient long-context modeling, matching Mamba-2 perplexity with half the state size and increasing decoding arithmetic intensity. However, its multi-input multi-output (MIMO) computation, exponential-trapezoidal discretization, and rotary ...。",
+    "takeaway": "本文聚焦CUDA、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+  },
+  {
+    "id": "2611.21288v1",
+    "title": "GNoF: A Low-SM-Overhead GPU-Native NVMe-over-Fabrics Completion Path for Data-Intensive GPU Workloads",
+    "authors": [
+      "Lei Tian",
+      "Wenhao Gu"
+    ],
+    "abstract": "GPUs are the main compute engine for data-intensive workloads whose datasets exceed device memory and reside on remote flash. The conventional host CPU orchestrates every NVMe-over-Fabrics (NVMe-oF) transaction and stages data through host memory, costing high CPU usage, repeated CPU-GPU synchronization, and redundant data movement. GPU-initiated storage removes the CPU from the I/O path, but existing designs leave two problems: synchronous lock-step completion pins streaming multiprocessors (SMs) in spin-polling, wasteful over a 10-100 microsecond RDMA round trip, and current GPU-native remote systems focus on target-side firmware while using per-command doorbells and periodic CQ polling.\n  We present GNoF, a GPU-native NVMe-oF/RDMA data path where GPU threads build command capsules, post send work-queue elements, ring doorbells, and reap completions entirely on the device; the CPU only handles one-time connection setup, the admin queue, and a keep-alive thread. Three mechanisms target long fabric round trips: a doorbell mover that coalesces a burst's doorbells into one MMIO ring; a batched CQ poller with a lock-free fast peek and monotonic completion counters that cannot lose a wakeup; and a set-associative, reference-pinned GPU page cache with split fetch/wait pipelining and orphan-fill takeover. GNoF needs no target or firmware change and runs against an unmodified SPDK target.\n  On a 200 Gb/s InfiniBand fabric, GNoF reaches 1.77 million 4 KB IOPS per client at 0.37% host CPU and about 1% SM occupancy, versus 40% CPU for kernel nvme-rdma and about 100% SM occupancy for lock-step polling. Against three existing baselines (kernel nvme-rdma, BaM over a BlueField-3 DPU, and BaM on a local SSD) under identical workloads, we show 10-22x gains on selective column I/O, CPU-burn immunity, and the regime where bulk staging is faster.",
+    "published_date": "2026-11-16T15:55:18Z",
+    "updated_date": "2026-11-16T15:55:18Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.21288v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.21288v1",
+    "source": "arxiv",
+    "score": 0.5057181406021118,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究RDMA 网络、NVMe 存储相关技术。\n\n核心内容：GPUs are the main compute engine for data-intensive workloads whose datasets exceed device memory and reside on remote flash. The conventional host CPU orchestrates every NVMe-over-Fabrics (NVMe-oF) transaction and stages data through host memory, costing high CPU usage, repeated CPU-GPU synchroniza...。",
+    "takeaway": "本文聚焦RDMA 网络、NVMe 存储，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.24458v1",
+    "title": "A Runtime System for Mitigating Crossbar Port Contention on SM-Partitioned GPUs",
+    "authors": [
+      "Ziwen Wang",
+      "Qi Luo",
+      "Kunlin Li",
+      "Changxi Liu",
+      "Dongsheng Wang",
+      "Yun Chen"
+    ],
+    "abstract": "To avoid scheduling delays when running concurrent workloads on a GPU, Streaming Multiprocessor (SM) partitioning mechanisms such as CUDA Green Contexts restrict each workload to separate SMs. Despite this partitioning, concurrent workloads still significantly slow down latency-critical workloads, which recent studies attribute to shared L2 cache and memory contention. However, contention also occurs at the crossbar ports connecting each Graphics Processing Cluster (GPC) of SMs to the L2 cache, as all SMs in a GPC share one port. Green Contexts spread workloads across GPCs, placing concurrent workloads in the same GPCs and forcing latency-critical memory requests to queue behind background requests. Packing workloads into separate GPCs avoids this contention, but forces latency-critical memory requests through fewer ports, limiting memory bandwidth. Consequently, neither spreading nor packing is always faster across workloads and GPUs. Based on these observations, we present GPCPlace, a runtime system that dynamically selects between spreading and packing by profiling workloads on the target GPU to estimate both slowdowns, and hooks kernel launches in the CUDA driver to set SM masks without application modifications. Across 14 GPUs and 112 workload cases, GPCPlace speeds up latency-critical workloads by up to 1.15x on average and 2.38x maximum over Green Contexts without degrading throughput.",
+    "published_date": "2026-11-18T14:02:39Z",
+    "updated_date": "2026-11-18T14:02:39Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.24458v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.24458v1",
+    "source": "arxiv",
+    "score": 0.4890525472164154,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、带宽优化、延迟优化、吞吐量相关技术。\n\n核心内容：To avoid scheduling delays when running concurrent workloads on a GPU, Streaming Multiprocessor (SM) partitioning mechanisms such as CUDA Green Contexts restrict each workload to separate SMs. Despite this partitioning, concurrent workloads still significantly slow down latency-critical workloads, w...。",
+    "takeaway": "本文聚焦CUDA、带宽优化、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.24437v1",
+    "title": "Dissecting an Unexplored SASS Control-Code Field: Barrier Exemption and Programmable Warp Priority",
+    "authors": [
+      "Ziwen Wang",
+      "Qi Luo",
+      "Kunlin Li",
+      "Changxi Liu",
+      "Dongsheng Wang",
+      "Yun Chen"
+    ],
+    "abstract": "Every instruction in NVIDIA's native GPU ISA (SASS) carries a control code that guides hardware scheduling, and prior work has decoded its known fields to optimize GPU kernels. However, one control-code field remains unexplored: it appears over 500000 times in NVIDIA's closed-source libraries such as cuBLAS and cuDNN, yet nvcc never emits it when compiling user programs. This paper presents the first systematic study of this control-code field across GPU architectures from Volta to Blackwell. Using instruction-level microbenchmarks, we show that the field controls two independent hardware mechanisms: barrier exemption (EXEMPT), which allows instructions blocked by a pending barrier to issue early during the barrier wait, and programmable warp priority (START, TILE, and END), which moves warps across three priority levels in the hardware scheduler. We identify the conditions under which each mechanism improves GPU kernel performance and implement a post-compilation binary optimizer that places these marks directly in compiled binaries without modifying source code or the compiler. Evaluated across six GPUs spanning four architectures, our optimizations speed up representative kernels by up to 31.9%, and the optimizer accelerates production kernels in llama.cpp and vLLM by up to 5.4% and end-to-end LLM inference by up to 3.6%.",
+    "published_date": "2026-11-18T13:53:40Z",
+    "updated_date": "2026-11-18T13:53:40Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.24437v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.24437v1",
+    "source": "arxiv",
+    "score": 0.47956646800041197,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 核函数、大模型推理相关技术。\n\n核心内容：Every instruction in NVIDIA's native GPU ISA (SASS) carries a control code that guides hardware scheduling, and prior work has decoded its known fields to optimize GPU kernels. However, one control-code field remains unexplored: it appears over 500000 times in NVIDIA's closed-source libraries such a...。",
+    "takeaway": "本文聚焦GPU 核函数、大模型推理，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2611.25091v1",
+    "title": "Berth: SLO-Preserving GPU Sharing Without New Preemption",
+    "authors": [
+      "Mohammadali Khodabandehlou",
+      "Mahdi Alizadeh",
+      "Lei Gao",
+      "Murali Annavaram",
+      "Bhaskar Krishnamachari"
+    ],
+    "abstract": "Inference services keep GPUs reserved for their worst-case load, and most of that capacity sits idle. Filling it with best-effort work such as training is the obvious remedy, and latency is why it rarely happens: on a shared GPU, a request that must finish within milliseconds finds the best-effort job's kernels running or queued ahead of it. Spatial sharing cannot evict them, temporal sharing gives the request only its turn, and hardware partitioning protects it by idling what it does not use. Systems that keep both the SLO and the utilization have reached inside the stack (rewriting kernels, patching the driver, instrumenting the framework), which the operator of a closed GPU stack cannot do. This paper argues that reaching inside is unnecessary. The time-slicer built into commodity GPUs already preempts a running kernel within a fraction of a millisecond and switches the moment a context runs out of work; what it lacks is priority, and priority can be created from outside by controlling what the best-effort context has to run. Berth is a user-space system built on this observation: a preloaded shim feeds the best-effort job to the GPU only when no request needs it (feed control), a declared deadline reference extends the rule to continuous-batching LLM engines, and a shortened best-effort time slice, set without privileges, bounds what a long kernel can cost. Berth changes no application, framework, kernel or driver. Across 31 scenario points with MLPerf SLOs and 13 baselines, Berth meets SLOs within a few percentage points of running alone, above every baseline, with 2.7-3.5x the best-effort throughput of the strongest ones; beside LLM serving, it meets per-token targets for nearly every request while training keeps running. Sharing a closed GPU under SLOs needs no new preemption mechanism, only control over what the existing one sees.",
+    "published_date": "2026-11-18T19:29:56Z",
+    "updated_date": "2026-11-18T19:29:56Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.25091v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.25091v1",
+    "source": "arxiv",
+    "score": 0.47848337769508364,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究延迟优化、吞吐量相关技术。\n\n核心内容：Inference services keep GPUs reserved for their worst-case load, and most of that capacity sits idle. Filling it with best-effort work such as training is the obvious remedy, and latency is why it rarely happens: on a shared GPU, a request that must finish within milliseconds finds the best-effort j...。",
+    "takeaway": "本文聚焦延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+  },
+  {
+    "id": "2611.23512v1",
+    "title": "DexAttention: Distributed Sparse Attention through Rapid Online Planning and Persistent GPU Execution",
+    "authors": [
+      "Sirui Chen",
+      "Xuehai Qian"
+    ],
+    "abstract": "Sparse attention reduces computation, but distributed execution may still transfer unnecessary data and incur substantial per-operation overhead. Mask-aware assignment and scheduling can reduce these costs, but replanning for dynamic masks must be cheaper than the execution time it saves. We present DexAttention, a distributed sparse attention system that co-designs fast online planning with persistent execution. Its assigner uses GPU-accelerated, topology-aware clustering to balance computational load and reduce communication. A lightweight greedy scheduler orders coarse communication and computation operations, while a persistent kernel on each GPU enforces fine-grained dependencies and dispatches ready tasks. This division keeps detailed synchronization out of planning while enabling overlap without repeated attention launches. The framework supports static and dynamic per-head masks across multiple attention compute kernels. On a four-node, 16-GPU cluster, DexAttention achieves a $1.39\\times$ geometric-mean end-to-end training speedup over the fastest applicable baseline across 11 configurations. For dynamic video attention, it achieves $2.11$--$2.37\\times$ speedups over Ring Attention including planning.",
+    "published_date": "2026-11-17T21:04:38Z",
+    "updated_date": "2026-11-17T21:04:38Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.23512v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.23512v1",
+    "source": "arxiv",
+    "score": 0.4648603057861328,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 加速、通信优化相关技术。\n\n核心内容：Sparse attention reduces computation, but distributed execution may still transfer unnecessary data and incur substantial per-operation overhead. Mask-aware assignment and scheduling can reduce these costs, but replanning for dynamic masks must be cheaper than the execution time it saves。",
+    "takeaway": "本文聚焦GPU 加速、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2611.24264v1",
+    "title": "Multilevel Graph Partitioning on GPU Supercomputers",
+    "authors": [
+      "Michael S. Gilbert",
+      "Erik G. Boman",
+      "Kamesh Madduri"
+    ],
+    "abstract": "Graph partitioning is a key enabler in computational science, with applications to sparse linear algebra, load-balanced parallel computation, and graph computations. In recent years, graphics processing units (GPUs) have become the preferred accelerator on the world's top supercomputers. Despite this, most existing distributed graph partitioners do not utilize GPUs. In this work, we develop a new multi-GPU distributed partitioner based on Jet, a prior single-GPU partitioner. We seek to optimize scalability without sacrificing quality. Our partitioner utilizes CUDA-aware MPI, one-sided communication routines, and an overall bulk-synchronous parallel structure. We demonstrate solution quality comparable to Jet. Our experiments show excellent weak scaling up to 256 GPUs, enabling partitioning of instances significantly larger than a single-GPU partitioner can handle.",
+    "published_date": "2026-11-18T11:45:35Z",
+    "updated_date": "2026-11-18T11:45:35Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.24264v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.24264v1",
+    "source": "arxiv",
+    "score": 0.464240996837616,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究CUDA、多 GPU、通信优化相关技术。\n\n核心内容：Graph partitioning is a key enabler in computational science, with applications to sparse linear algebra, load-balanced parallel computation, and graph computations. In recent years, graphics processing units (GPUs) have become the preferred accelerator on the world's top supercomputers。",
+    "takeaway": "本文聚焦CUDA、多 GPU、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展"
+  },
+  {
+    "id": "2611.25947v1",
+    "title": "Matching Architecture to Workload: Comparing RISC-V Parallel Accelerators for Energy-Efficient Embedded Computing",
+    "authors": [
+      "Luca Colombo",
+      "Luigi Ghionda",
+      "Amirhossein Kiamarzi",
+      "Yvan Tortorella",
+      "Riccardo Giunti",
+      "Niccolò Giuliani",
+      "Samuele Colmi",
+      "Angelo Garofalo",
+      "Giuseppe Tagliavini",
+      "Davide Rossi"
+    ],
+    "abstract": "Embedded computing demands high performance and energy efficiency across workloads with widely different computational characteristics. Choosing the most suitable execution model therefore requires a quantitative understanding of how each model maps to different workload classes. In this paper, we compare three execution models for energy-efficient embedded computing: scalar multicore, stream ing multicore, and vector processing. We use three open-source RISC-V accelerators as representative implementations: the PULP Cluster, the Snitch Cluster, and Spatz, respectively. Their open-source hardware and software stacks enable a controlled comparison based on implementations in the same 12 nm technology and a common benchmark suite. Our results reveal that no single execution model performs best across all workload classes. Spatz delivers the greatest benefits for regular and highly vectorizable compute-intensive applications, achieving up to 4.29x higher performance and 5.17x greater energy efficiency than the other architectures. However, its effectiveness strongly depends on the availability of data-level parallelism and regular computation and memory-access patterns, making it the most sensitive to workload characteristics. The Snitch Cluster performs particularly well on applications with limited parallelism and streamable memory-access patterns, providing up to 5.53x higher performance and 1.45x greater energy efficiency. Conversely, the PULP Cluster is most effective on irregular and control-dominated applications, achieving improvements of up to 5.66x in performance and 2.80x in energy efficiency. Compared with Spatz, however, the greater flexibility offered by PULP and Snitch comes at a non-negligible cost in terms of both area and power.",
+    "published_date": "2026-11-19T11:34:18Z",
+    "updated_date": "2026-11-19T11:34:18Z",
+    "categories": [
+      "cs.DC",
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.25947v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.25947v1",
+    "source": "arxiv",
+    "score": 0.4439210891723633,
+    "reasons": [
+      "与硬件架构或数据系统相关"
+    ],
+    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Embedded computing demands high performance and energy efficiency across workloads with widely different computational characteristics. Choosing the most suitable execution model therefore requires a quantitative understanding of how each model maps to different workload classes。",
+    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 改进内存管理策略"
+  },
+  {
+    "id": "2611.26619v1",
+    "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+    "authors": [
+      "Jinbin Luo",
+      "Xiaozhe Yao",
+      "Shang Yang",
+      "Zhijian Liu",
+      "Song Han",
+      "Qinghao Hu"
+    ],
+    "abstract": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind fixed virtual addresses, preserving cache layouts and backend interfaces. The Cache Streamer uses computation intervals provided by bounded-state layers to prefetch the next global-attention layer's prefix into GPU slots shared across global-attention layers, reducing GPU residency while overlapping layer-wise transfers with computation. Generated KV remains resident. The Request Scheduler selects resident or streamed execution and triggers capacity adjustments according to request size and queue state. Together, they let HBM released by streaming accommodate other cache components and additional requests. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+    "published_date": "2026-11-19T18:58:31Z",
+    "updated_date": "2026-11-19T18:58:31Z",
+    "categories": [
+      "cs.DC",
+      "cs.LG"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.26619v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.26619v1",
+    "source": "arxiv",
+    "score": 0.4376747298240662,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "本文研究GPU 内存管理、异构计算、延迟优化相关技术。\n\n核心内容：Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency。",
+    "takeaway": "本文聚焦GPU 内存管理、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+  },
+  {
+    "id": "2611.22079v1",
+    "title": "SIMQ: A Single Graph-based Index for Multi-Vector Query",
+    "authors": [
+      "Yifan Lu",
+      "Jiabao Jin",
+      "Xiaoyao Zhong",
+      "Peng Cheng",
+      "Xiangyu Wang",
+      "Haotian Li",
+      "Hua Chen",
+      "Junqing Chen",
+      "Wei Xi",
+      "Heng Tao Shen"
+    ],
+    "abstract": "Multi-vector retrieval models such as ColBERT achieve state-of-the-art effectiveness by representing documents as sets of token-level vectors and scoring via MaxSim, but their high computational cost limits scalability to large corpora. Existing approximate methods face fundamental bottlenecks: centroid interaction matrix approaches require computing a full matrix at every query and rely on GPU-accelerated clustering, while data-oblivious compression methods yield unstable recall that requires repeated compensation. We propose SIMQ (Single graph Index for Multi-vector Query), a framework that bridges single-vector graph indices and multi-vector retrieval through data-aware sampling-based clustering and per-token graph navigation, simultaneously bypassing all aforementioned bottlenecks. SIMQ organizes all token vectors into fine-grained clusters via data-aware sampling, builds a single graph index over cluster centroids independently of PLAID's residual representation, and approximates the MaxSim score through per-token graph search without materializing any interaction matrix or relying on GPU acceleration. We provide theoretical analysis showing that, under a manifold assumption and successful cell retrieval, data-aware partitioning has a smaller expected approximation error than a data-oblivious partition. Building on this foundation, SIMQ+ further introduces count-based scoring and a dynamic candidate set to improve robustness across varying query conditions. Experiments on five benchmarks compare recall, throughput, and construction time against several baselines, primarily on CPU; large-scale PLAID k-means centroids are built on a separate GPU machine. SIMQ has been integrated into VSAG, an Ant Group's open-source vector search library.",
+    "published_date": "2026-11-17T02:01:39Z",
+    "updated_date": "2026-11-17T02:01:39Z",
+    "categories": [
+      "cs.IR",
+      "cs.DB"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2611.22079v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.22079v1",
+    "source": "arxiv",
+    "score": 0.4369630968570709,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "本文研究GPU 加速、吞吐量相关技术。\n\n核心内容：Multi-vector retrieval models such as ColBERT achieve state-of-the-art effectiveness by representing documents as sets of token-level vectors and scoring via MaxSim, but their high computational cost limits scalability to large corpora. Existing approximate methods face fundamental bottlenecks: cent...。",
+    "takeaway": "本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
+    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程"
+  }
+]
