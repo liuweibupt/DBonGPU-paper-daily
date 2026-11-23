@@ -5,7 +5,19 @@
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 An intelligent, open-source Python tool that automates the tracking and recommendation of the latest AI research papers. Paper Daily fetches new papers daily from arXiv and OpenReview, processes them using advanced semantic analysis, and delivers personalized Top 10 recommendations to keep researchers up-to-date with cutting-edge developments.
-1112231321321321321
+
+## 论文日报
+
+- [GPU 数据库日报](https://liuweibupt.github.io/DBonGPU-paper-daily/index.html)从 arXiv 的 `cs.AR`、`cs.DB` 和 `cs.DC` 中按 GPU 数据库相关度推荐论文。
+- [计算机体系结构日报](https://liuweibupt.github.io/DBonGPU-paper-daily/architecture/index.html)收录最近七天提交到 arXiv `cs.AR` 的论文（含交叉分类），按提交时间倒序展示最多 10 篇。
+
+GitHub Actions 每天运行，时间为北京时间 09:00 和 09:30。两份日报生成并推送到 `main` 后，GitHub Pages 自动发布。每份日报都有按日期保存的 HTML 和 JSON 归档。
+
+```bash
+python main.py --html --feed all             # 生成两份日报
+python main.py --html --feed architecture    # 单独生成体系结构日报
+```
+
 ## ✨ Features
 
 - 🔍 **Automated Paper Fetching**: Daily collection from arXiv and OpenReview

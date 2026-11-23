@@ -15,10 +15,11 @@ from typing import Dict, Optional
 class PaperTranslator:
     """Translates paper abstracts and generates AI summaries"""
 
-    def __init__(self):
+    def __init__(self, topic: str = 'GPU 数据库'):
+        self.topic = topic
         self.api_key = os.environ.get('OPENAI_API_KEY', '')
-        self.api_base = os.environ.get('OPENAI_API_BASE', 'https://api.openai.com/v1')
-        self.model = os.environ.get('OPENAI_MODEL', 'gpt-4o-mini')
+        self.api_base = os.environ.get('OPENAI_API_BASE') or 'https://api.openai.com/v1'
+        self.model = os.environ.get('OPENAI_MODEL') or 'gpt-4o-mini'
         self.enabled = bool(self.api_key)
 
     def translate_and_summarize(self, paper: Dict) -> Dict:
@@ -42,7 +43,7 @@ class PaperTranslator:
             paper['innovation'] = ''
             return paper
 
-        prompt = f"""你是一位 GPU 数据库领域的研究专家。请对以下论文进行分析：
+        prompt = f"""你是一位 {self.topic}领域的研究专家。请对以下论文进行分析：
 
 标题：{title}
 
@@ -51,7 +52,7 @@ class PaperTranslator:
 请用中文完成以下三个任务，严格按照 JSON 格式输出（不要包含 markdown 代码块标记）：
 
 1. "abstract_cn": 将英文摘要完整翻译为中文，保留技术术语的英文原文（用括号标注），如"谓词迁移（Predicate Transfer）"
-2. "takeaway": 用1-2句话总结这篇论文的核心洞察或关键结论，突出对 GPU 数据库领域的意义
+2. "takeaway": 用1-2句话总结这篇论文的核心洞察或关键结论，突出对 {self.topic}领域的意义
 3. "innovation": 列出2-4个主要创新点，用分号分隔，每个创新点简洁明了
 
 输出格式示例：
@@ -61,9 +62,9 @@ class PaperTranslator:
             result = self._call_api(prompt)
             if result:
                 parsed = self._parse_response(result)
-                paper['abstract_cn'] = parsed.get('abstract_cn', '')
-                paper['takeaway'] = parsed.get('takeaway', '')
-                paper['innovation'] = parsed.get('innovation', '')
+                for field in ('abstract_cn', 'takeaway', 'innovation'):
+                    value = parsed.get(field)
+                    paper[field] = value if isinstance(value, str) else ''
             else:
                 paper['abstract_cn'] = ''
                 paper['takeaway'] = ''
@@ -96,7 +97,7 @@ class PaperTranslator:
         payload = {
             'model': self.model,
             'messages': [
-                {'role': 'system', 'content': '你是一位 GPU 数据库领域的研究专家，擅长翻译和总结学术论文。请始终以纯 JSON 格式输出，不要包含任何 markdown 标记。'},
+                {'role': 'system', 'content': f'你是一位 {self.topic}领域的研究专家，擅长翻译和总结学术论文。请始终以纯 JSON 格式输出，不要包含任何 markdown 标记。'},
                 {'role': 'user', 'content': prompt}
             ],
             'temperature': 0.3,

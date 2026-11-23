@@ -5,63 +5,97 @@ Generates a beautiful static HTML page for GitHub Pages.
 """
 
 from typing import List, Dict
-from datetime import datetime
+from datetime import date as calendar_date, datetime, timedelta, timezone
+from html import escape
+from pathlib import Path
 import os
 import json
+
+
+BEIJING_TIME = timezone(timedelta(hours=8))
 
 
 class HTMLDisplay:
     """Generates HTML page for paper recommendations"""
 
-    def __init__(self):
-        self.title = "GPU 数据库论文日报"
+    def __init__(self, feed: str = 'db'):
+        self.is_architecture = feed == 'architecture'
+        self.title = "体系结构论文日报" if self.is_architecture else "GPU 数据库论文日报"
+
+    def _render_feed_nav(self, active: str) -> str:
+        db_prefix = '../' if self.is_architecture else ''
+        architecture_path = 'index.html' if self.is_architecture else 'architecture/index.html'
+        brand = '体系结构论文日报' if self.is_architecture else '⚡ GPU DB Daily'
+        tabs = [
+            ('db', f'{db_prefix}index.html', 'GPU 数据库日报'),
+            ('architecture', architecture_path, '体系结构日报'),
+            ('top100', f'{db_prefix}top100.html', '年度 Top 100'),
+            ('classics', f'{db_prefix}classics.html', '经典论文'),
+        ]
+        links = '\n            '.join(
+            f'<a href="{path}" class="{"active" if tab == active else ""}">{label}</a>'
+            for tab, path, label in tabs
+        )
+        return f"""<nav class="top-nav">
+        <div class="nav-brand">{brand}</div>
+        <div class="nav-links">
+            {links}
+            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>"""
 
     def generate_daily_html(self, recommendations: List[Dict], date: str = None, all_dates: List[str] = None) -> str:
         """Generate daily paper recommendation HTML page"""
+        now = datetime.now(BEIJING_TIME)
         if date is None:
-            date = datetime.now().strftime('%Y-%m-%d')
+            date = now.date().isoformat()
 
-        generated_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        display_date = escape(date)
+        generated_time = now.strftime('%Y-%m-%d %H:%M:%S')
+        feed = 'architecture' if self.is_architecture else 'db'
+        subject = '体系结构' if self.is_architecture else 'GPU 数据库'
+        description = (
+            '浏览 arXiv 近 7 天的体系结构论文，按首次提交时间排序'
+            if self.is_architecture else '自动追踪 GPU 加速数据库领域最新研究进展'
+        )
+        categories = 'cs.AR' if self.is_architecture else 'cs.AR / cs.DB / cs.DC'
 
         papers_html = ""
         if recommendations:
             for i, paper in enumerate(recommendations, 1):
                 papers_html += self._render_paper_card(paper, i)
         else:
-            papers_html = """
+            papers_html = f"""
             <div class="empty-state">
                 <div class="empty-icon">📭</div>
-                <div class="empty-text">今日暂无符合条件的 GPU 数据库论文</div>
-                <div class="empty-hint">arXiv 可能在当天尚未发布新论文，请稍后再试</div>
+                <div class="empty-text">近期暂无符合条件的{subject}论文</div>
             </div>"""
 
         history_html = self._render_date_nav(date, all_dates)
 
-        high_relevance = sum(1 for p in recommendations if p.get('score', 0) >= 0.7)
+        relevance_stat = ''
+        if not self.is_architecture:
+            high_relevance = sum(1 for p in recommendations if p.get('score', 0) >= 0.7)
+            relevance_stat = f"""<div class="stat-card">
+            <div class="stat-value">{high_relevance}</div>
+            <div class="stat-label">高相关度</div>
+        </div>"""
 
         return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPU 数据库论文日报 - {date}</title>
+    <title>{self.title} - {display_date}</title>
     {self._common_styles()}
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="nav-brand">⚡ GPU DB Daily</div>
-        <div class="nav-links">
-            <a href="index.html" class="active">每日推荐</a>
-            <a href="top100.html">年度 Top 100</a>
-            <a href="classics.html">经典论文</a>
-            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
-        </div>
-    </nav>
+    {self._render_feed_nav(feed)}
 
     <section class="hero">
-        <h1>GPU 数据库论文日报</h1>
-        <p class="hero-desc">自动追踪 GPU 加速数据库领域最新研究进展</p>
-        <div class="hero-date">{date}</div>
+        <h1>{self.title}</h1>
+        <p class="hero-desc">{description}</p>
+        <div class="hero-date">{display_date}</div>
     </section>
 
     {history_html}
@@ -69,14 +103,11 @@ class HTMLDisplay:
     <div class="stats-row">
         <div class="stat-card">
             <div class="stat-value">{len(recommendations)}</div>
-            <div class="stat-label">推荐论文</div>
+            <div class="stat-label">{'收录论文' if self.is_architecture else '推荐论文'}</div>
         </div>
+        {relevance_stat}
         <div class="stat-card">
-            <div class="stat-value">{high_relevance}</div>
-            <div class="stat-label">高相关度</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{date}</div>
+            <div class="stat-value">{display_date}</div>
             <div class="stat-label">更新日期</div>
         </div>
     </div>
@@ -87,11 +118,11 @@ class HTMLDisplay:
 
     <footer>
         <div class="footer-content">
-            <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
+            <span>由 Paper Daily 自动生成</span>
             <span class="footer-sep">·</span>
-            <span>上次运行：{generated_time}</span>
+            <span>上次运行：{generated_time}（北京时间）</span>
             <span class="footer-sep">·</span>
-            <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
+            <span>数据来源：arXiv {categories}</span>
         </div>
     </footer>
 </body>
@@ -136,15 +167,7 @@ class HTMLDisplay:
     </style>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="nav-brand">⚡ GPU DB Daily</div>
-        <div class="nav-links">
-            <a href="index.html">每日推荐</a>
-            <a href="top100.html" class="active">年度 Top 100</a>
-            <a href="classics.html">经典论文</a>
-            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
-        </div>
-    </nav>
+    {self._render_feed_nav('top100')}
 
     <div class="yearly-hero">
         <h2>{year} 年度 GPU 数据库热门论文</h2>
@@ -357,15 +380,7 @@ class HTMLDisplay:
     </style>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="nav-brand">⚡ GPU DB Daily</div>
-        <div class="nav-links">
-            <a href="index.html">每日推荐</a>
-            <a href="top100.html">年度 Top 100</a>
-            <a href="classics.html" class="active">经典论文</a>
-            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank">GitHub</a>
-        </div>
-    </nav>
+    {self._render_feed_nav('classics')}
 
     <div class="classics-hero">
         <h2>GPU 数据库经典论文</h2>
@@ -524,6 +539,7 @@ class HTMLDisplay:
         }
         .nav-links {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
         }
         .nav-links a {
@@ -532,6 +548,7 @@ class HTMLDisplay:
             padding: 6px 16px;
             border-radius: 8px;
             font-size: 0.9em;
+            white-space: nowrap;
             transition: all 0.2s;
         }
         .nav-links a:hover {
@@ -900,8 +917,10 @@ class HTMLDisplay:
             .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
             .paper-card { padding: 16px; }
             .paper-title { font-size: 1.02em; }
-            .top-nav { padding: 10px 12px; }
+            .top-nav { padding: 10px 12px; flex-wrap: wrap; gap: 6px; }
             .nav-brand { font-size: 1em; }
+            .nav-links { gap: 2px; }
+            .nav-links a { padding: 4px 8px; }
             .stats-row { gap: 10px; padding: 0 12px; }
             .stat-card { padding: 12px 18px; min-width: 90px; }
         }
@@ -912,30 +931,36 @@ class HTMLDisplay:
 
     def _render_paper_card(self, paper: Dict, rank: int, compact: bool = False) -> str:
         """Render a single paper as an HTML card"""
-        title = paper.get('title', '无标题')
+        title = escape(paper.get('title') or '无标题')
         authors = paper.get('authors', [])
-        abstract = paper.get('abstract', '无摘要')
-        abstract_cn = paper.get('abstract_cn', '')
-        score = paper.get('score', 0.0)
+        abstract = paper.get('abstract') or '无摘要'
+        abstract_cn = paper.get('abstract_cn') or ''
         paper_id = paper.get('id', '')
-        source = paper.get('source', 'arxiv').upper()
-        arxiv_url = paper.get('arxiv_url', f'https://arxiv.org/abs/{paper_id}')
-        pdf_url = paper.get('pdf_url', f'https://arxiv.org/pdf/{paper_id}')
+        source = escape(paper.get('source', 'arxiv').upper())
+        arxiv_url = self._paper_url(paper.get('arxiv_url'), f'https://arxiv.org/abs/{paper_id}')
+        pdf_url = self._paper_url(paper.get('pdf_url'), f'https://arxiv.org/pdf/{paper_id}')
         reasons = paper.get('reasons', [])
         categories = paper.get('categories', [])
-        summary = paper.get('summary_cn', '')
-        takeaway = paper.get('takeaway', '')
-        innovation = paper.get('innovation', '')
+        summary = escape(paper.get('summary_cn') or '')
+        takeaway = escape(paper.get('takeaway') or '')
+        innovation = escape(paper.get('innovation') or '')
 
-        if score >= 0.7:
-            score_class = 'score-high'
-        elif score >= 0.5:
-            score_class = 'score-mid'
-        else:
-            score_class = 'score-low'
+        score_badge = ''
+        if not self.is_architecture:
+            score = paper.get('score', 0.0)
+            if score >= 0.7:
+                score_class = 'score-high'
+            elif score >= 0.5:
+                score_class = 'score-mid'
+            else:
+                score_class = 'score-low'
+            score_badge = f'<span class="score-badge {score_class}">相关度 {score:.3f}</span>'
+
+        submitted = (paper.get('published_date') or '')[:10]
+        date_tag = f'<span class="tag">arXiv 提交 {escape(submitted)}</span>' if submitted else ''
 
         if authors:
-            author_str = ", ".join(authors[:4])
+            author_str = ", ".join(escape(author) for author in authors[:4])
             if len(authors) > 4:
                 author_str += f" 等 ({len(authors)} 位作者)"
         else:
@@ -943,21 +968,21 @@ class HTMLDisplay:
 
         cat_tags = ""
         for cat in categories[:3]:
-            cat_tags += f'<span class="tag">{cat}</span> '
+            cat_tags += f'<span class="tag">{escape(cat)}</span> '
 
         reasons_html = ""
         if reasons:
-            reasons_html = f'<div class="paper-reasons">{" &middot; ".join(reasons)}</div>'
+            reasons_html = f'<div class="paper-reasons">{" &middot; ".join(map(escape, reasons))}</div>'
 
         compact_class = " compact" if compact else ""
         abstract_len = 300 if compact else 800
-        abstract_display = abstract[:abstract_len] + ("..." if len(abstract) > abstract_len else "")
+        abstract_display = escape(abstract[:abstract_len]) + ("..." if len(abstract) > abstract_len else "")
 
         # Build abstract section: Chinese translation as primary, English as collapsible
         abstract_section = ""
         if abstract_cn:
             # Chinese translation is the primary display
-            cn_display = abstract_cn[:abstract_len] + ("..." if len(abstract_cn) > abstract_len else "")
+            cn_display = escape(abstract_cn[:abstract_len]) + ("..." if len(abstract_cn) > abstract_len else "")
             abstract_section = f'<div class="paper-abstract-cn">{cn_display}</div>'
             if not compact and abstract:
                 abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
@@ -984,11 +1009,12 @@ class HTMLDisplay:
     <div class="paper-card{compact_class}">
         <div class="paper-header">
             <span class="paper-rank">{rank}</span>
-            <span class="paper-title"><a href="{arxiv_url}" target="_blank">{title}</a></span>
+            <span class="paper-title"><a href="{arxiv_url}" target="_blank" rel="noopener">{title}</a></span>
         </div>
         <div class="paper-meta">
-            <span class="score-badge {score_class}">相关度 {score:.3f}</span>
+            {score_badge}
             <span class="tag">{source}</span>
+            {date_tag}
             {cat_tags}
         </div>
         <div class="paper-authors">{author_str}</div>
@@ -997,10 +1023,16 @@ class HTMLDisplay:
         {innovation_html}
         {reasons_html}
         <div class="paper-links">
-            <a href="{arxiv_url}" target="_blank">📄 arXiv</a>
-            <a href="{pdf_url}" target="_blank">⬇ PDF</a>
+            <a href="{arxiv_url}" target="_blank" rel="noopener">📄 arXiv</a>
+            <a href="{pdf_url}" target="_blank" rel="noopener">⬇ PDF</a>
         </div>
     </div>"""
+
+    @staticmethod
+    def _paper_url(url: str, fallback: str) -> str:
+        if not url or not url.startswith(('https://', 'http://')):
+            url = fallback
+        return escape(url)
 
     def _render_date_nav(self, current_date: str, all_dates: List[str] = None) -> str:
         """Render navigation links to previous dates"""
@@ -1009,61 +1041,49 @@ class HTMLDisplay:
 
         links = ""
         for d in sorted(all_dates, reverse=True):
-            is_active = (d == current_date)
-            href = f"{d}.html"
-            active_class = " active" if is_active else ""
-            links += f'<a href="{href}" class="{active_class.strip()}">{d}</a>'
+            active_class = "active" if d == current_date else ""
+            links += f'<a href="{escape(d)}.html" class="{active_class}">{escape(d)}</a>'
 
         if not links:
-            links = f'<a href="index.html" class="active">{current_date}</a>'
+            links = f'<a href="index.html" class="active">{escape(current_date)}</a>'
 
         return f'<nav class="date-nav">{links}</nav>'
 
-    def _scan_available_dates(self) -> List[str]:
-        """Scan docs directory for available date HTML files"""
-        docs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'docs')
+    def _scan_available_dates(self, output_dir: Path = None) -> List[str]:
+        """Find dated HTML archives for the current feed."""
+        if output_dir is None:
+            output_dir = Path(__file__).resolve().parents[2] / 'docs'
+            if self.is_architecture:
+                output_dir /= 'architecture'
+
         dates = []
-        if os.path.exists(docs_dir):
-            for f in os.listdir(docs_dir):
-                if f.startswith('20') and f.endswith('.html') and f != 'top100.html':
-                    date_str = f.replace('.html', '')
-                    # Validate date format
-                    try:
-                        datetime.strptime(date_str, '%Y-%m-%d')
-                        dates.append(date_str)
-                    except ValueError:
-                        continue
-        return sorted(set(dates))
+        for path in output_dir.glob('????-??-??.html'):
+            try:
+                if path.is_file() and calendar_date.fromisoformat(path.stem).isoformat() == path.stem:
+                    dates.append(path.stem)
+            except ValueError:
+                continue
+        return dates
 
     def save_daily(self, recommendations: List[Dict], output_path: str, date: str = None) -> None:
         """Generate and save daily HTML"""
-        if date is None:
-            date = datetime.now().strftime('%Y-%m-%d')
-
-        # Scan for all available dates
-        all_dates = self._scan_available_dates()
+        date = calendar_date.fromisoformat(date).isoformat() if date else datetime.now(BEIJING_TIME).date().isoformat()
+        output = Path(output_path)
+        all_dates = self._scan_available_dates(output.parent)
         if date not in all_dates:
             all_dates.append(date)
 
         html = self.generate_daily_html(recommendations, date, all_dates)
+        html = '\n'.join(line.rstrip() for line in html.splitlines())
+        data = json.dumps(recommendations, ensure_ascii=False, indent=2, default=str)
+        output.parent.mkdir(parents=True, exist_ok=True)
 
-        os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
-
-        # Save as index.html (always shows latest)
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html)
-
-        # Save as date-specific page
-        date_path = os.path.join(os.path.dirname(output_path), f'{date}.html')
-        with open(date_path, 'w', encoding='utf-8') as f:
-            f.write(html)
-
-        # Save JSON data
-        json_path = os.path.join(os.path.dirname(output_path), f'{date}.json')
-        with open(json_path, 'w', encoding='utf-8') as f:
-            json.dump(recommendations, f, ensure_ascii=False, indent=2, default=str)
-
-        print(f"每日页面已保存到 {output_path}")
+        date_path = output.with_name(f'{date}.html')
+        date_path.with_suffix('.json').write_text(data, encoding='utf-8')
+        date_path.write_text(html, encoding='utf-8')
+        if output != date_path and (output.name != 'index.html' or date == max(all_dates)):
+            output.write_text(html, encoding='utf-8')
+        print(f"每日页面已保存到 {date_path}")
 
     def save_top100(self, papers: List[Dict], output_path: str, year: str = None) -> None:
         """Generate and save top 100 yearly HTML"""

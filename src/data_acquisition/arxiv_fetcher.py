@@ -10,7 +10,8 @@ import requests
 import feedparser
 import re
 import time
-from datetime import datetime, timedelta
+from bs4 import BeautifulSoup
+from datetime import date as calendar_date, datetime, timedelta, timezone
 from typing import List, Dict, Optional
 from urllib.parse import urlencode
 
@@ -20,7 +21,7 @@ class ArxivFetcher:
     
     def __init__(self, categories: List[str] = None):
         self.categories = categories or ['cs.AR', 'cs.DB', 'cs.DC']
-        self.base_url = "http://export.arxiv.org/api/query"
+        self.base_url = "https://export.arxiv.org/api/query"
         self.max_results = 100
 
     def _request_with_retry(self, url: str, max_retries: int = 3, timeout: int = 60) -> Optional[requests.Response]:
@@ -61,6 +62,99 @@ class ArxivFetcher:
                 continue
 
         return self._remove_duplicates(papers)
+
+    def fetch_daily_papers(self, date: str, days: int = 7) -> List[Dict]:
+        """Fetch submissions from the inclusive date window for every category."""
+        end = calendar_date.fromisoformat(date)
+        start = end - timedelta(days=days - 1)
+        web_cache = {}
+        papers = []
+        for category in self.categories:
+            try:
+                papers.extend(self._fetch_daily_category(category, start, end))
+            except RuntimeError as error:
+                print(f"{error}; trying the arXiv recent listing")
+                papers.extend(self._fetch_daily_category_via_web(category, start, end, web_cache))
+
+        for paper in papers:
+            paper['id'] = re.sub(r'v\d+$', '', paper['id'])
+        return self._remove_duplicates(papers)
+
+    def _fetch_daily_category(self, category, start, end):
+        query = f'cat:{category}'
+        if end < datetime.now(timezone.utc).date() - timedelta(days=1):
+            query += f' AND submittedDate:[{start:%Y%m%d}0000 TO {end:%Y%m%d}2359]'
+        offset = 0
+        papers = []
+        while True:
+            params = urlencode({
+                'search_query': query,
+                'start': offset,
+                'max_results': 100,
+                'sortBy': 'submittedDate',
+                'sortOrder': 'descending',
+            })
+            response = self._request_with_retry(f"{self.base_url}?{params}", max_retries=2, timeout=15)
+            time.sleep(3)
+            if response is None:
+                raise RuntimeError(f"arXiv API unavailable for {category}")
+
+            feed = feedparser.parse(response.content)
+            try:
+                total = int(feed.feed.opensearch_totalresults)
+                for entry in feed.entries:
+                    submitted = calendar_date.fromisoformat(entry.published[:10])
+                    if submitted < start:
+                        return papers
+                    if submitted <= end:
+                        papers.append(self._parse_paper_entry(entry, category))
+            except (AttributeError, ValueError) as error:
+                raise RuntimeError(f"Invalid arXiv API response for {category}") from error
+
+            offset += len(feed.entries)
+            if offset >= total:
+                return papers
+            if not feed.entries:
+                raise RuntimeError(f"Incomplete arXiv API response for {category}")
+
+    def _fetch_daily_category_via_web(self, category, start, end, cache):
+        # The recent listing cannot recover arbitrary historical windows.
+        if end < datetime.now(timezone.utc).date() - timedelta(days=1):
+            raise RuntimeError(f"Cannot recover the historical arXiv window for {category}")
+
+        url = f'https://arxiv.org/list/{category}/recent?skip=0&show=2000'
+        response = self._request_with_retry(url, max_retries=2, timeout=15)
+        if response is None:
+            raise RuntimeError(f"arXiv recent listing unavailable for {category}")
+
+        listing = BeautifulSoup(response.content, 'html.parser').select_one('#dlpage')
+        headings = listing.select('h3') if listing else []
+        if not headings:
+            raise RuntimeError(f"Invalid arXiv recent listing for {category}")
+
+        ids = set()
+        for heading in headings:
+            announce_date = datetime.strptime(heading.get_text().split('(')[0].strip(), '%a, %d %b %Y').date()
+            if announce_date < start:
+                continue
+            for link in heading.parent.select('dt a[href^="/abs/"][title="Abstract"]'):
+                ids.add(link['href'][len('/abs/'):])
+
+        papers = []
+        for paper_id in sorted(ids):
+            if paper_id not in cache:
+                try:
+                    time.sleep(3)
+                    cache[paper_id] = self._scrape_paper_page(paper_id)
+                except requests.RequestException as error:
+                    raise RuntimeError(f"arXiv metadata unavailable for {paper_id}") from error
+            paper = cache[paper_id]
+            if not paper or not paper['published_date']:
+                raise RuntimeError(f"Incomplete arXiv metadata for {paper_id}")
+            submitted = calendar_date.fromisoformat(paper['published_date'][:10])
+            if start <= submitted <= end:
+                papers.append(paper)
+        return papers
 
     def fetch_recent_papers(self, days: int = 365, max_results_per_category: int = 500) -> List[Dict]:
         """Fetch papers from the last N days across all categories"""
@@ -177,7 +271,7 @@ class ArxivFetcher:
 
     def _parse_paper_entry(self, entry, category: str) -> Dict:
         """Parse a single paper entry from arXiv feed"""
-        arxiv_id = entry.id.split('/')[-1]
+        arxiv_id = entry.id.split('/abs/', 1)[-1]
 
         authors = []
         if hasattr(entry, 'authors'):
@@ -204,7 +298,7 @@ class ArxivFetcher:
             'published_date': entry.published,
             'updated_date': entry.updated if hasattr(entry, 'updated') else entry.published,
             'categories': categories,
-            'primary_category': category,
+            'primary_category': entry.get('arxiv_primary_category', {}).get('term', category),
             'pdf_url': pdf_url,
             'arxiv_url': entry.link,
             'source': 'arxiv'
@@ -310,54 +404,33 @@ class ArxivFetcher:
         if resp.status_code != 200:
             return None
 
-        text = resp.text
-
-        # Title
-        title_match = re.search(
-            r'<h1\s+class="title\s+mathjax">(.*?)</h1>', text, re.DOTALL)
-        title = title_match.group(1).strip() if title_match else ''
-        title = re.sub(r'<.*?>', '', title).strip()
-        title = re.sub(r'^Title:\s*', '', title).strip()
-
-        # Abstract
-        abs_match = re.search(
-            r'<blockquote\s+class="abstract\s+mathjax">(.*?)</blockquote>',
-            text, re.DOTALL)
-        abstract = abs_match.group(1).strip() if abs_match else ''
-        abstract = re.sub(r'<.*?>', '', abstract).strip()
-        abstract = re.sub(r'^Abstract:\s*', '', abstract).strip()
-        abstract = re.sub(r'&#39;', "'", abstract)
-        abstract = re.sub(r'&amp;', '&', abstract)
-        abstract = re.sub(r'&lt;', '<', abstract)
-        abstract = re.sub(r'&gt;', '>', abstract)
-        abstract = re.sub(r'\s+', ' ', abstract).strip()
-
-        # Authors
-        authors_match = re.search(
-            r'<div\s+class="authors">(.*?)</div>', text, re.DOTALL)
-        authors = []
-        if authors_match:
-            authors = re.findall(r'>([^<]+)<', authors_match.group(1))
-            authors = [a.strip() for a in authors
-                       if a.strip() and a.strip() != 'Authors:']
-
-        # Primary category
-        cat_match = re.search(
-            r'<span\s+class="primary-subject">(.*?)</span>', text)
-        primary_cat = cat_match.group(1).strip() if cat_match else ''
-
-        if not title or not abstract:
+        page = BeautifulSoup(resp.content, 'html.parser')
+        title = page.select_one('meta[name="citation_title"]')
+        abstract = page.select_one('meta[name="citation_abstract"]')
+        subjects = page.select_one('.tablecell.subjects')
+        history = page.select_one('.submission-history')
+        if not title or not abstract or not subjects:
             return None
+
+        categories = re.findall(r'\(([\w.-]+)\)', subjects.get_text())
+        timestamps = re.findall(
+            r'\d{1,2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} UTC',
+            history.get_text() if history else '',
+        )
+        dates = [
+            datetime.strptime(timestamp, '%d %b %Y %H:%M:%S UTC').strftime('%Y-%m-%dT%H:%M:%SZ')
+            for timestamp in timestamps
+        ]
 
         return {
             'id': arxiv_id,
-            'title': title,
-            'authors': authors,
-            'abstract': abstract,
-            'published_date': '',
-            'updated_date': '',
-            'categories': [primary_cat] if primary_cat else [],
-            'primary_category': primary_cat,
+            'title': title['content'],
+            'authors': [author.get_text(strip=True) for author in page.select('.authors a')],
+            'abstract': abstract['content'],
+            'published_date': dates[0] if dates else '',
+            'updated_date': dates[-1] if dates else '',
+            'categories': categories,
+            'primary_category': categories[0] if categories else '',
             'pdf_url': f'https://arxiv.org/pdf/{arxiv_id}',
             'arxiv_url': f'https://arxiv.org/abs/{arxiv_id}',
             'source': 'arxiv'

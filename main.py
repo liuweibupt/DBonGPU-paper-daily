@@ -9,7 +9,7 @@ It supports daily, top100, CLI and web interfaces.
 import click
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # Add src to Python path
@@ -18,31 +18,18 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 from utils.config_manager import ConfigManager
 from utils.logger import Logger
 from data_acquisition.arxiv_fetcher import ArxivFetcher
-from data_acquisition.openreview_fetcher import OpenReviewFetcher
-from parsing.pdf_parser import PDFParser
-from parsing.text_cleaner import TextCleaner
-from embedding.embedder import Embedder
 from analysis.recommender import Recommender
+from analysis.keyword_fallback import generate_fallback_cn
 from analysis.translator import PaperTranslator
 from display.cli_display import CLIDisplay
 from display.web_display import WebDisplay
 from display.html_display import HTMLDisplay
 
-# Shared GPU DB keywords
-GPU_DB_KEYWORDS = [
-    'GPU database',
-    'GPU-accelerated',
-    'GPU query processing',
-    'GPU data processing',
-    'GPU hash join',
-    'GPU in-memory',
-    'CUDA database',
-    'GPU analytics',
-    'GPU sorting',
-    'GPU indexing',
-]
-
 GPU_DB_CATEGORIES = ['cs.AR', 'cs.DB', 'cs.DC']
+ARCHITECTURE_CATEGORY = 'cs.AR'
+REPORT_TIMEZONE = timezone(timedelta(hours=8))
+DB_OUTPUT = 'docs/index.html'
+ARCHITECTURE_OUTPUT = 'docs/architecture/index.html'
 
 
 @click.command()
@@ -50,17 +37,21 @@ GPU_DB_CATEGORIES = ['cs.AR', 'cs.DB', 'cs.DC']
 @click.option('--cli', is_flag=True, help='Use command line interface')
 @click.option('--html', 'gen_html', is_flag=True, help='Generate static HTML page')
 @click.option('--top100', is_flag=True, help='Generate top 100 yearly papers page')
-@click.option('--output', default='docs/index.html', help='Output HTML file path')
+@click.option('--feed', type=click.Choice(['db', 'architecture', 'all']), default='db',
+              help='Daily paper feed to generate')
+@click.option('--output', type=click.Path(dir_okay=False), help='Override the default HTML file path')
 @click.option('--config', default='config.json', help='Config file path')
-@click.option('--date', default=None, help='Specific date to fetch papers (YYYY-MM-DD)')
-def main(web, cli, gen_html, top100, output, config, date):
-    """GPU 数据库论文日报 - 自动追踪 GPU 加速数据库领域最新研究"""
+@click.option('--date', type=click.DateTime(formats=['%Y-%m-%d']),
+              help='End date of the seven-day window (YYYY-MM-DD)')
+def main(web, cli, gen_html, top100, feed, output, config, date):
+    """GPU 数据库与计算机体系结构论文日报"""
 
     config_manager = ConfigManager(config)
     logger = Logger("paper_daily.log")
 
     logger.log("Starting Paper Daily application", "INFO")
 
+    date = date.date().isoformat() if date else None
     if web:
         logger.log("Launching web interface", "INFO")
         web_display = WebDisplay()
@@ -68,108 +59,74 @@ def main(web, cli, gen_html, top100, output, config, date):
     elif cli:
         run_cli_mode(config_manager, logger, date)
     elif top100:
-        run_top100_pipeline(logger, output)
+        run_top100_pipeline(logger, output or 'docs/top100.html')
     else:
-        run_daily_pipeline(config_manager, logger, date, gen_html=gen_html, output=output)
+        try:
+            run_daily_pipeline(config_manager, logger, date, gen_html, output, feed)
+        except RuntimeError as error:
+            raise click.ClickException(str(error)) from error
 
 
-def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output='docs/index.html'):
-    """Run the complete daily paper processing pipeline"""
+def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output=None, feed='db'):
+    """Fetch the shared recent window and publish the requested daily reports."""
+    date = date or datetime.now(REPORT_TIMEZONE).date().isoformat()
+    categories = [ARCHITECTURE_CATEGORY] if feed == 'architecture' else GPU_DB_CATEGORIES
+    logger.log(f"Fetching seven days of arXiv papers through {date}: {', '.join(categories)}", "INFO")
+    papers = ArxivFetcher(categories).fetch_daily_papers(date)
+    logger.log(f"Fetched {len(papers)} papers", "INFO")
 
-    if date is None:
-        date = datetime.now().strftime('%Y-%m-%d')
+    reports = []
+    if feed in ('db', 'all'):
+        db_papers = recommend_gpu_db_papers(papers)
+        enrich_daily_papers(db_papers, PaperTranslator(), db_fallback=True)
+        reports.append(('db', output or DB_OUTPUT, db_papers))
 
-    logger.log(f"Running daily pipeline for date: {date}", "INFO")
-
-    try:
-        arxiv_fetcher = ArxivFetcher(GPU_DB_CATEGORIES)
-
-        # Strategy: fetch recent papers by category first (broader coverage),
-        # then keyword-filter for GPU+DB relevance.
-        # This avoids the problem where exact keyword search only returns
-        # the same old high-score papers every day.
-        recent_days = 7
-        logger.log(f"Fetching recent papers (last {recent_days} days) from arXiv categories...", "INFO")
-        all_papers = arxiv_fetcher.fetch_recent_papers(days=recent_days, max_results_per_category=500)
-        logger.log(f"Fetched {len(all_papers)} recent papers from categories", "INFO")
-
-        # Fallback to keyword search if category fetch returns nothing
-        if len(all_papers) == 0:
-            logger.log("Category fetch returned 0 papers, trying keyword search...", "WARN")
-            all_papers = arxiv_fetcher.search_papers_by_keywords(
-                keywords=GPU_DB_KEYWORDS,
-                categories=GPU_DB_CATEGORIES,
-                max_results=200
-            )
-            logger.log(f"Keyword search returned {len(all_papers)} papers", "INFO")
-
-        # Fallback to web scraping when both API methods fail
-        if len(all_papers) == 0:
-            logger.log("API returned 0 papers (likely rate-limited), falling back to web scraping", "WARN")
-            all_papers = arxiv_fetcher.fetch_papers_via_web(date=date)
-            logger.log(f"Web scraping returned {len(all_papers)} papers", "INFO")
-
-        # Local keyword filter: keep papers with GPU+DB relevance
-        gpu_keywords = ['gpu', 'cuda', 'opencl', 'graphic', 'accelerat']
-        db_keywords = [
-            'database', 'query', 'join', 'sql', 'olap', 'oltp',
-            'hash table', 'b-tree', 'index', 'column', 'in-memory',
-            'data process', 'analyt', 'simd', 'vectoriz',
-            'sort', 'scan', 'aggregat', 'storage', 'kv', 'nosql',
-        ]
-
-        filtered_papers = []
-        for paper in all_papers:
-            text = (paper.get('title', '') + ' ' + paper.get('abstract', '')).lower()
-            has_gpu = any(kw in text for kw in gpu_keywords)
-            has_db = any(kw in text for kw in db_keywords)
-            if has_gpu or has_db:
-                filtered_papers.append(paper)
-
-        logger.log(f"After GPU+DB keyword filter: {len(filtered_papers)} papers out of {len(all_papers)}", "INFO")
-
-        # Use filtered papers for recommendation; if too few, use all recent papers
-        candidate_papers = filtered_papers if len(filtered_papers) >= 5 else all_papers
-        if len(filtered_papers) < 5:
-            logger.log(f"Only {len(filtered_papers)} GPU+DB papers, using all {len(all_papers)} recent papers for recommendation", "WARN")
-
-        recommender = Recommender()
-        recommendations = recommender.recommend(candidate_papers, top_k=10)
-
-        # Translate abstracts and generate AI takeaway/innovation
-        translator = PaperTranslator()
-        if translator.enabled:
-            logger.log(f"Translating {len(recommendations)} daily papers...", "INFO")
-            translator.batch_translate(recommendations, delay=1.0)
-            # Fill in fallback for any papers where translation failed
-            from analysis.keyword_fallback import generate_fallback_cn
-            fallback_count = 0
-            for paper in recommendations:
-                if not paper.get('abstract_cn'):
-                    generate_fallback_cn(paper)
-                    fallback_count += 1
-            if fallback_count:
-                logger.log(f"Translation failed for {fallback_count} papers, used keyword fallback", "WARN")
+    if feed in ('architecture', 'all'):
+        architecture_papers = sorted(
+            (paper.copy() for paper in papers if ARCHITECTURE_CATEGORY in paper['categories']),
+            key=lambda paper: paper['published_date'],
+            reverse=True,
+        )[:10]
+        enrich_daily_papers(architecture_papers, PaperTranslator(topic='计算机体系结构'))
+        if feed == 'all' and output:
+            architecture_output = Path(output).parent / 'architecture' / 'index.html'
         else:
-            # Fallback: generate brief keyword-based summaries
-            from analysis.keyword_fallback import generate_fallback_cn
-            for paper in recommendations:
-                generate_fallback_cn(paper)
-            logger.log("Translation skipped (no API key configured), using keyword fallback", "WARN")
+            architecture_output = output or ARCHITECTURE_OUTPUT
+        reports.append(('architecture', architecture_output, architecture_papers))
 
+    for report_feed, output_path, recommendations in reports:
         if gen_html:
-            html_display = HTMLDisplay()
-            html_display.save_daily(recommendations, output, date)
-            logger.log(f"HTML output saved to {output}", "INFO")
+            HTMLDisplay(feed=report_feed).save_daily(recommendations, str(output_path), date)
         else:
-            cli_display = CLIDisplay()
-            cli_display.print_recommendations(recommendations)
+            CLIDisplay().print_recommendations(recommendations)
 
-        logger.log("Daily pipeline completed successfully", "INFO")
 
-    except Exception as e:
-        logger.log(f"Error in daily pipeline: {str(e)}", "ERROR")
-        raise
+def recommend_gpu_db_papers(papers):
+    """Keep the GPU DB feed's keyword filter and relevance ranking."""
+    gpu_keywords = ['gpu', 'cuda', 'opencl', 'graphic', 'accelerat']
+    db_keywords = [
+        'database', 'query', 'join', 'sql', 'olap', 'oltp',
+        'hash table', 'b-tree', 'index', 'column', 'in-memory',
+        'data process', 'analyt', 'simd', 'vectoriz', 'sort',
+        'scan', 'aggregat', 'storage', 'kv', 'nosql',
+    ]
+
+    filtered = []
+    for paper in papers:
+        text = (paper.get('title', '') + ' ' + paper.get('abstract', '')).lower()
+        if any(keyword in text for keyword in gpu_keywords + db_keywords):
+            filtered.append(paper)
+    return Recommender().recommend(filtered if len(filtered) >= 5 else papers, top_k=10)
+
+
+def enrich_daily_papers(papers, translator, db_fallback=False):
+    """Translate selected papers and retain the existing DB fallback."""
+    if translator.enabled:
+        translator.batch_translate(papers, delay=1.0)
+    if db_fallback:
+        for paper in papers:
+            if not paper.get('abstract_cn'):
+                generate_fallback_cn(paper)
 
 
 def run_top100_pipeline(logger, output='docs/top100.html'):
@@ -258,7 +215,6 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
             logger.log(f"Translating {len(scored_papers)} top papers...", "INFO")
             translator.batch_translate(scored_papers, delay=1.0)
             # Fill in fallback for any papers where translation failed
-            from analysis.keyword_fallback import generate_fallback_cn
             fallback_count = 0
             for paper in scored_papers:
                 if not paper.get('abstract_cn'):
@@ -268,7 +224,6 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
                 logger.log(f"Translation failed for {fallback_count} papers, used keyword fallback", "WARN")
         else:
             # Fallback: generate brief keyword-based summaries
-            from analysis.keyword_fallback import generate_fallback_cn
             for paper in scored_papers:
                 generate_fallback_cn(paper)
                 paper['summary_cn'] = _generate_summary_cn(paper)

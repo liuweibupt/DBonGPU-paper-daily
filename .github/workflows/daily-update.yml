@@ -1,94 +1,68 @@
 name: Daily Paper Update
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/daily-update.yml'
+      - 'main.py'
+      - 'src/**'
   schedule:
     # 主触发：UTC 1:00 = 北京时间 9:00
     - cron: '0 1 * * *'
     # 备用触发：UTC 1:30，防止主触发被 GitHub 跳过
     - cron: '30 1 * * *'
   workflow_dispatch:
+    inputs:
+      update_top100:
+        description: 'Also refresh the GPU DB annual Top 100'
+        type: boolean
+        default: true
   repository_dispatch:
     types: [trigger-daily]
 
 permissions:
   contents: write
 
+concurrency:
+  group: daily-paper-update
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   fetch-daily:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: pip
 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Fetch daily GPU DB papers
+      - name: Fetch daily GPU DB and architecture papers
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: |
-          python main.py --html --output docs/index.html
-
-      - name: Commit and push results
-        run: |
-          git config -l user.email 2>/dev/null || git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config -l user.name 2>/dev/null || git config --local user.name "github-actions[bot]"
-          git add docs/
-          git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 论文日报 $(date +%Y-%m-%d)"
-          # Heartbeat: always push a tiny commit to keep repo active (ensures cron won't be skipped)
-          if git diff --staged --quiet && ! git log -1 --format='%s' | grep -q 'heartbeat'; then
-            echo "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > docs/.heartbeat
-            git add docs/.heartbeat
-            git commit -m "heartbeat: $(date +%Y-%m-%d)"
-          fi
-          git pull --rebase origin main
-          git push
-
-  update-top100:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          python main.py --html --feed all
 
       - name: Fetch yearly Top 100 papers
+        if: github.event_name == 'workflow_dispatch' && inputs.update_top100
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
@@ -101,6 +75,9 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/
-          git diff --staged --quiet || git commit -m "docs: 更新 GPU DB 年度 Top 100"
+          if git diff --staged --quiet; then
+            exit 0
+          fi
+          git commit -m "docs: 更新论文日报 $(date +%Y-%m-%d)"
           git pull --rebase origin main
-          git push
+          git push origin HEAD:main
