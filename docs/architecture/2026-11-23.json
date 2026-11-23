@@ -27,14 +27,14 @@
     "abstract_cn": "光谱解码(SD)通过将轻量级的起草与平行的目标模型校验相结合,加速了大型语言模型(LLM)推理. 然而,其各阶段都提出了不同的资源需求:目标核查需要高通量地访问大权重集,顺序起草在紧迫性很强的制约下执行紧凑模型,以及长效关注过程不断增长的密钥值(KV)缓存. 常规GPU-centricSD系统通过共享HBM-centric内存和通用计算为这些工作负载服务,在容量,带宽,和计算方面造成不匹配. 这些不匹配限制了可部署的模型-文本配置,并限制了带宽和耐久性敏感的操作的效率. 我们提议FOREST,一个异构内存中心架构协调HBF,3D-sacked RRAM,以及HBM内存计算树,以高效SD. 它的特点是:(1)计算对齐的3DRRAM,将超宽,低频读取与时钟脱节的接口相结合,并重叠SRAM-DCIM重量重填进行耐久性敏感的起草;(2)跨树数字共设计,移动块积分的Q/K/V预处理到HBF和RRAM根板,并使得块浮点(BFP)与HBM树的管道软轴减量相结合;以及(3)HBF-awareSD设计-空间探索,揭示带宽压缩供给和模型尺度如何决定性能,能量,以及成本权衡. 【该句原文】Evaluated across six SD configurations spanning 32B-405B target models, FOREST achieves up to 5.5x end-to-end speedup, 11.46x higher decode throughput, and 16.5x higher decode energy efficiency over NVIDIA A800 GPU-based SD baselines. 根据所有制的模型化总成本,FOREST提供最高6.73x更高的代号生成成本效率.",
     "takeaway": "【该句原文】Evaluated across six SD configurations spanning 32B-405B target models, FOREST achieves up to 5.5x end-to-end speedup, 11.46x higher decode throughput, and 16.5x higher decode energy efficiency over NVIDIA A800 GPU-based SD baselines.",
     "innovation": "1. 我们提议FOREST,一个异构内存中心架构协调HBF,3D-sacked RRAM,以及HBM内存计算树,以高效SD.；2. 它的特点是:(1)计算对齐的3DRRAM,将超宽,低频读取与时钟脱节的接口相结合,并重叠SRAM-DCIM重量重填进行耐久性敏感的起草;(2)跨树数字共设计,移动块积分的Q/K/V预处理到HBF和RRAM根板,并使得块浮点(BFP)与HBM树的管道软轴减量相结合;以及(3)HBF-awareSD设计-空间探索,揭示带宽压缩供给和模型尺度如何决定性能,能量,以及成本权衡.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Evaluated across six SD configurations spanning 32B-405B target models, FOREST achieves up to 5.5x end-to-end speedup, 11.46x higher decode throughput, and 16.5x higher decode energy efficiency over NVIDIA A800 GPU-based SD baselines."
     ],
     "innovation_source": [
       "We propose FOREST, a heterogeneous memory-centric architecture coordinating HBF, 3D-stacked RRAM, and HBM memory-compute trees for efficient SD.",
       "It features: (1) compute-aligned 3D RRAM, combining ultra-wide, low-frequency reads with clock-decoupled interfaces and overlapped SRAM-DCIM weight refills for latency-sensitive drafting; (2) cross-tree numerical co-design, moving block-scaled Q/K/V preprocessing to HBF and RRAM root plates and enabling block-floating-point (BFP) attention with pipelined softmax reduction in the HBM tree; and (3) HBF-aware SD design-space exploration, revealing how bandwidth-compute provisioning and model scale determine performance, energy, and cost trade-offs."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27561",
@@ -59,13 +59,13 @@
     "abstract_cn": "矢量量化(VQ)通过编码几组值作为紧凑的编码本索引,可以超低位压缩大语言模型(LLMs). 然而,重建这些数值进行计算需要频繁的代码本检查,这与常规的LLM加速器的数据流相冲突,限制了VQ压缩的性能收益. 因此,先前的工作采用了VQ-specific加速器设计,这种设计要么造成大量额外的硬件间接费用,要么只支持范围有限的推理设想方案。 在这项工作中,我们争论说,现有的基于系统-阵列的LLM加速器已经拥有高效VQ推理的基本硬件资源,但缺乏有效利用这些硬件的机制. 为了弥补这一差距,我们提出了VQACC,即一种建筑改进,联合重新设计现有的操作缓冲器的存取逻辑和数据映射,将其存储和端口资源重新用于代码簿的搜索,无缝地将脱量化整合到正常的操作地址数据流中. 评价显示,VQACC比EVA基线实现2.63×加速,额外的硬件仅占据计算阵列面积的0.17%.",
     "takeaway": "评价显示,VQACC比EVA基线实现2.63×加速,额外的硬件仅占据计算阵列面积的0.17%.",
     "innovation": "1. 为了弥补这一差距,我们提出了VQACC,即一种建筑改进,联合重新设计现有的操作缓冲器的存取逻辑和数据映射,将其存储和端口资源重新用于代码簿的搜索,无缝地将脱量化整合到正常的操作地址数据流中.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Evaluation shows that VQACC achieves a 2.63× speedup over the EVA baseline, with additional hardware occupying only 0.17% of the compute array's area."
     ],
     "innovation_source": [
       "To bridge this gap, we present VQACC, an architectural enhancement that jointly redesigns the existing operand buffer's access logic and data mapping to reuse its storage and port resources for codebook lookups, seamlessly integrating dequantization into the normal operand-addressing dataflow."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27559",
@@ -89,11 +89,11 @@
     "abstract_cn": "微波和毫米波应用的反向设计,像素化的被动器的出现,是RFIC设计领域的一项重大发展. 这些在结构上似乎是QR-code-like的装置,存在于一个泛泛的,高维度的设计空间中,包括了传统的被动地形. 然而,这些结构对于设计者来说自然是不直观的,性能的故障或偏差很难调试. 在这部作品中,我们询问边疆语言模型是否能够理解,预测,以及编辑像素被动的响应和布局结构. 该代理机与所有已禁用的工具一起运行,首先被要求在18x18和27x27的瓷砖网格上读取布局,并在一个回复中预测20-100 GHz 结构的输入障碍和损失. 【该句原文】On eight GA-synthesized layouts and five random fills, the predicted Smith-chart locus follows full-wave simulation results closely, with a systematic shift that places features about 16% lower in frequency than EM. 在多路径环形结构上,它成功识别notches,但显示的频率偏差较小,大约是半个忽略弯曲的理想传输线模型. 【该句原文】The agent is then asked to debug seven designs that fail their specification, and given a budget of five EM simulations and at most twelve changed tiles, it is able to improve all seven and bring five designs within specification. 这些实验建议语言模型可以作为传统非直观反向设计的被动者的一种可解释性和调试工具.",
     "takeaway": "【该句原文】The agent is then asked to debug seven designs that fail their specification, and given a budget of five EM simulations and at most twelve changed tiles, it is able to improve all seven and bring five designs within specification.",
     "innovation": "摘要未明确列出可提取的方法贡献。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "The agent is then asked to debug seven designs that fail their specification, and given a budget of five EM simulations and at most twelve changed tiles, it is able to improve all seven and bring five designs within specification."
     ],
-    "innovation_source": [],
-    "enrichment_method": "local_abstract_translation"
+    "innovation_source": []
   },
   {
     "id": "2611.27479",
@@ -150,13 +150,13 @@
     "abstract_cn": "我们描述一种模拟的模拟模拟的宏混合键,14nm逻辑死在3DNAND闪存记忆瓦器上,实现重量密度4.8M重量/mm^2. 重量被编程到16个指令中的1个. MACs 具有电流控制的振荡器 ADCs在多NAND级上,在能量效率最高可达4.2TOPS/W的8位输入上,显示3至4位的等重精度. 电荷保留电路提高精度,\\sim0.4%(3.23%)精度下降于WideResNet CIFAR-10 (100).",
     "takeaway": "电荷保留电路提高精度,\\sim0.4%(3.23%)精度下降于WideResNet CIFAR-10 (100).",
     "innovation": "1. 我们描述一种模拟的模拟模拟的宏混合键,14nm逻辑死在3DNAND闪存记忆瓦器上,实现重量密度4.8M重量/mm^2.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "A charge-retention circuit improves accuracy, with \\sim0.4% (3.23%) accuracy drop on a WideResNet for CIFAR-10 (100)."
     ],
     "innovation_source": [
       "We describe an analog-in-memory-compute macro hybrid-bonding a 14nm logic die onto a 3D NAND Flash memory wafer, achieving weight density of 4.8M weights/mm^2."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27323",
@@ -191,6 +191,7 @@
     "abstract_cn": "加速器在本地执行的数字格式是固定在编造上的,然而大型语言模型(LLM)检查站则在2023年的微缩缩格式(MX)中以MXFP4的重量发布. FPGAs通过位流采用新格式. 然而,据我们所知,没有部署FPGALLM加速器与BF16产品一起执行MXFP4重量。 我们描述的是MXFP4检查站的解码,其层层在MXFP4xBF16产品和BF16xBF16引起注意的产品和BF16层之间交替。 带有BF16KV缓存,BF16xBF16产品占用了56%-77%的数据路径时间,在此期间一个单独的MXFP4单元闲置. 我们提出Cruella,其统一的点产品单位(UDPU)在一种DSP阵列上执行两种产品类型和减少管道。 首先,每组预对齐使这个管道保持BF16宽度,并最多改变0.7%的复杂度. 其次,添加剂前包装将两个签有MXFP4×BF16的产品放在一个DSP48E2乘数中,并精确校正. 在 Alveo U55C 上,UDPU 需要减少23%的DSP切片和36%的LUTs,比分离的MXFP4和BF16单位的均匀吞吐量少. 在这个板子上,MXFP4重量以1.15×-1.87×超过BF16重量加速解码,一个NVIDIA A40GPU解码速度较快,但每个符牌花费0.92×-2.01×的板子能量.",
     "takeaway": "在这个板子上,MXFP4重量以1.15×-1.87×超过BF16重量加速解码,一个NVIDIA A40GPU解码速度较快,但每个符牌花费0.92×-2.01×的板子能量.",
     "innovation": "1. 我们提出Cruella,其统一的点产品单位(UDPU)在一种DSP阵列上执行两种产品类型和减少管道。；2. 首先,每组预对齐使这个管道保持BF16宽度,并最多改变0.7%的复杂度.；3. 其次,添加剂前包装将两个签有MXFP4×BF16的产品放在一个DSP48E2乘数中,并精确校正.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "On this board, MXFP4 weights speed up decoding by 1.15×-1.87× over BF16 weights, and an NVIDIA A40 GPU decodes faster but spends 0.92×-2.01× the board's energy per token."
     ],
@@ -198,8 +199,7 @@
       "We present Cruella, whose unified dot-product unit (UDPU) executes both product types on one DSP array and reduction pipeline.",
       "First, per-group pre-alignment keeps this pipeline at the BF16 width and changes perplexity by at most 0.7%.",
       "Second, pre-adder packing places two signed MXFP4×BF16 products in one DSP48E2 multiplier with an exact correction."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27287",
@@ -224,12 +224,12 @@
     "abstract_cn": "可调节性驱动的放置需要梯度,以显示细胞运动如何重新分配路由需求. 细胞膨胀只能间接利用路由反馈,不同的方法依赖于黑箱拥堵预测器,或者依赖于在路由更新之间冻结的虚拟细胞拥堵场. 我们提出GRADPlace,表示概率加权的候选路线,作为可移动的横向和纵向部分。 运行反馈设置了它们的概率,而它们的几何和预期需求则随细胞坐标而演变. 一个静电的路由目标通过这种几何向连接的细胞传播梯度,补充细胞膨胀. 在ISPD2015年基准上,我们复制的Xplace-route和公布的DCGP结果平均有3.37x和2.56x与GRADPlace一样多的设计-规则违规,通过和可比较的路由线长.",
     "takeaway": "摘要未明确报告可提取的结论。",
     "innovation": "1. 我们提出GRADPlace,表示概率加权的候选路线,作为可移动的横向和纵向部分。；2. 运行反馈设置了它们的概率,而它们的几何和预期需求则随细胞坐标而演变.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [],
     "innovation_source": [
       "We present GRADPlace, which represents probability-weighted candidate routes as movable horizontal and vertical segments.",
       "Routing feedback sets their probabilities, while their geometry and expected demand evolve with cell coordinates."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27277",
@@ -253,6 +253,7 @@
     "abstract_cn": "RISC-V处理器的高效脉冲神经网络(SNN)推理需要追踪执行成本回溯到生成它们的编译器和硬件决定. 然而,培训环境、编译器和循环模拟器通常作为独特的工具运作,使这种归属变得困难。 本文提出Stratum,一个框架将一个snnTorch训练的SNN,一个MLIR-based编译器堆栈,以及一个周期级的基于gem5的RISC-V模型集成到一个统一的工作流程中. Stratum曝光两个优化杠杆,生成代码中的软件决定和模拟核心中的硬件配置选择,并使用阶段级周期测量来识别性能瓶颈. 我们在两个层次的N-MNIST网络上演示Stratum,进行三个控制比较:(一)~ense vs.\\ 悬浮式降低\\texttt{snn.linear},(二)~输出-输出-\\ 悬浮式主要重量布局,在两个二进制中都启用悬浮式,(三)~L2缓存能力,同时具有两种布局. 【该句原文】Our spike-gated lowering reduces simulated inference time by 64× (453.2\\,ms to 7.04\\,ms), and our spike-major layout cuts it by a further 37.2% (to 4.42\\,ms) at 4\\,MiB L2, with the predicted class unchanged. 当L2收缩到1\\,MiB时,布局加速从1.59×增加到1.88×. 这些结果显示,Stratum能够对软件层面(编译器堆栈)和硬件层面(周期层面的gem5模拟)的设计选择进行快速的早期评价.",
     "takeaway": "【该句原文】Our spike-gated lowering reduces simulated inference time by 64× (453.2\\,ms to 7.04\\,ms), and our spike-major layout cuts it by a further 37.2% (to 4.42\\,ms) at 4\\,MiB L2, with the predicted class unchanged. 当L2收缩到1\\,MiB时,布局加速从1.59×增加到1.88×.",
     "innovation": "1. 本文提出Stratum,一个框架将一个snnTorch训练的SNN,一个MLIR-based编译器堆栈,以及一个周期级的基于gem5的RISC-V模型集成到一个统一的工作流程中.；2. Stratum曝光两个优化杠杆,生成代码中的软件决定和模拟核心中的硬件配置选择,并使用阶段级周期测量来识别性能瓶颈.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Our spike-gated lowering reduces simulated inference time by 64× (453.2\\,ms to 7.04\\,ms), and our spike-major layout cuts it by a further 37.2% (to 4.42\\,ms) at 4\\,MiB L2, with the predicted class unchanged.",
       "The layout speedup grows from 1.59× to 1.88× when L2 shrinks to 1\\,MiB."
@@ -260,8 +261,7 @@
     "innovation_source": [
       "This paper presents Stratum, a framework that integrates an snnTorch-trained SNN, an MLIR-based compiler stack, and a cycle-level gem5-based RISC-V model into a unified workflow.",
       "Stratum exposes two optimization levers, software decisions in the generated code and hardware configuration choices in the simulated core, and uses stage-level cycle measurements to identify performance bottlenecks."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.27035",
