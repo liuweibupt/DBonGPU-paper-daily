@@ -22,7 +22,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.27035v1",
     "arxiv_url": "https://arxiv.org/abs/2611.27035v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.27010",
@@ -43,7 +46,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.27010v1",
     "arxiv_url": "https://arxiv.org/abs/2611.27010v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26939",
@@ -60,7 +66,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.26939v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26939v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26857",
@@ -82,7 +91,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.26857v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26857v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26815",
@@ -100,7 +112,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.26815v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26815v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26588",
@@ -123,7 +138,10 @@
     "primary_category": "cs.SE",
     "pdf_url": "https://arxiv.org/pdf/2611.26588v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26588v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26517",
@@ -147,7 +165,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.26517v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26517v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26472",
@@ -169,7 +190,10 @@
     "primary_category": "cs.AR",
     "pdf_url": "https://arxiv.org/pdf/2611.26472v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26472v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26447",
@@ -190,7 +214,10 @@
     "primary_category": "quant-ph",
     "pdf_url": "https://arxiv.org/pdf/2611.26447v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26447v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   },
   {
     "id": "2611.26435",
@@ -215,6 +242,9 @@
     "primary_category": "cs.DC",
     "pdf_url": "https://arxiv.org/pdf/2611.26435v1",
     "arxiv_url": "https://arxiv.org/abs/2611.26435v1",
-    "source": "arxiv"
+    "source": "arxiv",
+    "abstract_cn": "",
+    "takeaway": "",
+    "innovation": ""
   }
 ]
