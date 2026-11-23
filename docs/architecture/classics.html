@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>计算机体系结构经典论文</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f5f7fa;
+            --surface: #ffffff;
+            --ink: #172232;
+            --muted: #516175;
+            --line: #dbe3eb;
+            --accent: #075c68;
+            --tint: #e9f5f3;
+            --panel: #eef6f6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--page);
+            font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.architecture {
+            --page: #f8f7fc;
+            --line: #e3deee;
+            --accent: #563a91;
+            --tint: #f1ebfb;
+            --panel: #f4f0fb;
+        }
+        h1, h2, h3, p, dl, dd { margin: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: .2em; }
+        a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(1220px, 100% - 64px); margin: 0 auto; }
+        .skip-nav { position: fixed; top: 12px; left: 12px; z-index: 2; transform: translateY(-180%); }
+        .skip-nav:focus { transform: none; background: var(--surface); padding: 6px 12px; }
+        .site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+        .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+        .feed-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .feed-nav a { padding: 6px 14px; border: 1px solid transparent; border-radius: 7px; font-weight: 650; }
+        .feed-nav a:not([aria-current]) { color: var(--muted); }
+        .feed-nav a[aria-current] { background: var(--tint); border-color: var(--line); }
+        .github-link { color: var(--muted); white-space: nowrap; font-size: .85rem; }
+        .subnav-wrap { border-top: 1px solid var(--line); }
+        .subnav { display: flex; align-items: center; gap: 1.65rem; }
+        .subnav a { color: var(--muted); white-space: nowrap; padding: 8px 0 7px; border-bottom: 2px solid transparent; font-size: .9rem; }
+        .subnav a[aria-current] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 650; }
+        main { padding: 32px 0 40px; }
+        .intro {
+            padding: 25px 28px;
+            border: 1px solid var(--line);
+            border-inline-start: 4px solid var(--accent);
+            border-radius: 10px;
+            background: var(--panel);
+            display: flex;
+            gap: 18px 36px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        h1 { font-size: clamp(1.6rem, 3.8vw, 2.35rem); line-height: 1.2; letter-spacing: -.025em; }
+        .intro p { color: var(--muted); margin-top: 9px; font-size: .93rem; }
+        .stats { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 22px; flex-shrink: 0; }
+        .stats dt { color: var(--muted); font-size: .77rem; }
+        .stats dd { font-size: .95rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .archive { margin: -5px 0 24px; }
+        .archive-label { display: block; color: var(--muted); font-size: .84rem; font-weight: 650; margin-bottom: 6px; }
+        .archive-links { display: flex; flex-wrap: wrap; gap: 5px; }
+        .archive-links a {
+            padding: 3px 8px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            color: var(--muted);
+            background: var(--surface);
+            font-size: .83rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .archive-links a[aria-current] { background: var(--tint); color: var(--accent); font-weight: 650; }
+        .archive-more { margin-top: 5px; }
+        .archive-more[open] > .archive-links { margin-top: 5px; max-height: 14rem; overflow: auto; }
+        .paper-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+        .paper-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0; }
+        .paper-heading { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); align-items: start; gap: 9px; }
+        .paper-rank {
+            background: var(--tint);
+            color: var(--accent);
+            border-radius: 5px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 650;
+            font-size: .77rem;
+            padding: 4px 0;
+            text-align: center;
+        }
+        .paper-title { font-size: 1.12rem; line-height: 1.38; letter-spacing: -.008em; overflow-wrap: anywhere; }
+        .paper-title a { color: var(--ink); }
+        .paper-title a:hover { color: var(--accent); }
+        .paper-meta, .paper-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+        .paper-meta:not(:empty) { margin-top: 9px; }
+        .tag, .score-badge {
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 0 6px;
+            line-height: 1.65;
+            font-size: .76rem;
+        }
+        .score-badge { background: var(--tint); color: var(--accent); font-weight: 600; }
+        .paper-authors, .paper-reasons { color: var(--muted); font-size: .82rem; margin-top: 7px; overflow-wrap: anywhere; }
+        .paper-authors:empty { display: none; }
+        .paper-abstract-cn {
+            padding: 10px 12px;
+            background: var(--panel);
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+        .paper-abstract-cn h3, .paper-notes dt { color: var(--accent); font-size: .83rem; font-weight: 700; }
+        .translation-note { color: var(--muted); font-size: .75rem; font-weight: 500; margin-inline-start: .65rem; }
+        .paper-abstract-cn p, .original-abstract p, .paper-notes dd {
+            font-size: .91rem;
+            margin-top: 3px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+        .original-abstract { margin: 6px 0; }
+        summary { width: fit-content; color: var(--accent); font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+        summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+        .original-abstract p { border-inline-start: 2px solid var(--line); padding-inline-start: 11px; color: var(--muted); }
+        .paper-notes { margin-top: 10px; display: grid; gap: 8px; }
+        .paper-notes dd { color: var(--ink); }
+        .paper-links:not(:empty) { margin-top: 12px; }
+        .paper-links a { font-size: .83rem; font-weight: 650; border: 1px solid var(--line); border-radius: 5px; padding: 2px 9px; }
+        .empty-state { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line); padding: 26px; border-radius: 10px; }
+        footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); padding: 12px 0 26px; border-top: 1px solid var(--line); font-size: .8rem; }
+        @media (max-width: 940px) {
+            .intro { align-items: flex-start; flex-direction: column; }
+        }
+        @media (max-width: 760px) {
+            .paper-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .page { width: calc(100% - 28px); }
+            .masthead { gap: 3px 8px; }
+            .feed-nav { gap: 2px; }
+            .feed-nav a { font-size: .88rem; padding: 5px 6px; }
+            .subnav { gap: 1rem; }
+            main { padding-top: 16px; }
+            .intro { padding: 14px 12px; margin-bottom: 16px; gap: 8px; }
+            h1 { font-size: clamp(1.35rem, 5.8vw, 1.6rem); text-wrap: balance; }
+            .stats { gap: 5px 14px; }
+            .archive { margin: 0 0 14px; }
+            .paper-card { padding: 13px; }
+        }
+    </style>
+</head>
+<body class="architecture">
+    <a class="skip-nav" href="#main">跳到论文列表</a>
+    <header class="site-header">
+        <div class="page masthead">
+            <nav class="feed-nav" aria-label="选择领域">
+                <a href="../classics.html">GPU 数据库</a>
+                <a href="classics.html" aria-current="true">计算机体系结构</a>
+            </nav>
+            <a class="github-link" href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="subnav-wrap">
+            <nav class="page subnav" aria-label="计算机体系结构栏目">
+            <a href="index.html">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html" aria-current="page">经典论文</a>
+            </nav>
+        </div>
+    </header>
+    <main class="page" id="main">
+        <section class="intro">
+            <div class="intro-text">
+                <h1>计算机体系结构经典论文</h1>
+                <p>收录处理器、存储层次、互连与专用加速器等方向的代表性工作。</p>
+            </div>
+            <dl class="stats"><div><dt>收录论文</dt><dd>15</dd></div>
+<div><dt>出版年份</dt><dd>1967 至 2017</dd></div></dl>
+        </section>
+
+        <div class="paper-list classics">
+            <article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1147/rd.111.0025" target="_blank" rel="noopener">An Efficient Algorithm for Exploiting Multiple Arithmetic Units</a></h2>
+            <div class="paper-meta"><span class="tag">IBM Journal of Research and Development</span> <span class="tag">1967</span></div>
+            <p class="paper-authors">R. M. Tomasulo</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>以 IBM System/360 Model 91 的浮点单元为例，论文研究如何让多套算术部件在指令存在数据依赖时保持并行。指令进入保留站后等待操作数就绪，公共数据总线将计算结果及其标签广播给需要该值的部件。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>就绪的独立指令可以先执行，硬件仍能保证真正的数据依赖得到满足。</dd></div><div><dt>创新点</dt><dd>将保留站、操作数标签和公共数据总线组合起来，在执行过程中完成寄存器重命名与依赖跟踪。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1147/rd.111.0025" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://www.cs.virginia.edu/~evans/greatworks/tomasulo.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://www.microsoft.com/en-us/research/publication/make-multiprocessor-computer-correctly-executes-multiprocess-programs/" target="_blank" rel="noopener">How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Programs</a></h2>
+            <div class="paper-meta"><span class="tag">IEEE Transactions on Computers</span> <span class="tag">1979</span></div>
+            <p class="paper-authors">Leslie Lamport</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文从多处理器上的互斥反例出发，说明各处理器单独执行正确仍可能导致并发程序出错。顺序一致性要求执行结果等价于一种全局串行交织，且交织保留每个处理器的程序顺序。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>处理器内部看似正确的访存重排，可能让其他处理器观察到打破同步协议的结果。</dd></div><div><dt>创新点</dt><dd>给出顺序一致性的定义，并为处理器发出请求及内存模块处理请求提出足够条件。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://www.microsoft.com/en-us/research/publication/make-multiprocessor-computer-correctly-executes-multiprocess-programs/" target="_blank" rel="noopener">出版页 <span aria-hidden="true">↗</span></a>
+<a href="https://doi.org/10.1109/TC.1979.1675439" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://lamport.azurewebsites.net/pubs/multi.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/641914.641917" target="_blank" rel="noopener">The Case for the Reduced Instruction Set Computer</a></h2>
+            <div class="paper-meta"><span class="tag">ACM SIGARCH Computer Architecture News</span> <span class="tag">1980</span></div>
+            <p class="paper-authors">David A. Patterson, David R. Ditzel</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文从芯片实现、编译器生成代码及程序执行的整体成本出发，分析不断增加复杂指令是否划算。作者提出让指令集由少量易实现且常用的操作组成，把复杂操作交给编译器组织。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>评估指令集时，执行时间和实现成本比静态指令条数更能说明设计是否合算。</dd></div><div><dt>创新点</dt><dd>将指令复杂度与 VLSI 实现成本、编译器实际用法放在同一个设计问题中讨论。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/641914.641917" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://people.cs.umass.edu/~emery/classes/cmpsci691st/readings/Arch/RISC-patterson.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://american.cs.ucdavis.edu/academic/readings/papers/smith-branch.pdf" target="_blank" rel="noopener">A Study of Branch Prediction Strategies</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">1981</span></div>
+            <p class="paper-authors">James E. Smith</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>针对条件分支让取指和发射停顿的问题，论文使用程序执行轨迹比较多种分支方向预测策略。比较考察静态规则、历史信息和预测表状态如何影响准确率及硬件成本。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>两位饱和计数器可以保留对常见分支方向的判断，降低一次例外导致预测翻转的概率。</dd></div><div><dt>创新点</dt><dd>用真实指令轨迹研究预测行为，并把带滞回的计数器预测与当时的策略作比较。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://american.cs.ucdavis.edu/academic/readings/papers/smith-branch.pdf" target="_blank" rel="noopener">出版页 <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/773453.808204" target="_blank" rel="noopener">A Low-Overhead Coherence Solution for Multiprocessors with Private Cache Memories</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">1984</span></div>
+            <p class="paper-authors">Mark S. Papamarcos, Janak H. Patel</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文为使用共享总线、各处理器拥有私有缓存的机器设计缓存一致性协议。缓存控制器观察总线事务并使用本地缓存块状态协同处理数据共享、写入与失效，目标是减少总线竞争和等待。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>共享总线本身能提供一致性所需的通信渠道，流量开销仍受缺失率和共享程度影响。</dd></div><div><dt>创新点</dt><dd>将一致性信息分散在私有缓存中，用总线监听与写失效协议避免维护全局表。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/773453.808204" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://web.csl.cornell.edu/courses/ece5750/papamarcos.isca84.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1109/ISCA.1990.134547" target="_blank" rel="noopener">Improving Direct-Mapped Cache Performance by the Addition of a Small Fully-Associative Cache and Prefetch Buffers</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">1990</span></div>
+            <p class="paper-authors">Norman P. Jouppi</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文分析如何在保留直接映射缓存快速命中路径的同时降低缺失率。受害者缓存保存最近被替换的缓存行，流缓冲区则在主缓存之外预取可能随后访问的连续缓存行。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>即使受害者缓存只有少量表项，也能消除一部分映射冲突。流缓冲区解决的是另一类缺失。</dd></div><div><dt>创新点</dt><dd>提出并评估受害者缓存和流缓冲区，分别针对冲突缺失及可预取的访问。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1109/ISCA.1990.134547" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://eceweb1.rutgers.edu/~yyzhang/fall10/reading/directCache.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/325096.325132" target="_blank" rel="noopener">The Directory-Based Cache Coherence Protocol for the DASH Multiprocessor</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">1990</span></div>
+            <p class="paper-authors">Daniel Lenoski, James Laudon, Kourosh Gharachorloo, Anoop Gupta 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>DASH 将通过本地总线连接的处理器组成节点，再以网络连接节点。各节点维护其内存块的目录。跨节点读取和写入通过目录定位副本，协议据此协调数据转发与失效。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>分布式目录可以把跨节点失效发给实际持有副本的节点，从而减少对全系统广播的依赖。</dd></div><div><dt>创新点</dt><dd>在同一套共享内存系统中结合节点内总线监听与节点间分布式目录，并说明协议实现中的并发和消息处理。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/325096.325132" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://classes.engineering.wustl.edu/2022/fall/cse560m/papers/p148-lenoski.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/325096.325102" target="_blank" rel="noopener">Memory Consistency and Event Ordering in Scalable Shared-Memory Multiprocessors</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">1990</span></div>
+            <p class="paper-authors">Kourosh Gharachorloo, Daniel Lenoski, James Laudon, Phillip Gibbons 等 6 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文比较可扩展共享内存系统的访存排序约束，提出释放一致性，将同步操作区分为获取和释放。该模型允许硬件重叠更多普通访存，同时用同步事件约束数据的可见性。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>恰当地在同步边界施加排序，可给硬件更多隐藏访存延迟的空间，并维持满足论文同步条件的程序语义。</dd></div><div><dt>创新点</dt><dd>系统描述不同一致性模型下的事件约束，定义释放一致性并分析其与顺序一致性的关系。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/325096.325102" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://web.csl.cornell.edu/courses/ece5750/gharachorloo.isca90.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/237090.237140" target="_blank" rel="noopener">The Case for a Single-Chip Multiprocessor</a></h2>
+            <div class="paper-meta"><span class="tag">ASPLOS</span> <span class="tag">1996</span></div>
+            <p class="paper-authors">Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>作者依据芯片布局和关键结构的时延，对比同等面积下的宽发射超标量处理器与由多个较简单核心组成的单芯片多处理器。实验考察整数、浮点、不同粒度的并行程序和多程序运行。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>实验中，宽发射设计在纯串行程序上占优，多核设计在具有大量线程级并行或多个程序时获得更高性能。</dd></div><div><dt>创新点</dt><dd>以等面积芯片布局和显式建模的片上时延为基准，量化指令级并行与线程级并行的取舍。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/237090.237140" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://arsenalfc.stanford.edu/kunle/publications/hydra_ASPLOS_VII.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://ieeexplore.ieee.org/document/935594" target="_blank" rel="noopener">Route Packets, Not Wires: On-Chip Interconnection Networks</a></h2>
+            <div class="paper-meta"><span class="tag">DAC</span> <span class="tag">2001</span></div>
+            <p class="paper-authors">William J. Dally, Brian Towles</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>面对大规模芯片中越来越难规划的跨模块连线，论文提出用规则拓扑和分组交换网络提供片上通信。模块以网络接口交换数据，网络复用链路并承担路由。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>有规律的片上网络能让模块间通信和物理布线规划更容易扩展。</dd></div><div><dt>创新点</dt><dd>将分组、路由和流量控制用于片上模块互连，并从布线、时延与带宽的角度讨论其实现成本。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://ieeexplore.ieee.org/document/935594" target="_blank" rel="noopener">出版页 <span aria-hidden="true">↗</span></a>
+<a href="https://doi.org/10.1109/DAC.2001.935594" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1109/MICRO.2007.30" target="_blank" rel="noopener">Dynamic Warp Formation and Scheduling for Efficient GPU Control Flow</a></h2>
+            <div class="paper-meta"><span class="tag">MICRO</span> <span class="tag">2007</span></div>
+            <p class="paper-authors">Wilson W. L. Fung, Ivan Sham, George Yuan, Tor M. Aamodt</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>线程在条件分支处分歧时，固定线程束必须分批执行不同路径，部分执行通道因而空闲。论文提出根据线程当前的程序计数器动态组成线程束，并模拟这一机制在不同控制流负载上的效果。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>当多个线程束分歧后仍有足够多的线程走同一路径，动态重组能提高执行通道利用率。</dd></div><div><dt>创新点</dt><dd>将线程束成员关系从固定分组变为硬件运行时管理，并分析动态调度和寄存器组织的实现约束。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1109/MICRO.2007.30" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://people.ece.ubc.ca/aamodt/papers/wwlfung.micro2007.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1109/MM.2008.31" target="_blank" rel="noopener">NVIDIA Tesla: A Unified Graphics and Computing Architecture</a></h2>
+            <div class="paper-meta"><span class="tag">IEEE Micro</span> <span class="tag">2008</span></div>
+            <p class="paper-authors">Erik Lindholm, John Nickolls, Stuart Oberman, John Montrym</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文描述 NVIDIA Tesla GPU 如何让图形着色和通用并行计算共享可编程处理资源。它介绍流式多处理器的线程分组、指令执行、存储层次，以及这些部件如何支撑图形流水线和 CUDA 程序。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>统一的 GPU 执行资源能在不同着色阶段和计算负载之间调配算力，大量常驻线程有助于隐藏执行与访存延迟。</dd></div><div><dt>创新点</dt><dd>以 SIMT 执行和可编程流式多处理器支撑统一着色与通用并行计算，给出实际 GPU 的体系结构说明。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1109/MM.2008.31" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://www.cs.cmu.edu/afs/cs/academic/class/15869-f11/www/readings/lindholm08_tesla.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://doi.org/10.1145/2541940.2541967" target="_blank" rel="noopener">DianNao: A Small-Footprint High-Throughput Accelerator for Ubiquitous Machine-Learning</a></h2>
+            <div class="paper-meta"><span class="tag">ASPLOS</span> <span class="tag">2014</span></div>
+            <p class="paper-authors">Tianshi Chen, Zidong Du, Ninghui Sun, Jia Wang 等 7 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>DianNao 面向卷积网络和深度神经网络的推理，将神经元计算映射到专用运算部件，并用片上缓冲分别管理输入、权重和输出。设计同时分析计算吞吐、局部存储、片外流量和芯片成本。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在论文评估的工作负载上，小面积专用硬件可获得高吞吐，但内存组织决定计算单元能否持续获得数据。</dd></div><div><dt>创新点</dt><dd>将神经网络常见操作映射到可复用的小型硬件数据通路，并围绕其访问模式组织专用缓冲。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://doi.org/10.1145/2541940.2541967" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://users.cs.duke.edu/~lkw34/papers/diannao-asplos2014.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://dspace.mit.edu/entities/publication/f6342515-2b7d-411c-a8ad-a9edb23dd394" target="_blank" rel="noopener">Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">2016</span></div>
+            <p class="paper-authors">Yu-Hsin Chen, Joel Emer, Vivienne Sze</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文研究空间计算阵列上卷积的数据搬运能耗，提出行驻留数据流。它在处理单元内部及相邻单元之间映射卷积，使滤波权重、输入激活和部分和均有机会在局部存储或短距离路径上复用。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>能耗取决于每种数据从哪里被读取和搬运。只优化一种数据的复用，可能增加其他数据的传输。</dd></div><div><dt>创新点</dt><dd>提出行驻留数据流，在一致的硬件资源约束下比较多种数据流的存储访问和能耗。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://dspace.mit.edu/entities/publication/f6342515-2b7d-411c-a8ad-a9edb23dd394" target="_blank" rel="noopener">出版页 <span aria-hidden="true">↗</span></a>
+<a href="https://doi.org/10.1109/ISCA.2016.40" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://eems.mit.edu/wp-content/uploads/2016/04/eyeriss_isca_2016.pdf" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <h2 class="paper-title"><a href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener">In-Datacenter Performance Analysis of a Tensor Processing Unit</a></h2>
+            <div class="paper-meta"><span class="tag">ISCA</span> <span class="tag">2017</span></div>
+            <p class="paper-authors">Norman P. Jouppi, Cliff Young, Nishant Patil, David Patterson 等 76 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>论文公开第一代 TPU 的体系结构，并使用数据中心中的生产推理负载与同期 CPU、GPU 对比。TPU 以八位整数矩阵乘加阵列为核心，作者同时考察了推理服务的尾延迟要求、带宽瓶颈和能效。</p></div>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>专用矩阵阵列带来较高推理吞吐和能效，实际收益仍取决于模型的运算强度、可用带宽和延迟预算。</dd></div><div><dt>创新点</dt><dd>把大规模脉动矩阵乘加阵列和软件管理的片上存储用于在线推理，并用生产负载量化系统级表现。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://research.google/pubs/in-datacenter-performance-analysis-of-a-tensor-processing-unit/" target="_blank" rel="noopener">出版页 <span aria-hidden="true">↗</span></a>
+<a href="https://doi.org/10.1145/3079856.3080246" target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/1704.04760" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+        </div>
+    </main>
+    <footer class="page">
+        <span>Paper Daily</span>
+        <span>页面生成于 <time datetime="2026-11-23T10:54+08:00">2026-11-23 10:54</time>（北京时间）</span>
+    </footer>
+</body>
+</html>

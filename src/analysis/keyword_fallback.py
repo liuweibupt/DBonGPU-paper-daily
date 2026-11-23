@@ -3,7 +3,81 @@ Keyword-based fallback for Chinese content generation when no API key is availab
 Generates brief Chinese summaries using keyword extraction.
 """
 
+import re
 from typing import Dict
+
+
+_ABSTRACT_BOUNDARY = re.compile(r'(?<=[.!?])\s+(?=[A-Z0-9$])')
+_ABBREVIATION = re.compile(r'\b(?:[A-Z](?:\.[A-Z])+|e\.g|i\.e|et al|vs|Fig|Eq|Dr)\.$', re.I)
+_OUTCOME = re.compile(
+    r'\b(?:achiev\w+|outperform\w+|confirmed|improv\w+|reduc\w+|increas\w+|'
+    r'filters? out|cuts?|speeds? up|speedup|complet\w+|less energy|'
+    r'(?:times?|fold) (?:lower|higher|faster)|(?:evaluations?|results?|experiments?)\b[^.!?]*?\bshow\w*|'
+    r'we (?:show|observe|found|find|demonstrate|report))\b',
+    re.I,
+)
+_CONTRIBUTION = re.compile(
+    r'\b(?:we (?:(?:also|further|therefore) )?(?:propose|present|design|introduce|'
+    r'develop|describe|implement|build|extend|integrate|formulate|identify|define|construct)|'
+    r'(?:this (?:paper|work|study|thesis)|here we) (?:proposes?|presents?|introduces?|'
+    r'describes?|develops?|explores?)|'
+    r'is (?:to our knowledge,? )?(?:the first|an? (?:open-source|novel|new))|'
+    r'co-design\w*|recasts?|redesigns?|employs?|'
+    r'(?:first|second|third|finally), [^.!?]+)',
+    re.I,
+)
+_MECHANISM = re.compile(
+    r'\b(?:maps?|combines?|pairs?|pipelines?|organizes?|derives?|decompos\w+|'
+    r'generates?|us(?:e|es|ing)|leverages?|assigns?|introduces?|constructs?|coordinates?|'
+    r'mines?|stores?|schedules?|integrates?|removes?|transforms?)\b',
+    re.I,
+)
+_MEASUREMENT = re.compile(
+    r'\d+(?:\.\d+)?\s*(?:%|[xX×]|dB\b|[mµn]?s\b|MHz\b|GHz\b|times?\b|seconds?\b|hours?\b)'
+)
+
+
+def abstract_sentences(abstract: str) -> list:
+    """Split an abstract while keeping common abbreviations and amounts intact."""
+    sentences = []
+    for fragment in _ABSTRACT_BOUNDARY.split(' '.join(abstract.split())):
+        if sentences and _ABBREVIATION.search(sentences[-1]):
+            sentences[-1] += ' ' + fragment
+        elif fragment:
+            sentences.append(fragment)
+    return sentences
+
+
+def extract_abstract_evidence(sentences: list) -> tuple:
+    """Select result and contribution sentences from the paper's abstract."""
+    explicit_contributions = [
+        index for index, sentence in enumerate(sentences)
+        if _CONTRIBUTION.search(sentence)
+    ]
+    start = explicit_contributions[0] if explicit_contributions else len(sentences) // 3
+    outcomes = [
+        (
+            bool(_MEASUREMENT.search(sentence)),
+            index not in explicit_contributions,
+            index,
+        )
+        for index, sentence in enumerate(sentences)
+        if index >= start
+        and _OUTCOME.search(sentence)
+        and (index not in explicit_contributions or _MEASUREMENT.search(sentence))
+    ]
+    results = sorted(index for _, _, index in sorted(outcomes, reverse=True)[:2])
+
+    contributions = [index for index in explicit_contributions if index not in results]
+    if len(contributions) < 2:
+        for index in range(start, len(sentences)):
+            if index not in results and index not in contributions and _MECHANISM.search(sentences[index]):
+                contributions.append(index)
+                if len(contributions) == 2:
+                    break
+
+    # A short abstract may describe the method in only one sentence.
+    return results, sorted(contributions[:3])
 
 
 # Topic mapping for keyword extraction

@@ -8,14 +8,22 @@ An intelligent, open-source Python tool that automates the tracking and recommen
 
 ## 论文日报
 
-- [GPU 数据库日报](https://liuweibupt.github.io/DBonGPU-paper-daily/index.html)从 arXiv 的 `cs.AR`、`cs.DB` 和 `cs.DC` 中按 GPU 数据库相关度推荐论文。
-- [计算机体系结构日报](https://liuweibupt.github.io/DBonGPU-paper-daily/architecture/index.html)收录最近七天提交到 arXiv `cs.AR` 的论文（含交叉分类），按提交时间倒序展示最多 10 篇。
+| 研究领域 | 每日推荐 | 年度榜 | 经典论文 |
+| --- | --- | --- | --- |
+| GPU 数据库 | [日报](https://liuweibupt.github.io/DBonGPU-paper-daily/index.html) | [Top 100](https://liuweibupt.github.io/DBonGPU-paper-daily/top100.html) | [经典论文](https://liuweibupt.github.io/DBonGPU-paper-daily/classics.html) |
+| 计算机体系结构 | [日报](https://liuweibupt.github.io/DBonGPU-paper-daily/architecture/index.html) | [Top 100](https://liuweibupt.github.io/DBonGPU-paper-daily/architecture/top100.html) | [经典论文](https://liuweibupt.github.io/DBonGPU-paper-daily/architecture/classics.html) |
 
-GitHub Actions 每天运行，时间为北京时间 09:00 和 09:30。两份日报生成并推送到 `main` 后，GitHub Pages 自动发布。每份日报都有按日期保存的 HTML 和 JSON 归档。
+- GPU 数据库日报按主题相关度排序。体系结构日报收录最近七天提交到 arXiv 的 cs.AR 论文，含交叉分类，按首次提交时间倒序展示最多 10 篇。
+- 体系结构年度榜覆盖最近 365 天的 cs.AR 投稿。根据主分类以及题名和摘要的体系结构主题匹配评分，同分时优先近期提交。经典论文按研究主题编选，附中文摘要、核心结论、创新点和原文入口。
+- 体系结构日报及年度榜保留可展开的英文原摘要。翻译 API 不可用时，使用本地英汉模型处理摘要，从原摘要抽取结论和方法贡献。页面会标注机器翻译。模型源自 [OPUS-MT](https://aclanthology.org/2020.eamt-1.15/)，由 [Argos Translate](https://www.argosopentech.com/argospm/index/) 打包分发。
+
+GitHub Actions 每天在北京时间 09:00 和 09:30 触发。日报生成并推送到 main 后，GitHub Pages 自动发布。两份日报分别保存 HTML 和 JSON 日期归档。可在手动运行 Daily Paper Update 时更新两份年度榜。
 
 ```bash
 python main.py --html --feed all             # 生成两份日报
-python main.py --html --feed architecture    # 单独生成体系结构日报
+python main.py --html --feed architecture    # 只生成体系结构日报
+python main.py --top100 --feed architecture  # 更新体系结构年度榜
+python main.py --classics --feed all          # 渲染两份经典论文选集
 ```
 
 ## ✨ Features

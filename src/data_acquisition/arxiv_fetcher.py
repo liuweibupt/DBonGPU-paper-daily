@@ -71,16 +71,26 @@ class ArxivFetcher:
         papers = []
         for category in self.categories:
             try:
-                papers.extend(self._fetch_daily_category(category, start, end))
+                papers.extend(self._fetch_category_range(category, start, end))
             except RuntimeError as error:
                 print(f"{error}; trying the arXiv recent listing")
                 papers.extend(self._fetch_daily_category_via_web(category, start, end, web_cache))
 
+        return self._unique_submissions(papers)
+
+    def fetch_papers_in_range(self, start: calendar_date, end: calendar_date) -> List[Dict]:
+        """Fetch every submission in the inclusive range through paginated Atom results."""
+        papers = []
+        for category in self.categories:
+            papers.extend(self._fetch_category_range(category, start, end, page_size=500))
+        return self._unique_submissions(papers)
+
+    def _unique_submissions(self, papers):
         for paper in papers:
             paper['id'] = re.sub(r'v\d+$', '', paper['id'])
         return self._remove_duplicates(papers)
 
-    def _fetch_daily_category(self, category, start, end):
+    def _fetch_category_range(self, category, start, end, page_size=100):
         query = f'cat:{category}'
         if end < datetime.now(timezone.utc).date() - timedelta(days=1):
             query += f' AND submittedDate:[{start:%Y%m%d}0000 TO {end:%Y%m%d}2359]'
@@ -90,11 +100,11 @@ class ArxivFetcher:
             params = urlencode({
                 'search_query': query,
                 'start': offset,
-                'max_results': 100,
+                'max_results': page_size,
                 'sortBy': 'submittedDate',
                 'sortOrder': 'descending',
             })
-            response = self._request_with_retry(f"{self.base_url}?{params}", max_retries=2, timeout=15)
+            response = self._request_with_retry(f"{self.base_url}?{params}", max_retries=2, timeout=30 if page_size > 100 else 15)
             time.sleep(3)
             if response is None:
                 raise RuntimeError(f"arXiv API unavailable for {category}")

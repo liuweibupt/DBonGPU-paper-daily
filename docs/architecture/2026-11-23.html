@@ -2,707 +2,334 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>体系结构论文日报 - 2026-11-23</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>计算机体系结构论文日报 - 2026-11-23</title>
     <style>
         :root {
-            --bg: #0a0e17;
-            --bg-secondary: #111827;
-            --card-bg: #151d2e;
-            --card-hover: #1a2540;
-            --border: #1e2d4a;
-            --border-hover: #2d4a7a;
-            --text: #e2e8f0;
-            --text-secondary: #8892a8;
-            --text-dim: #5a6480;
-            --accent: #60a5fa;
-            --accent-bright: #93c5fd;
-            --accent-green: #34d399;
-            --accent-orange: #fbbf24;
-            --accent-red: #f87171;
-            --accent-purple: #a78bfa;
-            --gradient-1: linear-gradient(135deg, #60a5fa, #34d399);
-            --gradient-2: linear-gradient(135deg, #60a5fa, #a78bfa);
-            --shadow: 0 4px 24px rgba(0,0,0,0.3);
-            --shadow-hover: 0 8px 32px rgba(0,0,0,0.4);
+            color-scheme: light;
+            --page: #f5f7fa;
+            --surface: #ffffff;
+            --ink: #172232;
+            --muted: #516175;
+            --line: #dbe3eb;
+            --accent: #075c68;
+            --tint: #e9f5f3;
+            --panel: #eef6f6;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
+            margin: 0;
+            color: var(--ink);
+            background: var(--page);
+            font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
         }
-
-        /* Top Navigation */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 24px;
-            background: rgba(10,14,23,0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
+        body.architecture {
+            --page: #f8f7fc;
+            --line: #e3deee;
+            --accent: #563a91;
+            --tint: #f1ebfb;
+            --panel: #f4f0fb;
         }
-        .nav-brand {
-            font-weight: 700;
-            font-size: 1.1em;
-            color: var(--accent);
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 0.9em;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .nav-links a:hover {
-            color: var(--text);
-            background: rgba(96,165,250,0.1);
-        }
-        .nav-links a.active {
-            color: var(--accent);
-            background: rgba(96,165,250,0.15);
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 24px 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h1 {
-            font-size: 2.4em;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-        .hero-desc {
-            color: var(--text-secondary);
-            font-size: 1.15em;
-            margin-bottom: 16px;
-        }
-        .hero-date {
-            display: inline-block;
-            background: rgba(96,165,250,0.12);
-            color: var(--accent-bright);
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 1.1em;
-            border: 1px solid rgba(96,165,250,0.2);
-        }
-
-        /* Date Navigation */
-        .date-nav {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0 24px;
-            margin-bottom: 30px;
-        }
-        .date-nav a {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 16px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.88em;
-            transition: all 0.2s;
-        }
-        .date-nav a:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(96,165,250,0.08);
-        }
-        .date-nav a.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(96,165,250,0.15);
-            font-weight: 600;
-        }
-
-        /* Stats */
-        .stats-row {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin: 0 auto 36px;
-            padding: 0 24px;
-            flex-wrap: wrap;
-            max-width: 800px;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 28px;
-            text-align: center;
-            min-width: 120px;
-            transition: border-color 0.2s;
-        }
-        .stat-card:hover {
-            border-color: var(--border-hover);
-        }
-        .stat-value {
-            font-size: 1.5em;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .stat-label {
-            font-size: 0.82em;
-            color: var(--text-dim);
-            margin-top: 4px;
-        }
-
-        /* Paper List - Two Column Grid */
-        .paper-list {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        /* Paper Card */
-        .paper-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
-            transition: all 0.25s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .paper-card:hover {
-            border-color: var(--border-hover);
-            background: var(--card-hover);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-        .paper-card.compact {
-            padding: 18px 22px;
-        }
-
-        .paper-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .paper-rank {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
+        h1, h2, h3, p, dl, dd { margin: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: .2em; }
+        a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(1220px, 100% - 64px); margin: 0 auto; }
+        .skip-nav { position: fixed; top: 12px; left: 12px; z-index: 2; transform: translateY(-180%); }
+        .skip-nav:focus { transform: none; background: var(--surface); padding: 6px 12px; }
+        .site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+        .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+        .feed-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .feed-nav a { padding: 6px 14px; border: 1px solid transparent; border-radius: 7px; font-weight: 650; }
+        .feed-nav a:not([aria-current]) { color: var(--muted); }
+        .feed-nav a[aria-current] { background: var(--tint); border-color: var(--line); }
+        .github-link { color: var(--muted); white-space: nowrap; font-size: .85rem; }
+        .subnav-wrap { border-top: 1px solid var(--line); }
+        .subnav { display: flex; align-items: center; gap: 1.65rem; }
+        .subnav a { color: var(--muted); white-space: nowrap; padding: 8px 0 7px; border-bottom: 2px solid transparent; font-size: .9rem; }
+        .subnav a[aria-current] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 650; }
+        main { padding: 32px 0 40px; }
+        .intro {
+            padding: 25px 28px;
+            border: 1px solid var(--line);
+            border-inline-start: 4px solid var(--accent);
             border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.9em;
-            color: #fff;
-            background: var(--gradient-1);
-        }
-        .compact .paper-rank {
-            width: 28px;
-            height: 28px;
-            font-size: 0.8em;
-            border-radius: 8px;
-        }
-        .paper-title {
-            font-size: 1.12em;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .compact .paper-title {
-            font-size: 1.0em;
-        }
-        .paper-title a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .paper-title a:hover {
-            color: var(--accent);
-        }
-
-        .paper-meta {
-            margin-top: 10px;
+            background: var(--panel);
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
+            gap: 18px 36px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
         }
-        .score-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.82em;
-            font-weight: 600;
-        }
-        .score-high { background: rgba(52,211,153,0.12); color: var(--accent-green); }
-        .score-mid { background: rgba(251,191,36,0.12); color: var(--accent-orange); }
-        .score-low { background: rgba(90,100,128,0.15); color: var(--text-dim); }
-
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
+        h1 { font-size: clamp(1.6rem, 3.8vw, 2.35rem); line-height: 1.2; letter-spacing: -.025em; }
+        .intro p { color: var(--muted); margin-top: 9px; font-size: .93rem; }
+        .stats { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 22px; flex-shrink: 0; }
+        .stats dt { color: var(--muted); font-size: .77rem; }
+        .stats dd { font-size: .95rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .archive { margin: -5px 0 24px; }
+        .archive-label { display: block; color: var(--muted); font-size: .84rem; font-weight: 650; margin-bottom: 6px; }
+        .archive-links { display: flex; flex-wrap: wrap; gap: 5px; }
+        .archive-links a {
+            padding: 3px 8px;
+            border: 1px solid var(--line);
             border-radius: 5px;
-            font-size: 0.78em;
-            background: rgba(96,165,250,0.08);
+            color: var(--muted);
+            background: var(--surface);
+            font-size: .83rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .archive-links a[aria-current] { background: var(--tint); color: var(--accent); font-weight: 650; }
+        .archive-more { margin-top: 5px; }
+        .archive-more[open] > .archive-links { margin-top: 5px; max-height: 14rem; overflow: auto; }
+        .paper-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+        .paper-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0; }
+        .paper-heading { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); align-items: start; gap: 9px; }
+        .paper-rank {
+            background: var(--tint);
             color: var(--accent);
-            border: 1px solid rgba(96,165,250,0.15);
+            border-radius: 5px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 650;
+            font-size: .77rem;
+            padding: 4px 0;
+            text-align: center;
         }
-
-        .paper-authors {
-            color: var(--text-secondary);
-            font-size: 0.88em;
-            margin-top: 8px;
+        .paper-title { font-size: 1.12rem; line-height: 1.38; letter-spacing: -.008em; overflow-wrap: anywhere; }
+        .paper-title a { color: var(--ink); }
+        .paper-title a:hover { color: var(--accent); }
+        .paper-meta, .paper-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+        .paper-meta:not(:empty) { margin-top: 9px; }
+        .tag, .score-badge {
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 0 6px;
+            line-height: 1.65;
+            font-size: .76rem;
         }
-
-        .paper-abstract {
-            color: var(--text-secondary);
-            font-size: 0.92em;
-            margin-top: 12px;
-            line-height: 1.75;
-        }
-        .compact .paper-abstract {
-            font-size: 0.86em;
-            margin-top: 8px;
-        }
-
+        .score-badge { background: var(--tint); color: var(--accent); font-weight: 600; }
+        .paper-authors, .paper-reasons { color: var(--muted); font-size: .82rem; margin-top: 7px; overflow-wrap: anywhere; }
+        .paper-authors:empty { display: none; }
         .paper-abstract-cn {
-            color: var(--text);
-            font-size: 0.93em;
+            padding: 10px 12px;
+            background: var(--panel);
+            border-radius: 5px;
             margin-top: 12px;
-            line-height: 1.8;
-            background: rgba(96,165,250,0.04);
-            padding: 10px 14px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
         }
-        .compact .paper-abstract-cn {
-            font-size: 0.88em;
-            margin-top: 8px;
-            padding: 8px 12px;
+        .paper-abstract-cn h3, .paper-notes dt { color: var(--accent); font-size: .83rem; font-weight: 700; }
+        .translation-note { color: var(--muted); font-size: .75rem; font-weight: 500; margin-inline-start: .65rem; }
+        .paper-abstract-cn p, .original-abstract p, .paper-notes dd {
+            font-size: .91rem;
+            margin-top: 3px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
         }
-
-        .paper-takeaway {
-            margin-top: 10px;
-            padding: 8px 14px;
-            background: rgba(52,211,153,0.06);
-            border-left: 3px solid var(--accent-green);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            line-height: 1.7;
-            color: var(--accent-green);
+        .original-abstract { margin: 6px 0; }
+        summary { width: fit-content; color: var(--accent); font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+        summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+        .original-abstract p { border-inline-start: 2px solid var(--line); padding-inline-start: 11px; color: var(--muted); }
+        .paper-notes { margin-top: 10px; display: grid; gap: 8px; }
+        .paper-notes dd { color: var(--ink); }
+        .paper-links:not(:empty) { margin-top: 12px; }
+        .paper-links a { font-size: .83rem; font-weight: 650; border: 1px solid var(--line); border-radius: 5px; padding: 2px 9px; }
+        .empty-state { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line); padding: 26px; border-radius: 10px; }
+        footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); padding: 12px 0 26px; border-top: 1px solid var(--line); font-size: .8rem; }
+        @media (max-width: 940px) {
+            .intro { align-items: flex-start; flex-direction: column; }
         }
-        .compact .paper-takeaway {
-            font-size: 0.84em;
-            margin-top: 8px;
-            padding: 6px 12px;
-        }
-
-        .paper-innovation {
-            margin-top: 8px;
-            padding: 8px 14px;
-            background: rgba(251,191,36,0.06);
-            border-left: 3px solid var(--accent-orange);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            line-height: 1.7;
-            color: var(--accent-orange);
-        }
-        .compact .paper-innovation {
-            font-size: 0.84em;
-            padding: 6px 12px;
-        }
-
-        .section-label {
-            font-weight: 600;
-            margin-right: 6px;
-        }
-
-        .paper-reasons {
-            margin-top: 12px;
-            padding: 10px 14px;
-            background: rgba(52,211,153,0.06);
-            border-left: 3px solid var(--accent-green);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            color: var(--accent-green);
-        }
-
-        .paper-links {
-            margin-top: 14px;
-            display: flex;
-            gap: 10px;
-        }
-        .paper-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.86em;
-            padding: 5px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-        .paper-links a:hover {
-            border-color: var(--accent);
-            background: rgba(96,165,250,0.1);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .empty-icon {
-            font-size: 3em;
-            margin-bottom: 16px;
-        }
-        .empty-text {
-            font-size: 1.2em;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        .empty-hint {
-            font-size: 0.9em;
-            color: var(--text-dim);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 24px;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
-            color: var(--text-dim);
-            font-size: 0.82em;
-        }
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4px;
-        }
-        .footer-sep {
-            color: var(--border);
-        }
-        footer a { color: var(--accent); text-decoration: none; }
-
-        /* Details/Summary */
-        details {
-            margin-top: 6px;
-        }
-        details summary {
-            cursor: pointer;
-            color: var(--text-dim);
-            font-size: 0.85em;
-            user-select: none;
-        }
-        details summary:hover {
-            color: var(--text-secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero { padding: 40px 16px 20px; }
-            .hero h1 { font-size: 1.7em; }
-            .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
-            .paper-card { padding: 16px; }
-            .paper-title { font-size: 1.02em; }
-            .top-nav { padding: 10px 12px; flex-wrap: wrap; gap: 6px; }
-            .nav-brand { font-size: 1em; }
-            .nav-links { gap: 2px; }
-            .nav-links a { padding: 4px 8px; }
-            .stats-row { gap: 10px; padding: 0 12px; }
-            .stat-card { padding: 12px 18px; min-width: 90px; }
-        }
-        @media (min-width: 641px) and (max-width: 900px) {
+        @media (max-width: 760px) {
             .paper-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .page { width: calc(100% - 28px); }
+            .masthead { gap: 3px 8px; }
+            .feed-nav { gap: 2px; }
+            .feed-nav a { font-size: .88rem; padding: 5px 6px; }
+            .subnav { gap: 1rem; }
+            main { padding-top: 16px; }
+            .intro { padding: 14px 12px; margin-bottom: 16px; gap: 8px; }
+            h1 { font-size: clamp(1.35rem, 5.8vw, 1.6rem); text-wrap: balance; }
+            .stats { gap: 5px 14px; }
+            .archive { margin: 0 0 14px; }
+            .paper-card { padding: 13px; }
         }
     </style>
 </head>
-<body>
-    <nav class="top-nav">
-        <div class="nav-brand">体系结构论文日报</div>
-        <div class="nav-links">
-            <a href="../index.html" class="">GPU 数据库日报</a>
-            <a href="index.html" class="active">体系结构日报</a>
-            <a href="../top100.html" class="">年度 Top 100</a>
-            <a href="../classics.html" class="">经典论文</a>
-            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub</a>
+<body class="architecture">
+    <a class="skip-nav" href="#main">跳到论文列表</a>
+    <header class="site-header">
+        <div class="page masthead">
+            <nav class="feed-nav" aria-label="选择领域">
+                <a href="../index.html">GPU 数据库</a>
+                <a href="index.html" aria-current="true">计算机体系结构</a>
+            </nav>
+            <a class="github-link" href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
-    </nav>
-
-    <section class="hero">
-        <h1>体系结构论文日报</h1>
-        <p class="hero-desc">浏览 arXiv 近 7 天的体系结构论文，按首次提交时间排序</p>
-        <div class="hero-date">2026-11-23</div>
-    </section>
-
-    <nav class="date-nav"><a href="2026-11-23.html" class="active">2026-11-23</a></nav>
-
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value">10</div>
-            <div class="stat-label">收录论文</div>
+        <div class="subnav-wrap">
+            <nav class="page subnav" aria-label="计算机体系结构栏目">
+            <a href="index.html" aria-current="page">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
+            </nav>
         </div>
+    </header>
+    <main class="page" id="main">
+        <section class="intro">
+            <div class="intro-text">
+                <h1>计算机体系结构论文日报</h1>
+                <p>最近 7 天在 arXiv cs.AR 提交的体系结构论文，含交叉分类。按首次提交时间倒序。</p>
+            </div>
+            <dl class="stats"><div><dt>收录论文</dt><dd>10</dd></div>
+<div><dt>日报日期</dt><dd>2026-11-23</dd></div></dl>
+        </section>
+        <nav class="archive" aria-label="计算机体系结构日报归档">
+            <span class="archive-label">日报归档</span>
+            <div class="archive-links"><a href="2026-11-23.html" aria-current="page">2026-11-23</a></div>
 
-        <div class="stat-card">
-            <div class="stat-value">2026-11-23</div>
-            <div class="stat-label">更新日期</div>
+        </nav>
+        <div class="paper-list daily">
+            <article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 1 篇">01</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.27035v1" target="_blank" rel="noopener">Mind the Delta: Early Pruning of RTL Variants for Agentic Hardware Optimization</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-20</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Siyang Cai, Cangyuan Li, Haoyu Gao, Kun Wang 等 9 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>大语言模型驱动的编程智能体可以快速生成 RTL 微架构变体。商业工具综合一个变体却可能耗时数小时，使逻辑综合成为主要瓶颈。细微的 RTL 改动可能引发非线性的综合结果变化，学习型预测器难以准确建模。降低综合优化力度则可能改变搜索轨迹，或只节省很少时间。作者指出，挑选变体只需判断候选是否还有可能超越当前最优的可行实现。DiffScope 无需训练，并行启动完整的综合任务，将候选实时面积与已完成综合的基准设计轨迹作对照，以抵消初始映射阶段共同的面积膨胀。该方法将初始映射阶段的残差方差降至原来的 1/73.6，并依据用其他设计演化序列校准的下界提前终止缺乏竞争力的任务。在从小模块到数百万单元处理器的 43 个设计族上，DiffScope 均找到与穷举综合相同的最优变体，总评估工作量减少 44.9%，大型设计组的工作量缩减倍数达 2.18。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Autonomous coding agents powered by large language models (LLMs) now write diverse microarchitectural variants of existing register-transfer level (RTL) designs at high throughput, shifting the primary bottleneck of agentic RTL optimization onto logic synthesis. Commercial toolchains take hours per variant, creating an acute compute asymmetry between proposing and evaluating variants. Existing fast evaluators falter in this regime. Subtle RTL edits trigger nonlinear synthesis shifts that learned predictors and coding agents cannot resolve, while synthesis proxies at reduced effort either alter the optimization trajectory or retain most of its runtime. Selecting a variant, however, does not require regressing absolute quality of results across designs, only identifying when a candidate cannot surpass the best completed feasible implementation. Based on the observation that synthesis trajectories share strong design-specific bias with their base design, we propose DiffScope, a training-free anytime selection framework that races full synthesis runs in parallel. By pairing live area telemetry with the already synthesized base trajectory, DiffScope cancels early mapping inflation, reducing residual variance during initial mapping by 73.6X, and stops uncompetitive runs via a lower bound calibrated on other design lineages. Across 43 design families from small blocks to processors with millions of cells, DiffScope uniquely recovers the optimum of exhaustive synthesis in every family, cuts total evaluation work by 44.9% (1.81X), and reaches 2.18X on L-tier designs.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>将候选综合过程与同源基准设计作差，可提前淘汰低潜力变体。DiffScope 在 43 个设计族中保留了穷举综合的最优结果，并将总评估工作量减少 44.9%。</dd></div><div><dt>创新点</dt><dd>用已综合基准设计的轨迹消除同源变体在早期映射中的共有面积偏差，并以跨设计校准的下界决定何时停止完整综合任务。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.27035v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.27035v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 2 篇">02</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.27010v1" target="_blank" rel="noopener">Rethinking ANNS on Commodity PIM: PIM-Native Vector Search with Cooperative Filtering</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-20</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Dawei Guo, Yizou Chen, Fan Yang, Hui Li 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>近似最近邻搜索的向量扫描受存储带宽限制，适合用存内计算（PIM）加速。现有方案往往把面向 CPU 的距离计算和前 k 名选择直接移植到 PIM，给轻量、彼此隔离的核心带来较高的算术和状态开销。PIVOT 对向量进行二值量化，通过 PIM 原生位运算直接估算距离，无需查找表，也降低了本地存储需求。它用候选保留量模型导出保守阈值，分别指导 CPU 上的簇筛选和 PIM 上的距离下界过滤，由此减少回传数据并省去各 PIM 核心的前 k 名状态。CPU 负责查询级协调和重排序，PIM 执行数据并行过滤。系统为配置生成专用 PIM 内核，并跨查询批次重叠 CPU 准备与重排序和 PIM 过滤。真实 UPMEM 硬件上的实验表明，PIVOT 剔除了被探查向量的 99.3%–99.7%，查询吞吐最高分别达到 CPU 基线的 18.8 倍和以往 PIM 基线的 10.2 倍。其召回率高于已有 PIM 系统，在高维嵌入上也保持有效。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Approximate nearest neighbor search (ANNS) is a key primitive in modern data-intensive systems, and its memory-bound vector-scanning stage makes processing-in-memory (PIM) a promising acceleration platform. Existing PIM-based ANNS systems largely transplant CPU-oriented distance evaluation and top-$k$ selection onto PIM, introducing arithmetic- and state-heavy operations that poorly match lightweight, isolated PIM cores. To address these mismatches, we present PIVOT, a PIM-native vector search system with cooperative filtering, which thoroughly rethinks how ANNS should be executed on commodity PIM. First, PIVOT recasts PIM-side distance evaluation around binary quantization to exploit PIM-native bitwise operations, enabling LUT-free evaluation with low arithmetic cost and a small local-memory footprint. Second, PIVOT redesigns PIM-side candidate selection around threshold-guided cooperative filtering, using a survivor-mass model to derive a conservative threshold for CPU-side cluster filtering and PIM-side lower-bound filtering, thereby reducing output traffic and eliminating per-core top-$k$ state. PIVOT organizes these stages into a cooperative workflow that keeps query-global coordination and reranking on the CPU while assigning memory-intensive, data-parallel filtering to PIM. To efficiently realize this workflow and sustain high utilization across devices, PIVOT further generates configuration-specialized PIM kernels and pipelines CPU-side preparation and reranking with PIM-side filtering across query batches. Evaluations on real UPMEM hardware show that PIVOT filters out 99.3-99.7% of probed vectors and achieves up to $18.8\times$ and $10.2\times$ the QPS of CPU and prior PIM baselines, respectively. PIVOT also achieves higher recall than existing PIM systems and remains effective on high-dimensional embeddings.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>PIM 端用位运算和阈值过滤承担大规模扫描，CPU 保留全局排序职责。真实 UPMEM 实验中，PIVOT 剔除了超过 99% 的被探查向量，相比以往 PIM 基线实现最高 10.2 倍的查询吞吐，同时提高召回率。</dd></div><div><dt>创新点</dt><dd>用二值量化实现适合 PIM 的无查找表距离估计，再以候选保留量模型统一指导 CPU 簇筛选与 PIM 距离下界过滤，省去每个核心的前 k 名状态。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.27010v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.27010v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 3 篇">03</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26939v1" target="_blank" rel="noopener">Acceleration of Sparse and Irregular Workloads through Energy-Efficient Stream Extensions</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-20</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Paul Scheffler</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>稀疏神经网络、多物理场仿真和图分析等工作负载缺少规则计算常见的局部性、数据复用及稳定控制流，传统 CPU 和 GPU 的功能单元利用率可能低于 10%。本论文研究低能耗硬件流扩展，通过将数据搬运与计算解耦，在通用系统中加速稀疏和不规则工作负载，同时维持规则负载性能。作者设计了与处理核心紧耦合的流扩展，支持仿射访存流、间接访存流，以及稀疏张量索引的交集与并集。该扩展被集成到低能耗 RISC-V 计算集群，用于通用稀疏线性代数、模板计算、脉冲神经网络推理和模型预测控制。作者还在采用 12 nm FinFET 工艺制造的 432 核 2.5D RISC-V 系统中验证了不规则负载下的计算利用率与能效，并将芯片级互连扩展为支持端到端的不规则访存流，改善性能、能效与总线利用率。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>The slowdown of Moore&#x27;s law and Dennard scaling has motivated computer architects to uphold performance scaling through architectural specialization. So far, most efforts have focused on highly regular workloads, which exhibit good data locality, ample reuse, and a data-independent execution flow. As this specialization hits diminishing returns, attention shifts towards sparse and irregular workloads, which are essential to applications like sparse neural networks, multiphysics simulations, and graph analytics. However, they lack the convenient properties of highly regular compute that modern architectures are optimized for, resulting in very low (&lt;10%) functional unit utilization on traditional CPUs and GPUs. The most promising approaches to their general hardware acceleration leverage memory streams, which decouple data movement from execution. In this thesis, we explore energy-efficient hardware stream extensions that significantly accelerate sparse and irregular workloads in general-purpose systems without specializing to specific application domains or compromising on regular-workload performance. We design a flexible, core-coupled stream extension supporting affine and indirect streams as well as intersection and union of sparse tensors. We integrate it into an energy-efficient RISC-V compute cluster, achieving significant performance and energy efficiency benefits on general sparse linear algebra, and further use it to accelerate stencil computations, spiking neural network inference, and model-predictive control. We evaluate it at scale in a 432-core 2.5D RISC-V system fabricated in 12nm FinFET, achieving leading compute utilization and energy efficiency on sparse and irregular workloads while remaining competitive on regular workloads. Finally, we extend chip-level interconnects with end-to-end irregular streams, improving performance, energy efficiency, and bus utilization.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>将不规则数据搬运交给通用流扩展，可在同一硬件上支持多种稀疏负载并改善执行单元利用率。论文在 432 核 2.5D RISC-V 实体系统验证了这一思路，并将其延伸至片上互连。</dd></div><div><dt>创新点</dt><dd>提出支持仿射与间接访存、稀疏索引交并的核旁流扩展，再把端到端不规则流支持融入芯片级互连。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26939v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26939v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 4 篇">04</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26857v1" target="_blank" rel="noopener">CarrierKV: An Edge LLM Accelerator with Positional Carrier Decomposition for Low-Bit KV Cache</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Junyi Luo, Xinting Jiang, Ruichen Qi, Gregory Kielian 等 6 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>边缘设备做长上下文解码时，每生成一个 token 都需读取持续增长的 KV 缓存，因而受 DRAM 限制。NVFP4 等四位分块缩放格式能减少流量，但在 Qwen3-4B 上将 32K RULER 七项任务的得分从 92.6 降至 79.4，叠加 Hadamard 旋转后进一步降为 57.7。作者发现，键向量的多数能量来自每个注意力头的一个位置载波向量。该向量随旋转位置嵌入（RoPE）改变方向，并主导大多数 NVFP4 键块的共享缩放因子，使内容的信号与量化噪声比降低约 5 dB。CarrierKV 在 RoPE 前分离并移除位置载波，只旋转、量化和存储内容残差，在四位编码上直接计算内容的注意力分数，再由位置相位引擎以每周期一个键的吞吐重建载波分数项。在缓存与 NVFP4 同样大小时，Qwen3-4B 的 32K RULER 得分升至 91.1，四个模型的 32K PG19 困惑度增幅降为 NVFP4 增幅的约 1/5.9–1/1.8。22 nm FDSOI、600 MHz 的实现相对 NVFP4 加速器增加 2.9% 面积，Qwen3-4B 的 20K-token 推理请求能耗增加 0.12%，解码延迟相同。在 32K 上，它的 RULER 得分高于 FP8 键（91.1 对 89.3），每 token 能耗低 13.7%。同一分解还将三位 TurboQuant 键在 Qwen3-4B 上的 32K 困惑度增幅从 69.7 降至 0.76。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Long-context decoding on edge devices is limited by DRAM, because every generated token reads the whole, growing KV cache. 4-bit block-scaled formats such as NVFP4 reduce this traffic but degrade accuracy: on Qwen3-4B, NVFP4 lowers 32K RULER (seven tasks) from 92.6 to 79.4, and a Hadamard rotation lowers it further to 57.7. We observe that most of the key energy is a positional carrier, one per-head vector that rotary position embedding (RoPE) rotates with position. In NVFP4, it sets the shared scale of most key blocks and lowers the signal-to-quantization-noise ratio of the content by about 5 dB, nearly one bit, yet it depends only on that vector and the position. We therefore introduce positional carrier decomposition, which removes the carrier before RoPE and stores only the content residual. We design a KV path that rotates and quantizes keys only after this removal and computes each attention score directly on the 4-bit code. We also design a positional phase engine that regenerates the carrier&#x27;s score term for one key per cycle. At the same cache size as NVFP4, CarrierKV raises 32K RULER on Qwen3-4B from 79.4 to 91.1 and lowers the 32K PG19 perplexity increase of NVFP4 by 1.8 to 5.9 times on four models, outperforming SageAttention and P3-LLM on all four. Its loss also stays nearly flat as the cache grows, while that of NVFP4 rises. In a 22 nm FDSOI process at 600 MHz, CarrierKV&#x27;s hardware increases the area of the NVFP4 accelerator by 2.9% and the energy of a 20K-token reasoning request on Qwen3-4B by 0.12% at the same decode latency. On Qwen3-4B at 32K, CarrierKV has a better RULER score than FP8 keys (91.1 against 89.3) and uses 13.7% less energy per token. The decomposition also lowers the 32K perplexity increase of 3-bit TurboQuant keys on Qwen3-4B from 69.7 to 0.76.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>将支配缩放因子的位置载波从内容中分离，可使四位 KV 缓存保留更多内容信息。在同等 NVFP4 缓存容量下，Qwen3-4B 的 32K RULER 从 79.4 升至 91.1，硬件面积增加 2.9%，解码延迟相同。</dd></div><div><dt>创新点</dt><dd>提出 RoPE 前的位置载波分解，把高能量位置项从低比特内容编码中移出，并用四位直接算分通路和位置相位引擎分别计算两部分贡献。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26857v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26857v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 5 篇">05</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26815v1" target="_blank" rel="noopener">Specification-Grounded Adaptive Triage and Formal Invariant Exclusion Synthesis for Autonomous Silicon Coverage Closure</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span> <span class="tag">cs.SE</span></div>
+            <p class="paper-authors">Veni Mohan</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>流片前，补齐最后 5%–15% 的代码与功能覆盖率常成为进度瓶颈。直接让大语言模型逐一处理未覆盖 RTL 行或分支，会反复分析相关覆盖点，还可能生成违反跨信号不变量的非法激励，或将实际可达的逻辑错误排除。ARGUS 从微架构规范和 SystemVerilog 断言提取形式化模块契约，再按各模块的未覆盖点密度选择处理方式。对缺口密集的模块，按工作模式、有限状态机状态或反压等根因聚类。对缺口稀疏的模块，通过抽象语法树与循环域可达性分析区分可达角落场景和可证明不可达的逻辑。定向测试采用逐位精确的黄金结果记分板，确认不可达时生成附形式化证明的工具原生 .el 排除项。实验涵盖三个 OpenTitan 开源 IP、两个商用 AI 加速器数据布局转换数据通路，以及一个包含 2,626 个模块的工业互连子系统。ARGUS 在 0.265 秒内完成 2,626 个模块的分诊，令牌用量降至原来的约 1/27.2 至低于 1/180，三阶段检查使非法激励产生的覆盖结果未被合并。有效覆盖率达到 99.32%–100.0%，在逾 21,071 个经过证明的排除项中未发现误排除。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Closing the final 5%-15% of code and functional coverage remains a major schedule bottleneck in silicon tapeouts. Existing LLM-based coverage closure loops feed raw uncovered RTL lines or branches directly into iterative prompts, failing on industrial subsystems due to: (1) token and context explosion from querying thousands of correlated holes independently; (2) illegal stimulus that violates cross-signal invariants and yields dirty coverage; and (3) unsafe exclusion hallucination on structurally unreachable dead code.
+  We present ARGUS (Autonomous Reachability &amp; Guided Unified Stimulus), a specification-grounded, dual-regime coverage closure and formal exclusion synthesis engine. ARGUS mines microarchitectural specs and SystemVerilog Assertions into a formal Block Contract (C), then runs adaptive Macro-Clustering vs. Micro-Surgery triage gated by a per-module hole-density threshold (tau): dense modules collapse correlated holes into root-cause mode, FSM, and backpressure clusters, while sparse modules use AST and loop-domain reachability to separate reachable corners from provably unreachable invariants. Directed tests pair with bit-exact golden scoreboards, and unreachable invariants emit tool-native .el exclusions with formal proofs.
+  Across five core benchmarks -- three open-source LowRISC OpenTitan IPs (uart_core, i2c_core, aes_cipher_core) and two commercial AI accelerator Tensor Layout Converter datapaths (53 SV modules, 376,127 coverage points) -- plus a 2,626-module industrial interconnect subsystem, ARGUS triages 2,626 modules in 0.265 s, cuts token usage by 27.2x to &gt;180x, achieves zero dirty merges via 3-step sanity gating, and reaches 99.32%-100.0% effective coverage with 0 false exclusions across 21,071+ proven exclusions.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>规范约束和形式化可达性分析可共同指导覆盖率收敛，分别处理该补的测试和可以排除的覆盖点。ARGUS 在所报告的基准上实现 99.32%–100.0% 的有效覆盖率，逾 21,071 个已证明排除项中无误排除。</dd></div><div><dt>创新点</dt><dd>以规范和断言提取模块契约，按缺口密度在根因聚类与细粒度可达性分析间切换，并分别生成经逐位检查的测试及附形式化证明的排除项。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26815v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26815v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 6 篇">06</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26588v1" target="_blank" rel="noopener">Verify the Verifier: Specification-Grounded LLM Cross-Checking for Bugs That Escape UVM Scoreboards</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span> <span class="tag">cs.SE</span> <span class="tag">cs.AI</span></div>
+            <p class="paper-authors">Ana E. Sanchez Villalobos, Michael D. Quinn, Aakash Tyagi, Minh D. Luu 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>通过 UVM 回归测试只说明设计与参考模型在计分板覆盖的行为上相符，无法验证规格说明中的全部要求。论文把通过所有测试但违反规格的缺陷称为计分板漏检（scoreboard escape），并提出 Verify the Verifier。该框架使用基于大语言模型的异常交叉检查器，对照规格分析已经通过回归的执行轨迹。作者向 4 个 OpenTitan IP 注入 564 个缺陷，从中筛出 68 个候选漏检。它们改变了设计行为，也被测试激活，却依然通过回归。框架最终确认 41 个漏检。对应断言在缺陷设计上失败，并在原始设计上得到证明。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>A passing UVM regression shows the design agrees with the reference model on what the scoreboard checks, not that it meets the specification. Bugs that pass every test yet violate the specification, termed scoreboard escapes, survive mature testbenches. We present Verify the Verifier, to our knowledge the first framework whose LLM-based Anomaly Cross-Checker examines a passing regression&#x27;s traces against the specification. Of 564 bugs inserted into four OpenTitan IPs, 68 are candidate scoreboard escapes: non-equivalent, exercised by the tests, yet passing. The framework confirmed 41 as scoreboard escapes with assertions failing on the buggy design and proven on the original.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>对于 68 个已被测试激活且通过 UVM 回归的候选缺陷，结合规格复核和断言验证可确认其中 41 个确实违反规格。</dd></div><div><dt>创新点</dt><dd>对已经通过回归的轨迹进行规格驱动的交叉检查。用能区分原始设计和缺陷设计的形式化断言确认计分板漏检。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26588v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26588v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 7 篇">07</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26517v1" target="_blank" rel="noopener">From Seed to BLOOM: Autonomously Growing a Better Out-of-Order Core</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Angela Cui, Ferran Hermida-Rivera, Jack Toubes, Jim Fang 等 8 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>处理器设计需要在面积和频率等 ASIC 实现约束下提升性能，涉及性能建模、微架构、RTL 和综合等多方面工作。论文提出基于大语言模型智能体的 MiracleGro，用于优化开源乱序超标量处理器 BOOM。系统无需人工逐步介入，即可分析周期级 RTL 行为与综合结果、定位瓶颈，并将架构方案实现为 RTL。优化同时考虑周期精确性能、面积和关键路径。采用 SkyWater 130 nm 工艺综合后，优化设计的 IPC 提升 85%，频率提高 27%。在使用完整参考输入的 SPEC CPU2017 intspeed 测试中，约 30 万亿条指令的实际运行速度达到原设计的 2.34 倍。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Improving microprocessor performance while meeting ASIC implementation constraints like area and frequency is a complex and labor-intensive task that requires expertise across computer architecture, hardware design, and performance analysis and profiling. While large teams in industry can afford the engineering resources to target this problem across performance modeling, RTL design, and ASIC implementations, small teams of researchers and engineers cannot take on this huge engineering burden while keeping up with the pace of advancement in processor microarchitecture. Recent advancements in large language model (LLM) agents present a promising substrate to accelerate this traditionally human-intensive process.
+  In this work, we build and evaluate MiracleGro, an agentic AI-based system that, without human intervention, analyzes cycle-level RTL behavior and synthesis results, identifies performance bottlenecks, and translates architectural ideas into RTL implementation in a leading open-source out-of-order superscalar application core, the Berkeley Out-of-Order Machine (BOOM). Taking into account cycle-exact performance, area, and critical path, MiracleGro automatically produces improved BOOM designs that drastically increase the human-optimized BOOM&#x27;s performance on substantial workload suites such as SPEC CPU2017 with full reference inputs.
+  MiracleGro achieves an 85% IPC speedup and a frequency improvement of 27% in SkyWater 130nm, resulting in a 2.34x wall-clock time speedup on the full SPEC CPU2017 intspeed benchmarks (30 trillion instructions). This result demonstrates the enormous opportunity to harness frontier models to improve state-of-the-art RTL-driven platforms for implementation-grounded microarchitecture research across hardware designs.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在论文评估的 BOOM 实现上，IPC 和频率同时提高，使完整 SPEC CPU2017 intspeed 测试的实际速度达到基线的 2.34 倍。</dd></div><div><dt>创新点</dt><dd>将周期级 RTL 分析、瓶颈定位和架构改动实现串联成自主优化流程。综合面积、频率与关键路径反馈也参与候选设计评估。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26517v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26517v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 8 篇">08</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26472v1" target="_blank" rel="noopener">FoldSim: Scaling Cycle-Exact RTL Simulation with Hierarchical Folding and Static Scheduling</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Chengxuan Wang, Nikhil Rout, Yang-gon Kim, Jacob Leigh 等 6 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>CPU 和 GPU 上的 RTL 仿真难以在大规模设计上维持高吞吐，直接将 RTL 映射到 FPGA 又受容量限制。FoldSim 使用分层折叠，在一块 FPGA 上以共享逻辑模拟多个模块实例，同时保留每个实例的独立状态。编译器为可折叠模块生成静态调度，减少动态同步开销，并在状态超出片上容量时将其放到外部存储。可配置的 DRAM 模型将被模拟系统的存储时序与宿主延迟分开。单块 AMD Alveo V80 可运行 8 个 SM 的 GPU 模型和包含 4,096 个处理器核的 1,024 节点 Rocket 数据中心模型。对应的未折叠实现所需 LUT 数分别约为 FoldSim 的 16 倍和 200 倍。另一个 4 SM GPU 实验用 4.24 秒模拟 1024×1024 GEMM，软件 RTL 仿真则耗时 26 小时。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>RTL simulation is essential for hardware design and verification, yet its execution time grows rapidly with design scale and complexity. CPU- and GPU-based simulators exploit parallelism to accelerate RTL evaluation, but achieving high simulation throughput for large designs remains challenging. FPGA-based simulators offer higher throughput by mapping RTL computations directly onto hardware, but their scalability is constrained by FPGA resource capacity.
+  We present FoldSim, an automated framework that enables cycle-exact simulation of large RTL designs on a single FPGA through hierarchical folding. FoldSim maps instances across the design hierarchy onto shared logic while maintaining their independent state. Given foldable module classes, its compiler constructs a static schedule that coordinates their execution, reducing dynamic synchronization overhead and making state accesses predictable. FoldSim backs state that exceeds on-chip capacity with external memory and brings it to the shared circuits as needed. A configurable DRAM model separates target-memory timing from host delays. The compiler explores replica allocations and state placement to balance resource savings against simulation time.
+  On one AMD Alveo V80, FoldSim runs an 8-SM GPU and a 1,024-node Rocket datacenter with 4,096 processor cores. The unfolded implementations require approximately 16x and 200x as many LUTs as FoldSim&#x27;s, respectively. The datacenter keeps about 1.9 GB of state in HBM, while a 4-SM GPU completes a 1024x1024 GEMM in 4.24 seconds, versus 26 hours in software RTL simulation.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>分层折叠把大型设计映射到单块 FPGA，同时维持周期精确性。论文分别验证了大规模处理器模型的资源节省，以及 GPU 工作负载的仿真加速。</dd></div><div><dt>创新点</dt><dd>在设计层次内共享仿真逻辑而保留独立实例状态。结合静态调度、片外状态管理和可配置 DRAM 时序模型，提高单 FPGA 可承载的设计规模。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26472v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26472v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 9 篇">09</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26447v1" target="_blank" rel="noopener">Scaling classical hardware for accurate real-time quantum error correction</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span> <span class="tag">quant-ph</span> <span class="tag">cs.LG</span></div>
+            <p class="paper-authors">Chenyang Jin, Susanne F. Yelin, Andi Gu</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>容错量子计算需要经典解码器实时处理校验综合征（syndrome），并以低延迟返回判决。超导量子处理器的测量周期短，使解码速度与准确率难以兼顾。论文提出流式神经解码器 Rapids，并与 FPGA 协同设计。网络采用便于硬件实现的算子，并按 FPGA 所用的整数算术训练。对于码距为 19 的表面码，单块 FPGA 可在 1 微秒内处理每轮综合征，其逻辑错误率约为既有实时硬件解码器的 1/240。设计也可用于色码和 [[144,12,12]] 双变量自行车码（bivariate bicycle code）。对后者，作者报告其解码准确度约为实时 Relay 解码器的 16 倍。扩展到多块 FPGA 或定制芯片后，设计可进一步改善速度、准确率或支持更大码。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Fault-tolerant quantum computation requires a classical decoder fast enough to process syndrome measurements at the rate at which they are generated, and to return its decisions with low latency. This is most demanding for superconducting processors, whose fast syndrome cycles force a trade-off between decoding speed and accuracy. Decoders fast enough to keep up sacrifice accuracy, which must be compensated for with larger codes and thus additional physical qubits. Here we introduce Rapids, a streaming neural decoder that is both fast and accurate. We achieve this by co-designing the decoder with a field-programmable gate array (FPGA): the network is built from operations that map cheaply onto the device and trained in its integer arithmetic. For the distance-19 surface code, Rapids decodes each round of syndromes in under a microsecond on a single FPGA, fast enough for superconducting processors, and returns its decisions with the low latency that fault-tolerant algorithms require. Its logical error rate is 240 times lower than that of existing real-time hardware decoders. The same design extends to the color code and the [[144,12,12]] bivariate-bicycle code, on which our decoder is 16 times more accurate than the real-time Relay decoder. We further show that the decoder scales: spread over several FPGAs or hardened into custom silicon, it becomes faster, more accurate, or able to decode larger codes. Classical hardware thus becomes a further resource, alongside qubits, that can be scaled to improve fault-tolerant quantum computers.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在所评估的码距 19 表面码上，Rapids 同时达到亚微秒每轮解码和较低的逻辑错误率，满足作者设定的超导处理器实时节奏。</dd></div><div><dt>创新点</dt><dd>协同选择 FPGA 友好的神经网络算子和整数训练方式。用流式硬件实现处理连续综合征，并验证了扩展至其他量子纠错码与更大硬件配置的可能性。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26447v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26447v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 10 篇">10</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26435v1" target="_blank" rel="noopener">Aggron: Aggressive Compression of Agentic KV Caches during Head-of-Line Stalls in the Request Queue</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span></div>
+            <p class="paper-authors">Rishabh Ravi, Tony Hong, Chen Wang, Yue Zhu 等 8 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>LLM 智能体的上下文会随多轮任务增长，KV 缓存容量因此限制服务规模。在同一推理引擎上异步压缩上下文，又会与正常请求争用算力和内存。Aggron 在每轮选择性地对部分上下文生成摘要，以减轻压缩工作量并维持准确度。系统使用独立的摘要队列，在对应智能体请求因主队列队头阻塞而等待时执行摘要，并仅在预测能在请求恢复执行前完成时才启动。高负载实验中，相较于现有异步摘要方法，Aggron 将程序 P99 延迟降低 27% 至 31%，吞吐量提高到 1.34 至 1.40 倍。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>LLM agents run long, multi-turn programs whose contexts grow at every step, and serving them is limited by KV cache capacity. To alleviate this limitation, systems use context compression techniques, which typically wait until the KV cache crosses a large threshold and then summarize large spans of history at once, either in the background while the agent progresses or on the critical path. These summarizations can be done using the same model running on the same engine, or using the same or a different model running on extra hardware. When running on the same engine, summarization competes with the requests being served for both compute and memory capacity.
+  To maximize the cost-effectiveness of summarization, this paper presents a new serving system called {\em Aggron}. Aggron summarizes agentic requests at every turn and selectively summarizes only certain parts of the KV cache. As a result, Aggron retains accuracy and keeps summarization requests lightweight. Moreover, Aggron launches summarization requests from a separate {\em Summarization Queue} while the corresponding agentic request whose KV cache we want to compress is stalled in the main request queue due to head-of-line stalls. The Summarization queue utilizes compute and memory capacity left over by the head-of-line stalls in the main queue. Further, to maximize efficiency, the server issues summarizations only when it predicts that they can complete before the corresponding agentic request will finally execute. In our evaluation, we compare Aggron to state-of-the-art asynchronous summarization. At high load, Aggron reduces P99 program latency by $27$--$31\%$, and raises throughput by $1.34$--$1.40\times$.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在论文的高负载实验中，把轻量级摘要安排到请求因队头阻塞而等待的时段，可同时降低尾延迟并提高吞吐量。</dd></div><div><dt>创新点</dt><dd>按轮选择性压缩上下文。使用独立摘要队列利用主队列队头阻塞期间的剩余资源，并以预测的空闲窗口约束摘要任务的发起时机。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26435v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.26435v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
         </div>
-    </div>
-
-    <div class="paper-list">
-
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">1</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.27035v1" target="_blank" rel="noopener">Mind the Delta: Early Pruning of RTL Variants for Agentic Hardware Optimization</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-20</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Siyang Cai, Cangyuan Li, Haoyu Gao, Kun Wang 等 (9 位作者)</div>
-        <div class="paper-abstract">Autonomous coding agents powered by large language models (LLMs) now write diverse microarchitectural variants of existing register-transfer level (RTL) designs at high throughput, shifting the primary bottleneck of agentic RTL optimization onto logic synthesis. Commercial toolchains take hours per variant, creating an acute compute asymmetry between proposing and evaluating variants. Existing fast evaluators falter in this regime. Subtle RTL edits trigger nonlinear synthesis shifts that learned predictors and coding agents cannot resolve, while synthesis proxies at reduced effort either alter the optimization trajectory or retain most of its runtime. Selecting a variant, however, does not require regressing absolute quality of results across designs, only identifying when a candidate cann...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.27035v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.27035v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">2</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.27010v1" target="_blank" rel="noopener">Rethinking ANNS on Commodity PIM: PIM-Native Vector Search with Cooperative Filtering</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-20</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Dawei Guo, Yizou Chen, Fan Yang, Hui Li 等 (5 位作者)</div>
-        <div class="paper-abstract">Approximate nearest neighbor search (ANNS) is a key primitive in modern data-intensive systems, and its memory-bound vector-scanning stage makes processing-in-memory (PIM) a promising acceleration platform. Existing PIM-based ANNS systems largely transplant CPU-oriented distance evaluation and top-$k$ selection onto PIM, introducing arithmetic- and state-heavy operations that poorly match lightweight, isolated PIM cores. To address these mismatches, we present PIVOT, a PIM-native vector search system with cooperative filtering, which thoroughly rethinks how ANNS should be executed on commodity PIM. First, PIVOT recasts PIM-side distance evaluation around binary quantization to exploit PIM-native bitwise operations, enabling LUT-free evaluation with low arithmetic cost and a small local-mem...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.27010v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.27010v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">3</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26939v1" target="_blank" rel="noopener">Acceleration of Sparse and Irregular Workloads through Energy-Efficient Stream Extensions</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-20</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Paul Scheffler</div>
-        <div class="paper-abstract">The slowdown of Moore&#x27;s law and Dennard scaling has motivated computer architects to uphold performance scaling through architectural specialization. So far, most efforts have focused on highly regular workloads, which exhibit good data locality, ample reuse, and a data-independent execution flow. As this specialization hits diminishing returns, attention shifts towards sparse and irregular workloads, which are essential to applications like sparse neural networks, multiphysics simulations, and graph analytics. However, they lack the convenient properties of highly regular compute that modern architectures are optimized for, resulting in very low (&lt;10%) functional unit utilization on traditional CPUs and GPUs. The most promising approaches to their general hardware acceleration leverage me...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26939v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26939v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">4</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26857v1" target="_blank" rel="noopener">CarrierKV: An Edge LLM Accelerator with Positional Carrier Decomposition for Low-Bit KV Cache</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Junyi Luo, Xinting Jiang, Ruichen Qi, Gregory Kielian 等 (6 位作者)</div>
-        <div class="paper-abstract">Long-context decoding on edge devices is limited by DRAM, because every generated token reads the whole, growing KV cache. 4-bit block-scaled formats such as NVFP4 reduce this traffic but degrade accuracy: on Qwen3-4B, NVFP4 lowers 32K RULER (seven tasks) from 92.6 to 79.4, and a Hadamard rotation lowers it further to 57.7. We observe that most of the key energy is a positional carrier, one per-head vector that rotary position embedding (RoPE) rotates with position. In NVFP4, it sets the shared scale of most key blocks and lowers the signal-to-quantization-noise ratio of the content by about 5 dB, nearly one bit, yet it depends only on that vector and the position. We therefore introduce positional carrier decomposition, which removes the carrier before RoPE and stores only the content res...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26857v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26857v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">5</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26815v1" target="_blank" rel="noopener">Specification-Grounded Adaptive Triage and Formal Invariant Exclusion Synthesis for Autonomous Silicon Coverage Closure</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.AR</span> <span class="tag">cs.SE</span>
-        </div>
-        <div class="paper-authors">Veni Mohan</div>
-        <div class="paper-abstract">Closing the final 5%-15% of code and functional coverage remains a major schedule bottleneck in silicon tapeouts. Existing LLM-based coverage closure loops feed raw uncovered RTL lines or branches directly into iterative prompts, failing on industrial subsystems due to: (1) token and context explosion from querying thousands of correlated holes independently; (2) illegal stimulus that violates cross-signal invariants and yields dirty coverage; and (3) unsafe exclusion hallucination on structurally unreachable dead code.
-  We present ARGUS (Autonomous Reachability &amp; Guided Unified Stimulus), a specification-grounded, dual-regime coverage closure and formal exclusion synthesis engine. ARGUS mines microarchitectural specs and SystemVerilog Assertions into a formal Block Contract (C), then run...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26815v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26815v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">6</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26588v1" target="_blank" rel="noopener">Verify the Verifier: Specification-Grounded LLM Cross-Checking for Bugs That Escape UVM Scoreboards</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.SE</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Ana E. Sanchez Villalobos, Michael D. Quinn, Aakash Tyagi, Minh D. Luu 等 (5 位作者)</div>
-        <div class="paper-abstract">A passing UVM regression shows the design agrees with the reference model on what the scoreboard checks, not that it meets the specification. Bugs that pass every test yet violate the specification, termed scoreboard escapes, survive mature testbenches. We present Verify the Verifier, to our knowledge the first framework whose LLM-based Anomaly Cross-Checker examines a passing regression&#x27;s traces against the specification. Of 564 bugs inserted into four OpenTitan IPs, 68 are candidate scoreboard escapes: non-equivalent, exercised by the tests, yet passing. The framework confirmed 41 as scoreboard escapes with assertions failing on the buggy design and proven on the original.</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26588v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26588v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">7</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26517v1" target="_blank" rel="noopener">From Seed to BLOOM: Autonomously Growing a Better Out-of-Order Core</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Angela Cui, Ferran Hermida-Rivera, Jack Toubes, Jim Fang 等 (8 位作者)</div>
-        <div class="paper-abstract">Improving microprocessor performance while meeting ASIC implementation constraints like area and frequency is a complex and labor-intensive task that requires expertise across computer architecture, hardware design, and performance analysis and profiling. While large teams in industry can afford the engineering resources to target this problem across performance modeling, RTL design, and ASIC implementations, small teams of researchers and engineers cannot take on this huge engineering burden while keeping up with the pace of advancement in processor microarchitecture. Recent advancements in large language model (LLM) agents present a promising substrate to accelerate this traditionally human-intensive process.
-  In this work, we build and evaluate MiracleGro, an agentic AI-based system th...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26517v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26517v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">8</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26472v1" target="_blank" rel="noopener">FoldSim: Scaling Cycle-Exact RTL Simulation with Hierarchical Folding and Static Scheduling</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Chengxuan Wang, Nikhil Rout, Yang-gon Kim, Jacob Leigh 等 (6 位作者)</div>
-        <div class="paper-abstract">RTL simulation is essential for hardware design and verification, yet its execution time grows rapidly with design scale and complexity. CPU- and GPU-based simulators exploit parallelism to accelerate RTL evaluation, but achieving high simulation throughput for large designs remains challenging. FPGA-based simulators offer higher throughput by mapping RTL computations directly onto hardware, but their scalability is constrained by FPGA resource capacity.
-  We present FoldSim, an automated framework that enables cycle-exact simulation of large RTL designs on a single FPGA through hierarchical folding. FoldSim maps instances across the design hierarchy onto shared logic while maintaining their independent state. Given foldable module classes, its compiler constructs a static schedule that co...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26472v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26472v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">9</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26447v1" target="_blank" rel="noopener">Scaling classical hardware for accurate real-time quantum error correction</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">quant-ph</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span>
-        </div>
-        <div class="paper-authors">Chenyang Jin, Susanne F. Yelin, Andi Gu</div>
-        <div class="paper-abstract">Fault-tolerant quantum computation requires a classical decoder fast enough to process syndrome measurements at the rate at which they are generated, and to return its decisions with low latency. This is most demanding for superconducting processors, whose fast syndrome cycles force a trade-off between decoding speed and accuracy. Decoders fast enough to keep up sacrifice accuracy, which must be compensated for with larger codes and thus additional physical qubits. Here we introduce Rapids, a streaming neural decoder that is both fast and accurate. We achieve this by co-designing the decoder with a field-programmable gate array (FPGA): the network is built from operations that map cheaply onto the device and trained in its integer arithmetic. For the distance-19 surface code, Rapids decode...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26447v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26447v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    <div class="paper-card">
-        <div class="paper-header">
-            <span class="paper-rank">10</span>
-            <span class="paper-title"><a href="https://arxiv.org/abs/2611.26435v1" target="_blank" rel="noopener">Aggron: Aggressive Compression of Agentic KV Caches during Head-of-Line Stalls in the Request Queue</a></span>
-        </div>
-        <div class="paper-meta">
-
-            <span class="tag">ARXIV</span>
-            <span class="tag">arXiv 提交 2026-11-19</span>
-            <span class="tag">cs.DC</span> <span class="tag">cs.AR</span>
-        </div>
-        <div class="paper-authors">Rishabh Ravi, Tony Hong, Chen Wang, Yue Zhu 等 (8 位作者)</div>
-        <div class="paper-abstract">LLM agents run long, multi-turn programs whose contexts grow at every step, and serving them is limited by KV cache capacity. To alleviate this limitation, systems use context compression techniques, which typically wait until the KV cache crosses a large threshold and then summarize large spans of history at once, either in the background while the agent progresses or on the critical path. These summarizations can be done using the same model running on the same engine, or using the same or a different model running on extra hardware. When running on the same engine, summarization competes with the requests being served for both compute and memory capacity.
-  To maximize the cost-effectiveness of summarization, this paper presents a new serving system called {\em Aggron}. Aggron summarize...</div>
-
-
-
-        <div class="paper-links">
-            <a href="https://arxiv.org/abs/2611.26435v1" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="https://arxiv.org/pdf/2611.26435v1" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <span>由 Paper Daily 自动生成</span>
-            <span class="footer-sep">·</span>
-            <span>上次运行：2026-11-23 10:41:03（北京时间）</span>
-            <span class="footer-sep">·</span>
-            <span>数据来源：arXiv cs.AR</span>
-        </div>
+    </main>
+    <footer class="page">
+        <span>Paper Daily</span>
+        <span>页面生成于 <time datetime="2026-11-23T11:00+08:00">2026-11-23 11:00</time>（北京时间）</span>
     </footer>
 </body>
 </html>

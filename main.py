@@ -7,9 +7,10 @@ It supports daily, top100, CLI and web interfaces.
 """
 
 import click
+import json
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date as calendar_date, datetime, timedelta, timezone
 from pathlib import Path
 
 # Add src to Python path
@@ -18,6 +19,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 from utils.config_manager import ConfigManager
 from utils.logger import Logger
 from data_acquisition.arxiv_fetcher import ArxivFetcher
+from analysis.architecture import ARCHITECTURE_CATEGORY, enrich_architecture_papers, rank_architecture_papers
 from analysis.recommender import Recommender
 from analysis.keyword_fallback import generate_fallback_cn
 from analysis.translator import PaperTranslator
@@ -26,24 +28,24 @@ from display.web_display import WebDisplay
 from display.html_display import HTMLDisplay
 
 GPU_DB_CATEGORIES = ['cs.AR', 'cs.DB', 'cs.DC']
-ARCHITECTURE_CATEGORY = 'cs.AR'
 REPORT_TIMEZONE = timezone(timedelta(hours=8))
 DB_OUTPUT = 'docs/index.html'
-ARCHITECTURE_OUTPUT = 'docs/architecture/index.html'
+PROJECT_ROOT = Path(__file__).resolve().parent
 
 
 @click.command()
 @click.option('--web', is_flag=True, help='Launch web interface')
 @click.option('--cli', is_flag=True, help='Use command line interface')
 @click.option('--html', 'gen_html', is_flag=True, help='Generate static HTML page')
-@click.option('--top100', is_flag=True, help='Generate top 100 yearly papers page')
+@click.option('--top100', is_flag=True, help='Generate annual Top 100 pages')
+@click.option('--classics', is_flag=True, help='Generate curated classic papers pages')
 @click.option('--feed', type=click.Choice(['db', 'architecture', 'all']), default='db',
-              help='Daily paper feed to generate')
+              help='Paper feed to generate')
 @click.option('--output', type=click.Path(dir_okay=False), help='Override the default HTML file path')
 @click.option('--config', default='config.json', help='Config file path')
 @click.option('--date', type=click.DateTime(formats=['%Y-%m-%d']),
-              help='End date of the seven-day window (YYYY-MM-DD)')
-def main(web, cli, gen_html, top100, feed, output, config, date):
+              help='Report window end date (YYYY-MM-DD)')
+def main(web, cli, gen_html, top100, classics, feed, output, config, date):
     """GPU 数据库与计算机体系结构论文日报"""
 
     config_manager = ConfigManager(config)
@@ -58,13 +60,40 @@ def main(web, cli, gen_html, top100, feed, output, config, date):
         web_display.run()
     elif cli:
         run_cli_mode(config_manager, logger, date)
-    elif top100:
-        run_top100_pipeline(logger, output or 'docs/top100.html')
     else:
         try:
-            run_daily_pipeline(config_manager, logger, date, gen_html, output, feed)
+            if top100 and classics:
+                raise click.UsageError("Choose either --top100 or --classics.")
+            if top100:
+                if feed in ('db', 'all'):
+                    run_top100_pipeline(logger, output or 'docs/top100.html')
+                if feed in ('architecture', 'all'):
+                    path = architecture_report_path('top100.html', output, feed)
+                    run_architecture_top100_pipeline(logger, path, date)
+            elif classics:
+                generate_classic_pages(feed, output)
+            else:
+                run_daily_pipeline(config_manager, logger, date, gen_html, output, feed)
         except RuntimeError as error:
             raise click.ClickException(str(error)) from error
+
+
+def architecture_report_path(file_name, output, feed):
+    if output and feed == 'architecture':
+        return Path(output)
+    report_root = Path(output).parent if output else Path('docs')
+    return report_root / 'architecture' / file_name
+
+
+def generate_classic_pages(feed, output):
+    """Render the reviewed classic-paper collections."""
+    if feed in ('db', 'all'):
+        papers = json.loads((PROJECT_ROOT / 'docs/classics.json').read_text(encoding='utf-8'))
+        HTMLDisplay().save_classics(papers, output or 'docs/classics.html')
+    if feed in ('architecture', 'all'):
+        papers = json.loads((PROJECT_ROOT / 'data_sources/architecture_classics.json').read_text(encoding='utf-8'))
+        path = architecture_report_path('classics.html', output, feed)
+        HTMLDisplay(feed='architecture').save_classics(papers, str(path))
 
 
 def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output=None, feed='db'):
@@ -87,11 +116,8 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
             key=lambda paper: paper['published_date'],
             reverse=True,
         )[:10]
-        enrich_daily_papers(architecture_papers, PaperTranslator(topic='计算机体系结构'))
-        if feed == 'all' and output:
-            architecture_output = Path(output).parent / 'architecture' / 'index.html'
-        else:
-            architecture_output = output or ARCHITECTURE_OUTPUT
+        architecture_output = architecture_report_path('index.html', output, feed)
+        enrich_architecture_papers(architecture_papers, architecture_output.parent)
         reports.append(('architecture', architecture_output, architecture_papers))
 
     for report_feed, output_path, recommendations in reports:
@@ -127,6 +153,22 @@ def enrich_daily_papers(papers, translator, db_fallback=False):
         for paper in papers:
             if not paper.get('abstract_cn'):
                 generate_fallback_cn(paper)
+
+
+def run_architecture_top100_pipeline(logger, output, date=None):
+    """Rank the past year's architecture preprints and publish their summaries."""
+    end = calendar_date.fromisoformat(date) if date else datetime.now(REPORT_TIMEZONE).date()
+    start = end - timedelta(days=364)
+    logger.log(f"Fetching arXiv {ARCHITECTURE_CATEGORY} for {start} through {end}", "INFO")
+    papers = ArxivFetcher([ARCHITECTURE_CATEGORY]).fetch_papers_in_range(start, end)
+    if len(papers) < 100:
+        raise RuntimeError(f"Expected at least 100 arXiv {ARCHITECTURE_CATEGORY} papers, received {len(papers)}")
+    logger.log(f"Ranking {len(papers)} architecture submissions", "INFO")
+    ranked = rank_architecture_papers(papers)
+    enrich_architecture_papers(ranked, output.parent)
+    HTMLDisplay(feed='architecture').save_top100(
+        ranked, str(output), str(end.year), coverage=f'{start} 至 {end}'
+    )
 
 
 def run_top100_pipeline(logger, output='docs/top100.html'):

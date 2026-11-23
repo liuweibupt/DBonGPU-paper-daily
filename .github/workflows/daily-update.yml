@@ -7,6 +7,7 @@ on:
       - '.github/workflows/daily-update.yml'
       - 'main.py'
       - 'src/**'
+      - 'data_sources/**'
   schedule:
     # 主触发：UTC 1:00 = 北京时间 9:00
     - cron: '0 1 * * *'
@@ -15,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       update_top100:
-        description: 'Also refresh the GPU DB annual Top 100'
+        description: 'Also refresh both annual Top 100 lists'
         type: boolean
         default: true
   repository_dispatch:
@@ -53,6 +54,12 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Cache the local translation model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/paper-daily
+          key: ${{ runner.os }}-paper-daily-translation-${{ hashFiles('src/analysis/translator.py') }}
+
       - name: Fetch daily GPU DB and architecture papers
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -68,7 +75,11 @@ jobs:
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: |
-          python main.py --top100 --output docs/top100.html
+          python main.py --top100 --feed all
+
+      - name: Render the classic paper collections
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: python main.py --classics --feed all
 
       - name: Commit and push results
         run: |

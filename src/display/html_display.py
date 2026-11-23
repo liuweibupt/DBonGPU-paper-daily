@@ -1,1061 +1,317 @@
-"""
-HTML Display for Paper Daily
+"""Render the GPU database and computer architecture paper collections."""
 
-Generates a beautiful static HTML page for GitHub Pages.
-"""
-
-from typing import List, Dict
+import json
 from datetime import date as calendar_date, datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
-import os
-import json
+from typing import Dict, List
+from urllib.parse import urlsplit
 
 
 BEIJING_TIME = timezone(timedelta(hours=8))
+COLLECTIONS = (
+    ('daily', 'index.html', '每日推荐'),
+    ('top100', 'top100.html', '年度 Top 100'),
+    ('classics', 'classics.html', '经典论文'),
+)
+GITHUB_URL = 'https://github.com/liuweibupt/DBonGPU-paper-daily'
 
 
 class HTMLDisplay:
-    """Generates HTML page for paper recommendations"""
+    """Generate both collections using the same page and paper templates."""
 
     def __init__(self, feed: str = 'db'):
         self.is_architecture = feed == 'architecture'
-        self.title = "体系结构论文日报" if self.is_architecture else "GPU 数据库论文日报"
-
-    def _render_feed_nav(self, active: str) -> str:
-        db_prefix = '../' if self.is_architecture else ''
-        architecture_path = 'index.html' if self.is_architecture else 'architecture/index.html'
-        brand = '体系结构论文日报' if self.is_architecture else '⚡ GPU DB Daily'
-        tabs = [
-            ('db', f'{db_prefix}index.html', 'GPU 数据库日报'),
-            ('architecture', architecture_path, '体系结构日报'),
-            ('top100', f'{db_prefix}top100.html', '年度 Top 100'),
-            ('classics', f'{db_prefix}classics.html', '经典论文'),
-        ]
-        links = '\n            '.join(
-            f'<a href="{path}" class="{"active" if tab == active else ""}">{label}</a>'
-            for tab, path, label in tabs
-        )
-        return f"""<nav class="top-nav">
-        <div class="nav-brand">{brand}</div>
-        <div class="nav-links">
-            {links}
-            <a href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub</a>
-        </div>
-    </nav>"""
+        self.subject = '计算机体系结构' if self.is_architecture else 'GPU 数据库'
+        self.title = f'{self.subject}论文日报'
+        self.arxiv_categories = 'cs.AR' if self.is_architecture else 'cs.AR / cs.DB / cs.DC'
 
     def generate_daily_html(self, recommendations: List[Dict], date: str = None, all_dates: List[str] = None) -> str:
-        """Generate daily paper recommendation HTML page"""
-        now = datetime.now(BEIJING_TIME)
-        if date is None:
-            date = now.date().isoformat()
-
-        display_date = escape(date)
-        generated_time = now.strftime('%Y-%m-%d %H:%M:%S')
-        feed = 'architecture' if self.is_architecture else 'db'
-        subject = '体系结构' if self.is_architecture else 'GPU 数据库'
+        """Render a daily issue and its date navigation."""
+        date = date or datetime.now(BEIJING_TIME).date().isoformat()
         description = (
-            '浏览 arXiv 近 7 天的体系结构论文，按首次提交时间排序'
-            if self.is_architecture else '自动追踪 GPU 加速数据库领域最新研究进展'
+            '最近 7 天在 arXiv cs.AR 提交的体系结构论文，含交叉分类。按首次提交时间倒序。'
+            if self.is_architecture else '最近 7 天的 arXiv 新论文，按 GPU 加速数据库主题相关度排序。'
         )
-        categories = 'cs.AR' if self.is_architecture else 'cs.AR / cs.DB / cs.DC'
+        return self._render_page(
+            'daily',
+            self.title,
+            description,
+            recommendations,
+            [(date, '日报日期')],
+            archive=self._render_date_nav(date, all_dates),
+            document_title=f'{self.title} - {date}',
+        )
 
-        papers_html = ""
-        if recommendations:
-            for i, paper in enumerate(recommendations, 1):
-                papers_html += self._render_paper_card(paper, i)
+    def generate_top100_html(self, papers: List[Dict], year: str = None, *, coverage: str = None) -> str:
+        """Render the annual relevance ranking for the selected collection."""
+        year = str(year or datetime.now(BEIJING_TIME).year)
+        description = (
+            '在 arXiv cs.AR 的过去 365 天投稿中，按主分类及题名、摘要的体系结构主题匹配排序。'
+            if self.is_architecture else
+            f'从 arXiv {self.arxiv_categories} 选取研究论文，按 GPU 加速数据库主题相关度排序。'
+        )
+        stats = [(year, '榜单年份')]
+        if coverage:
+            stats.append((coverage, '投稿日期范围'))
         else:
-            papers_html = f"""
-            <div class="empty-state">
-                <div class="empty-icon">📭</div>
-                <div class="empty-text">近期暂无符合条件的{subject}论文</div>
-            </div>"""
-
-        history_html = self._render_date_nav(date, all_dates)
-
-        relevance_stat = ''
-        if not self.is_architecture:
-            high_relevance = sum(1 for p in recommendations if p.get('score', 0) >= 0.7)
-            relevance_stat = f"""<div class="stat-card">
-            <div class="stat-value">{high_relevance}</div>
-            <div class="stat-label">高相关度</div>
-        </div>"""
-
-        return f"""<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{self.title} - {display_date}</title>
-    {self._common_styles()}
-</head>
-<body>
-    {self._render_feed_nav(feed)}
-
-    <section class="hero">
-        <h1>{self.title}</h1>
-        <p class="hero-desc">{description}</p>
-        <div class="hero-date">{display_date}</div>
-    </section>
-
-    {history_html}
-
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value">{len(recommendations)}</div>
-            <div class="stat-label">{'收录论文' if self.is_architecture else '推荐论文'}</div>
-        </div>
-        {relevance_stat}
-        <div class="stat-card">
-            <div class="stat-value">{display_date}</div>
-            <div class="stat-label">更新日期</div>
-        </div>
-    </div>
-
-    <div class="paper-list">
-        {papers_html}
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <span>由 Paper Daily 自动生成</span>
-            <span class="footer-sep">·</span>
-            <span>上次运行：{generated_time}（北京时间）</span>
-            <span class="footer-sep">·</span>
-            <span>数据来源：arXiv {categories}</span>
-        </div>
-    </footer>
-</body>
-</html>"""
-
-    def generate_top100_html(self, papers: List[Dict], year: str = None) -> str:
-        """Generate top 100 yearly papers HTML page"""
-        if year is None:
-            year = str(datetime.now().year)
-
-        generated_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        display_papers = papers[:100]
-
-        papers_html = ""
-        for i, paper in enumerate(display_papers, 1):
-            papers_html += self._render_paper_card(paper, i, compact=True)
-
-        high_relevance = sum(1 for p in display_papers if p.get('score', 0) >= 0.7)
-        mid_relevance = sum(1 for p in display_papers if 0.5 <= p.get('score', 0) < 0.7)
-
-        return f"""<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPU 数据库年度热门论文 Top 100 - {year}</title>
-    {self._common_styles()}
-    <style>
-        .yearly-hero {{
-            text-align: center;
-            padding: 40px 0 20px;
-        }}
-        .yearly-hero h2 {{
-            font-size: 1.8em;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }}
-        .yearly-hero p {{
-            color: var(--text-secondary);
-            font-size: 1em;
-        }}
-    </style>
-</head>
-<body>
-    {self._render_feed_nav('top100')}
-
-    <div class="yearly-hero">
-        <h2>{year} 年度 GPU 数据库热门论文</h2>
-        <p>基于 arXiv 过去一年 cs.AR / cs.DB / cs.DC 领域论文，按 GPU 数据库相关度排序</p>
-    </div>
-
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value">{len(display_papers)}</div>
-            <div class="stat-label">入选论文</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{high_relevance}</div>
-            <div class="stat-label">高相关度</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{mid_relevance}</div>
-            <div class="stat-label">中等相关度</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{year}</div>
-            <div class="stat-label">统计年份</div>
-        </div>
-    </div>
-
-    <div class="paper-list">
-        {papers_html}
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <span>由 Paper Daily 自动生成（GPU DB 聚焦版）</span>
-            <span class="footer-sep">·</span>
-            <span>上次运行：{generated_time}</span>
-            <span class="footer-sep">·</span>
-            <span>数据来源：arXiv cs.AR / cs.DB / cs.DC</span>
-        </div>
-    </footer>
-</body>
-</html>"""
+            stats.append(('过去 12 个月', '投稿日期范围'))
+        return self._render_page(
+            'top100', f'{self.subject}年度 Top 100', description, papers[:100], stats
+        )
 
     def generate_classics_html(self, papers: List[Dict]) -> str:
-        """Generate classic papers HTML page"""
-        generated_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        """Render a curated list of classic papers."""
+        description = (
+            '收录处理器、存储层次、互连与专用加速器等方向的代表性工作。'
+            if self.is_architecture else '收录 GPU 加速数据库领域及相关数据处理技术的代表性工作。'
+        )
+        years = [str(paper['year']) for paper in papers if paper.get('year')]
+        span = f'{min(years)} 至 {max(years)}' if len(set(years)) > 1 else next(iter(years), '')
+        stats = [(span, '出版年份')] if span else []
+        return self._render_page('classics', f'{self.subject}经典论文', description, papers, stats)
 
-        papers_html = ""
-        for i, paper in enumerate(papers, 1):
-            papers_html += self._render_classic_card(paper, i)
-
+    def _render_page(self, collection, title, description, papers, stats, *, archive='', document_title=None):
+        display_title = escape(title)
+        rendered_at = datetime.now(BEIJING_TIME)
+        theme = 'architecture' if self.is_architecture else 'db'
+        stat_html = '\n'.join(
+            f'<div><dt>{escape(label)}</dt><dd>{escape(value)}</dd></div>'
+            for value, label in [(str(len(papers)), '收录论文'), *stats]
+        )
+        cards = '\n'.join(
+            self._render_paper_card(paper, index, collection)
+            for index, paper in enumerate(papers, 1)
+        )
+        if not cards:
+            cards = '<p class="empty-state">本期暂无符合条件的论文。</p>'
         return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPU 数据库经典论文</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{escape(document_title or title)}</title>
     {self._common_styles()}
-    <style>
-        .classics-hero {{
-            text-align: center;
-            padding: 40px 0 20px;
-        }}
-        .classics-hero h2 {{
-            font-size: 1.8em;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }}
-        .classics-hero p {{
-            color: var(--text-secondary);
-            font-size: 1em;
-        }}
-        .classic-card {{
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 0;
-            transition: all 0.25s ease;
-        }}
-        .classic-card:hover {{
-            border-color: var(--border-hover);
-            background: var(--card-hover);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }}
-        .classic-header {{
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }}
-        .classic-num {{
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1em;
-            color: #fff;
-            background: var(--gradient-2);
-        }}
-        .classic-title {{
-            font-size: 1.15em;
-            font-weight: 600;
-            line-height: 1.5;
-        }}
-        .classic-title a {{
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }}
-        .classic-title a:hover {{
-            color: var(--accent-purple);
-        }}
-        .classic-meta {{
-            margin-top: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }}
-        .tag-venue {{
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.82em;
-            font-weight: 600;
-            background: rgba(167,139,250,0.12);
-            color: var(--accent-purple);
-            border: 1px solid rgba(167,139,250,0.2);
-        }}
-        .tag-year {{
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.82em;
-            font-weight: 600;
-            background: rgba(96,165,250,0.08);
-            color: var(--accent);
-            border: 1px solid rgba(96,165,250,0.15);
-        }}
-        .classic-authors {{
-            color: var(--text-secondary);
-            font-size: 0.88em;
-            margin-top: 8px;
-        }}
-        .classic-section {{
-            margin-top: 14px;
-        }}
-        .classic-section-title {{
-            font-size: 0.85em;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }}
-        .classic-abstract-cn {{
-            color: var(--text);
-            font-size: 0.93em;
-            line-height: 1.8;
-            background: rgba(96,165,250,0.04);
-            padding: 12px 16px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }}
-        .classic-takeaway {{
-            color: var(--accent-green);
-            font-size: 0.9em;
-            line-height: 1.7;
-            background: rgba(52,211,153,0.06);
-            padding: 10px 14px;
-            border-radius: 0 8px 8px 0;
-            border-left: 3px solid var(--accent-green);
-        }}
-        .classic-innovation {{
-            color: var(--accent-orange);
-            font-size: 0.9em;
-            line-height: 1.7;
-            background: rgba(251,191,36,0.06);
-            padding: 10px 14px;
-            border-radius: 0 8px 8px 0;
-            border-left: 3px solid var(--accent-orange);
-        }}
-        .classic-links {{
-            margin-top: 14px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }}
-        .classic-links a {{
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.86em;
-            padding: 5px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.2s;
-        }}
-        .classic-links a:hover {{
-            border-color: var(--accent);
-            background: rgba(96,165,250,0.1);
-        }}
-        @media (max-width: 640px) {{
-            .classic-card {{ padding: 18px; }}
-        }}
-    </style>
 </head>
-<body>
-    {self._render_feed_nav('classics')}
-
-    <div class="classics-hero">
-        <h2>GPU 数据库经典论文</h2>
-        <p>精选 GPU 加速数据库领域最具影响力的研究论文，附完整中文翻译与 AI 总结</p>
-    </div>
-
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value">{len(papers)}</div>
-            <div class="stat-label">经典论文</div>
+<body class="{theme}">
+    <a class="skip-nav" href="#main">跳到论文列表</a>
+    {self._render_navigation(collection)}
+    <main class="page" id="main">
+        <section class="intro">
+            <div class="intro-text">
+                <h1>{display_title}</h1>
+                <p>{escape(description)}</p>
+            </div>
+            <dl class="stats">{stat_html}</dl>
+        </section>
+        {archive}
+        <div class="paper-list {collection}">
+            {cards}
         </div>
-        <div class="stat-card">
-            <div class="stat-value">{len(set(p.get('year','') for p in papers))}</div>
-            <div class="stat-label">跨越年份</div>
-        </div>
-    </div>
-
-    <div class="paper-list">
-        {papers_html}
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <span>由 Paper Daily 生成（GPU DB 聚焦版）</span>
-            <span class="footer-sep">·</span>
-            <span>上次更新：{generated_time}</span>
-        </div>
+    </main>
+    <footer class="page">
+        <span>Paper Daily</span>
+        <span>页面生成于 <time datetime="{rendered_at.isoformat(timespec='minutes')}">{rendered_at:%Y-%m-%d %H:%M}</time>（北京时间）</span>
     </footer>
 </body>
 </html>"""
 
-    def _render_classic_card(self, paper: Dict, rank: int) -> str:
-        """Render a classic paper as a detailed HTML card"""
-        title = paper.get('title', '无标题')
-        authors = paper.get('authors', [])
-        abstract_cn = paper.get('abstract_cn', '')
-        abstract_en = paper.get('abstract', '')
-        venue = paper.get('venue', '')
-        year = paper.get('year', '')
-        doi = paper.get('doi', '')
-        arxiv_url = paper.get('arxiv_url', '')
-        pdf_url = paper.get('pdf_url', '')
-        takeaway = paper.get('takeaway', '')
-        innovation = paper.get('innovation', '')
-
-        if authors:
-            author_str = ", ".join(authors[:5])
-            if len(authors) > 5:
-                author_str += f" 等 ({len(authors)} 位作者)"
+    def _render_navigation(self, collection):
+        active_file = next(path for key, path, _ in COLLECTIONS if key == collection)
+        if self.is_architecture:
+            db_path, architecture_path = f'../{active_file}', active_file
         else:
-            author_str = "未知作者"
-
-        links_html = ""
-        if arxiv_url:
-            links_html += f'<a href="{arxiv_url}" target="_blank">📄 arXiv</a> '
-        if pdf_url:
-            links_html += f'<a href="{pdf_url}" target="_blank">⬇ PDF</a> '
-        if doi:
-            links_html += f'<a href="https://doi.org/{doi}" target="_blank">🔗 DOI</a> '
-
-        abstract_en_section = ""
-        if abstract_en:
-            abstract_display = abstract_en[:600] + ("..." if len(abstract_en) > 600 else "")
-            abstract_en_section = f'<details><summary>查看英文原文摘要</summary><div class="classic-abstract-cn" style="margin-top:8px;border-left-color:var(--text-dim);color:var(--text-secondary)">{abstract_display}</div></details>'
-
-        return f"""
-    <div class="classic-card">
-        <div class="classic-header">
-            <span class="classic-num">{rank}</span>
-            <span class="classic-title"><a href="{arxiv_url or f'https://doi.org/{doi}'}" target="_blank">{title}</a></span>
+            db_path, architecture_path = active_file, f'architecture/{active_file}'
+        db_current = '' if self.is_architecture else ' aria-current="true"'
+        architecture_current = ' aria-current="true"' if self.is_architecture else ''
+        subnav = '\n            '.join(
+            f'<a href="{path}"{self._current_page(key, collection)}>{label}</a>'
+            for key, path, label in COLLECTIONS
+        )
+        return f"""<header class="site-header">
+        <div class="page masthead">
+            <nav class="feed-nav" aria-label="选择领域">
+                <a href="{db_path}"{db_current}>GPU 数据库</a>
+                <a href="{architecture_path}"{architecture_current}>计算机体系结构</a>
+            </nav>
+            <a class="github-link" href="{GITHUB_URL}" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
-        <div class="classic-meta">
-            <span class="tag-venue">{venue}</span>
-            <span class="tag-year">{year}</span>
+        <div class="subnav-wrap">
+            <nav class="page subnav" aria-label="{self.subject}栏目">
+            {subnav}
+            </nav>
         </div>
-        <div class="classic-authors">{author_str}</div>
-        <div class="classic-section">
-            <div class="classic-section-title">📝 中文摘要</div>
-            <div class="classic-abstract-cn">{abstract_cn}</div>
-            {abstract_en_section}
-        </div>
-        <div class="classic-section">
-            <div class="classic-section-title">💡 Takeaway</div>
-            <div class="classic-takeaway">{takeaway}</div>
-        </div>
-        <div class="classic-section">
-            <div class="classic-section-title">🚀 创新点</div>
-            <div class="classic-innovation">{innovation}</div>
-        </div>
-        <div class="classic-links">
-            {links_html}
-        </div>
-    </div>"""
-
-    def save_classics(self, papers: List[Dict], output_path: str) -> None:
-        """Generate and save classic papers HTML page"""
-        html = self.generate_classics_html(papers)
-
-        os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
-
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html)
-
-        print(f"经典论文页面已保存到 {output_path}")
-
-    def _common_styles(self) -> str:
-        """Common CSS styles shared across pages"""
-        return """<style>
-        :root {
-            --bg: #0a0e17;
-            --bg-secondary: #111827;
-            --card-bg: #151d2e;
-            --card-hover: #1a2540;
-            --border: #1e2d4a;
-            --border-hover: #2d4a7a;
-            --text: #e2e8f0;
-            --text-secondary: #8892a8;
-            --text-dim: #5a6480;
-            --accent: #60a5fa;
-            --accent-bright: #93c5fd;
-            --accent-green: #34d399;
-            --accent-orange: #fbbf24;
-            --accent-red: #f87171;
-            --accent-purple: #a78bfa;
-            --gradient-1: linear-gradient(135deg, #60a5fa, #34d399);
-            --gradient-2: linear-gradient(135deg, #60a5fa, #a78bfa);
-            --shadow: 0 4px 24px rgba(0,0,0,0.3);
-            --shadow-hover: 0 8px 32px rgba(0,0,0,0.4);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        /* Top Navigation */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 24px;
-            background: rgba(10,14,23,0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-brand {
-            font-weight: 700;
-            font-size: 1.1em;
-            color: var(--accent);
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 0.9em;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .nav-links a:hover {
-            color: var(--text);
-            background: rgba(96,165,250,0.1);
-        }
-        .nav-links a.active {
-            color: var(--accent);
-            background: rgba(96,165,250,0.15);
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 24px 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h1 {
-            font-size: 2.4em;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-        .hero-desc {
-            color: var(--text-secondary);
-            font-size: 1.15em;
-            margin-bottom: 16px;
-        }
-        .hero-date {
-            display: inline-block;
-            background: rgba(96,165,250,0.12);
-            color: var(--accent-bright);
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 1.1em;
-            border: 1px solid rgba(96,165,250,0.2);
-        }
-
-        /* Date Navigation */
-        .date-nav {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0 24px;
-            margin-bottom: 30px;
-        }
-        .date-nav a {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 16px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.88em;
-            transition: all 0.2s;
-        }
-        .date-nav a:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(96,165,250,0.08);
-        }
-        .date-nav a.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(96,165,250,0.15);
-            font-weight: 600;
-        }
-
-        /* Stats */
-        .stats-row {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin: 0 auto 36px;
-            padding: 0 24px;
-            flex-wrap: wrap;
-            max-width: 800px;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 28px;
-            text-align: center;
-            min-width: 120px;
-            transition: border-color 0.2s;
-        }
-        .stat-card:hover {
-            border-color: var(--border-hover);
-        }
-        .stat-value {
-            font-size: 1.5em;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .stat-label {
-            font-size: 0.82em;
-            color: var(--text-dim);
-            margin-top: 4px;
-        }
-
-        /* Paper List - Two Column Grid */
-        .paper-list {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        /* Paper Card */
-        .paper-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
-            transition: all 0.25s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .paper-card:hover {
-            border-color: var(--border-hover);
-            background: var(--card-hover);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-        .paper-card.compact {
-            padding: 18px 22px;
-        }
-
-        .paper-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .paper-rank {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.9em;
-            color: #fff;
-            background: var(--gradient-1);
-        }
-        .compact .paper-rank {
-            width: 28px;
-            height: 28px;
-            font-size: 0.8em;
-            border-radius: 8px;
-        }
-        .paper-title {
-            font-size: 1.12em;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .compact .paper-title {
-            font-size: 1.0em;
-        }
-        .paper-title a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .paper-title a:hover {
-            color: var(--accent);
-        }
-
-        .paper-meta {
-            margin-top: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-        .score-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.82em;
-            font-weight: 600;
-        }
-        .score-high { background: rgba(52,211,153,0.12); color: var(--accent-green); }
-        .score-mid { background: rgba(251,191,36,0.12); color: var(--accent-orange); }
-        .score-low { background: rgba(90,100,128,0.15); color: var(--text-dim); }
-
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 0.78em;
-            background: rgba(96,165,250,0.08);
-            color: var(--accent);
-            border: 1px solid rgba(96,165,250,0.15);
-        }
-
-        .paper-authors {
-            color: var(--text-secondary);
-            font-size: 0.88em;
-            margin-top: 8px;
-        }
-
-        .paper-abstract {
-            color: var(--text-secondary);
-            font-size: 0.92em;
-            margin-top: 12px;
-            line-height: 1.75;
-        }
-        .compact .paper-abstract {
-            font-size: 0.86em;
-            margin-top: 8px;
-        }
-
-        .paper-abstract-cn {
-            color: var(--text);
-            font-size: 0.93em;
-            margin-top: 12px;
-            line-height: 1.8;
-            background: rgba(96,165,250,0.04);
-            padding: 10px 14px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-        .compact .paper-abstract-cn {
-            font-size: 0.88em;
-            margin-top: 8px;
-            padding: 8px 12px;
-        }
-
-        .paper-takeaway {
-            margin-top: 10px;
-            padding: 8px 14px;
-            background: rgba(52,211,153,0.06);
-            border-left: 3px solid var(--accent-green);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            line-height: 1.7;
-            color: var(--accent-green);
-        }
-        .compact .paper-takeaway {
-            font-size: 0.84em;
-            margin-top: 8px;
-            padding: 6px 12px;
-        }
-
-        .paper-innovation {
-            margin-top: 8px;
-            padding: 8px 14px;
-            background: rgba(251,191,36,0.06);
-            border-left: 3px solid var(--accent-orange);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            line-height: 1.7;
-            color: var(--accent-orange);
-        }
-        .compact .paper-innovation {
-            font-size: 0.84em;
-            padding: 6px 12px;
-        }
-
-        .section-label {
-            font-weight: 600;
-            margin-right: 6px;
-        }
-
-        .paper-reasons {
-            margin-top: 12px;
-            padding: 10px 14px;
-            background: rgba(52,211,153,0.06);
-            border-left: 3px solid var(--accent-green);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88em;
-            color: var(--accent-green);
-        }
-
-        .paper-links {
-            margin-top: 14px;
-            display: flex;
-            gap: 10px;
-        }
-        .paper-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.86em;
-            padding: 5px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-        .paper-links a:hover {
-            border-color: var(--accent);
-            background: rgba(96,165,250,0.1);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .empty-icon {
-            font-size: 3em;
-            margin-bottom: 16px;
-        }
-        .empty-text {
-            font-size: 1.2em;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        .empty-hint {
-            font-size: 0.9em;
-            color: var(--text-dim);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 24px;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
-            color: var(--text-dim);
-            font-size: 0.82em;
-        }
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4px;
-        }
-        .footer-sep {
-            color: var(--border);
-        }
-        footer a { color: var(--accent); text-decoration: none; }
-
-        /* Details/Summary */
-        details {
-            margin-top: 6px;
-        }
-        details summary {
-            cursor: pointer;
-            color: var(--text-dim);
-            font-size: 0.85em;
-            user-select: none;
-        }
-        details summary:hover {
-            color: var(--text-secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero { padding: 40px 16px 20px; }
-            .hero h1 { font-size: 1.7em; }
-            .paper-list { padding: 0 12px; grid-template-columns: 1fr; }
-            .paper-card { padding: 16px; }
-            .paper-title { font-size: 1.02em; }
-            .top-nav { padding: 10px 12px; flex-wrap: wrap; gap: 6px; }
-            .nav-brand { font-size: 1em; }
-            .nav-links { gap: 2px; }
-            .nav-links a { padding: 4px 8px; }
-            .stats-row { gap: 10px; padding: 0 12px; }
-            .stat-card { padding: 12px 18px; min-width: 90px; }
-        }
-        @media (min-width: 641px) and (max-width: 900px) {
-            .paper-list { grid-template-columns: 1fr; }
-        }
-    </style>"""
-
-    def _render_paper_card(self, paper: Dict, rank: int, compact: bool = False) -> str:
-        """Render a single paper as an HTML card"""
-        title = escape(paper.get('title') or '无标题')
-        authors = paper.get('authors', [])
-        abstract = paper.get('abstract') or '无摘要'
-        abstract_cn = paper.get('abstract_cn') or ''
-        paper_id = paper.get('id', '')
-        source = escape(paper.get('source', 'arxiv').upper())
-        arxiv_url = self._paper_url(paper.get('arxiv_url'), f'https://arxiv.org/abs/{paper_id}')
-        pdf_url = self._paper_url(paper.get('pdf_url'), f'https://arxiv.org/pdf/{paper_id}')
-        reasons = paper.get('reasons', [])
-        categories = paper.get('categories', [])
-        summary = escape(paper.get('summary_cn') or '')
-        takeaway = escape(paper.get('takeaway') or '')
-        innovation = escape(paper.get('innovation') or '')
-
-        score_badge = ''
-        if not self.is_architecture:
-            score = paper.get('score', 0.0)
-            if score >= 0.7:
-                score_class = 'score-high'
-            elif score >= 0.5:
-                score_class = 'score-mid'
-            else:
-                score_class = 'score-low'
-            score_badge = f'<span class="score-badge {score_class}">相关度 {score:.3f}</span>'
-
-        submitted = (paper.get('published_date') or '')[:10]
-        date_tag = f'<span class="tag">arXiv 提交 {escape(submitted)}</span>' if submitted else ''
-
-        if authors:
-            author_str = ", ".join(escape(author) for author in authors[:4])
-            if len(authors) > 4:
-                author_str += f" 等 ({len(authors)} 位作者)"
-        else:
-            author_str = "未知作者"
-
-        cat_tags = ""
-        for cat in categories[:3]:
-            cat_tags += f'<span class="tag">{escape(cat)}</span> '
-
-        reasons_html = ""
-        if reasons:
-            reasons_html = f'<div class="paper-reasons">{" &middot; ".join(map(escape, reasons))}</div>'
-
-        compact_class = " compact" if compact else ""
-        abstract_len = 300 if compact else 800
-        abstract_display = escape(abstract[:abstract_len]) + ("..." if len(abstract) > abstract_len else "")
-
-        # Build abstract section: Chinese translation as primary, English as collapsible
-        abstract_section = ""
-        if abstract_cn:
-            # Chinese translation is the primary display
-            cn_display = escape(abstract_cn[:abstract_len]) + ("..." if len(abstract_cn) > abstract_len else "")
-            abstract_section = f'<div class="paper-abstract-cn">{cn_display}</div>'
-            if not compact and abstract:
-                abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
-        elif summary:
-            # Short Chinese summary from keyword extraction (fallback)
-            abstract_section = f'<div class="paper-abstract-cn">{summary}</div>'
-            if not compact and abstract:
-                abstract_section += f'<details><summary>查看英文原文摘要</summary><div class="paper-abstract" style="margin-top:6px">{abstract_display}</div></details>'
-        else:
-            # No Chinese translation at all, show English
-            abstract_section = f'<div class="paper-abstract">{abstract_display}</div>'
-
-        # Build takeaway section
-        takeaway_html = ""
-        if takeaway:
-            takeaway_html = f'<div class="paper-takeaway"><span class="section-label">💡 Takeaway</span>{takeaway}</div>'
-
-        # Build innovation section
-        innovation_html = ""
-        if innovation:
-            innovation_html = f'<div class="paper-innovation"><span class="section-label">🚀 创新点</span>{innovation}</div>'
-
-        return f"""
-    <div class="paper-card{compact_class}">
-        <div class="paper-header">
-            <span class="paper-rank">{rank}</span>
-            <span class="paper-title"><a href="{arxiv_url}" target="_blank" rel="noopener">{title}</a></span>
-        </div>
-        <div class="paper-meta">
-            {score_badge}
-            <span class="tag">{source}</span>
-            {date_tag}
-            {cat_tags}
-        </div>
-        <div class="paper-authors">{author_str}</div>
-        {abstract_section}
-        {takeaway_html}
-        {innovation_html}
-        {reasons_html}
-        <div class="paper-links">
-            <a href="{arxiv_url}" target="_blank" rel="noopener">📄 arXiv</a>
-            <a href="{pdf_url}" target="_blank" rel="noopener">⬇ PDF</a>
-        </div>
-    </div>"""
+    </header>"""
 
     @staticmethod
-    def _paper_url(url: str, fallback: str) -> str:
-        if not url or not url.startswith(('https://', 'http://')):
-            url = fallback
-        return escape(url)
+    def _current_page(key, current):
+        return ' aria-current="page"' if key == current else ''
 
     def _render_date_nav(self, current_date: str, all_dates: List[str] = None) -> str:
-        """Render navigation links to previous dates"""
         if all_dates is None:
             all_dates = self._scan_available_dates()
+        dates = sorted(set(all_dates) | {current_date}, reverse=True)
+        recent = dates[:7]
+        if current_date not in recent:
+            recent.append(current_date)
+        remaining = [date for date in dates if date not in recent]
+        links = '\n'.join(self._archive_link(date, current_date) for date in recent)
+        more = ''
+        if remaining:
+            older = '\n'.join(self._archive_link(date, current_date) for date in remaining)
+            more = f"""<details class="archive-more">
+                <summary>更多日期</summary>
+                <div class="archive-links">{older}</div>
+            </details>"""
+        return f"""<nav class="archive" aria-label="{self.subject}日报归档">
+            <span class="archive-label">日报归档</span>
+            <div class="archive-links">{links}</div>
+            {more}
+        </nav>"""
 
-        links = ""
-        for d in sorted(all_dates, reverse=True):
-            active_class = "active" if d == current_date else ""
-            links += f'<a href="{escape(d)}.html" class="{active_class}">{escape(d)}</a>'
+    def _archive_link(self, date, current_date):
+        return f'<a href="{escape(date)}.html"{self._current_page(date, current_date)}>{escape(date)}</a>'
 
-        if not links:
-            links = f'<a href="index.html" class="active">{escape(current_date)}</a>'
+    def _render_paper_card(self, paper, rank, collection):
+        title = escape(paper.get('title') or '无标题')
+        links = self._paper_links(paper, collection)
+        if links:
+            title = f'<a href="{links[0][1]}" target="_blank" rel="noopener">{title}</a>'
+        authors = paper.get('authors') or []
+        author_text = ', '.join(escape(author) for author in authors[:4])
+        if len(authors) > 4:
+            author_text += f' 等 {len(authors)} 人'
+        metadata = self._render_paper_metadata(paper, collection)
+        link_html = '\n'.join(
+            f'<a href="{url}" target="_blank" rel="noopener">{label} <span aria-hidden="true">↗</span></a>'
+            for label, url in links
+        )
+        reasons_html = ''
+        if paper.get('reasons'):
+            reasons = ' · '.join(map(escape, paper['reasons']))
+            reasons_html = f'<p class="paper-reasons">{reasons}</p>'
+        heading = f'<h2 class="paper-title">{title}</h2>'
+        if collection != 'classics':
+            heading = f"""<div class="paper-heading">
+                <span class="paper-rank" aria-label="第 {rank} 篇">{rank:02d}</span>
+                {heading}
+            </div>"""
+        return f"""<article class="paper-card">
+            {heading}
+            <div class="paper-meta">{metadata}</div>
+            <p class="paper-authors">{author_text}</p>
+            {self._render_abstracts(paper)}
+            {self._render_notes(paper)}
+            {reasons_html}
+            <div class="paper-links">{link_html}</div>
+        </article>"""
 
-        return f'<nav class="date-nav">{links}</nav>'
+    def _render_paper_metadata(self, paper, collection):
+        tags = []
+        if collection == 'classics':
+            for value in (paper.get('venue'), paper.get('year'), *(paper.get('topics') or [])):
+                if value:
+                    tags.append(self._tag(str(value)))
+        else:
+            submitted = (paper.get('published_date') or '')[:10]
+            if submitted:
+                tags.append(self._tag(f'arXiv 提交 {submitted}'))
+            categories = paper.get('categories') or []
+            if self.is_architecture and 'cs.AR' in categories:
+                categories = ['cs.AR'] + [category for category in categories if category != 'cs.AR']
+            tags.extend(self._tag(category) for category in categories[:3])
+            score = paper.get('score')
+            if isinstance(score, (int, float)):
+                tags.append(f'<span class="score-badge">主题相关度 {score:.3f}</span>')
+        return ' '.join(tags)
+
+    @staticmethod
+    def _tag(value):
+        return f'<span class="tag">{escape(value)}</span>'
+
+    def _render_abstracts(self, paper):
+        english = paper.get('abstract') or ''
+        translation = paper.get('abstract_cn') or ''
+        summary = paper.get('summary_cn') or ''
+        is_keyword_summary = paper.get('summary_method') == 'keywords'
+        if translation.startswith('本文研究') and '\n\n核心内容：' in translation:
+            # Legacy GPU DB keyword summaries combine a Chinese topic line with an English excerpt.
+            summary = translation.partition('\n\n核心内容：')[0]
+            translation = ''
+            is_keyword_summary = True
+        if summary:
+            label = '主题提示' if is_keyword_summary else '中文摘要'
+            html = self._abstract_block(label, summary, 'paper-abstract-cn')
+            if translation:
+                html += self._abstract_details('查看中文译文', translation)
+            if english:
+                html += self._abstract_details('查看英文原文摘要', english)
+            return html
+        if translation:
+            marker = '机器翻译' if paper.get('enrichment_method') == 'local_abstract_translation' else ''
+            html = self._abstract_block('中文摘要', translation, 'paper-abstract-cn', marker=marker)
+            if english:
+                html += self._abstract_details('查看英文原文摘要', english)
+            return html
+        if english:
+            return self._abstract_details('英文原文摘要', english, expanded=True)
+        return ''
+
+    @staticmethod
+    def _abstract_block(label, value, css_class, *, marker=''):
+        suffix = f'<span class="translation-note">{marker}</span>' if marker else ''
+        return f'<div class="{css_class}"><h3>{label}{suffix}</h3><p>{escape(value)}</p></div>'
+
+    @staticmethod
+    def _abstract_details(label, value, *, expanded=False):
+        options = ' open' if expanded else ''
+        return f'<details class="original-abstract"{options}><summary>{label}</summary><p>{escape(value)}</p></details>'
+
+    @staticmethod
+    def _render_notes(paper):
+        notes = []
+        for field, label in (('takeaway', '核心结论'), ('innovation', '创新点')):
+            if paper.get(field):
+                notes.append(f'<div><dt>{label}</dt><dd>{escape(paper[field])}</dd></div>')
+        if notes:
+            return f'<dl class="paper-notes">{"".join(notes)}</dl>'
+        return ''
+
+    def _paper_links(self, paper, collection):
+        arxiv = self._paper_url(paper.get('arxiv_url'))
+        pdf = self._paper_url(paper.get('pdf_url'))
+        publisher = self._paper_url(paper.get('publisher_url') or paper.get('url'))
+        if collection != 'classics' and paper.get('id') and paper.get('source', 'arxiv') == 'arxiv':
+            paper_id = paper['id']
+            arxiv = arxiv or self._paper_url(f'https://arxiv.org/abs/{paper_id}')
+            pdf = pdf or self._paper_url(f'https://arxiv.org/pdf/{paper_id}')
+        doi = paper.get('doi') or ''
+        if doi.startswith('10.'):
+            doi = f'https://doi.org/{doi}'
+        doi = self._paper_url(doi)
+        links = []
+        for label, url in [('arXiv', arxiv), ('出版页', publisher), ('DOI', doi), ('PDF', pdf)]:
+            if url and all(url != existing for _, existing in links):
+                links.append((label, url))
+        return links
+
+    @staticmethod
+    def _paper_url(url):
+        if isinstance(url, str):
+            try:
+                split = urlsplit(url)
+            except ValueError:
+                return ''
+            if split.scheme in ('https', 'http') and split.hostname:
+                return escape(url)
+        return ''
 
     def _scan_available_dates(self, output_dir: Path = None) -> List[str]:
-        """Find dated HTML archives for the current feed."""
+        """Find dated HTML archives for the current collection."""
         if output_dir is None:
             output_dir = Path(__file__).resolve().parents[2] / 'docs'
             if self.is_architecture:
                 output_dir /= 'architecture'
-
         dates = []
         for path in output_dir.glob('????-??-??.html'):
             try:
@@ -1066,36 +322,189 @@ class HTMLDisplay:
         return dates
 
     def save_daily(self, recommendations: List[Dict], output_path: str, date: str = None) -> None:
-        """Generate and save daily HTML"""
+        """Save the issue and update the latest page when appropriate."""
         date = calendar_date.fromisoformat(date).isoformat() if date else datetime.now(BEIJING_TIME).date().isoformat()
         output = Path(output_path)
-        all_dates = self._scan_available_dates(output.parent)
-        if date not in all_dates:
-            all_dates.append(date)
-
+        all_dates = set(self._scan_available_dates(output.parent)) | {date}
         html = self.generate_daily_html(recommendations, date, all_dates)
-        html = '\n'.join(line.rstrip() for line in html.splitlines())
         data = json.dumps(recommendations, ensure_ascii=False, indent=2, default=str)
         output.parent.mkdir(parents=True, exist_ok=True)
-
         date_path = output.with_name(f'{date}.html')
         date_path.with_suffix('.json').write_text(data, encoding='utf-8')
-        date_path.write_text(html, encoding='utf-8')
+        self._write_html(date_path, html)
         if output != date_path and (output.name != 'index.html' or date == max(all_dates)):
-            output.write_text(html, encoding='utf-8')
-        print(f"每日页面已保存到 {date_path}")
+            self._write_html(output, html)
+        print(f'每日页面已保存到 {date_path}')
 
-    def save_top100(self, papers: List[Dict], output_path: str, year: str = None) -> None:
-        """Generate and save top 100 yearly HTML"""
-        html = self.generate_top100_html(papers, year)
+    def save_top100(self, papers: List[Dict], output_path: str, year: str = None, *, coverage: str = None) -> None:
+        """Save the annual ranking and its machine-readable paper list."""
+        output = Path(output_path)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        self._write_html(output, self.generate_top100_html(papers, year, coverage=coverage))
+        data = json.dumps(papers[:100], ensure_ascii=False, indent=2, default=str)
+        output.with_name('top100.json').write_text(data, encoding='utf-8')
+        print(f'年度 Top 100 页面已保存到 {output}')
 
-        os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
+    def save_classics(self, papers: List[Dict], output_path: str) -> None:
+        """Save the curated classics page."""
+        output = Path(output_path)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        self._write_html(output, self.generate_classics_html(papers))
+        print(f'经典论文页面已保存到 {output}')
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html)
+    @staticmethod
+    def _write_html(output, html):
+        output.write_text('\n'.join(line.rstrip() for line in html.splitlines()) + '\n', encoding='utf-8')
 
-        json_path = os.path.join(os.path.dirname(output_path), 'top100.json')
-        with open(json_path, 'w', encoding='utf-8') as f:
-            json.dump(papers[:100], f, ensure_ascii=False, indent=2, default=str)
-
-        print(f"年度 Top100 页面已保存到 {output_path}")
+    @staticmethod
+    def _common_styles():
+        return """<style>
+        :root {
+            color-scheme: light;
+            --page: #f5f7fa;
+            --surface: #ffffff;
+            --ink: #172232;
+            --muted: #516175;
+            --line: #dbe3eb;
+            --accent: #075c68;
+            --tint: #e9f5f3;
+            --panel: #eef6f6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--page);
+            font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.architecture {
+            --page: #f8f7fc;
+            --line: #e3deee;
+            --accent: #563a91;
+            --tint: #f1ebfb;
+            --panel: #f4f0fb;
+        }
+        h1, h2, h3, p, dl, dd { margin: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: .2em; }
+        a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(1220px, 100% - 64px); margin: 0 auto; }
+        .skip-nav { position: fixed; top: 12px; left: 12px; z-index: 2; transform: translateY(-180%); }
+        .skip-nav:focus { transform: none; background: var(--surface); padding: 6px 12px; }
+        .site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+        .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+        .feed-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .feed-nav a { padding: 6px 14px; border: 1px solid transparent; border-radius: 7px; font-weight: 650; }
+        .feed-nav a:not([aria-current]) { color: var(--muted); }
+        .feed-nav a[aria-current] { background: var(--tint); border-color: var(--line); }
+        .github-link { color: var(--muted); white-space: nowrap; font-size: .85rem; }
+        .subnav-wrap { border-top: 1px solid var(--line); }
+        .subnav { display: flex; align-items: center; gap: 1.65rem; }
+        .subnav a { color: var(--muted); white-space: nowrap; padding: 8px 0 7px; border-bottom: 2px solid transparent; font-size: .9rem; }
+        .subnav a[aria-current] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 650; }
+        main { padding: 32px 0 40px; }
+        .intro {
+            padding: 25px 28px;
+            border: 1px solid var(--line);
+            border-inline-start: 4px solid var(--accent);
+            border-radius: 10px;
+            background: var(--panel);
+            display: flex;
+            gap: 18px 36px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        h1 { font-size: clamp(1.6rem, 3.8vw, 2.35rem); line-height: 1.2; letter-spacing: -.025em; }
+        .intro p { color: var(--muted); margin-top: 9px; font-size: .93rem; }
+        .stats { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 22px; flex-shrink: 0; }
+        .stats dt { color: var(--muted); font-size: .77rem; }
+        .stats dd { font-size: .95rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .archive { margin: -5px 0 24px; }
+        .archive-label { display: block; color: var(--muted); font-size: .84rem; font-weight: 650; margin-bottom: 6px; }
+        .archive-links { display: flex; flex-wrap: wrap; gap: 5px; }
+        .archive-links a {
+            padding: 3px 8px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            color: var(--muted);
+            background: var(--surface);
+            font-size: .83rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .archive-links a[aria-current] { background: var(--tint); color: var(--accent); font-weight: 650; }
+        .archive-more { margin-top: 5px; }
+        .archive-more[open] > .archive-links { margin-top: 5px; max-height: 14rem; overflow: auto; }
+        .paper-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+        .paper-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0; }
+        .paper-heading { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); align-items: start; gap: 9px; }
+        .paper-rank {
+            background: var(--tint);
+            color: var(--accent);
+            border-radius: 5px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 650;
+            font-size: .77rem;
+            padding: 4px 0;
+            text-align: center;
+        }
+        .paper-title { font-size: 1.12rem; line-height: 1.38; letter-spacing: -.008em; overflow-wrap: anywhere; }
+        .paper-title a { color: var(--ink); }
+        .paper-title a:hover { color: var(--accent); }
+        .paper-meta, .paper-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+        .paper-meta:not(:empty) { margin-top: 9px; }
+        .tag, .score-badge {
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 0 6px;
+            line-height: 1.65;
+            font-size: .76rem;
+        }
+        .score-badge { background: var(--tint); color: var(--accent); font-weight: 600; }
+        .paper-authors, .paper-reasons { color: var(--muted); font-size: .82rem; margin-top: 7px; overflow-wrap: anywhere; }
+        .paper-authors:empty { display: none; }
+        .paper-abstract-cn {
+            padding: 10px 12px;
+            background: var(--panel);
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+        .paper-abstract-cn h3, .paper-notes dt { color: var(--accent); font-size: .83rem; font-weight: 700; }
+        .translation-note { color: var(--muted); font-size: .75rem; font-weight: 500; margin-inline-start: .65rem; }
+        .paper-abstract-cn p, .original-abstract p, .paper-notes dd {
+            font-size: .91rem;
+            margin-top: 3px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+        .original-abstract { margin: 6px 0; }
+        summary { width: fit-content; color: var(--accent); font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+        summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+        .original-abstract p { border-inline-start: 2px solid var(--line); padding-inline-start: 11px; color: var(--muted); }
+        .paper-notes { margin-top: 10px; display: grid; gap: 8px; }
+        .paper-notes dd { color: var(--ink); }
+        .paper-links:not(:empty) { margin-top: 12px; }
+        .paper-links a { font-size: .83rem; font-weight: 650; border: 1px solid var(--line); border-radius: 5px; padding: 2px 9px; }
+        .empty-state { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line); padding: 26px; border-radius: 10px; }
+        footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); padding: 12px 0 26px; border-top: 1px solid var(--line); font-size: .8rem; }
+        @media (max-width: 940px) {
+            .intro { align-items: flex-start; flex-direction: column; }
+        }
+        @media (max-width: 760px) {
+            .paper-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .page { width: calc(100% - 28px); }
+            .masthead { gap: 3px 8px; }
+            .feed-nav { gap: 2px; }
+            .feed-nav a { font-size: .88rem; padding: 5px 6px; }
+            .subnav { gap: 1rem; }
+            main { padding-top: 16px; }
+            .intro { padding: 14px 12px; margin-bottom: 16px; gap: 8px; }
+            h1 { font-size: clamp(1.35rem, 5.8vw, 1.6rem); text-wrap: balance; }
+            .stats { gap: 5px 14px; }
+            .archive { margin: 0 0 14px; }
+            .paper-card { padding: 13px; }
+        }
+    </style>"""
