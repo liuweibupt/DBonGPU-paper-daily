@@ -8,7 +8,7 @@
       "Nilesh Vyas",
       "Vamsi Addanki"
     ],
-    "abstract": "Switch-based quantum datacenters connect quantum processing units (QPUs) through photonic switches and shared Bell-state measurement (BSM) devices. Sharing BSMs saves hardware, but fixed connectivity constrains access to these resources. Local communication can overload one rack's BSMs while others remain idle; reaching those idle resources incurs additional optical loss and retries through switches and quantum frequency converters (QFCs). Programs remain locked into this locality-contention tradeoff as their communication patterns change.\n  We propose Schism, an architecture that lets programs dynamically change which QPUs share each BSM pool. Schism places BSM pools at aggregation switches and QFCs on their core-facing uplinks. Top-of-rack switches establish reconfigurable native-wavelength circuits from QPUs to these pools, forming scale-up domains bounded by the optical loss budget. Reconfiguration reshapes resource sharing across racks without moving QPUs or migrating quantum states. Our key insight is that QPU grouping jointly determines photon-path loss and contention for BSM resources: locality alone cannot identify the best grouping, and a grouping pays off only if its savings outweigh the delay of reconfiguring to it. We develop an optimization framework that combines graph partitioning with resource-constrained completion-time estimates and dynamic programming to select how QPUs share BSM pools and when those groupings reconfigure, between or within circuit phases.\n  Our evaluation using SeQUeNCe with trapped-ion parameters shows that Schism achieves communication speedups of 4.9-7.3x across 11 workloads on 32 QPUs compared to Fixed Clos connectivity and 3.6-8.3x compared to SwitchQNet. Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.",
+    "abstract": "Switch-based quantum datacenters connect quantum processing units (QPUs) through photonic switches and shared Bell-state measurement (BSM) devices. Sharing BSMs saves hardware, but fixed connectivity constrains access to these resources. Local communication can overload one rack's BSMs while others remain idle; reaching those idle resources incurs additional optical loss and retries through switches and quantum frequency converters (QFCs). Programs remain locked into this locality-contention tradeoff as their communication patterns change. We propose Schism, an architecture that lets programs dynamically change which QPUs share each BSM pool. Schism places BSM pools at aggregation switches and QFCs on their core-facing uplinks. Top-of-rack switches establish reconfigurable native-wavelength circuits from QPUs to these pools, forming scale-up domains bounded by the optical loss budget. Reconfiguration reshapes resource sharing across racks without moving QPUs or migrating quantum states. Our key insight is that QPU grouping jointly determines photon-path loss and contention for BSM resources: locality alone cannot identify the best grouping, and a grouping pays off only if its savings outweigh the delay of reconfiguring to it. We develop an optimization framework that combines graph partitioning with resource-constrained completion-time estimates and dynamic programming to select how QPUs share BSM pools and when those groupings reconfigure, between or within circuit phases. Our evaluation using SeQUeNCe with trapped-ion parameters shows that Schism achieves communication speedups of 4.9-7.3x across 11 workloads on 32 QPUs compared to Fixed Clos connectivity and 3.6-8.3x compared to SwitchQNet. Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.",
     "published_date": "2026-11-23T18:45:22Z",
     "updated_date": "2026-11-23T18:45:22Z",
     "categories": [
@@ -16,8 +16,8 @@
       "cs.AR"
     ],
     "primary_category": "cs.NI",
-    "pdf_url": "https://arxiv.org/pdf/2611.31193v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.31193v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.31193",
+    "arxiv_url": "https://arxiv.org/abs/2611.31193",
     "source": "arxiv",
     "abstract_cn": "基于交换的量子数据中心通过光子交换机和共享的贝尔态测量(BSM)设备连接量子处理单元(QPUs). 共享BSMs可以节省硬件,但固定连接会限制获取这些资源. 本地通信可以超载一个机架的BSMs,而其他机架仍然闲置;到达这些闲置资源会增加光学损失,并通过开关和量子频率转换器进行重试(QFCs). 随着通信模式的改变,方案仍然被锁定在以地方为主的权衡之中。 我们提议Schism,一种让程序动态改变的架构,QPUs共享每个BSM池. Schism 将BSM池放在集成交换机上,QFCs放在其核心向上链路上。 架顶开关建立从QPUs到这些池的可重新配置的本土波长电路,形成以光学损失预算为界的扩增域. 重新配置可以重塑跨架的资源共享,而无需移动QPUs或迁移量子状态. 我们的关键见解是,QPU分组共同确定光子路径损失,争用用于BSM资源:单靠地方无法确定最佳分组,而分组只有在其节余超过重组延迟的情况下才能得到回报。 我们开发一个优化框架,将图分区与受资源制约的完成时间估计和动态编程相结合,以选择QPUs如何分享BSM集合,以及这些组合何时在电路阶段之间或内部重新配置。 我们使用SeQUeNCe 受困离子参数进行的评价表明,Schism在32 QPUs上实现了通信速度在11 工作负载上为4.9-7.3x,而固定克洛斯互联互通和3.6-8.3x与SwitchQNet. 【该句原文】Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.",
     "takeaway": "我们使用SeQUeNCe 受困离子参数进行的评价表明,Schism在32 QPUs上实现了通信速度在11 工作负载上为4.9-7.3x,而固定克洛斯互联互通和3.6-8.3x与SwitchQNet. 【该句原文】Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.",
@@ -49,17 +49,17 @@
       "cs.AR"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.31092v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.31092v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.31092",
+    "arxiv_url": "https://arxiv.org/abs/2611.31092",
     "source": "arxiv",
     "abstract_cn": "ARM Fast Model是用于模拟多个系统IPs整合在一个子系统中的软件建模系统. Fast Model允许客户在系统IPs的规格刚刚准备好时就运行整个软件堆栈. 在本文中,我们谈到一种系统的方法,使GPU建模在集成建模环境中能够实现CPU和GPU的全系统软件堆栈可以执行,最终可以验证主GPU IP. 用我们的解决方案,我们可以直接运行Antutu和Android目标系统的GFX座椅等商业基准,并具有基础的ARM快速模型移动子系统支持. 这在过去是不可思议的,因为用于GPU核查的3D渲染模拟非常缓慢。 我们还采用一些特殊技术来提高性能。 最终,整个软件堆可以直接在真正的硬件上工作,只要第一次磁带解禁就不用做任何修改.",
     "takeaway": "摘要未明确报告可提取的结论。",
     "innovation": "1. 我们还采用一些特殊技术来提高性能。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [],
     "innovation_source": [
       "We also introduce some special techniques to improve performance."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.31082",
@@ -80,19 +80,19 @@
       "cs.AR"
     ],
     "primary_category": "cs.AI",
-    "pdf_url": "https://arxiv.org/pdf/2611.31082v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.31082v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.31082",
+    "arxiv_url": "https://arxiv.org/abs/2611.31082",
     "source": "arxiv",
     "abstract_cn": "理解一个可以运行但不能检查的系统是一种核心工程技能:一个设计实验,形成关于隐藏状态和时间的假说,抛弃那些观测所反驳的假说,最后构建一个工作有效且高效的替代. 为了评价硬件领域的LLM代理的这种能力,我们提出了ChiProgramBench,18项任务来自开源处理器,加速器,编码器,变换器,互联,以及控制电路. 代理只能驱动和读取隐藏的,状态的模拟引用的针头,然后提交由公共图书馆单元格制成的门级网单. 代理在两种场合工作: 黑盒发现只给出匿名功能披针和固定记忆的界面,而功能制导的重建则增加了电路的目的和每个披针的作用. 隐藏测试案例按周期对产出与参考周期进行比较;只有在每个案例通过时,才将功率、延迟和地区与参考值相比获得信用。 在对6 LLM 代理配置、成功代理恢复算法和数字常规的432次试验中,只有12.0%的黑箱和14.8%的功能制导试验通过每个案件。 由功能指导的重建将平均功能分数、周期加权的通过个案份额从24.6%提高到30.9%。 在58个完全通过的设计中,只有三个改进了参考物的综合力量,领域和延迟,因此行为恢复和高效实施仍然是明显的挑战.",
     "takeaway": "在58个完全通过的设计中,只有三个改进了参考物的综合力量,领域和延迟,因此行为恢复和高效实施仍然是明显的挑战.",
     "innovation": "1. 为了评价硬件领域的LLM代理的这种能力,我们提出了ChiProgramBench,18项任务来自开源处理器,加速器,编码器,变换器,互联,以及控制电路.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Of the 58 fully passing designs, only three improve on the reference's combined power, area, and delay, so behavioral recovery and efficient implementation remain distinct challenges."
     ],
     "innovation_source": [
       "To evaluate this capability of LLM agents in the hardware domain, we present ChiProgramBench, 18 tasks derived from open-source processors, accelerators, codecs, transforms, interconnects, and control circuits."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30766",
@@ -110,20 +110,20 @@
       "cs.AI"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30766v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30766v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30766",
+    "arxiv_url": "https://arxiv.org/abs/2611.30766",
     "source": "arxiv",
     "abstract_cn": "虽然大型语言模型(LLMs)在从自然语言规格生成寄存器传输级(RTL)代码方面表现出希望,但其可靠性仍然局限于具有复杂控制逻辑和时间行为的设计. 这源于一个基本的语义上的空白:高层次的自然语言经常使执行的关键细节不够精确,迫使LLMs推断出未说明的假设. 本文介绍\"分层正式指导\",这是一种新颖的框架,通过在自然语言规范与RTL生成之间使用正式属性作为中间语义层来弥补这个语义差距. 我们的框架在三个层面适用正式指导:财产驱动的规格增强生成前,财产一致性检查生成后,以及核对后反向指导的改进。 对RTLLM基准和各种开源IP设计的实验表明,我们的框架实现了更高的功能正确性和较低的抽样输出-跟踪多样性. 此外,我们表明,分层正式指导可以灵活地增加通用LLMs和特定域的模型,以大幅度提高其生成可靠性。",
     "takeaway": "对RTLLM基准和各种开源IP设计的实验表明,我们的框架实现了更高的功能正确性和较低的抽样输出-跟踪多样性. 此外,我们表明,分层正式指导可以灵活地增加通用LLMs和特定域的模型,以大幅度提高其生成可靠性。",
     "innovation": "1. 本文介绍\"分层正式指导\",这是一种新颖的框架,通过在自然语言规范与RTL生成之间使用正式属性作为中间语义层来弥补这个语义差距.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Experiments on RTLLM benchmarks and various open-source IP designs demonstrate that our framework achieves higher functional correctness and lower sampled output-trace diversity.",
       "Furthermore, we show that Layered Formal Guidance can flexibly augment both general-purpose LLMs and domain-specific models to substantially improve their generation reliability."
     ],
     "innovation_source": [
       "This paper presents Layered Formal Guidance, a novel framework that bridges this semantic gap by using formal properties as an intermediate semantic layer between natural-language specifications and RTL generation."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30631",
@@ -143,18 +143,18 @@
       "cs.AR"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30631v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30631v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30631",
+    "arxiv_url": "https://arxiv.org/abs/2611.30631",
     "source": "arxiv",
     "abstract_cn": "近期文献允许独立的硬件实验占据一个单一的死因,用于可伸缩和成本效率高的硅原型. 在此框架内,包括低功率控制机制在内的专门硬件功能可作为可重复使用的Die微服务提供。 然而,这需要定义明确的合同,将数字请求与物理行为联系起来. 我们提出了一个可核查的逻辑-物理合同格式,包括一个实物合同模式,说明客户和供应商通过正式核实的数字担保和实物验证的完成条件完成服务的情况。 我们介绍Lightswitch,一个概念的证明在die电源控制微服务。 我们以TSMC 28nm对放电后的设计进行评估,并表明可核查的合同如何提供正式担保。",
     "takeaway": "摘要未明确报告可提取的结论。",
     "innovation": "1. 我们提出了一个可核查的逻辑-物理合同格式,包括一个实物合同模式,说明客户和供应商通过正式核实的数字担保和实物验证的完成条件完成服务的情况。；2. 我们介绍Lightswitch,一个概念的证明在die电源控制微服务。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [],
     "innovation_source": [
       "We present a checkable logical-physical contract formulation including a physical contract model describing service completion between client and provider through formally verified digital guarantees and physically validated completion conditions.",
       "We introduce Lightswitch, a proof-of-concept on-die power control microservice."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30542",
@@ -176,20 +176,20 @@
       "cs.PF"
     ],
     "primary_category": "cs.DC",
-    "pdf_url": "https://arxiv.org/pdf/2611.30542v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30542v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30542",
+    "arxiv_url": "https://arxiv.org/abs/2611.30542",
     "source": "arxiv",
     "abstract_cn": "Kimi K3将潜在的途径性专家与全线共享专家混合在一起。 完整的向导评价必须得分和选择专家、进入潜在空间的项目信使、在专家平行级别之间交换信使、计算路由和共享分支、在加入分支之前使路由和投影。 我们提出 GC-MoE K3,一个数据中心 Blackwell 执行, 将整个评价作为CUDA图, 覆盖两个绿色背景 。 【该句原文】Five base roles split input projection, routing, dispatch, expert computation, and finalization. 调度可以填充路由输入环,而计算分区则评价共享专家. 最终确定每个符号所需的专家所有者,与路由减少和装入输出预测权重RMSNorm重叠。 有条件角色再利用通信分区进行路由计算,并减少分裂-K投影部分. 在 GB200 at EP8, EP16 和 EP32 上,操作员在所有24个测量配置上比对 SGLang-style 引用(平均速度为1.1324×)更快. 与历史vLLM-style的测量比较,可以得出相同24个形状的1.3651×. 在合成的K3形输入器上,用一个剩余前缀来进行时间比较,这两种时间比较都是单层图形重播的. 【该句原文】The separate paired numerical suite passes all 142 cases and 2,936 rank checks.",
     "takeaway": "有条件角色再利用通信分区进行路由计算,并减少分裂-K投影部分. 在 GB200 at EP8, EP16 和 EP32 上,操作员在所有24个测量配置上比对 SGLang-style 引用(平均速度为1.1324×)更快.",
     "innovation": "1. 我们提出 GC-MoE K3,一个数据中心 Blackwell 执行, 将整个评价作为CUDA图, 覆盖两个绿色背景 。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Conditional roles reuse the communication partition for routed computation and reduce split-K projection partials.",
       "On GB200 at EP8, EP16, and EP32, the operator is faster at all 24 measured configurations than the paired SGLang-style reference (mean speedup 1.1324×)."
     ],
     "innovation_source": [
       "We present GC-MoE K3, a datacenter Blackwell implementation that schedules this entire evaluation as a CUDA Graph across two Green Contexts."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30505",
@@ -211,12 +211,13 @@
       "cs.AR"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30505v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30505v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30505",
+    "arxiv_url": "https://arxiv.org/abs/2611.30505",
     "source": "arxiv",
     "abstract_cn": "有效的热分析对加速2.5D/3DICs的设计至关重要。 然而,现有的随机行走热解器在解决通过硅通道(TSVs)等细尺度结构时,可能会遇到边界盘状差错和高昂的计算成本. 为了应对这些挑战,我们提议HLWalk,为异构2.5D/3DICs提供高效的随机行走热解器。 我们实行局部边界综合重建,以消除基于当地时间的边界处理中的盘片化错误。 为了加快边界预处理,我们采用模式分割:低序模式是决定性的计算,而蒙特卡洛取样只估计剩余部分。 我们进一步发展有规模意识的随机行走运输,以有效解决细尺度结构问题,而无需在整个领域进行精细的盘状处理。 对2.5D/3DIC基准的实验表明,HLWalk实现了显著的壁点速度,并且提高了各种设置的准确性.",
     "takeaway": "对2.5D/3DIC基准的实验表明,HLWalk实现了显著的壁点速度,并且提高了各种设置的准确性.",
     "innovation": "1. 为了应对这些挑战,我们提议HLWalk,为异构2.5D/3DICs提供高效的随机行走热解器。；2. 我们实行局部边界综合重建,以消除基于当地时间的边界处理中的盘片化错误。；3. 为了加快边界预处理,我们采用模式分割:低序模式是决定性的计算,而蒙特卡洛取样只估计剩余部分。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Experiments on 2.5D/3D IC benchmarks show that HLWalk achieves remarkable wall-clock speedup and better accuracy across settings."
     ],
@@ -224,8 +225,7 @@
       "To address these challenges, we propose HLWalk, an efficient random-walk thermal solver for heterogeneous 2.5D/3D ICs.",
       "We introduce local boundary integral reconstruction to eliminate discretization errors in local-time-based boundary treatments.",
       "To accelerate boundary preprocessing, we employ modal splitting: low-order modes are computed deterministically, while Monte Carlo sampling estimates only the residual."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30446",
@@ -245,20 +245,20 @@
       "cs.ET"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30446v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30446v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30446",
+    "arxiv_url": "https://arxiv.org/abs/2611.30446",
     "source": "arxiv",
     "abstract_cn": "Processing-Using-DRAM (PUD)架构利用DRAM阵列的物理,直接在内存中执行布尔操作,消除了内存密集度的数据移动瓶颈工作负载. 最近提出了几个PUD架构,这些架构在原始操作套件、行分配模型和执行度量衡上各不相同。 这些建筑差异今天在新兴的PUD-aware编译器中被硬码化,使得交叉结构的再利用成为不可能. 我们为PUD架构提出了一个可重新定位、端到端的汇编框架。 中心思想是使架构描述成为编译管道中的一流对象:重新瞄准一个新的PUD架构只需要提供它的描述. 我们的编译器以MLIR框架为基础,在两个结合的层面上运作。 在收音机层面,它通过位切换,混合精度分配,以及基于整数线程编程(ILP)的放置来降低高层次程序,以减少PUD指令的数量和银行间数据运动. 在逻辑层面上,它利用平等饱和来探索布尔网络的实现,重写规则和成本函数直接来源于架构描述. 对具有代表性工作负载的多个PUD目标进行评价,通过同样的编译器,我们的框架匹配(有时甚至超过)特定架构的手优化编译器,同时提供重定向性和扩展性。",
     "takeaway": "在收音机层面,它通过位切换,混合精度分配,以及基于整数线程编程(ILP)的放置来降低高层次程序,以减少PUD指令的数量和银行间数据运动.",
     "innovation": "1. 我们为PUD架构提出了一个可重新定位、端到端的汇编框架。；2. 在逻辑层面上,它利用平等饱和来探索布尔网络的实现,重写规则和成本函数直接来源于架构描述.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "At the tensor level, it lowers high-level programs through bit-slicing, mixed-precision assignment, and integer-linear-programming (ILP) based placement to reduce the number of PUD commands and inter-bank data movement."
     ],
     "innovation_source": [
       "We present a retargetable, end-to-end compilation framework for PUD architectures.",
       "At the logic level, it employs equality saturation to explore Boolean network implementations, with rewrite rules and cost functions derived directly from the architecture description."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30417",
@@ -283,12 +283,13 @@
       "cs.AR"
     ],
     "primary_category": "cs.AR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30417v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30417v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30417",
+    "arxiv_url": "https://arxiv.org/abs/2611.30417",
     "source": "arxiv",
     "abstract_cn": "为具有长背景的大型语言模型服务,需要保存每个请求的密钥值(KV)缓存,可以超过GPU内存容量. Sparse 注意只读取这个缓存在每个解码步骤中一个小的,依赖查询的子集,但必须保留全部缓存,因为以后的步骤可能选择其他条目. 通过Compute Express Link (CXL) 附加的处理-近模(PNM)设备可以持有完整的缓存,并计算所居住的注意. 先前GPU-PNM的稀疏关注的系统是PNM-centric,处理大部分在PNM上的注意. 由于现有的CXL-PNM设备提供的内存带宽远少于GPUHBM,因此这个PNM-centric执行使得PNM瓶颈,让GPU闲置等待注意结果. 我们提出ANOR,这是一个GPU-PNM联合加速系统,它通过从最近选定的条目缓存中计算出GPU上的大部分注意力,并只处理PNM上的缺失,从而利用选择的注意力稀少的地方。 由于PNM处理缓存直接漏掉,GPU缓存更新可以与当前步骤执行脱钩. 我们开发了一个有限制的缓存更新政策,将更新限制在后期步骤饱和度的命中比,减少GPU-facing链接流量. 我们添加一个小型的芯片早期流线缓冲器(ESB),在PNM的注意力中捕捉KV数据,并将其流到GPU,避免了尽管PNM内存和GPU-facing链接之间带宽不匹配,但读取最冗余的DRAM. 我们还提出了适应性缓存-因子机制,将GPU缓存大小调整到服务负载,平衡命中率和批量大小. 跨越两个模型和三个长文本智能体式工作负载,ANOR,平均将解码吞吐量比HiSparse提高2.3x,比PNM基线提高2.0x. 这些结果显示,PNM不是作为首要关注引擎,而是作为GPU 存储层次结构的计算层最为有效.",
     "takeaway": "跨越两个模型和三个长文本智能体式工作负载,ANOR,平均将解码吞吐量比HiSparse提高2.3x,比PNM基线提高2.0x. 这些结果显示,PNM不是作为首要关注引擎,而是作为GPU 存储层次结构的计算层最为有效.",
     "innovation": "1. 我们提出ANOR,这是一个GPU-PNM联合加速系统,它通过从最近选定的条目缓存中计算出GPU上的大部分注意力,并只处理PNM上的缺失,从而利用选择的注意力稀少的地方。；2. 我们开发了一个有限制的缓存更新政策,将更新限制在后期步骤饱和度的命中比,减少GPU-facing链接流量.；3. 我们还提出了适应性缓存-因子机制,将GPU缓存大小调整到服务负载,平衡命中率和批量大小.",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [
       "Across two models and three long-context agentic workloads, ANOR improves decode throughput by 2.3x over HiSparse and 2.0x over a PNM baseline on average.",
       "These results show that PNM is most effective not as the primary attention engine but as a computing tier of the GPU memory hierarchy."
@@ -297,8 +298,7 @@
       "We present ANOR, a GPU-PNM joint acceleration system that exploits the selection locality of sparse attention by computing most of the attention on the GPU from a cache of recently selected entries and processing only the misses on the PNM.",
       "We develop a bounded cache-update policy that limits updates to the point where the hit ratio of later steps saturates, reducing GPU-facing link traffic.",
       "We also propose an adaptive cache-factor mechanism that adjusts GPU cache size to the serving load, balancing hit ratio and batch size."
-    ],
-    "enrichment_method": "local_abstract_translation"
+    ]
   },
   {
     "id": "2611.30396",
@@ -315,14 +315,14 @@
       "cs.AR"
     ],
     "primary_category": "cs.CR",
-    "pdf_url": "https://arxiv.org/pdf/2611.30396v1",
-    "arxiv_url": "https://arxiv.org/abs/2611.30396v1",
+    "pdf_url": "https://arxiv.org/pdf/2611.30396",
+    "arxiv_url": "https://arxiv.org/abs/2611.30396",
     "source": "arxiv",
     "abstract_cn": "交换过交叉链接指令的航天器需要耐量子签名,为此,Module-Lattice-Based数字签名算法(ML-DSA,FIPS204)是标准,然而一个软件签名器运行其数据依赖的拒绝环,并保留其键,在与姿态控制和有效载荷处理共享的核心和内存上. 本文表明,对于硬件辅助标志器来说,重要的成本不是算术,而是处理器跨进织物的次数,尽量减少这些过关的边界也是可以密封钥匙的地方. 对同一内核上三个控制颗粒的Gem5支持分析显示,每个签名只有一项工作,芯片上整个拒绝循环,将处理器从关键路径上移除. WEPWAWET-CORE意识到在300 MHz的XCZU3EG上的边界:一个ROM微序列器运行Sign,校验,和密钥生成,作为三个程序在一个数据路径和一个银行的刮板上运行,并保留了密钥,在编程器总线上运行的在线Entropy,以及遮罩种子. 【该句原文】The processor-side cost of a signature falls from over a second under per-kernel control to 0.53 ms, fixed whatever the number of rejections, and the fabric's time per attempt varies by less than 0.1% under a saturating workload. 在NASAJPL的F Prime带有姿态控制和成像负载下,两个带织物生成,地面认证的密钥的节点交换了3,575个签名的帧,每个帧都被接受,没有错过姿态的最后期限. 一个循环剖面将剩下的距离放在两个序列单元的专用核心上.",
     "takeaway": "摘要未明确报告可提取的结论。",
     "innovation": "摘要未明确列出可提取的方法贡献。",
+    "enrichment_method": "local_abstract_translation",
     "takeaway_source": [],
-    "innovation_source": [],
-    "enrichment_method": "local_abstract_translation"
+    "innovation_source": []
   }
 ]
