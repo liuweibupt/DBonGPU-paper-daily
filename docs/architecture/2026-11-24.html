@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>计算机体系结构论文日报 - 2026-11-24</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f5f7fa;
+            --surface: #ffffff;
+            --ink: #172232;
+            --muted: #516175;
+            --line: #dbe3eb;
+            --accent: #075c68;
+            --tint: #e9f5f3;
+            --panel: #eef6f6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--page);
+            font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.architecture {
+            --page: #f8f7fc;
+            --line: #e3deee;
+            --accent: #563a91;
+            --tint: #f1ebfb;
+            --panel: #f4f0fb;
+        }
+        h1, h2, h3, p, dl, dd { margin: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: .2em; }
+        a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(1220px, 100% - 64px); margin: 0 auto; }
+        .skip-nav { position: fixed; top: 12px; left: 12px; z-index: 2; transform: translateY(-180%); }
+        .skip-nav:focus { transform: none; background: var(--surface); padding: 6px 12px; }
+        .site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+        .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+        .feed-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .feed-nav a { padding: 6px 14px; border: 1px solid transparent; border-radius: 7px; font-weight: 650; }
+        .feed-nav a:not([aria-current]) { color: var(--muted); }
+        .feed-nav a[aria-current] { background: var(--tint); border-color: var(--line); }
+        .github-link { color: var(--muted); white-space: nowrap; font-size: .85rem; }
+        .subnav-wrap { border-top: 1px solid var(--line); }
+        .subnav { display: flex; align-items: center; gap: 1.65rem; }
+        .subnav a { color: var(--muted); white-space: nowrap; padding: 8px 0 7px; border-bottom: 2px solid transparent; font-size: .9rem; }
+        .subnav a[aria-current] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 650; }
+        main { padding: 32px 0 40px; }
+        .intro {
+            padding: 25px 28px;
+            border: 1px solid var(--line);
+            border-inline-start: 4px solid var(--accent);
+            border-radius: 10px;
+            background: var(--panel);
+            display: flex;
+            gap: 18px 36px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        h1 { font-size: clamp(1.6rem, 3.8vw, 2.35rem); line-height: 1.2; letter-spacing: -.025em; }
+        .intro p { color: var(--muted); margin-top: 9px; font-size: .93rem; }
+        .stats { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 22px; flex-shrink: 0; }
+        .stats dt { color: var(--muted); font-size: .77rem; }
+        .stats dd { font-size: .95rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .archive { margin: -5px 0 24px; }
+        .archive-label { display: block; color: var(--muted); font-size: .84rem; font-weight: 650; margin-bottom: 6px; }
+        .archive-links { display: flex; flex-wrap: wrap; gap: 5px; }
+        .archive-links a {
+            padding: 3px 8px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            color: var(--muted);
+            background: var(--surface);
+            font-size: .83rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .archive-links a[aria-current] { background: var(--tint); color: var(--accent); font-weight: 650; }
+        .archive-more { margin-top: 5px; }
+        .archive-more[open] > .archive-links { margin-top: 5px; max-height: 14rem; overflow: auto; }
+        .paper-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+        .paper-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0; }
+        .paper-heading { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); align-items: start; gap: 9px; }
+        .paper-rank {
+            background: var(--tint);
+            color: var(--accent);
+            border-radius: 5px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 650;
+            font-size: .77rem;
+            padding: 4px 0;
+            text-align: center;
+        }
+        .paper-title { font-size: 1.12rem; line-height: 1.38; letter-spacing: -.008em; overflow-wrap: anywhere; }
+        .paper-title a { color: var(--ink); }
+        .paper-title a:hover { color: var(--accent); }
+        .paper-meta, .paper-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+        .paper-meta:not(:empty) { margin-top: 9px; }
+        .tag, .score-badge {
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 0 6px;
+            line-height: 1.65;
+            font-size: .76rem;
+        }
+        .score-badge { background: var(--tint); color: var(--accent); font-weight: 600; }
+        .paper-authors, .paper-reasons { color: var(--muted); font-size: .82rem; margin-top: 7px; overflow-wrap: anywhere; }
+        .paper-authors:empty { display: none; }
+        .paper-abstract-cn {
+            padding: 10px 12px;
+            background: var(--panel);
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+        .paper-abstract-cn h3, .paper-notes dt { color: var(--accent); font-size: .83rem; font-weight: 700; }
+        .translation-note { color: var(--muted); font-size: .75rem; font-weight: 500; margin-inline-start: .65rem; }
+        .paper-abstract-cn p, .original-abstract p, .paper-notes dd {
+            font-size: .91rem;
+            margin-top: 3px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+        .original-abstract { margin: 6px 0; }
+        summary { width: fit-content; color: var(--accent); font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+        summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+        .original-abstract p { border-inline-start: 2px solid var(--line); padding-inline-start: 11px; color: var(--muted); }
+        .paper-notes { margin-top: 10px; display: grid; gap: 8px; }
+        .paper-notes dd { color: var(--ink); }
+        .paper-links:not(:empty) { margin-top: 12px; }
+        .paper-links a { font-size: .83rem; font-weight: 650; border: 1px solid var(--line); border-radius: 5px; padding: 2px 9px; }
+        .empty-state { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line); padding: 26px; border-radius: 10px; }
+        footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); padding: 12px 0 26px; border-top: 1px solid var(--line); font-size: .8rem; }
+        @media (max-width: 940px) {
+            .intro { align-items: flex-start; flex-direction: column; }
+        }
+        @media (max-width: 760px) {
+            .paper-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .page { width: calc(100% - 28px); }
+            .masthead { gap: 3px 8px; }
+            .feed-nav { gap: 2px; }
+            .feed-nav a { font-size: .88rem; padding: 5px 6px; }
+            .subnav { gap: 1rem; }
+            main { padding-top: 16px; }
+            .intro { padding: 14px 12px; margin-bottom: 16px; gap: 8px; }
+            h1 { font-size: clamp(1.35rem, 5.8vw, 1.6rem); text-wrap: balance; }
+            .stats { gap: 5px 14px; }
+            .archive { margin: 0 0 14px; }
+            .paper-card { padding: 13px; }
+        }
+    </style>
+</head>
+<body class="architecture">
+    <a class="skip-nav" href="#main">跳到论文列表</a>
+    <header class="site-header">
+        <div class="page masthead">
+            <nav class="feed-nav" aria-label="选择领域">
+                <a href="../index.html">GPU 数据库</a>
+                <a href="index.html" aria-current="true">计算机体系结构</a>
+            </nav>
+            <a class="github-link" href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="subnav-wrap">
+            <nav class="page subnav" aria-label="计算机体系结构栏目">
+            <a href="index.html" aria-current="page">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
+            </nav>
+        </div>
+    </header>
+    <main class="page" id="main">
+        <section class="intro">
+            <div class="intro-text">
+                <h1>计算机体系结构论文日报</h1>
+                <p>最近 7 天在 arXiv cs.AR 提交的体系结构论文，含交叉分类。按首次提交时间倒序。</p>
+            </div>
+            <dl class="stats"><div><dt>收录论文</dt><dd>10</dd></div>
+<div><dt>日报日期</dt><dd>2026-11-24</dd></div></dl>
+        </section>
+        <nav class="archive" aria-label="计算机体系结构日报归档">
+            <span class="archive-label">日报归档</span>
+            <div class="archive-links"><a href="2026-11-24.html" aria-current="page">2026-11-24</a>
+<a href="2026-11-23.html">2026-11-23</a></div>
+
+        </nav>
+        <div class="paper-list daily">
+            <article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 1 篇">01</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31193v1" target="_blank" rel="noopener">Schism: Reconfigurable Scale-Up Domains for Distributed Quantum Computing</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.NI</span></div>
+            <p class="paper-authors">Daniel Alexander, Deeksha P Rao, Nilesh Vyas, Vamsi Addanki</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>基于交换的量子数据中心通过光子交换机和共享的贝尔态测量(BSM)设备连接量子处理单元(QPUs). 共享BSMs可以节省硬件,但固定连接会限制获取这些资源. 本地通信可以超载一个机架的BSMs,而其他机架仍然闲置;到达这些闲置资源会增加光学损失,并通过开关和量子频率转换器进行重试(QFCs). 随着通信模式的改变,方案仍然被锁定在以地方为主的权衡之中。 我们提议Schism,一种让程序动态改变的架构,QPUs共享每个BSM池. Schism 将BSM池放在集成交换机上,QFCs放在其核心向上链路上。 架顶开关建立从QPUs到这些池的可重新配置的本土波长电路,形成以光学损失预算为界的扩增域. 重新配置可以重塑跨架的资源共享,而无需移动QPUs或迁移量子状态. 我们的关键见解是,QPU分组共同确定光子路径损失,争用用于BSM资源:单靠地方无法确定最佳分组,而分组只有在其节余超过重组延迟的情况下才能得到回报。 我们开发一个优化框架,将图分区与受资源制约的完成时间估计和动态编程相结合,以选择QPUs如何分享BSM集合,以及这些组合何时在电路阶段之间或内部重新配置。 我们使用SeQUeNCe 受困离子参数进行的评价表明,Schism在32 QPUs上实现了通信速度在11 工作负载上为4.9-7.3x,而固定克洛斯互联互通和3.6-8.3x与SwitchQNet. 【该句原文】Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Switch-based quantum datacenters connect quantum processing units (QPUs) through photonic switches and shared Bell-state measurement (BSM) devices. Sharing BSMs saves hardware, but fixed connectivity constrains access to these resources. Local communication can overload one rack&#x27;s BSMs while others remain idle; reaching those idle resources incurs additional optical loss and retries through switches and quantum frequency converters (QFCs). Programs remain locked into this locality-contention tradeoff as their communication patterns change.
+  We propose Schism, an architecture that lets programs dynamically change which QPUs share each BSM pool. Schism places BSM pools at aggregation switches and QFCs on their core-facing uplinks. Top-of-rack switches establish reconfigurable native-wavelength circuits from QPUs to these pools, forming scale-up domains bounded by the optical loss budget. Reconfiguration reshapes resource sharing across racks without moving QPUs or migrating quantum states. Our key insight is that QPU grouping jointly determines photon-path loss and contention for BSM resources: locality alone cannot identify the best grouping, and a grouping pays off only if its savings outweigh the delay of reconfiguring to it. We develop an optimization framework that combines graph partitioning with resource-constrained completion-time estimates and dynamic programming to select how QPUs share BSM pools and when those groupings reconfigure, between or within circuit phases.
+  Our evaluation using SeQUeNCe with trapped-ion parameters shows that Schism achieves communication speedups of 4.9-7.3x across 11 workloads on 32 QPUs compared to Fixed Clos connectivity and 3.6-8.3x compared to SwitchQNet. Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>我们使用SeQUeNCe 受困离子参数进行的评价表明,Schism在32 QPUs上实现了通信速度在11 工作负载上为4.9-7.3x,而固定克洛斯互联互通和3.6-8.3x与SwitchQNet. 【该句原文】Schism also outperforms a hypothetical network-wide switch by 1.35-1.38x on the eight workloads whose phases fit in a pool, and trails it by 1.1-1.75x on the other three.</dd></div><div><dt>创新点</dt><dd>1. 我们提议Schism,一种让程序动态改变的架构,QPUs共享每个BSM池.；2. 我们开发一个优化框架,将图分区与受资源制约的完成时间估计和动态编程相结合,以选择QPUs如何分享BSM集合,以及这些组合何时在电路阶段之间或内部重新配置。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.31193v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.31193v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 2 篇">02</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31092v1" target="_blank" rel="noopener">A Systematic Method of GPU Verification on Subsystem Modelling</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Jiangning Liu, Kevin Qin, Patrick Zhang, Hale Wang 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>ARM Fast Model是用于模拟多个系统IPs整合在一个子系统中的软件建模系统. Fast Model允许客户在系统IPs的规格刚刚准备好时就运行整个软件堆栈. 在本文中,我们谈到一种系统的方法,使GPU建模在集成建模环境中能够实现CPU和GPU的全系统软件堆栈可以执行,最终可以验证主GPU IP. 用我们的解决方案,我们可以直接运行Antutu和Android目标系统的GFX座椅等商业基准,并具有基础的ARM快速模型移动子系统支持. 这在过去是不可思议的,因为用于GPU核查的3D渲染模拟非常缓慢。 我们还采用一些特殊技术来提高性能。 最终,整个软件堆可以直接在真正的硬件上工作,只要第一次磁带解禁就不用做任何修改.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>ARM Fast Model is a software modelling system for simulating multiple systems IPs integrated in a subsystem. Fast Model allows customer to run whole software stack as early as system IPs&#x27; specification is just ready. In this paper, we talk about a systematic method to enable GPU modelling and make whole system software stacks executable for both CPU and GPU in the integrated modelling environment, and eventually the major GPU IP can be verified. With our solution, we can directly run commercial benchmarks like Antutu and GFX Bench in Android target system with underlying ARM Fast Model mobile subsystem support. This was unbelievable in the past due to 3D rendering simulation for GPU verification is very slow. We also introduce some special techniques to improve performance. Eventually the whole software stack can directly work on real hardware without any changes as soon as the first tape-out is ready.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>摘要未明确报告可提取的结论。</dd></div><div><dt>创新点</dt><dd>1. 我们还采用一些特殊技术来提高性能。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.31092v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.31092v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 3 篇">03</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31082v1" target="_blank" rel="noopener">ChiProgramBench: Can LLM Agents Rebuild Efficient Circuits from Pin-Level Experiments?</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.AI</span></div>
+            <p class="paper-authors">Tianrun Gou, Qingyao Yang, Wendong Xu, Liang Chen 等 6 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>理解一个可以运行但不能检查的系统是一种核心工程技能:一个设计实验,形成关于隐藏状态和时间的假说,抛弃那些观测所反驳的假说,最后构建一个工作有效且高效的替代. 为了评价硬件领域的LLM代理的这种能力,我们提出了ChiProgramBench,18项任务来自开源处理器,加速器,编码器,变换器,互联,以及控制电路. 代理只能驱动和读取隐藏的,状态的模拟引用的针头,然后提交由公共图书馆单元格制成的门级网单. 代理在两种场合工作: 黑盒发现只给出匿名功能披针和固定记忆的界面,而功能制导的重建则增加了电路的目的和每个披针的作用. 隐藏测试案例按周期对产出与参考周期进行比较;只有在每个案例通过时,才将功率、延迟和地区与参考值相比获得信用。 在对6 LLM 代理配置、成功代理恢复算法和数字常规的432次试验中,只有12.0%的黑箱和14.8%的功能制导试验通过每个案件。 由功能指导的重建将平均功能分数、周期加权的通过个案份额从24.6%提高到30.9%。 在58个完全通过的设计中,只有三个改进了参考物的综合力量,领域和延迟,因此行为恢复和高效实施仍然是明显的挑战.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Understanding a system that can be run but not inspected is a core engineering skill: one designs experiments, forms hypotheses about hidden state and timing, discards those that observations refute, and finally builds a replacement that works and is efficient. To evaluate this capability of LLM agents in the hardware domain, we present ChiProgramBench, 18 tasks derived from open-source processors, accelerators, codecs, transforms, interconnects, and control circuits. Agents can only drive and read the pins of a hidden, stateful simulated reference, then submit a gate-level netlist made of public library cells. Agents work in two settings: black-box discovery gives only anonymized functional pins and the interfaces of fixed memories, while function-guided reconstruction adds the circuit&#x27;s purpose and each pin&#x27;s role. Hidden test cases compare outputs with the reference cycle by cycle; power, delay, and area earn credit relative to the reference only when every case passes. Across 432 trials of 6 LLM agent configurations, successful agents recover algorithms and numerical conventions, yet only 12.0% of black-box and 14.8% of function-guided trials pass every case. Function-guided reconstruction raises the mean functional score, the cycle-weighted share of passed cases, from 24.6% to 30.9%. Of the 58 fully passing designs, only three improve on the reference&#x27;s combined power, area, and delay, so behavioral recovery and efficient implementation remain distinct challenges.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在58个完全通过的设计中,只有三个改进了参考物的综合力量,领域和延迟,因此行为恢复和高效实施仍然是明显的挑战.</dd></div><div><dt>创新点</dt><dd>1. 为了评价硬件领域的LLM代理的这种能力,我们提出了ChiProgramBench,18项任务来自开源处理器,加速器,编码器,变换器,互联,以及控制电路.</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.31082v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.31082v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 4 篇">04</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30766v1" target="_blank" rel="noopener">Bridging the Semantic Gap from Natural Language Specifications to RTL with Layered Formal Guidance</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.AI</span></div>
+            <p class="paper-authors">Yan Tan, Xiangchen Meng, Yangdi Lyu</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>虽然大型语言模型(LLMs)在从自然语言规格生成寄存器传输级(RTL)代码方面表现出希望,但其可靠性仍然局限于具有复杂控制逻辑和时间行为的设计. 这源于一个基本的语义上的空白:高层次的自然语言经常使执行的关键细节不够精确,迫使LLMs推断出未说明的假设. 本文介绍&quot;分层正式指导&quot;,这是一种新颖的框架,通过在自然语言规范与RTL生成之间使用正式属性作为中间语义层来弥补这个语义差距. 我们的框架在三个层面适用正式指导:财产驱动的规格增强生成前,财产一致性检查生成后,以及核对后反向指导的改进。 对RTLLM基准和各种开源IP设计的实验表明,我们的框架实现了更高的功能正确性和较低的抽样输出-跟踪多样性. 此外,我们表明,分层正式指导可以灵活地增加通用LLMs和特定域的模型,以大幅度提高其生成可靠性。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>While large language models (LLMs) have shown promise in generating register-transfer level (RTL) code from natural-language specifications, their reliability remains limited on designs with complex control logic and temporal behavior. This stems from a fundamental semantic gap: high-level natural language often leaves implementation-critical details underspecified, forcing LLMs to infer unstated assumptions. This paper presents Layered Formal Guidance, a novel framework that bridges this semantic gap by using formal properties as an intermediate semantic layer between natural-language specifications and RTL generation. Our framework applies formal guidance across three layers: property-driven specification augmentation before generation, property-consistency checking after generation, and counterexample-guided refinement after checking. Experiments on RTLLM benchmarks and various open-source IP designs demonstrate that our framework achieves higher functional correctness and lower sampled output-trace diversity. Furthermore, we show that Layered Formal Guidance can flexibly augment both general-purpose LLMs and domain-specific models to substantially improve their generation reliability.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>对RTLLM基准和各种开源IP设计的实验表明,我们的框架实现了更高的功能正确性和较低的抽样输出-跟踪多样性. 此外,我们表明,分层正式指导可以灵活地增加通用LLMs和特定域的模型,以大幅度提高其生成可靠性。</dd></div><div><dt>创新点</dt><dd>1. 本文介绍&quot;分层正式指导&quot;,这是一种新颖的框架,通过在自然语言规范与RTL生成之间使用正式属性作为中间语义层来弥补这个语义差距.</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30766v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30766v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 5 篇">05</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30631v1" target="_blank" rel="noopener">Verifiable Logical-Physical Contracts for Refactored On-Die Power Control Circuitry</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Sabrina Yarzada, Paul Yi-Chia Chen, Yuanhan Li, Jeongeun Kim 等 6 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>近期文献允许独立的硬件实验占据一个单一的死因,用于可伸缩和成本效率高的硅原型. 在此框架内,包括低功率控制机制在内的专门硬件功能可作为可重复使用的Die微服务提供。 然而,这需要定义明确的合同,将数字请求与物理行为联系起来. 我们提出了一个可核查的逻辑-物理合同格式,包括一个实物合同模式,说明客户和供应商通过正式核实的数字担保和实物验证的完成条件完成服务的情况。 我们介绍Lightswitch,一个概念的证明在die电源控制微服务。 我们以TSMC 28nm对放电后的设计进行评估,并表明可核查的合同如何提供正式担保。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Recent literature allows independent hardware experiments to occupy a single die for scalable and cost-efficient silicon prototyping. Within this framework, specialized hardware functions including low-power control mechanisms can be offered as reusable on-die microservices. However, this requires well-defined contracts connecting digital requests to physical behavior. We present a checkable logical-physical contract formulation including a physical contract model describing service completion between client and provider through formally verified digital guarantees and physically validated completion conditions. We introduce Lightswitch, a proof-of-concept on-die power control microservice. We assess post-layout designs in TSMC 28nm and demonstrate how checkable contracts provide formal guarantees.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>摘要未明确报告可提取的结论。</dd></div><div><dt>创新点</dt><dd>1. 我们提出了一个可核查的逻辑-物理合同格式,包括一个实物合同模式,说明客户和供应商通过正式核实的数字担保和实物验证的完成条件完成服务的情况。；2. 我们介绍Lightswitch,一个概念的证明在die电源控制微服务。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30631v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30631v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 6 篇">06</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30542v1" target="_blank" rel="noopener">GC-MoE K3: A Green-Context Role Graph for Latent Mixture-of-Experts Decode</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.AI</span></div>
+            <p class="paper-authors">Yong Li, Haoyu Wang, Kan Liu, Tao Lan</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>Kimi K3将潜在的途径性专家与全线共享专家混合在一起。 完整的向导评价必须得分和选择专家、进入潜在空间的项目信使、在专家平行级别之间交换信使、计算路由和共享分支、在加入分支之前使路由和投影。 我们提出 GC-MoE K3,一个数据中心 Blackwell 执行, 将整个评价作为CUDA图, 覆盖两个绿色背景 。 【该句原文】Five base roles split input projection, routing, dispatch, expert computation, and finalization. 调度可以填充路由输入环,而计算分区则评价共享专家. 最终确定每个符号所需的专家所有者,与路由减少和装入输出预测权重RMSNorm重叠。 有条件角色再利用通信分区进行路由计算,并减少分裂-K投影部分. 在 GB200 at EP8, EP16 和 EP32 上,操作员在所有24个测量配置上比对 SGLang-style 引用(平均速度为1.1324×)更快. 与历史vLLM-style的测量比较,可以得出相同24个形状的1.3651×. 在合成的K3形输入器上,用一个剩余前缀来进行时间比较,这两种时间比较都是单层图形重播的. 【该句原文】The separate paired numerical suite passes all 142 cases and 2,936 rank checks.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Kimi K3 combines a latent routed mixture of experts with full-width shared experts. A complete feed-forward evaluation must score and select experts, project tokens into the latent space, exchange tokens across expert-parallel ranks, compute the routed and shared branches, and normalize and project the routed sum before joining the branches. We present GC-MoE K3, a datacenter Blackwell implementation that schedules this entire evaluation as a CUDA Graph across two Green Contexts. Five base roles split input projection, routing, dispatch, expert computation, and finalization. Dispatch can fill the routed input ring while the compute partition evaluates shared experts. Finalize waits for the expert owners needed by each token and overlaps routed reduction and RMSNorm with loading the output projection weights. Conditional roles reuse the communication partition for routed computation and reduce split-$K$ projection partials. On GB200 at EP8, EP16, and EP32, the operator is faster at all 24 measured configurations than the paired SGLang-style reference (mean speedup $1.1324\times$). A comparison with historical vLLM-style measurements gives $1.3651\times$ across the same 24 shapes. Both latency comparisons time single-layer graph replay on synthetic K3-shaped inputs with a residual prefix. The separate paired numerical suite passes all 142 cases and 2,936 rank checks.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>有条件角色再利用通信分区进行路由计算,并减少分裂-K投影部分. 在 GB200 at EP8, EP16 和 EP32 上,操作员在所有24个测量配置上比对 SGLang-style 引用(平均速度为1.1324×)更快.</dd></div><div><dt>创新点</dt><dd>1. 我们提出 GC-MoE K3,一个数据中心 Blackwell 执行, 将整个评价作为CUDA图, 覆盖两个绿色背景 。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30542v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30542v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 7 篇">07</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30505v1" target="_blank" rel="noopener">HLWalk: Modal-Split Random-Walk Thermal Analysis for Heterogeneous 2.5D/3D ICs</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Qibo Xue, Shengnan Cai, Tianshu Hou, Tianxiang Zhu 等 8 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>有效的热分析对加速2.5D/3DICs的设计至关重要。 然而,现有的随机行走热解器在解决通过硅通道(TSVs)等细尺度结构时,可能会遇到边界盘状差错和高昂的计算成本. 为了应对这些挑战,我们提议HLWalk,为异构2.5D/3DICs提供高效的随机行走热解器。 我们实行局部边界综合重建,以消除基于当地时间的边界处理中的盘片化错误。 为了加快边界预处理,我们采用模式分割:低序模式是决定性的计算,而蒙特卡洛取样只估计剩余部分。 我们进一步发展有规模意识的随机行走运输,以有效解决细尺度结构问题,而无需在整个领域进行精细的盘状处理。 对2.5D/3DIC基准的实验表明,HLWalk实现了显著的壁点速度,并且提高了各种设置的准确性.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Efficient thermal analysis is essential for accelerating the design of 2.5D/3D ICs. However, existing random-walk thermal solvers can suffer from boundary discretization errors and high computational costs when resolving fine-scale structures such as through-silicon vias (TSVs). To address these challenges, we propose HLWalk, an efficient random-walk thermal solver for heterogeneous 2.5D/3D ICs. We introduce local boundary integral reconstruction to eliminate discretization errors in local-time-based boundary treatments. To accelerate boundary preprocessing, we employ modal splitting: low-order modes are computed deterministically, while Monte Carlo sampling estimates only the residual. We further develop scale-aware random-walk transport to efficiently resolve fine-scale structures without requiring fine discretization throughout the domain. Experiments on 2.5D/3D IC benchmarks show that HLWalk achieves remarkable wall-clock speedup and better accuracy across settings.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>对2.5D/3DIC基准的实验表明,HLWalk实现了显著的壁点速度,并且提高了各种设置的准确性.</dd></div><div><dt>创新点</dt><dd>1. 为了应对这些挑战,我们提议HLWalk,为异构2.5D/3DICs提供高效的随机行走热解器。；2. 我们实行局部边界综合重建,以消除基于当地时间的边界处理中的盘片化错误。；3. 为了加快边界预处理,我们采用模式分割:低序模式是决定性的计算,而蒙特卡洛取样只估计剩余部分。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30505v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30505v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 8 篇">08</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30446v1" target="_blank" rel="noopener">Pudding: A Retargetable Compiler for Processing-Using-DRAM Systems</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.ET</span></div>
+            <p class="paper-authors">Tianrui Zheng, João Paulo Cardoso de Lima, Alexander Kusnezoff, Asif Ali Khan 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>Processing-Using-DRAM (PUD)架构利用DRAM阵列的物理,直接在内存中执行布尔操作,消除了内存密集度的数据移动瓶颈工作负载. 最近提出了几个PUD架构,这些架构在原始操作套件、行分配模型和执行度量衡上各不相同。 这些建筑差异今天在新兴的PUD-aware编译器中被硬码化,使得交叉结构的再利用成为不可能. 我们为PUD架构提出了一个可重新定位、端到端的汇编框架。 中心思想是使架构描述成为编译管道中的一流对象:重新瞄准一个新的PUD架构只需要提供它的描述. 我们的编译器以MLIR框架为基础,在两个结合的层面上运作。 在收音机层面,它通过位切换,混合精度分配,以及基于整数线程编程(ILP)的放置来降低高层次程序,以减少PUD指令的数量和银行间数据运动. 在逻辑层面上,它利用平等饱和来探索布尔网络的实现,重写规则和成本函数直接来源于架构描述. 对具有代表性工作负载的多个PUD目标进行评价,通过同样的编译器,我们的框架匹配(有时甚至超过)特定架构的手优化编译器,同时提供重定向性和扩展性。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Processing-Using-DRAM (PUD) architectures exploit the physics of DRAM arrays to perform Boolean operations directly in memory, eliminating the data movement bottleneck in memory-intensive workloads. Several PUD architectures have been recently proposed which differ in their primitive operation sets, row allocation models, and execution metrics. These architectural differences are today hard-coded in emerging PUD-aware compilers, making crossarchitecture reuse impossible. We present a retargetable, end-to-end compilation framework for PUD architectures. The central idea is to make the architecture description a first-class object in the compilation pipeline: retargeting to a new PUD architecture only requires supplying its description. Built upon the MLIR framework, our compiler operates at two coupled levels. At the tensor level, it lowers high-level programs through bit-slicing, mixed-precision assignment, and integer-linear-programming (ILP) based placement to reduce the number of PUD commands and inter-bank data movement. At the logic level, it employs equality saturation to explore Boolean network implementations, with rewrite rules and cost functions derived directly from the architecture description. Evaluated on representative workloads across multiple PUD targets with the same compiler passes, our framework matches (and in several cases surpasses) architecture-specific hand-optimized compilers, while delivering retargetability and extensibility.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在收音机层面,它通过位切换,混合精度分配,以及基于整数线程编程(ILP)的放置来降低高层次程序,以减少PUD指令的数量和银行间数据运动.</dd></div><div><dt>创新点</dt><dd>1. 我们为PUD架构提出了一个可重新定位、端到端的汇编框架。；2. 在逻辑层面上,它利用平等饱和来探索布尔网络的实现,重写规则和成本函数直接来源于架构描述.</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30446v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30446v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 9 篇">09</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30417v1" target="_blank" rel="noopener">ANOR: Scaling Sparse Attention with a GPU-PNM Computing Hierarchy</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Hyunsu Ye, Hyunmin Choi, Jaehong Cho, Jaeseo Lee 等 11 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>为具有长背景的大型语言模型服务,需要保存每个请求的密钥值(KV)缓存,可以超过GPU内存容量. Sparse 注意只读取这个缓存在每个解码步骤中一个小的,依赖查询的子集,但必须保留全部缓存,因为以后的步骤可能选择其他条目. 通过Compute Express Link (CXL) 附加的处理-近模(PNM)设备可以持有完整的缓存,并计算所居住的注意. 先前GPU-PNM的稀疏关注的系统是PNM-centric,处理大部分在PNM上的注意. 由于现有的CXL-PNM设备提供的内存带宽远少于GPUHBM,因此这个PNM-centric执行使得PNM瓶颈,让GPU闲置等待注意结果. 我们提出ANOR,这是一个GPU-PNM联合加速系统,它通过从最近选定的条目缓存中计算出GPU上的大部分注意力,并只处理PNM上的缺失,从而利用选择的注意力稀少的地方。 由于PNM处理缓存直接漏掉,GPU缓存更新可以与当前步骤执行脱钩. 我们开发了一个有限制的缓存更新政策,将更新限制在后期步骤饱和度的命中比,减少GPU-facing链接流量. 我们添加一个小型的芯片早期流线缓冲器(ESB),在PNM的注意力中捕捉KV数据,并将其流到GPU,避免了尽管PNM内存和GPU-facing链接之间带宽不匹配,但读取最冗余的DRAM. 我们还提出了适应性缓存-因子机制,将GPU缓存大小调整到服务负载,平衡命中率和批量大小. 跨越两个模型和三个长文本智能体式工作负载,ANOR,平均将解码吞吐量比HiSparse提高2.3x,比PNM基线提高2.0x. 这些结果显示,PNM不是作为首要关注引擎,而是作为GPU 存储层次结构的计算层最为有效.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Serving large language models with long contexts requires keeping the key-value (KV) cache of every request, which can exceed GPU memory capacity. Sparse attention reads only a small, query-dependent subset of this cache at each decoding step, yet must retain the full cache because later steps may select other entries. Processing-near-memory (PNM) devices attached through Compute Express Link (CXL) can hold the full cache and compute attention where it resides. Prior GPU-PNM systems for sparse attention are PNM-centric, processing most of the attention on the PNM. As existing CXL-PNM devices provide far less memory bandwidth than GPU HBM, this PNM-centric execution makes the PNM the bottleneck and leaves the GPU idle waiting for attention results. We present ANOR, a GPU-PNM joint acceleration system that exploits the selection locality of sparse attention by computing most of the attention on the GPU from a cache of recently selected entries and processing only the misses on the PNM. As the PNM processes cache misses directly, GPU cache updates can be decoupled from current-step execution. We develop a bounded cache-update policy that limits updates to the point where the hit ratio of later steps saturates, reducing GPU-facing link traffic. We add a small on-chip Early Streaming Buffer (ESB) that captures KV data during PNM attention and streams it to the GPU, avoiding most redundant DRAM reads despite the bandwidth mismatch between PNM memory and the GPU-facing link. We also propose an adaptive cache-factor mechanism that adjusts GPU cache size to the serving load, balancing hit ratio and batch size. Across two models and three long-context agentic workloads, ANOR improves decode throughput by 2.3x over HiSparse and 2.0x over a PNM baseline on average. These results show that PNM is most effective not as the primary attention engine but as a computing tier of the GPU memory hierarchy.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>跨越两个模型和三个长文本智能体式工作负载,ANOR,平均将解码吞吐量比HiSparse提高2.3x,比PNM基线提高2.0x. 这些结果显示,PNM不是作为首要关注引擎,而是作为GPU 存储层次结构的计算层最为有效.</dd></div><div><dt>创新点</dt><dd>1. 我们提出ANOR,这是一个GPU-PNM联合加速系统,它通过从最近选定的条目缓存中计算出GPU上的大部分注意力,并只处理PNM上的缺失,从而利用选择的注意力稀少的地方。；2. 我们开发了一个有限制的缓存更新政策,将更新限制在后期步骤饱和度的命中比,减少GPU-facing链接流量.；3. 我们还提出了适应性缓存-因子机制,将GPU缓存大小调整到服务负载,平衡命中率和批量大小.</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30417v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30417v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 10 篇">10</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30396v1" target="_blank" rel="noopener">WEPWAWET-CORE: A Hardware-Resident ML-DSA Architecture with Fabric-Generated, Fabric-Sealed Keys for Post-Quantum Avionics</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.CR</span></div>
+            <p class="paper-authors">Mohamed El-Hadedy, Wen-Mei Hwu</p>
+            <div class="paper-abstract-cn"><h3>中文摘要<span class="translation-note">机器翻译</span></h3><p>交换过交叉链接指令的航天器需要耐量子签名,为此,Module-Lattice-Based数字签名算法(ML-DSA,FIPS204)是标准,然而一个软件签名器运行其数据依赖的拒绝环,并保留其键,在与姿态控制和有效载荷处理共享的核心和内存上. 本文表明,对于硬件辅助标志器来说,重要的成本不是算术,而是处理器跨进织物的次数,尽量减少这些过关的边界也是可以密封钥匙的地方. 对同一内核上三个控制颗粒的Gem5支持分析显示,每个签名只有一项工作,芯片上整个拒绝循环,将处理器从关键路径上移除. WEPWAWET-CORE意识到在300 MHz的XCZU3EG上的边界:一个ROM微序列器运行Sign,校验,和密钥生成,作为三个程序在一个数据路径和一个银行的刮板上运行,并保留了密钥,在编程器总线上运行的在线Entropy,以及遮罩种子. 【该句原文】The processor-side cost of a signature falls from over a second under per-kernel control to 0.53 ms, fixed whatever the number of rejections, and the fabric&#x27;s time per attempt varies by less than 0.1% under a saturating workload. 在NASAJPL的F Prime带有姿态控制和成像负载下,两个带织物生成,地面认证的密钥的节点交换了3,575个签名的帧,每个帧都被接受,没有错过姿态的最后期限. 一个循环剖面将剩下的距离放在两个序列单元的专用核心上.</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Spacecraft that exchange commands over crosslinks need quantum-resistant signatures, for which the Module-Lattice-Based Digital Signature Algorithm (ML-DSA, FIPS 204) is the standard, yet a software signer runs its data-dependent rejection loop, and keeps its key, on cores and memory shared with attitude control and payload processing. This paper shows that for a hardware-assisted signer the cost that matters is not the arithmetic but the number of times the processor crosses into the fabric, and that the boundary which minimizes those crossings is also where the key can be sealed. A gem5-supported analysis of three control granularities over the same kernels shows that only one job per signature, with the whole rejection loop on chip, takes the processor off the critical path. WEPWAWET-CORE realizes that boundary on an XCZU3EG at 300 MHz: a ROM microsequencer runs Sign, Verify, and key generation as three programs over one datapath and a banked scratchpad, and keeps the key, the on-die entropy, and the mask seed off the processor bus. The processor-side cost of a signature falls from over a second under per-kernel control to 0.53 ms, fixed whatever the number of rejections, and the fabric&#x27;s time per attempt varies by less than 0.1% under a saturating workload. Under NASA JPL&#x27;s F Prime with attitude-control and imaging loads, two nodes with fabric-generated, ground-certified keys exchanged 3,575 signed frames, every frame was accepted, and no attitude deadline was missed. A cycle profile places the remaining distance to dedicated cores in two serial units.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>摘要未明确报告可提取的结论。</dd></div><div><dt>创新点</dt><dd>摘要未明确列出可提取的方法贡献。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30396v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30396v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+        </div>
+    </main>
+    <footer class="page">
+        <span>Paper Daily</span>
+        <span>页面生成于 <time datetime="2026-11-24T18:32+08:00">2026-11-24 18:32</time>（北京时间）</span>
+    </footer>
+</body>
+</html>

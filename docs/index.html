@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GPU 数据库论文日报 - 2026-11-23</title>
+    <title>GPU 数据库论文日报 - 2026-11-24</title>
     <style>
         :root {
             color-scheme: light;
@@ -180,20 +180,21 @@
                 <p>最近 7 天的 arXiv 新论文，按 GPU 加速数据库主题相关度排序。</p>
             </div>
             <dl class="stats"><div><dt>收录论文</dt><dd>10</dd></div>
-<div><dt>日报日期</dt><dd>2026-11-23</dd></div></dl>
+<div><dt>日报日期</dt><dd>2026-11-24</dd></div></dl>
         </section>
         <nav class="archive" aria-label="GPU 数据库日报归档">
             <span class="archive-label">日报归档</span>
-            <div class="archive-links"><a href="2026-11-23.html" aria-current="page">2026-11-23</a>
+            <div class="archive-links"><a href="2026-11-24.html" aria-current="page">2026-11-24</a>
+<a href="2026-11-23.html">2026-11-23</a>
 <a href="2026-11-22.html">2026-11-22</a>
 <a href="2026-11-21.html">2026-11-21</a>
 <a href="2026-11-20.html">2026-11-20</a>
 <a href="2026-11-19.html">2026-11-19</a>
-<a href="2026-11-18.html">2026-11-18</a>
-<a href="2026-11-17.html">2026-11-17</a></div>
+<a href="2026-11-18.html">2026-11-18</a></div>
             <details class="archive-more">
                 <summary>更多日期</summary>
-                <div class="archive-links"><a href="2026-11-16.html">2026-11-16</a>
+                <div class="archive-links"><a href="2026-11-17.html">2026-11-17</a>
+<a href="2026-11-16.html">2026-11-16</a>
 <a href="2026-11-15.html">2026-11-15</a>
 <a href="2026-11-14.html">2026-11-14</a>
 <a href="2026-11-13.html">2026-11-13</a>
@@ -374,6 +375,46 @@
             <article class="paper-card">
             <div class="paper-heading">
                 <span class="paper-rank" aria-label="第 1 篇">01</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30849v1" target="_blank" rel="noopener">SYCLDB: A Cross-Vendor Heterogeneous Analytical DBMS</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.706</span></div>
+            <p class="paper-authors">Ivan Donchev Kabadzhov, Eugenio Marinelli, Raja Appuswamy</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究CUDA、数据处理、分析查询、异构计算相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>The rapid growth of AI and analytical workloads has increased the need for fast, interactive analytical data processing. This, in turn, has led to a surge of interest in designing accelerated analytical database engines that can exploit modern GPUs to scale computation. While GPUs provide the massive data-parallelism required by modern analytics, the software landscape remains dominated by closed-source, vendor-locked programming models, like CUDA, limiting portability across multi-vendor GPUs. In this work, we present SYCLDB, an end-to-end analytical database engine built upon the SYCL open standard, designed to enable efficient, hardware-agnostic execution across a wide range of accelerators using a single codebase. By implementing core relational operators as modular SYCL kernels, integrating them with a SQL frontend based on Apache Calcite and Apache Thrift, and supporting Apache Arrow for efficient columnar ingestion, SYCLDB reduces dependence on vendor-specific GPU programming stacks by enabling a single SYCL codebase to execute analytical query pipelines across Intel, AMD, and NVIDIA GPUs.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦CUDA、数据处理、分析查询，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 异构 CPU-GPU 协同执行策略</dd></div></dl>
+            <p class="paper-reasons">直接涉及 GPU 加速数据库操作 · 与 GPU 数据库主题中等相关</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30849v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30849v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 2 篇">02</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31062v1" target="_blank" rel="noopener">X-BQSR: Holistic Acceleration of Base Quality Recalibration for Scalable Genomic Analysis</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.545</span></div>
+            <p class="paper-authors">Eugenio Marinelli, Ivan Donchev Kabadzhov, Raja Appuswamy</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 加速、GPU 并行计算、CUDA相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>With the continued decline in sequencing costs, genomics-based precision medicine is gaining increasing importance. The Genome Analysis Toolkit (GATK) is the standard framework for converting raw genomic data into actionable variants, but one of its most expensive steps is base quality score recalibration (BQSR), which corrects systematic sequencing errors. Despite significant work on accelerating other parts of the variant calling pipeline, BQSR has not been systematically explored on GPUs.
+  In this work, we analyze BQSR to identify computational and I/O bottlenecks and show that simply offloading key stages to an accelerator is insufficient to achieve overall gains. We then present X-BQSR, a holistic redesign of the entire BQSR pipeline, including I/O, compression, and kernel execution, to better leverage GPU parallelism. We implement X-BQSR using portable SYCL kernels for NVIDIA, AMD, and Intel GPUs, along with native CUDA and HIP backends for comparison, and we evaluate its performance against previous FPGA work. Our evaluation shows up to 141.7x acceleration compared to standard GATK and 8.7x acceleration compared to a proprietary GPU-accelerated solution.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 加速、GPU 并行计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理</dd></div></dl>
+            <p class="paper-reasons">涉及 GPU 计算技术</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.31062v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.31062v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 3 篇">03</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.29915v1" target="_blank" rel="noopener">Measuring GPU Memory Traffic on the NVIDIA GB10 Without C2C Telemetry</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> <span class="score-badge">主题相关度 0.492</span></div>
+            <p class="paper-authors">Deepak Panigrahy, Sirisha Kota, Aakash Tyagi, David Kebo 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 内存管理、GPU 核函数、NVLink 互连、带宽优化相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>The NVIDIA GB10, used in the DGX Spark and in desktop AI systems from several vendors, joins an Arm CPU die and a Blackwell GPU die with NVLink C2C. The GPU has no local memory, so every GPU access that misses in its L2 cache crosses C2C to the LPDDR5X attached to the CPU die. Yet the software on the systems we tested exposes no counter for this traffic. We show that five L2 sector counters of the GPU, sampled every 10 ms through NVIDIA&#x27;s CUPTI sampling interface by a process that does not attach to the workload, measure GPU memory traffic live and separate copy engine traffic from the read misses and writes of GPU kernels. For large streaming transfers of known size, the counters agree within 0.28% on an Acer GN100 and within 0.005% on a DGX Spark, track the volume moved regardless of how it is split into copies, and exclude data reused in L2. The GPU&#x27;s SMMU counter, a natural alternative, counts address translations rather than bytes. Applied to an unmodified server, the method shows Mistral 7B decode reading 13.47 GiB per token, the weights it uses plus its key value (KV) cache, at 83% of the memory bandwidth NVIDIA specifies. We release the method as an open source tool.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 内存管理、GPU 核函数、NVLink 互连，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化</dd></div></dl>
+            <p class="paper-reasons">直接涉及 GPU 加速数据库操作</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.29915v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.29915v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 4 篇">04</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.24458v1" target="_blank" rel="noopener">A Runtime System for Mitigating Crossbar Port Contention on SM-Partitioned GPUs</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-18</span> <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="score-badge">主题相关度 0.489</span></div>
@@ -386,7 +427,7 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 2 篇">02</span>
+                <span class="paper-rank" aria-label="第 5 篇">05</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.24437v1" target="_blank" rel="noopener">Dissecting an Unexplored SASS Control-Code Field: Barrier Exemption and Programmable Warp Priority</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-18</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> <span class="score-badge">主题相关度 0.480</span></div>
@@ -399,7 +440,7 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 3 篇">03</span>
+                <span class="paper-rank" aria-label="第 6 篇">06</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.25091v1" target="_blank" rel="noopener">Berth: SLO-Preserving GPU Sharing Without New Preemption</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-18</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.478</span></div>
@@ -412,20 +453,20 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 4 篇">04</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.23512v1" target="_blank" rel="noopener">DexAttention: Distributed Sparse Attention through Rapid Online Planning and Persistent GPU Execution</a></h2>
+                <span class="paper-rank" aria-label="第 7 篇">07</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30417v1" target="_blank" rel="noopener">ANOR: Scaling Sparse Attention with a GPU-PNM Computing Hierarchy</a></h2>
             </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-17</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.465</span></div>
-            <p class="paper-authors">Sirui Chen, Xuehai Qian</p>
-            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 加速、通信优化相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Sparse attention reduces computation, but distributed execution may still transfer unnecessary data and incur substantial per-operation overhead. Mask-aware assignment and scheduling can reduce these costs, but replanning for dynamic masks must be cheaper than the execution time it saves. We present DexAttention, a distributed sparse attention system that co-designs fast online planning with persistent execution. Its assigner uses GPU-accelerated, topology-aware clustering to balance computational load and reduce communication. A lightweight greedy scheduler orders coarse communication and computation operations, while a persistent kernel on each GPU enforces fine-grained dependencies and dispatches ready tasks. This division keeps detailed synchronization out of planning while enabling overlap without repeated attention launches. The framework supports static and dynamic per-head masks across multiple attention compute kernels. On a four-node, 16-GPU cluster, DexAttention achieves a $1.39\times$ geometric-mean end-to-end training speedup over the fastest applicable baseline across 11 configurations. For dynamic video attention, it achieves $2.11$--$2.37\times$ speedups over Ring Attention including planning.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 加速、通信优化，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 支持分布式/多 GPU 扩展</dd></div></dl>
-            <p class="paper-reasons">涉及 GPU 计算技术</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.23512v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.23512v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.AR</span> <span class="score-badge">主题相关度 0.472</span></div>
+            <p class="paper-authors">Hyunsu Ye, Hyunmin Choi, Jaehong Cho, Jaeseo Lee 等 11 人</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 内存管理、GPU 缓存、带宽优化、吞吐量相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Serving large language models with long contexts requires keeping the key-value (KV) cache of every request, which can exceed GPU memory capacity. Sparse attention reads only a small, query-dependent subset of this cache at each decoding step, yet must retain the full cache because later steps may select other entries. Processing-near-memory (PNM) devices attached through Compute Express Link (CXL) can hold the full cache and compute attention where it resides. Prior GPU-PNM systems for sparse attention are PNM-centric, processing most of the attention on the PNM. As existing CXL-PNM devices provide far less memory bandwidth than GPU HBM, this PNM-centric execution makes the PNM the bottleneck and leaves the GPU idle waiting for attention results. We present ANOR, a GPU-PNM joint acceleration system that exploits the selection locality of sparse attention by computing most of the attention on the GPU from a cache of recently selected entries and processing only the misses on the PNM. As the PNM processes cache misses directly, GPU cache updates can be decoupled from current-step execution. We develop a bounded cache-update policy that limits updates to the point where the hit ratio of later steps saturates, reducing GPU-facing link traffic. We add a small on-chip Early Streaming Buffer (ESB) that captures KV data during PNM attention and streams it to the GPU, avoiding most redundant DRAM reads despite the bandwidth mismatch between PNM memory and the GPU-facing link. We also propose an adaptive cache-factor mechanism that adjusts GPU cache size to the serving load, balancing hit ratio and batch size. Across two models and three long-context agentic workloads, ANOR improves decode throughput by 2.3x over HiSparse and 2.0x over a PNM baseline on average. These results show that PNM is most effective not as the primary attention engine but as a computing tier of the GPU memory hierarchy.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 内存管理、GPU 缓存、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化</dd></div></dl>
+            <p class="paper-reasons">直接涉及 GPU 加速数据库操作</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30417v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30417v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 5 篇">05</span>
+                <span class="paper-rank" aria-label="第 8 篇">08</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.24264v1" target="_blank" rel="noopener">Multilevel Graph Partitioning on GPU Supercomputers</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-18</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.464</span></div>
@@ -438,7 +479,7 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 6 篇">06</span>
+                <span class="paper-rank" aria-label="第 9 篇">09</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.25947v1" target="_blank" rel="noopener">Matching Architecture to Workload: Comparing RISC-V Parallel Accelerators for Energy-Efficient Embedded Computing</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="score-badge">主题相关度 0.444</span></div>
@@ -451,7 +492,7 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 7 篇">07</span>
+                <span class="paper-rank" aria-label="第 10 篇">10</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26619v1" target="_blank" rel="noopener">TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="score-badge">主题相关度 0.438</span></div>
@@ -462,50 +503,11 @@
             <div class="paper-links"><a href="https://arxiv.org/abs/2611.26619v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
 <a href="https://arxiv.org/pdf/2611.26619v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
         </article>
-<article class="paper-card">
-            <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 8 篇">08</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.22079v1" target="_blank" rel="noopener">SIMQ: A Single Graph-based Index for Multi-Vector Query</a></h2>
-            </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-17</span> <span class="tag">cs.IR</span> <span class="tag">cs.DB</span> <span class="score-badge">主题相关度 0.437</span></div>
-            <p class="paper-authors">Yifan Lu, Jiabao Jin, Xiaoyao Zhong, Peng Cheng 等 10 人</p>
-            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 加速、吞吐量相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Multi-vector retrieval models such as ColBERT achieve state-of-the-art effectiveness by representing documents as sets of token-level vectors and scoring via MaxSim, but their high computational cost limits scalability to large corpora. Existing approximate methods face fundamental bottlenecks: centroid interaction matrix approaches require computing a full matrix at every query and rely on GPU-accelerated clustering, while data-oblivious compression methods yield unstable recall that requires repeated compensation. We propose SIMQ (Single graph Index for Multi-vector Query), a framework that bridges single-vector graph indices and multi-vector retrieval through data-aware sampling-based clustering and per-token graph navigation, simultaneously bypassing all aforementioned bottlenecks. SIMQ organizes all token vectors into fine-grained clusters via data-aware sampling, builds a single graph index over cluster centroids independently of PLAID&#x27;s residual representation, and approximates the MaxSim score through per-token graph search without materializing any interaction matrix or relying on GPU acceleration. We provide theoretical analysis showing that, under a manifold assumption and successful cell retrieval, data-aware partitioning has a smaller expected approximation error than a data-oblivious partition. Building on this foundation, SIMQ+ further introduces count-based scoring and a dynamic candidate set to improve robustness across varying query conditions. Experiments on five benchmarks compare recall, throughput, and construction time against several baselines, primarily on CPU; large-scale PLAID k-means centroids are built on a separate GPU machine. SIMQ has been integrated into VSAG, an Ant Group&#x27;s open-source vector search library.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 加速、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程</dd></div></dl>
-            <p class="paper-reasons">直接涉及 GPU 加速数据库操作</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.22079v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.22079v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
-        </article>
-<article class="paper-card">
-            <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 9 篇">09</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.27119v1" target="_blank" rel="noopener">CTRL: Concurrent Training and Rollout for LLM Reinforcement Learning via GPU Co-Residency</a></h2>
-            </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-20</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="score-badge">主题相关度 0.434</span></div>
-            <p class="paper-authors">Ruijia Yang, Ruikai Li, Zeyi Wen</p>
-            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究CUDA、吞吐量相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Reinforcement learning (RL) post-training of large language models runs two GPU workloads with different hardware demands: rollout decoding, which is dominated by memory access and whose batch shrinks as responses finish, and a dense learner. Current systems either time-share every GPU between them, paying serial phases and switches, or split GPUs into pools whose sizes change only in whole devices. We present CTRL, which makes co-residency a third RL execution layout: every GPU runs a learner rank beside a persistent rollout engine, sharing the device under CUDA MPS. A host-owned learner makes the layout fit: optimizer state stays in host memory, and policy weights stream layer by layer through a bounded GPU window. A publication gate trains each ready batch first and waits only before releasing the next policy, keeping a dropless staleness bound. A step-time bound guides compute-share selection, and a GPU-time ledger explains overlap and sharing costs. On H100, A800, and RTX 4090 GPUs with Qwen3 models, CTRL achieves 1.11-2.24$\times$ the throughput of the stronger of verl&#x27;s asynchronous baselines across 24 workload settings with the staleness limit set to two, and 1.23$\times$ verl&#x27;s colocate_async on eight H100 GPUs. With the same learner, co-residency is 1.10-1.26$\times$ faster than time-sharing on all three platforms and 1.10-1.30$\times$ faster than the best measured whole-GPU split on H100 DAPO-Math workloads at 256-528 trajectories per step, on four and eight GPUs.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</dd></div></dl>
-            <p class="paper-reasons">涉及 GPU 计算技术</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.27119v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.27119v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
-        </article>
-<article class="paper-card">
-            <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 10 篇">10</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26268v1" target="_blank" rel="noopener">Accelerating Mixture of Block Attention via Dynamic Routing, KV-Centric Execution and Runtime Pipelining</a></h2>
-            </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.432</span></div>
-            <p class="paper-authors">Yingqi Shi, Junru Lu, Yun Liu, Di Yin 等 5 人</p>
-            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究GPU 调度相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Mixture of Block Attention (MoBA) reduces long-context computation by selecting key-value (KV) blocks for each query. FlashMoBA implements MoBA efficiently but retains a fixed Top-k budget and query-centric schedule. Fixed Top-k applies one budget across different score distributions and couples routing to task granularity; query-range ownership fragments K/V reuse when several ranges select the same column. We present LightningMoBA, which co-designs selection and execution through dynamic routing, KV-centric ownership, and runtime pipelining. Dynamic routing thresholds MoBA&#x27;s per-query block scores and directly emits variable-cardinality sparse metadata. KV-centric ownership groups selected rows by (query head, KV block) column, splits high-fanout columns into bounded tasks, and reuses each task&#x27;s loaded KV tile. On Hopper, pipelining overlaps regular K/V transfers and irregular query gathers with Tensor Core computation. Together, these mechanisms decouple retention from GPU scheduling granularity. At matched Top-16 retention across five checkpoints, LightningMoBA accelerates end-to-end generation by 1.20 to 1.60x while raising mean RULER score from 74.42 to 75.28.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦GPU 调度，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 基于张量计算运行时构建查询引擎</dd></div></dl>
-            <p class="paper-reasons">直接涉及 GPU 加速数据库操作</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26268v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.26268v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
-        </article>
         </div>
     </main>
     <footer class="page">
         <span>Paper Daily</span>
-        <span>页面生成于 <time datetime="2026-11-23T17:36+08:00">2026-11-23 17:36</time>（北京时间）</span>
+        <span>页面生成于 <time datetime="2026-11-24T18:32+08:00">2026-11-24 18:32</time>（北京时间）</span>
     </footer>
 </body>
 </html>
