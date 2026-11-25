@@ -1,0 +1,327 @@
+[
+  {
+    "id": "2611.32662",
+    "title": "OpenWoud: Vendor-Unlocked Scalable Adaptive Random Forest Accelerator",
+    "authors": [
+      "Ewout van Nimwegen",
+      "Elijah Seth Cishugi",
+      "Hendrik Folmer",
+      "Marco Ottavi",
+      "Kuan-Hsun Chen"
+    ],
+    "abstract": "Online Machine Learning (ML) enables real-time decision-making on evolving data streams. These dynamic models learn continuously to adapt to new concepts, as previous ones become invalid, but their performance is often limited by throughput. The Adaptive Random Forest (ARF) is a state-of-the-art model for this setting, which naturally exposes parallelism and is therefore well-suited for hardware acceleration. However, prior Field Programmable Gate Array (FPGA)-based accelerators are vendor-locked and rely on resource-hungry Floating-Point (FP) arithmetics, limiting their scalability and portability. We present OpenWoud, a vendor-unlocked ARF framework for FPGAs. Our design replaces FP operators with a flexible FiXed-Point (FxP) arithmetic library and introduces fully transparent, manually scheduled dataflows for training and drift detection. This enables fine-grained time/area trade-offs and predictable behavior across platforms. A comprehensive evaluation on both synthetic and real datasets shows that OpenWoud maintains or increases accuracy (up to +12.89%), compared to a prior FPGA accelerator, while reducing the resource utilization by half. Competitive performance is observed compared to GPU (0.5 - 1.5x speed-up) and an FPGA baseline (0.2 - 0.5x), despite the latter being based on idealized simulation. Crucially, OpenWoud sustains true sample-by-sample inference, unlike GPUs that require batch insertion.",
+    "published_date": "2026-11-24T14:14:26Z",
+    "updated_date": "2026-11-24T14:14:26Z",
+    "categories": [
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32662v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32662v1",
+    "source": "arxiv",
+    "abstract_cn": "在线机器学习(ML)可以对不断发展的数据流进行实时决策. 这些动态模型不断学习适应新概念,因为以前的模型变得无效,但其性能往往受到吞吐量的限制. 适应性随机森林(ARF)是这种设置的最先进的模型,它自然会暴露平行性,因此非常适合硬件加速. 然而,先前的外地可编程门阵列(FPGA)基于供应商的加速器是锁定的,依赖于资源饥饿Floating-Point(FP)算术,限制了它们的可缩放性和可移植性. 我们提出OpenWoud,这是FPGAs的供应商不受限制的ARF框架。 我们的设计用一个灵活的FiXed-Point(FxP)算术库取代FP操作员,并引入完全透明、手动安排的数据流,用于培训和漂移检测。 这使得各平台之间时间/地区权衡得当和行为可预测成为可能。 对合成和真实数据集的综合评价显示,OpenWoud保持或提高精度(最高为+12.89%),而之前的FPGA加速器则将资源利用率降低一半. 与GPU(0.5 - 1.5x加速)和FPGA基线(0.2 - 0.5x)相比,观察到了竞争性能,尽管后者是基于理想化的模拟。 关键是,OpenWoud维持真实的逐样样本推理,与需要批量插入的GPUs不同.",
+    "takeaway": "对合成和真实数据集的综合评价显示,OpenWoud保持或提高精度(最高为+12.89%),而之前的FPGA加速器则将资源利用率降低一半.",
+    "innovation": "1. 我们提出OpenWoud,这是FPGAs的供应商不受限制的ARF框架。；2. 我们的设计用一个灵活的FiXed-Point(FxP)算术库取代FP操作员,并引入完全透明、手动安排的数据流,用于培训和漂移检测。",
+    "takeaway_source": [
+      "A comprehensive evaluation on both synthetic and real datasets shows that OpenWoud maintains or increases accuracy (up to +12.89%), compared to a prior FPGA accelerator, while reducing the resource utilization by half."
+    ],
+    "innovation_source": [
+      "We present OpenWoud, a vendor-unlocked ARF framework for FPGAs.",
+      "Our design replaces FP operators with a flexible FiXed-Point (FxP) arithmetic library and introduces fully transparent, manually scheduled dataflows for training and drift detection."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32652",
+    "title": "Power Side-Channel Evaluation using Multi-FPGA Systems",
+    "authors": [
+      "Yaswanth Tavva",
+      "Geng Luo",
+      "Trevor E. Carlson",
+      "Li-Shiuan Peh"
+    ],
+    "abstract": "Complex out-of-order processors are difficult to evaluate for power side-channel leakage before tapeout. A single FPGA often lacks sufficient capacity, whereas conventional CAD-based analysis is too slow to support the large numbers of traces required by practical attacks. Multi-FPGA emulation provides greater capacity, but existing partitioning schemes are not security-aware and thus results in poor attack performance. This work presents Scissors, a security-aware multi-FPGA partitioning approach for pre-silicon power side-channel evaluation of complex out-of-order processors. Scissors uses side-channel vulnerability factor (SVF) analysis to identify signals correlated with the secret key. It then keeps strongly key-correlated signals confined to one FPGA partition (measured) while moving rest of the signals to the other FPGAs (support), improving the observability of the side-channel information. We evaluate Scissors through RTL simulations and physical measurements on a two-U200 FPGA testbed, using frequency-domain CPA with a Hamming-weight leakage model. RTL ablation shows that only 68-71 high-SVF signals dominate key recovery process. For a single-core processor (SingleBOOM), Scissors recovers the key with 12,000 traces, compared with 49,000 for the unpartitioned design and 43,000 for TritonPart, while improving correct-key correlation by $2.83\\times$. For a quad-core processor (QuadBOOM), which exceeds the capacity of the CW340 single-FPGA platform, Scissors reduces the required traces from 111,000 to 66,000 and improves correlation by $1.48\\times$ over TritonPart. Scissors also reduces QuadBOOM RTL-to-bitstream generation from 61 h 39 min to 6 h 40 min, a $9.25\\times$ speedup. These results show that security-aware partitioning improves leakage observability and attack performance while substantially reducing implementation time for complex processors against the baseline method.",
+    "published_date": "2026-11-24T14:09:36Z",
+    "updated_date": "2026-11-24T14:09:36Z",
+    "categories": [
+      "cs.CR",
+      "cs.AR"
+    ],
+    "primary_category": "cs.CR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32652v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32652v1",
+    "source": "arxiv",
+    "abstract_cn": "复杂 乱序 处理器在磁带解压前难以评价功率侧通道渗漏. 单一的FPGA往往缺乏足够的能力,而常规的CAD-based分析太慢,无法支持实际攻击所需的大量痕迹. Multi-FPGA 仿真提供了更大的能力,但现有的分割计划并没有安全意识,因此导致攻击性能不佳. 这部作品介绍了剪刀,一种安全意识multi-FPGA分区方法,用于对复杂乱序处理器进行前硅动力侧通道评价. 剪刀采用侧通道脆弱系数(SVF)分析,以识别与密钥相关的信号. 然后,它将强烈的密钥-cor相关信号限制在一个FPGA分区(测量)上,同时将其余的信号移动到另一个FPGAs(支持),提高侧通道信息的可观察性. 我们通过RTL模拟和在双U200 FPGA试验台上进行物理测量来评价剪刀,使用频率域CPA,并使用汉明-重量的渗漏模型. RTL 膨胀显示,只有68-71 high-SVF 信号主导着关键恢复过程. 对于一个单核处理器(SingleBOOM),剪刀以12,000个痕迹回收了密钥,而未分拆的设计则有49,000个,而TritonPart则有43,000个,同时以2.83×改进了正确密钥的关联性. 【该句原文】For a quad-core processor (QuadBOOM), which exceeds the capacity of the CW340 single-FPGA platform, Scissors reduces the required traces from 111,000 to 66,000 and improves correlation by 1.48× over TritonPart. 剪刀还把QuadBOOM RTL-to-bitstream的生成量从61h 39 min减少到6h 40 min,一个9.25×加速. 这些结果表明,安全意识的分隔提高了渗漏的可观察性和攻击性能,同时大大缩短了复杂处理器对照基线方法的执行时间。",
+    "takeaway": "【该句原文】For a quad-core processor (QuadBOOM), which exceeds the capacity of the CW340 single-FPGA platform, Scissors reduces the required traces from 111,000 to 66,000 and improves correlation by 1.48× over TritonPart. 剪刀还把QuadBOOM RTL-to-bitstream的生成量从61h 39 min减少到6h 40 min,一个9.25×加速.",
+    "innovation": "1. 这部作品介绍了剪刀,一种安全意识multi-FPGA分区方法,用于对复杂乱序处理器进行前硅动力侧通道评价.；2. 剪刀采用侧通道脆弱系数(SVF)分析,以识别与密钥相关的信号.",
+    "takeaway_source": [
+      "For a quad-core processor (QuadBOOM), which exceeds the capacity of the CW340 single-FPGA platform, Scissors reduces the required traces from 111,000 to 66,000 and improves correlation by 1.48× over TritonPart.",
+      "Scissors also reduces QuadBOOM RTL-to-bitstream generation from 61 h 39 min to 6 h 40 min, a 9.25× speedup."
+    ],
+    "innovation_source": [
+      "This work presents Scissors, a security-aware multi-FPGA partitioning approach for pre-silicon power side-channel evaluation of complex out-of-order processors.",
+      "Scissors uses side-channel vulnerability factor (SVF) analysis to identify signals correlated with the secret key."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32405",
+    "title": "CPU-Eval: Evaluating Large Language Models for CPU Hardware Code Generation",
+    "authors": [
+      "Yuisei Iwata",
+      "Yutaka Masuda",
+      "Tohru Ishihara"
+    ],
+    "abstract": "Benchmarks such as VerilogEval have supported rapid advances in hardware description language (HDL) generation by large language models (LLMs). However, recent HDL-generation systems achieve pass rates above 90% on VerilogEval, leaving limited headroom for revealing further advances. To provide a challenging target for further progress on a practically important hardware-development task, we introduce CPU-Eval, a benchmark of 339 HDL-generation problems constructed from six CPUs. Drawn from practical CPU designs, including families fabricated in silicon, the problems span CPUs from small embedded cores to Linux-capable out-of-order cores and cover diverse CPU functions written in SystemVerilog, Chisel, and SpinalHDL. In each problem, an LLM performs the real CPU-development task of generating HDL. Across seven state-of-the-art LLMs, mean pass@1 is 45.14 percentage points lower on CPU-Eval than on VerilogEval v2 Spec-to-RTL, exposing capability differences obscured by VerilogEval's high pass rates. CPU-Eval reveals that pass@1 is lower for submodules with more source-code lines, which motivates fine-grained modular design for LLM-aided hardware generation. We also show that pass@1 is lower for CPUs written in less widely used HDLs, motivating designers to verify that an LLM is sufficiently proficient at generating code in the HDL they use before deployment.",
+    "published_date": "2026-11-24T11:07:23Z",
+    "updated_date": "2026-11-24T11:07:23Z",
+    "categories": [
+      "cs.AR",
+      "cs.AI"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32405v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32405v1",
+    "source": "arxiv",
+    "abstract_cn": "VerilogEval等基准支持了大语言模型(LLMs)在硬件描述语言(HDL)生成方面的快速进步. 然而,最近的HDL-generation系统在VerilogEval上实现了超过90%的通过率,从而留下了有限的头室,以揭示进一步的进展。 为了对一项实际重要的硬件开发任务取得进一步进展提出具有挑战性的目标,我们采用了CPU-Eval,这是由六个CPUs构建的339HDL-generation问题的基准。 【该句原文】Drawn from practical CPU designs, including families fabricated in silicon, the problems span CPUs from small embedded cores to Linux-capable out-of-order cores and cover diverse CPU functions written in SystemVerilog, Chisel, and SpinalHDL. 在每一个问题中,一个LLM执行真正的CPU-development生成HDL的任务. 【该句原文】Across seven state-of-the-art LLMs, mean pass@1 is 45.14 percentage points lower on CPU-Eval than on VerilogEval v2 Spec-to-RTL, exposing capability differences obscured by VerilogEval's high pass rates. CPU-Eval揭示出,对于源代码线条较多的子模块来说,通过@1更低,这激发了LLM-aided硬件生成的精细刻度模块设计. 我们还显示,用使用较少的HDLs写成的CPUs的传球@1更低,促使设计者核实LLM在部署前在HDL中使用的代码中足够能生成代码。",
+    "takeaway": "摘要未明确报告可提取的结论。",
+    "innovation": "1. 为了对一项实际重要的硬件开发任务取得进一步进展提出具有挑战性的目标,我们采用了CPU-Eval,这是由六个CPUs构建的339HDL-generation问题的基准。；2. 我们还显示,用使用较少的HDLs写成的CPUs的传球@1更低,促使设计者核实LLM在部署前在HDL中使用的代码中足够能生成代码。",
+    "takeaway_source": [],
+    "innovation_source": [
+      "To provide a challenging target for further progress on a practically important hardware-development task, we introduce CPU-Eval, a benchmark of 339 HDL-generation problems constructed from six CPUs.",
+      "We also show that pass@1 is lower for CPUs written in less widely used HDLs, motivating designers to verify that an LLM is sufficiently proficient at generating code in the HDL they use before deployment."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32397",
+    "title": "Scaling Architectural Simulation to Giga Instructions Per Second",
+    "authors": [
+      "Zhouyi Shen",
+      "Hao Tang",
+      "Ruike Liu",
+      "Jingwei Sun",
+      "Guangzhong Sun"
+    ],
+    "abstract": "The cost of detailed architectural simulation constrains design-space exploration, while parallelization across simulated cores offers limited host concurrency for single-core and small multicore targets. We present GIPSim, an instruction-driven simulator that derives instruction timing from dependencies and resource constraints, reducing the overhead of updating pipeline state every simulated cycle. It applies synchronization-guided temporal decomposition to recorded execution, exposing host parallelism beyond the target core count. GIPSim replays the resulting segments in parallel and aggregates their durations through a dependency graph to estimate overall execution time, with replay contexts reconstructed using retained microarchitectural state, warmup, and synchronization-guided cache eviction. This accounts for synchronization waits without requiring host workers to follow target execution order. We evaluate GIPSim using QEMU traces of application and operating system execution on multi-core x86-64, AArch64, and RV64GC systems. GIPSim achieves an average single-node simulation throughput of 13.8 million instructions per second (MIPS) with one worker and 1{,}010 MIPS with 96 workers, peaking at 1{,}421 MIPS. The corresponding mean absolute percentage errors in execution cycles relative to gem5 are 7.52\\% and 7.43\\%, respectively.",
+    "published_date": "2026-11-24T11:03:26Z",
+    "updated_date": "2026-11-24T11:03:26Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32397v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32397v1",
+    "source": "arxiv",
+    "abstract_cn": "详细的建筑模拟成本制约了设计-空间探索,而模拟核心之间的平行化为单一核心和小型多核心目标提供了有限的宿主货币。 我们提出GIPSim,这是一个由指令驱动的模拟器,它从依赖性和资源限制中获得指令的时间安排,减少更新每个模拟周期的管道状态的间接费用。 它将同步制导的时间分解应用于记录的执行,暴露出目标核心计数之外的宿主平行性. GIPSim 以平行方式重放所形成的片段,并通过依赖图来汇总其持续时间,以估计总体执行时间,并使用保留微体系结构的状态,暖气,同步导引缓存驱离来重现环境重建. 这说明同步等待时不需要东道主工人遵守目标执行令. 我们使用QEMU在多核心x86-64,AArch64和RV64GC系统中的应用和操作系统执行痕迹来评价GIPSim. 【该句原文】GIPSim achieves an average single-node simulation throughput of 13.8 million instructions per second (MIPS) with one worker and 1{,}010 MIPS with 96 workers, peaking at 1{,}421 MIPS. 相对于宝石5,执行周期的相应平均绝对百分比差错分别为7.52%和7.43%.",
+    "takeaway": "【该句原文】GIPSim achieves an average single-node simulation throughput of 13.8 million instructions per second (MIPS) with one worker and 1{,}010 MIPS with 96 workers, peaking at 1{,}421 MIPS.",
+    "innovation": "1. 我们提出GIPSim,这是一个由指令驱动的模拟器,它从依赖性和资源限制中获得指令的时间安排,减少更新每个模拟周期的管道状态的间接费用。；2. 它将同步制导的时间分解应用于记录的执行,暴露出目标核心计数之外的宿主平行性.",
+    "takeaway_source": [
+      "GIPSim achieves an average single-node simulation throughput of 13.8 million instructions per second (MIPS) with one worker and 1{,}010 MIPS with 96 workers, peaking at 1{,}421 MIPS."
+    ],
+    "innovation_source": [
+      "We present GIPSim, an instruction-driven simulator that derives instruction timing from dependencies and resource constraints, reducing the overhead of updating pipeline state every simulated cycle.",
+      "It applies synchronization-guided temporal decomposition to recorded execution, exposing host parallelism beyond the target core count."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32288",
+    "title": "Trading BRAM for LUTs: Hybrid Bit-Level Weight Storage for FPGA-Based Spiking Neural Networks",
+    "authors": [
+      "Dimitrios Sekertzis",
+      "Giorgos Dimitrakopoulos"
+    ],
+    "abstract": "Spiking Neural Networks (SNNs) offer an attractive paradigm for energy-efficient AI inference, while their deployment on reconfigurable hardware enables application-specific acceleration without sacrificing model reprogrammability. However, realizing this potential on FPGAs is often severely constrained by the immense on-chip memory needed to store synaptic weights. Existing compression techniques reduce this storage requirement at the cost of weight precision or accuracy. This work presents a hybrid bit-level weight-storage scheme that trades BRAM capacity for FPGA logic resources while preserving the original weights unmodified. Selected weight bits are implemented using Look-Up Tables (LUTs), while the remaining bits are stored in BRAM and jointly reconstructed during inference. We integrate this approach into a spatial dataflow SNN architecture and introduce a practical bit-mapping heuristic that efficiently partitions weight bits between BRAM and LUT-based logic without modifying the weights. Experimental evaluation demonstrates more than 26% reduction in BRAM utilization with a modest increase in LUT and register usage, resulting in significant overall power savings.",
+    "published_date": "2026-11-24T09:50:02Z",
+    "updated_date": "2026-11-24T09:50:02Z",
+    "categories": [
+      "cs.AR",
+      "cs.NE"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32288v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32288v1",
+    "source": "arxiv",
+    "abstract_cn": "Spiking神经网络(SNNs)为节能AI推理提供了一个有吸引力的范式,而它们部署在可重构硬件上则能够实现应用特定加速而不会牺牲模型的重编性. 然而,在FPGAs上实现这种潜力往往受到存储突触重量所需的巨大芯片内存的严重制约。 现有的压缩技术以重量精度或精度为代价减少了这种存储要求. 这部作品提出了混合位元级的权重存储方案,用于交换BRAM容量的FPGA逻辑资源,同时保留原始权重未修改. 选定重量位使用Look-Up表(LUTs)执行,其余位则存储在BRAM中,并在推理期间共同重建. 我们将此方法整合到空间数据流SNN架构中,并引入实用的位图速率法,在不修改权重的情况下在BRAM和LUT-based逻辑之间有效划分权重位. 实验性评价表明,BRAM的利用率下降了26%以上,LUT和登记使用情况略有增加,从而节省了大量总的电力。",
+    "takeaway": "实验性评价表明,BRAM的利用率下降了26%以上,LUT和登记使用情况略有增加,从而节省了大量总的电力。",
+    "innovation": "1. 这部作品提出了混合位元级的权重存储方案,用于交换BRAM容量的FPGA逻辑资源,同时保留原始权重未修改.；2. 我们将此方法整合到空间数据流SNN架构中,并引入实用的位图速率法,在不修改权重的情况下在BRAM和LUT-based逻辑之间有效划分权重位.",
+    "takeaway_source": [
+      "Experimental evaluation demonstrates more than 26% reduction in BRAM utilization with a modest increase in LUT and register usage, resulting in significant overall power savings."
+    ],
+    "innovation_source": [
+      "This work presents a hybrid bit-level weight-storage scheme that trades BRAM capacity for FPGA logic resources while preserving the original weights unmodified.",
+      "We integrate this approach into a spatial dataflow SNN architecture and introduce a practical bit-mapping heuristic that efficiently partitions weight bits between BRAM and LUT-based logic without modifying the weights."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32275",
+    "title": "On the Design of a Slow Control Interlock System for the European GateMate FPGA",
+    "authors": [
+      "Vitalii Burtsev",
+      "Daniele Passaretti",
+      "Daniel Anders",
+      "Christof Pfannenmueller",
+      "Fabian Lurz",
+      "Thilo Pionteck"
+    ],
+    "abstract": "Slow Control Systems (SCSs) are essential for the monitoring, configuration, and protection of distributed safety-critical systems in scientific, industrial, and medical applications. Although software-based SCS architectures offer flexibility and scalability, they suffer from software aging and non-deterministic latencies, which limit long-term reliability and timely reaction to critical errors, often requiring additional hardware interlock systems. This paper presents an FPGA-centric lightweight Slow Control Interlock System (SCIS) designed to achieve deterministic ultra-low-latency reaction times in long-running dependable systems. System parameters are acquired and fused at runtime in a Supervisory Monitor Unit (SMU), enabling real-time fault condition classification and prioritization through configurable priority rules and triggering kill-switch actions with microsecond-scale latency. The proposed SMU has been described in VHDL as vendor-agnostic architecture, and assessed on the 28-nm GateMate M1A1 FPGA, using the open-source OSS-CAD-Suite toolchain. Experimental results show that the SMU architecture utilizes only 37,6% of LUTs, 9,4% of FFs, and 35,9% of BRAM. Furthermore, this low resource utilization allow to achieve 40,48 ms reconfiguration time, using OSS-CAD-Suite including gmpack v1.13. This is a key metric for rejuvenation and consequently for enabling aging mitigation in critical applications. Offloading the Ethernet stack to the W5500 Ethernet module and integrating the Grafana dashboard provides a lightweight, deterministic SCIS. This demonstrates the feasibility of our FPGA-centric architecture as a solution to the problem of combining ultra-low-latency interlock capabilities with the scalability of software-based systems.",
+    "published_date": "2026-11-24T09:42:42Z",
+    "updated_date": "2026-11-24T09:42:42Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32275v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32275v1",
+    "source": "arxiv",
+    "abstract_cn": "慢控制系统(SCSs)对于监测、配置和保护科学、工业和医疗应用中的分布式安全临界系统至关重要。 虽然基于软件的SCS架构提供了灵活性和可扩展性,但它们却受到软件老化和非决定性的延迟的影响,这限制了长期可靠性和对关键错误的及时反应,往往需要额外的硬件间锁系统. 本文提出FPGA-centric轻量级慢控互锁系统(SCIS),旨在在长期运行的可依赖系统中实现确定性超低纬度反应时间. 系统参数在一个监督监测股(SMU)运行时获得并熔化,通过可配置的优先规则实现实时断层条件分类和优先排序,并启动具有微秒潜伏度的杀技动作。 提议的SMU在VHDL中被描述为供应商不可知结构,并使用开源OSS-CAD-Suite工具链评估了28-nmGateMateM1A1FPGA. 【该句原文】Experimental results show that the SMU architecture utilizes only 37,6% of LUTs, 9,4% of FFs, and 35,9% of BRAM. 【该句原文】Furthermore, this low resource utilization allow to achieve 40,48 ms reconfiguration time, using OSS-CAD-Suite including gmpack v1.13. 这是振兴的关键衡量标准,因此有助于减轻关键应用中的老化影响。 将以太网堆栈卸入W5500以太网模块,并整合Grafana仪表板提供轻量级,定型SCIS. 这显示了我们FPGA-centric架构的可行性,作为解决超低纬度互锁能力与软件系统可扩展性相结合问题的办法.",
+    "takeaway": "【该句原文】Experimental results show that the SMU architecture utilizes only 37,6% of LUTs, 9,4% of FFs, and 35,9% of BRAM. 【该句原文】Furthermore, this low resource utilization allow to achieve 40,48 ms reconfiguration time, using OSS-CAD-Suite including gmpack v1.13.",
+    "innovation": "1. 本文提出FPGA-centric轻量级慢控互锁系统(SCIS),旨在在长期运行的可依赖系统中实现确定性超低纬度反应时间.；2. 提议的SMU在VHDL中被描述为供应商不可知结构,并使用开源OSS-CAD-Suite工具链评估了28-nmGateMateM1A1FPGA.",
+    "takeaway_source": [
+      "Experimental results show that the SMU architecture utilizes only 37,6% of LUTs, 9,4% of FFs, and 35,9% of BRAM.",
+      "Furthermore, this low resource utilization allow to achieve 40,48 ms reconfiguration time, using OSS-CAD-Suite including gmpack v1.13."
+    ],
+    "innovation_source": [
+      "This paper presents an FPGA-centric lightweight Slow Control Interlock System (SCIS) designed to achieve deterministic ultra-low-latency reaction times in long-running dependable systems.",
+      "The proposed SMU has been described in VHDL as vendor-agnostic architecture, and assessed on the 28-nm GateMate M1A1 FPGA, using the open-source OSS-CAD-Suite toolchain."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32264",
+    "title": "Mayfly: Lifecycle-Aware High-Bandwidth Flash for Recursive Self-Improvement",
+    "authors": [
+      "Chunlin Tian",
+      "Mingjia Fan",
+      "Feng Yu",
+      "Qingyun Zou",
+      "Wenju Zhao",
+      "Weng-Fai Wong",
+      "Bingsheng He"
+    ],
+    "abstract": "Recursive self-improvement (RSI) lets an LLM improve its agent system by proposing and evaluating candidate variants across tasks. A generation's sessions grow their KV caches together and release them as they finish, creating a burst followed by a decline. At high concurrency, even the KV of sessions ready to run exceeds the GPU's HBM. Offloading that KV to host DRAM or SSDs adds capacity but leaves ready sessions waiting for HBM space before execution. High-Bandwidth Flash (HBF) can serve the overflow in place, but excessive reads lengthen decode steps and repeated writes consume flash endurance. Our key insight is that where ready KV is read should follow the burst and its decline: from HBF in place while the burst overflows HBM, as much as each step's bandwidth allows, and from HBM again as the decline frees it. A switch between ready and parked decides only whether a block is read, so its flash copy stays valid, and a session's end, which the orchestrator announces, decides when its private KV dies. We present Mayfly, lifecycle-guided HBF management for RSI. Mayfly bounds per-step HBF reads during overflow and returns KV to HBM as sessions finish and free space. It retains a valid backing copy of each block evicted from HBM to avoid rewrites across state transitions, and forwards session-end signals to the controller to avoid copying dead KV during garbage collection. Experimental results show that, at 128 sessions per generation on four added HBF sites, Mayfly finishes 34% sooner than parking the same KV on HBF and 23% sooner than reading it from HBF whenever HBM is full; its gain over parking grows with concurrency, to 55% at 256 sessions on eight sites. Keeping one flash copy per block and trimming at announced session ends avoid write amplification.",
+    "published_date": "2026-11-24T09:34:30Z",
+    "updated_date": "2026-11-24T09:34:30Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32264v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32264v1",
+    "source": "arxiv",
+    "abstract_cn": "递归自我改进(RSI)让LLM通过提出和评价跨任务的候选变体来改进其代理系统. 一代的会话会一起增长他们的KV缓存,并在完成时释放,从而形成一个突起,随后出现衰落. 在高通量时,即使是准备运行的会话的KV也超过了GPU的HBM. 卸载该 KV 以主机 DRAM 或 SSDs 添加容量,但在执行前留下准备好的会话等待 HBM 空格 。 High-Bandwidth Flash(HBF)可以就位为溢出服务,但过度读取长度解码步骤,重复写作会消耗闪存耐力. 我们的关键洞察力是,在读完KV后,应该跟随爆破及其下降:从HBF到位,而爆破的溢出HBM,只要每个步骤的带宽允许,再从HBM释放出来。 准备状态和停放状态之间的切换只决定一个块是否被读取,所以它的闪存副本仍然有效,一个会话结束,由管弦乐员宣布,决定它的私密时间KV. 我们提出Mayfly,生命周期制导HBF管理RSI. Mayfly每步的边框 HBF在溢出时读取,当会话结束和空闲空间时返回 KV到 HBM 。 它保留了从 HBM 中逐出的每个块的有效备份副本,以避免跨状态过渡重写,并将会话端信号转发给控制器,以避免在垃圾收集过程中复制死 KV. 【该句原文】Experimental results show that, at 128 sessions per generation on four added HBF sites, Mayfly finishes 34% sooner than parking the same KV on HBF and 23% sooner than reading it from HBF whenever HBM is full; its gain over parking grows with concurrency, to 55% at 256 sessions on eight sites. 每个块保留一个闪存副本,并在宣布的会话结束时进行裁剪,避免写入放大.",
+    "takeaway": "【该句原文】Experimental results show that, at 128 sessions per generation on four added HBF sites, Mayfly finishes 34% sooner than parking the same KV on HBF and 23% sooner than reading it from HBF whenever HBM is full; its gain over parking grows with concurrency, to 55% at 256 sessions on eight sites.",
+    "innovation": "1. 我们提出Mayfly,生命周期制导HBF管理RSI.",
+    "takeaway_source": [
+      "Experimental results show that, at 128 sessions per generation on four added HBF sites, Mayfly finishes 34% sooner than parking the same KV on HBF and 23% sooner than reading it from HBF whenever HBM is full; its gain over parking grows with concurrency, to 55% at 256 sessions on eight sites."
+    ],
+    "innovation_source": [
+      "We present Mayfly, lifecycle-guided HBF management for RSI."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32223",
+    "title": "Beyond Autoregression: Diffusion Language Model is All Analog In-Memory Computing Need",
+    "authors": [
+      "Yuanuo Feng",
+      "Yubing Ye",
+      "Yizhe Chen",
+      "Wenshuai Yao",
+      "Ngai Wong",
+      "Wenyong Zhou",
+      "Wang Kang"
+    ],
+    "abstract": "Analog in-memory computing (AIMC) enables energy-efficient language-model inference, but hardware non-idealities perturb matrix--vector multiplications and degrade generation quality. Autoregressive (AR) models are especially vulnerable: each token is committed to the causal context at birth, so perturbation-induced errors cascade. We study diffusion language models (DLMs), which iteratively refine a masked sequence, as an alternative paradigm. Across scale-matched model pairs and open checkpoints, DLMs degrade more gracefully than AR counterparts under persistent weight perturbations. Controlled analyses rule out cross-round noise averaging and support delayed token commitment and progressive context resolution as the mechanism. A larger denoising-step budget further shrinks the clean--noisy gap, a DLM-specific latency--robustness knob. We perform large-scale simulation tests across diverse datasets and models using a noise model calibrated from real silicon measurements. Furthermore, on a 16-chip 28nm eFlash AIMC cluster, hybrid on-board measurements show DLMs tolerate $1.4$--$3\\times$ larger weight noise, making diffusion-based generation a promising paradigm for noise-resilient AIMC inference.",
+    "published_date": "2026-11-24T09:07:34Z",
+    "updated_date": "2026-11-24T09:07:34Z",
+    "categories": [
+      "cs.AR",
+      "cs.LG"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32223v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32223v1",
+    "source": "arxiv",
+    "abstract_cn": "模拟内模计算(AIMC)可以实现节能语言模型推理,但硬件非理想性扰动矩阵-载体倍增并降解生成质量. 自动递减(AR)模型特别脆弱:每个符物在出生时都致力于因果背景,因此扰动引起的错误级联. 我们研究传播语言模型(DLMs),这种模型迭代地精炼一个遮掩的序列,作为另一种范式. 在整个规模匹配的模型对和开放的检查站,DLMs在持续重量扰动下比AR对等单位更优雅地降解。 受控制的分析排除了跨周期噪声的平均值,并支持延迟象征性承诺和逐步解决作为机制的背景问题。 更大的消音步骤预算进一步缩小了干净无声的空隙,一个DLM-specific 空闲的 - 强力的把手. 我们使用从真正的硅测量中校准的噪音模型,在各种数据集和模型中进行大规模模拟测试。 此外,在一个16芯片28nm eFlash AIMC集群上,机载混合测量显示DLMs能容忍1.4-3×较大的重量噪声,使基于扩散的生成成为具有噪声抗震性的有希望的范例AIMC推理.",
+    "takeaway": "摘要未明确报告可提取的结论。",
+    "innovation": "1. 在整个规模匹配的模型对和开放的检查站,DLMs在持续重量扰动下比AR对等单位更优雅地降解。；2. 我们使用从真正的硅测量中校准的噪音模型,在各种数据集和模型中进行大规模模拟测试。",
+    "takeaway_source": [],
+    "innovation_source": [
+      "Across scale-matched model pairs and open checkpoints, DLMs degrade more gracefully than AR counterparts under persistent weight perturbations.",
+      "We perform large-scale simulation tests across diverse datasets and models using a noise model calibrated from real silicon measurements."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32082",
+    "title": "Walk the Cycle: An Efficient Stochastic Solver for Periodic Thermal Analysis of 2.5D/3D ICs",
+    "authors": [
+      "Shengnan Cai",
+      "Qibo Xue",
+      "Tianshu Hou",
+      "Tianxiang Zhu",
+      "Zixiao Wang",
+      "Yibo Lin",
+      "Runsheng Wang",
+      "Bei Yu"
+    ],
+    "abstract": "Long-term periodic thermal analysis is essential for designing 2.5D/3D ICs operating under periodic workloads. Deterministic global solvers can be costly for repeated thermal queries, while existing random-walk methods are not tailored to long-term periodic problems or multiscale 3D IC structures, limiting their efficiency and accuracy. We propose CycleWalker, a periodic residual random-walk solver. First, we formulate the periodic steady state (PSS) as an infinite-history backward walk, which needs no initial temperature or warm-up but charges the full temperature field to every path. Second, to cut this cost, we let the walk estimate only the residual of a periodic prior, and shorten long histories by Russian roulette while preserving unbiasedness. Third, since the estimator constrains the prior only to be periodic and piecewise linear in time, we build it at negligible cost by a coarse-grid Fourier solve followed by fine-grid smoothing. Finally, we construct a thermal graph aware of through-silicon vias (TSVs) that bounds the walk's jump rate while retaining the anisotropic conduction of TSV arrays. Experiments on periodic 2.5D/3D IC benchmarks show that, at equal accuracy, CycleWalker achieves up to 75.85X speedup over the transient random-walk solver.",
+    "published_date": "2026-11-24T07:05:59Z",
+    "updated_date": "2026-11-24T07:05:59Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32082v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32082v1",
+    "source": "arxiv",
+    "abstract_cn": "长期定期热分析对于设计在定期工作负载下运行的2.5D/3DICs至关重要。 断断续续的全局解析器对于重复的热查询可能成本很高,而现有的随机行走方法则不适应长期的周期性问题或多尺度的3DIC结构,限制了其效率和准确性. 我们提议CycleWalker,一个周期性的剩余随机行走解决器. 首先,我们把周期性稳定状态(PSS)发展成无限历史的后退行走,这不需要初始温度或暖气,而是将全温场充电到每一个路径. 第二,为了减少这一费用,我们只让步行者估计周期性前的剩余部分,并缩短俄罗斯轮盘的漫长历史,同时保持不带偏见。 第三,由于估计器仅将前一个限制为周期性和片面线性的时间,我们用粗网格Fourier溶液以微薄的成本构建它,然后是细网格平滑。 最后,我们构建了一个热图,知道通过硅途径(TSVs),在保持TSV阵列的同位素导流的同时,将行走的跳动速率捆绑在一起。 对周期性2.5D/3DIC基准的实验表明,在等精度上,CycleWalker在瞬态随机行走解器上实现了高达75.85X的加速.",
+    "takeaway": "对周期性2.5D/3DIC基准的实验表明,在等精度上,CycleWalker在瞬态随机行走解器上实现了高达75.85X的加速.",
+    "innovation": "1. 我们提议CycleWalker,一个周期性的剩余随机行走解决器.；2. 首先,我们把周期性稳定状态(PSS)发展成无限历史的后退行走,这不需要初始温度或暖气,而是将全温场充电到每一个路径.；3. 第二,为了减少这一费用,我们只让步行者估计周期性前的剩余部分,并缩短俄罗斯轮盘的漫长历史,同时保持不带偏见。",
+    "takeaway_source": [
+      "Experiments on periodic 2.5D/3D IC benchmarks show that, at equal accuracy, CycleWalker achieves up to 75.85X speedup over the transient random-walk solver."
+    ],
+    "innovation_source": [
+      "We propose CycleWalker, a periodic residual random-walk solver.",
+      "First, we formulate the periodic steady state (PSS) as an infinite-history backward walk, which needs no initial temperature or warm-up but charges the full temperature field to every path.",
+      "Second, to cut this cost, we let the walk estimate only the residual of a periodic prior, and shorten long histories by Russian roulette while preserving unbiasedness."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  },
+  {
+    "id": "2611.32047",
+    "title": "Machine-Learning-Assisted Hybrid Cooling of a Raspberry Pi 5",
+    "authors": [
+      "Abdallah Ghazal",
+      "Fazal Hameed",
+      "Elshafey Elshafey",
+      "Mohammad Awadallah",
+      "Alhasan Emam"
+    ],
+    "abstract": "Thermal management is a critical challenge in compact computing platforms operating under sustained high computational loads. Elevated processor temperatures can lead to thermal throttling, degraded performance, and reduced reliability. This study develops and experimentally evaluates a smart hybrid heat sink that integrates passive thermal energy storage with active cooling for sustained device operation. The proposed design comprises an aluminum cavity containing paraffin wax as a phase change material (PCM) embedded within a copper foam and integrated with an adaptively controlled fan. Fan operation is guided by a Random Forest regression model trained on experimentally measured CPU temperature data to predict future CPU temperatures. The predicted temperature is then used to support the adaptive fan control strategy. The heat sink is mounted directly on the CPU of a Raspberry Pi 5 and experimentally evaluated under an extreme CPU workload of approximately 99 percent CPU utilization. The performance of the proposed hybrid system is compared against two benchmark scenarios: passive cooling using PCM embedded in copper foam and a commercial Raspberry Pi 5 active cooler. The proposed heat sink demonstrates superior thermal performance to both benchmarks, achieving peak CPU temperature reductions of approximately 9 C relative to the PCM-copper foam configuration and 6 C relative to the commercial active cooler.",
+    "published_date": "2026-11-24T06:31:55Z",
+    "updated_date": "2026-11-24T06:31:55Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.32047v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32047v1",
+    "source": "arxiv",
+    "abstract_cn": "在持续高计算负荷下运行的紧凑计算平台中,热管理是一个关键的挑战. 高温处理器温度会导致热减速,性能退化,可靠性降低. 本研究开发和实验评价一个智能混合热槽,将被动热能存储与主动冷却相结合,进行持续设备操作. 拟议设计包括一个含有石蜡作为相位改变材料的铝腔(PCM)嵌入铜泡沫,并与适应性控制的风扇结合。 风扇操作以随机森林回归模型为指导,对实验测量CPU温度数据进行了训练,以预测未来的CPU温度. 随后,预测温度被用于支持适应性风扇控制策略. 热槽直接安装在Raspberry Pi 5的CPU上,并进行实验评估,其极端CPU工作负载的利用率约为99%CPU。 将拟议混合系统的性能与两种基准情景进行比较:使用嵌入铜泡沫的PCM进行被动冷却,以及一个商业的Raspberry Pi 5 活动冷却器。 【该句原文】The proposed heat sink demonstrates superior thermal performance to both benchmarks, achieving peak CPU temperature reductions of approximately 9 C relative to the PCM-copper foam configuration and 6 C relative to the commercial active cooler.",
+    "takeaway": "【该句原文】The proposed heat sink demonstrates superior thermal performance to both benchmarks, achieving peak CPU temperature reductions of approximately 9 C relative to the PCM-copper foam configuration and 6 C relative to the commercial active cooler.",
+    "innovation": "1. 本研究开发和实验评价一个智能混合热槽,将被动热能存储与主动冷却相结合,进行持续设备操作.；2. 将拟议混合系统的性能与两种基准情景进行比较:使用嵌入铜泡沫的PCM进行被动冷却,以及一个商业的Raspberry Pi 5 活动冷却器。",
+    "takeaway_source": [
+      "The proposed heat sink demonstrates superior thermal performance to both benchmarks, achieving peak CPU temperature reductions of approximately 9 C relative to the PCM-copper foam configuration and 6 C relative to the commercial active cooler."
+    ],
+    "innovation_source": [
+      "This study develops and experimentally evaluates a smart hybrid heat sink that integrates passive thermal energy storage with active cooling for sustained device operation.",
+      "The performance of the proposed hybrid system is compared against two benchmark scenarios: passive cooling using PCM embedded in copper foam and a commercial Raspberry Pi 5 active cooler."
+    ],
+    "enrichment_method": "local_abstract_translation"
+  }
+]
