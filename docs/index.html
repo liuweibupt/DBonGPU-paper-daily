@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GPU 数据库论文日报 - 2026-11-25</title>
+    <title>GPU 数据库论文日报 - 2026-11-26</title>
     <style>
         :root {
             color-scheme: light;
@@ -180,20 +180,21 @@
                 <p>最近 7 天的 arXiv 新论文，按 GPU 加速数据库主题相关度排序。</p>
             </div>
             <dl class="stats"><div><dt>收录论文</dt><dd>10</dd></div>
-<div><dt>日报日期</dt><dd>2026-11-25</dd></div></dl>
+<div><dt>日报日期</dt><dd>2026-11-26</dd></div></dl>
         </section>
         <nav class="archive" aria-label="GPU 数据库日报归档">
             <span class="archive-label">日报归档</span>
-            <div class="archive-links"><a href="2026-11-25.html" aria-current="page">2026-11-25</a>
+            <div class="archive-links"><a href="2026-11-26.html" aria-current="page">2026-11-26</a>
+<a href="2026-11-25.html">2026-11-25</a>
 <a href="2026-11-24.html">2026-11-24</a>
 <a href="2026-11-23.html">2026-11-23</a>
 <a href="2026-11-22.html">2026-11-22</a>
 <a href="2026-11-21.html">2026-11-21</a>
-<a href="2026-11-20.html">2026-11-20</a>
-<a href="2026-11-19.html">2026-11-19</a></div>
+<a href="2026-11-20.html">2026-11-20</a></div>
             <details class="archive-more">
                 <summary>更多日期</summary>
-                <div class="archive-links"><a href="2026-11-18.html">2026-11-18</a>
+                <div class="archive-links"><a href="2026-11-19.html">2026-11-19</a>
+<a href="2026-11-18.html">2026-11-18</a>
 <a href="2026-11-17.html">2026-11-17</a>
 <a href="2026-11-16.html">2026-11-16</a>
 <a href="2026-11-15.html">2026-11-15</a>
@@ -457,32 +458,6 @@
 <article class="paper-card">
             <div class="paper-heading">
                 <span class="paper-rank" aria-label="第 7 篇">07</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.25947v1" target="_blank" rel="noopener">Matching Architecture to Workload: Comparing RISC-V Parallel Accelerators for Energy-Efficient Embedded Computing</a></h2>
-            </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.DC</span> <span class="tag">cs.AR</span> <span class="score-badge">主题相关度 0.444</span></div>
-            <p class="paper-authors">Luca Colombo, Luigi Ghionda, Amirhossein Kiamarzi, Yvan Tortorella 等 10 人</p>
-            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>嵌入式计算需要在计算特征差异显著的各类工作负载上同时实现高性能和高能效。因此，选择最合适的执行模型需要定量了解各模型与不同类别工作负载的匹配关系。本文比较了面向高能效嵌入式计算的 3 种执行模型，即标量多核、流式多核和向量处理。我们分别选用 3 款开源 RISC-V 加速器作为代表性实现，即 PULP Cluster、Snitch Cluster 和 Spatz。借助开源软硬件栈，我们在相同的 12 nm 工艺和统一的基准测试套件下对这些实现进行了受控比较。结果表明，没有一种执行模型能在所有类别的工作负载上都表现最佳。对于规则且高度可向量化的计算密集型应用，Spatz 的收益最大，性能和能效最高分别达到其他架构的 4.29 倍和 5.17 倍。然而，Spatz 的效果高度依赖可用的数据级并行性以及计算和访存模式的规则性，因此它对工作负载特征最为敏感。Snitch Cluster 尤其适合并行性有限且访存模式可流式处理的应用，性能和能效最高分别达到其他架构的 5.53 倍和 1.45 倍。PULP Cluster 则最适合不规则且以控制为主的应用，性能和能效最高分别达到其他架构的 5.66 倍和 2.80 倍。不过，相较于 Spatz，PULP 和 Snitch 更高的灵活性在面积和功耗上均带来了不可忽视的代价。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Embedded computing demands high performance and energy efficiency across workloads with widely different computational characteristics. Choosing the most suitable execution model therefore requires a quantitative understanding of how each model maps to different workload classes. In this paper, we compare three execution models for energy-efficient embedded computing: scalar multicore, stream ing multicore, and vector processing. We use three open-source RISC-V accelerators as representative implementations: the PULP Cluster, the Snitch Cluster, and Spatz, respectively. Their open-source hardware and software stacks enable a controlled comparison based on implementations in the same 12 nm technology and a common benchmark suite. Our results reveal that no single execution model performs best across all workload classes. Spatz delivers the greatest benefits for regular and highly vectorizable compute-intensive applications, achieving up to 4.29x higher performance and 5.17x greater energy efficiency than the other architectures. However, its effectiveness strongly depends on the availability of data-level parallelism and regular computation and memory-access patterns, making it the most sensitive to workload characteristics. The Snitch Cluster performs particularly well on applications with limited parallelism and streamable memory-access patterns, providing up to 5.53x higher performance and 1.45x greater energy efficiency. Conversely, the PULP Cluster is most effective on irregular and control-dominated applications, achieving improvements of up to 5.66x in performance and 2.80x in energy efficiency. Compared with Spatz, however, the greater flexibility offered by PULP and Snitch comes at a non-negligible cost in terms of both area and power.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在相同 12 nm 工艺和统一基准测试下，Spatz 最适合规则且高度可向量化的计算密集型应用，相比其他架构，性能和能效最高分别达到 4.29 倍和 5.17 倍。Snitch Cluster 尤其适合并行性有限且访存可流式处理的应用，PULP Cluster 在不规则、以控制为主的应用上表现最佳。</dd></div><div><dt>创新点</dt><dd>1. 以 PULP Cluster、Snitch Cluster 和 Spatz 分别代表标量多核、流式多核和向量处理，基于相同 12 nm 工艺的实现和统一的基准测试套件开展受控比较，量化各执行模型对不同工作负载的适用性。</dd></div></dl>
-            <p class="paper-reasons">与硬件架构或数据系统相关</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.25947v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.25947v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
-        </article>
-<article class="paper-card">
-            <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 8 篇">08</span>
-                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26619v1" target="_blank" rel="noopener">TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming</a></h2>
-            </div>
-            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-19</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="score-badge">主题相关度 0.438</span></div>
-            <p class="paper-authors">Jinbin Luo, Xiaozhe Yao, Shang Yang, Zhijian Liu 等 6 人</p>
-            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>混合架构已成为开放权重大语言模型的主流。此类模型的全局注意力层和有界状态层维护着异构缓存，缓存需求随上下文长度和并发度而变化。我们提出 TideCache，这是一个运行在 CPU–GPU 超级芯片上的推理服务系统。它通过 3 个组件在不同缓存之间分配 GPU 显存，并管理缓存驻留在 GPU 显存还是主机内存。透明缓存池（Transparent Cache Pool）在虚拟地址固定的情况下，在不同缓存组件之间重新分配物理页，保留缓存布局和后端接口。缓存流式传输器（Cache Streamer）利用有界状态层的计算时段，将下一全局注意力层的前缀缓存预取到各全局注意力层共用的 GPU 槽位中，从而减少 GPU 上的缓存驻留量，并使逐层传输与计算重叠。生成阶段产生的 KV 缓存继续驻留在 GPU 上。请求调度器（Request Scheduler）根据请求规模和队列状态选择驻留式或流式执行，并触发容量调整。这些组件协同工作，使流式传输释放的高带宽显存（HBM）可用于容纳其他缓存组件和更多请求。TideCache 在 SGLang 中实现，并在 GB300 和 GH200 上覆盖 7 种模型与平台组合进行评估。与启用 HiCache 的 SGLang 相比，TideCache 完成的智能体交互轮数最多达到其 2.04 倍，整体每 token 延迟的中位数（P50）降低 20%–59%，智能体首 token 延迟（TTFT）的 P50 获得 1.40–3.05 倍加速。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind fixed virtual addresses, preserving cache layouts and backend interfaces. The Cache Streamer uses computation intervals provided by bounded-state layers to prefetch the next global-attention layer&#x27;s prefix into GPU slots shared across global-attention layers, reducing GPU residency while overlapping layer-wise transfers with computation. Generated KV remains resident. The Request Scheduler selects resident or streamed execution and triggers capacity adjustments according to request size and queue state. Together, they let HBM released by streaming accommodate other cache components and additional requests. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.</p></details>
-            <dl class="paper-notes"><div><dt>核心结论</dt><dd>TideCache 通过动态分配缓存物理页和逐层预取前缀缓存，释放 HBM 以容纳其他缓存和更多请求。在 GB300 和 GH200 的 7 种模型与平台组合上，与启用 HiCache 的 SGLang 相比，TideCache 完成的智能体交互轮数最多达到其 2.04 倍，整体每 token 延迟的 P50 降低 20%–59%。</dd></div><div><dt>创新点</dt><dd>1. 透明缓存池在保持虚拟地址、缓存布局和后端接口的情况下，在缓存组件之间重新分配物理页；2. 缓存流式传输器利用有界状态层的计算时段，将下一全局注意力层的前缀预取到各全局注意力层共享的 GPU 槽位，同时保留生成阶段产生的 KV 缓存；3. 请求调度器依据请求规模和队列状态选择驻留式或流式执行，并触发容量调整。</dd></div></dl>
-            <p class="paper-reasons">涉及 GPU 计算技术</p>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2611.26619v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-<a href="https://arxiv.org/pdf/2611.26619v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
-        </article>
-<article class="paper-card">
-            <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 9 篇">09</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31869v1" target="_blank" rel="noopener">RankServe: Rank-Aware CPU-GPU Scheduling for Memory-Constrained MoE Serving</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-24</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.435</span></div>
@@ -495,7 +470,7 @@
         </article>
 <article class="paper-card">
             <div class="paper-heading">
-                <span class="paper-rank" aria-label="第 10 篇">10</span>
+                <span class="paper-rank" aria-label="第 8 篇">08</span>
                 <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.27119v1" target="_blank" rel="noopener">CTRL: Concurrent Training and Rollout for LLM Reinforcement Learning via GPU Co-Residency</a></h2>
             </div>
             <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-20</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="score-badge">主题相关度 0.434</span></div>
@@ -506,11 +481,38 @@
             <div class="paper-links"><a href="https://arxiv.org/abs/2611.27119v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
 <a href="https://arxiv.org/pdf/2611.27119v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
         </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 9 篇">09</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.31556v1" target="_blank" rel="noopener">Real-Time AI Acceleration on a 2D Spatial Dataflow Architecture</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.427</span></div>
+            <p class="paper-authors">Shriram Raja, Anton Njavro, Richard West</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究网络、延迟优化相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Machine Learning (ML) is increasingly being integrated into real-time systems, which makes the timing analysis of ML accelerators necessary. However, the most popular commercial accelerator, the Graphics Processing Unit (GPU), remains difficult to analyze as several aspects of its behavior, including scheduling of threads involved in single-instruction multiple-thread computations and memory access latency, are not fully documented.
+  Spatial dataflow accelerators present an interesting alternative to GPUs, as they inherently support compute and memory partitioning. Data movement and computation locality are explicitly controlled by the programmer. In this work, we consider the Tenstorrent Blackhole, which is based on a commodity RISC-V architecture. It consists of a 2D grid of cores connected by Networks-on-Chip (NoCs), supporting a fully open software runtime. We profile the Blackhole platform and develop a worst-case execution time task model as a Homogeneous Synchronous Dataflow Graph. We extend this model to a preliminary analysis of multi-core workloads by considering NoC-related delays. Finally, we evaluate our model across 12,567 task configurations and workloads. Results show that the estimate derived from our model lies above the observed worst case in every configuration. For single-core workloads, the overhead is less than 100% in most cases, with a maximum of less than 200%, and for multi-core workloads, it is less than 500% using a pessimistic NoC contention analysis. This paper lays the foundations for real-time computing on a promising open accelerator design.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦网络、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略</dd></div></dl>
+            <p class="paper-reasons">涉及 GPU 计算技术</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.31556v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.31556v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 10 篇">10</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.30159v1" target="_blank" rel="noopener">One Structure Is Enough: Record-Native Tiles for Evolving Sparse Matrices on GPUs</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-23</span> <span class="tag">cs.DC</span> <span class="score-badge">主题相关度 0.426</span></div>
+            <p class="paper-authors">Yusuf Mücahit Çetinkaya</p>
+            <div class="paper-abstract-cn"><h3>主题提示</h3><p>本文研究硬件架构或数据系统相关技术。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Sparse matrices that change over time, such as streaming graphs, are usually handled on GPUs with two parts: a packed format such as CSR, ELL, or SELL for computation, and a separate buffer for updates. Periodic maintenance then merges updates, rebuilds data, or changes formats. Our measurements show that this split is often unnecessary. We present RecTile, a tiled storage layer where each tile is kept in one sorted array of 12-byte edge records. For fragmented matrices, with 1 to 21 nonzeros per tile in our workloads, RecTile matches the best format-pinned slab tile at 0.56 to 1.21 times its time. Its tiled layout is also up to 21 times faster than whole-matrix cuSPARSE CSR. Specialized slabs are faster on the patterns they target at medium density, but both approaches converge by 25% density. RecTile stays within 1.1 to 1.6 times of whole-matrix cuSPARSE COO, our strongest static baseline, while COO cannot be updated in place. RecTile also uses no fixed per-tile device metadata for the stored matrix payload, so its tiles are smaller at realistic occupancies. A fully GPU-based ingest pipeline applies insert/delete/modify batches at up to 29 million edges per second, 4.5 times faster than the host path. An exact dynamic-programming oracle selects zero folds on every tested workload under its action space and calibrated cost model. Standard folding heuristics use 4 to 15 times more GPU time and up to 4 times more persistent device storage. End to end, RecTile improves the time-storage tradeoff on all five evolving-graph workloads, including delete-heavy streams. It is also fastest on a dense stress stream with 1220 records per tile. There, folding uses 1.3 times less peak persistent storage but takes 3.9 times more time. For the evolving graph-like, interleaved update/SpMV workloads evaluated here, the mutable record store can serve directly as the compute representation.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。</dd></div><div><dt>创新点</dt><dd>1. 利用 GPU 并行计算能力加速数据处理</dd></div></dl>
+            <p class="paper-reasons">直接涉及 GPU 加速数据库操作</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.30159v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.30159v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
         </div>
     </main>
     <footer class="page">
         <span>Paper Daily</span>
-        <span>页面生成于 <time datetime="2026-11-26T15:55+08:00">2026-11-26 15:55</time>（北京时间）</span>
+        <span>页面生成于 <time datetime="2026-11-26T15:58+08:00">2026-11-26 15:58</time>（北京时间）</span>
     </footer>
 </body>
 </html>
