@@ -19,10 +19,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 from utils.config_manager import ConfigManager
 from utils.logger import Logger
 from data_acquisition.arxiv_fetcher import ArxivFetcher
-from analysis.architecture import ARCHITECTURE_CATEGORY, enrich_architecture_papers, rank_architecture_papers
+from analysis.architecture import (
+    ARCHITECTURE_CATEGORY, enrich_architecture_papers, rank_architecture_papers,
+)
+from analysis.enrichment_cache import enrich_papers_with_cache
 from analysis.recommender import Recommender
 from analysis.keyword_fallback import generate_fallback_cn
-from analysis.translator import PaperTranslator
+from analysis.translator import CHINESE_FIELDS, PaperTranslator
 from display.cli_display import CLIDisplay
 from display.web_display import WebDisplay
 from display.html_display import HTMLDisplay
@@ -107,8 +110,9 @@ def run_daily_pipeline(config_manager, logger, date=None, gen_html=False, output
     reports = []
     if feed in ('db', 'all'):
         db_papers = recommend_gpu_db_papers(papers)
-        enrich_daily_papers(db_papers, PaperTranslator(), db_fallback=True)
-        reports.append(('db', output or DB_OUTPUT, db_papers))
+        db_output = output or DB_OUTPUT
+        enrich_gpu_db_papers(db_papers, Path(db_output).parent)
+        reports.append(('db', db_output, db_papers))
 
     if feed in ('architecture', 'all'):
         architecture_papers = sorted(
@@ -145,14 +149,19 @@ def recommend_gpu_db_papers(papers):
     return Recommender().recommend(filtered if len(filtered) >= 5 else papers, top_k=10)
 
 
-def enrich_daily_papers(papers, translator, db_fallback=False):
-    """Translate selected papers and retain the existing DB fallback."""
-    if translator.enabled:
-        translator.batch_translate(papers, delay=1.0)
-    if db_fallback:
-        for paper in papers:
-            if not paper.get('abstract_cn'):
-                generate_fallback_cn(paper)
+def enrich_gpu_db_papers(papers, report_directory, *, include_keyword_summary=False):
+    """Reuse Chinese content from previous GPU database reports."""
+    translator = PaperTranslator()
+    use_keyword_summary = include_keyword_summary and not translator.enabled
+    enrich_papers_with_cache(papers, report_directory, translator)
+    fallback_count = 0
+    for paper in papers:
+        if not all(paper.get(field) for field in CHINESE_FIELDS):
+            generate_fallback_cn(paper)
+            if use_keyword_summary:
+                paper['summary_cn'] = _generate_summary_cn(paper)
+            fallback_count += 1
+    return fallback_count
 
 
 def run_architecture_top100_pipeline(logger, output, date=None):
@@ -251,25 +260,9 @@ def run_top100_pipeline(logger, output='docs/top100.html'):
         # Score and rank all papers
         scored_papers = recommender.recommend(filtered_papers, top_k=100)
 
-        # Translate abstracts and generate AI takeaway/innovation
-        translator = PaperTranslator()
-        if translator.enabled:
-            logger.log(f"Translating {len(scored_papers)} top papers...", "INFO")
-            translator.batch_translate(scored_papers, delay=1.0)
-            # Fill in fallback for any papers where translation failed
-            fallback_count = 0
-            for paper in scored_papers:
-                if not paper.get('abstract_cn'):
-                    generate_fallback_cn(paper)
-                    fallback_count += 1
-            if fallback_count:
-                logger.log(f"Translation failed for {fallback_count} papers, used keyword fallback", "WARN")
-        else:
-            # Fallback: generate brief keyword-based summaries
-            for paper in scored_papers:
-                generate_fallback_cn(paper)
-                paper['summary_cn'] = _generate_summary_cn(paper)
-            logger.log("Translation skipped (no API key configured), using keyword summaries", "WARN")
+        fallback_count = enrich_gpu_db_papers(scored_papers, Path(output).parent, include_keyword_summary=True)
+        if fallback_count:
+            logger.log(f"Used keyword summaries for {fallback_count} papers", "WARN")
 
         # Generate HTML
         html_display = HTMLDisplay()

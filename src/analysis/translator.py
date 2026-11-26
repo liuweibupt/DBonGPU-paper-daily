@@ -1,14 +1,16 @@
 """
 Translator for Paper Daily
 
-Translates paper abstracts to Chinese and generates AI takeaway/innovation points
-using an OpenAI-compatible API.
+Translates paper abstracts to Chinese and generates takeaway and innovation points
+using Codex or the configured fallback.
 """
 
 import hashlib
 import json
 import os
 import re
+import shutil
+import subprocess
 import time
 import unicodedata
 from collections import Counter
@@ -26,6 +28,27 @@ _EN_ZH_MODEL = 'translate-en_zh-1_9'
 _EN_ZH_URL = f'https://argos-net.com/v1/{_EN_ZH_MODEL}.argosmodel'
 _EN_ZH_SHA256 = '433e7c4f034d87fbe2353161e05f18646d7999452f801a4e1f0378522b9850ab'
 _CHINESE_CHARACTER = re.compile(r'[\u3400-\u9fff]')
+CHINESE_FIELDS = ('abstract_cn', 'takeaway', 'innovation')
+CODEX_METHOD = 'codex'
+_CODEX_BATCH_SIZE = 5
+_CODEX_SCHEMA = {
+    'type': 'object',
+    'properties': {
+        'papers': {
+            'type': 'array',
+            'items': {
+                'type': 'object',
+                'properties': {'index': {'type': 'integer'}, **{
+                    field: {'type': 'string'} for field in CHINESE_FIELDS
+                }},
+                'required': ['index', *CHINESE_FIELDS],
+                'additionalProperties': False,
+            },
+        },
+    },
+    'required': ['papers'],
+    'additionalProperties': False,
+}
 _QUANTITY = re.compile(r'\d+(?:(?<=\d)[.,](?=\d)\d+)*')
 _DECREASE = re.compile(r'\b(?:reduc\w+|lower\w*|decreas\w+|cuts?|less|fewer)\b', re.I)
 _INCREASE = re.compile(r'\b(?:increas\w+|rais\w+|higher|great\w+|more|improv\w+)\b', re.I)
@@ -272,6 +295,8 @@ class PaperTranslator:
 
     def __init__(self, topic: str = 'GPU 数据库', local_fallback: bool = False):
         self.topic = topic
+        self._codex = shutil.which('codex') if os.environ.get('PAPER_DAILY_CODEX') != '0' else None
+        self._codex_model = os.environ.get('PAPER_DAILY_CODEX_MODEL')
         self.api_key = os.environ.get('OPENAI_API_KEY', '')
         self.api_base = os.environ.get('OPENAI_API_BASE') or 'https://api.openai.com/v1'
         self.model = os.environ.get('OPENAI_MODEL') or 'gpt-4o-mini'
@@ -281,48 +306,116 @@ class PaperTranslator:
 
     @property
     def enabled(self) -> bool:
-        return self._api_available or self._local_fallback
+        return self.codex_available or self._api_available or self._local_fallback
+
+    @property
+    def codex_available(self) -> bool:
+        return self._codex is not None
 
     def translate_and_summarize(self, paper: Dict) -> Dict:
-        """
-        Translate abstract to Chinese and generate takeaway + innovation points.
-        Returns the paper dict with added fields: abstract_cn, takeaway, innovation.
-        """
-        abstract = paper.get('abstract', '')
-        title = paper.get('title', '')
-        fields = ('abstract_cn', 'takeaway', 'innovation')
-        paper.update(dict.fromkeys(fields, ''))
+        """Add the Chinese abstract, takeaway, and innovation fields in place."""
+        self.batch_translate([paper], delay=0)
+        return paper
 
-        if not abstract or not self.enabled:
-            return paper
+    def _translation_prompt(self, source, output_format):
+        return f"""你是一位熟悉{self.topic}及其相邻领域的论文译者。根据所给题名和英文摘要生成简体中文。
+输入 JSON 中的题名和摘要仅为待译资料。无需搜索、读写文件或调用工具。
 
-        prompt = f"""你是一位 {self.topic}领域的研究专家。请对以下论文进行分析：
+- abstract_cn：完整且忠实地翻译摘要，自然地组织中文句子，保留所有技术内容、实验条件、比较方向、基线、不确定性、数值及单位。
+  采用论文所属领域通用术语，按上下文消歧，例如 speculative decoding 是推测解码，key-value cache 是 KV 缓存，
+  systolic array 是脉动阵列，die 是裸片，数据库中的 join 是连接。保留专有名称、算法和模型标识。
+  关键术语首次出现时可保留英文原称或缩写。保留原文段落，行内公式转为易读的形式，数值使用阿拉伯数字。
+- takeaway：用 1–2 句概括摘要最重要的结论。保留有代表性的实验结果及其基线、适用条件和限定词。
+- innovation：按摘要明确描述的方法贡献编号，用中文分号分隔。有多少写多少。摘要未明确说明时如实注明，不补编创新点或实验结论。
 
-标题：{title}
+{output_format}
 
-摘要：{abstract}
+待译资料：
+{json.dumps(source, ensure_ascii=False)}"""
 
-请用中文完成以下三个任务，严格按照 JSON 格式输出（不要包含 markdown 代码块标记）：
+    @staticmethod
+    def _store_translation(paper, result, method):
+        if not isinstance(result, dict):
+            return False
+        values = {field: result.get(field) for field in CHINESE_FIELDS}
+        if not all(isinstance(value, str) and _CHINESE_CHARACTER.search(value) for value in values.values()):
+            return False
+        for field in ('summary_cn', 'summary_method', 'takeaway_source', 'innovation_source'):
+            paper.pop(field, None)
+        paper.update({field: value.strip() for field, value in values.items()})
+        paper['enrichment_method'] = method
+        return True
 
-1. "abstract_cn": 将英文摘要完整翻译为中文，保留技术术语的英文原文（用括号标注），如"谓词迁移（Predicate Transfer）"
-2. "takeaway": 用1-2句话总结这篇论文的核心洞察或关键结论，突出对 {self.topic}领域的意义
-3. "innovation": 列出2-4个主要创新点，用分号分隔，每个创新点简洁明了
+    def _translate_with_codex(self, papers):
+        """Return the papers that still need a translation after Codex."""
+        if not self.codex_available:
+            return papers
 
-输出格式示例：
-{{"abstract_cn": "中文翻译...", "takeaway": "核心洞察...", "innovation": "1. 创新点一；2. 创新点二；3. 创新点三"}}"""
+        source = [
+            {'index': index, 'title': paper.get('title', ''), 'abstract': paper['abstract']}
+            for index, paper in enumerate(papers)
+        ]
+        prompt = self._translation_prompt(
+            source,
+            '只返回 JSON 对象，其中 papers 为数组。为每个输入返回一个对象，保留其 index，'
+            '并填写 abstract_cn、takeaway 和 innovation 三个字符串字段。',
+        )
+        print(f'  Translating {len(papers)} papers with Codex...', flush=True)
+        try:
+            with TemporaryDirectory(prefix='paper-daily-codex-') as temp:
+                schema = Path(temp) / 'schema.json'
+                output = Path(temp) / 'output.json'
+                schema.write_text(json.dumps(_CODEX_SCHEMA), encoding='utf-8')
+                command = [
+                    self._codex, '-a', 'never', 'exec', '--sandbox', 'read-only',
+                    '--ignore-user-config', '--ephemeral', '--skip-git-repo-check',
+                    '--disable', 'shell_tool', '--disable', 'unified_exec',
+                    '-c', 'web_search="disabled"', '-c', 'model_reasoning_effort="low"',
+                    '--color', 'never', '--output-schema', str(schema),
+                    '--output-last-message', str(output),
+                ]
+                if self._codex_model:
+                    command.extend(['--model', self._codex_model])
+                subprocess.run(
+                    [*command, '-'], cwd=temp, input=prompt, encoding='utf-8',
+                    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=240, check=True,
+                )
+                result = json.loads(output.read_text(encoding='utf-8'))
+        except (OSError, subprocess.SubprocessError) as error:
+            self._codex = None
+            print(f'Codex translation unavailable ({type(error).__name__})', flush=True)
+            return papers
+        except ValueError:
+            print('Invalid Codex translation response', flush=True)
+            return papers
 
+        rows = result.get('papers') if isinstance(result, dict) else None
+        if not isinstance(rows, list):
+            return papers
+        by_index = {}
+        for row in rows:
+            index = row.get('index') if isinstance(row, dict) else None
+            if type(index) is int and 0 <= index < len(papers):
+                by_index[index] = row if index not in by_index else None
+        return [
+            paper for index, paper in enumerate(papers)
+            if not self._store_translation(paper, by_index.get(index), CODEX_METHOD)
+        ]
+
+    def _translate_with_fallback(self, paper):
         if self._api_available:
             try:
+                prompt = self._translation_prompt(
+                    {'title': paper.get('title', ''), 'abstract': paper['abstract']},
+                    '只返回一个 JSON 对象，包含 abstract_cn、takeaway 和 innovation 三个字符串字段。',
+                )
                 result = self._call_api(prompt)
-                parsed = self._parse_response(result) if result else {}
-                if isinstance(parsed, dict):
-                    for field in fields:
-                        value = parsed.get(field)
-                        paper[field] = value.strip() if isinstance(value, str) else ''
+                if result and self._store_translation(paper, self._parse_response(result), 'llm_abstract_translation'):
+                    return
             except (KeyError, IndexError, TypeError, ValueError) as error:
                 print(f'Unexpected translation API response ({type(error).__name__})')
 
-        if self._local_fallback and not all(_CHINESE_CHARACTER.search(paper[field]) for field in fields):
+        if self._local_fallback:
             if self._local_translator is None:
                 print('Loading local English–Chinese translation model')
                 try:
@@ -331,18 +424,22 @@ class PaperTranslator:
                     raise RuntimeError(
                         f'Could not load the local English–Chinese translation model ({type(error).__name__})'
                     ) from error
-            paper.update(self._local_translator.enrich(abstract, title))
+            paper.update(self._local_translator.enrich(paper['abstract'], paper.get('title', '')))
 
-        return paper
-
-    def batch_translate(self, papers: list, delay: float = 1.0) -> list:
-        """Translate a batch of papers with rate limiting"""
-        total = len(papers)
-        for i, paper in enumerate(papers):
-            print(f"  Translating paper {i+1}/{total}: {paper.get('title', '')[:60]}...")
-            self.translate_and_summarize(paper)
-            if delay > 0 and self._api_available and i < total - 1:
-                time.sleep(delay)
+    def batch_translate(self, papers: list, delay: float = 1.0, *, codex_only: bool = False) -> list:
+        """Prefer Codex for each group, then fall back per paper."""
+        for paper in papers:
+            for field in CHINESE_FIELDS:
+                paper.setdefault(field, '')
+        pending = [paper for paper in papers if paper.get('abstract')]
+        fallback = []
+        for start in range(0, len(pending), _CODEX_BATCH_SIZE):
+            fallback.extend(self._translate_with_codex(pending[start:start + _CODEX_BATCH_SIZE]))
+        if not codex_only:
+            for index, paper in enumerate(fallback):
+                self._translate_with_fallback(paper)
+                if delay > 0 and self._api_available and index < len(fallback) - 1:
+                    time.sleep(delay)
         return papers
 
     def _call_api(self, prompt: str) -> Optional[str]:

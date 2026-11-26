@@ -23,9 +23,10 @@
       "直接涉及 GPU 加速数据库操作",
       "与 GPU 数据库主题中等相关"
     ],
-    "abstract_cn": "本文研究CUDA、数据处理、分析查询、异构计算相关技术。\n\n核心内容：The rapid growth of AI and analytical workloads has increased the need for fast, interactive analytical data processing. This, in turn, has led to a surge of interest in designing accelerated analytical database engines that can exploit modern GPUs to scale computation。",
-    "takeaway": "本文聚焦CUDA、数据处理、分析查询，与 GPU 数据库主题高度相关，提供了该领域的直接技术贡献。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 异构 CPU-GPU 协同执行策略"
+    "abstract_cn": "AI 与分析型工作负载的快速增长，推动了对快速、交互式分析数据处理的需求。这也促使越来越多的研究关注如何设计加速型分析数据库引擎，利用现代 GPU 扩大计算规模。GPU 能够提供现代分析所需的大规模数据并行能力，但软件生态仍以 CUDA 等闭源且绑定特定厂商的编程模型为主，限制了软件在不同厂商 GPU 之间的可移植性。本文提出 SYCLDB，一个基于 SYCL 开放标准的端到端分析数据库引擎，旨在通过一套代码在多种加速器上实现高效、与具体硬件无关的执行。SYCLDB 将核心关系算子实现为模块化的 SYCL 内核，将这些内核与基于 Apache Calcite 和 Apache Thrift 的 SQL 前端集成，并支持通过 Apache Arrow 高效导入列式数据。借助这些设计，同一套 SYCL 代码可以在 Intel、AMD 和 NVIDIA GPU 上执行分析查询流水线，从而降低对特定厂商 GPU 编程栈的依赖。",
+    "takeaway": "SYCLDB 使用同一套 SYCL 代码在 Intel、AMD 和 NVIDIA GPU 上执行分析查询流水线，降低了对特定厂商 GPU 编程栈的依赖。",
+    "innovation": "1. 基于 SYCL 开放标准构建端到端分析数据库引擎，以模块化 SYCL 内核实现核心关系算子，支持跨厂商 GPU 执行；2. 将算子内核与基于 Apache Calcite 和 Apache Thrift 的 SQL 前端集成，并通过 Apache Arrow 支持高效的列式数据导入。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.32975",
@@ -54,9 +55,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究CUDA、带宽优化、延迟优化相关技术。\n\n核心内容：GPU developers use profiling to understand computation and data movement, but access to target hardware can delay optimization. We investigate whether off-the-shelf large language models (LLMs) can estimate Roofline arithmetic intensity (the ratio of floating-point operations (FLOPs) to device-memor...。",
-    "takeaway": "本文聚焦CUDA、带宽优化、延迟优化，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+    "abstract_cn": "GPU 开发者使用性能剖析来了解计算和数据移动行为，但获取目标硬件可能会延误优化工作。本文研究现成的大语言模型（LLM）能否在不执行目标 GPU 工作负载的情况下，估算 Roofline 模型中的算术强度，即浮点运算次数（FLOP 数）与设备内存传输字节数之比。我们评估了 3 个模型（deepseek-v4-flash、gemini-3.7-flash 和 gpt-5.6-sol），共测试 179 种组合，涵盖 5 类内核、来自 NVIDIA 和 AMD 的 4 款 GPU、4 种并行运行时（CUDA、HIP、OpenMP 和 OpenCL）以及修改后的代码变体，并比较了仅提供源代码的查询、附带编译器产物的查询和在沙箱中运行的智能体分析。提供编译器产物后，落在实测值的 1/1.20 至 1.20 倍之间的算术强度估计所占比例由 8%–14% 提高至 26%–32%，据此判断工作负载受带宽限制还是受计算限制，在 78%–92% 的运行中正确。使用编译器产物时，FLOP 数估计在 59%–88% 的运行中满足 1.20 倍的误差容限，设备内存流量估计的达标比例为 36%–40%。对于 gpt-5.6-sol，智能体分析将满足同一 1.20 倍误差容限的算术强度估计比例提高了 6.5 个百分点，但其成本中位数和延迟中位数分别达到编译器辅助查询的 3.6 倍和 2.5 倍。其他模型的成本同样升高，改善在统计上并不明确。这些发现表明，在目标 GPU 难以获取时，LLM 估计有望帮助确定优化优先级，而受缓存行为影响的设备内存流量是精确预测算术强度的主要障碍。",
+    "takeaway": "与仅提供源代码相比，加入编译器产物使算术强度估计落在性能剖析实测值 1.20 倍误差容限内的比例由 8%–14% 提高到 26%–32%，带宽受限或计算受限的判定在 78%–92% 的运行中正确。目标 GPU 难以获取时，这类估计有望帮助确定优化优先级，但缓存相关的设备内存流量仍是精确预测的主要障碍。",
+    "innovation": "1. 评估现成 LLM 在不运行目标 GPU 工作负载的条件下估算 Roofline 算术强度的能力，在覆盖多类内核、GPU、运行时及代码变体的组合上，对比仅源代码查询、编译器产物辅助查询与沙箱中的智能体分析；2. 分别检验 FLOP 数和设备内存流量的估计精度，并评估算术强度估计用于瓶颈分类的正确率。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.31062",
@@ -80,9 +82,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究GPU 加速、GPU 并行计算、CUDA相关技术。\n\n核心内容：With the continued decline in sequencing costs, genomics-based precision medicine is gaining increasing importance. The Genome Analysis Toolkit (GATK) is the standard framework for converting raw genomic data into actionable variants, but one of its most expensive steps is base quality score recalib...。",
-    "takeaway": "本文聚焦GPU 加速、GPU 并行计算、CUDA，与 GPU 数据库主题中等相关，可能提供间接参考价值。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+    "abstract_cn": "随着测序成本持续下降，基于基因组学的精准医学日益重要。基因组分析工具包（Genome Analysis Toolkit，GATK）是从原始基因组数据中识别可用于指导临床决策的变异的标准框架。碱基质量分数重校准（BQSR）是其中开销最大的步骤之一，用于纠正系统性测序误差。尽管已有大量工作加速变异检测流水线的其他环节，针对 GPU 上的 BQSR 仍缺乏系统研究。\n\n本文分析 BQSR 的计算与 I/O 瓶颈，并表明仅将关键阶段卸载到加速器不足以提升整体性能。随后，我们提出 X-BQSR，对包括 I/O、压缩和内核执行在内的整条 BQSR 流水线进行整体重设计，以更充分地利用 GPU 并行性。我们使用可移植的 SYCL 内核实现 X-BQSR，使其支持 NVIDIA、AMD 和 Intel GPU，同时实现原生 CUDA 和 HIP 后端用于对照，并与既有 FPGA 方案进行性能比较。评估结果显示，X-BQSR 相对标准 GATK 的加速比最高为 141.7 倍，相对一款专有 GPU 加速方案的加速比最高为 8.7 倍。",
+    "takeaway": "仅卸载 BQSR 的关键阶段不足以提升端到端性能。整体重设计流水线后，X-BQSR 相对标准 GATK 的加速比最高为 141.7 倍，相对一款专有 GPU 加速方案最高为 8.7 倍。",
+    "innovation": "1. 分析 BQSR 的计算与 I/O 瓶颈，并评估仅卸载关键阶段对整体性能的影响；2. 提出 X-BQSR，整体重设计 I/O、压缩和内核执行以利用 GPU 并行性；3. 使用可移植的 SYCL 内核支持 NVIDIA、AMD 和 Intel GPU，并实现原生 CUDA 和 HIP 后端用于对照。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.29915",
@@ -110,9 +113,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、GPU 核函数、NVLink 互连、带宽优化相关技术。\n\n核心内容：The NVIDIA GB10, used in the DGX Spark and in desktop AI systems from several vendors, joins an Arm CPU die and a Blackwell GPU die with NVLink C2C. The GPU has no local memory, so every GPU access that misses in its L2 cache crosses C2C to the LPDDR5X attached to the CPU die。",
-    "takeaway": "本文聚焦GPU 内存管理、GPU 核函数、NVLink 互连，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 智能缓存与数据放置优化"
+    "abstract_cn": "NVIDIA GB10 用于 DGX Spark 以及多家厂商的桌面 AI 系统，它通过 NVLink C2C 连接 Arm CPU 裸片和 Blackwell GPU 裸片。GPU 没有本地内存，因此所有未命中 GPU L2 缓存的访问都要经过 C2C，访问连接在 CPU 裸片上的 LPDDR5X 内存。然而，我们测试的系统所用软件并未提供用于统计这类流量的计数器。我们表明，由一个无需附加到目标工作负载的进程，通过 NVIDIA 的 CUPTI 采样接口每 10 ms 采样 5 个 GPU L2 扇区计数器，即可实时测量 GPU 内存流量，并区分拷贝引擎流量与 GPU 内核的读未命中及写入流量。对于大小已知的大规模流式传输，计数器测量值与已知传输量的偏差在 Acer GN100 上不超过 0.28%，在 DGX Spark 上不超过 0.005%。无论传输被拆分成多少次拷贝，计数器都能追踪实际传输量，并排除在 L2 中复用的数据。另一种容易想到的选择是 GPU 的 SMMU 计数器，它统计的是地址转换次数，无法提供字节数。将该方法应用于未经修改的服务器时，结果显示 Mistral 7B 在解码过程中每生成一个 token 读取 13.47 GiB，所读数据为该步用到的权重与键值（KV）缓存，读带宽达到 NVIDIA 标称内存带宽的 83%。我们将该方法作为开源工具发布。",
+    "takeaway": "通过 CUPTI 采样 GPU L2 扇区计数器，可以在缺少 C2C 流量遥测的 GB10 系统上实时测量 GPU 内存流量。对于大小已知的大规模流式传输，测量偏差在 Acer GN100 上不超过 0.28%，在 DGX Spark 上不超过 0.005%，且该方法测得 Mistral 7B 解码每个 token 读取 13.47 GiB，读带宽达到 NVIDIA 标称内存带宽的 83%。",
+    "innovation": "1. 通过独立进程使用 CUPTI 每 10 ms 采样 5 个 GPU L2 扇区计数器，在无需附加到目标工作负载的情况下实时测量内存流量，区分拷贝引擎流量与 GPU 内核的读未命中及写入流量，并排除 L2 中复用的数据；2. 将该测量方法实现为开源工具。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.30417",
@@ -144,9 +148,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、GPU 缓存、带宽优化、吞吐量相关技术。\n\n核心内容：Serving large language models with long contexts requires keeping the key-value (KV) cache of every request, which can exceed GPU memory capacity. Sparse attention reads only a small, query-dependent subset of this cache at each decoding step, yet must retain the full cache because later steps may s...。",
-    "takeaway": "本文聚焦GPU 内存管理、GPU 缓存、带宽优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 优化查询处理流程；3. 改进内存管理策略；4. 智能缓存与数据放置优化"
+    "abstract_cn": "为长上下文大语言模型提供推理服务，需要保留每个请求的键值（KV）缓存，所需空间可能超过 GPU 显存容量。稀疏注意力在每个解码步只读取缓存中由当前查询决定的一小部分条目，但后续步骤可能选中其他条目，因此仍须保留完整缓存。通过 Compute Express Link（CXL）连接的近内存处理（PNM）设备可以容纳完整缓存，并在数据所在位置执行注意力计算。以往面向稀疏注意力的 GPU–PNM 系统以 PNM 为主，将大部分注意力计算交给 PNM。现有 CXL–PNM 设备的内存带宽远低于 GPU 的高带宽内存（HBM），因此这种执行方式会使 PNM 成为瓶颈，GPU 则因等待注意力结果而闲置。本文提出 ANOR，一个 GPU–PNM 联合加速系统。它利用稀疏注意力的选择局部性，由 GPU 利用缓存中近期被选中的条目完成大部分注意力计算，仅将缓存未命中的部分交给 PNM。由于 PNM 直接处理未命中，GPU 缓存更新可与当前解码步的执行解耦。我们设计了一种有界缓存更新策略，将更新量限制在后续解码步的命中率达到饱和所需的水平，以减少面向 GPU 的链路流量。我们还加入了一个小型片上提前流式缓冲区（Early Streaming Buffer，ESB），在 PNM 执行注意力计算时捕获 KV 数据，并将其以流式方式发往 GPU。即使 PNM 内存与面向 GPU 的链路带宽不匹配，这种方式也能避免大部分冗余 DRAM 读取。此外，我们提出自适应缓存因子机制，根据推理服务负载调整 GPU 缓存大小，平衡命中率和批大小。在涵盖 2 个模型和 3 种长上下文智能体工作负载的评估中，ANOR 的平均解码吞吐量分别达到 HiSparse 的 2.3 倍和 PNM 基线的 2.0 倍。结果表明，将 PNM 用作 GPU 内存层次结构中的计算层，比将其用作主要注意力计算引擎更有效。",
+    "takeaway": "在涵盖 2 个模型和 3 种长上下文智能体工作负载的评估中，由 GPU 执行大部分稀疏注意力计算、由 PNM 处理缓存未命中的 ANOR，平均解码吞吐量达到 HiSparse 的 2.3 倍和 PNM 基线的 2.0 倍。",
+    "innovation": "1. 利用稀疏注意力的选择局部性，由 GPU 缓存近期选中的 KV 条目并完成大部分注意力计算，由 PNM 直接处理未命中，使 GPU 缓存更新与当前解码步解耦；2. 采用有界缓存更新策略，以后续步骤的命中率达到饱和所需的更新量为上限，减少面向 GPU 的链路流量；3. 引入片上 ESB，在 PNM 计算注意力时捕获 KV 数据并流式传给 GPU，减少冗余 DRAM 读取；4. 通过自适应缓存因子机制按服务负载调整 GPU 缓存大小，平衡命中率和批大小。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.32057",
@@ -181,9 +186,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、张量并行、大模型训练、通信优化、吞吐量相关技术。\n\n核心内容：Pretraining state-of-the-art large language models (LLMs) with up to trillions of parameters is memory- and compute-intensive. Existing parallelization schemes compromise on either per-GPU memory or throughput: data parallelism replicates parameters; tensor parallelism and fully sharded data paralle...。",
-    "takeaway": "本文聚焦GPU 内存管理、张量并行、大模型训练，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 基于张量计算运行时构建查询引擎"
+    "abstract_cn": "预训练参数量最高达数万亿的先进大语言模型（LLM）需要大量显存和算力。现有并行方案需要在单卡显存占用与吞吐量之间作出取舍。数据并行会复制参数，张量并行和全分片数据并行（FSDP）分别在每个微批次中引入激活值通信和参数通信，流水线并行则会在流水线填充和排空期间使部分 GPU 空闲。我们表明，对于线性层，5 种常用并行方式，即数据并行、张量并行、序列并行、上下文并行和 FSDP，都是广义张量并行（GTP）框架的特例。在 GTP 中，每层的参数和激活值均被分片，两者都可以在使用前通过全聚集（all-gather）重新物化。GTP 将参数全聚集视为矩阵乘法（GEMM）其中一个输入的可选预处理步骤。FSDP 实现通常在整个 Transformer 块开始前执行这一操作，这可能增加显存占用并推迟 GEMM 的执行。GTP 由此可以按单次 GEMM 调度全聚集，并选择合适的发起时机，既让通信与计算重叠以隐藏通信开销，又避免过早聚集而增加显存占用。使用我们的实现，一个内部的 2 万亿参数混合专家（MoE）模型在 12,288 张 GB300 GPU 上达到 13.0 模型 EFLOP/s（每秒 13.0 × 10¹⁸ 次模型浮点运算），弱扩展效率为 98%，并可在 512 张 GPU 上运行长度为 100 万 token 的序列。在 256–1,024 张 GPU 上，该实现在 3 个 MoE 模型上的吞吐量为 Megatron-FSDP 的 1.05–1.55 倍，在一个 DeepSeek-V4-Pro 代理模型上的吞吐量为采用流水线并行的经调优 3D 并行方案的 1.27–1.31 倍。实现已开源于 https://github.com/NVIDIA/Megatron-LM。",
+    "takeaway": "GTP 将 5 种常用并行方式统一为线性层上的分片与全聚集，并按 GEMM 调度通信。采用 GTP 的内部 2 万亿参数 MoE 模型在 12,288 张 GB300 GPU 上达到 13.0 模型 EFLOP/s，弱扩展效率为 98%。",
+    "innovation": "1. 提出 GTP，将数据、张量、序列和上下文并行以及 FSDP 统一为线性层参数和激活值的分片与按需全聚集；2. 将参数全聚集建模为单次 GEMM 一个输入的可选预处理，并在 GEMM 粒度调度其发起时机，以隐藏通信开销并限制显存占用。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.25947",
@@ -215,9 +221,10 @@
     "reasons": [
       "与硬件架构或数据系统相关"
     ],
-    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Embedded computing demands high performance and energy efficiency across workloads with widely different computational characteristics. Choosing the most suitable execution model therefore requires a quantitative understanding of how each model maps to different workload classes。",
-    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 改进内存管理策略"
+    "abstract_cn": "嵌入式计算需要在计算特征差异显著的各类工作负载上同时实现高性能和高能效。因此，选择最合适的执行模型需要定量了解各模型与不同类别工作负载的匹配关系。本文比较了面向高能效嵌入式计算的 3 种执行模型，即标量多核、流式多核和向量处理。我们分别选用 3 款开源 RISC-V 加速器作为代表性实现，即 PULP Cluster、Snitch Cluster 和 Spatz。借助开源软硬件栈，我们在相同的 12 nm 工艺和统一的基准测试套件下对这些实现进行了受控比较。结果表明，没有一种执行模型能在所有类别的工作负载上都表现最佳。对于规则且高度可向量化的计算密集型应用，Spatz 的收益最大，性能和能效最高分别达到其他架构的 4.29 倍和 5.17 倍。然而，Spatz 的效果高度依赖可用的数据级并行性以及计算和访存模式的规则性，因此它对工作负载特征最为敏感。Snitch Cluster 尤其适合并行性有限且访存模式可流式处理的应用，性能和能效最高分别达到其他架构的 5.53 倍和 1.45 倍。PULP Cluster 则最适合不规则且以控制为主的应用，性能和能效最高分别达到其他架构的 5.66 倍和 2.80 倍。不过，相较于 Spatz，PULP 和 Snitch 更高的灵活性在面积和功耗上均带来了不可忽视的代价。",
+    "takeaway": "在相同 12 nm 工艺和统一基准测试下，Spatz 最适合规则且高度可向量化的计算密集型应用，相比其他架构，性能和能效最高分别达到 4.29 倍和 5.17 倍。Snitch Cluster 尤其适合并行性有限且访存可流式处理的应用，PULP Cluster 在不规则、以控制为主的应用上表现最佳。",
+    "innovation": "1. 以 PULP Cluster、Snitch Cluster 和 Spatz 分别代表标量多核、流式多核和向量处理，基于相同 12 nm 工艺的实现和统一的基准测试套件开展受控比较，量化各执行模型对不同工作负载的适用性。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.26619",
@@ -245,9 +252,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、异构计算、延迟优化相关技术。\n\n核心内容：Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency。",
-    "takeaway": "本文聚焦GPU 内存管理、异构计算、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+    "abstract_cn": "混合架构已成为开放权重大语言模型的主流。此类模型的全局注意力层和有界状态层维护着异构缓存，缓存需求随上下文长度和并发度而变化。我们提出 TideCache，这是一个运行在 CPU–GPU 超级芯片上的推理服务系统。它通过 3 个组件在不同缓存之间分配 GPU 显存，并管理缓存驻留在 GPU 显存还是主机内存。透明缓存池（Transparent Cache Pool）在虚拟地址固定的情况下，在不同缓存组件之间重新分配物理页，保留缓存布局和后端接口。缓存流式传输器（Cache Streamer）利用有界状态层的计算时段，将下一全局注意力层的前缀缓存预取到各全局注意力层共用的 GPU 槽位中，从而减少 GPU 上的缓存驻留量，并使逐层传输与计算重叠。生成阶段产生的 KV 缓存继续驻留在 GPU 上。请求调度器（Request Scheduler）根据请求规模和队列状态选择驻留式或流式执行，并触发容量调整。这些组件协同工作，使流式传输释放的高带宽显存（HBM）可用于容纳其他缓存组件和更多请求。TideCache 在 SGLang 中实现，并在 GB300 和 GH200 上覆盖 7 种模型与平台组合进行评估。与启用 HiCache 的 SGLang 相比，TideCache 完成的智能体交互轮数最多达到其 2.04 倍，整体每 token 延迟的中位数（P50）降低 20%–59%，智能体首 token 延迟（TTFT）的 P50 获得 1.40–3.05 倍加速。",
+    "takeaway": "TideCache 通过动态分配缓存物理页和逐层预取前缀缓存，释放 HBM 以容纳其他缓存和更多请求。在 GB300 和 GH200 的 7 种模型与平台组合上，与启用 HiCache 的 SGLang 相比，TideCache 完成的智能体交互轮数最多达到其 2.04 倍，整体每 token 延迟的 P50 降低 20%–59%。",
+    "innovation": "1. 透明缓存池在保持虚拟地址、缓存布局和后端接口的情况下，在缓存组件之间重新分配物理页；2. 缓存流式传输器利用有界状态层的计算时段，将下一全局注意力层的前缀预取到各全局注意力层共享的 GPU 槽位，同时保留生成阶段产生的 KV 缓存；3. 请求调度器依据请求规模和队列状态选择驻留式或流式执行，并触发容量调整。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.31869",
@@ -274,9 +282,10 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究GPU 内存管理、GPU 调度、异构计算相关技术。\n\n核心内容：Mixture-of-Experts (MoE) models scale model capacity through sparse expert activation, but their large expert pools impose substantial memory requirements during inference. Low-rank compression reduces the memory footprint of Mixture-of-Experts (MoE) models。",
-    "takeaway": "本文聚焦GPU 内存管理、GPU 调度、异构计算，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略；3. 异构 CPU-GPU 协同执行策略；4. 智能缓存与数据放置优化"
+    "abstract_cn": "混合专家（MoE）模型通过稀疏激活专家来扩展模型容量，但大规模专家池使推理需要大量内存。低秩压缩可以减少 MoE 模型的内存占用，但不同专家的秩可能不同，导致存储、传输和执行成本各不相同。在 GPU 显存有限时，仅凭专家的访问频率和传输成本，无法确定哪些专家最值得驻留在 GPU 上。我们提出 RankServe，这是一个面向各专家秩固定的压缩 MoE 检查点的 CPU–GPU 推理服务系统。其核心思路是，根据每个专家的秩和 token 负载，估算 GPU 驻留相对于成本较低的非驻留路径所节省的开销。两条非驻留路径分别是在 CPU 上执行，以及传输权重后在 GPU 上执行。RankServe 按路由需求汇总估算的开销节省，并按每字节节省的开销确定专家的驻留优先级。它依据近期路由历史更新驻留状态，根据当前 token 负载选择缓存未命中时的执行路径，并允许临时在 GPU 上执行专家而不将其纳入缓存。可变秩运行时通过分组矩阵乘法处理不同秩的因子矩阵，无需填充到统一的秩。RankServe 基于 vLLM 实现，在单一 CPU–GPU 平台上用 3 个 MoE 模型与 6 个推理服务系统进行比较。对于从 1 到 32 的 5 种批大小，相对于每种配置和每项指标中最快的基线，RankServe 按模型计算的几何平均加速比分别为首 token 延迟（TTFT）1.69–2.29 倍、每输出 token 延迟（TPOT）1.71–2.48 倍。",
+    "takeaway": "RankServe 根据专家的秩、token 负载及非驻留执行成本决定 GPU 驻留优先级和缓存未命中时的执行路径。在单一 CPU–GPU 平台上评估的 3 个 MoE 模型和 5 种批大小（1–32）中，以每种配置和指标各自最快的基线为参照，按模型计算的几何平均加速比为 TTFT 1.69–2.29 倍、TPOT 1.71–2.48 倍。",
+    "innovation": "1. 根据专家的秩和 token 负载，将 GPU 驻留与成本较低的非驻留路径比较，按路由需求汇总估算的开销节省，并按每字节节省的开销确定驻留优先级；2. 根据近期路由历史更新专家驻留状态，并根据当前 token 负载选择缓存未命中时的执行路径，支持临时在 GPU 上执行而不将专家纳入缓存；3. 提出可变秩运行时，通过分组矩阵乘法处理不同秩的因子矩阵，无需填充到统一的秩。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.27119",
@@ -301,8 +310,9 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究CUDA、吞吐量相关技术。\n\n核心内容：Reinforcement learning (RL) post-training of large language models runs two GPU workloads with different hardware demands: rollout decoding, which is dominated by memory access and whose batch shrinks as responses finish, and a dense learner. Current systems either time-share every GPU between them,...。",
-    "takeaway": "本文聚焦CUDA、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+    "abstract_cn": "大语言模型的强化学习（RL）后训练包含两类硬件需求不同的 GPU 工作负载。第一类是以访存为主的 rollout 解码，其批次会随着各条响应陆续生成完毕而缩小。第二类是以密集计算为主的学习器。现有系统要么让两类负载在每张 GPU 上分时运行，承担阶段串行和切换开销，要么将 GPU 划分为不同的资源池，只能以整张设备为单位调整池的大小。我们提出 CTRL，将 GPU 共驻留作为第 3 种 RL 执行布局。每张 GPU 上的一个学习器进程与一个常驻 rollout 引擎通过 CUDA MPS 共享设备。由主机管理的学习器使这一布局能够适应显存容量限制，优化器状态保留在主机内存中，策略权重逐层流经 GPU 上容量受限的窗口。策略发布门控让每个就绪批次先执行训练，仅在发布下一版策略前等待，从而在不丢弃样本的情况下维持陈旧度上限。系统利用步耗时上界指导计算资源份额的选择，并通过 GPU 时间记账解释执行重叠和资源共享的开销。在 H100、A800 和 RTX 4090 GPU 上使用 Qwen3 模型，将陈旧度上限设为 2 时，CTRL 在 24 种工作负载配置下的吞吐量为 verl 中表现较好的异步基线的 1.11–2.24 倍，在 8 张 H100 GPU 上的吞吐量为 verl 的 colocate_async 的 1.23 倍。使用同一学习器时，共驻留在全部 3 种平台上的速度均为分时执行的 1.10–1.26 倍。在使用 4 张和 8 张 H100 GPU、每步包含 256–528 条轨迹的 DAPO-Math 工作负载上，共驻留的速度为实测最佳整卡划分方案的 1.10–1.30 倍。",
+    "takeaway": "CTRL 通过 CUDA MPS 让学习器和常驻 rollout 引擎在同一张 GPU 上并行运行。使用 Qwen3 模型、将陈旧度上限设为 2 时，CTRL 在 H100、A800 和 RTX 4090 上的 24 种工作负载配置中，吞吐量达到 verl 中表现较好的异步基线的 1.11–2.24 倍。",
+    "innovation": "1. 提出基于 CUDA MPS 的 GPU 共驻留布局，使每张 GPU 同时运行一个学习器进程和一个常驻 rollout 引擎；2. 由主机管理学习器，将优化器状态保留在主机内存，并通过容量受限的 GPU 窗口逐层流式传入策略权重；3. 采用策略发布门控，让就绪批次先训练，仅在发布新版策略前等待，在不丢弃样本的情况下限制陈旧度；4. 使用步耗时上界指导计算资源份额分配，并通过 GPU 时间记账分析执行重叠和资源共享的开销。",
+    "enrichment_method": "codex"
   }
 ]

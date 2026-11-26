@@ -1,15 +1,12 @@
-"""Computer architecture ranking and reuse of previously enriched abstracts."""
+"""Computer architecture ranking and translation."""
 
-import json
 import re
-from pathlib import Path
 
-from analysis.translator import PaperTranslator
+from .enrichment_cache import enrich_papers_with_cache
+from .translator import CHINESE_FIELDS, PaperTranslator
 
 
 ARCHITECTURE_CATEGORY = 'cs.AR'
-CHINESE_FIELDS = ('abstract_cn', 'takeaway', 'innovation')
-ENRICHMENT_FIELDS = (*CHINESE_FIELDS, 'enrichment_method', 'takeaway_source', 'innovation_source')
 ARCHITECTURE_TOPICS = {
     '处理器与微架构': r'processors?|microarchitectures?|risc[- ]?v|instruction sets?|out[- ]of[- ]order|branch prediction|speculative execution',
     '存储与缓存': r'memory hierarch(?:y|ies)|caches?|coherence|dram|sram|hbm|non[- ]volatile memory|memory bandwidth|processing[- ]in[- ]memory',
@@ -41,27 +38,9 @@ def rank_architecture_papers(papers, limit=100):
 
 
 def enrich_architecture_papers(papers, report_directory):
-    """Generate Chinese content and reuse it when the original abstract is unchanged."""
-    directory = Path(report_directory)
-    archives = sorted(directory.glob('????-??-??.json'), reverse=True)[:7]
-    cached = {}
-    for path in [*archives, directory / 'top100.json']:
-        if not path.is_file():
-            continue
-        for paper in json.loads(path.read_text(encoding='utf-8')):
-            if all(paper.get(field) for field in CHINESE_FIELDS):
-                cached.setdefault((paper['id'], paper.get('abstract')), paper)
-
-    pending = []
-    for paper in papers:
-        previous = cached.get((paper['id'], paper.get('abstract')))
-        if previous:
-            paper.update({field: previous[field] for field in ENRICHMENT_FIELDS if field in previous})
-        else:
-            pending.append(paper)
-
-    if pending:
-        PaperTranslator(topic='计算机体系结构', local_fallback=True).batch_translate(pending)
+    """Generate the architecture feed's Chinese abstracts and notes."""
+    translator = PaperTranslator(topic='计算机体系结构', local_fallback=True)
+    enrich_papers_with_cache(papers, report_directory, translator)
 
     missing = [paper['id'] for paper in papers if not all(paper.get(field) for field in CHINESE_FIELDS)]
     if missing:

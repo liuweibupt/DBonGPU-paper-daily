@@ -60,8 +60,39 @@ jobs:
           path: ~/.cache/paper-daily
           key: ${{ runner.os }}-paper-daily-translation-${{ hashFiles('src/analysis/translator.py') }}
 
+      - name: Check for Codex authentication
+        id: codex-auth
+        if: vars.PAPER_DAILY_CODEX != '0'
+        env:
+          CODEX_API_KEY: ${{ secrets.CODEX_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+        run: |
+          if [[ -n "$CODEX_API_KEY" ]]; then
+            echo 'source=codex' >> "$GITHUB_OUTPUT"
+          elif [[ -n "$OPENAI_API_KEY" ]]; then
+            case "$OPENAI_API_BASE" in
+              ''|https://api.openai.com|https://api.openai.com/|https://api.openai.com/v1|https://api.openai.com/v1/)
+                echo 'source=openai' >> "$GITHUB_OUTPUT"
+                ;;
+            esac
+          fi
+
+      - name: Install Codex CLI
+        if: steps.codex-auth.outputs.source != ''
+        continue-on-error: true
+        timeout-minutes: 3
+        run: |
+          codex_prefix="$RUNNER_TEMP/paper-daily-codex"
+          npm install --global --prefix "$codex_prefix" @openai/codex@0.170.0
+          "$codex_prefix/bin/codex" --version
+          echo "$codex_prefix/bin" >> "$GITHUB_PATH"
+
       - name: Fetch daily GPU DB and architecture papers
         env:
+          CODEX_API_KEY: ${{ steps.codex-auth.outputs.source == 'openai' && secrets.OPENAI_API_KEY || secrets.CODEX_API_KEY }}
+          PAPER_DAILY_CODEX: ${{ vars.PAPER_DAILY_CODEX }}
+          PAPER_DAILY_CODEX_MODEL: ${{ vars.PAPER_DAILY_CODEX_MODEL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
@@ -71,6 +102,9 @@ jobs:
       - name: Fetch yearly Top 100 papers
         if: github.event_name == 'workflow_dispatch' && inputs.update_top100
         env:
+          CODEX_API_KEY: ${{ steps.codex-auth.outputs.source == 'openai' && secrets.OPENAI_API_KEY || secrets.CODEX_API_KEY }}
+          PAPER_DAILY_CODEX: ${{ vars.PAPER_DAILY_CODEX }}
+          PAPER_DAILY_CODEX_MODEL: ${{ vars.PAPER_DAILY_CODEX_MODEL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}

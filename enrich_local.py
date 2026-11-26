@@ -3,8 +3,7 @@
 Local script to enrich existing paper JSON data with Chinese translations,
 AI takeaway and innovation points, then regenerate all HTML pages.
 
-Uses the translator module if API key is available, otherwise generates
-keyword-based fallback content.
+Prefers Codex, then the configured translation API and keyword-based fallback.
 """
 
 import sys
@@ -14,7 +13,8 @@ import json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 from display.html_display import HTMLDisplay
-from analysis.translator import PaperTranslator
+from analysis.keyword_fallback import generate_fallback_cn
+from analysis.translator import CHINESE_FIELDS, PaperTranslator
 
 
 def main():
@@ -22,12 +22,12 @@ def main():
     html_display = HTMLDisplay()
     translator = PaperTranslator()
 
-    if translator.enabled:
-        print(f"API key found, using model: {translator.model}")
-        print(f"API base: {translator.api_base}")
+    if translator.codex_available:
+        print("Codex CLI found. Using Codex first.")
+    elif translator.enabled:
+        print(f"Using the configured translation API model: {translator.model}")
     else:
-        print("No API key configured. Using keyword-based fallback.")
-        from analysis.keyword_fallback import generate_fallback_cn
+        print("Using keyword-based fallback.")
 
     # Collect all JSON files to process
     json_files = []
@@ -54,21 +54,17 @@ def main():
             print(f"  No papers found, skipping.")
             continue
 
-        # Translate/enrich papers
-        needs_save = False
-        for i, paper in enumerate(papers):
-            if not paper.get('abstract_cn') or paper.get('abstract_cn', '').startswith('本文研究'):
-                if translator.enabled:
-                    print(f"  Translating {i+1}/{len(papers)}: {paper.get('title', '')[:60]}...")
-                    translator.translate_and_summarize(paper)
-                    needs_save = True
-                    import time
-                    time.sleep(0.5)
-                else:
+        pending = [
+            paper for paper in papers
+            if not paper.get('abstract_cn')
+            or paper.get('summary_method') == 'keywords'
+            or (paper['abstract_cn'].startswith('本文研究') and '\n\n核心内容：' in paper['abstract_cn'])
+        ]
+        if pending:
+            translator.batch_translate(pending, delay=0.5)
+            for paper in pending:
+                if not all(paper.get(field) for field in CHINESE_FIELDS):
                     generate_fallback_cn(paper)
-                    needs_save = True
-
-        if needs_save:
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(papers, f, ensure_ascii=False, indent=2, default=str)
             print(f"  Saved enriched JSON: {json_path}")

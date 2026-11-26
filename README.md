@@ -15,7 +15,7 @@ An intelligent, open-source Python tool that automates the tracking and recommen
 
 - GPU 数据库日报按主题相关度排序。体系结构日报收录最近七天提交到 arXiv 的 cs.AR 论文，含交叉分类，按首次提交时间倒序展示最多 10 篇。
 - 体系结构年度榜覆盖最近 365 天的 cs.AR 投稿。根据主分类以及题名和摘要的体系结构主题匹配评分，同分时优先近期提交。经典论文按研究主题编选，附中文摘要、核心结论、创新点和原文入口。
-- 体系结构日报及年度榜保留可展开的英文原摘要。翻译 API 不可用时，使用本地英汉模型处理摘要，从原摘要抽取结论和方法贡献。页面会标注机器翻译。模型源自 [OPUS-MT](https://aclanthology.org/2020.eamt-1.15/)，由 [Argos Translate](https://www.argosopentech.com/argospm/index/) 打包分发。
+- 两份日报和年度榜均保留可展开的英文原摘要。程序优先用 Codex 翻译摘要、提炼结论和贡献，其次尝试已配置的 OpenAI 兼容 API。体系结构页的本地英汉模型会保留摘要中的术语和数值，并标注机器翻译。模型源自 [OPUS-MT](https://aclanthology.org/2020.eamt-1.15/)，由 [Argos Translate](https://www.argosopentech.com/argospm/index/) 打包分发。
 
 GitHub Actions 每天在北京时间 09:00 和 09:30 触发。日报生成并推送到 main 后，GitHub Pages 自动发布。两份日报分别保存 HTML 和 JSON 日期归档。可在手动运行 Daily Paper Update 时更新两份年度榜。
 
@@ -25,6 +25,12 @@ python main.py --html --feed architecture    # 只生成体系结构日报
 python main.py --top100 --feed architecture  # 更新体系结构年度榜
 python main.py --classics --feed all          # 渲染两份经典论文选集
 ```
+
+### Codex 翻译
+
+- 本机安装 Codex CLI 后，运行 `codex login` 或设置官方 OpenAI API 密钥 `CODEX_API_KEY`。生成日报和年度榜时会自动检测 Codex。需要指定 Codex 模型时设置 `PAPER_DAILY_CODEX_MODEL`，设置 `PAPER_DAILY_CODEX=0` 可停用 Codex。
+- GitHub Actions 优先用仓库 secret `CODEX_API_KEY`。如果已有官方 `OPENAI_API_KEY`，且 `OPENAI_API_BASE` 为空或指向 `https://api.openai.com`，工作流会复用该密钥。已有密钥或接口来自第三方代理时，可单独设置官方 `CODEX_API_KEY`。在仓库的 Actions variables 中也可设置 `PAPER_DAILY_CODEX_MODEL` 和 `PAPER_DAILY_CODEX`。
+- Codex 安装或调用失败时，日报生成会尝试已配置的 OpenAI 兼容 API，然后使用现有的本地回退方式。运行 `codex login status` 可检查本机登录。 [Codex 非交互模式](https://learn.chatgpt.com/docs/non-interactive-mode)
 
 ## ✨ Features
 
