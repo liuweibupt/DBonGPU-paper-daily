@@ -32,6 +32,23 @@ python main.py --classics --feed all          # 渲染两份经典论文选集
 - GitHub Actions 优先用仓库 secret `CODEX_API_KEY`。如果已有官方 `OPENAI_API_KEY`，且 `OPENAI_API_BASE` 为空或指向 `https://api.openai.com`，工作流会复用该密钥。已有密钥或接口来自第三方代理时，可单独设置官方 `CODEX_API_KEY`。在仓库的 Actions variables 中也可设置 `PAPER_DAILY_CODEX_MODEL` 和 `PAPER_DAILY_CODEX`。
 - Codex 安装或调用失败时，日报生成会尝试已配置的 OpenAI 兼容 API，然后使用现有的本地回退方式。运行 `codex login status` 可检查本机登录。 [Codex 非交互模式](https://learn.chatgpt.com/docs/non-interactive-mode)
 
+#### 在已登录 Codex 的服务器上定时补译
+
+GitHub Actions 继续抓取论文。用户级 systemd 定时器于北京时间每小时的 15 分和 45 分检查远程 `main` 上两份最新日报，用服务器上已登录的 Codex 补译，再提交更新以触发 Pages 发布。论文与译文按 arXiv ID 和英文摘要精确匹配。定时器使用独立 Git 检出，遇到推送竞争时会从最新 `main` 重新应用仍匹配的译文。
+
+在具有仓库 Git SSH 推送权限、且已通过 `codex login` 登录的账户中安装并启动：
+
+```bash
+install -D -m 755 scripts/run_scheduled_translation.sh ~/.local/libexec/paper-daily-codex
+install -D -m 644 ops/systemd/paper-daily-codex.service ~/.config/systemd/user/paper-daily-codex.service
+install -D -m 644 ops/systemd/paper-daily-codex.timer ~/.config/systemd/user/paper-daily-codex.timer
+systemctl --user daemon-reload
+systemctl --user enable --now paper-daily-codex.timer
+systemctl --user start paper-daily-codex.service
+```
+
+可在 `~/.config/paper-daily/codex.env` 设置所需网络代理或 `PAPER_DAILY_CODEX_MODEL`。服务器账户启用 linger 后，定时器可在用户退出登录后运行。运行情况可通过 `systemctl --user list-timers paper-daily-codex.timer` 和 `journalctl --user -u paper-daily-codex.service` 查看。
+
 ## ✨ Features
 
 - 🔍 **Automated Paper Fetching**: Daily collection from arXiv and OpenReview

@@ -1,0 +1,15 @@
+[Unit]
+Description=Translate new Paper Daily reports with Codex
+
+[Service]
+Type=oneshot
+TimeoutStartSec=25min
+UMask=0077
+StateDirectory=paper-daily-codex
+StateDirectoryMode=0700
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=GIT_TERMINAL_PROMPT=0
+Environment="GIT_SSH_COMMAND=/usr/bin/ssh -oBatchMode=yes"
+Environment=PAPER_DAILY_REMOTE=git@github.com:liuweibupt/DBonGPU-paper-daily.git
+EnvironmentFile=-%E/paper-daily/codex.env
+ExecStart=%h/.local/libexec/paper-daily-codex ${PAPER_DAILY_REMOTE} %S/paper-daily-codex
