@@ -271,9 +271,10 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究网络、延迟优化相关技术。\n\n核心内容：Machine Learning (ML) is increasingly being integrated into real-time systems, which makes the timing analysis of ML accelerators necessary. However, the most popular commercial accelerator, the Graphics Processing Unit (GPU), remains difficult to analyze as several aspects of its behavior, includin...。",
-    "takeaway": "本文聚焦网络、延迟优化，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理；2. 改进内存管理策略"
+    "abstract_cn": "机器学习（ML）正越来越多地融入实时系统，因此有必要对 ML 加速器进行时序分析。然而，应用最广泛的商用加速器图形处理器（GPU）仍难以分析，因为其多项行为尚未得到完整记录，包括单指令多线程（SIMT）计算中的线程调度和内存访问延迟。\n\n空间数据流加速器是 GPU 的一种潜在替代方案，因为它们天然支持对计算和内存资源进行分区。程序员可以显式控制数据移动以及计算在哪些位置执行。本文研究采用商用 RISC-V 架构的 Tenstorrent Blackhole。该平台由片上网络（NoC）互连的二维核心网格构成，并支持完全开放的软件运行时。我们对 Blackhole 平台进行性能剖析，并用齐次同步数据流图建立任务的最坏情况执行时间模型。随后，我们将片上网络引起的延迟纳入模型，对多核工作负载开展初步分析。最后，我们在 12,567 种任务配置和工作负载组合上评估该模型。结果表明，在所有受测配置中，模型估计值均高于观测到的最坏情况执行时间。对于单核工作负载，估计值相对观测最坏值的高估幅度在大多数情况下低于 100%，最大幅度也低于 200%。对于多核工作负载，采用悲观的片上网络争用分析时，高估幅度低于 500%。本文为在这一有潜力的开放式加速器架构上开展实时计算奠定了基础。",
+    "takeaway": "在受测的 12,567 种任务配置和工作负载组合中，Blackhole 的最坏情况执行时间模型估计值均高于实测最坏值。单核负载的高估幅度大多低于 100%，最大也低于 200%，多核负载在采用悲观的片上网络争用分析时高估幅度低于 500%。",
+    "innovation": "1. 对 Tenstorrent Blackhole 平台进行性能剖析，以齐次同步数据流图建立任务的最坏情况执行时间模型；2. 将片上网络相关延迟纳入模型，对多核工作负载开展初步时序分析。",
+    "enrichment_method": "codex"
   },
   {
     "id": "2611.30159",
@@ -295,8 +296,9 @@
     "reasons": [
       "直接涉及 GPU 加速数据库操作"
     ],
-    "abstract_cn": "本文研究硬件架构或数据系统相关技术。\n\n核心内容：Sparse matrices that change over time, such as streaming graphs, are usually handled on GPUs with two parts: a packed format such as CSR, ELL, or SELL for computation, and a separate buffer for updates. Periodic maintenance then merges updates, rebuilds data, or changes formats。",
-    "takeaway": "本文聚焦硬件架构或数据系统，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+    "abstract_cn": "在 GPU 上处理随时间变化的稀疏矩阵（如流式图）时，通常采用两套结构：用于计算的紧凑格式（如 CSR、ELL 或 SELL），以及用于接收更新的独立缓冲区。系统随后通过定期维护合并更新、重建数据或转换格式。实测表明，这种分离往往没有必要。我们提出 RecTile，一种分块存储层。每个块使用一个有序数组保存边记录，每条记录占 12 字节。对于非零元分布零散的矩阵，在本文工作负载中每块含 1 至 21 个非零元，RecTile 的用时为表现最好的固定格式 slab 块的 0.56 至 1.21 倍，性能与之相当。与对整矩阵使用 cuSPARSE CSR 相比，其分块布局最高可实现 21 倍加速。在中等密度下，专用 slab 块在其针对的模式上更快，但到密度达到 25% 时，两种方法的性能趋同。RecTile 的用时为最强静态基线（对整矩阵使用 cuSPARSE COO）的 1.1 至 1.6 倍，而 COO 无法原地更新。RecTile 存储矩阵数据时也无须为每个块在设备端保存固定的元数据，因此在实际占用率下，其块占用的空间更小。完全在 GPU 上运行的更新摄取流水线可以批量插入、删除和修改边，吞吐量最高达每秒 2,900 万条边，相当于主机侧路径的 4.5 倍。在给定的动作空间和经校准的成本模型下，基于动态规划的精确求解器对所有受测工作负载均选择执行 0 次折叠（folding）。常用折叠启发式策略消耗的 GPU 时间为零折叠方案的 4 至 15 倍，设备端持久存储占用最高为其 4 倍。端到端评估显示，RecTile 在全部 5 种动态图工作负载上都改善了时间与存储的权衡，其中包括以删除为主的数据流。在每块含 1,220 条记录的高密度压力测试流上，RecTile 的用时也最短。在该测试中，折叠方案的峰值持久存储占用为 RecTile 的 1/1.3，但用时为其 3.9 倍。对于本文评估的、类似动态图且交错执行更新和稀疏矩阵向量乘法（SpMV）的工作负载，可变记录存储可以直接作为计算表示。",
+    "takeaway": "在受测的 5 种交错执行更新和 SpMV 的动态图工作负载上，RecTile 直接用可变记录存储进行计算，均改善了时间与存储的权衡，包括以删除为主的数据流。在每块含 1,220 条记录的高密度压力测试中，RecTile 用时最短，折叠方案的用时为其 3.9 倍，峰值持久存储占用为其 1/1.3。",
+    "innovation": "1. 提出 RecTile 分块存储层，每块用单个有序数组保存 12 字节边记录，无须为矩阵数据维护固定的逐块设备端元数据，同一存储结构支持原地更新并直接用于计算；2. 实现全 GPU 更新摄取流水线，批量应用边的插入、删除和修改；3. 使用基于动态规划的精确求解器，在给定动作空间和经校准的成本模型下选择折叠动作。",
+    "enrichment_method": "codex"
   }
 ]
