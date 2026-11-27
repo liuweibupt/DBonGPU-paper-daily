@@ -300,8 +300,9 @@
     "reasons": [
       "涉及 GPU 计算技术"
     ],
-    "abstract_cn": "本文研究向量化执行、延迟优化、吞吐量相关技术。\n\n核心内容：Functional (programmable) bootstrapping extends the bootstrapping operation of Fully Homomorphic Encryption (FHE) to evaluate an arbitrary function while refreshing a ciphertext. This capability was a unique feature of scalar CGGI/DM cryptosystems for many years until it was recently added to the to...。",
-    "takeaway": "本文聚焦向量化执行、延迟优化、吞吐量，涉及相关技术领域，对理解系统整体架构有参考意义。",
-    "innovation": "1. 利用 GPU 并行计算能力加速数据处理"
+    "abstract_cn": "函数自举（又称可编程自举）扩展了全同态加密（FHE）的自举操作，使其能够在刷新密文的同时求值任意函数。多年来，这一能力为标量 CGGI/DM 密码系统所独有，直到最近才被引入向量化 FHE 方案。在这些方案中，CKKS 在吞吐量（以摊销时间衡量）和功能两方面都最具潜力。已有研究表明，CKKS 函数自举的吞吐量比 CGGI/DM 函数自举高 2 至 3 个数量级，但在 CPU 上的延迟仍比后者高 2 至 3 个数量级。本文提出了经过优化的 CKKS 函数自举 GPU 实现，消除了这一延迟差距。该实现既支持在小整数上进行函数求值（与 CGGI/DM 一样），也支持在实数上进行函数求值（CKKS 独有），分别称为离散 CKKS 函数自举和连续 CKKS 函数自举。",
+    "takeaway": "已有研究表明，CKKS 函数自举的吞吐量比 CGGI/DM 高 2 至 3 个数量级，但在 CPU 上的延迟也高 2 至 3 个数量级。本文的优化 GPU 实现消除了这一延迟差距，并支持小整数和实数上的函数求值。",
+    "innovation": "1. 提出经过优化的 CKKS 函数自举 GPU 实现；2. 在该实现中支持小整数和实数两种求值域，分别对应离散 CKKS 函数自举和连续 CKKS 函数自举。",
+    "enrichment_method": "codex"
   }
 ]
