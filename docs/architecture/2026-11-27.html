@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>计算机体系结构论文日报 - 2026-11-27</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f5f7fa;
+            --surface: #ffffff;
+            --ink: #172232;
+            --muted: #516175;
+            --line: #dbe3eb;
+            --accent: #075c68;
+            --tint: #e9f5f3;
+            --panel: #eef6f6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--page);
+            font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.architecture {
+            --page: #f8f7fc;
+            --line: #e3deee;
+            --accent: #563a91;
+            --tint: #f1ebfb;
+            --panel: #f4f0fb;
+        }
+        h1, h2, h3, p, dl, dd { margin: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; text-underline-offset: .2em; }
+        a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(1220px, 100% - 64px); margin: 0 auto; }
+        .skip-nav { position: fixed; top: 12px; left: 12px; z-index: 2; transform: translateY(-180%); }
+        .skip-nav:focus { transform: none; background: var(--surface); padding: 6px 12px; }
+        .site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+        .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+        .feed-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .feed-nav a { padding: 6px 14px; border: 1px solid transparent; border-radius: 7px; font-weight: 650; }
+        .feed-nav a:not([aria-current]) { color: var(--muted); }
+        .feed-nav a[aria-current] { background: var(--tint); border-color: var(--line); }
+        .github-link { color: var(--muted); white-space: nowrap; font-size: .85rem; }
+        .subnav-wrap { border-top: 1px solid var(--line); }
+        .subnav { display: flex; align-items: center; gap: 1.65rem; }
+        .subnav a { color: var(--muted); white-space: nowrap; padding: 8px 0 7px; border-bottom: 2px solid transparent; font-size: .9rem; }
+        .subnav a[aria-current] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 650; }
+        main { padding: 32px 0 40px; }
+        .intro {
+            padding: 25px 28px;
+            border: 1px solid var(--line);
+            border-inline-start: 4px solid var(--accent);
+            border-radius: 10px;
+            background: var(--panel);
+            display: flex;
+            gap: 18px 36px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        h1 { font-size: clamp(1.6rem, 3.8vw, 2.35rem); line-height: 1.2; letter-spacing: -.025em; }
+        .intro p { color: var(--muted); margin-top: 9px; font-size: .93rem; }
+        .stats { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 22px; flex-shrink: 0; }
+        .stats dt { color: var(--muted); font-size: .77rem; }
+        .stats dd { font-size: .95rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .archive { margin: -5px 0 24px; }
+        .archive-label { display: block; color: var(--muted); font-size: .84rem; font-weight: 650; margin-bottom: 6px; }
+        .archive-links { display: flex; flex-wrap: wrap; gap: 5px; }
+        .archive-links a {
+            padding: 3px 8px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            color: var(--muted);
+            background: var(--surface);
+            font-size: .83rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .archive-links a[aria-current] { background: var(--tint); color: var(--accent); font-weight: 650; }
+        .archive-more { margin-top: 5px; }
+        .archive-more[open] > .archive-links { margin-top: 5px; max-height: 14rem; overflow: auto; }
+        .paper-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+        .paper-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0; }
+        .paper-heading { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); align-items: start; gap: 9px; }
+        .paper-rank {
+            background: var(--tint);
+            color: var(--accent);
+            border-radius: 5px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 650;
+            font-size: .77rem;
+            padding: 4px 0;
+            text-align: center;
+        }
+        .paper-title { font-size: 1.12rem; line-height: 1.38; letter-spacing: -.008em; overflow-wrap: anywhere; }
+        .paper-title a { color: var(--ink); }
+        .paper-title a:hover { color: var(--accent); }
+        .paper-meta, .paper-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+        .paper-meta:not(:empty) { margin-top: 9px; }
+        .tag, .score-badge {
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 0 6px;
+            line-height: 1.65;
+            font-size: .76rem;
+        }
+        .score-badge { background: var(--tint); color: var(--accent); font-weight: 600; }
+        .paper-authors, .paper-reasons { color: var(--muted); font-size: .82rem; margin-top: 7px; overflow-wrap: anywhere; }
+        .paper-authors:empty { display: none; }
+        .paper-abstract-cn {
+            padding: 10px 12px;
+            background: var(--panel);
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+        .paper-abstract-cn h3, .paper-notes dt { color: var(--accent); font-size: .83rem; font-weight: 700; }
+        .translation-note { color: var(--muted); font-size: .75rem; font-weight: 500; margin-inline-start: .65rem; }
+        .paper-abstract-cn p, .original-abstract p, .paper-notes dd {
+            font-size: .91rem;
+            margin-top: 3px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+        .original-abstract { margin: 6px 0; }
+        summary { width: fit-content; color: var(--accent); font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+        summary:hover { text-decoration: underline; text-underline-offset: .2em; }
+        .original-abstract p { border-inline-start: 2px solid var(--line); padding-inline-start: 11px; color: var(--muted); }
+        .paper-notes { margin-top: 10px; display: grid; gap: 8px; }
+        .paper-notes dd { color: var(--ink); }
+        .paper-links:not(:empty) { margin-top: 12px; }
+        .paper-links a { font-size: .83rem; font-weight: 650; border: 1px solid var(--line); border-radius: 5px; padding: 2px 9px; }
+        .empty-state { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line); padding: 26px; border-radius: 10px; }
+        footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); padding: 12px 0 26px; border-top: 1px solid var(--line); font-size: .8rem; }
+        @media (max-width: 940px) {
+            .intro { align-items: flex-start; flex-direction: column; }
+        }
+        @media (max-width: 760px) {
+            .paper-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .page { width: calc(100% - 28px); }
+            .masthead { gap: 3px 8px; }
+            .feed-nav { gap: 2px; }
+            .feed-nav a { font-size: .88rem; padding: 5px 6px; }
+            .subnav { gap: 1rem; }
+            main { padding-top: 16px; }
+            .intro { padding: 14px 12px; margin-bottom: 16px; gap: 8px; }
+            h1 { font-size: clamp(1.35rem, 5.8vw, 1.6rem); text-wrap: balance; }
+            .stats { gap: 5px 14px; }
+            .archive { margin: 0 0 14px; }
+            .paper-card { padding: 13px; }
+        }
+    </style>
+</head>
+<body class="architecture">
+    <a class="skip-nav" href="#main">跳到论文列表</a>
+    <header class="site-header">
+        <div class="page masthead">
+            <nav class="feed-nav" aria-label="选择领域">
+                <a href="../index.html">GPU 数据库</a>
+                <a href="index.html" aria-current="true">计算机体系结构</a>
+            </nav>
+            <a class="github-link" href="https://github.com/liuweibupt/DBonGPU-paper-daily" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="subnav-wrap">
+            <nav class="page subnav" aria-label="计算机体系结构栏目">
+            <a href="index.html" aria-current="page">每日推荐</a>
+            <a href="top100.html">年度 Top 100</a>
+            <a href="classics.html">经典论文</a>
+            </nav>
+        </div>
+    </header>
+    <main class="page" id="main">
+        <section class="intro">
+            <div class="intro-text">
+                <h1>计算机体系结构论文日报</h1>
+                <p>最近 7 天在 arXiv cs.AR 提交的体系结构论文，含交叉分类。按首次提交时间倒序。</p>
+            </div>
+            <dl class="stats"><div><dt>收录论文</dt><dd>10</dd></div>
+<div><dt>日报日期</dt><dd>2026-11-27</dd></div></dl>
+        </section>
+        <nav class="archive" aria-label="计算机体系结构日报归档">
+            <span class="archive-label">日报归档</span>
+            <div class="archive-links"><a href="2026-11-27.html" aria-current="page">2026-11-27</a>
+<a href="2026-11-26.html">2026-11-26</a>
+<a href="2026-11-25.html">2026-11-25</a>
+<a href="2026-11-24.html">2026-11-24</a>
+<a href="2026-11-23.html">2026-11-23</a></div>
+
+        </nav>
+        <div class="paper-list daily">
+            <article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 1 篇">01</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.34669v1" target="_blank" rel="noopener">An Embedded Ergonomic Posture Monitoring and AI-Assisted Home Learning System on a Raspberry Pi 3B Edge Platform</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Truyen T. Le, Vinh Dang Ngoc, Thai Bao Huynh</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>学生在家独立学习时，常常长时间保持不良坐姿，累计久坐时间过长，并因与学习无关的数字干扰而降低学习效率。此外，学生在自学难度较高的课程时，往往缺少实时的教学支架。为缓解这些人体工学和教学问题，本文提出一套面向家庭学习空间、成本低且保护隐私的嵌入式信息物理系统。该系统基于 Raspberry Pi 3 Model B（1 GB RAM），配备 UVC 光学摄像头和 USB 电容麦克风。系统在设备端利用 MediaPipe Pose 和 OpenCV 运行计算机视觉算法，实时监测上半身姿态对齐情况、矢状面头部倾角和冠状面双肩不对称程度，且不持久保存原始视频流。确定性有限状态机（FSM）统计有效学习时长，确保按健康要求休息，并检测违规使用智能手机的行为。同时，集成的多模态 AI 辅导智能体通过加密 API 网关解析语音和文本提问，生成苏格拉底式的概念提示，避免直接给出答案。轻量级家长网页面板提供加密的学习时段分析结果和日程配置功能。实体原型的基准测试表明，在 352 × 288 分辨率下，端到端推理延迟为 244–250 ms（4.0–4.1 FPS）。在 5,760 个具有真值标注的合成姿态上，躯干角度估计的平均绝对误差（MAE）为 4.39°。系统的常驻内存为 320 MB，持续负载下 SoC 峰值温度为 58.0 °C，离线文本转语音（TTS）反馈路径的总延迟为 1.58 s。这些结果证实了该系统在资源受限边缘设备上部署的实用性。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>During independent home study sessions, students frequently sustain improper sitting postures, accumulate excessive sedentary hours, and experience productivity loss from off-task digital distractions. Furthermore, learners often lack real-time pedagogical scaffolding for demanding self-study curricula. To mitigate these ergonomic and instructional challenges, this paper presents an affordable, privacy-preserving cyber-physical embedded system for domestic study spaces. Engineered on a Raspberry Pi 3 Model B (1 GB RAM) paired with a UVC optical camera and a USB condenser microphone, the system executes on-device computer vision utilizing MediaPipe Pose and OpenCV to monitor upper-body alignment, sagittal head inclination, and coronal shoulder asymmetry in real time without persisting raw video streams. A deterministic finite state machine (FSM) quantifies active study durations, enforces health-compliant rest periods, and detects illicit smartphone usage. Simultaneously, an integrated multimodal AI tutoring agent parses voice and text queries via an encrypted API gateway, synthesizing Socratic conceptual hints rather than direct solutions. A lightweight parental web dashboard delivers encrypted session analytics and scheduling configurations. Empirical benchmarks on the physical prototype confirm an end-to-end inference latency of 244-250 ms at a 352x288 resolution (4.0-4.1 FPS), a trunk-angle estimation error of 4.39 degrees MAE over 5,760 synthetic ground-truth poses, a resident set size of 320 MB, a peak SoC temperature of 58.0 degrees Celsius under sustained load, and a 1.58 s total latency for the offline TTS feedback path, proving high practicality for resource-constrained edge deployment.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>该系统在配备 1 GB RAM 的 Raspberry Pi 3 Model B 上集成了实时坐姿监测和多模态 AI 辅导。在 352 × 288 分辨率下，端到端推理延迟为 244–250 ms（4.0–4.1 FPS），在 5,760 个合成姿态上的躯干角度估计 MAE 为 4.39°，常驻内存为 320 MB。</dd></div><div><dt>创新点</dt><dd>1. 基于 MediaPipe Pose 和 OpenCV 在设备端实时监测上半身姿态、头部倾角和双肩不对称程度，且不持久保存原始视频流；2. 利用确定性有限状态机统计有效学习时长、执行休息规则并检测违规使用手机的行为；3. 通过加密 API 网关处理语音和文本提问，由多模态 AI 辅导智能体生成苏格拉底式概念提示；4. 集成轻量级家长网页面板，提供加密的学习时段分析结果和日程配置功能。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.34669v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.34669v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 2 篇">02</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.34630v1" target="_blank" rel="noopener">A Differential Computing Accelerator for LLM Inference Leveraging Bit-Slice Transition Sparsity</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Yifan Wang, Zetao Guo, You Xiao, Wendi Sun 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>大语言模型（LLM）已成为现代人工智能的基础。在规模定律的推动下，模型规模迅速增长，给部署带来越来越大的计算和存储压力。为加速占据 LLM 主要计算量的通用矩阵乘法（GEMM）运算，位切片架构沿比特维度拆分量化操作数，以揭示切片级的稀疏性和冗余。然而，现有位切片设计主要利用高位切片的稀疏性，密集的低位切片中仍有大量尚未利用的复用机会。
+
+我们观察到，位切片向量（BSV）在汉明空间中高度聚集，许多 BSV 只需翻转少数几个比特，就能与少量代表性模式中的某一个相匹配。基于这一观察，我们提出算法与硬件协同设计的加速器 ISTS，将代表性 BSV 模式用作共享的斯坦纳点（Steiner points），在切片之间复用部分和，从而大幅减少计算量。具体而言，只需进行少量加减运算，即可从分配给目标 BSV 的斯坦纳点的部分和重建该目标 BSV 的部分和。在算法方面，我们提出斯坦纳吸收表构建方法（Steiner Absorption Table Construction，SATC），选取一组精简的斯坦纳点，使其仅需少量双向比特翻转即可吸收 BSV。FlipPrune 则选择性地剪除部分翻转，进一步扩大可参与复用的 BSV 集合。在硬件方面，我们设计了轻量级加速器，支持对静态线性层权重和运行时生成的注意力 K/V 张量进行基于斯坦纳点的复用。综合评估表明，ISTS 相比先进加速器 ANT、BBS、LUT Tensor Core、Transitive Array 和 MCBP-BRCR 的平均加速比分别为 3.09×、2.41×、2.18×、1.27× 和 1.41×。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Large language models (LLMs) have become foundational to modern artificial intelligence. Driven by scaling laws, their rapid growth poses increasing computational and memory challenges for deployment. To accelerate the general matrix multiplication (GEMM) operations that dominate LLM computation, bit-slice architectures decompose quantized operands along the bit dimension, exposing slice-level sparsity and redundancy. However, existing bit-slice designs primarily exploit sparsity in high-order slices, while dense low-order slices still offer substantial untapped reuse opportunities.
+  We observe that bit-slice vectors (BSVs) are highly clustered in Hamming space, with many BSVs lying only a few bit flips away from a small set of representative patterns. Based on this observation, we propose ISTS, an algorithm-hardware co-designed accelerator that leverages representative BSV patterns as shared Steiner points to reuse partial sums across slices, substantially reducing computation. Specifically, the partial sum of each target BSV can be reconstructed from that of its assigned Steiner point using only a few additions or subtractions. On the algorithmic side, we propose Steiner Absorption Table Construction (SATC), which selects a compact set of Steiner points to absorb BSVs with only a few bidirectional bit flips, while FlipPrune selectively prunes flips to further expand the reusable BSV population. On the hardware side, we design a lightweight accelerator that supports Steiner reuse for static linear layer weights and runtime-generated attention K/V tensors. Comprehensive evaluations show that ISTS achieves average speedups of $3.09\times$, $2.41\times$, $2.18\times$, $1.27\times$, and $1.41\times$ over the state-of-the-art accelerators ANT, BBS, LUT Tensor Core, Transitive Array, and MCBP-BRCR, respectively.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>ISTS 利用位切片向量在汉明空间中的聚集性，通过少量加减运算复用部分和，并支持静态线性层权重及运行时生成的注意力 K/V 张量。相比 ANT、BBS、LUT Tensor Core、Transitive Array 和 MCBP-BRCR，ISTS 的平均加速比分别为 3.09×、2.41×、2.18×、1.27× 和 1.41×。</dd></div><div><dt>创新点</dt><dd>1. 提出 ISTS，将代表性位切片向量用作共享斯坦纳点，以少量加减运算重建目标向量的部分和，实现跨切片复用；2. 提出 SATC，选取可通过少量双向比特翻转覆盖多个位切片向量的精简斯坦纳点集合；3. 提出 FlipPrune，选择性剪除部分翻转以扩大可复用的向量集合；4. 设计轻量级加速器，支持对静态线性层权重和运行时生成的注意力 K/V 张量进行斯坦纳点复用。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.34630v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.34630v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 3 篇">03</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.34481v1" target="_blank" rel="noopener">High-Throughput GPU Decoding of Quantum Bivariate Bicycle Codes under Circuit-Level Noise</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span> <span class="tag">quant-ph</span></div>
+            <p class="paper-authors">Aditya Sodhani, Keshab K. Parhi</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>与表面码等其他量子纠错码相比，双变量自行车码（bivariate bicycle，BB 码）可减少量子纠错所需的物理量子比特开销，但电路级故障会在测量轮次之间引入依赖，限制解码吞吐量。我们提出一种并行窗口 GPU 解码器，结合可复用的故障模式、紧凑的共享内存状态和常驻 GPU 工作单元，采用最小和算法进行解码，并以 Relay-BP 执行恢复。在 RTX 5090 上，对于所评估的全部 4 种码（最大至 [[144,12,12]]），所提解码器均能跟上每 1 μs 一轮综合征的节奏，提交延迟中位数为 63–144 μs。以往的电路级 GPU 解码研究尚未达到这一速率，该解码器的吞吐量是顺序滑动窗口解码的 120 倍。在接受解码结果前检查相邻探测器轮次，最多可将失败率降低 65%。当 p = 0.002 时，所提解码器在 [[144,12,12]] 码上的每轮失败率为 7.58 × 10⁻⁶，比已发表的带综合征翻转的置信传播（BP-SF）结果低 36%。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Bivariate bicycle (BB) codes reduce the physical-qubit overhead of quantum error correction compared to other codes such as Surface codes, but circuit-level faults create dependencies across measurement rounds that limit decoding throughput. We present a parallel-window GPU decoder that combines reusable fault patterns, compact shared-memory state, and persistent GPU workers using min-sum with Relay-BP recovery. On an RTX 5090, the proposed decoder keeps pace with one syndrome round every 1 $μ$s across all four evaluated codes, up to [[144,12,12]] with 63-144 $μ$s median commit delays. This rate has not been demonstrated in prior circuit-level GPU decoding studies and it provides $120\times$ higher decoding throughput than sequential sliding-window decoding. Checking neighboring detector rounds before accepting a decoding result reduces failure rates by up to 65%. For [[144,12,12]] at $p=0.002$, our proposed decoder achieves $7.58\times 10^{-6}$ failures per round, 36% lower than the published belief propagation (BP) with syndrome flipping (BP-SF) result.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在 RTX 5090 上，该解码器对全部 4 种受测 BB 码（最大至 [[144,12,12]]）均能跟上每 1 μs 一轮综合征的节奏，提交延迟中位数为 63–144 μs，吞吐量为顺序滑动窗口解码的 120 倍。对 [[144,12,12]] 码，在 p = 0.002 时，每轮失败率为 7.58 × 10⁻⁶，比已发表的 BP-SF 结果低 36%。</dd></div><div><dt>创新点</dt><dd>1. 设计并行窗口 GPU 解码器，结合可复用故障模式、紧凑的共享内存状态和常驻 GPU 工作单元，并采用最小和算法与 Relay-BP 恢复；2. 在接受解码结果前检查相邻探测器轮次，以降低失败率。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.34481v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.34481v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 4 篇">04</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.34472v1" target="_blank" rel="noopener">DiversePlace: Diversity-Seeking Curriculum Reinforcement Learning for Macro Placement</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span></div>
+            <p class="paper-authors">Wenrui Zhou, Jiashun Liu, Wenji Fang, Zhiyao Xie 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>宏单元布局是物理设计早期的关键决策，因为宏单元的位置会对后续实现阶段施加强约束。其难点在于，这些影响重大的离散决策必须在下游实现质量能够得到准确评估之前完成，训练因而依赖半周长线长（HPWL）等快速但不完全准确的评估指标。因此，现有基于强化学习（RL）的布局器大多以 HPWL 为驱动优化单个方案，且由于顺序决策跨度长，通常需要大量搜索辅助或离线专家数据，难以保留多个有竞争力的布局。我们将质量约束下的多样性设为宏单元布局的显式目标，以弥补这一不足。我们维护一个精简的布局档案，供下游选择，其中各布局在 HPWL 上均具有竞争力，且彼此存在实质差异。DiversePlace 将这一思路实现为基于近端策略优化（PPO）的课程学习框架，将由质量门槛控制的多样性奖励与逐步扩展的布局决策跨度相结合，使强化学习能够从零开始优化，同时将探索限制在 HPWL 具有竞争力的区域内。在 ISPD2005 基准上，DiversePlace 一贯提高了前 5、前 10 和前 20 个归档布局的多样性，在全部 8 个设计上均取得了更低或几乎相同的 HPWL，并且效率更高。代码见 https://github.com/William030422/NIPS2026-DiversePlace。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Macro placement is a critical early-stage decision in physical design because macro locations strongly constrain subsequent implementation stages. The task is difficult because these high-impact discrete decisions must be made before downstream quality can be measured accurately, forcing training to rely on fast but imperfect training-time oracles such as half-perimeter wirelength (HPWL). Existing RL-based placers therefore mostly optimize single HPWL-driven solutions, and their long sequential horizons often require heavy search assistance or offline expert data while leaving little room to preserve multiple competitive layouts. We address this gap by making quality-controlled diversity an explicit objective for macro placement. Instead of relying on a single proxy-optimal solution, we maintain a compact archive of HPWL-competitive yet meaningfully different placements for downstream selection. We realize this idea in DiversePlace, a curriculum proximal policy optimization (PPO) framework that combines a quality-gated diversity reward with an expanding placement horizon, enabling from-scratch RL optimization while keeping exploration inside competitive HPWL regions. On the ISPD2005 benchmarks, DiversePlace consistently improves top-5, top-10, and top-20 archive diversity and achieves lower or virtually identical HPWL on all eight designs with better efficiency. Code: https://github.com/William030422/NIPS2026-DiversePlace.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在 ISPD2005 的全部 8 个设计上，DiversePlace 均取得更低或几乎相同的 HPWL，且效率更高，同时稳定提升了前 5、前 10 和前 20 个归档布局的多样性。摘要未指明这些结果所对比的具体基线。</dd></div><div><dt>创新点</dt><dd>1. 将质量约束下的多样性设为宏单元布局的显式目标，维护一个兼顾 HPWL 竞争力与实质布局差异的精简档案，供下游选择；2. 提出基于 PPO 的课程学习框架，将由质量门槛控制的多样性奖励与逐步扩展的布局决策跨度相结合，使强化学习可从零开始优化，并将探索限制在 HPWL 具有竞争力的区域内。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.34472v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.34472v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 5 篇">05</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.34402v1" target="_blank" rel="noopener">Any-Rate: Half-Bit Multi-Precision LLM Quantization with Coded Bit-Planes</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> <span class="tag">cs.CL</span></div>
+            <p class="paper-authors">Hoonki Lee, Haechan Shin, Hyuntaek Jung, Yeonu Choi 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>嵌套式多精度量化只需读取每个权重的高位比特，即可从单个模型检查点获得多种精度，因此适合在内存和能耗预算各异的设备上部署。然而，现有方法仅支持整数位宽，相邻精度之间的准确率差距较大，且在 2 比特下准确率严重下降。为此，我们提出 Any-Rate，它从单个检查点支持 2–8 比特，并在 2–4 比特范围内提供 0.5 比特的步长。Any-Rate 将权重按每 8 个一组分块，把部分位平面约束为扩展汉明码码字（每个权重 0.5 比特），让各精度共享每行的同一张查找表（LUT），并为每种精度设置独立目标，对所有精度进行联合编码，从而减少共享位平面带来的损失。在 4 个 LLM 上，Any-Rate 在 2 比特和 3 比特下的准确率达到多精度方法的领先水平，在 2 比特下保留了 FP16 准确率的 69%，在 4 比特下与最佳结果的差距不超过 1 个百分点。其解码速度与现有内核大致相当。LPDDR 能耗模型估算表明，在准确率相同的条件下，能耗最多可降低 27%。代码见 https://github.com/hoonki2002/Any-Rate。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Nested multi-precision quantization derives multiple precisions from a single checkpoint by reading only the leading bits of each weight, which makes it attractive for on-device deployment under varying memory and energy budgets. However, existing methods offer only integer bits, leaving large accuracy gaps between adjacent precisions and severe degradation at 2 bits. To address this, we propose Any-Rate, which serves 2-8 bits from one checkpoint, in half-bit steps over 2-4 bits. Any-Rate restricts some bit-planes to extended Hamming codewords in 8-weight blocks (0.5 bits per weight), shares one LUT per row across precisions, and encodes all precisions jointly with a separate target for each, reducing the loss from sharing bit-planes. Across four LLMs, Any-Rate achieves state-of-the-art accuracy among multi-precision methods at 2 and 3 bits, keeping 69% of FP16 accuracy at 2 bits, and is within one point of the best at 4 bits. It decodes about as fast as existing kernels, and an LPDDR energy model estimates up to 27% less energy at equal accuracy. Code is available at https://github.com/hoonki2002/Any-Rate.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>Any-Rate 从单个检查点支持 2–8 比特量化，并在 2–4 比特间提供 0.5 比特步长。在 4 个 LLM 的评估中，其 2 比特和 3 比特准确率在多精度方法中领先，2 比特保留了 FP16 准确率的 69%，4 比特与最佳结果相差至多 1 个百分点，且解码速度与现有内核大致相当。LPDDR 模型估算，同等准确率下能耗最多可降低 27%。</dd></div><div><dt>创新点</dt><dd>1. 按每 8 个权重分块，将部分位平面限制为扩展汉明码码字，实现每权重 0.5 比特的编码粒度；2. 在不同精度间共享每行的同一张查找表；3. 为每种精度设置独立目标并联合编码所有精度，以减少共享位平面带来的损失。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.34402v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.34402v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 6 篇">06</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.33981v1" target="_blank" rel="noopener">MixMoMo: Accelerating Extra--Large MoE Inference with Mixed--Precision GPU--NPU Execution on Mobile Devices</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Hailong Zou, Maoliang Li, Taohong Han, Haoze Chi 等 7 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>移动智能体和端侧智能应用对智能手机上运行的模型提出了更高的能力要求。混合专家（MoE）模型通过稀疏激活专家来扩展模型容量，但随着细粒度专家数量增长，加载和计算变得更加复杂。模型压缩可降低存储和计算开销，与专家卸载形成互补。混合精度量化是一种模型压缩技术，通过为部分专家分配较低位宽来平衡模型质量与推理效率。然而，现有离线指标和路由分数无法反映专家对量化的敏感性，影响位宽分配的效果。不同位宽也增加了在执行特性各异的 GPU 和 NPU 之间均衡分配专家的难度，而逐分块反量化无法充分利用 NPU 的向量并行能力。我们提出 MixMoMo，一种面向异构移动 SoC 上超大规模 MoE 模型的高效混合精度推理运行时。MixMoMo 将离线量化影响剖析结果与基于激活的运行时风险估计相结合，在质量约束下分配专家位宽。它还采用按精度组织的执行方式，在 GPU 和 NPU 之间均衡分配专家，并通过 HVX 并行反量化充分利用 NPU 的向量并行能力。在 2 个移动平台上使用 3 个 MoE 模型和 5 项基准进行评测，MixMoMo 相对于统一采用 Q4_0 的基线和表现最强的混合精度 MoE 基线，分别实现了 3.72 倍和 1.53 倍的平均解码加速。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Mobile agents and on-device intelligence increasingly demand more capable models on smartphones. Through sparse expert activation, Mixture-of-Experts (MoE) scales model capacity, yet growing numbers of fine-grained experts complicate loading and computation. Model compression complements expert offloading by reducing storage and computation costs. Among compression techniques, mixed-precision quantization assigns lower expert bitwidths to balance model quality and inference efficiency. However, existing offline metrics and routing scores fail to reflect expert quantization sensitivity, undermining precision assignment. Diverse bitwidths also complicate balanced expert allocation across GPUs and NPUs with distinct execution characteristics, while tile-wise dequantization underutilizes NPU vector parallelism. We present MixMoMo, an efficient mixed-precision inference runtime for extra-large MoE models on heterogeneous mobile SoCs. MixMoMo combines offline quantization-impact profiles with activation-based runtime risk estimates for quality-constrained expert bitwidth assignment. It further adopts precision-structured execution for balanced GPU-NPU expert allocation and HVX-parallel dequantization for efficient NPU vector utilization. Across three MoE models and five benchmarks on two mobile platforms, MixMoMo achieves average decoding speedups of 3.72x over uniform Q4_0 and 1.53x over the strongest mixed-precision MoE baseline.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在 2 个移动平台、3 个 MoE 模型和 5 项基准的评测中，MixMoMo 相对统一 Q4_0 基线和表现最强的混合精度 MoE 基线，分别实现了 3.72 倍和 1.53 倍的平均解码加速。</dd></div><div><dt>创新点</dt><dd>1. 结合离线量化影响剖析与基于激活的运行时风险估计，在质量约束下分配专家位宽；2. 按精度组织执行，在 GPU 和 NPU 之间均衡分配专家；3. 利用 HVX 并行反量化，提高 NPU 向量并行资源的利用率。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.33981v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.33981v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 7 篇">07</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.33973v1" target="_blank" rel="noopener">Kolpona: An Agentic Framework with Gradient-Free Neuron Programming for RTL Generation</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span> <span class="tag">cs.LG</span> <span class="tag">cs.AI</span></div>
+            <p class="paper-authors">Musa Tur Farazi, Md Nasir Uddin, Soumik Bhattacharjee, Tishna Sabrina 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>面向寄存器传输级（RTL）设计的开放权重大语言模型（LLM）通常通过在经筛选的 Verilog 语料上微调来提升性能，这需要大量经过验证的设计和 GPU 训练。我们提出 Kolpona，这是一种无需梯度训练即可改进此类模型的智能体框架。其第一个组件是神经元编程，这是一种新的权重空间编程（WSP）方法，以闭式解为基础将单个神经元写入模型权重，以消除在练习任务中发现的惯常错误。只有当新任务上的测试平台结果支持某项编辑时，才保留该编辑。推理时，能够调用工具的智能体提出候选设计，无需标签的选择阶段仅依据规格、候选设计及其仿真结果，为每项任务选出一个设计。对 Qwen3.5-4B 编辑 16 个神经元后，仅使用模型时，VerilogEval v2 上的 pass@1 从 31.7% 提升至 55.4%，完整框架则达到 77.6%。对 Qwen3.8-27B，Kolpona 在单张 32 GB GPU 上将 VerilogEval v2 的 pass@1 从 73.1% 提升至 94.9%，将 RTLLM v2.1 的 pass@1 从 66.0% 提升至 92.0%，超过对比中所有已发表的系统。面向 RTL 的编辑也能迁移到 Python 任务，使 4B 模型单独运行时在 HumanEval+ 上的 pass@1 从 84.8% 提升至 91.5%，在 MBPP+ 上从 67.7% 提升至 77.5%。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Open-weight large language models (LLMs) for register-transfer level (RTL) design are usually improved by fine-tuning on curated Verilog corpora, which needs large sets of verified designs and GPU training. We present Kolpona, an agentic framework that improves such models without gradient training. Its first component is neuron programming, a new form of weight-space programming (WSP) that writes single neurons in closed form into the weights to remove failure habits found on practice tasks, and keeps each edit only when testbench results on fresh tasks favour it. At inference time, tool-using agents propose designs, and a label-free selection stage delivers one design per task from the specification, the candidates and their simulations alone. On Qwen3.5-4B, edits to 16 neurons raise the VerilogEval v2 pass@1 of the model alone from 31.7% to 55.4%, and the full framework reaches 77.6%. On Qwen3.8-27B, Kolpona lifts pass@1 from 73.1% to 94.9% on VerilogEval v2 and from 66.0% to 92.0% on RTLLM v2.1 on a single 32 GB GPU, above every published system in our comparison. The RTL edits also carry over to Python and raise the pass@1 of the 4B model alone from 84.8% to 91.5% on HumanEval+ and from 67.7% to 77.5% on MBPP+.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>Kolpona 无需梯度训练。编辑 16 个神经元后，Qwen3.5-4B 单独运行时在 VerilogEval v2 上的 pass@1 从 31.7% 提升至 55.4%，完整框架达到 77.6%。在单张 32 GB GPU 上，Kolpona 将 Qwen3.8-27B 在 VerilogEval v2 和 RTLLM v2.1 上的 pass@1 分别从 73.1% 和 66.0% 提升至 94.9% 和 92.0%，超过对比中所有已发表系统。</dd></div><div><dt>创新点</dt><dd>1. 提出无梯度神经元编程，以闭式解将单个神经元写入权重以纠正练习任务中发现的惯常错误，并根据新任务的测试平台结果决定是否保留编辑；2. 在推理时由能够调用工具的智能体提出候选 RTL 设计，仅依据规格、候选设计及其仿真结果，无需标签即可为每项任务选出一个设计。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.33973v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.33973v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 8 篇">08</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.33938v1" target="_blank" rel="noopener">Algebraic Diversity of Switching Functions</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span> <span class="tag">cs.DM</span> <span class="tag">cs.LO</span></div>
+            <p class="paper-authors">Mitchell A. Thornton</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>代数分集将对多个观测求平均的思想推广到对单个观测在与其结构匹配的变换群上求平均。本文在布尔立方体 𝔽₂ⁿ 上建立这一框架，涵盖平移群、坐标置换群、超八面体群、一般线性群和仿射群。本文确定了每种群作用的对易代数，并给出单张真值表经群平均后的二阶统计量的闭式表达。对平移群，该统计量归结为沃尔什周期图。对超八面体群，它归结为按汉明重量分组的平均值。对仿射群，它归结为在整体取反等价意义下的汉明重量。弯曲函数（bent functions）恰好是平移平均结果呈白谱的函数。按给定输入顺序进行的 Haar 变换对应于香农展开的多路复用器树。高阶平均在达到首个能提供超出汉明重量的信息的阶数之前，只能反映汉明重量。这一阶数对平移群为 2，对仿射群为 4。与函数相匹配的稳定子群可替代重复观测，因为在大小为 s 的轨道上进行投票，可使达到目标误差所需的含噪真值表数量降至原来的 1/s。同一视角还将函数的仿射包用作匹配坐标，给出了 XOR 哈希的精确方差恒等式，并构造出方差始终不超过成对独立哈希的匹配哈希。在公开基准上的应用包括为近似模型计数选择哈希方法，利用子句块的谱判定具有奇偶结构的公式并反驳模 3 和模 4 的计数公式，利用规范谱区分 NPN 等价类并在 ISCAS-85 电路的割函数和全部 5 输入等价类上进行测试，利用对称性投票纠正含噪真值表并保护查找表，进行盲群匹配，以及构造一种类似 CLEAN 的算法，将真值表表示为各群不动子空间中原子的异或。本文给出了所有证明的完整过程。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Algebraic Diversity generalizes averaging over many observations to averaging one observation over a group of transformations matched to its structure. This paper develops the framework on the Boolean cube $\mathbb{F}_2^n$ for the translations, the coordinate permutations, the hyperoctahedral group, and the general linear and affine groups. It determines the commutant of each action and gives closed forms for the group-averaged second-order statistic of one truth table, which collapses to the Walsh periodogram for the translations, to per-weight averages for the hyperoctahedral group, and to the weight up to complementation for the affine group. Bent functions are exactly those whose translation average is white, the Haar transform along an input order is the multiplexer tree of Shannon&#x27;s expansion, and higher-order averages see only the weight below a first informative order, two for the translations and four for the affine group. A matched stabilizer stands in for repeated observations, since a vote over orbits of $s$ points divides by $s$ the number of noisy truth tables a target error requires. The same viewpoint gives the affine hull of a function as matched coordinates, an exact variance identity for XOR hashing, and matched hashes whose variance never exceeds that of a pairwise independent hash. Applications on public benchmarks include hash choice for approximate model counting, the decision of parity-structured formulas and the refutation of counting formulas modulo 3 and 4 from the spectra of clause blocks, separation of NPN classes by canonical spectra, tested on ISCAS-85 cut functions and all five-input classes, correction of noisy truth tables and protection of lookup tables by voting over symmetries, blind group matching, and an analog of the CLEAN algorithm that writes a truth table as the XOR of atoms in the fixed spaces of groups. All proofs are given in full.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>代数分集通过对单张真值表施加与其结构匹配的群变换并求平均，得到随群作用而异的统计量，包括平移群下的沃尔什周期图和仿射群下在整体取反等价意义下的汉明重量。在大小为 s 的轨道上进行对称性投票，可使达到同一目标误差所需的含噪真值表数量降至原来的 1/s，所构造的匹配哈希的方差始终不超过成对独立哈希的方差。</dd></div><div><dt>创新点</dt><dd>1. 在布尔立方体上为多种群作用建立代数分集框架，确定各作用的对易代数并给出二阶群平均统计量的闭式表达；2. 刻画平移平均的白谱与弯曲函数的等价关系、Haar 变换与香农展开多路复用器树的对应关系，以及平移群和仿射群平均首次提供超出汉明重量的信息的阶数；3. 利用匹配稳定子群进行轨道投票，以减少达到目标误差所需的含噪观测；4. 以函数的仿射包作为匹配坐标，推导 XOR 哈希的精确方差恒等式并构造匹配哈希；5. 将该框架用于近似模型计数的哈希选择、基于子句块谱的公式判定与反驳、基于规范谱的 NPN 类区分、含噪真值表纠错、查找表保护和盲群匹配；6. 提出类似 CLEAN 的算法，将真值表分解为群不动子空间中原子的异或。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.33938v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.33938v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 9 篇">09</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.33859v1" target="_blank" rel="noopener">GPS: Guiding Phase-Level Prefetcher Selection with Data-Driven Method</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Buqing Xu, Mengming Li, Qijun Zhang, Ziyan Guo 等 5 人</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>硬件预取是一种广泛用于掩蔽片外内存访问延迟的技术。现代处理器越来越多地采用组合预取器，将多个预取引擎结合起来，以应对实际应用中多样的内存访问模式。然而，协调多个预取器需要一种策略选择算法，将观测到的系统反馈映射到合适的预取策略。现有方法存在两个主要局限。首先，仅依赖少量特征会使系统状态的可见性不足，可能导致预取策略选择失当。其次，有限的片上硬件资源迫使这些设计采用简单的映射机制，难以在庞大的预取策略空间中有效选择。
+
+为解决这些问题，我们提出 GPS，一种利用全面性能剖析和离线学习的数据驱动预取器选择框架。GPS 收集一组丰富的特征，涵盖系统行为和硬件资源状态，并通过离线机器学习模型学习这些特征到每周期指令数（IPC）最高的策略之间的映射。GPS 将复杂的策略生成交由软件完成，消除了高开销在线探索的需求，并借助预先生成的策略提示实现轻量级运行时执行。GPS 将性能差距缩小到 2.6%，此前两种最先进方法的性能差距分别为 13.6% 和 14.2%。我们在 SPEC CPU2006、SPEC CPU2017 和 GAP 基准套件上评估 GPS。与先进的预取器选择方法 I-POP 相比，GPS 在这 3 个套件上的 IPC 几何平均值分别提高了 12.14%、8.34% 和 14.17%。GPS 仅需额外 778 比特的片上存储用于运行时策略控制，即可实现这些增益。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Hardware prefetching is a widely used technique for hiding off-chip memory latency. Modern processors increasingly adopt composite prefetchers that combine multiple prefetching engines to handle the diverse memory access patterns found in real applications. However, coordinating multiple prefetchers requires a policy selection algorithm that maps observed system feedback to appropriate prefetching policies. Existing approaches suffer from two key limitations. First, relying on only a small set of features can lead to misleading prefetcher policies due to incomplete visibility into the system state. Second, limited on-chip hardware resources force these designs to use simple mapping mechanisms that cannot effectively navigate the large prefetching policy space.
+  To address these challenges, we propose GPS, a data-driven framework for prefetcher selection that leverages comprehensive profiling and offline learning. GPS collects a rich set of features that capture both system behaviors and hardware resource states, and uses an offline machine learning model to learn the mapping between these features and the IPC-best policy. By offloading complex policy generation to software, GPS eliminates the need for costly online exploration and enables lightweight runtime execution through pre-generated policy hints. GPS reduces the performance gap to only 2.6%, compared to 13.6% and 14.2% in prior state-of-the-art methods. We evaluate GPS on SPEC CPU2006, SPEC CPU2017, and GAP benchmark suites. GPS outperforms the state-of-the-art prefetcher selection method I-POP by 12.14%, 8.34%, and 14.17% in geometric-mean IPC, respectively. GPS achieves these gains with only 778 bits of additional on-chip storage for runtime policy control.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>相较于 I-POP，GPS 在 SPEC CPU2006、SPEC CPU2017 和 GAP 上的 IPC 几何平均值分别提高 12.14%、8.34% 和 14.17%，运行时策略控制仅需额外 778 比特的片上存储。GPS 将性能差距缩小至 2.6%，此前两种最先进方法的差距分别为 13.6% 和 14.2%。</dd></div><div><dt>创新点</dt><dd>1. 通过全面性能剖析收集反映系统行为和硬件资源状态的特征，并用离线机器学习模型学习特征到 IPC 最高策略的映射；2. 将复杂策略生成交由软件处理，运行时利用预先生成的策略提示进行轻量级控制，省去高开销的在线探索。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.33859v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.33859v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+<article class="paper-card">
+            <div class="paper-heading">
+                <span class="paper-rank" aria-label="第 10 篇">10</span>
+                <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.33691v1" target="_blank" rel="noopener">L2C2: Enhancing Large-scale Chiplets for Agent Long-Context LLM Inference with Sparse and Distributed Attention</a></h2>
+            </div>
+            <div class="paper-meta"><span class="tag">arXiv 提交 2026-11-25</span> <span class="tag">cs.AR</span></div>
+            <p class="paper-authors">Kangbo Bai, Zhonghua Mu, Hongze Zhou, Tianyu Jia</p>
+            <div class="paper-abstract-cn"><h3>中文摘要</h3><p>大语言模型（LLM）的长上下文推理需求不断增长，在智能体应用中尤为明显。稀疏注意力（SpAt）和芯粒（chiplet）技术有望分别减少计算量和扩展硬件性能。然而，在分布式芯粒上部署 SpAt 需要通过上下文并行切分工作负载，由此引入复杂的分布式注意力计算。本文提出 L2C2，一种面向长上下文推理中分布式 SpAt 的系统级优化方案。在部分预填充阶段，我们提出新的 Split-Comm Attention 机制，利用芯粒之间的高带宽互连，以通信开销换取更少的内存访问。我们将该机制与传统的 Ring Attention 结合，形成可适应不同输入序列长度的双模式（Bi-Mode）方法。在解码阶段，我们分析了内存访问不均衡的成因，并通过静态交错分配词元来缓解这一问题。我们还提出动态快速缓存均衡机制，以适应 SpAt 的负载偏斜。评估表明，在大规模芯粒系统上运行 SpAt 时，这些优化可在部分预填充和解码阶段分别实现 1.45 倍和 1.53 倍加速。</p></div><details class="original-abstract"><summary>查看英文原文摘要</summary><p>Long-context inference is a rising demand for LLMs, especially for agent applications. Sparse attention (SpAt) and chiplet technology are promising solutions to reduce computations and scale hardware performance. However, deploying SpAt on distributed chiplets necessitates context parallelism for workload partitioning, introducing complex distributed attention. In this work, we present L2C2, a system optimization for distributed SpAt in long-context inference. During the partial-prefill stage, we propose a novel Split-Comm Attention mechanism that leverages the high-bandwidth interconnect of chiplets to trade communication overhead for reduced memory access. We combine it with conventional Ring Attention to form a Bi-Mode method that adapts to varying input sequence lengths. During the decoding stage, we analyze the cause of memory access imbalance and address it by static interleaved token assignment. Dynamic agile cache balancing is also proposed to adapt to SpAt skewness. Evaluations show our optimization can achieve 1.45$\times$ and 1.53$\times$ speedup in partial-prefill and decoding with SpAt on large-scale chiplets.</p></details>
+            <dl class="paper-notes"><div><dt>核心结论</dt><dd>在大规模芯粒系统上运行稀疏注意力时，L2C2 在部分预填充和解码阶段分别实现 1.45 倍和 1.53 倍加速。</dd></div><div><dt>创新点</dt><dd>1. 提出 Split-Comm Attention，在部分预填充阶段利用高带宽芯粒互连，以通信开销换取更少的内存访问；2. 将 Split-Comm Attention 与传统 Ring Attention 组合为双模式方法，以适应不同输入序列长度；3. 分析解码阶段内存访问不均衡的成因，并通过静态交错词元分配加以缓解；4. 提出动态快速缓存均衡机制，以适应稀疏注意力的负载偏斜。</dd></div></dl>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2611.33691v1" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
+<a href="https://arxiv.org/pdf/2611.33691v1" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a></div>
+        </article>
+        </div>
+    </main>
+    <footer class="page">
+        <span>Paper Daily</span>
+        <span>页面生成于 <time datetime="2026-11-27T17:13+08:00">2026-11-27 17:13</time>（北京时间）</span>
+    </footer>
+</body>
+</html>
