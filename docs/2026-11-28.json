@@ -1,0 +1,308 @@
+[
+  {
+    "id": "2611.30849",
+    "title": "SYCLDB: A Cross-Vendor Heterogeneous Analytical DBMS",
+    "authors": [
+      "Ivan Donchev Kabadzhov",
+      "Eugenio Marinelli",
+      "Raja Appuswamy"
+    ],
+    "abstract": "The rapid growth of AI and analytical workloads has increased the need for fast, interactive analytical data processing. This, in turn, has led to a surge of interest in designing accelerated analytical database engines that can exploit modern GPUs to scale computation. While GPUs provide the massive data-parallelism required by modern analytics, the software landscape remains dominated by closed-source, vendor-locked programming models, like CUDA, limiting portability across multi-vendor GPUs. In this work, we present SYCLDB, an end-to-end analytical database engine built upon the SYCL open standard, designed to enable efficient, hardware-agnostic execution across a wide range of accelerators using a single codebase. By implementing core relational operators as modular SYCL kernels, integrating them with a SQL frontend based on Apache Calcite and Apache Thrift, and supporting Apache Arrow for efficient columnar ingestion, SYCLDB reduces dependence on vendor-specific GPU programming stacks by enabling a single SYCL codebase to execute analytical query pipelines across Intel, AMD, and NVIDIA GPUs.",
+    "published_date": "2026-11-23T15:29:46Z",
+    "updated_date": "2026-11-23T15:29:46Z",
+    "categories": [
+      "cs.DB",
+      "cs.DC"
+    ],
+    "primary_category": "cs.DB",
+    "pdf_url": "https://arxiv.org/pdf/2611.30849v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.30849v1",
+    "source": "arxiv",
+    "score": 0.7058315539360046,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作",
+      "与 GPU 数据库主题中等相关"
+    ],
+    "abstract_cn": "AI 与分析型工作负载的快速增长，推动了对快速、交互式分析数据处理的需求。这也促使越来越多的研究关注如何设计加速型分析数据库引擎，利用现代 GPU 扩大计算规模。GPU 能够提供现代分析所需的大规模数据并行能力，但软件生态仍以 CUDA 等闭源且绑定特定厂商的编程模型为主，限制了软件在不同厂商 GPU 之间的可移植性。本文提出 SYCLDB，一个基于 SYCL 开放标准的端到端分析数据库引擎，旨在通过一套代码在多种加速器上实现高效、与具体硬件无关的执行。SYCLDB 将核心关系算子实现为模块化的 SYCL 内核，将这些内核与基于 Apache Calcite 和 Apache Thrift 的 SQL 前端集成，并支持通过 Apache Arrow 高效导入列式数据。借助这些设计，同一套 SYCL 代码可以在 Intel、AMD 和 NVIDIA GPU 上执行分析查询流水线，从而降低对特定厂商 GPU 编程栈的依赖。",
+    "takeaway": "SYCLDB 使用同一套 SYCL 代码在 Intel、AMD 和 NVIDIA GPU 上执行分析查询流水线，降低了对特定厂商 GPU 编程栈的依赖。",
+    "innovation": "1. 基于 SYCL 开放标准构建端到端分析数据库引擎，以模块化 SYCL 内核实现核心关系算子，支持跨厂商 GPU 执行；2. 将算子内核与基于 Apache Calcite 和 Apache Thrift 的 SQL 前端集成，并通过 Apache Arrow 支持高效的列式数据导入。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.32975",
+    "title": "Estimating GPU Roofline Arithmetic Intensity with Off-the-Shelf LLMs and Compiler Artifacts",
+    "authors": [
+      "Gregory Bolet",
+      "Giorgis Georgakoudis",
+      "Konstantinos Parasyris",
+      "Harshitha Menon",
+      "Niranjan Hasabnis",
+      "Kirk W. Cameron",
+      "Gal Oren"
+    ],
+    "abstract": "GPU developers use profiling to understand computation and data movement, but access to target hardware can delay optimization. We investigate whether off-the-shelf large language models (LLMs) can estimate Roofline arithmetic intensity (the ratio of floating-point operations (FLOPs) to device-memory bytes) without executing the target GPU workload. We evaluate three models (deepseek-v4-flash, gemini-3.7-flash, and gpt-5.6-sol) across 179 combinations of five kernel families, four NVIDIA and AMD GPUs, four parallel runtimes (CUDA, HIP, OpenMP, and OpenCL), and modified code variants, comparing source-only queries, queries with compiler artifacts, and sandboxed agentic analysis. Compiler artifacts raise the share of arithmetic-intensity estimates within a factor of 1.20 of profiled values from 8-14% to 26-32%, while the resulting bandwidth-bound or compute-bound classifications are correct in 78-92% of runs. With compiler artifacts, FLOP estimates meet the 1.20x tolerance in 59-88% of runs, compared with 36-40% for device-memory traffic. Agentic analysis increases the share of arithmetic-intensity estimates within the 1.20x tolerance by 6.5 percentage points for gpt-5.6-sol, at 3.6x the median cost and 2.5x the median latency of compiler-assisted queries; the other models incur higher costs without a statistically clear improvement. These findings suggest LLM estimates could help prioritize optimization when GPU access is constrained, while identifying cache-dependent device-memory traffic as the main obstacle to precise arithmetic-intensity prediction.",
+    "published_date": "2026-11-24T17:10:23Z",
+    "updated_date": "2026-11-24T17:10:23Z",
+    "categories": [
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.32975v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32975v1",
+    "source": "arxiv",
+    "score": 0.5492679452896119,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "GPU 开发者使用性能剖析来了解计算和数据移动行为，但获取目标硬件可能会延误优化工作。本文研究现成的大语言模型（LLM）能否在不执行目标 GPU 工作负载的情况下，估算 Roofline 模型中的算术强度，即浮点运算次数（FLOP 数）与设备内存传输字节数之比。我们评估了 3 个模型（deepseek-v4-flash、gemini-3.7-flash 和 gpt-5.6-sol），共测试 179 种组合，涵盖 5 类内核、来自 NVIDIA 和 AMD 的 4 款 GPU、4 种并行运行时（CUDA、HIP、OpenMP 和 OpenCL）以及修改后的代码变体，并比较了仅提供源代码的查询、附带编译器产物的查询和在沙箱中运行的智能体分析。提供编译器产物后，落在实测值的 1/1.20 至 1.20 倍之间的算术强度估计所占比例由 8%–14% 提高至 26%–32%，据此判断工作负载受带宽限制还是受计算限制，在 78%–92% 的运行中正确。使用编译器产物时，FLOP 数估计在 59%–88% 的运行中满足 1.20 倍的误差容限，设备内存流量估计的达标比例为 36%–40%。对于 gpt-5.6-sol，智能体分析将满足同一 1.20 倍误差容限的算术强度估计比例提高了 6.5 个百分点，但其成本中位数和延迟中位数分别达到编译器辅助查询的 3.6 倍和 2.5 倍。其他模型的成本同样升高，改善在统计上并不明确。这些发现表明，在目标 GPU 难以获取时，LLM 估计有望帮助确定优化优先级，而受缓存行为影响的设备内存流量是精确预测算术强度的主要障碍。",
+    "takeaway": "与仅提供源代码相比，加入编译器产物使算术强度估计落在性能剖析实测值 1.20 倍误差容限内的比例由 8%–14% 提高到 26%–32%，带宽受限或计算受限的判定在 78%–92% 的运行中正确。目标 GPU 难以获取时，这类估计有望帮助确定优化优先级，但缓存相关的设备内存流量仍是精确预测的主要障碍。",
+    "innovation": "1. 评估现成 LLM 在不运行目标 GPU 工作负载的条件下估算 Roofline 算术强度的能力，在覆盖多类内核、GPU、运行时及代码变体的组合上，对比仅源代码查询、编译器产物辅助查询与沙箱中的智能体分析；2. 分别检验 FLOP 数和设备内存流量的估计精度，并评估算术强度估计用于瓶颈分类的正确率。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.31062",
+    "title": "X-BQSR: Holistic Acceleration of Base Quality Recalibration for Scalable Genomic Analysis",
+    "authors": [
+      "Eugenio Marinelli",
+      "Ivan Donchev Kabadzhov",
+      "Raja Appuswamy"
+    ],
+    "abstract": "With the continued decline in sequencing costs, genomics-based precision medicine is gaining increasing importance. The Genome Analysis Toolkit (GATK) is the standard framework for converting raw genomic data into actionable variants, but one of its most expensive steps is base quality score recalibration (BQSR), which corrects systematic sequencing errors. Despite significant work on accelerating other parts of the variant calling pipeline, BQSR has not been systematically explored on GPUs.\n  In this work, we analyze BQSR to identify computational and I/O bottlenecks and show that simply offloading key stages to an accelerator is insufficient to achieve overall gains. We then present X-BQSR, a holistic redesign of the entire BQSR pipeline, including I/O, compression, and kernel execution, to better leverage GPU parallelism. We implement X-BQSR using portable SYCL kernels for NVIDIA, AMD, and Intel GPUs, along with native CUDA and HIP backends for comparison, and we evaluate its performance against previous FPGA work. Our evaluation shows up to 141.7x acceleration compared to standard GATK and 8.7x acceleration compared to a proprietary GPU-accelerated solution.",
+    "published_date": "2026-11-23T17:20:33Z",
+    "updated_date": "2026-11-23T17:20:33Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.31062v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.31062v1",
+    "source": "arxiv",
+    "score": 0.5451746726036072,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "随着测序成本持续下降，基于基因组学的精准医学日益重要。基因组分析工具包（Genome Analysis Toolkit，GATK）是从原始基因组数据中识别可用于指导临床决策的变异的标准框架。碱基质量分数重校准（BQSR）是其中开销最大的步骤之一，用于纠正系统性测序误差。尽管已有大量工作加速变异检测流水线的其他环节，针对 GPU 上的 BQSR 仍缺乏系统研究。\n\n本文分析 BQSR 的计算与 I/O 瓶颈，并表明仅将关键阶段卸载到加速器不足以提升整体性能。随后，我们提出 X-BQSR，对包括 I/O、压缩和内核执行在内的整条 BQSR 流水线进行整体重设计，以更充分地利用 GPU 并行性。我们使用可移植的 SYCL 内核实现 X-BQSR，使其支持 NVIDIA、AMD 和 Intel GPU，同时实现原生 CUDA 和 HIP 后端用于对照，并与既有 FPGA 方案进行性能比较。评估结果显示，X-BQSR 相对标准 GATK 的加速比最高为 141.7 倍，相对一款专有 GPU 加速方案的加速比最高为 8.7 倍。",
+    "takeaway": "仅卸载 BQSR 的关键阶段不足以提升端到端性能。整体重设计流水线后，X-BQSR 相对标准 GATK 的加速比最高为 141.7 倍，相对一款专有 GPU 加速方案最高为 8.7 倍。",
+    "innovation": "1. 分析 BQSR 的计算与 I/O 瓶颈，并评估仅卸载关键阶段对整体性能的影响；2. 提出 X-BQSR，整体重设计 I/O、压缩和内核执行以利用 GPU 并行性；3. 使用可移植的 SYCL 内核支持 NVIDIA、AMD 和 Intel GPU，并实现原生 CUDA 和 HIP 后端用于对照。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.29915",
+    "title": "Measuring GPU Memory Traffic on the NVIDIA GB10 Without C2C Telemetry",
+    "authors": [
+      "Deepak Panigrahy",
+      "Sirisha Kota",
+      "Aakash Tyagi",
+      "David Kebo",
+      "Rabi Mahapatra"
+    ],
+    "abstract": "The NVIDIA GB10, used in the DGX Spark and in desktop AI systems from several vendors, joins an Arm CPU die and a Blackwell GPU die with NVLink C2C. The GPU has no local memory, so every GPU access that misses in its L2 cache crosses C2C to the LPDDR5X attached to the CPU die. Yet the software on the systems we tested exposes no counter for this traffic. We show that five L2 sector counters of the GPU, sampled every 10 ms through NVIDIA's CUPTI sampling interface by a process that does not attach to the workload, measure GPU memory traffic live and separate copy engine traffic from the read misses and writes of GPU kernels. For large streaming transfers of known size, the counters agree within 0.28% on an Acer GN100 and within 0.005% on a DGX Spark, track the volume moved regardless of how it is split into copies, and exclude data reused in L2. The GPU's SMMU counter, a natural alternative, counts address translations rather than bytes. Applied to an unmodified server, the method shows Mistral 7B decode reading 13.47 GiB per token, the weights it uses plus its key value (KV) cache, at 83% of the memory bandwidth NVIDIA specifies. We release the method as an open source tool.",
+    "published_date": "2026-11-23T02:12:32Z",
+    "updated_date": "2026-11-23T02:12:32Z",
+    "categories": [
+      "cs.AR",
+      "cs.DC",
+      "cs.PF"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.29915v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.29915v1",
+    "source": "arxiv",
+    "score": 0.49163643836975096,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "NVIDIA GB10 用于 DGX Spark 以及多家厂商的桌面 AI 系统，它通过 NVLink C2C 连接 Arm CPU 裸片和 Blackwell GPU 裸片。GPU 没有本地内存，因此所有未命中 GPU L2 缓存的访问都要经过 C2C，访问连接在 CPU 裸片上的 LPDDR5X 内存。然而，我们测试的系统所用软件并未提供用于统计这类流量的计数器。我们表明，由一个无需附加到目标工作负载的进程，通过 NVIDIA 的 CUPTI 采样接口每 10 ms 采样 5 个 GPU L2 扇区计数器，即可实时测量 GPU 内存流量，并区分拷贝引擎流量与 GPU 内核的读未命中及写入流量。对于大小已知的大规模流式传输，计数器测量值与已知传输量的偏差在 Acer GN100 上不超过 0.28%，在 DGX Spark 上不超过 0.005%。无论传输被拆分成多少次拷贝，计数器都能追踪实际传输量，并排除在 L2 中复用的数据。另一种容易想到的选择是 GPU 的 SMMU 计数器，它统计的是地址转换次数，无法提供字节数。将该方法应用于未经修改的服务器时，结果显示 Mistral 7B 在解码过程中每生成一个 token 读取 13.47 GiB，所读数据为该步用到的权重与键值（KV）缓存，读带宽达到 NVIDIA 标称内存带宽的 83%。我们将该方法作为开源工具发布。",
+    "takeaway": "通过 CUPTI 采样 GPU L2 扇区计数器，可以在缺少 C2C 流量遥测的 GB10 系统上实时测量 GPU 内存流量。对于大小已知的大规模流式传输，测量偏差在 Acer GN100 上不超过 0.28%，在 DGX Spark 上不超过 0.005%，且该方法测得 Mistral 7B 解码每个 token 读取 13.47 GiB，读带宽达到 NVIDIA 标称内存带宽的 83%。",
+    "innovation": "1. 通过独立进程使用 CUPTI 每 10 ms 采样 5 个 GPU L2 扇区计数器，在无需附加到目标工作负载的情况下实时测量内存流量，区分拷贝引擎流量与 GPU 内核的读未命中及写入流量，并排除 L2 中复用的数据；2. 将该测量方法实现为开源工具。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.30417",
+    "title": "ANOR: Scaling Sparse Attention with a GPU-PNM Computing Hierarchy",
+    "authors": [
+      "Hyunsu Ye",
+      "Hyunmin Choi",
+      "Jaehong Cho",
+      "Jaeseo Lee",
+      "Hyeongseok Gwak",
+      "Joohee Lee",
+      "Donguk Moon",
+      "Woosuk Chung",
+      "Hoshik Kim",
+      "Kiwan Maeng",
+      "Jongse Park"
+    ],
+    "abstract": "Serving large language models with long contexts requires keeping the key-value (KV) cache of every request, which can exceed GPU memory capacity. Sparse attention reads only a small, query-dependent subset of this cache at each decoding step, yet must retain the full cache because later steps may select other entries. Processing-near-memory (PNM) devices attached through Compute Express Link (CXL) can hold the full cache and compute attention where it resides. Prior GPU-PNM systems for sparse attention are PNM-centric, processing most of the attention on the PNM. As existing CXL-PNM devices provide far less memory bandwidth than GPU HBM, this PNM-centric execution makes the PNM the bottleneck and leaves the GPU idle waiting for attention results. We present ANOR, a GPU-PNM joint acceleration system that exploits the selection locality of sparse attention by computing most of the attention on the GPU from a cache of recently selected entries and processing only the misses on the PNM. As the PNM processes cache misses directly, GPU cache updates can be decoupled from current-step execution. We develop a bounded cache-update policy that limits updates to the point where the hit ratio of later steps saturates, reducing GPU-facing link traffic. We add a small on-chip Early Streaming Buffer (ESB) that captures KV data during PNM attention and streams it to the GPU, avoiding most redundant DRAM reads despite the bandwidth mismatch between PNM memory and the GPU-facing link. We also propose an adaptive cache-factor mechanism that adjusts GPU cache size to the serving load, balancing hit ratio and batch size. Across two models and three long-context agentic workloads, ANOR improves decode throughput by 2.3x over HiSparse and 2.0x over a PNM baseline on average. These results show that PNM is most effective not as the primary attention engine but as a computing tier of the GPU memory hierarchy.",
+    "published_date": "2026-11-23T10:16:06Z",
+    "updated_date": "2026-11-23T10:16:06Z",
+    "categories": [
+      "cs.AR"
+    ],
+    "primary_category": "cs.AR",
+    "pdf_url": "https://arxiv.org/pdf/2611.30417v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.30417v1",
+    "source": "arxiv",
+    "score": 0.47157475233078006,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "为长上下文大语言模型提供推理服务，需要保留每个请求的键值（KV）缓存，所需空间可能超过 GPU 显存容量。稀疏注意力在每个解码步只读取缓存中由当前查询决定的一小部分条目，但后续步骤可能选中其他条目，因此仍须保留完整缓存。通过 Compute Express Link（CXL）连接的近内存处理（PNM）设备可以容纳完整缓存，并在数据所在位置执行注意力计算。以往面向稀疏注意力的 GPU–PNM 系统以 PNM 为主，将大部分注意力计算交给 PNM。现有 CXL–PNM 设备的内存带宽远低于 GPU 的高带宽内存（HBM），因此这种执行方式会使 PNM 成为瓶颈，GPU 则因等待注意力结果而闲置。本文提出 ANOR，一个 GPU–PNM 联合加速系统。它利用稀疏注意力的选择局部性，由 GPU 利用缓存中近期被选中的条目完成大部分注意力计算，仅将缓存未命中的部分交给 PNM。由于 PNM 直接处理未命中，GPU 缓存更新可与当前解码步的执行解耦。我们设计了一种有界缓存更新策略，将更新量限制在后续解码步的命中率达到饱和所需的水平，以减少面向 GPU 的链路流量。我们还加入了一个小型片上提前流式缓冲区（Early Streaming Buffer，ESB），在 PNM 执行注意力计算时捕获 KV 数据，并将其以流式方式发往 GPU。即使 PNM 内存与面向 GPU 的链路带宽不匹配，这种方式也能避免大部分冗余 DRAM 读取。此外，我们提出自适应缓存因子机制，根据推理服务负载调整 GPU 缓存大小，平衡命中率和批大小。在涵盖 2 个模型和 3 种长上下文智能体工作负载的评估中，ANOR 的平均解码吞吐量分别达到 HiSparse 的 2.3 倍和 PNM 基线的 2.0 倍。结果表明，将 PNM 用作 GPU 内存层次结构中的计算层，比将其用作主要注意力计算引擎更有效。",
+    "takeaway": "在涵盖 2 个模型和 3 种长上下文智能体工作负载的评估中，由 GPU 执行大部分稀疏注意力计算、由 PNM 处理缓存未命中的 ANOR，平均解码吞吐量达到 HiSparse 的 2.3 倍和 PNM 基线的 2.0 倍。",
+    "innovation": "1. 利用稀疏注意力的选择局部性，由 GPU 缓存近期选中的 KV 条目并完成大部分注意力计算，由 PNM 直接处理未命中，使 GPU 缓存更新与当前解码步解耦；2. 采用有界缓存更新策略，以后续步骤的命中率达到饱和所需的更新量为上限，减少面向 GPU 的链路流量；3. 引入片上 ESB，在 PNM 计算注意力时捕获 KV 数据并流式传给 GPU，减少冗余 DRAM 读取；4. 通过自适应缓存因子机制按服务负载调整 GPU 缓存大小，平衡命中率和批大小。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.32057",
+    "title": "Generalized Tensor Parallelism: Powering Trillion-Parameter LLM Training at 10+ EFLOP/s",
+    "authors": [
+      "Shiqing Fan",
+      "Deepak Narayanan",
+      "Jimmy Zhang",
+      "Jiangfei Duan",
+      "Prajwal Singhania",
+      "Haoran Zhang",
+      "Wanying Wang",
+      "Philip Monk",
+      "Xuwen Chen",
+      "Jared Casper",
+      "Jun Yang",
+      "Mohammad Shoeybi",
+      "Bryan Catanzaro",
+      "Vijay Anand Korthikanti"
+    ],
+    "abstract": "Pretraining state-of-the-art large language models (LLMs) with up to trillions of parameters is memory- and compute-intensive. Existing parallelization schemes compromise on either per-GPU memory or throughput: data parallelism replicates parameters; tensor parallelism and fully sharded data parallelism (FSDP) add communication of activations and parameters, respectively, to every microbatch; and pipeline parallelism leaves GPUs idle while the pipeline fills and drains. We show that, for linear layers, five commonly used parallelisms (data, tensor, sequence, context parallelism and FSDP) are special cases of one framework, generalized tensor parallelism (GTP), in which each layer's parameters and activations are partitioned and either can be re-materialized with an all-gather before use. In GTP, a parameter all-gather is an optional preprocessing step on one input of a matrix multiplication (GEMM), whereas FSDP implementations typically treat it as a step before an entire Transformer block, which can increase memory footprint and delay GEMMs. The GTP view lets us schedule all-gathers per GEMM rather than per block, issuing each early enough to hide its communication but late enough to limit memory. Our implementation is open source at https://github.com/NVIDIA/Megatron-LM; with it, an internal 2T-parameter mixture-of-experts (MoE) model reaches \\textbf{13.0 model EFLOP/s} (exaFLOP/s) on 12,288 GB300 GPUs with 98\\% weak-scaling efficiency, and runs with 1M-token sequences on 512 GPUs. On 256--1,024 GPUs, our implementation achieves \\textbf{1.05--1.55$\\times$ the throughput of Megatron-FSDP} across three MoE models and \\textbf{1.27--1.31$\\times$ that of a tuned 3D-parallel recipe with pipeline parallelism} on a DeepSeek-V4-Pro proxy model.",
+    "published_date": "2026-11-24T06:45:36Z",
+    "updated_date": "2026-11-24T06:45:36Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.32057v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.32057v1",
+    "source": "arxiv",
+    "score": 0.4561839091777802,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "预训练参数量最高达数万亿的先进大语言模型（LLM）需要大量显存和算力。现有并行方案需要在单卡显存占用与吞吐量之间作出取舍。数据并行会复制参数，张量并行和全分片数据并行（FSDP）分别在每个微批次中引入激活值通信和参数通信，流水线并行则会在流水线填充和排空期间使部分 GPU 空闲。我们表明，对于线性层，5 种常用并行方式，即数据并行、张量并行、序列并行、上下文并行和 FSDP，都是广义张量并行（GTP）框架的特例。在 GTP 中，每层的参数和激活值均被分片，两者都可以在使用前通过全聚集（all-gather）重新物化。GTP 将参数全聚集视为矩阵乘法（GEMM）其中一个输入的可选预处理步骤。FSDP 实现通常在整个 Transformer 块开始前执行这一操作，这可能增加显存占用并推迟 GEMM 的执行。GTP 由此可以按单次 GEMM 调度全聚集，并选择合适的发起时机，既让通信与计算重叠以隐藏通信开销，又避免过早聚集而增加显存占用。使用我们的实现，一个内部的 2 万亿参数混合专家（MoE）模型在 12,288 张 GB300 GPU 上达到 13.0 模型 EFLOP/s（每秒 13.0 × 10¹⁸ 次模型浮点运算），弱扩展效率为 98%，并可在 512 张 GPU 上运行长度为 100 万 token 的序列。在 256–1,024 张 GPU 上，该实现在 3 个 MoE 模型上的吞吐量为 Megatron-FSDP 的 1.05–1.55 倍，在一个 DeepSeek-V4-Pro 代理模型上的吞吐量为采用流水线并行的经调优 3D 并行方案的 1.27–1.31 倍。实现已开源于 https://github.com/NVIDIA/Megatron-LM。",
+    "takeaway": "GTP 将 5 种常用并行方式统一为线性层上的分片与全聚集，并按 GEMM 调度通信。采用 GTP 的内部 2 万亿参数 MoE 模型在 12,288 张 GB300 GPU 上达到 13.0 模型 EFLOP/s，弱扩展效率为 98%。",
+    "innovation": "1. 提出 GTP，将数据、张量、序列和上下文并行以及 FSDP 统一为线性层参数和激活值的分片与按需全聚集；2. 将参数全聚集建模为单次 GEMM 一个输入的可选预处理，并在 GEMM 粒度调度其发起时机，以隐藏通信开销并限制显存占用。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.31869",
+    "title": "RankServe: Rank-Aware CPU-GPU Scheduling for Memory-Constrained MoE Serving",
+    "authors": [
+      "Hengyi Zhu",
+      "Zhendong Mi",
+      "Pu Zhao",
+      "Yanzhi Wang",
+      "Hao Wang",
+      "Shaoyi Huang"
+    ],
+    "abstract": "Mixture-of-Experts (MoE) models scale model capacity through sparse expert activation, but their large expert pools impose substantial memory requirements during inference. Low-rank compression reduces the memory footprint of Mixture-of-Experts (MoE) models. However, the heterogeneous expert ranks create unequal storage, transfer, and execution costs. Under limited GPU memory, expert popularity and transfer cost alone cannot determine which experts are most valuable to retain. We present RankServe, a CPU-GPU serving system for compressed MoE checkpoints with fixed expert ranks. Its key insight is to value GPU residency against the cheaper nonresident path, CPU execution or weight transfer followed by GPU execution, under each expert's rank and token load. RankServe aggregates the resulting estimated savings over routing demand and prioritizes experts by savings per byte. It updates residency from recent routing history and selects miss paths using current token loads, allowing temporary GPU execution without cache admission. A variable-rank runtime executes heterogeneous factors through grouped matrix multiplications without common-rank padding. Implemented on vLLM, RankServe is evaluated on three MoE models against six serving systems on a single CPU-GPU platform. Across five batch sizes from 1 to 32, it achieves per-model geometric-mean speedups of $1.69$--$2.29\\times$ in time to first token (TTFT) and $1.71$--$2.48\\times$ in time per output token (TPOT), relative to the fastest baseline for each configuration and metric.",
+    "published_date": "2026-11-24T03:21:07Z",
+    "updated_date": "2026-11-24T03:21:07Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.31869v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.31869v1",
+    "source": "arxiv",
+    "score": 0.43481805801391604,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "混合专家（MoE）模型通过稀疏激活专家来扩展模型容量，但大规模专家池使推理需要大量内存。低秩压缩可以减少 MoE 模型的内存占用，但不同专家的秩可能不同，导致存储、传输和执行成本各不相同。在 GPU 显存有限时，仅凭专家的访问频率和传输成本，无法确定哪些专家最值得驻留在 GPU 上。我们提出 RankServe，这是一个面向各专家秩固定的压缩 MoE 检查点的 CPU–GPU 推理服务系统。其核心思路是，根据每个专家的秩和 token 负载，估算 GPU 驻留相对于成本较低的非驻留路径所节省的开销。两条非驻留路径分别是在 CPU 上执行，以及传输权重后在 GPU 上执行。RankServe 按路由需求汇总估算的开销节省，并按每字节节省的开销确定专家的驻留优先级。它依据近期路由历史更新驻留状态，根据当前 token 负载选择缓存未命中时的执行路径，并允许临时在 GPU 上执行专家而不将其纳入缓存。可变秩运行时通过分组矩阵乘法处理不同秩的因子矩阵，无需填充到统一的秩。RankServe 基于 vLLM 实现，在单一 CPU–GPU 平台上用 3 个 MoE 模型与 6 个推理服务系统进行比较。对于从 1 到 32 的 5 种批大小，相对于每种配置和每项指标中最快的基线，RankServe 按模型计算的几何平均加速比分别为首 token 延迟（TTFT）1.69–2.29 倍、每输出 token 延迟（TPOT）1.71–2.48 倍。",
+    "takeaway": "RankServe 根据专家的秩、token 负载及非驻留执行成本决定 GPU 驻留优先级和缓存未命中时的执行路径。在单一 CPU–GPU 平台上评估的 3 个 MoE 模型和 5 种批大小（1–32）中，以每种配置和指标各自最快的基线为参照，按模型计算的几何平均加速比为 TTFT 1.69–2.29 倍、TPOT 1.71–2.48 倍。",
+    "innovation": "1. 根据专家的秩和 token 负载，将 GPU 驻留与成本较低的非驻留路径比较，按路由需求汇总估算的开销节省，并按每字节节省的开销确定驻留优先级；2. 根据近期路由历史更新专家驻留状态，并根据当前 token 负载选择缓存未命中时的执行路径，支持临时在 GPU 上执行而不将专家纳入缓存；3. 提出可变秩运行时，通过分组矩阵乘法处理不同秩的因子矩阵，无需填充到统一的秩。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.31556",
+    "title": "Real-Time AI Acceleration on a 2D Spatial Dataflow Architecture",
+    "authors": [
+      "Shriram Raja",
+      "Anton Njavro",
+      "Richard West"
+    ],
+    "abstract": "Machine Learning (ML) is increasingly being integrated into real-time systems, which makes the timing analysis of ML accelerators necessary. However, the most popular commercial accelerator, the Graphics Processing Unit (GPU), remains difficult to analyze as several aspects of its behavior, including scheduling of threads involved in single-instruction multiple-thread computations and memory access latency, are not fully documented.\n  Spatial dataflow accelerators present an interesting alternative to GPUs, as they inherently support compute and memory partitioning. Data movement and computation locality are explicitly controlled by the programmer. In this work, we consider the Tenstorrent Blackhole, which is based on a commodity RISC-V architecture. It consists of a 2D grid of cores connected by Networks-on-Chip (NoCs), supporting a fully open software runtime. We profile the Blackhole platform and develop a worst-case execution time task model as a Homogeneous Synchronous Dataflow Graph. We extend this model to a preliminary analysis of multi-core workloads by considering NoC-related delays. Finally, we evaluate our model across 12,567 task configurations and workloads. Results show that the estimate derived from our model lies above the observed worst case in every configuration. For single-core workloads, the overhead is less than 100% in most cases, with a maximum of less than 200%, and for multi-core workloads, it is less than 500% using a pessimistic NoC contention analysis. This paper lays the foundations for real-time computing on a promising open accelerator design.",
+    "published_date": "2026-11-23T21:04:49Z",
+    "updated_date": "2026-11-23T21:04:49Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.31556v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.31556v1",
+    "source": "arxiv",
+    "score": 0.4269524955749512,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "机器学习（ML）正越来越多地融入实时系统，因此有必要对 ML 加速器进行时序分析。然而，应用最广泛的商用加速器图形处理器（GPU）仍难以分析，因为其多项行为尚未得到完整记录，包括单指令多线程（SIMT）计算中的线程调度和内存访问延迟。\n\n空间数据流加速器是 GPU 的一种潜在替代方案，因为它们天然支持对计算和内存资源进行分区。程序员可以显式控制数据移动以及计算在哪些位置执行。本文研究采用商用 RISC-V 架构的 Tenstorrent Blackhole。该平台由片上网络（NoC）互连的二维核心网格构成，并支持完全开放的软件运行时。我们对 Blackhole 平台进行性能剖析，并用齐次同步数据流图建立任务的最坏情况执行时间模型。随后，我们将片上网络引起的延迟纳入模型，对多核工作负载开展初步分析。最后，我们在 12,567 种任务配置和工作负载组合上评估该模型。结果表明，在所有受测配置中，模型估计值均高于观测到的最坏情况执行时间。对于单核工作负载，估计值相对观测最坏值的高估幅度在大多数情况下低于 100%，最大幅度也低于 200%。对于多核工作负载，采用悲观的片上网络争用分析时，高估幅度低于 500%。本文为在这一有潜力的开放式加速器架构上开展实时计算奠定了基础。",
+    "takeaway": "在受测的 12,567 种任务配置和工作负载组合中，Blackhole 的最坏情况执行时间模型估计值均高于实测最坏值。单核负载的高估幅度大多低于 100%，最大也低于 200%，多核负载在采用悲观的片上网络争用分析时高估幅度低于 500%。",
+    "innovation": "1. 对 Tenstorrent Blackhole 平台进行性能剖析，以齐次同步数据流图建立任务的最坏情况执行时间模型；2. 将片上网络相关延迟纳入模型，对多核工作负载开展初步时序分析。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.30159",
+    "title": "One Structure Is Enough: Record-Native Tiles for Evolving Sparse Matrices on GPUs",
+    "authors": [
+      "Yusuf Mücahit Çetinkaya"
+    ],
+    "abstract": "Sparse matrices that change over time, such as streaming graphs, are usually handled on GPUs with two parts: a packed format such as CSR, ELL, or SELL for computation, and a separate buffer for updates. Periodic maintenance then merges updates, rebuilds data, or changes formats. Our measurements show that this split is often unnecessary. We present RecTile, a tiled storage layer where each tile is kept in one sorted array of 12-byte edge records. For fragmented matrices, with 1 to 21 nonzeros per tile in our workloads, RecTile matches the best format-pinned slab tile at 0.56 to 1.21 times its time. Its tiled layout is also up to 21 times faster than whole-matrix cuSPARSE CSR. Specialized slabs are faster on the patterns they target at medium density, but both approaches converge by 25% density. RecTile stays within 1.1 to 1.6 times of whole-matrix cuSPARSE COO, our strongest static baseline, while COO cannot be updated in place. RecTile also uses no fixed per-tile device metadata for the stored matrix payload, so its tiles are smaller at realistic occupancies. A fully GPU-based ingest pipeline applies insert/delete/modify batches at up to 29 million edges per second, 4.5 times faster than the host path. An exact dynamic-programming oracle selects zero folds on every tested workload under its action space and calibrated cost model. Standard folding heuristics use 4 to 15 times more GPU time and up to 4 times more persistent device storage. End to end, RecTile improves the time-storage tradeoff on all five evolving-graph workloads, including delete-heavy streams. It is also fastest on a dense stress stream with 1220 records per tile. There, folding uses 1.3 times less peak persistent storage but takes 3.9 times more time. For the evolving graph-like, interleaved update/SpMV workloads evaluated here, the mutable record store can serve directly as the compute representation.",
+    "published_date": "2026-11-23T07:06:17Z",
+    "updated_date": "2026-11-23T07:06:17Z",
+    "categories": [
+      "cs.DC"
+    ],
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2611.30159v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.30159v1",
+    "source": "arxiv",
+    "score": 0.4258037054538727,
+    "reasons": [
+      "直接涉及 GPU 加速数据库操作"
+    ],
+    "abstract_cn": "在 GPU 上处理随时间变化的稀疏矩阵（如流式图）时，通常采用两套结构：用于计算的紧凑格式（如 CSR、ELL 或 SELL），以及用于接收更新的独立缓冲区。系统随后通过定期维护合并更新、重建数据或转换格式。实测表明，这种分离往往没有必要。我们提出 RecTile，一种分块存储层。每个块使用一个有序数组保存边记录，每条记录占 12 字节。对于非零元分布零散的矩阵，在本文工作负载中每块含 1 至 21 个非零元，RecTile 的用时为表现最好的固定格式 slab 块的 0.56 至 1.21 倍，性能与之相当。与对整矩阵使用 cuSPARSE CSR 相比，其分块布局最高可实现 21 倍加速。在中等密度下，专用 slab 块在其针对的模式上更快，但到密度达到 25% 时，两种方法的性能趋同。RecTile 的用时为最强静态基线（对整矩阵使用 cuSPARSE COO）的 1.1 至 1.6 倍，而 COO 无法原地更新。RecTile 存储矩阵数据时也无须为每个块在设备端保存固定的元数据，因此在实际占用率下，其块占用的空间更小。完全在 GPU 上运行的更新摄取流水线可以批量插入、删除和修改边，吞吐量最高达每秒 2,900 万条边，相当于主机侧路径的 4.5 倍。在给定的动作空间和经校准的成本模型下，基于动态规划的精确求解器对所有受测工作负载均选择执行 0 次折叠（folding）。常用折叠启发式策略消耗的 GPU 时间为零折叠方案的 4 至 15 倍，设备端持久存储占用最高为其 4 倍。端到端评估显示，RecTile 在全部 5 种动态图工作负载上都改善了时间与存储的权衡，其中包括以删除为主的数据流。在每块含 1,220 条记录的高密度压力测试流上，RecTile 的用时也最短。在该测试中，折叠方案的峰值持久存储占用为 RecTile 的 1/1.3，但用时为其 3.9 倍。对于本文评估的、类似动态图且交错执行更新和稀疏矩阵向量乘法（SpMV）的工作负载，可变记录存储可以直接作为计算表示。",
+    "takeaway": "在受测的 5 种交错执行更新和 SpMV 的动态图工作负载上，RecTile 直接用可变记录存储进行计算，均改善了时间与存储的权衡，包括以删除为主的数据流。在每块含 1,220 条记录的高密度压力测试中，RecTile 用时最短，折叠方案的用时为其 3.9 倍，峰值持久存储占用为其 1/1.3。",
+    "innovation": "1. 提出 RecTile 分块存储层，每块用单个有序数组保存 12 字节边记录，无须为矩阵数据维护固定的逐块设备端元数据，同一存储结构支持原地更新并直接用于计算；2. 实现全 GPU 更新摄取流水线，批量应用边的插入、删除和修改；3. 使用基于动态规划的精确求解器，在给定动作空间和经校准的成本模型下选择折叠动作。",
+    "enrichment_method": "codex"
+  },
+  {
+    "id": "2611.31335",
+    "title": "High Throughput Meets Low Latency: CKKS Functional Bootstrapping on GPUs",
+    "authors": [
+      "Carlos Agulló-Domingo",
+      "Carlo Pascoe",
+      "Óscar Vera-López",
+      "Andreea Alexandru",
+      "Ahmad Al Badawi",
+      "José L. Abellán",
+      "Yuriy Polyakov"
+    ],
+    "abstract": "Functional (programmable) bootstrapping extends the bootstrapping operation of Fully Homomorphic Encryption (FHE) to evaluate an arbitrary function while refreshing a ciphertext. This capability was a unique feature of scalar CGGI/DM cryptosystems for many years until it was recently added to the toolset of vectorized FHE schemes, with CKKS being the most promising option both in terms of throughput (amortized time) and functionality. Previous work showed that CKKS functional bootstrapping outperforms CGGI/DM functional bootstrapping in terms of throughput by two to three orders of magnitude, but still loses in latency on CPU by two to three orders of magnitude. We present an optimized GPU implementation of CKKS functional bootstrapping that closes the latency gap. Our implementation supports evaluating functions over both small integers (as in CGGI/DM) and real numbers (unique to CKKS), which we call discrete-CKKS and continuous-CKKS functional bootstrapping, respectively.",
+    "published_date": "2026-11-23T15:36:54Z",
+    "updated_date": "2026-11-23T15:36:54Z",
+    "categories": [
+      "cs.CR",
+      "cs.DC"
+    ],
+    "primary_category": "cs.CR",
+    "pdf_url": "https://arxiv.org/pdf/2611.31335v1",
+    "arxiv_url": "https://arxiv.org/abs/2611.31335v1",
+    "source": "arxiv",
+    "score": 0.4208314406871796,
+    "reasons": [
+      "涉及 GPU 计算技术"
+    ],
+    "abstract_cn": "函数自举（又称可编程自举）扩展了全同态加密（FHE）的自举操作，使其能够在刷新密文的同时求值任意函数。多年来，这一能力为标量 CGGI/DM 密码系统所独有，直到最近才被引入向量化 FHE 方案。在这些方案中，CKKS 在吞吐量（以摊销时间衡量）和功能两方面都最具潜力。已有研究表明，CKKS 函数自举的吞吐量比 CGGI/DM 函数自举高 2 至 3 个数量级，但在 CPU 上的延迟仍比后者高 2 至 3 个数量级。本文提出了经过优化的 CKKS 函数自举 GPU 实现，消除了这一延迟差距。该实现既支持在小整数上进行函数求值（与 CGGI/DM 一样），也支持在实数上进行函数求值（CKKS 独有），分别称为离散 CKKS 函数自举和连续 CKKS 函数自举。",
+    "takeaway": "已有研究表明，CKKS 函数自举的吞吐量比 CGGI/DM 高 2 至 3 个数量级，但在 CPU 上的延迟也高 2 至 3 个数量级。本文的优化 GPU 实现消除了这一延迟差距，并支持小整数和实数上的函数求值。",
+    "innovation": "1. 提出经过优化的 CKKS 函数自举 GPU 实现；2. 在该实现中支持小整数和实数两种求值域，分别对应离散 CKKS 函数自举和连续 CKKS 函数自举。",
+    "enrichment_method": "codex"
+  }
+]
